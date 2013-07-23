@@ -43,13 +43,13 @@ public class EreGeologique
 	   public static CreativeTabs EreGeologiqueCreativeTab = new EreGeologiqueCreativeTab("EreGeologiqueCreativeTab");
 	   
 	   //Block
-	   public static int FougereLeavesID;
-	   public static int FougereWoodID;
-	   public static int FougereSaplingID;
-	   public static int FougerePlankID;
-	   public static int FougereSlabID;
-	   public static int FougereDoubleSlabID;
-	   public static int FougereStairID;
+	   public static int LeavesID;
+	   public static int WoodID;
+	   public static int SaplingID;
+	   public static int PlankID;
+	   public static int SlabID;
+	   public static int DoubleSlabID;
+	   public static int StairID;
 	   public static int PrehistoriqueBlockCoalID;
 	   public static int PrehistoriqueBlockIronID;
 	   public static int GrassID;
@@ -92,13 +92,13 @@ public class EreGeologique
 		        //Blocks
 		        GrassID = config.getBlock("Block Grass", 254).getInt();
 		        DirtID = config.getBlock("Block Dirt", 255).getInt();
-		        FougereLeavesID = config.getBlock("Leaves Foug\350re", 2506).getInt();
-		        FougereWoodID = config.getBlock("Wood Foug\350re", 2507).getInt();
-		        FougereSaplingID = config.getBlock("Sapling Foug\350re", 2508).getInt();
-		        FougerePlankID = config.getBlock("Plank Foug\350re", 2509).getInt();
-		        FougereSlabID = config.getBlock("Slab Foug\350re", 2510).getInt();
-		        FougereDoubleSlabID = config.getBlock("Double Slab Foug\350re", 2511).getInt();
-		        FougereStairID = config.getBlock("Stair Foug\350re", 2512).getInt();
+		        LeavesID = config.getBlock("Leaves Foug\350re", 2506).getInt();
+		        WoodID = config.getBlock("Wood Foug\350re", 2507).getInt();
+		        SaplingID = config.getBlock("Sapling Foug\350re", 2508).getInt();
+		        PlankID = config.getBlock("Plank Foug\350re", 2509).getInt();
+		        SlabID = config.getBlock("Slab Foug\350re", 2510).getInt();
+		        DoubleSlabID = config.getBlock("Double Slab Foug\350re", 2511).getInt();
+		        StairID = config.getBlock("Stair Foug\350re", 2512).getInt();
 		        PrehistoriqueBlockCoalID = config.getBlock("Prehistorique Block Coal", 2513).getInt();
 		        PrehistoriqueBlockIronID = config.getBlock("Prehistorique Block Iron", 2514).getInt();
 		        CropPlanteFougereID = config.getBlock("Crop Plante Foug\350re", 2515).getInt();

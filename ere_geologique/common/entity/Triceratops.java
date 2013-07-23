@@ -19,7 +19,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class Triceratops extends EntityAnimal
+public class Triceratops extends EntityTameable
 {
 	private final EntityAIControlledByPlayer aiControlledByPlayer;
 

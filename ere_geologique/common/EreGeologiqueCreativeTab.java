@@ -12,6 +12,6 @@ public class EreGeologiqueCreativeTab extends CreativeTabs
 	 
 	    @Override
 	    public ItemStack getIconItemStack() {
-	        return new ItemStack(EreGeologiqueBlockList.FougereWood);
+	        return new ItemStack(EreGeologiqueBlockList.Wood);
 	    }
 }

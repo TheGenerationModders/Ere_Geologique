@@ -14,41 +14,41 @@ public class EreGeologique_recipe
 {
 	public static void loadrecipe() 
 	{
-	           GameRegistry.addShapelessRecipe(new ItemStack(EreGeologiqueBlockList.FougerePlank,4), new Object[]
+	           GameRegistry.addShapelessRecipe(new ItemStack(EreGeologiqueBlockList.Plank,4), new Object[]
 		       {
-		        new ItemStack(EreGeologiqueBlockList.FougereWood)
+		        new ItemStack(EreGeologiqueBlockList.Wood)
 		       });
-		       GameRegistry.addRecipe(new ItemStack(EreGeologiqueBlockList.FougereSlab,6), new Object[]
+		       GameRegistry.addRecipe(new ItemStack(EreGeologiqueBlockList.Slab,6), new Object[]
 		       {
-		        "   ", "   ", "XXX", 'X', new ItemStack(EreGeologiqueBlockList.FougerePlank)
+		        "   ", "   ", "XXX", 'X', new ItemStack(EreGeologiqueBlockList.Plank)
 		       });
-		       GameRegistry.addRecipe(new ItemStack(EreGeologiqueBlockList.FougereStair,4), new Object[]
+		       GameRegistry.addRecipe(new ItemStack(EreGeologiqueBlockList.Stair,4), new Object[]
 		       {
-		    	"X  ", "XX ", "XXX", 'X', new ItemStack(EreGeologiqueBlockList.FougerePlank)
+		    	"X  ", "XX ", "XXX", 'X', new ItemStack(EreGeologiqueBlockList.Plank)
 		       });
 		       GameRegistry.addRecipe(new ItemStack(Item.stick,4), new Object[]
 		       {
-		    	" X ", " X ", "   ", 'X', new ItemStack(EreGeologiqueBlockList.FougerePlank)
+		    	" X ", " X ", "   ", 'X', new ItemStack(EreGeologiqueBlockList.Plank)
 		       });
 		       GameRegistry.addRecipe(new ItemStack(Block.workbench,1), new Object[]
 		       {
-		    	"   ", "XX ", "XX ", 'X', new ItemStack(EreGeologiqueBlockList.FougerePlank)
+		    	"   ", "XX ", "XX ", 'X', new ItemStack(EreGeologiqueBlockList.Plank)
 		       });
 		       GameRegistry.addRecipe(new ItemStack(Block.chest,1), new Object[]
 		       {
-		    	"XXX", "X X", "XXX", 'X', new ItemStack(EreGeologiqueBlockList.FougerePlank)
+		    	"XXX", "X X", "XXX", 'X', new ItemStack(EreGeologiqueBlockList.Plank)
 		       });
 		       GameRegistry.addRecipe(new ItemStack(Block.doorWood,1), new Object[]
 		       {
-		    	"XX ", "XX ", "XX ", 'X', new ItemStack(EreGeologiqueBlockList.FougerePlank)
+		    	"XX ", "XX ", "XX ", 'X', new ItemStack(EreGeologiqueBlockList.Plank)
 		       });
 		       GameRegistry.addRecipe(new ItemStack(Block.bookShelf,1), new Object[]
 		       {
-		    	"XXX", "YYY", "XXX", 'X', new ItemStack(EreGeologiqueBlockList.FougerePlank), 'Y', new ItemStack(Item.book)
+		    	"XXX", "YYY", "XXX", 'X', new ItemStack(EreGeologiqueBlockList.Plank), 'Y', new ItemStack(Item.book)
 		       });
 		       GameRegistry.addRecipe(new ItemStack(Item.bed,1), new Object[]
 		       {
-		    	"   ", "YYY", "XXX", 'X', new ItemStack(EreGeologiqueBlockList.FougerePlank), 'Y', new ItemStack(Block.cloth)
+		    	"   ", "YYY", "XXX", 'X', new ItemStack(EreGeologiqueBlockList.Plank), 'Y', new ItemStack(Block.cloth)
 		       });
 		       GameRegistry.addRecipe(new ItemStack(EreGeologiqueItemList.FougereSword,1), new Object[]
 		       {
@@ -88,7 +88,7 @@ public class EreGeologique_recipe
 		       });
 		       GameRegistry.addShapelessRecipe(new ItemStack(EreGeologiqueItemList.FougereSeeds, 5), new Object[]
 		       {
-		    	new ItemStack(EreGeologiqueBlockList.FougereSapling)
+		    	new ItemStack(EreGeologiqueBlockList.Sapling)
 		       });
 		       GameRegistry.addRecipe(new ItemStack(EreGeologiqueBlockList.PrehistoriqueBlockCoal,1), new Object[]
 		       {
@@ -101,7 +101,7 @@ public class EreGeologique_recipe
 	}
 	public static void loadSmelting()
 	{
-		GameRegistry.addSmelting(EreGeologique.FougerePlankID, new ItemStack(EreGeologiqueItemList.PrehistoriqueCharCoal), 5);
+		GameRegistry.addSmelting(EreGeologique.PlankID, new ItemStack(EreGeologiqueItemList.PrehistoriqueCharCoal), 5);
 	    GameRegistry.registerFuelHandler(new EreGeologiquefuel());
 	}
 }
