@@ -4,6 +4,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.proxy.EreGeologiqueClientProxy;
 import ere_geologique.common.EreGeologique;
+import ere_geologique.common.config.EGProperties;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -39,7 +40,7 @@ public class FougereSeeds extends Item implements IPlantable
 	@Override
 	public int getPlantID(World world, int x, int y, int z)
 	{
-		return EreGeologique.CropPlanteFougereID;
+		return EGProperties.CropPlanteFougereID;
 	}
 
 	@Override
@@ -60,7 +61,7 @@ public class FougereSeeds extends Item implements IPlantable
  
             if (soil != null && soil.blockID == Block.tilledField.blockID && par3World.isAirBlock(par4, par5 + 1, par6))
             {
-                 par3World.setBlock(par4, par5 + 1, par6, EreGeologique.CropPlanteFougereID);
+                 par3World.setBlock(par4, par5 + 1, par6, EGProperties.CropPlanteFougereID);
                 --par1ItemStack.stackSize;
                 return true;
             } else {

@@ -5,6 +5,7 @@ import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import ere_geologique.common.EreGeologique;
+import ere_geologique.common.config.EGProperties;
 
 public class EreGeologiqueBlockList
 {
@@ -23,18 +24,18 @@ public class EreGeologiqueBlockList
 	
 	public static void loadEreGeologiqueBlock()
 	{
-		   Leaves = new Leaves(EreGeologique.LeavesID, 7, false).setStepSound(Block.soundGrassFootstep).setHardness(0.2F).setResistance(1.0F).setLightOpacity(1).setUnlocalizedName("Leaves");
-	       Wood = new Wood(EreGeologique.WoodID).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("Wood");
-	       Sapling = new Sapling(EreGeologique.SaplingID, 10).setStepSound(Block.soundGrassFootstep).setHardness(0.1F).setResistance(1.0F).setUnlocalizedName("Sapling");
-	       Plank = new Plank(EreGeologique.PlankID, 0).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("Plank");
-	       Slab = new Slab(EreGeologique.SlabID, false).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("Slab");
-	       DoubleSlab = new Slab(EreGeologique.DoubleSlabID, true).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("DoubleSlab");
-	       Stair = new Stair(EreGeologique.StairID, Plank,1).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("Stair");
-	       PrehistoriqueBlockCoal = new PrehistoriqueBlockCoal(EreGeologique.PrehistoriqueBlockCoalID, 0).setStepSound(Block.soundStoneFootstep).setHardness(100F).setResistance(2500.0F).setUnlocalizedName("PrehistoriqueBlockCoal");
-	       PrehistoriqueBlockIron = new PrehistoriqueBlockIron(EreGeologique.PrehistoriqueBlockIronID,0).setStepSound(Block.soundStoneFootstep).setHardness(150F).setResistance(2550.0F).setUnlocalizedName("PrehistoriqueBlockIron");
-	       Grass = new Grass(EreGeologique.GrassID, 0).setStepSound(Block.soundGrassFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("Grass");
-	       Dirt = new Dirt(EreGeologique.DirtID, 0).setStepSound(Block.soundGrassFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("Dirt");
-	       CropPlanteFougere = new CropPlanteFougere(EreGeologique.CropPlanteFougereID,16).setUnlocalizedName("CropPlanteFougere").setStepSound(Block.soundGrassFootstep);
+		   Leaves = new Leaves(EGProperties.LeavesID, 7, false).setStepSound(Block.soundGrassFootstep).setHardness(0.2F).setResistance(1.0F).setLightOpacity(1).setUnlocalizedName("Leaves");
+	       Wood = new Wood(EGProperties.WoodID).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("Wood");
+	       Sapling = new Sapling(EGProperties.SaplingID, 10).setStepSound(Block.soundGrassFootstep).setHardness(0.1F).setResistance(1.0F).setUnlocalizedName("Sapling");
+	       Plank = new Plank(EGProperties.PlankID, 0).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("Plank");
+	       Slab = new Slab(EGProperties.SlabID, false).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("Slab");
+	       DoubleSlab = new Slab(EGProperties.DoubleSlabID, true).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("DoubleSlab");
+	       Stair = new Stair(EGProperties.StairID, Plank,1).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("Stair");
+	       PrehistoriqueBlockCoal = new PrehistoriqueBlockCoal(EGProperties.PrehistoriqueBlockCoalID, 0).setStepSound(Block.soundStoneFootstep).setHardness(100F).setResistance(2500.0F).setUnlocalizedName("PrehistoriqueBlockCoal");
+	       PrehistoriqueBlockIron = new PrehistoriqueBlockIron(EGProperties.PrehistoriqueBlockIronID,0).setStepSound(Block.soundStoneFootstep).setHardness(150F).setResistance(2550.0F).setUnlocalizedName("PrehistoriqueBlockIron");
+	       Grass = new Grass(EGProperties.GrassID, 0).setStepSound(Block.soundGrassFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("Grass");
+	       Dirt = new Dirt(EGProperties.DirtID, 0).setStepSound(Block.soundGrassFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("Dirt");
+	       CropPlanteFougere = new CropPlanteFougere(EGProperties.CropPlanteFougereID).setUnlocalizedName("CropPlanteFougere").setStepSound(Block.soundGrassFootstep);
 	       
 	       GameRegistry.registerBlock(Leaves);
 	       GameRegistry.registerBlock(Wood);

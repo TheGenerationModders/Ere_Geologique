@@ -5,13 +5,14 @@ import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.event.entity.player.BonemealEvent;
 import ere_geologique.common.block.EreGeologiqueBlockList;
 import ere_geologique.common.block.Sapling;
+import ere_geologique.common.config.EGProperties;
 
 public class FougereBoneMeal
 {
 	@ForgeSubscribe
     public void onUseBonemeal(BonemealEvent event)
     {
-            if (event.ID == EreGeologique.SaplingID)
+            if (event.ID == EGProperties.SaplingID)
             {
                     if (!event.world.isRemote)
                     {

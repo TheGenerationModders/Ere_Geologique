@@ -5,6 +5,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import cpw.mods.fml.common.IWorldGenerator;
+import ere_geologique.common.config.EGProperties;
 
 public class EreGeologiqueGeneration implements IWorldGenerator {
 
@@ -18,7 +19,7 @@ public class EreGeologiqueGeneration implements IWorldGenerator {
 	}
 	private void generateSurface(World world, Random random, int blockX, int blockZ)
     {
-        (new WorldGenMinable(EreGeologique.PrehistoriqueBlockCoalID, 10)).generate(world, random, blockX + random.nextInt(64), random.nextInt(32), blockZ + random.nextInt(64));
+        (new WorldGenMinable(EGProperties.PrehistoriqueBlockCoalID, 10)).generate(world, random, blockX + random.nextInt(64), random.nextInt(32), blockZ + random.nextInt(64));
     }
 
 }

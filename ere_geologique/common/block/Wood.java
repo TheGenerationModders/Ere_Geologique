@@ -12,6 +12,7 @@ import net.minecraft.util.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.common.EreGeologique;
+import ere_geologique.common.config.EGProperties;
 
 public class Wood extends BlockDirectional
 {
@@ -35,7 +36,7 @@ public class Wood extends BlockDirectional
     
     public int idDropped(int par1, Random par2Random, int par3)
     {
-        return EreGeologique.WoodID;
+        return EGProperties.WoodID;
     }
  
     @SideOnly(Side.CLIENT)

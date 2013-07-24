@@ -1,12 +1,12 @@
 package ere_geologique.common.entity;
 
-import ere_geologique.common.EreGeologique;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureAttribute;
 import net.minecraft.entity.ai.EntityAIBreakDoor;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.world.World;
+import ere_geologique.common.config.EGProperties;
  
 public class CroMagnon extends EntityMob
     {
@@ -39,7 +39,7 @@ public class CroMagnon extends EntityMob
     }
     protected int getDropItemId()
     {
-        return EreGeologique.FougereSwordID;
+        return EGProperties.FougereSwordID;
     }
  
     protected void dropRareDrop(int par1)
@@ -47,13 +47,13 @@ public class CroMagnon extends EntityMob
         switch (this.rand.nextInt(2))
         {
             case 0:
-                this.dropItem(EreGeologique.PrehistoriqueCoalID, 1);
+                this.dropItem(EGProperties.PrehistoriqueCoalID, 1);
                 break;
             case 1:
-                this.dropItem(EreGeologique.FougereLeggingsID, 1);
+                this.dropItem(EGProperties.FougereLeggingsID, 1);
                 break;
             case 2:
-                this.dropItem(EreGeologique.FougereChestplateID, 1);
+                this.dropItem(EGProperties.FougereChestplateID, 1);
                 break;
         }
     }

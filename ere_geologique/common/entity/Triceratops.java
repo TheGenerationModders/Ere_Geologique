@@ -1,9 +1,6 @@
 package ere_geologique.common.entity;
 
-import ere_geologique.common.EreGeologique;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIControlledByPlayer;
 import net.minecraft.entity.ai.EntityAIFollowParent;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
@@ -12,12 +9,12 @@ import net.minecraft.entity.ai.EntityAIMate;
 import net.minecraft.entity.ai.EntityAITempt;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import ere_geologique.common.EreGeologique;
+import ere_geologique.common.config.EGProperties;
 
 public class Triceratops extends EntityTameable
 {
@@ -30,7 +27,7 @@ public class Triceratops extends EntityTameable
 		this.moveSpeed = 0.15F;
 		this.getNavigator();
 		this.tasks.addTask(0, new EntityAIMate(this, this.moveSpeed));
-		this.tasks.addTask(1, new EntityAITempt(this, this.moveSpeed, EreGeologique.FougereSeedsID, false));
+		this.tasks.addTask(1, new EntityAITempt(this, this.moveSpeed, EGProperties.FougereSeedsID, false));
 		this.tasks.addTask(2, new EntityAIFollowParent(this, this.moveSpeed));
 		this.tasks.addTask(3, new EntityAIWander(this, this.moveSpeed));
 		this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityPlayer.class, this.moveSpeed));
@@ -82,7 +79,7 @@ public class Triceratops extends EntityTameable
 	
 	public boolean isBreedingItem(ItemStack par1ItemStack)
     {
-        return par1ItemStack != null && par1ItemStack.itemID == EreGeologique.FougereSeedsID;
+        return par1ItemStack != null && par1ItemStack.itemID == EGProperties.FougereSeedsID;
     }
 	
 	public EntityAIControlledByPlayer getAIControlledByPlayer()

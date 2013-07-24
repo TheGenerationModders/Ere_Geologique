@@ -6,6 +6,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.proxy.EreGeologiqueClientProxy;
 import ere_geologique.common.EreGeologique;
+import ere_geologique.common.config.EGProperties;
 import net.minecraft.block.BlockHalfSlab;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -30,21 +31,21 @@ public class Slab extends BlockHalfSlab
 	 
 	public int idDropped(int par1, Random par2Random, int par3)
 	{
-	return EreGeologique.SlabID;
+	return EGProperties.SlabID;
 	}
 	 
 	public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLiving par5EntityLiving)
 	{
-	if(par1World.getBlockId(par2, par3 - 1, par4) == EreGeologique.SlabID)
+	if(par1World.getBlockId(par2, par3 - 1, par4) == EGProperties.SlabID)
 	{
 	par1World.setBlock(par2, par3, par4, 0);
-	par1World.setBlock(par2, par3 - 1, par4, EreGeologique.DoubleSlabID);
+	par1World.setBlock(par2, par3 - 1, par4, EGProperties.DoubleSlabID);
 	}
 	}
 	 
 	protected ItemStack createStackedBlock(int par1)
 	{
-	return new ItemStack(EreGeologique.SlabID, 2, par1 & 7);
+	return new ItemStack(EGProperties.SlabID, 2, par1 & 7);
 	}
 	 
 	public String getFullSlabName(int var1)

@@ -8,6 +8,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import ere_geologique.common.EreGeologique;
 import ere_geologique.common.EreGeologiquefuel;
 import ere_geologique.common.block.EreGeologiqueBlockList;
+import ere_geologique.common.config.EGProperties;
 import ere_geologique.common.item.EreGeologiqueItemList;
 
 public class EreGeologique_recipe
@@ -101,7 +102,7 @@ public class EreGeologique_recipe
 	}
 	public static void loadSmelting()
 	{
-		GameRegistry.addSmelting(EreGeologique.PlankID, new ItemStack(EreGeologiqueItemList.PrehistoriqueCharCoal), 5);
+		GameRegistry.addSmelting(EGProperties.PlankID, new ItemStack(EreGeologiqueItemList.PrehistoriqueCharCoal), 5);
 	    GameRegistry.registerFuelHandler(new EreGeologiquefuel());
 	}
 }

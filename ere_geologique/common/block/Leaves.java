@@ -19,6 +19,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.proxy.EreGeologiqueClientProxy;
 import ere_geologique.common.EreGeologique;
+import ere_geologique.common.config.EGProperties;
 
 public class Leaves extends BlockLeavesBase implements IShearable
 {
@@ -264,7 +265,7 @@ public class Leaves extends BlockLeavesBase implements IShearable
     //id de la pousse drope
     public int idDropped(int par1, Random par2Random, int par3)
     {
-        return EreGeologique.SaplingID;
+        return EGProperties.SaplingID;
     }
  
     public void harvestBlock(World par1World, EntityPlayer par2EntityPlayer, int par3, int par4, int par5, int par6)

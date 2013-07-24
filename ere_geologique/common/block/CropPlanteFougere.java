@@ -7,6 +7,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.proxy.EreGeologiqueClientProxy;
 import ere_geologique.common.EreGeologique;
+import ere_geologique.common.config.EGProperties;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
@@ -20,10 +21,9 @@ import net.minecraft.world.World;
 public class CropPlanteFougere extends BlockCrops
 {
 
-	protected CropPlanteFougere(int par1, int par2)
+	protected CropPlanteFougere(int par1)
 	{
-		super(par1, par2);
-		this.blockIndexInTexture = par2;
+		super(par1);
 		this.setTickRandomly(true);
 		float var3 = 0.5F;
 		this.setBlockBounds(0.5F - var3, 0.0F, 0.5F - var3, 0.5F + var3, 0.25F, 0.5F + var3);
@@ -106,12 +106,12 @@ public class CropPlanteFougere extends BlockCrops
 	}
 	protected int getCropItem()
     {
-        return EreGeologique.FruitFougereID;
+        return EGProperties.FruitFougereID;
     }
  
     protected int getSeedItem()
     {
-        return EreGeologique.FougereSeedsID;
+        return EGProperties.FougereSeedsID;
     }
  
     public int getBlockTextureFromSideAndMetadata(int par1, int par2)

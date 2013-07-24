@@ -4,6 +4,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.proxy.EreGeologiqueClientProxy;
 import ere_geologique.common.EreGeologique;
+import ere_geologique.common.config.EGProperties;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
@@ -19,7 +20,7 @@ public class armureFougere extends ItemArmor implements IArmorTextureProvider
 	 
 	    public String getArmorTextureFile(ItemStack par1)
 	    {
-	        if (par1.itemID == EreGeologique.FougereLeggingsID)
+	        if (par1.itemID == EGProperties.FougereLeggingsID)
 	        {
 	            return "/ere_geologique/client/armortuto_2.png";
 	        }
