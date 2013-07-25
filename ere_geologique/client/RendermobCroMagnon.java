@@ -1,9 +1,7 @@
 package ere_geologique.client;
 
 import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderLiving;
-import net.minecraft.entity.Entity;
  
 public class RendermobCroMagnon extends RenderLiving {
  

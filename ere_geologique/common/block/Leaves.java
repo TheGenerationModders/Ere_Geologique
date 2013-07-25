@@ -1,37 +1,37 @@
 package ere_geologique.common.block;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeavesBase;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
 import net.minecraft.world.ColorizerFoliage;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ere_geologique.proxy.EreGeologiqueClientProxy;
-import ere_geologique.common.EreGeologique;
+import ere_geologique.common.EGCreativeTab;
 import ere_geologique.common.config.EGProperties;
 
 public class Leaves extends BlockLeavesBase implements IShearable
 {
-	private int baseIndexInPNG;
+	public static final String[] leafType = new String[] {"fougere", "cycas", "araucarias", "metasequoias", "ginkgos"};
+	public static final String[][] leafTextureTypes = new String[][] {{"leaves", "leaves_cycas", "leaves_araucarias", "leaves_metasequoias", "leaves_ginkgos"},{"leaves_opaque", "leaves_cycas_opaque", "leaves_araucarias_opaque", "leaves_metasequoias_opaque", "leaves_ginkgos_opaque"}};
+	@SideOnly(Side.CLIENT)
+	private Icon[] IconArray;
     int[] adjacentTreeBlocks;
  
-    public Leaves(int par1, int par2, boolean useFastGraphics)
+    public Leaves(int par1)
     {
-        super(par1, Material.leaves, useFastGraphics);
-        this.baseIndexInPNG = par2;
+        super(par1, Material.leaves, false);
         this.setTickRandomly(true);
-        this.setCreativeTab(EreGeologique.EreGeologiqueCreativeTab);
+        this.setCreativeTab(EGCreativeTab.EGCreativeTab);
         this.setBurnProperties(this.blockID, 5, 20);
     }
     private void setBurnRate(int par1, int par2, int par3)

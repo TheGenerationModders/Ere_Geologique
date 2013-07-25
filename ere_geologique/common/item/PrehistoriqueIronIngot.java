@@ -1,11 +1,8 @@
 package ere_geologique.common.item;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import ere_geologique.proxy.EreGeologiqueClientProxy;
-import ere_geologique.common.EreGeologique;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
+import ere_geologique.common.EGCreativeTab;
 
 public class PrehistoriqueIronIngot extends Item
 {
@@ -14,7 +11,7 @@ public class PrehistoriqueIronIngot extends Item
 	{
 		super(i);
 		maxStackSize = 64;
-		this.setCreativeTab(EreGeologique.EreGeologiqueCreativeTab);
+		this.setCreativeTab(EGCreativeTab.EGCreativeTab);
 	}
 	
 	@Override

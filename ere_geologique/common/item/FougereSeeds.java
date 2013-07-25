@@ -1,19 +1,15 @@
 package ere_geologique.common.item;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import ere_geologique.proxy.EreGeologiqueClientProxy;
-import ere_geologique.common.EreGeologique;
-import ere_geologique.common.config.EGProperties;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
+import ere_geologique.common.EGCreativeTab;
+import ere_geologique.common.config.EGProperties;
 
 public class FougereSeeds extends Item implements IPlantable
 {
@@ -22,7 +18,7 @@ public class FougereSeeds extends Item implements IPlantable
 	{
 		super(par1);
 		maxStackSize = 64;
-		this.setCreativeTab(EreGeologique.EreGeologiqueCreativeTab);
+		this.setCreativeTab(EGCreativeTab.EGCreativeTab);
 	}
 	
 	@Override

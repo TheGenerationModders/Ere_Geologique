@@ -3,12 +3,6 @@ package ere_geologique.common.block;
 import java.util.ArrayList;
 import java.util.Random;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import ere_geologique.proxy.EreGeologiqueClientProxy;
-import ere_geologique.common.EreGeologique;
-import ere_geologique.common.config.EGProperties;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -17,6 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import ere_geologique.common.config.EGProperties;
 
 public class CropPlanteFougere extends BlockCrops
 {

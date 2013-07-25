@@ -11,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ere_geologique.common.EreGeologique;
+import ere_geologique.common.EGCreativeTab;
 import ere_geologique.common.config.EGProperties;
 
 public class Wood extends BlockDirectional
@@ -26,7 +26,7 @@ public class Wood extends BlockDirectional
     public Wood(int par1)
     {
         super(par1, Material.wood);
-        this.setCreativeTab(EreGeologique.EreGeologiqueCreativeTab);
+        this.setCreativeTab(EGCreativeTab.EGCreativeTab);
     }
     
     public int quantityDropped(Random par1Random)
@@ -81,7 +81,7 @@ public class Wood extends BlockDirectional
 
         for (int i = 0; i < this.IconArray.length; ++i)
         {
-            this.IconArray[i] = par1IconRegister.registerIcon(treeTextureTypes[i]);
+            this.IconArray[i] = par1IconRegister.registerIcon("EreGeologique:" + treeTextureTypes[i]);
         }
     }
 }

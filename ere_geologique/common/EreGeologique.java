@@ -1,8 +1,11 @@
 package ere_geologique.common;
 
-import net.minecraft.creativetab.CreativeTabs;
+import java.io.File;
+import java.util.logging.Logger;
+
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
@@ -16,33 +19,33 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
-import ere_geologique.common.block.EreGeologiqueBlockList;
+import ere_geologique.common.block.EGBlockList;
 import ere_geologique.common.config.EGProperties;
-import ere_geologique.common.entity.EreGeologiqueEntityList;
-import ere_geologique.common.item.EreGeologiqueItemList;
-import ere_geologique.common.recipe.EreGeologique_recipe;
-import ere_geologique.proxy.EreGeologiqueCommonProxy;
+import ere_geologique.common.entity.EGEntityList;
+import ere_geologique.common.item.EGItemList;
+import ere_geologique.common.lang.EGLang;
+import ere_geologique.common.recipe.EGRecipe;
+import ere_geologique.proxy.EGCommonProxy;
 
 @Mod(modid = "EreG\351ologique", name = "Ere G\351ologique", version = "1.0.0", dependencies = "required-after:Forge@[7.8.1,)")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 
 public class EreGeologique
 {
-	   @SidedProxy(clientSide = "ere_geologique.proxy.EreGeologiqueClientProxy", serverSide = "ere_geologique.proxy.EreGeologiqueCommonProxy")
-	   public static EreGeologiqueCommonProxy proxy;
+	   @SidedProxy(clientSide = "ere_geologique.proxy.EGClientProxy", serverSide = "ere_geologique.proxy.EGCommonProxy")
+	   public static EGCommonProxy proxy;
 	   
 	   @Instance("EreG\351ologique")
 	   public static EreGeologique Instance;
-	   
-	   //Crafting Table
-	   public static CreativeTabs EreGeologiqueCreativeTab = new EreGeologiqueCreativeTab("EreGeologiqueCreativeTab");
-	   
-	   //Biomes
+	   public static Logger EGLog = Logger.getLogger("EreGeologique");
+	   public static File ConfigFile;
 	   
 	   @PreInit
 	   public void preload(FMLPreInitializationEvent event)
 	   {
-		        Configuration cfg = new Configuration(event.getSuggestedConfigurationFile());
+		   		EGLog.setParent(FMLLog.getLogger());
+		   		ConfigFile = new File(event.getModConfigurationDirectory(), "EreGeologique.cfg");
+		        Configuration cfg = new Configuration(ConfigFile);
 		        cfg.load();
 		        //Blocks
 		        EGProperties.GrassID = cfg.getBlock("Block Grass", 254).getInt();
@@ -83,17 +86,16 @@ public class EreGeologique
 		        EGProperties.FCoalLiquidMJ = cfg.get("Forestry integration", "MJ produced by Coal Liquid", 4).getInt();
 		        EGProperties.FCoalLiquidDurability = cfg.get("Forestry integration", "Durability of Coal Liquid", 200000).getInt();
 		        cfg.save();
+		        
+		        EGCreativeTab.loadCreativeTab();//CreativeTab
+				EGBlockList.loadBlock();//Block
+				EGItemList.loadItem();//Item
 	   }
 	   
 	   @Init
 	   public void load(FMLInitializationEvent event)
 	   {
-		   EreGeologiqueBlockList.loadEreGeologiqueBlock();//Block
-		   EreGeologiqueItemList.loadEreGeologiqueItem();//Item
-		   EreGeologiqueEntityList.loadEreGeologiqueEntity();//Entity
-		   
-		   //Creative Table
-	       LanguageRegistry.instance().addStringLocalization("itemGroup.EreGeologiqueCreativeTab", "en_US", "Ere G\351ologique");
+		   EGEntityList.loadEntity();//Entity
 	       
 	       //IC2 integration
 	       if (Loader.isModLoaded("IC2"))
@@ -129,19 +131,20 @@ public class EreGeologique
 	       //World Generator
 	       GameRegistry.registerWorldGenerator(new EreGeologiqueGeneration());
 	       
-	       EreGeologique_recipe.loadrecipe();//Recipe
-	       EreGeologique_recipe.loadSmelting();//Smelting
 	       //Other
-	       proxy.registerTextures();
 		   proxy.registerRenderEntity();
-		   proxy.registerRenderThings();
+		   proxy.registerRender();
 	       MinecraftForge.EVENT_BUS.register(new FougereBoneMeal());
 	   }
 	   
 	   @PostInit
 	   public void postload(FMLPostInitializationEvent event)
 	   {
-	      
+	      EGLang.loadLanguage();
+	      LanguageRegistry.instance().loadLocalization("/mods/EreGeologique/lang/en_US.lang", "en_US", false);
+	      LanguageRegistry.instance().loadLocalization("/mods/EreGeologique/lang/fr_FR.lang", "fr_FR", false);
+	      EGRecipe.loadRecipe();//Recipe
+	      EGRecipe.loadSmelting();//Smelting
 	   }
 
 }

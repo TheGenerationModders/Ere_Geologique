@@ -1,15 +1,11 @@
 package ere_geologique.common.item;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import ere_geologique.proxy.EreGeologiqueClientProxy;
-import ere_geologique.common.EreGeologique;
-import ere_geologique.common.config.EGProperties;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.IArmorTextureProvider;
+import ere_geologique.common.config.EGProperties;
 
 public class armureFougere extends ItemArmor implements IArmorTextureProvider
 {

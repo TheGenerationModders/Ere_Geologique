@@ -2,11 +2,10 @@ package ere_geologique.common.block;
 
 import java.util.Random;
 
-import ere_geologique.common.EreGeologique;
-import ere_geologique.common.config.EGProperties;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+import ere_geologique.common.config.EGProperties;
  
 public class WorldGenFougere extends WorldGenerator
 {

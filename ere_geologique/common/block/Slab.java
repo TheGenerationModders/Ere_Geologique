@@ -1,19 +1,17 @@
 package ere_geologique.common.block;
 
-import java.util.List;
 import java.util.Random;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import ere_geologique.proxy.EreGeologiqueClientProxy;
-import ere_geologique.common.EreGeologique;
-import ere_geologique.common.config.EGProperties;
+
 import net.minecraft.block.BlockHalfSlab;
+import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.ItemStack;
-import net.minecraft.block.material.Material;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import ere_geologique.common.EGCreativeTab;
+import ere_geologique.common.config.EGProperties;
   
 
 public class Slab extends BlockHalfSlab
@@ -22,7 +20,7 @@ public class Slab extends BlockHalfSlab
 	 
 	{
 	super(par1, par2, Material.wood);
-	this.setCreativeTab(EreGeologique.EreGeologiqueCreativeTab);
+	this.setCreativeTab(EGCreativeTab.EGCreativeTab);
 	setLightOpacity(0);
 	}
 	 

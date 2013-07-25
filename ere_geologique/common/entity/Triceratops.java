@@ -13,7 +13,6 @@ import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import ere_geologique.common.EreGeologique;
 import ere_geologique.common.config.EGProperties;
 
 public class Triceratops extends EntityTameable

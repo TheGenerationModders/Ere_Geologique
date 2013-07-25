@@ -2,19 +2,13 @@ package ere_geologique.common.block;
 
 import java.util.Random;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-
-import ere_geologique.proxy.EreGeologiqueClientProxy;
-import ere_geologique.common.EreGeologique;
-import ere_geologique.common.config.EGProperties;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import ere_geologique.common.EGCreativeTab;
+import ere_geologique.common.config.EGProperties;
 
 public class PrehistoriqueBlockCoal extends Block
 {
@@ -22,7 +16,7 @@ public class PrehistoriqueBlockCoal extends Block
 	public PrehistoriqueBlockCoal(int par1, int par2)
 	{
 		super(par1, Material.rock);
-		this.setCreativeTab(EreGeologique.EreGeologiqueCreativeTab);
+		this.setCreativeTab(EGCreativeTab.EGCreativeTab);
 	}
 	public int idDropped(int par1, Random par2Random, int par3)
 	{
