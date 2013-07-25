@@ -40,7 +40,6 @@ public class Wood extends BlockDirectional
     }
  
     @SideOnly(Side.CLIENT)
-    
     public Icon getIcon(int par1, int par2)
     {
     	int k = par2 & 12;
@@ -57,8 +56,7 @@ public class Wood extends BlockDirectional
     {
         return par0 & 4;
     }
- 
-    //Place le block dans la categorie voulue de l'inventaire creative
+    
     public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List)
     {
         par3List.add(new ItemStack(par1, 1, 0));
