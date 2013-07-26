@@ -12,7 +12,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.common.EGCreativeTab;
 import ere_geologique.common.config.EGProperties;
-  
 
 public class Slab extends BlockHalfSlab
 {
@@ -23,10 +22,7 @@ public class Slab extends BlockHalfSlab
 	this.setCreativeTab(EGCreativeTab.EGCreativeTab);
 	setLightOpacity(0);
 	}
-	 
-	 
-	 
-	 
+	
 	public int idDropped(int par1, Random par2Random, int par3)
 	{
 	return EGProperties.SlabID;
@@ -58,7 +54,8 @@ public class Slab extends BlockHalfSlab
     }
 	 
 	@SideOnly(Side.CLIENT)
-	public int getBlockTextureFromSide(int i){
+	public int getBlockTextureFromSide(int i)
+	{
 	return 0;
 	}
 }

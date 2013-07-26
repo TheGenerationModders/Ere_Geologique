@@ -21,7 +21,7 @@ public class Wood extends BlockDirectional
 	@SideOnly(Side.CLIENT)
 	private Icon[] IconArray;
 	@SideOnly(Side.CLIENT)
-	private Icon[] wood_top;
+	private Icon wood_top;
 	
     public Wood(int par1)
     {
@@ -44,7 +44,7 @@ public class Wood extends BlockDirectional
     {
     	int k = par2 & 12;
     	int l = par2 & 3;
-    	return k == 0 && (par1 == 1 || par1 == 0) ? this.wood_top : (k == 4 && (par1 == 5 || par1 == 4) ? this.wood_top : (k == 8 && (par1 == 2 || par1 == 3) ? this.wood_top : this.IconArray[l]));
+    	return (Icon) (k == 0 && (par1 == 1 || par1 == 0) ? this.wood_top : (k == 4 && (par1 == 5 || par1 == 4) ? this.wood_top : (k == 8 && (par1 == 2 || par1 == 3) ? this.wood_top : this.IconArray[l])));
     }
     
     public int damageDropped(int par1)
@@ -74,7 +74,7 @@ public class Wood extends BlockDirectional
  
     public void registerIcons(IconRegister par1IconRegister)
     {
-    	this.wood_top = par1IconRegister.registerIcon("wood_top");
+    	this.wood_top = par1IconRegister.registerIcon("EreGeologique:wood_top");
         this.IconArray = new Icon[treeTextureTypes.length];
 
         for (int i = 0; i < this.IconArray.length; ++i)
