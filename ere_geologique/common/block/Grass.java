@@ -8,7 +8,7 @@ import ere_geologique.common.EGCreativeTab;
 public class Grass extends Block
 {
 
-	public Grass(int par1, int par2)
+	public Grass(int par1)
 	{
 		super(par1, Material.grass);
 		this.setCreativeTab(EGCreativeTab.EGCreativeTab);

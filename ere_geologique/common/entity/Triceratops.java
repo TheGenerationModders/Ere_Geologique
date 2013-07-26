@@ -26,7 +26,7 @@ public class Triceratops extends EntityTameable
 		this.moveSpeed = 0.15F;
 		this.getNavigator();
 		this.tasks.addTask(0, new EntityAIMate(this, this.moveSpeed));
-		this.tasks.addTask(1, new EntityAITempt(this, this.moveSpeed, EGProperties.FougereSeedsID, false));
+		this.tasks.addTask(1, new EntityAITempt(this, this.moveSpeed, EGProperties.SaplingID, false));
 		this.tasks.addTask(2, new EntityAIFollowParent(this, this.moveSpeed));
 		this.tasks.addTask(3, new EntityAIWander(this, this.moveSpeed));
 		this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityPlayer.class, this.moveSpeed));
@@ -78,7 +78,7 @@ public class Triceratops extends EntityTameable
 	
 	public boolean isBreedingItem(ItemStack par1ItemStack)
     {
-        return par1ItemStack != null && par1ItemStack.itemID == EGProperties.FougereSeedsID;
+        return par1ItemStack != null && par1ItemStack.itemID == EGProperties.SaplingID;
     }
 	
 	public EntityAIControlledByPlayer getAIControlledByPlayer()

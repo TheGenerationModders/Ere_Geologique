@@ -14,7 +14,6 @@ public class EGProperties
 	   public static int PrehistoriqueBlockIronID;
 	   public static int GrassID;
 	   public static int DirtID;
-	   public static int CropPlanteFougereID;
 	   
 	   //Items
 	   public static int PrehistoriqueCoalID;
@@ -27,8 +26,6 @@ public class EGProperties
 	   public static int IvoryGearID;
 	   public static int CoalLiquidItemID;
 	   public static int CoalLiquidBucketID;
-	   public static int FougereSeedsID;
-	   public static int FruitFougereID;
 	   public static int FougereSwordID;
 	   public static int FougerePickaxeID;
 	   public static int FougereAxeID;

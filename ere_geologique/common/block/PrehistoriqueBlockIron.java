@@ -8,7 +8,7 @@ import ere_geologique.common.EGCreativeTab;
 public class PrehistoriqueBlockIron extends Block
 {
 	
-	public PrehistoriqueBlockIron(int par1, int par2)
+	public PrehistoriqueBlockIron(int par1)
 	{
 		super(par1, Material.iron);
 		this.setCreativeTab(EGCreativeTab.EGCreativeTab);

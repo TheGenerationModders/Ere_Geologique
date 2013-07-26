@@ -22,8 +22,6 @@ public class EGItemList
 	public static Item IvoryNugget;
 	public static Item IvoryIngot;
 	public static Item IvoryGear;
-	public static Item FougereSeeds;
-	public static Item FruitFougere;
 	public static Item FougereSword;
 	public static Item FougerePickaxe;
 	public static Item FougereAxe;
@@ -43,7 +41,6 @@ public class EGItemList
 	public static void loadItem()
 	{
 		   PrehistoriqueCoal = new PrehistoriqueCoal(EGProperties.PrehistoriqueCoalID).setUnlocalizedName("CoalPrehistorique");
-	       FougereSeeds = new FougereSeeds(EGProperties.FougereSeedsID).setUnlocalizedName("Fougere");
 	       FougereSword = new FougereSword(EGProperties.FougereSwordID, materielFougere).setUnlocalizedName("FougereSword");
 	       FougerePickaxe = new FougerePickaxe(EGProperties.FougerePickaxeID, materielFougere).setUnlocalizedName("FougerePickaxe");
 	       FougereAxe = new FougereAxe(EGProperties.FougereAxeID, materielFougere).setUnlocalizedName("FougereAxe");
@@ -62,7 +59,6 @@ public class EGItemList
 	       IvoryNugget = new IvoryIngot(EGProperties.IvoryNuggetID).setUnlocalizedName("IvoryNugget");
 	       IvoryGear = new IvoryIngot(EGProperties.IvoryGearID).setUnlocalizedName("IvoryGear");
 	       CoalLiquidBucket = new PrehistoriqueCoalBucket(EGProperties.CoalLiquidBucketID).setUnlocalizedName("CoalLiquidbucket");
-	       FruitFougere = new FruitFougere(EGProperties.FruitFougereID).setUnlocalizedName("FruitFougere");
 	       
 	       CoalLiquid = LiquidDictionary.getOrCreateLiquid("CoalLiquid", new LiquidStack(CoalLiquidItem,1));
 	       LiquidContainerRegistry.registerLiquid(new LiquidContainerData(LiquidDictionary.getLiquid("CoalLiquid", LiquidContainerRegistry.BUCKET_VOLUME), new ItemStack(CoalLiquidBucket), new ItemStack(Item.bucketEmpty)));

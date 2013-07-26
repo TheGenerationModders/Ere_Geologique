@@ -21,7 +21,7 @@ public class Sapling extends BlockSapling
 	@SideOnly(Side.CLIENT)
 	private Icon[] SaplingIcon;
 	
-    public Sapling(int i, int j)
+    public Sapling(int i)
     {
             super(i);
             float f = 0.4F;

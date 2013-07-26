@@ -34,7 +34,6 @@ public class EGLang
 	       LanguageRegistry.instance().addStringLocalization("tile.PrehistoriqueBlockIron.name", "Bloc de Fer Prehistorique");
 	       LanguageRegistry.instance().addStringLocalization("tile.Grass.name", "Bouse chevelue");
 	       LanguageRegistry.instance().addStringLocalization("tile.Dirt.name", "Bouse");
-	       LanguageRegistry.instance().addStringLocalization("tile.CropPlanteFougere.name", "Plante Foug\350re");
 	       
 	       //Items
 	       LanguageRegistry.instance().addStringLocalization("tile.PrehistoriqueCoal.name", "Charbon Prehistorique");
@@ -47,8 +46,6 @@ public class EGLang
 	       LanguageRegistry.instance().addStringLocalization("tile.IvoryIngot.name", "Ivoire");
 	       LanguageRegistry.instance().addStringLocalization("tile.IvoryNugget.name", "P\351pite d'Ivoire");
 	       LanguageRegistry.instance().addStringLocalization("tile.IvoryGear.name", "Boulon d'Ivoire");
-	       LanguageRegistry.instance().addStringLocalization("tile.FougereSeeds.name", "Graines de Foug\350re");
-	       LanguageRegistry.instance().addStringLocalization("tile.FruitFougere.name", "Foug\350re Comestible");
 	       LanguageRegistry.instance().addStringLocalization("tile.FougereSword.name", "\351p\351e en Foug\350re");
 	       LanguageRegistry.instance().addStringLocalization("tile.FougerePickaxe.name", "Pioche en Foug\350re");
 	       LanguageRegistry.instance().addStringLocalization("tile.FougereAxe.name", "Hache en Foug\350re");

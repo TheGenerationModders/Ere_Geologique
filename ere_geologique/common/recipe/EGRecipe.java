@@ -85,10 +85,6 @@ public class EGRecipe
 		       {
 		    	"   ", "X X", "X X", 'X', new ItemStack(EGItemList.PrehistoriqueCoal)
 		       });
-		       GameRegistry.addShapelessRecipe(new ItemStack(EGItemList.FougereSeeds, 5), new Object[]
-		       {
-		    	new ItemStack(EGBlockList.Sapling)
-		       });
 		       GameRegistry.addRecipe(new ItemStack(EGBlockList.PrehistoriqueBlockCoal,1), new Object[]
 		       {
 		    	"XXX", "XXX", "XXX", 'X', new ItemStack(EGItemList.PrehistoriqueCoal)
