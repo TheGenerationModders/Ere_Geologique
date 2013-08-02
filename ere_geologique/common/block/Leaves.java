@@ -1,12 +1,14 @@
 package ere_geologique.common.block;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeavesBase;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
@@ -24,7 +26,8 @@ public class Leaves extends BlockLeavesBase implements IShearable
 	public static final String[] leafType = new String[] {"fougere", "cycas", "araucarias", "metasequoias", "ginkgos"};
 	public static final String[][] leafTextureTypes = new String[][] {{"leaves", "leaves_cycas", "leaves_araucarias", "leaves_metasequoias", "leaves_ginkgos"},{"leaves_opaque", "leaves_cycas_opaque", "leaves_araucarias_opaque", "leaves_metasequoias_opaque", "leaves_ginkgos_opaque"}};
 	@SideOnly(Side.CLIENT)
-	private Icon[] IconArray;
+	private int LEAF;
+	private Icon[][] IconArray = new Icon[2][];
     int[] adjacentTreeBlocks;
  
     public Leaves(int par1)
@@ -32,51 +35,32 @@ public class Leaves extends BlockLeavesBase implements IShearable
         super(par1, Material.leaves, false);
         this.setTickRandomly(true);
         this.setCreativeTab(EGCreativeTab.EGCreativeTab);
-        this.setBurnProperties(this.blockID, 5, 20);
     }
-    private void setBurnRate(int par1, int par2, int par3)
-    {
-            Block.setBurnProperties(par1,  par2, par3);
-    }
-    public static void setBurnProperties(int id, int encouragement, int flammability)
-    {
-            blockFireSpreadSpeed[id] = encouragement;
-            blockFlammability[id] = flammability;
-    }
- 
-    @Override
-    public boolean shouldSideBeRendered(IBlockAccess par1iBlockAccess, int par2, int par3,
-            int par4, int par5)
-    {
-        graphicsLevel = !Block.leaves.isOpaqueCube();
- 
-        return super.shouldSideBeRendered(par1iBlockAccess, par2, par3, par4, par5);
-    }
- 
+    
     @SideOnly(Side.CLIENT)
     public int getBlockColor()
     {
-        double var1 = 0.5D;
-        double var3 = 1.0D;
-        return ColorizerFoliage.getFoliageColor(var1, var3);
+        double d0 = 0.5D;
+        double d1 = 1.0D;
+        return ColorizerFoliage.getFoliageColor(d0, d1);
     }
- 
+    
     @SideOnly(Side.CLIENT)
     public int getRenderColor(int par1)
     {
-        return ColorizerFoliage.getFoliageColorBasic();
+        return (par1 & 4) == 1 ? ColorizerFoliage.getFoliageColorPine() : ((par1 & 4) == 2 ? ColorizerFoliage.getFoliageColorBirch() : ColorizerFoliage.getFoliageColorBasic());
     }
- 
+    
     @SideOnly(Side.CLIENT)
     public int colorMultiplier(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
     {
         int var5 = par1IBlockAccess.getBlockMetadata(par2, par3, par4);
  
-        if ((var5 & 3) == 1)
+        if ((var5 & 4) == 1)
         {
             return ColorizerFoliage.getFoliageColorPine();
         }
-        else if ((var5 & 3) == 2)
+        else if ((var5 & 4) == 2)
         {
             return ColorizerFoliage.getFoliageColorBirch();
         }
@@ -125,7 +109,7 @@ public class Leaves extends BlockLeavesBase implements IShearable
             }
         }
     }
- 
+    
     public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random)
     {
         if (!par1World.isRemote)
@@ -238,19 +222,19 @@ public class Leaves extends BlockLeavesBase implements IShearable
             }
         }
     }
- 
+    
     @SideOnly(Side.CLIENT)
     public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random)
     {
         if (par1World.canLightningStrikeAt(par2, par3 + 1, par4) && !par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4) && par5Random.nextInt(15) == 1)
         {
-            double var6 = (double)((float)par2 + par5Random.nextFloat());
-            double var8 = (double)par3 - 0.05D;
-            double var10 = (double)((float)par4 + par5Random.nextFloat());
-            par1World.spawnParticle("dripWater", var6, var8, var10, 0.0D, 0.0D, 0.0D);
+            double d0 = (double)((float)par2 + par5Random.nextFloat());
+            double d1 = (double)par3 - 0.05D;
+            double d2 = (double)((float)par4 + par5Random.nextFloat());
+            par1World.spawnParticle("dripWater", d0, d1, d2, 0.0D, 0.0D, 0.0D);
         }
     }
- 
+    
     private void removeLeaves(World par1World, int par2, int par3, int par4)
     {
         this.dropBlockAsItem(par1World, par2, par3, par4, par1World.getBlockMetadata(par2, par3, par4), 0);
@@ -261,13 +245,12 @@ public class Leaves extends BlockLeavesBase implements IShearable
     {
         return par1Random.nextInt(20) == 0 ? 1 : 0;
     }
- 
-    //id de la pousse drope
+    
     public int idDropped(int par1, Random par2Random, int par3)
     {
         return EGProperties.SaplingID;
     }
- 
+    
     public void harvestBlock(World par1World, EntityPlayer par2EntityPlayer, int par3, int par4, int par5, int par6)
     {
         super.harvestBlock(par1World, par2EntityPlayer, par3, par4, par5, par6);
@@ -275,29 +258,52 @@ public class Leaves extends BlockLeavesBase implements IShearable
  
     public int damageDropped(int par1)
     {
-        return par1 & 3;
+        return par1 & 4;
     }
- 
+    
     public boolean isOpaqueCube()
     {
         return !this.graphicsLevel;
     }
- 
-    public int getBlockTextureFromSideAndMetadata(int par1, int par2)
+    
+    public Icon getIcon(int par1, int par2)
     {
-        return (isOpaqueCube() ? blockIndexInTexture + 1 : blockIndexInTexture);
+        return (par2 & 4) == 1 ? this.IconArray[this.LEAF][1] : ((par2 & 4) == 3 ? this.IconArray[this.LEAF][3] : this.IconArray[this.LEAF][0]);
+    }
+    
+    public void setGraphicsLevel(boolean par1)
+    {
+        this.graphicsLevel = par1;
+        this.LEAF = par1 ? 0 : 1;
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void getSubBlocks(int id, CreativeTabs par2CreativeTabs, List par3List)
+    {
+    	par3List.add(new ItemStack(id, 1, 0));
+    	par3List.add(new ItemStack(id, 1, 1));
+    	par3List.add(new ItemStack(id, 1, 2));
+    	par3List.add(new ItemStack(id, 1, 3));
+    	par3List.add(new ItemStack(id, 1, 4));
     }
  
     protected ItemStack createStackedBlock(int par1)
     {
-        return new ItemStack(this.blockID, 1, par1 & 3);
+        return new ItemStack(this.blockID, 1, par1 & 4);
     }
  
     @Override
     public void registerIcons(IconRegister par1IconRegister)
     {
-		blockIcon = par1IconRegister.registerIcon("EreGeologique:Blocks");
-    }
+    	for (int i = 0; i < leafTextureTypes.length; ++i)
+        {
+            this.IconArray[i] = new Icon[leafTextureTypes[i].length];
+
+            for (int j = 0; j < leafTextureTypes[i].length; ++j)
+            {
+                this.IconArray[i][j] = par1IconRegister.registerIcon("EreGeologique" + leafTextureTypes[i][j]);
+            }
+        }    }
  
     @Override
     public boolean isShearable(ItemStack item, World world, int x, int y, int z)
@@ -309,14 +315,14 @@ public class Leaves extends BlockLeavesBase implements IShearable
     public ArrayList<ItemStack> onSheared(ItemStack item, World world, int x, int y, int z, int fortune)
     {
         ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-        ret.add(new ItemStack(this, 1, world.getBlockMetadata(x, y, z) & 3));
+        ret.add(new ItemStack(this, 1, world.getBlockMetadata(x, y, z) & 4));
         return ret;
     }
  
     @Override
     public void beginLeavesDecay(World world, int x, int y, int z)
     {
-        world.setBlock(x, y, z, world.getBlockMetadata(x, y, z) | 8);
+        world.setBlockMetadataWithNotify(x, y, z, world.getBlockMetadata(x, y, z) | 8, 4);
     }
  
     @Override
