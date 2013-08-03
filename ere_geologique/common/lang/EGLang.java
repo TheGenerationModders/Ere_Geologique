@@ -28,7 +28,15 @@ public class EGLang
 	       LanguageRegistry.instance().addStringLocalization("tile.Plank.metasequoias.name", "Planche de M\351tas\351quoias");
 	       LanguageRegistry.instance().addStringLocalization("tile.Plank.ginkgos.name", "Planche de Ginkgos");
 	       LanguageRegistry.instance().addStringLocalization("tile.Slab.name", "Dalle de Foug\350re");
+	       LanguageRegistry.instance().addStringLocalization("tile.Slab.cycas.name", "Dalle de Cycas");
+	       LanguageRegistry.instance().addStringLocalization("tile.Slab.araucarias.name", "Dalle d'Araucarias");
+	       LanguageRegistry.instance().addStringLocalization("tile.Slab.metasequoias.name", "Dalle de M\351tas\351quoias");
+	       LanguageRegistry.instance().addStringLocalization("tile.Slab.ginkgos.name", "Dalle de Ginkgos");
 	       LanguageRegistry.instance().addStringLocalization("tile.DoubleSlab.name", "Double dalle de Foug\350re");
+	       LanguageRegistry.instance().addStringLocalization("tile.DoubleSlab.cycas.name", "DoubleDalle de Cycas");
+	       LanguageRegistry.instance().addStringLocalization("tile.DoubleSlab.araucarias.name", "DoubleDalle d'Araucarias");
+	       LanguageRegistry.instance().addStringLocalization("tile.DoubleSlab.metasequoias.name", "DoubleDalle de M\351tas\351quoias");
+	       LanguageRegistry.instance().addStringLocalization("tile.DoubleSlab.ginkgos.name", "DoubleDalle de Ginkgos");
 	       LanguageRegistry.instance().addStringLocalization("tile.Stair.name", "Escalier de Foug\350re");
 	       LanguageRegistry.instance().addStringLocalization("tile.PrehistoriqueBlockCoal.name", "Bloc de Charbon Prehistorique");
 	       LanguageRegistry.instance().addStringLocalization("tile.PrehistoriqueBlockIron.name", "Bloc de Fer Prehistorique");
