@@ -1,23 +1,23 @@
 package ere_geologique.common;
 
+import ic2.api.recipe.Recipes;
+import mods.railcraft.api.crafting.RailcraftCraftingManager;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.liquids.LiquidDictionary;
 import buildcraft.BuildCraftCore;
 import cpw.mods.fml.common.registry.GameRegistry;
-import railcraft.common.api.crafting.RailcraftCraftingManager;
-import ic2.api.Ic2Recipes;
 import ere_geologique.common.block.EGBlockList;
 import ere_geologique.common.config.EGProperties;
 import ere_geologique.common.item.EGItemList;
 import forestry.api.fuels.EngineBronzeFuel;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.liquids.LiquidDictionary;
 
 public class Integration
 {
 	public static void loadIndustrialCraft()
 	{
-	 Ic2Recipes.addMaceratorRecipe(new ItemStack(EGItemList.PrehistoriqueCoal), new ItemStack(EGItemList.PrehistoriqueCoalDust,1));
-	 Ic2Recipes.addCompressorRecipe(new ItemStack(EGItemList.PrehistoriqueCoal,9), new ItemStack(EGBlockList.PrehistoriqueBlockCoal,1));
-	 Ic2Recipes.addExtractorRecipe(new ItemStack(EGBlockList.Wood), new ItemStack(EGItemList.PrehistoriqueCoal));
+	 Recipes.addMaceratorRecipe(new ItemStack(EGItemList.PrehistoriqueCoal), new ItemStack(EGItemList.PrehistoriqueCoalDust,1));
+	 Recipes.addCompressorRecipe(new ItemStack(EGItemList.PrehistoriqueCoal,9), new ItemStack(EGBlockList.PrehistoriqueBlockCoal,1));
+	 Recipes.addExtractorRecipe(new ItemStack(EGBlockList.Wood), new ItemStack(EGItemList.PrehistoriqueCoal));
 	}
 	
 	public static void loadBuildCraft()
@@ -31,8 +31,8 @@ public class Integration
 	
 	public static void loadRailCraft()
 	{
-	 RailcraftCraftingManager.cokeOven.addRecipe(new ItemStack(EGItemList.PrehistoriqueCoal), new ItemStack(EGItemList.PrehistoriqueCokeCoal), LiquidDictionary.getLiquid("CoalLiquid", 500), 3000);
-	 RailcraftCraftingManager.cokeOven.addRecipe(new ItemStack(EGBlockList.Wood), new ItemStack(EGItemList.PrehistoriqueCharCoal), LiquidDictionary.getLiquid("CoalLiquid", 250), 3000);
+	 RailcraftCraftingManager.cokeOven.addRecipe(new ItemStack(EGItemList.PrehistoriqueCoal), false, false, new ItemStack(EGItemList.PrehistoriqueCokeCoal), LiquidDictionary.getLiquid("CoalLiquid", 500), 3000);
+	 RailcraftCraftingManager.cokeOven.addRecipe(new ItemStack(EGBlockList.Wood), false, false, new ItemStack(EGItemList.PrehistoriqueCharCoal), LiquidDictionary.getLiquid("CoalLiquid", 250), 3000);
 	}
 
 	public static void loadForestry()
