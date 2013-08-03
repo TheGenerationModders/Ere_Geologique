@@ -13,7 +13,7 @@ public class CroMagnon extends EntityMob
     public CroMagnon(World par1World)
     {
         super(par1World);
-        this.texture = "/ere_geologique/textures/entity/Homme.png";
+        this.texture = "/mods/EreGeologique/textures/entity/Homme.png";
         this.moveSpeed = 0.25F;
         this.tasks.addTask(0, new EntityAISwimming(this));
         this.tasks.addTask(1, new EntityAIBreakDoor(this));

@@ -22,7 +22,7 @@ public class Triceratops extends EntityTameable
 	public Triceratops(World world)
 	{
 		super(world);
-		this.texture = "/ere_geologique/textures/entity/Tric\351ratops.png";
+		this.texture = "/mods/EreGeologique/textures/entity/Tric\351ratops.png";
 		this.moveSpeed = 0.15F;
 		this.getNavigator();
 		this.tasks.addTask(0, new EntityAIMate(this, this.moveSpeed));
