@@ -65,6 +65,6 @@ public class EGLang
 	       LanguageRegistry.instance().addStringLocalization("tile.FougereBoots.name", "Bottes de Foug\350re");
 	       
 	       //CreativeTab
-	       LanguageRegistry.instance().addStringLocalization("tile.EreGeologiqueCreativeTab.name", "Ere G\351ologique");
+	       LanguageRegistry.instance().addStringLocalization("tile.EGCreativeTab.name", "Ere G\351ologique");
 	}
 }

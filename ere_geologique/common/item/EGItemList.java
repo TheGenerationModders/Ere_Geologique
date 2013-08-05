@@ -14,6 +14,8 @@ import ere_geologique.common.config.EGProperties;
 
 public class EGItemList
 {
+	public static Item EGItemSlab;
+	public static Item EGItemLeaves;
 	public static Item PrehistoriqueCoal;
 	public static Item PrehistoriqueCoalDust;
 	public static Item PrehistoriqueCokeCoal;
@@ -59,7 +61,8 @@ public class EGItemList
 	       IvoryNugget = new IvoryIngot(EGProperties.IvoryNuggetID).setUnlocalizedName("IvoryNugget");
 	       IvoryGear = new IvoryIngot(EGProperties.IvoryGearID).setUnlocalizedName("IvoryGear");
 	       CoalLiquidBucket = new PrehistoriqueCoalBucket(EGProperties.CoalLiquidBucketID).setUnlocalizedName("CoalLiquidbucket");
-	       
+	       EGItemLeaves = new EGItemLeaves(EGProperties.EGItemLeavesID).setUnlocalizedName("EG Item Leaves");
+	       EGItemSlab = new EGItemSlab(EGProperties.EGItemSlabID, null, null, false).setUnlocalizedName("EG Item Slab");
 	       CoalLiquid = LiquidDictionary.getOrCreateLiquid("CoalLiquid", new LiquidStack(CoalLiquidItem,1));
 	       LiquidContainerRegistry.registerLiquid(new LiquidContainerData(LiquidDictionary.getLiquid("CoalLiquid", LiquidContainerRegistry.BUCKET_VOLUME), new ItemStack(CoalLiquidBucket), new ItemStack(Item.bucketEmpty)));
 	}

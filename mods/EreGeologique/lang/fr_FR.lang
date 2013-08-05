@@ -1,0 +1,60 @@
+//Blocks
+tile.Leaves.fougere.name = Feuilles de Fougere
+tile.Leaves.cycas.name = Feuilles de Cycas;
+tile.Leaves.araucarias.name = Feuilles d'Araucarias;
+tile.Leaves.metasequoias.name = Feuilles de M\351tas\351quoias;
+tile.Leaves.ginkgos.name = Feuilles de Ginkgos;
+tile.Wood.fougere.name = Bois de Foug\350re;
+tile.Wood.cycas.name = Bois de Cycas;
+tile.Wood.araucarias.name = Bois d'Araucarias;
+tile.Wood.metasequoias.name = Bois de M\351tas\351quoias;
+tile.Wood.ginkgos.name = Bois de Ginkgos;
+tile.Sapling.fougere.name = Pousse de Foug\350re;
+tile.Sapling.cycas.name = Pousse de Cycas;
+tile.Sapling.araucarias.name = Pousse d'Araucarias;
+tile.Sapling.metasequoias.name = Pousse de M\351tas\351quoias;
+tile.Sapling.ginkgos.name = Pousse de Gingkgos;
+tile.Plank.fougere.name = Planche de Foug\350re;
+tile.Plank.cycas.name = Planche de Cycas;
+tile.Plank.araucarias.name = Planche d'Araucarias;
+tile.Plank.metasequoias.name = Planche de M\351tas\351quoias;
+tile.Plank.ginkgos.name = Planche de Ginkgos;
+tile.Slab.fougere.name = Dalle de Foug\350re;
+tile.Slab.cycas.name = Dalle de Cycas;
+tile.Slab.araucarias.name = Dalle d'Araucarias;
+tile.Slab.metasequoias.name = Dalle de M\351tas\351quoias;
+tile.Slab.ginkgos.name = Dalle de Ginkgos;
+tile.DoubleSlab.fougere.name = Double dalle de Foug\350re;
+tile.DoubleSlab.cycas.name = DoubleDalle de Cycas;
+tile.DoubleSlab.araucarias.name = DoubleDalle d'Araucarias;
+tile.DoubleSlab.metasequoias.name = DoubleDalle de M\351tas\351quoias;
+tile.DoubleSlab.ginkgos.name = DoubleDalle de Ginkgos;
+tile.Stair.name = Escalier de Foug\350re;
+tile.PrehistoriqueBlockCoal.name = Bloc de Charbon Prehistorique;
+tile.PrehistoriqueBlockIron.name = Bloc de Fer Prehistorique;
+tile.Grass.name = Bouse chevelue;
+tile.Dirt.name = Bouse;
+
+//Items
+tile.PrehistoriqueCoal.name = Charbon Prehistorique;
+tile.PrehistoriqueCoalDust.name = Charbon Mac\351r\351 Prehistorique;
+tile.CoalLiquidItem.name = Charbon Liquide;
+tile.CoalLiquidBucket.name = Seau de Charbon Liquide;
+tile.PrehistoriqueCharCoal.name = Charbon de Bois Prehistorique;
+tile.PrehistoriqueCokeCoal.name = CokeCoal Prehistorique;
+tile.PrehistoriqueIronIngot.name = Fer Prehistorique;
+tile.IvoryIngot.name = Ivoire;
+tile.IvoryNugget.name = P\351pite d'Ivoire;
+tile.IvoryGear.name = Boulon d'Ivoire;
+tile.FougereSword.name = \351p\351e en Foug\350re;
+tile.FougerePickaxe.name = Pioche en Foug\350re;
+tile.FougereAxe.name = Hache en Foug\350re;
+tile.FougereShovel.name = Pelle en Foug\350re;
+tile.FougereHoe.name = Houe en Foug\350re;
+tile.FougereHelmet.name = Casque de Foug\350re;
+tile.FougereChestplate.name = Plastron de Foug\350re;
+tile.FougereLeggings.name = Jambi\350re de Foug\350re;
+tile.FougereBoots.name = Bottes de Foug\350re;
+
+//Creative Tabs
+itemGroup.EGCreativeTabs = Ere G\351ologique;
