@@ -15,9 +15,9 @@ public class Integration
 {
 	public static void loadIndustrialCraft()
 	{
-	 Recipes.addMaceratorRecipe(new ItemStack(EGItemList.PrehistoriqueCoal), new ItemStack(EGItemList.PrehistoriqueCoalDust,1));
-	 Recipes.addCompressorRecipe(new ItemStack(EGItemList.PrehistoriqueCoal,9), new ItemStack(EGBlockList.PrehistoriqueBlockCoal,1));
-	 Recipes.addExtractorRecipe(new ItemStack(EGBlockList.Wood), new ItemStack(EGItemList.PrehistoriqueCoal));
+	 Recipes.macerator.addRecipe(new ItemStack(EGItemList.PrehistoriqueCoal), new ItemStack(EGItemList.PrehistoriqueCoalDust,1));
+	 Recipes.compressor.addRecipe(new ItemStack(EGItemList.PrehistoriqueCoal,9), new ItemStack(EGBlockList.PrehistoriqueBlockCoal,1));
+	 Recipes.extractor.addRecipe(new ItemStack(EGBlockList.Wood), new ItemStack(EGItemList.PrehistoriqueCoal));
 	}
 	
 	public static void loadBuildCraft()
