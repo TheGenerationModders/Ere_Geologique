@@ -5,13 +5,15 @@ import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.IArmorTextureProvider;
+import ere_geologique.common.EGCreativeTab;
 import ere_geologique.common.config.EGProperties;
 
-public class armureFougere extends ItemArmor implements IArmorTextureProvider
+public class armureFougere extends ItemArmor
 {
 	 public armureFougere(int par1, EnumArmorMaterial par2EnumArmorMaterial, int par3, int par4)
 	    {
 	        super(par1, par2EnumArmorMaterial, par3, par4);
+	        this.setCreativeTab(EGCreativeTab.EGCreativeTab);
 	    }
 	 
 	    public String getArmorTextureFile(ItemStack par1)

@@ -16,8 +16,6 @@ public class EGProperties
 	   public static int DirtID;
 	   
 	   //Items
-	   public static int EGItemSlabID;
-	   public static int EGItemLeavesID;
 	   public static int PrehistoriqueCoalID;
 	   public static int PrehistoriqueCoalDustID;
 	   public static int PrehistoriqueCokeCoalID;

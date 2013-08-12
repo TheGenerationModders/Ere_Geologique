@@ -61,7 +61,6 @@ public class EreGeologique
 		        EGProperties.PrehistoriqueBlockIronID = cfg.getBlock("Prehistorique Block Iron", 2514).getInt();
 		        //Items
 		        EGProperties.PrehistoriqueCoalID = cfg.getItem("Coal Prehistorique", 20150).getInt();
-		        EGProperties.EGItemSlabID = cfg.getItem("EG Item Slab", 20151).getInt();
 		        EGProperties.FougereSwordID = cfg.getItem("Sword Foug\350re", 20152).getInt();
 		        EGProperties.FougerePickaxeID = cfg.getItem("Pickaxe Foug\350re", 20153).getInt();
 		        EGProperties.FougereAxeID = cfg.getItem("Axe Foug\350re", 20154).getInt();
@@ -80,7 +79,6 @@ public class EreGeologique
 		        EGProperties.IvoryNuggetID = cfg.getItem("Ivory Nugget", 20167).getInt();
 		        EGProperties.IvoryGearID = cfg.getItem("Ivory Gear", 20168).getInt();
 		        EGProperties.CoalLiquidBucketID = cfg.getItem("Coal Liquid Bucket", 20169).getInt();
-		        EGProperties.EGItemLeavesID = cfg.getItem("EG Item Leaves", 20170).getInt();
 		        //Others
 		        EGProperties.FCoalLiquidMJ = cfg.get("Forestry integration", "MJ produced by Coal Liquid", 4).getInt();
 		        EGProperties.FCoalLiquidDurability = cfg.get("Forestry integration", "Durability of Coal Liquid", 200000).getInt();

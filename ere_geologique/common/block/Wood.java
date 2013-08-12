@@ -3,18 +3,19 @@ package ere_geologique.common.block;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.block.BlockDirectional;
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
+import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.common.EGCreativeTab;
 import ere_geologique.common.config.EGProperties;
 
-public class Wood extends BlockDirectional
+public class Wood extends Block
 {
 	public static final String[] woodType = new String[] {"fougere", "cycas", "araucarias", "metasequoias", "ginkgos"};
 	public static final String[] treeTextureTypes = new String[] {"fougere_side", "cycas_side", "araucarias_side", "metasequoias_side", "ginkgos_side"};
@@ -81,5 +82,17 @@ public class Wood extends BlockDirectional
         {
             this.IconArray[i] = par1IconRegister.registerIcon("EreGeologique:" + treeTextureTypes[i]);
         }
+    }
+    
+    @Override
+    public boolean canSustainLeaves(World world, int x, int y, int z)
+    {
+        return true;
+    }
+
+    @Override
+    public boolean isWood(World world, int x, int y, int z)
+    {
+        return true;
     }
 }
