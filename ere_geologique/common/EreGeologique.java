@@ -23,7 +23,6 @@ import ere_geologique.common.block.EGBlockList;
 import ere_geologique.common.config.EGProperties;
 import ere_geologique.common.entity.EGEntityList;
 import ere_geologique.common.item.EGItemList;
-import ere_geologique.common.lang.EGLang;
 import ere_geologique.common.recipe.EGRecipe;
 import ere_geologique.proxy.EGCommonProxy;
 
