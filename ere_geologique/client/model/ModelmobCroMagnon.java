@@ -1,4 +1,4 @@
-package ere_geologique.client;
+package ere_geologique.client.model;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;

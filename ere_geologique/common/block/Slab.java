@@ -13,59 +13,74 @@ import net.minecraft.util.Icon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ere_geologique.common.EGCreativeTab;
 import ere_geologique.common.EreGeologique;
 import ere_geologique.common.config.EGProperties;
+import ere_geologique.common.creativetabs.EGCreativeTab;
 
 public class Slab extends BlockHalfSlab
 {
-	public static final String[] woodType = new String[] {"fougere", "cycas", "araucarias", "metasequoias", "ginkgos"};
-	
-	public Slab(int par1, boolean par2)
-	 
+	public static final String[] woodType = new String[] { "fougere", "cycas", "araucarias", "metasequoias", "ginkgos" };
+
+	public Slab(int id, boolean isDouble)
 	{
-	super(par1, par2, Material.wood);
-	this.setCreativeTab(EGCreativeTab.EGCreativeTab);
+		super(id, isDouble, Material.wood);
+		this.setCreativeTab(EGCreativeTab.EGCreativeTab);
+		if(!this.isDoubleSlab)
+		{
+			this.setLightOpacity(0);
+		}
 	}
 	
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int par1, int par2)
+	private static boolean isBlockSingleSlab(int id)
 	{
-		return EGBlockList.Plank.getIcon(par1, par2 & 7);
+		return id == EGBlockList.Slab.blockID;
 	}
 	
-	public int idDropped(int par1, Random par2Random, int par3)
+	@SideOnly(Side.CLIENT)
+	public int idPicked(World world, int x, int y, int z)
 	{
-	return EGProperties.SlabID;
+		return isBlockSingleSlab(this.blockID) ? this.blockID : EGBlockList.DoubleSlab.blockID;
 	}
 	
-	protected ItemStack createStackedBlock(int par1)
+	@SideOnly(Side.CLIENT)
+	public Icon getIcon(int side, int metadata)
 	{
-	return new ItemStack(EGProperties.SlabID, 2, par1 & 7);
+		return EGBlockList.Plank.getIcon(side, metadata & 7);
 	}
-	
-	public String getFullSlabName(int par1)
+
+	public int idDropped(int id, Random rand, int fortune)
 	{
-		if (par1 < 0 || par1 >= woodType.length)
+		return EGBlockList.Slab.blockID;
+	}
+
+	protected ItemStack createStackedBlock(int metadata)
+	{
+		return new ItemStack(EGBlockList.Slab.blockID, 2, metadata & 7);
+	}
+
+	public String getFullSlabName(int metadata)
+	{
+		if (metadata < 0 || metadata >= woodType.length)
 		{
-			par1 = 0;
+			metadata = 0;
 		}
-		
-		return super.getUnlocalizedName() + "." + woodType[par1];
+
+		return super.getUnlocalizedName() + "." + woodType[metadata];
 	}
-	
-	public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List)
+
+	public void getSubBlocks(int id, CreativeTabs creativeTabs, List list)
 	{
-		if (par1 != EGProperties.SlabID)
+		if (id != EGBlockList.Slab.blockID)
 		{
-			
-			for (int j = 0; j < 5; ++j)
+
+			for (int i = 0; i < 5; i++)
 			{
-			par3List.add(new ItemStack(par1, 1, j));
+				list.add(new ItemStack(id, 1, i));
 			}
 		}
 	}
-	 
+
 	@SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister par1IconRegister) {}	 
+	public void registerIcons(IconRegister par1IconRegister) {}
 }

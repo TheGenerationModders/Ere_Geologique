@@ -1,90 +1,90 @@
 package ere_geologique.common.entity;
 
+import java.util.List;
+
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
-import net.minecraft.entity.ai.EntityAIControlledByPlayer;
-import net.minecraft.entity.ai.EntityAIFollowParent;
-import net.minecraft.entity.ai.EntityAIHurtByTarget;
-import net.minecraft.entity.ai.EntityAILookIdle;
-import net.minecraft.entity.ai.EntityAIMate;
-import net.minecraft.entity.ai.EntityAITempt;
-import net.minecraft.entity.ai.EntityAIWander;
-import net.minecraft.entity.ai.EntityAIWatchClosest;
-import net.minecraft.entity.passive.EntityTameable;
+import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
-import ere_geologique.common.config.EGProperties;
+import ere_geologique.common.block.EGBlockList;
 
-public class Triceratops extends EntityTameable
+public class Triceratops extends EntityMob
 {
-	private final EntityAIControlledByPlayer aiControlledByPlayer;
+	private int angerLevel;
+	private int randomSoundDelay;
 
 	public Triceratops(World world)
 	{
 		super(world);
-		this.texture = "/mods/EreGeologique/textures/entity/Tric\351ratops.png";
-		this.moveSpeed = 0.15F;
-		this.getNavigator();
-		this.tasks.addTask(0, new EntityAIMate(this, this.moveSpeed));
-		this.tasks.addTask(1, new EntityAITempt(this, this.moveSpeed, EGProperties.SaplingID, false));
-		this.tasks.addTask(2, new EntityAIFollowParent(this, this.moveSpeed));
-		this.tasks.addTask(3, new EntityAIWander(this, this.moveSpeed));
-		this.tasks.addTask(4, new EntityAIWatchClosest(this, EntityPlayer.class, this.moveSpeed));
-		this.tasks.addTask(5, new EntityAILookIdle(this));
-		this.tasks.addTask(6, this.aiControlledByPlayer = new EntityAIControlledByPlayer(this, this.moveSpeed));
-		this.targetTasks.addTask(0, new EntityAIHurtByTarget(this, true));
+		this.setSize(1.0F, 1.0F);
 	}
+	
+	protected void applyEntityAttributes()
+    {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(40D);
+        this.getEntityAttribute(SharedMonsterAttributes.followRange).setAttribute(40.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.69);
+        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(10.0D);
+    }
+	
+	protected Entity findPlayerToAttack()
+    {
+        return this.angerLevel == 0 ? null : super.findPlayerToAttack();
+    }
+	
+	public boolean attackEntityFrom(DamageSource par1DamageSource, float par2)
+    {
+        if (this.isEntityInvulnerable())
+        {
+            return false;
+        }
+        else
+        {
+            Entity entity = par1DamageSource.getEntity();
 
-	public boolean isAIEnabled()
-	{
-	 return true;	
-	}
-	
-	@Override
-	public int getMaxHealth()
-	{
-		return 20;
-	}
-	
-	protected void updateAITask()
-	{
-		super.updateAITasks();
-	}
-	
-	public boolean interract(EntityPlayer par1EntityPlayer)
-	{
-		if (super.interact(par1EntityPlayer))
-		{
-		 return true;
-		}
-		else if (this.getSaddled() && !this.worldObj.isRemote && (this.riddenByEntity == null || this.riddenByEntity == par1EntityPlayer))
-		{
-			par1EntityPlayer.mountEntity(this);
-			return true;
-		}
-		return false;
-	}
-	
-	public boolean getSaddled()
-	{
+            if (entity instanceof EntityPlayer)
+            {
+                List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand(32.0D, 32.0D, 32.0D));
 
-		return (this.dataWatcher.getWatchableObjectByte(16) & 1) != 0;
-	}
+                for (int i = 0; i < list.size(); ++i)
+                {
+                    Entity entity1 = (Entity)list.get(i);
 
-	public Triceratops spawnBabyAnimal(EntityAgeable par1EntityAgeable)
+                    if (entity1 instanceof Triceratops)
+                    {
+                        Triceratops triceratops = (Triceratops)entity1;
+                        triceratops.becomeAngryAt(entity);
+                    }
+                }
+
+                this.becomeAngryAt(entity);
+            }
+
+            return super.attackEntityFrom(par1DamageSource, par2);
+        }
+    }
+	
+	private void becomeAngryAt(Entity par1Entity)
+    {
+        this.entityToAttack = par1Entity;
+        this.angerLevel = 400 + this.rand.nextInt(400);
+        this.randomSoundDelay = this.rand.nextInt(40);
+    }
+
+	public Triceratops spawnBabyAnimal(EntityAgeable entityageable)
 	{
 		return new Triceratops(this.worldObj);
 	}
 	
-	public boolean isBreedingItem(ItemStack par1ItemStack)
+	public boolean isBreedingItem(ItemStack itemstack)
     {
-        return par1ItemStack != null && par1ItemStack.itemID == EGProperties.SaplingID;
+        return itemstack != null && itemstack.itemID == EGBlockList.Sapling.blockID;
     }
-	
-	public EntityAIControlledByPlayer getAIControlledByPlayer()
-	{
-		return this.aiControlledByPlayer;
-	}
 	
 	public Triceratops createChild(EntityAgeable par1EntityAgeable)
 	{

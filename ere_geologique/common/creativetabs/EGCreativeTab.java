@@ -1,4 +1,4 @@
-package ere_geologique.common;
+package ere_geologique.common.creativetabs;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
@@ -18,9 +18,9 @@ public class EGCreativeTab extends CreativeTabs
 	        super(name);
 	 }
 	 
-	    @Override
-	    public ItemStack getIconItemStack()
-	    {
-	        return new ItemStack(EGBlockList.Wood);
-	    }
+	 @Override
+	 public ItemStack getIconItemStack()
+	 {
+		 return new ItemStack(EGBlockList.Wood);
+	 }
 }

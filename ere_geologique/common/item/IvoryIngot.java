@@ -1,23 +1,13 @@
 package ere_geologique.common.item;
 
-import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.Item;
-import ere_geologique.common.EGCreativeTab;
-import ere_geologique.common.EreGeologique;
+import ere_geologique.common.creativetabs.EGCreativeTab;
 
 public class IvoryIngot extends Item
 {
-
-	public IvoryIngot(int i)
+	public IvoryIngot(int id)
 	{
-		super(i);
-		maxStackSize = 64;
+		super(id);
         this.setCreativeTab(EGCreativeTab.EGCreativeTab);
 	}
-	
-	@Override
-    public void registerIcons(IconRegister par1IconRegister)
-    {
-		itemIcon = par1IconRegister.registerIcon("EreGeologique:Items");
-    }
 }

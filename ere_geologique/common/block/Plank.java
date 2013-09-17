@@ -10,12 +10,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ere_geologique.common.EGCreativeTab;
+import ere_geologique.common.creativetabs.EGCreativeTab;
 
 public class Plank extends Block
 {
 	public static final String[] woodType = new String[] {"fougere", "cycas", "araucarias", "metasequoias", "ginkgos"};
-	public static final String[] woodTextureTypes = new String[] {"Wood", "Wood_cycas", "Wood_araucarias", "Wood_metasequoias", "Wood_ginkgos"};
 	@SideOnly(Side.CLIENT)
 	private Icon[] IconArray;
 	
@@ -25,10 +24,12 @@ public class Plank extends Block
         this.setCreativeTab(EGCreativeTab.EGCreativeTab);
         this.setBurnProperties(this.blockID, 5, 20);
     }
+	
     private void setBurnRate(int par1, int par2, int par3)
     {
             Block.setBurnProperties(par1,  par2, par3);
     }
+    
     public static void setBurnProperties(int id, int encouragement, int flammability)
     {
             blockFireSpreadSpeed[id] = encouragement;
@@ -36,14 +37,14 @@ public class Plank extends Block
     }
     
     @SideOnly(Side.CLIENT)
-    public Icon getIcon(int par1, int par2)
+    public Icon getIcon(int side, int metadata)
     {
-        if (par2 < 0 || par2 >= this.IconArray.length)
+        if (metadata < 0 || metadata >= this.IconArray.length)
         {
-            par2 = 0;
+            metadata = 0;
         }
 
-        return this.IconArray[par2];
+        return this.IconArray[metadata];
     }
     
     public int damageDropped(int par1)
@@ -52,23 +53,23 @@ public class Plank extends Block
     }
 
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List)
+    public void getSubBlocks(int id, CreativeTabs creativeTabs, List list)
     {
-        par3List.add(new ItemStack(par1, 1, 0));
-        par3List.add(new ItemStack(par1, 1, 1));
-        par3List.add(new ItemStack(par1, 1, 2));
-        par3List.add(new ItemStack(par1, 1, 3));
-        par3List.add(new ItemStack(par1, 1, 4));
+        list.add(new ItemStack(id, 1, 0));
+        list.add(new ItemStack(id, 1, 1));
+        list.add(new ItemStack(id, 1, 2));
+        list.add(new ItemStack(id, 1, 3));
+        list.add(new ItemStack(id, 1, 4));
     }
 
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister par1IconRegister)
     {
-        this.IconArray = new Icon[woodTextureTypes.length];
+        this.IconArray = new Icon[woodType.length];
 
         for (int i = 0; i < this.IconArray.length; ++i)
         {
-            this.IconArray[i] = par1IconRegister.registerIcon("EreGeologique" + woodTextureTypes[i]);
+            this.IconArray[i] = par1IconRegister.registerIcon(this.getTextureName() + "_" + woodType[i]);
         }
     }
 }

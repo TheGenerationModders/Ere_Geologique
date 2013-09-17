@@ -1,4 +1,4 @@
-package ere_geologique.client;
+package ere_geologique.client.model;
 
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.model.ModelRenderer;
@@ -136,12 +136,6 @@ public class ModelmobTriceratops extends ModelBase
   public void setRotationAngles(float f, float f1, float f2, float f3, float f4, float f5, Entity entity)
   {
     super.setRotationAngles(f, f1, f2, f3, f4, f5, entity);
-    this.Tete.rotateAngleX = f5 / (180F / (float)Math.PI);
-    this.Tete.rotateAngleY = f4 / (180F / (float)Math.PI);
-    this.Patte1.rotateAngleX = MathHelper.cos(f1 * 0.6662F) * 1.4F * f2;
-    this.Patte2.rotateAngleX = MathHelper.cos(f1 * 0.6662F + (float)Math.PI) * 1.4F * f2;
-    this.Patte3.rotateAngleX = MathHelper.cos(f1 * 0.6662F + (float)Math.PI) * 1.4F * f2;
-    this.Patte4.rotateAngleX = MathHelper.cos(f1 * 0.6662F) * 1.4F * f2;
   }
 
 }

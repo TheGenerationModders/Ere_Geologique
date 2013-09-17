@@ -18,8 +18,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ere_geologique.common.EGCreativeTab;
 import ere_geologique.common.config.EGProperties;
+import ere_geologique.common.creativetabs.EGCreativeTab;
 
 public class Leaves extends BlockLeavesBase implements IShearable
 {
@@ -30,9 +30,9 @@ public class Leaves extends BlockLeavesBase implements IShearable
 	private Icon[][] IconArray = new Icon[2][];
     int[] adjacentTreeBlocks;
  
-    public Leaves(int par1)
+    public Leaves(int id)
     {
-        super(par1, Material.leaves, false);
+        super(id, Material.leaves, false);
         this.setTickRandomly(true);
         this.setCreativeTab(EGCreativeTab.EGCreativeTab);
     }
@@ -266,9 +266,9 @@ public class Leaves extends BlockLeavesBase implements IShearable
         return !this.graphicsLevel;
     }
     
-    public Icon getIcon(int par1, int par2)
+    public Icon getIcon(int side, int metadata)
     {
-        return (par2 & 4) == 1 ? this.IconArray[this.LEAF][1] : ((par2 & 4) == 3 ? this.IconArray[this.LEAF][3] : this.IconArray[this.LEAF][0]);
+        return (metadata & 4) == 1 ? this.IconArray[this.LEAF][1] : ((metadata & 4) == 3 ? this.IconArray[this.LEAF][3] : this.IconArray[this.LEAF][0]);
     }
     
     public void setGraphicsLevel(boolean par1)
@@ -301,7 +301,7 @@ public class Leaves extends BlockLeavesBase implements IShearable
 
             for (int j = 0; j < leafTextureTypes[i].length; ++j)
             {
-                this.IconArray[i][j] = par1IconRegister.registerIcon("EreGeologique" + leafTextureTypes[i][j]);
+                this.IconArray[i][j] = par1IconRegister.registerIcon("ere_geologique" + leafTextureTypes[i][j]);
             }
         }    }
  

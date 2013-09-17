@@ -3,7 +3,7 @@ package ere_geologique.common.block;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStairs;
 import net.minecraft.client.renderer.texture.IconRegister;
-import ere_geologique.common.EGCreativeTab;
+import ere_geologique.common.creativetabs.EGCreativeTab;
 
 public class Stair extends BlockStairs
 {
@@ -17,6 +17,6 @@ public class Stair extends BlockStairs
 	@Override
     public void registerIcons(IconRegister par1IconRegister)
     {
-		blockIcon = par1IconRegister.registerIcon("EreGeologique:Blocks");
+		blockIcon = par1IconRegister.registerIcon("ere_geologique:Blocks");
     }
 }

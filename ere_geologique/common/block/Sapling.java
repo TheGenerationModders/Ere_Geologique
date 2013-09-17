@@ -12,18 +12,17 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ere_geologique.common.EGCreativeTab;
+import ere_geologique.common.creativetabs.EGCreativeTab;
 
 public class Sapling extends BlockSapling
 {
 	public static final String[] saplingtype = new String[] {"fougere", "cycas", "araucarias", "metasequoias", "ginkgos"};
-	public static final String[] saplingTextureTypes = new String[] {"Sapling", "Sapling_cycas", "Sapling_araucarias", "Sapling_metasequoias", "Sapling_ginkgos"};
 	@SideOnly(Side.CLIENT)
 	private Icon[] SaplingIcon;
 	
-    public Sapling(int i)
+    public Sapling(int id)
     {
-            super(i);
+            super(id);
             float f = 0.4F;
             setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
             this.setCreativeTab(EGCreativeTab.EGCreativeTab);
@@ -53,24 +52,24 @@ public class Sapling extends BlockSapling
     }
 
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks(int par1, CreativeTabs par2CreativeTabs, List par3List)
+    public void getSubBlocks(int id, CreativeTabs creativeTabs, List list)
     {
-        par3List.add(new ItemStack(par1, 1, 0));
-        par3List.add(new ItemStack(par1, 1, 1));
-        par3List.add(new ItemStack(par1, 1, 2));
-        par3List.add(new ItemStack(par1, 1, 3));
-        par3List.add(new ItemStack(par1, 1, 4));
+        list.add(new ItemStack(id, 1, 0));
+        list.add(new ItemStack(id, 1, 1));
+        list.add(new ItemStack(id, 1, 2));
+        list.add(new ItemStack(id, 1, 3));
+        list.add(new ItemStack(id, 1, 4));
     }
     
     @SideOnly(Side.CLIENT)
     public void registerIcons(IconRegister par1IconRegister)
     {
-		this.SaplingIcon = new Icon[saplingTextureTypes.length];
-		
-		for (int i = 0; i < this.saplingTextureTypes.length; ++i)
-		{
-		 this.SaplingIcon[i] = par1IconRegister.registerIcon("EreGeologique" + saplingTextureTypes[i]);
-		}
+        this.SaplingIcon = new Icon[saplingtype.length];
+
+        for (int i = 0; i < this.SaplingIcon.length; ++i)
+        {
+            this.SaplingIcon[i] = par1IconRegister.registerIcon(this.getTextureName() + "_" + saplingtype[i]);
+        }
     }
 
     //Ne pas toucher
