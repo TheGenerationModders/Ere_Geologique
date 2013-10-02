@@ -1,8 +1,10 @@
 package ere_geologique.common;
 
 import java.io.File;
+import java.util.Properties;
 import java.util.logging.Logger;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.FMLLog;
@@ -14,19 +16,31 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.IChatListener;
+import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.NetworkMod;
-import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
+import ere_geologique.client.EGMessageHandler;
+import ere_geologique.client.EGOptions;
+import ere_geologique.client.Localizations;
+import ere_geologique.client.RiderInput;
 import ere_geologique.common.block.EGBlockList;
 import ere_geologique.common.config.EGProperties;
 import ere_geologique.common.creativetabs.EGCreativeTab;
 import ere_geologique.common.entity.EGEntityList;
+import ere_geologique.common.entity.Enums.EnumDinoFoodMob;
+import ere_geologique.common.entity.Enums.EnumDinoType;
 import ere_geologique.common.event.FougereBoneMeal;
+import ere_geologique.common.gui.GuiHandler;
 import ere_geologique.common.item.EGItemList;
 import ere_geologique.common.recipe.EGRecipe;
 import ere_geologique.common.recipe.Integration;
+import ere_geologique.common.tileentity.EGTEntityList;
+import ere_geologique.common.worldgenerator.FossilGenerator;
 import ere_geologique.proxy.EGCommonProxy;
 
-@Mod(modid = "ere_geologique", name = "Ere G\351ologique", version = "1.0.0", dependencies = "required-after:Forge@[7.8.1,)")
+@Mod(modid = "ere_geologique", name = "Ere G\351ologique", version = "1.0.0", dependencies = "required-after:Forge@[9.10.1.870,)")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 
 public class EreGeologique
@@ -38,6 +52,13 @@ public class EreGeologique
 	   public static EreGeologique Instance;
 	   public static Logger EGLog = Logger.getLogger("EreGeologique");
 	   public static File ConfigFile;
+	   public static boolean DebugMode = true;
+	   public static Object ToPedia;
+	   public static EGOptions EGOptions;
+	   public static GuiHandler guiHandler = new GuiHandler();
+	   public static IChatListener messagerHandler = new EGMessageHandler();
+	   public static Properties LangProps = new Properties();
+	   public static IPacketHandler RiderInput = new RiderInput();
 	   
 	   @EventHandler
 	   public void preload(FMLPreInitializationEvent event)
@@ -45,25 +66,85 @@ public class EreGeologique
 		   		EGLog.setParent(FMLLog.getLogger());
 		   		ConfigFile = new File(event.getModConfigurationDirectory(), "EreGeologique.cfg");
 		        Configuration cfg = new Configuration(ConfigFile);
-		        cfg.load();
-		        //Blocks
-		        EGProperties.LeavesID = cfg.getBlock("Leaves Foug\350re", 2506).getInt();
-		        EGProperties.WoodID = cfg.getBlock("Wood Foug\350re", 2507).getInt();
-		        EGProperties.SaplingID = cfg.getBlock("Sapling Foug\350re", 2508).getInt();
-		        EGProperties.PlankID = cfg.getBlock("Plank Foug\350re", 2509).getInt();
-		        EGProperties.SlabID = cfg.getBlock("Slab Foug\350re", 2510).getInt();
-		        EGProperties.DoubleSlabID = cfg.getBlock("Double Slab Foug\350re", 2511).getInt();
-		        EGProperties.StairID = cfg.getBlock("Stair Foug\350re", 2512).getInt();
-		        EGProperties.PortalID = cfg.getBlock("Portal", 2513).getInt();
+		        try
+		        {
+		        	cfg.load();
+		        	//Blocks
+		        	EGProperties.LeavesID = cfg.getBlock("Leaves Foug\350re", 2500).getInt();
+		        	EGProperties.WoodID = cfg.getBlock("Wood Foug\350re", 2501).getInt();
+		        	EGProperties.SaplingID = cfg.getBlock("Sapling Foug\350re", 2502).getInt();
+		        	EGProperties.PlankID = cfg.getBlock("Plank Foug\350re", 2503).getInt();
+		        	EGProperties.SlabID = cfg.getBlock("Slab Foug\350re", 2504).getInt();
+		        	EGProperties.DoubleSlabID = cfg.getBlock("Double Slab Foug\350re", 2505).getInt();
+		        	EGProperties.StairID = cfg.getBlock("Stair Foug\350re", 2506).getInt();
+		        	EGProperties.PortalID = cfg.getBlock("Portal", 2507).getInt();
+		        	EGProperties.FeederIdleID = cfg.getBlock("FeederIdle", 2508).getInt();
+		        	EGProperties.FeederActiveID = cfg.getBlock("FeederActive", 2509).getInt();
+		        	EGProperties.AnalyzerIdleID = cfg.getBlock("AnalyzerIdle", 2510).getInt();
+		        	EGProperties.AnalyzerActiveID = cfg.getBlock("AnalyzerActive", 2511).getInt();
+		        	EGProperties.CultivatorIdleID = cfg.getBlock("CultivatorIdle", 2512).getInt();
+		        	EGProperties.CultivatorActiveID = cfg.getBlock("CultivatorActive", 2513).getInt();
+		        	EGProperties.FossilID = cfg.getBlock("Fossil", 2513).getInt();
+		        	EGProperties.ReinforcedStoneID = cfg.getBlock("ReinforcedStone", 2514).getInt();
+		        	EGProperties.ReinforcedGlassID = cfg.getBlock("ReinforcedGlass", 2515).getInt();
+		        	EGProperties.SteelBlockID = cfg.getBlock("SteelBlock", 2516).getInt();
 
-		        //Items
-		        EGProperties.IvoryIngotID = cfg.getItem("Ivory Ingot", 4000).getInt();
-		        EGProperties.IvoryNuggetID = cfg.getItem("Ivory Nugget", 4001).getInt();
-		        EGProperties.IvoryGearID = cfg.getItem("Ivory Gear", 4002).getInt();
+		        	//Items
+		        	EGProperties.IvoryIngotID = cfg.getItem("Ivory Ingot", 4000).getInt();
+		        	EGProperties.IvoryNuggetID = cfg.getItem("Ivory Nugget", 4001).getInt();
+		        	EGProperties.IvoryGearID = cfg.getItem("Ivory Gear", 4002).getInt();
+		        	EGProperties.DinoPediaID = cfg.getItem("DinoPedia", 4003).getInt();
+		        	EGProperties.ChickenEssID = cfg.getItem("ChickenEss", 4004).getInt();
+		        	EGProperties.WhipID = cfg.getItem("Whip", 4005).getInt();
+		        	EGProperties.LegBoneID = cfg.getItem("LegBone", 4006).getInt();
+		        	EGProperties.ClawID = cfg.getItem("Claw", 4007).getInt();
+		        	EGProperties.FootID = cfg.getItem("Foot", 4008).getInt();
+		        	EGProperties.SkullID = cfg.getItem("Skull", 4009).getInt();
+		        	EGProperties.BioFossilID = cfg.getItem("BioFossil", 4010).getInt();
+		        	EGProperties.SkullStickID = cfg.getItem("SkullStick", 4011).getInt();
+		        	EGProperties.gemID = cfg.getItem("Scarac_Gem", 4012).getInt();
+		        	EGProperties.EmptyShellID = cfg.getItem("EmptyShell", 4013).getInt();
+		        	EGProperties.MagicConchID = cfg.getItem("MagiConch", 4014).getInt();
+		        	EGProperties.sjlID = cfg.getItem("sJL", 4015).getInt();
+		        	EGProperties.cookedDinoMeatID = cfg.getItem("cookedDinoMeat", 4016).getInt();
+		        	EGProperties.BrokenSaplingID = cfg.getItem("BrokenSapling", 4017).getInt();
+		        	EGProperties.SteelIngotID = cfg.getItem("SteelIngot", 4018).getInt();
+		        	EGProperties.SteelPlateID = cfg.getItem("SteelPlate", 4019).getInt();
+
+		        	for(int i=0;i<EnumDinoType.values().length;i++)
+		        	EGProperties.EGGIDs[i] = cfg.getItem("Egg" + EnumDinoType.values()[i].name(), 4020+i).getInt();
+		        	
+		        	for(int i=0;i<EnumDinoType.values().length;i++)
+		            EGProperties.RAWIDs[i] = cfg.getItem("raw" + EnumDinoType.values()[i].name(), 4034+i).getInt();
+		        	
+		        	for(int i=0;i<EnumDinoType.values().length;i++)
+			        EGProperties.DNAIDs[i] = cfg.getItem("dna" + EnumDinoType.values()[i].name(), 4048+i).getInt();
+		        	
+		        	//Dimensions
+		        	EGProperties.GlaciaID = cfg.get("Dimension", "Glacia",-2).getInt();
+		        	
+		        	//Config options
+		    		EGOptions.Heal_Dinos = cfg.get("option", "Heal_Dinos", true).getBoolean(true);
+		    		EGOptions.Dinos_Starve = cfg.get("option", "Dinos_Starve", true).getBoolean(true);
+		    		EGOptions.Dino_Block_Breaking = cfg.get("option", "Dino_Block_Breaking", true).getBoolean(true);
+		        }
+		        catch(Exception ex)
+		        {
+		        	EreGeologique.EGLog.severe("Erreur lors de l'initialisation des ID's!");
+		        }
+		        finally
+		        {
+		        	if(cfg.hasChanged())
+		        	{
+		        		cfg.save();
+		        	}
+		        	EreGeologique.EGLog.info("Initialisation des ID's terminés!");
+		        }
 		        
-		        //Dimensions
-		        EGProperties.GlaciaID = cfg.get("Dimension", "Glacia",-2).getInt();
-		        cfg.save();
+		        if(event.getSide().isClient())
+				{
+		        	proxy.initSound();//Sounds
+				}
 		        
 		        EGCreativeTab.loadCreativeTab();//CreativeTab
 				EGBlockList.loadBlock();//Block
@@ -79,25 +160,25 @@ public class EreGeologique
 	       if (Loader.isModLoaded("IC2"))
 	       {
 	    	   Integration.loadIndustrialCraft();
-	    	   System.out.println("IC2 macerator recipe enabled");
+	    	   EGLog.info("IC2 integration loaded !");
 	       }
 	       //buildcraft integration
 	       if (Loader.isModLoaded("BuildCraft|Core"))
 	       {
 	    	   Integration.loadBuildCraft();
-	    	   System.out.println("BuilCraft integration loaded !");
+	    	   EGLog.info("BuilCraft integration loaded !");
 	       }
 	       //railcraft integration
 	       if (Loader.isModLoaded("Railcraft"))
 	       {
 	    	   Integration.loadRailCraft();
-	    	   System.out.println("RailCraft integration loaded !");
+	    	   EGLog.info("RailCraft integration loaded !");
 	       }
 	       //forestry integration
 	       if (Loader.isModLoaded("Forestry"))
 	       {
 	    	   Integration.loadForestry();
-	    	   System.out.println("Forestry integration loaded !");
+	    	   EGLog.info("Forestry integration loaded !");
 	       }
 	       
 	       //builcraft and industrialcraft
@@ -107,18 +188,42 @@ public class EreGeologique
 	       }
 	       
 	       //World Generator
+	       GameRegistry.registerWorldGenerator(new FossilGenerator());
 	       
 	       //Other
 		   proxy.registerRenderEntity();
 		   proxy.registerRender();
 	       MinecraftForge.EVENT_BUS.register(new FougereBoneMeal());
+	       
+	       EnumDinoType.init();
+	       EnumDinoFoodMob.init();
+	       
+	       EGTEntityList.loadTileEntity();
+	       NetworkRegistry.instance().registerGuiHandler(this.Instance, new GuiHandler());
+	       NetworkRegistry.instance().registerChatListener(messagerHandler);
+	       NetworkRegistry.instance().registerChannel(RiderInput, "RiderInput");
 	   }
+	   
+	   public static void ShowMessage(String var0, EntityPlayer var1)
+	   {
+		   if (var1 != null)
+	       {
+			   var1.addChatMessage(var0);
+	       }
+	   }
+       
+       public static void DebugMessage(String string)
+       {
+    	   if (DebugMode)
+    	   {
+    		   EGLog.severe(string);
+    	   }
+       }
 	   
 	   @EventHandler
 	   public void postload(FMLPostInitializationEvent event)
 	   {
-	      LanguageRegistry.instance().loadLocalization("/assets/ere_geologique/lang/en_US.lang", "en_US", false);
-	      LanguageRegistry.instance().loadLocalization("/assets/ere_geologique/lang/fr_FR.lang", "fr_FR", false);
+	      Localizations.loadLanguages();
 	      EGRecipe.loadRecipe();//Recipe
 	      EGRecipe.loadSmelting();//Smelting
 	   }

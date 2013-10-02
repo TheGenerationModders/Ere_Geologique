@@ -13,6 +13,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.common.creativetabs.EGCreativeTab;
+import ere_geologique.common.worldgenerator.WorldGenFougere;
 
 public class Sapling extends BlockSapling
 {

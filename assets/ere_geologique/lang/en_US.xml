@@ -1,0 +1,116 @@
+#Blocks
+tile.Leaves.fougere.name=Feuilles de Fougère
+tile.Leaves.cycas.name=Feuilles de Cycas
+tile.Leaves.araucarias.name=Feuilles d'Araucarias
+tile.Leaves.metasequoias.name=Feuilles de Métaséquoias
+tile.Leaves.ginkgos.name=Feuilles de Ginkgos
+tile.Wood.fougere.name=Bois de Fougère
+tile.Wood.cycas.name=Bois de Cycas
+tile.Wood.araucarias.name=Bois d'Araucarias
+tile.Wood.metasequoias.name=Bois de Métaséquoias
+tile.Wood.ginkgos.name=Bois de Ginkgos
+tile.Sapling.fougere.name=Pousse de Fougère
+tile.Sapling.cycas.name=Pousse de Cycas
+tile.Sapling.araucarias.name=Pousse d'Araucarias
+tile.Sapling.metasequoias.name=Pousse de Métaséquoias
+tile.Sapling.ginkgos.name=Pousse de Gingkgos
+tile.Plank.fougere.name=Planche de Fougère
+tile.Plank.cycas.name=Planche de Cycas
+tile.Plank.araucarias.name=Planche d'Araucarias
+tile.Plank.metasequoias.name=Planche de Métaséquoias
+tile.Plank.ginkgos.name=Planche de Ginkgos
+tile.Slab.fougere.name=Dalle de Fougère
+tile.Slab.cycas.name=Dalle de Cycas
+tile.Slab.araucarias.name=Dalle d'Araucarias
+tile.Slab.metasequoias.name=Dalle de Métaséquoias
+tile.Slab.ginkgos.name=Dalle de Ginkgos
+tile.DoubleSlab.fougere.name=Double dalle de Fougère
+tile.DoubleSlab.cycas.name=Double dalle de Cycas
+tile.DoubleSlab.araucarias.name=Double dalle d'Araucarias
+tile.DoubleSlab.metasequoias.name=Double dalle de Métaséquoias
+tile.DoubleSlab.ginkgos.name=Double dalle de Ginkgos
+tile.Stair.name=Escalier de Fougère
+tile.analyzer.name=Analyzer
+tile.cultureVat.name=Culture Vat
+
+#Items
+item.IvoryIngot.name=Ivoire
+item.IvoryNugget.name=Pépite d'Ivoire
+item.IvoryGear.name=Boulon d'Ivoire
+
+#Order chat messages
+order.head=Order: 
+order.Stay=Stay
+order.Follow=Follow
+order.FreeMove=Free Move
+
+#Dinosaur status chat messages
+status.Hungry.head=
+status.Hungry= is hungry.
+status.Starve.head=
+status.Starve= was starved to death.
+status.LearningChest.head=A 
+status.LearningChest= has learned how to use chests.
+status.Betrayed.head=This 
+status.Betrayed= won't trust mankind anymore.
+status.NoSpace.Head=This 
+status.NoSpace= doesn't have enough space to grow.
+status.StarveEsc= has escaped because of starvation.
+status.SJLBite= bit the Siu-Jiu-Le and ran away.
+status.ChewTime= needs time to chew.
+status.Full= is full.
+status.Nervous.Head=You made the little 
+status.Nervous= too nervous to hunt itself.
+status.GemErrorYoung=This T-Rex is still too young.
+status.GemErrorHealth=The scarab cannot afford such strong life energy.
+status.GemErrorHealth=This T-Rex has already been tamed.
+status.essencefail=Essence of Chicken had no effect.
+
+#Dinosaur Names
+Dino.Triceratops=Triceratops
+Dino.Velociraptor=Velociraptor
+Dino.TRex=Tyrannosaurus
+Dino.Pterosaur=Pterosaur
+Dino.Plesiosaur=Plesiosaur
+Dino.Mosasaurus=Mosasaurus
+Dino.Stegosaurus=Stegosaurus
+Dino.Dilophosaurus=Dilophosaurus
+Dino.Brachiosaurus=Brachiosaurus
+Dino.Nautilus=Nautilus
+Dino.Spinosaurus=Spinosaurus
+Dino.Compsognathus=Compsognathus
+Dino.Ankylosaurus=Ankylosaurus
+Dino.Pachycephalosaurus=Pachycephalosaurus
+
+#Pedia text
+pedia.text.owner=Owner:
+pedia.text.chest=* Chests
+pedia.text.caution=!Dangerous!
+pedia.text.rideable=* Rideable
+pedia.text.weak=Almost Dead
+pedia.text.fly=* Able to fly
+pedia.eggWet=Wet
+pedia.eggDry=Dry
+pedia.eggCold=Cold
+pedia.eggWarm=Warm
+pedia.eggStatus=Status
+pedia.eggProgress=Progress
+pedia.eggDay=Day
+pedia.eggDays=Days
+
+#Dinosaur egg chat messages
+dinoegg.hatched=A dinosaur egg has hatched!
+dinoegg.noSpace=This egg cannot spawn here.	
+dinoegg.head=An egg of 
+dinoegg.dry= died because it was too dry.	
+dinoegg.cold= died because it was too cold.
+
+#Cultivator chat messages
+cultivate.outBreak=Warning! Cultivating failed!
+
+#Entity
+entity.CroMagnon.name=CroMagnon
+entity.Tricératops.name=Tricératops
+
+#Creative Tabs
+itemGroup.EGCreativeTab=Ere Géologique
