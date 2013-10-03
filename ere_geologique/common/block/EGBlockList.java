@@ -41,8 +41,8 @@ public class EGBlockList
 	       DoubleSlab = new Slab(EGProperties.DoubleSlabID, true).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("Slab");
 	       Stair = new Stair(EGProperties.StairID, Plank,1).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("Stair");
 	       Portal = new Portal(EGProperties.PortalID).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("Portal").setTextureName("ere_geologique:Portal");
-	       FeederIdle = new Feeder(EGProperties.FeederIdleID).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("Feeder");
-	       FeederActive = new Feeder(EGProperties.FeederActiveID).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("Feeder").setCreativeTab(EGCreativeTab.EGCreativeTab);
+	       FeederIdle = new Feeder(EGProperties.FeederIdleID).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName(LocalizationStrings.FEEDERIDLE_NAME);
+	       FeederActive = new Feeder(EGProperties.FeederActiveID).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName(LocalizationStrings.FEEDERACTIVE_NAME).setCreativeTab(EGCreativeTab.EGCreativeTab);
 	       AnalyzerIdle = new Analyzer(EGProperties.AnalyzerIdleID, false).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName(LocalizationStrings.ANALYZER_IDLE_NAME).setCreativeTab(EGCreativeTab.EGCreativeTab);
 	       AnalyserActive = new Analyzer(EGProperties.AnalyzerActiveID, true).setLightValue(0.9375F).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName(LocalizationStrings.ANALYZER_ACTIVE_NAME);
 	       CultivatorIdle = new Cultivator(EGProperties.CultivatorIdleID, false).setLightValue(0.9375F).setHardness(0.3F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName(LocalizationStrings.CULTIVATE_IDLE_NAME).setCreativeTab(EGCreativeTab.EGCreativeTab);

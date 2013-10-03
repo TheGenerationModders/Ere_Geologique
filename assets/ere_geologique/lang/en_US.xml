@@ -1,116 +1,185 @@
-#Blocks
-tile.Leaves.fougere.name=Feuilles de Fougère
-tile.Leaves.cycas.name=Feuilles de Cycas
-tile.Leaves.araucarias.name=Feuilles d'Araucarias
-tile.Leaves.metasequoias.name=Feuilles de Métaséquoias
-tile.Leaves.ginkgos.name=Feuilles de Ginkgos
-tile.Wood.fougere.name=Bois de Fougère
-tile.Wood.cycas.name=Bois de Cycas
-tile.Wood.araucarias.name=Bois d'Araucarias
-tile.Wood.metasequoias.name=Bois de Métaséquoias
-tile.Wood.ginkgos.name=Bois de Ginkgos
-tile.Sapling.fougere.name=Pousse de Fougère
-tile.Sapling.cycas.name=Pousse de Cycas
-tile.Sapling.araucarias.name=Pousse d'Araucarias
-tile.Sapling.metasequoias.name=Pousse de Métaséquoias
-tile.Sapling.ginkgos.name=Pousse de Gingkgos
-tile.Plank.fougere.name=Planche de Fougère
-tile.Plank.cycas.name=Planche de Cycas
-tile.Plank.araucarias.name=Planche d'Araucarias
-tile.Plank.metasequoias.name=Planche de Métaséquoias
-tile.Plank.ginkgos.name=Planche de Ginkgos
-tile.Slab.fougere.name=Dalle de Fougère
-tile.Slab.cycas.name=Dalle de Cycas
-tile.Slab.araucarias.name=Dalle d'Araucarias
-tile.Slab.metasequoias.name=Dalle de Métaséquoias
-tile.Slab.ginkgos.name=Dalle de Ginkgos
-tile.DoubleSlab.fougere.name=Double dalle de Fougère
-tile.DoubleSlab.cycas.name=Double dalle de Cycas
-tile.DoubleSlab.araucarias.name=Double dalle d'Araucarias
-tile.DoubleSlab.metasequoias.name=Double dalle de Métaséquoias
-tile.DoubleSlab.ginkgos.name=Double dalle de Ginkgos
-tile.Stair.name=Escalier de Fougère
-tile.analyzer.name=Analyzer
-tile.cultureVat.name=Culture Vat
-
-#Items
-item.IvoryIngot.name=Ivoire
-item.IvoryNugget.name=Pépite d'Ivoire
-item.IvoryGear.name=Boulon d'Ivoire
-
-#Order chat messages
-order.head=Order: 
-order.Stay=Stay
-order.Follow=Follow
-order.FreeMove=Free Move
-
-#Dinosaur status chat messages
-status.Hungry.head=
-status.Hungry= is hungry.
-status.Starve.head=
-status.Starve= was starved to death.
-status.LearningChest.head=A 
-status.LearningChest= has learned how to use chests.
-status.Betrayed.head=This 
-status.Betrayed= won't trust mankind anymore.
-status.NoSpace.Head=This 
-status.NoSpace= doesn't have enough space to grow.
-status.StarveEsc= has escaped because of starvation.
-status.SJLBite= bit the Siu-Jiu-Le and ran away.
-status.ChewTime= needs time to chew.
-status.Full= is full.
-status.Nervous.Head=You made the little 
-status.Nervous= too nervous to hunt itself.
-status.GemErrorYoung=This T-Rex is still too young.
-status.GemErrorHealth=The scarab cannot afford such strong life energy.
-status.GemErrorHealth=This T-Rex has already been tamed.
-status.essencefail=Essence of Chicken had no effect.
-
-#Dinosaur Names
-Dino.Triceratops=Triceratops
-Dino.Velociraptor=Velociraptor
-Dino.TRex=Tyrannosaurus
-Dino.Pterosaur=Pterosaur
-Dino.Plesiosaur=Plesiosaur
-Dino.Mosasaurus=Mosasaurus
-Dino.Stegosaurus=Stegosaurus
-Dino.Dilophosaurus=Dilophosaurus
-Dino.Brachiosaurus=Brachiosaurus
-Dino.Nautilus=Nautilus
-Dino.Spinosaurus=Spinosaurus
-Dino.Compsognathus=Compsognathus
-Dino.Ankylosaurus=Ankylosaurus
-Dino.Pachycephalosaurus=Pachycephalosaurus
-
-#Pedia text
-pedia.text.owner=Owner:
-pedia.text.chest=* Chests
-pedia.text.caution=!Dangerous!
-pedia.text.rideable=* Rideable
-pedia.text.weak=Almost Dead
-pedia.text.fly=* Able to fly
-pedia.eggWet=Wet
-pedia.eggDry=Dry
-pedia.eggCold=Cold
-pedia.eggWarm=Warm
-pedia.eggStatus=Status
-pedia.eggProgress=Progress
-pedia.eggDay=Day
-pedia.eggDays=Days
-
-#Dinosaur egg chat messages
-dinoegg.hatched=A dinosaur egg has hatched!
-dinoegg.noSpace=This egg cannot spawn here.	
-dinoegg.head=An egg of 
-dinoegg.dry= died because it was too dry.	
-dinoegg.cold= died because it was too cold.
-
-#Cultivator chat messages
-cultivate.outBreak=Warning! Cultivating failed!
-
-#Entity
-entity.CroMagnon.name=CroMagnon
-entity.Tricératops.name=Tricératops
-
-#Creative Tabs
-itemGroup.EGCreativeTab=Ere Géologique
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties version="1.0">
+	<comment>English (en_US) Localization File</comment>
+<!-- Default English translation-->
+<!-- NOTE THE SPACE BEFORE/AFTER SOME OF THE LINES. -->
+<!--Blocks-->
+    <entry key="tile.Leaves.fougere.name">Feuilles de Fougère</entry>
+    <entry key="tile.Leaves.cycas.name">Feuilles de Cycas</entry>
+    <entry key="tile.Leaves.araucarias.name">Feuilles d'Araucarias</entry>
+    <entry key="tile.Leaves.metasequoias.name">Feuilles de Métaséquoias</entry>
+    <entry key="tile.Leaves.ginkgos.name">Feuilles de Ginkgos</entry>
+    <entry key="tile.Wood.fougere.name">Bois de Fougère</entry>
+    <entry key="tile.Wood.cycas.name">Bois de Cycas</entry>
+    <entry key="tile.Wood.araucarias.name">Bois d'Araucarias</entry>
+    <entry key="tile.Wood.metasequoias.name">Bois de Métaséquoias</entry>
+    <entry key="tile.Wood.ginkgos.name">Bois de Ginkgos</entry>
+    <entry key="tile.Sapling.fougere.name">Pousse de Fougère</entry>
+    <entry key="tile.Sapling.cycas.name">Pousse de Cycas</entry>
+    <entry key="tile.Sapling.araucarias.name">Pousse d'Araucarias</entry>
+    <entry key="tile.Sapling.metasequoias.name">Pousse de Métaséquoias</entry>
+    <entry key="tile.Sapling.ginkgos.name">Pousse de Gingkgos</entry>
+    <entry key="tile.Plank.fougere.name">Planche de Fougère</entry>
+    <entry key="tile.Plank.cycas.name">Planche de Cycas</entry>
+    <entry key="tile.Plank.araucarias.name">Planche d'Araucarias</entry>
+    <entry key="tile.Plank.metasequoias.name">Planche de Métaséquoias</entry>
+    <entry key="tile.Plank.ginkgos.name">Planche de Ginkgos</entry>
+    <entry key="tile.Slab.fougere.name">Dalle de Fougère</entry>
+    <entry key="tile.Slab.cycas.name">Dalle de Cycas</entry>
+    <entry key="tile.Slab.araucarias.name">Dalle d'Araucarias</entry>
+    <entry key="tile.Slab.metasequoias.name">Dalle de Métaséquoias</entry>
+    <entry key="tile.Slab.ginkgos.name">Dalle de Ginkgos</entry>
+    <entry key="tile.DoubleSlab.fougere.name">Double dalle de Fougère</entry>
+    <entry key="tile.DoubleSlab.cycas.name">Double dalle de Cycas</entry>
+    <entry key="tile.DoubleSlab.araucarias.name">Double dalle d'Araucarias</entry>
+    <entry key="tile.DoubleSlab.metasequoias.name">Double dalle de Métaséquoias</entry>
+    <entry key="tile.DoubleSlab.ginkgos.name">Double dalle de Ginkgos</entry>
+    <entry key="tile.Stair.name">Escalier de Fougère</entry>
+    <entry key="tile.analyzer.name">Analyzer</entry>
+	<entry key="tile.cultureVat.name">Culture Vat</entry>
+    <entry key="tile.feederIdle.name">Feeder</entry>
+	<entry key="tile.feederActive.name">Feeder</entry>
+    <entry key="tile.Fossil.name">Fossil</entry>
+	<entry key="tile.ReinforcedStone.name">ReinforcedStone</entry>
+    <entry key="tile.ReinforcedGlass.name">ReinforcedGlass</entry>
+    <entry key="tile.SteelBlock.name">SteelBlock</entry>
+<!-- Items -->
+    <entry key="item.IvoryIngot.name">Ivory</entry>
+    <entry key="item.IvoryNugget.name">IvoryNugget</entry>
+    <entry key="item.IvoryGear.name">IvoryGear</entry>
+    <entry key="item.DinoPedia.name">DinoPedia</entry>
+    <entry key="item.ChickenEss.name">Essence of Chicken</entry>
+    <entry key="item.Whip.name">Whip</entry>
+    <entry key="item.Leg_Bone.name">Leg Bone</entry>
+	<entry key="item.Claw.name">Claw</entry>
+	<entry key="item.Foot.name">Foot</entry>
+	<entry key="item.Skull.name">Skull</entry>
+    <entry key="item.BioFossil.name">Bio-Fossil</entry>
+    <entry key="item.SkullStick.name">Skull Stick</entry>
+    <entry key="item.gem.name">Gem</entry>
+    <entry key="item.EmptyShell.name">Empty Shell</entry>
+    <entry key="item.MagicConch.name">Magic Conch</entry>
+	<entry key="item.sJL.name">Sio-Chiu-Le</entry>
+    <entry key="item.plantFossil.name">Plant Fossil</entry>
+    <entry key="item.SteelIngot.name">SteelIngot</entry>
+    <entry key="item.SteelPlate.name">SteelPlate</entry>
+    <!-- Dino Meat -->
+	<entry key="item.dinoSteak.name">Dino Steak</entry>
+	<entry key="item.rawTriceratops.name">Triceratops Meat</entry>
+	<entry key="item.rawVelociraptor.name">Velociraptor Meat</entry>
+	<entry key="item.rawTRex.name">TRex Meat</entry>
+	<entry key="item.rawPterosaure.name">Pterosaure Meat</entry>
+	<entry key="item.rawNautilus.name">Nautilus Meat</entry>
+	<entry key="item.rawPlesiosaure.name">Plesiosaure Meat</entry>
+	<entry key="item.rawMosasaurus.name">Mosasaurus Meat</entry>
+	<entry key="item.rawStegosaurus.name">Stegosaurus Meat</entry>
+	<entry key="item.rawDilophosaurus.name">Dilophosaurus Meat</entry>
+	<entry key="item.rawBrachiosaurus.name">Brachiosaurus Meat</entry>
+	<entry key="item.rawSpinosaurus.name">Spinosaurus Meat</entry>
+	<entry key="item.rawCompsognathus.name">Compsognathus Meat</entry>
+	<entry key="item.rawAnkylosaurus.name">Ankylosaurus Meat</entry>
+	<entry key="item.rawPachycephalosaurus.name">Pachycephalosaurus Meat</entry>
+<!-- Eggs -->
+	<entry key="item.eggTriceratops.name">Triceratops Egg</entry>
+	<entry key="item.eggVelociraptor.name">Velociraptor Egg</entry>
+	<entry key="item.eggTRex.name">T-Rex Egg</entry>
+	<entry key="item.eggPterosaure.name">Pterosaure Egg</entry>
+	<entry key="item.eggNautilus.name">Living Nautilus</entry>
+	<entry key="item.eggPlesiosaur.name">Plesiosaure Egg</entry>
+	<entry key="item.eggMosasaurus.name">Mosasaurus Egg</entry>
+	<entry key="item.eggStegosaurus.name">Stegosaurus Egg</entry>
+	<entry key="item.eggDilophosaurus.name">Dilophosaurus Egg</entry>
+	<entry key="item.eggBrachiosaurus.name">Brachiosaurus Egg</entry>
+	<entry key="item.eggSpinosaurus.name">Spinosaurus Egg</entry>
+	<entry key="item.eggCompsognathus.name">Compsognathus Egg</entry>
+	<entry key="item.eggAnkylosaurus.name">Ankylosaurus Egg</entry>
+	<entry key="item.eggPachycephalosaurus.name">Pachycephalosaurus Egg</entry>
+<!-- DNA -->
+	<entry key="item.dnaTriceratops.name">Triceratops DNA</entry>
+	<entry key="item.dnaVelociraptor.name">Velociraptor DNA</entry>
+	<entry key="item.dnaTRex.name">TRex DNA</entry>
+	<entry key="item.dnaPterosaure.name">Pterosaure DNA</entry>
+	<entry key="item.dnaNautilus.name">Nautilus DNA</entry>
+	<entry key="item.dnaPlesiosaure.name">Plesiosaure DNA</entry>
+	<entry key="item.dnaMosasaurus.name">Mosasaurus DNA</entry>
+	<entry key="item.dnaStegosaurus.name">Stegosaurus DNA</entry>
+	<entry key="item.dnaDilophosaurus.name">Dilophosaurus DNA</entry>
+	<entry key="item.dnaBrachiosaurus.name">Brachiosaurus DNA</entry>
+	<entry key="item.dnaSpinosaurus.name">Spinosaurus DNA</entry>
+	<entry key="item.dnaCompsognathus.name">Compsognathus DNA</entry>
+	<entry key="item.dnaAnkylosaurus.name">Ankylosaurus DNA</entry>
+	<entry key="item.dnaPachycephalosaurus.name">Pachycephalosaurus DNA</entry>
+<!-- Orders -->
+	<entry key="order.head">Order: </entry>
+	<entry key="order.Stay">Stay</entry>
+	<entry key="order.Follow">Follow</entry>
+	<entry key="order.FreeMove">Free Move</entry>
+<!-- Dinosaur Statuses -->
+	<entry key="status.Hungry.head"></entry>
+	<entry key="status.Hungry"> is hungry.</entry>
+	<entry key="status.Starve.head"></entry>
+	<entry key="status.Starve"> was starved to death.</entry>
+	<entry key="status.LearningChest.head">A </entry>
+	<entry key="status.LearningChest"> has learned how to use chests.</entry>
+	<entry key="status.Betrayed.head">This </entry>
+	<entry key="status.Betrayed"> won't trust mankind anymore.</entry>
+	<entry key="status.NoSpace.Head">This </entry>
+	<entry key="status.NoSpace"> doesn't have enough space to grow.</entry>
+	<entry key="status.StarveEsc"> has escaped because of starvation.</entry>
+	<entry key="status.SJLBite"> bit the Siu-Jiu-Le and ran away.</entry>
+	<entry key="status.ChewTime"> needs time to chew.</entry>
+	<entry key="status.Full"> is full.</entry>
+	<entry key="status.Nervous.Head">You made the little </entry>
+	<entry key="status.Nervous"> too nervous to hunt itself.</entry>
+	<entry key="status.GemErrorYoung">This T-Rex is still too young.</entry>
+	<entry key="status.GemErrorHealth">The scarab cannot afford such strong life energy.</entry>
+    <entry key="status.GemErrorHealth">This T-Rex has already been tamed.</entry>
+    <entry key="status.EssenceFail">Essence of Chicken had no effect.</entry>
+<!-- Dinosaur names. 11 characters MAX -->
+	<entry key="Dino.Triceratops">Triceratops</entry>
+	<entry key="Dino.Velociraptor">Velociraptor</entry>
+	<entry key="Dino.TRex">Tyrannosaurus</entry>
+	<entry key="Dino.Pterosaure">Pterosaure</entry>
+	<entry key="Dino.Plesiosaure">Plesiosaure</entry>
+	<entry key="Dino.Mosasaurus">Mosasaurus</entry>
+	<entry key="Dino.Stegosaurus">Stegosaurus</entry>
+	<entry key="Dino.Dilophosaurus">Dilophosaurus</entry>
+	<entry key="Dino.Brachiosaurus">Brachiosaurus</entry>
+	<entry key="Dino.Nautilus">Nautilus</entry>
+	<entry key="Dino.Spinosaurus">Spinosaurus</entry>
+	<entry key="Dino.Compsognathus">Compsognathus</entry>
+	<entry key="Dino.Ankylosaurus">Ankylosaurus</entry>
+	<entry key="Dino.Pachycephalosaurus">Pachycephalosaurus</entry>
+<!-- Pedia text. Dino messages. 11 characters MAX -->
+	<entry key="pedia.text.owner">Owner:</entry>
+	<entry key="pedia.text.chest">* Chests</entry>
+	<entry key="pedia.text.caution">!Dangerous!</entry>
+	<entry key="pedia.text.rideable">* Rideable</entry>
+	<entry key="pedia.text.weak">Almost Dead</entry>
+	<entry key="pedia.text.fly">* Able to fly</entry>
+<!-- Pedia text. 11 characters MAX -->
+	<entry key="pedia.eggWet">Wet</entry>
+	<entry key="pedia.eggDry">Dry</entry>
+	<entry key="pedia.eggCold">Cold</entry>
+	<entry key="pedia.eggWarm">Warm</entry>
+	<entry key="pedia.eggStatus">Status</entry>
+	<entry key="pedia.eggProgress">Progress</entry>
+	<entry key="pedia.eggDay">Day</entry>
+	<entry key="pedia.eggDays">Days</entry>
+<!-- Dinoegg chat strings -->	
+	<entry key="dinoegg.hatched">A dinosaur egg has hatched!</entry>
+	<entry key="dinoegg.noSpace">This egg cannot spawn here.</entry>
+<!-- Hatching text -->		
+	<entry key="dinoegg.head">An egg of </entry>
+	<entry key="dinoegg.dry"> died because it was too dry.</entry>	
+	<entry key="dinoegg.cold"> died because it was too cold.</entry>
+<!-- Cultivator -->
+	<entry key="cultivate.outBreak">Warning! Cultivating failed!</entry>
+<!-- Entity -->
+    <entry key= "entity.CroMagnon.name">CroMagnon</entry>
+    <!-- entity.Tricératops.name=Tricératops -->
+    <entry key= "mob.failuresaurus">Failuresaurus</entry>
+<!-- Creative Tabs -->
+    <entry key="itemGroup.EGCreativeTab"> Ere Géologique</entry>
+</properties>

@@ -202,6 +202,7 @@ public class EreGeologique
 	       NetworkRegistry.instance().registerGuiHandler(this.Instance, new GuiHandler());
 	       NetworkRegistry.instance().registerChatListener(messagerHandler);
 	       NetworkRegistry.instance().registerChannel(RiderInput, "RiderInput");
+	       NetworkRegistry.instance().registerChannel(RiderInput, "PteroFlight");
 	   }
 	   
 	   public static void ShowMessage(String var0, EntityPlayer var1)

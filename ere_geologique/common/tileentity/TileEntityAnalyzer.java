@@ -268,8 +268,7 @@ public class TileEntityAnalyzer extends TileEntity implements IInventory, ISided
                 {
                     var1 = new ItemStack(Block.sand,3);
                 }
-
-                if (var2 > 90)
+                if (var2 > 85)
                 {
                 	int i=(new Random()).nextInt(EnumDinoType.values().length+1);//+1 for the sapling
                 	Item i0=null;

@@ -38,7 +38,7 @@ interface C
 public enum EnumDinoType
 {
     Triceratops(Triceratops.class, 	C.MODEL | C.TAME  | C.RIDE | C.HERBIVORE),
-    Velociraptor(Velociraptor.class, 	C.RIDE | C.TAME  | C.CARRY | C.CARNIVORE),
+    Velociraptor(Velociraptor.class, 	C.TAME  | C.CARRY | C.CARNIVORE),
     TRex(TRex.class, 					C.RIDE  | C.CARNIVORE),
     Pterosaure(Pterosaure.class, 		C.MODEL | C.TAME  | C.RIDE | C.CARNIVORE),
     Nautilus(Nautilus.class, 			C.NOTHING),
