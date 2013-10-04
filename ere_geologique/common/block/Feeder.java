@@ -22,8 +22,6 @@ import ere_geologique.common.tileentity.TileEntityFeeder;
 public class Feeder extends BlockContainer
 {
     private Random furnaceRand = new Random();
-    //private final boolean isActive;
-    //private static boolean keepFurnaceInventory = false;
     private Icon Top1;//None
     private Icon Top2;//Herb
     private Icon Top3;//Carn
@@ -41,21 +39,11 @@ public class Feeder extends BlockContainer
     
     private static final int DIRECTION_BITS = 3;
     
-    //MetaDataInfo: &8 == has Herbivore, &16==has Carnivore Food
-    public Feeder(int var1)//, boolean var2)
+    public Feeder(int var1)
     {
         super(var1, Material.rock);
-       // this.isActive = var2;
     }
 
-    /*public String getTextureFile()
-    {
-        return "/fossil/textures/Fos_terrian.png";
-    }*/
-
-    /**
-     * Returns the ID of the items to drop on destruction.
-     */
     public int idDropped(int var1, Random var2, int var3)
     {
         return EGBlockList.FeederActive.blockID;
@@ -65,9 +53,6 @@ public class Feeder extends BlockContainer
     	return 2303;
     }
 
-    /**
-     * Called whenever the block is added into the world. Args: world, x, y, z
-     */
     public void onBlockAdded(World var1, int var2, int var3, int var4)
     {
         super.onBlockAdded(var1, var2, var3, var4);
@@ -96,29 +81,10 @@ public class Feeder extends BlockContainer
         }
     }
 
-    /**
-     * Retrieves the block texture to use based on the display side. Args: iBlockAccess, x, y, z, side
-     */
-    /*public int getBlockTexture(IBlockAccess var1, int var2, int var3, int var4, int var5)
-    {
-        if (var5 != 1 && var5 != 0)
-        {
-            int var6 = var1.getBlockMetadata(var2, var3, var4);
-            return var5 != var6 ? 35 : 34;
-        }
-        else
-        {
-            return this.isActive ? 19 : 18;
-        }
-    }*/
-
-    /**
-     * A randomly called display update to be able to add particles or other items for display
-     */
     public void randomDisplayTick(World var1, int var2, int var3, int var4, Random var5)
     {
     	int var6 = var1.getBlockMetadata(var2, var3, var4);
-        if ((var6&BOTH_BITS)!=0 && var5.nextInt(25)==0)//this.isActive)
+        if ((var6&BOTH_BITS)!=0 && var5.nextInt(25)==0)
         {
             float var7 = (float)var2 + 0.5F;
             float var8 = (float)var3 + 0.0F + var5.nextFloat() * 6.0F / 16.0F;
@@ -129,39 +95,23 @@ public class Feeder extends BlockContainer
             if ((var6&DIRECTION_BITS) == 4-2)
             {
                 var1.spawnParticle("smoke", (double)(var7 - var10), (double)var8, (double)(var9 + var11), 0.0D, 0.0D, 0.0D);
-                //var1.spawnParticle("flame", (double)(var7 - var10), (double)var8, (double)(var9 + var11), 0.0D, 0.0D, 0.0D);
             }
             else if ((var6&DIRECTION_BITS) == 5-2)
             {
                 var1.spawnParticle("smoke", (double)(var7 + var10), (double)var8, (double)(var9 + var11), 0.0D, 0.0D, 0.0D);
-                //var1.spawnParticle("flame", (double)(var7 + var10), (double)var8, (double)(var9 + var11), 0.0D, 0.0D, 0.0D);
             }
             else if ((var6&DIRECTION_BITS) == 2-2)
             {
                 var1.spawnParticle("smoke", (double)(var7 + var11), (double)var8, (double)(var9 - var10), 0.0D, 0.0D, 0.0D);
-                //var1.spawnParticle("flame", (double)(var7 + var11), (double)var8, (double)(var9 - var10), 0.0D, 0.0D, 0.0D);
             }
             else if ((var6&DIRECTION_BITS) == 3-2)
             {
                 var1.spawnParticle("smoke", (double)(var7 + var11), (double)var8, (double)(var9 + var10), 0.0D, 0.0D, 0.0D);
-                //var1.spawnParticle("flame", (double)(var7 + var11), (double)var8, (double)(var9 + var10), 0.0D, 0.0D, 0.0D);
             }
         }
     }
 
-    /**
-     * Returns the block texture based on the side being looked at.  Args: side
-     */
-    /*public int getBlockTextureFromSide(int var1)
-    {
-        return var1 == 1 ? 18 : (var1 == 0 ? 18 : (var1 == 3 ? 34 : 35));
-    }*/
     @SideOnly(Side.CLIENT)
-
-    /**
-     * When this method is called, your block should register all the icons it needs with the given IconRegister. This
-     * is the only chance you get to register icons.
-     */
     public void registerIcons(IconRegister par1IconRegister)
     {
         this.blockIcon = par1IconRegister.registerIcon("ere_geologique:Feeder_Sides");
@@ -176,14 +126,10 @@ public class Feeder extends BlockContainer
         this.Front4 = par1IconRegister.registerIcon("ere_geologique:Feeder_Front4");
     }
 
-    /**
-     * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
-     */
     public Icon getIcon(int par1, int par2)
     {
     	if (par1 != 1 && ((par2&DIRECTION_BITS)+2) != par1)//Not Top and not Front=>Side
         {
-    		//System.out.println("FEEDER SIDE VALUE:"+String.valueOf((par2&DIRECTION_BITS)+2));
             return this.blockIcon;
         }
         else
@@ -214,9 +160,6 @@ public class Feeder extends BlockContainer
     	return this.blockIcon;
     }
 
-    /**
-     * Called upon block activation (right click on the block.)
-     */
     public boolean onBlockActivated(World var1, int var2, int var3, int var4, EntityPlayer var5, int var6, float var7, float var8, float var9)
     {
         if (var1.isRemote)
@@ -235,8 +178,6 @@ public class Feeder extends BlockContainer
     	if(var1.getBlockId(var2, var3, var4)==EGBlockList.FeederIdle.blockID)//won't be used anymore
     		var1.setBlock(var2, var3, var4,EGBlockList.FeederActive.blockID,0,2);
         int var5 = var1.getBlockMetadata(var2, var3, var4);
-        //System.out.println("FEEDER INPUT:HERB:"+String.valueOf(herb)+" CARN:"+String.valueOf(carn));
-        //System.out.println("FEEDER BEFORE:"+String.valueOf(var5));
         if(herb)
         	var5|=HERB_BIT;
         else
@@ -245,37 +186,14 @@ public class Feeder extends BlockContainer
         	var5|=CARN_BIT;
         else
         	var5&=~CARN_BIT;
-        //System.out.println("FEEDER AFTER:"+String.valueOf(var5));
         var1.setBlockMetadataWithNotify(var2, var3, var4, var5, 2);
-        /*TileEntity var6 = var1.getBlockTileEntity(var2, var3, var4);
-        keepFurnaceInventory = true;
-
-        if (var0)
-        {
-            var1.setBlock(var2, var3, var4, EGBlockList.feederActive.blockID);
-        }
-        else
-        {
-            var1.setBlock(var2, var3, var4, EGBlockList.feederIdle.blockID);
-        }
-
-        keepFurnaceInventory = false;
-        var1.setBlock(var2, var3, var4, var5);
-        var6.validate();
-        var1.setBlockTileEntity(var2, var3, var4, var6);*/
     }
 
-    /**
-     * Returns a new instance of a block's tile entity class. Called on placing the block.
-     */
     public TileEntity createNewTileEntity(World var1)
     {
         return new TileEntityFeeder();
     }
 
-    /**
-     * Called when the block is placed in the world.
-     */
     public void onBlockPlacedBy(World var1, int var2, int var3, int var4, EntityLiving var5, ItemStack par6ItemStack)
     {
         int var6 = MathHelper.floor_double((double)(var5.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
@@ -289,12 +207,8 @@ public class Feeder extends BlockContainer
         if (var6 == 3)var1.setBlockMetadataWithNotify(var2, var3, var4, 4-2,2);
     }
 
-    /**
-     * ejects contained items into the world, and notifies neighbours of an update, as appropriate
-     */
     public void breakBlock(World var1, int var2, int var3, int var4, int var5, int var6)
     {
-        //if (!keepFurnaceInventory)
         {
             TileEntityFeeder var7 = (TileEntityFeeder)var1.getBlockTileEntity(var2, var3, var4);
 

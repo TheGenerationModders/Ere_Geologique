@@ -31,13 +31,10 @@ public class GuiFeeder extends GuiContainer
 
     protected void drawGuiContainerForegroundLayer()
     {
-        this.fontRenderer.drawString(LocalizationStrings.FEEDERIDLE_NAME, 8, 6, 4210752);
+        this.fontRenderer.drawString(StatCollector.translateToLocal("container." + LocalizationStrings.FEEDERIDLE_NAME), 8, 6, 4210752);
         this.fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, this.ySize - 96 + 2, 4210752);
     }
 
-    /**
-     * Draws the screen and all the components in it.
-     */
     public void drawScreen(int var1, int var2, float var3)
     {
         this.drawDefaultBackground();
@@ -86,7 +83,6 @@ public class GuiFeeder extends GuiContainer
      */
     protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3)
     {
-        //int var4 = this.mc.renderEngine.getTexture("/fossil/textures/UIFeeder.png");
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         mc.getTextureManager().bindTexture(loc);
         int var5 = (this.width - this.xSize) / 2;

@@ -2,6 +2,7 @@ package ere_geologique.common.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.registry.GameRegistry;
 import ere_geologique.client.LocalizationStrings;
 import ere_geologique.common.EreGeologique;
@@ -28,6 +29,7 @@ public class EGBlockList
 	public static Block ReinforcedStone;
 	public static Block ReinforcedGlass;
 	public static Block SteelBlock;
+	public static Block Skull;
 	
 	public static void loadBlock()
 	{
@@ -51,6 +53,7 @@ public class EGBlockList
 	       ReinforcedStone = new ReinforcedStone(EGProperties.ReinforcedStoneID).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("ReinforcedStone").setTextureName("ere_geologique:reinforced_stone");
 	       ReinforcedGlass = new ReinforcedGlass(EGProperties.ReinforcedGlassID, Material.glass, false).setHardness(0.3F).setResistance(10.0F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("ReinforcedGlass").setTextureName("ere_geologique:reinforced_glass");
 	       SteelBlock = new ReinforcedStone(EGProperties.SteelBlockID).setHardness(5.0F).setResistance(10.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("SteelBlock").setTextureName("ere_geologique:steel_block");
+	       Skull = new Skull(EGProperties.FossilSkullID).setHardness(1.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("FossilSkull");
 	       
 	       GameRegistry.registerBlock(Leaves, ItemBlockLeaves.class, "Leaves");
 	       GameRegistry.registerBlock(Wood, ItemBlockWood.class, "Wood");
@@ -70,6 +73,10 @@ public class EGBlockList
 	       GameRegistry.registerBlock(ReinforcedStone, "ReinforcedStone");
 	       GameRegistry.registerBlock(ReinforcedGlass, "ReinforcedGlass");
 	       GameRegistry.registerBlock(SteelBlock, "Steelblock");
+	       GameRegistry.registerBlock(Skull, "Skull");
+
+	       MinecraftForge.setBlockHarvestLevel(Fossil, 0, "pickaxe", 2);
+
 		}
 		catch(Exception ex)
 		{

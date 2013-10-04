@@ -1,7 +1,6 @@
 package ere_geologique.common;
 
 import java.io.File;
-import java.util.Properties;
 import java.util.logging.Logger;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -57,7 +56,6 @@ public class EreGeologique
 	   public static EGOptions EGOptions;
 	   public static GuiHandler guiHandler = new GuiHandler();
 	   public static IChatListener messagerHandler = new EGMessageHandler();
-	   public static Properties LangProps = new Properties();
 	   public static IPacketHandler RiderInput = new RiderInput();
 	   
 	   @EventHandler
@@ -88,6 +86,7 @@ public class EreGeologique
 		        	EGProperties.ReinforcedStoneID = cfg.getBlock("ReinforcedStone", 2514).getInt();
 		        	EGProperties.ReinforcedGlassID = cfg.getBlock("ReinforcedGlass", 2515).getInt();
 		        	EGProperties.SteelBlockID = cfg.getBlock("SteelBlock", 2516).getInt();
+		        	EGProperties.FossilSkullID = cfg.getBlock("FossilSkull", 2517).getInt();
 
 		        	//Items
 		        	EGProperties.IvoryIngotID = cfg.getItem("Ivory Ingot", 4000).getInt();
@@ -110,15 +109,18 @@ public class EreGeologique
 		        	EGProperties.BrokenSaplingID = cfg.getItem("BrokenSapling", 4017).getInt();
 		        	EGProperties.SteelIngotID = cfg.getItem("SteelIngot", 4018).getInt();
 		        	EGProperties.SteelPlateID = cfg.getItem("SteelPlate", 4019).getInt();
+		        	EGProperties.RelicID = cfg.getItem("Relic", 4020).getInt();
+		        	EGProperties.cookedChickenSoupID = cfg.getItem("cookedChickenSoup", 4021).getInt();
+		        	EGProperties.rawChickenSoupID = cfg.getItem("rawChickenSoup", 4022).getInt();
 
 		        	for(int i=0;i<EnumDinoType.values().length;i++)
-		        	EGProperties.EGGIDs[i] = cfg.getItem("Egg" + EnumDinoType.values()[i].name(), 4020+i).getInt();
+		        	EGProperties.EGGIDs[i] = cfg.getItem("Egg" + EnumDinoType.values()[i].name(), 4023+i).getInt();
 		        	
 		        	for(int i=0;i<EnumDinoType.values().length;i++)
-		            EGProperties.RAWIDs[i] = cfg.getItem("raw" + EnumDinoType.values()[i].name(), 4034+i).getInt();
+		            EGProperties.RAWIDs[i] = cfg.getItem("raw" + EnumDinoType.values()[i].name(), 4037+i).getInt();
 		        	
 		        	for(int i=0;i<EnumDinoType.values().length;i++)
-			        EGProperties.DNAIDs[i] = cfg.getItem("dna" + EnumDinoType.values()[i].name(), 4048+i).getInt();
+			        EGProperties.DNAIDs[i] = cfg.getItem("dna" + EnumDinoType.values()[i].name(), 4051+i).getInt();
 		        	
 		        	//Dimensions
 		        	EGProperties.GlaciaID = cfg.get("Dimension", "Glacia",-2).getInt();

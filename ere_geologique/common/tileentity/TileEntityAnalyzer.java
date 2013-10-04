@@ -281,7 +281,47 @@ public class TileEntityAnalyzer extends TileEntity implements IInventory, ISided
 
             if(EnumDinoType.getDNA(this.analyzerItemStacks[this.RawIndex].getItem())!=null)
             	var1= new ItemStack(EnumDinoType.getDNA(this.analyzerItemStacks[this.RawIndex].getItem()),1);
+            if (this.analyzerItemStacks[this.RawIndex].getItem() == EGItemList.Relic)
+            {
+                if (var2 <= 40)
+                    var1 = new ItemStack(Block.gravel, 2);
 
+                if (var2 > 40)
+                    var1 = new ItemStack(Item.flint, 2);
+            }
+            if (var1 != null)
+            {
+                if (var1.itemID == Item.dyePowder.itemID || var1.itemID == Item.flint.itemID || var1.itemID == Block.gravel.blockID || var1.itemID == EGItemList.Relic.itemID || var1.itemID == EGItemList.BrokenSapling.itemID || var1.itemID == Block.sand.blockID)
+                {
+                    for (var3 = 12; var3 > 8; --var3)
+                    {
+                        if (this.analyzerItemStacks[var3] != null && var1.itemID == this.analyzerItemStacks[var3].itemID)
+                        {
+                            if (this.analyzerItemStacks[var3].stackSize + var1.stackSize <= this.analyzerItemStacks[var3].getMaxStackSize())
+                            {
+                                this.analyzerItemStacks[var3].stackSize += var1.stackSize;
+                                var1.stackSize = 0;
+                                break;
+                            }
+
+                            var1.stackSize -= this.analyzerItemStacks[var3].getMaxStackSize() - this.analyzerItemStacks[var3].stackSize;
+                            this.analyzerItemStacks[var3].stackSize = this.analyzerItemStacks[var3].getMaxStackSize();
+                        }
+                    }
+                }
+
+                if (var1.stackSize != 0 && this.analyzerItemStacks[this.SpaceIndex] == null)
+                {
+                    this.analyzerItemStacks[this.SpaceIndex] = var1.copy();
+                }
+
+                --this.analyzerItemStacks[this.RawIndex].stackSize;
+
+                if (this.analyzerItemStacks[this.RawIndex].stackSize == 0)
+                {
+                    this.analyzerItemStacks[this.RawIndex] = null;
+                }
+            }
         }
     }
     
@@ -328,13 +368,17 @@ public class TileEntityAnalyzer extends TileEntity implements IInventory, ISided
     {
         return null;
     }
+    
 	@Override
-	public boolean isInvNameLocalized() {
+	public boolean isInvNameLocalized()
+	{
 		return false;
 	}
+	
 	@Override
-	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
-		return false;
+	public boolean isItemValidForSlot(int i, ItemStack itemstack)
+	{
+        return i == 2 ? false : (i == 1 ? isItemFuel(itemstack) : true);
 	}
 	
 }

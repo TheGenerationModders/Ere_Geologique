@@ -38,26 +38,16 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
         }
     }
 
-    /**
-     * Returns the number of slots in the inventory.
-     */
     public int getSizeInventory()
     {
         return this.feederItemStacks.length;
     }
 
-    /**
-     * Returns the stack in slot i
-     */
     public ItemStack getStackInSlot(int var1)
     {
         return this.feederItemStacks[var1];
     }
 
-    /**
-     * Removes from an inventory slot (first arg) up to a specified number (second arg) of items and returns them in a
-     * new stack.
-     */
     public ItemStack decrStackSize(int var1, int var2)
     {
         if (this.feederItemStacks[var1] != null)
@@ -88,9 +78,6 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
         }
     }
 
-    /**
-     * Sets the given item stack to the specified slot in the inventory (can be crafting or armor sections).
-     */
     public void setInventorySlotContents(int var1, ItemStack var2)
     {
         this.feederItemStacks[var1] = var2;
@@ -101,17 +88,11 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
         }
     }
 
-    /**
-     * Returns the name of the inventory.
-     */
     public String getInvName()
     {
         return "Feeder";
     }
 
-    /**
-     * Reads a tile entity from NBT.
-     */
     public void readFromNBT(NBTTagCompound var1)
     {
         super.readFromNBT(var1);
@@ -133,9 +114,6 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
         this.VegCurrent = var1.getInteger("VegCurrent");
     }
 
-    /**
-     * Writes a tile entity to NBT.
-     */
     public void writeToNBT(NBTTagCompound var1)
     {
         super.writeToNBT(var1);
@@ -157,10 +135,6 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
         var1.setInteger("VegCurrent", this.VegCurrent);
     }
 
-    /**
-     * Returns the maximum stack size for a inventory slot. Seems to always be 64, possibly will be extended. *Isn't
-     * this more of a set than a get?*
-     */
     public int getInventoryStackLimit()
     {
         return 64;
@@ -176,15 +150,6 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
         return this.VegCurrent * var1 / this.VegMax;
     }
 
-    /*public boolean isFilled()
-    {
-        return this.MeatCurrent > 0 || this.VegCurrent > 0;
-    }*/
-
-    /**
-     * Allows the entity to update its state. Overridden in most subclasses, e.g. the mob spawner uses this to count
-     * ticks and creates a new spawn inside its implementation.
-     */
     public void updateEntity()
     {
         boolean var1 = false;
@@ -195,27 +160,16 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
             int var3;
 
             if (this.feederItemStacks[0] != null && this.MeatCurrent<this.MeatMax && EnumDinoFoodItem.foodtype(this.feederItemStacks[0].itemID)==EnumDinoFoodItem.ISCARNIVOROUS)//the carnivore part
-            {//there is an item in, its carn. food and there is space
+            {
             	
             	int val=EnumDinoFoodItem.getItemFood(this.feederItemStacks[0].itemID);
             	
-            	//if(this.feederItemStacks[0].getItem() instanceof fossil.items.ItemDinoMeat)
-            	{// the feeder contains the raw food of the dino....he wont eat out of it anymore until it has been emptied!
-            		/*if(this.feederItemStacks[0].getItem().itemID==Fossil.rawTriceratops.itemID)this.ContainType[EnumDinoType.Triceratops.ordinal()]=true;
-            		if(this.feederItemStacks[0].getItem().itemID==Fossil.rawVelociraptor.itemID)this.ContainType[EnumDinoType.Velociraptor.ordinal()]=true;
-            		if(this.feederItemStacks[0].getItem().itemID==Fossil.rawTRex.itemID)this.ContainType[EnumDinoType.TRex.ordinal()]=true;
-            		if(this.feederItemStacks[0].getItem().itemID==Fossil.rawStegosaurus.itemID)this.ContainType[EnumDinoType.Stegosaurus.ordinal()]=true;
-            		if(this.feederItemStacks[0].getItem().itemID==Fossil.rawPterosaur.itemID)this.ContainType[EnumDinoType.Pterosaur.ordinal()]=true;
-            		if(this.feederItemStacks[0].getItem().itemID==Fossil.rawPlesiosaur.itemID)this.ContainType[EnumDinoType.Plesiosaur.ordinal()]=true;
-            		if(this.feederItemStacks[0].getItem().itemID==Fossil.rawMosasaurus.itemID)this.ContainType[EnumDinoType.Mosasaurus.ordinal()]=true;
-            		if(this.feederItemStacks[0].getItem().itemID==Fossil.rawDilophosaurus.itemID)this.ContainType[EnumDinoType.Dilophosaurus.ordinal()]=true;
-            		if(this.feederItemStacks[0].getItem().itemID==Fossil.rawBrachiosaurus.itemID)this.ContainType[EnumDinoType.Brachiosaurus.ordinal()]=true;
-                    if(this.feederItemStacks[0].getItem().itemID==Fossil.rawSpinosaurus.itemID)this.ContainType[EnumDinoType.Spinosaurus.ordinal()]=true;*/
+            	{
             		if(EnumDinoType.isDinoDrop(this.feederItemStacks[0].getItem()))
             			this.ContainType[EnumDinoType.getIndex(this.feederItemStacks[0].getItem())]=true;
             	}
             	if (val * this.feederItemStacks[0].stackSize + this.MeatCurrent < this.MeatMax)
-                {//can take all of it
+                {
                     this.MeatCurrent += val * this.feederItemStacks[0].stackSize;
                     var1 = true;
                     this.feederItemStacks[0] = null;
@@ -264,7 +218,6 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
             if (var2 != (((this.MeatCurrent > 0)?2:0) + ((this.VegCurrent > 0)?1:0)))
             {
             	Feeder.updateFurnaceBlockState(this.VegCurrent > 0, this.MeatCurrent > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
-                //BlockFeeder.updateFurnaceBlockState(var4, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
             }
 
             if (var1)
@@ -274,9 +227,6 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
         }
     }
 
-    /**
-     * Do not make give this method the name canInteractWith because it clashes with Container
-     */
     public boolean isUseableByPlayer(EntityPlayer var1)
     {
         return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : var1.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
@@ -285,15 +235,11 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
     public void openChest() {}
 
     public void closeChest() {}
-    
-    /**
-     * takes a dino type and returns true, if the feeder is !!!EMPTY!!! for that Dino!
-     * Returns false if the dino is a carnivore and its own meat is in the feeder
-     */
+
     public boolean CheckIsEmpty(EnumDinoType t)
     {
         if (((!t.isHerbivore() || this.VegCurrent==0) && (!t.isCarnivore() || this.MeatCurrent==0)) || this.ContainType[t.ordinal()])
-            return true;//the dino wont eat from the feeder if it can smell its own flesh (filled with raw flesh)
+            return true;
         return false;
     }
 
@@ -314,56 +260,7 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
         Feeder.updateFurnaceBlockState(this.VegCurrent>0, this.MeatCurrent>0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
         return a;//amount fed to the dino
     }
-
-    /*@Deprecated
-    public boolean CheckIsEmpty(EnumDinoEating var1)
-    {
-        if (var1 == EnumDinoEating.Herbivorous)
-        {
-            return this.VegCurrent == 0;
-        }
-        else if (this.MeatCurrent == 0)
-        {
-            this.ClearTypeRecord();
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    @Deprecated
-    public void Feed(EntityDinosaur var1, EnumDinoEating var2)
-    {
-        while (var1.increaseHunger(1) && !this.CheckIsEmpty(var2))
-        {
-            if (var2 == EnumDinoEating.Herbivorous)
-            {
-                --this.VegCurrent;
-            }
-            else
-            {
-                --this.MeatCurrent;
-            }
-        }
-    }*/
-
-    /*public boolean GetIfEatingSameBreed(EnumDinoType var1)
-    {//Seems to be completely senseless to me, will return true for all dinos
-        EnumDinoType[] var2 = EnumDinoType.values();
-
-        for (int var3 = 0; var3 < var2.length; ++var3)
-        {
-            if (var1.equals(var2[var3]))
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }*/
-
+    
     public int getSizeInventorySide(ForgeDirection var1)
     {
         return 1;
@@ -374,10 +271,6 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
         return var1 == ForgeDirection.DOWN ? 1 : (var1 == ForgeDirection.UP ? 0 : 2);
     }
 
-    /**
-     * When some containers are closed they call this on each slot, then drop whatever it returns as an EntityItem -
-     * like when you close a workbench GUI.
-     */
     public ItemStack getStackInSlotOnClosing(int var1)
     {
         return null;
@@ -396,27 +289,32 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
     }
 
 	@Override
-	public boolean isInvNameLocalized() {
+	public boolean isInvNameLocalized()
+	{
 		return false;
 	}
 
 	@Override
-	public int[] getAccessibleSlotsFromSide(int var1) {
+	public int[] getAccessibleSlotsFromSide(int var1)
+	{
 		return null;
 	}
 
 	@Override
-	public boolean canInsertItem(int i, ItemStack itemstack, int j) {
+	public boolean canInsertItem(int i, ItemStack itemstack, int j)
+	{
+        return this.isItemValidForSlot(i, itemstack);
+	}
+
+	@Override
+	public boolean canExtractItem(int i, ItemStack itemstack, int j)
+	{
 		return false;
 	}
 
 	@Override
-	public boolean canExtractItem(int i, ItemStack itemstack, int j) {
-		return false;
-	}
-
-	@Override
-	public boolean isItemValidForSlot(int i, ItemStack itemstack) {
-		return false;
+	public boolean isItemValidForSlot(int i, ItemStack itemstack)
+	{
+		return true;
 	}
 }

@@ -39,11 +39,13 @@
     <entry key="tile.analyzer.name">Analyzer</entry>
 	<entry key="tile.cultureVat.name">Culture Vat</entry>
     <entry key="tile.feederIdle.name">Feeder</entry>
+    <entry key="container.feederIdle">Feeder</entry>
 	<entry key="tile.feederActive.name">Feeder</entry>
     <entry key="tile.Fossil.name">Fossil</entry>
 	<entry key="tile.ReinforcedStone.name">Roche renforcé</entry>
     <entry key="tile.ReinforcedGlass.name">Verre renforcé</entry>
     <entry key="tile.SteelBlock.name">Bloc d'acier</entry>
+    <entry key="tile.FossilSkull.name">FossilSkull</entry>
 <!-- Items -->
     <entry key="item.IvoryIngot.name">Ivoire</entry>
     <entry key="item.IvoryNugget.name">Pépite d'Ivoire</entry>
@@ -64,6 +66,9 @@
     <entry key="item.plantFossil.name">Plant Fossil</entry>
     <entry key="item.SteelIngot.name">L'ingot d'acier</entry>
     <entry key="item.SteelPlate.name">Plaque d'acier</entry>
+    <entry key="item.Relic_Srap.name">Relic Srap</entry>
+    <entry key="item.cookedChickenSoup.name">cookedChickenSoup</entry>
+    <entry key="item.rawChickenSoup.name">rawChickenSoup</entry>
     <!-- Dino Meat -->
 	<entry key="item.dinoSteak.name">Dino Steak</entry>
 	<entry key="item.rawTriceratops.name">Triceratops Meat</entry>

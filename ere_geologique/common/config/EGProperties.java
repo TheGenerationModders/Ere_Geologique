@@ -23,6 +23,7 @@ public class EGProperties
 	public static int ReinforcedStoneID;
 	public static int ReinforcedGlassID;
 	public static int SteelBlockID;
+	public static int FossilSkullID;
 	
 	//Items
 	public static int IvoryIngotID;
@@ -45,6 +46,9 @@ public class EGProperties
 	public static int BrokenSaplingID;
 	public static int SteelIngotID;
 	public static int SteelPlateID;
+	public static int RelicID;
+	public static int cookedChickenSoupID;
+	public static int rawChickenSoupID;
 
 	//Dimensions
 	public static int GlaciaID;

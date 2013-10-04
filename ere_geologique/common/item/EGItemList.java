@@ -29,6 +29,9 @@ public class EGItemList
 	public static Item BrokenSapling;
 	public static Item SteelIngot;
 	public static Item SteelPlate;
+	public static Item Relic;
+	public static Item rawChickenSoup;
+	public static Item cookedChickenSoup;
 	
 	public static void loadItem()
 	{
@@ -54,7 +57,9 @@ public class EGItemList
 	       BrokenSapling = new EGItem(EGProperties.BrokenSaplingID, "Broken_Sapling").setUnlocalizedName(LocalizationStrings.BROKEN_SAPLING_NAME);
 	       SteelIngot = new EGItem(EGProperties.SteelIngotID, "SteelIngot").setUnlocalizedName("SteelIngot");
 	       SteelPlate = new EGItem(EGProperties.SteelPlateID, "SteelPlate").setUnlocalizedName("SteelPlate");
-	       
+	       Relic = new EGItem(EGProperties.RelicID, "Relic_Scrap").setUnlocalizedName("Relic_Srap");
+	       cookedChickenSoup = new EGItem(EGProperties.cookedChickenSoupID, "Cooked_Chicken_Soup").setUnlocalizedName("cookedChickenSoup").setMaxStackSize(1).setContainerItem(Item.bucketEmpty);
+	       rawChickenSoup = new EGItem(EGProperties.rawChickenSoupID, "Raw_Chicken_Soup").setUnlocalizedName("rawChickenSoup").setMaxStackSize(1).setContainerItem(Item.bucketEmpty);
 	       for(int i=0;i<EnumDinoType.values().length;i++)
 	       EnumDinoType.values()[i].EggItem = new Egg(EGProperties.EGGIDs[i], i).setUnlocalizedName("egg"+EnumDinoType.values()[i].name()).setCreativeTab(EGCreativeTab.EGCreativeTab);
 	       

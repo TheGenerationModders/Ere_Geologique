@@ -38,12 +38,14 @@
     <entry key="tile.Stair.name">Escalier de Fougère</entry>
     <entry key="tile.analyzer.name">Analyzer</entry>
 	<entry key="tile.cultureVat.name">Culture Vat</entry>
-    <entry key="tile.feederIdle.name">Feeder</entry>
-	<entry key="tile.feederActive.name">Feeder</entry>
+    <entry key="tile.feeder.name">Feeder</entry>
+    <entry key="container.feeder">Feeder</entry>
+	<entry key="tile.feeder.name">Feeder</entry>
     <entry key="tile.Fossil.name">Fossil</entry>
 	<entry key="tile.ReinforcedStone.name">ReinforcedStone</entry>
     <entry key="tile.ReinforcedGlass.name">ReinforcedGlass</entry>
     <entry key="tile.SteelBlock.name">SteelBlock</entry>
+    <entry key="tile.FossilSkull.name">FossilSkull</entry>
 <!-- Items -->
     <entry key="item.IvoryIngot.name">Ivory</entry>
     <entry key="item.IvoryNugget.name">IvoryNugget</entry>
@@ -64,6 +66,9 @@
     <entry key="item.plantFossil.name">Plant Fossil</entry>
     <entry key="item.SteelIngot.name">SteelIngot</entry>
     <entry key="item.SteelPlate.name">SteelPlate</entry>
+    <entry key="item.Relic_Srap.name">Relic Srap</entry>
+    <entry key="item.cookedChickenSoup.name">cookedChickenSoup</entry>
+    <entry key="item.rawChickenSoup.name">rawChickenSoup</entry>
     <!-- Dino Meat -->
 	<entry key="item.dinoSteak.name">Dino Steak</entry>
 	<entry key="item.rawTriceratops.name">Triceratops Meat</entry>
