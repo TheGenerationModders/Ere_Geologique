@@ -15,7 +15,7 @@ public class Integration
 	public static void loadBuildCraft()
 	{
 	 //Recette à rajouter
-		GameRegistry.addRecipe(new ItemStack(EGItemList.IvoryGear,1), new Object[]
+		GameRegistry.addRecipe(new ItemStack(EGItemList.IvoryGear, 1), new Object[]
 	    {
 		" X ", "XOX", " X ", 'X', new ItemStack(EGItemList.IvoryIngot), 'O', new ItemStack(BuildCraftCore.diamondGearItem)
 	    });
