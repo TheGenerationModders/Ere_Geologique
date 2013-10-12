@@ -21,6 +21,6 @@ public class Failuresaurus extends EntityZombie
     
     public String getTexture()
     {
-        return "/assets/ere_geologique/textures/entity/Failuresaurus.png";
+        return "ere_geologique:textures/entity/Failuresaurus.png";
     }
 }

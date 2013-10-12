@@ -8,6 +8,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAISwimming;
@@ -42,7 +43,7 @@ public class TRex extends Dinosaure
     private boolean field_25052_g;*/
     public boolean Screaming = false;
     public int SkillTick = 0;
-    //public int WeakToDeath = 0;
+    public int WeakToDeath = 0;
     public int TooNearMessageTick = 0;
     public boolean SneakScream = false;
     //private final BlockBreakingRule blockBreakingBehavior;
@@ -104,6 +105,13 @@ public class TRex extends Dinosaure
         this.targetTasks.addTask(2, new DinoAITargetNonTamedExceptSelfClass(this, EntityLiving.class, 16.0F, 50, false));
     }
 
+    protected void applyEntityAttributes()
+    {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.50000001192092896D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(21.0D);
+
+    }
     /**
      * Returns true if the newer Entity AI code should be run
      */
@@ -542,10 +550,10 @@ public class TRex extends Dinosaure
         if(this.isModelized())
 //            return super.getTexture();
         if (this.isWeak())
-            return "/assets/ere_geologique/textures/entity/TRexWeak.png";
+            return "ere_geologique:textures/entity/TRexWeak.png";
         if (this.isAdult() && !this.isTamed()) 
-            return "/assets/ere_geologique/textures/entity/TRex_Adult.png";
-        return "/assets/ere_geologique/textures/entity/TRex.png";
+            return "ere_geologique:textures/entity/TRex_Adult.png";
+        return "ere_geologique:textures/entity/TRex.png";
     }
 
     /**
@@ -576,15 +584,15 @@ public class TRex extends Dinosaure
     	return false;//this.getHealthData() < 8 && this.getDinoAge()>8 && !this.isTamed();
     }
 
-    /*private void HandleWeak()
+    private void HandleWeak()
     {
         if (!this.worldObj.isRemote)
         {
-            if (this.texture != "/fossil/textures/TRexWeak.png")
+ /*           if (this.texture != "/fossil/textures/TRexWeak.png")
             {
                 this.texture = "/fossil/textures/TRexWeak.png";
             }
-
+*/
             ++this.WeakToDeath;
 
             if (this.WeakToDeath >= 200)
@@ -598,7 +606,7 @@ public class TRex extends Dinosaure
                 this.setAngry(false);
             }
         }
-    }*/
+    }
     public void ShowPedia(GuiPedia p0)
     {
         super.ShowPedia(p0);

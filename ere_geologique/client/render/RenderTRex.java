@@ -16,11 +16,11 @@ import ere_geologique.common.entity.TRex;
 
 public class RenderTRex extends RenderLiving
 {
-    private static final ResourceLocation loc = new ResourceLocation("ere_geologique:textures/entity/TRex.png");
+//    private static final ResourceLocation loc = new ResourceLocation("ere_geologique:textures/entity/TRex.png");
     
     protected ResourceLocation func_110919_a(TRex par1Entity)
     {
-        return loc;
+        return new ResourceLocation(par1Entity.getTexture());
     }
     
     protected ResourceLocation getEntityTexture(Entity par1Entity)
@@ -33,11 +33,6 @@ public class RenderTRex extends RenderLiving
         super(var1, var2);
     }
 
-    /**
-     * Returns a rotation angle that is inbetween two other rotation angles. par1 and par2 are the angles between which
-     * to interpolate, par3 is probably a float between 0.0 and 1.0 that tells us where "between" the two angles we are.
-     * Example: par1 = 30, par2 = 50, par3 = 0.5, then return = 40
-     */
     private float interpolateRotation(float var1, float var2, float var3)
     {
         float var4;
@@ -235,12 +230,6 @@ public class RenderTRex extends RenderLiving
         this.renderTRex((TRex)var1, var2, var4, var6, var8, var9);
     }
 
-    /**
-     * Actually renders the given argument. This is a synthetic bridge method, always casting down its argument and then
-     * handing it off to a worker function which does the actual work. In all probabilty, the class Render is generic
-     * (Render<T extends Entity) and this method has signature public void doRender(T entity, double d, double d1,
-     * double d2, float f, float f1). But JAD is pre 1.5 so doesn't do that.
-     */
     public void doRender(Entity var1, double var2, double var4, double var6, float var8, float var9)
     {
         if (((TRex)var1).isWeak())

@@ -19,7 +19,7 @@ import ere_geologique.common.entity.Dinosaure;
 
 public class RenderCompsognathus extends RenderLiving
 {
-    private static final ResourceLocation loc = new ResourceLocation("ere_geologique:textures/entity/Compsognathus_green.png");
+//    private static final ResourceLocation loc = new ResourceLocation("fossil:textures/mob/Compsognathus.png");
 
     final float SwingConst = 0.261799F;
     final int SwingStep = 15;
@@ -31,20 +31,11 @@ public class RenderCompsognathus extends RenderLiving
         super(var1, var2);
     }
 
-    /**
-     * Applies the scale to the transform matrix
-     * 
-     * Use this to grow the dinonsaur with age.
-     */
     protected void preRenderScale(Compsognathus entitydinosaur, float par2)
     {
         GL11.glScalef(entitydinosaur.getDinoWidth(), entitydinosaur.getDinoHeight(), entitydinosaur.getDinoLength());
     }
 
-    /**
-     * Allows the render to do any OpenGL state modifications necessary before the model is rendered. Args:
-     * entityLiving, partialTickTime
-     */
     protected void preRenderCallback(EntityLivingBase par1EntityLivingBase, float par2)
     {
         this.preRenderScale((Compsognathus)par1EntityLivingBase, par2);
@@ -52,14 +43,15 @@ public class RenderCompsognathus extends RenderLiving
     
     protected ResourceLocation func_110919_a(Compsognathus par1Entity)
     {
-        return loc;
+
+        return new ResourceLocation(par1Entity.getTexture());
     }
     
     protected ResourceLocation getEntityTexture(Entity par1Entity)
     {
         return this.func_110919_a((Compsognathus)par1Entity);
     }    
-    
+
     protected void renderEquippedItems(EntityLiving var1, float var2)
     {
         float var3 = 1.0F + 0.0F * (float)((Dinosaure)var1).getDinoAge();

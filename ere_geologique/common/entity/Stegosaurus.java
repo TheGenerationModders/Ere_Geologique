@@ -98,30 +98,6 @@ public class Stegosaurus extends Dinosaure
 		return "/assets/ere_geologique/textures/entity/Stegosaurus_Baby.png";
     }
 
-    /**
-     * (abstract) Protected helper method to write subclass entity data to NBT.
-     */
-    /*public void writeEntityToNBT(NBTTagCompound var1)
-    {
-        super.writeEntityToNBT(var1);
-        //var1.setInteger("SubSpecies", this.SubSpecies);
-        //var1.setBoolean("Angry", this.isSelfAngry());
-        //var1.setBoolean("isBaby", this.isBaby);
-    }*/
-
-    /**
-     * (abstract) Protected helper method to read subclass entity data from NBT.
-     */
-    /*public void readEntityFromNBT(NBTTagCompound var1)
-    {
-        super.readEntityFromNBT(var1);
-        //this.SubSpecies = var1.getInteger("SubSpecies");
-        //this.isBaby = var1.getBoolean("isBaby");
-        this.CheckSkin();
-        //this.setSelfAngry(var1.getBoolean("Angry"));
-        //this.setSelfSitting(var1.getBoolean("Sitting"));
-        //this.InitSize();
-    }*/
 
     protected void updateEntityActionState()
     {

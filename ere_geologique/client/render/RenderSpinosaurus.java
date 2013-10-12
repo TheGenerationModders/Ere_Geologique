@@ -22,20 +22,11 @@ public class RenderSpinosaurus extends RenderLiving
         super(par1ModelBase, par2);
     }
 
-    /**
-     * Applies the scale to the transform matrix
-     * 
-     * Use this to grow the dinonsaur with age.
-     */
     protected void preRenderScale(Spinosaurus entitydinosaur, float par2)
     {
         GL11.glScalef(entitydinosaur.getDinoWidth(), entitydinosaur.getDinoHeight(), entitydinosaur.getDinoLength());
     }
 
-    /**
-     * Allows the render to do any OpenGL state modifications necessary before the model is rendered. Args:
-     * entityLiving, partialTickTime
-     */
     protected void preRenderCallback(EntityLivingBase par1EntityLivingBase, float par2)
     {
         this.preRenderScale((Spinosaurus)par1EntityLivingBase, par2);
@@ -43,7 +34,7 @@ public class RenderSpinosaurus extends RenderLiving
     
     protected ResourceLocation func_110919_a(Spinosaurus par1Entity)
     {
-        return loc;
+        return new ResourceLocation(par1Entity.getTexture());
     }
     
     protected ResourceLocation getEntityTexture(Entity par1Entity)

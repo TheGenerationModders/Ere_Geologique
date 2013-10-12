@@ -8,6 +8,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.item.EntityItem;
@@ -40,7 +41,7 @@ public class Plesiosaure extends Dinosaure implements IWaterDino
     public int SubSpecies = 1;
     public boolean isBaby = true;*/
     //public int RushTick = 0;
-    
+     
     public float TargetY = 0.0F;
     private float randomMotionSpeed;
     private float randomMotionVecX = 0.0F;
@@ -52,44 +53,14 @@ public class Plesiosaure extends Dinosaure implements IWaterDino
     {
         super(var1,EnumDinoType.Plesiosaure);
         this.looksWithInterest = false;
-        //this.SubSpecies = (new Random()).nextInt(3) + 1;
         this.setSubSpecies((new Random()).nextInt(3) + 1);
-        //this.setSize(1.0F, 1.0F);
-        //this.moveSpeed = 0.7F;
-        //this.health = 8;
-        //this.experienceValue=2;
-        
-        /*this.Width0=0.5F;
-        this.WidthInc=0.3F;
-        this.Length0=0.5F;
-        this.LengthInc=0.5F;
-        this.Height0=0.5F;
-        this.HeightInc=0.3F;
-        this.BaseattackStrength=3;
-        //this.AttackStrengthIncrease=;
-        //this.BreedingTime=;
-        this.BaseSpeed=0.18F;
-        this.SpeedIncrease=0.02F;
-        this.MaxAge=12;
-        this.BaseHealth=30;
-        this.HealthIncrease=10;
-        //this.AdultAge=;
-        //this.AgingTicks=;
-        this.MaxHunger=500;
-        //this.Hungrylevel=;*/
+
         this.updateSize(); 
         
         this.getNavigator().setCanSwim(true);
-        //this.tasks.addTask(0, new DinoAIGrowup(this, 12));
-        //this.tasks.addTask(0, new DinoAIStarvation(this));
-        //this.tasks.addTask(1, new WaterDinoAISwimming(this, true, 0.09374999F, 0.018749999F));
         this.tasks.addTask(2, this.ridingHandler = new DinoAIControlledByPlayer(this));
         this.tasks.addTask(3, new DinoAIAttackOnCollide(this, 1.0D, true));
         this.tasks.addTask(4, new DinoAIFollowOwner(this, 5.0F, 2.0F, 1.0F));
-        //this.tasks.addTask(6, new DinoAIUseFeeder(this, 24,/* this.HuntLimit,*/ EnumDinoEating.Carnivorous));
-        /*this.tasks.addTask(7, new DinoAIPickItem(this, Item.fishRaw, this.moveSpeed * 2.0F, 24, this.HuntLimit));
-        this.tasks.addTask(7, new DinoAIPickItem(this, Item.fishCooked, this.moveSpeed * 2.0F, 24, this.HuntLimit));
-        this.tasks.addTask(7, new DinoAIPickItem(this, Fossil.sjl, this.moveSpeed * 2.0F, 24, this.HuntLimit));*/
         this.tasks.addTask(7, new DinoAIEat(this, 24));
         this.tasks.addTask(8, new DinoAIFishing(this, /*this.HuntLimit,*/ 1));
         this.tasks.addTask(9, new DinoAIWander(this, 1.0D));
@@ -97,6 +68,30 @@ public class Plesiosaure extends Dinosaure implements IWaterDino
         this.tasks.addTask(11, new EntityAILookIdle(this));
     }
 
+	
+    protected void applyEntityAttributes()
+    {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.30000001192092896D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(21.0D);
+
+    }
+    
+    /**
+     * Returns the texture's file path as a String.
+     */
+    @Override
+    public String getTexture()
+    {
+        if (this.isModelized())
+            return super.getTexture();
+            switch (this.getSubSpecies())
+            {
+                default:
+                	return "ere_geologique:textures/entity/Plesiosaure_adult.png";
+            }
+    }
+    
     /**
      * Returns true if the newer Entity AI code should be run
      */
@@ -118,26 +113,6 @@ public class Plesiosaure extends Dinosaure implements IWaterDino
     {
         return true;
     }
-
-    /**
-     * (abstract) Protected helper method to write subclass entity data to NBT.
-     */
-    /*public void writeEntityToNBT(NBTTagCompound var1)
-    {
-        super.writeEntityToNBT(var1);
-        var1.setBoolean("Angry", this.isSelfAngry());
-    }*/
-
-    /**
-     * (abstract) Protected helper method to read subclass entity data from NBT.
-     */
-    /*public void readEntityFromNBT(NBTTagCompound var1)
-    {
-        super.readEntityFromNBT(var1);
-        this.setSelfAngry(var1.getBoolean("Angry"));
-        //this.InitSize();
-    }*/
-
 
     protected void updateEntityActionState()
     {
@@ -164,27 +139,6 @@ public class Plesiosaure extends Dinosaure implements IWaterDino
             }
         }
     }
-
-    /**
-     * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons
-     * use this to react to sunlight and start to burn.
-     */
-    /*public void onLivingUpdate()
-    {
-        if (this.isInWater() && this.motionY <= 0.0D)
-        {
-            if (this.getNavigator().noPath())
-            {
-                this.motionY = -0.0037499999161809683D;
-            }
-            else
-            {
-                this.motionY = -0.01874999888241291D;
-            }
-        }
-
-        super.onLivingUpdate();
-    }*/
 
     public boolean isOnSurface()
     {

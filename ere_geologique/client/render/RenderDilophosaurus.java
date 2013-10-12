@@ -4,14 +4,12 @@ import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 import ere_geologique.client.model.ModelDilophosaurus;
-import ere_geologique.common.entity.Ankylosaurus;
 import ere_geologique.common.entity.Dilophosaurus;
 
 public class RenderDilophosaurus extends RenderLiving
@@ -20,7 +18,7 @@ public class RenderDilophosaurus extends RenderLiving
     
     protected ResourceLocation func_110919_a(Dilophosaurus par1Entity)
     {
-        return loc;
+        return new ResourceLocation(par1Entity.getTexture());
     }
     
     protected ResourceLocation getEntityTexture(Entity par1Entity)
@@ -28,22 +26,12 @@ public class RenderDilophosaurus extends RenderLiving
         return this.func_110919_a((Dilophosaurus)par1Entity);
     }
     
-    protected void preRenderScale(Dilophosaurus entitydinosaur, float par2)
-    {
-        GL11.glScalef(entitydinosaur.getDinoWidth(), entitydinosaur.getDinoHeight(), entitydinosaur.getDinoLength());
-    }
-
-    protected void preRenderCallback(EntityLivingBase par1EntityLivingBase, float par2)
-    {
-        this.preRenderScale((Dilophosaurus)par1EntityLivingBase, par2);
-    }
-    
     public RenderDilophosaurus(ModelBase var1, float var2)
     {
         super(var1, var2);
     }
 
-    public void renderDilophosaurus(Dilophosaurus var1, double var2, double var4, double var6, float var8, float var9)
+    public void RenderDino(Dilophosaurus var1, double var2, double var4, double var6, float var8, float var9)
     {
         GL11.glPushMatrix();
         GL11.glDisable(GL11.GL_CULL_FACE);
@@ -173,7 +161,7 @@ public class RenderDilophosaurus extends RenderLiving
 
     public void doRenderLiving(EntityLiving var1, double var2, double var4, double var6, float var8, float var9)
     {
-        this.renderDilophosaurus((Dilophosaurus)var1, var2, var4, var6, var8, var9);
+        this.RenderDino((Dilophosaurus)var1, var2, var4, var6, var8, var9);
     }
     
     /*protected void renderEquippedItems(EntityLiving var1, float var2)
@@ -219,14 +207,8 @@ public class RenderDilophosaurus extends RenderLiving
         }
     }*/
 
-    /**
-     * Actually renders the given argument. This is a synthetic bridge method, always casting down its argument and then
-     * handing it off to a worker function which does the actual work. In all probabilty, the class Render is generic
-     * (Render<T extends Entity) and this method has signature public void doRender(T entity, double d, double d1,
-     * double d2, float f, float f1). But JAD is pre 1.5 so doesn't do that.
-     */
     public void doRender(Entity var1, double var2, double var4, double var6, float var8, float var9)
     {
-        this.renderDilophosaurus((Dilophosaurus)var1, var2, var4, var6, var8, var9);
+        this.RenderDino((Dilophosaurus)var1, var2, var4, var6, var8, var9);
     }
 }

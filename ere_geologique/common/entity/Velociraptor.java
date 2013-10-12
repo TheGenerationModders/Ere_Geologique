@@ -7,6 +7,7 @@ import net.minecraft.block.StepSound;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
@@ -124,6 +125,13 @@ public class Velociraptor extends Dinosaure
         this.targetTasks.addTask(4, new DinoAITargetNonTamedExceptSelfClass(this, EntityLiving.class, 16.0F, 50, false));
     }
 
+    protected void applyEntityAttributes()
+    {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.20000001192092896D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(21.0D);
+
+    }
     /**
      * Returns true if the newer Entity AI code should be run
      */
@@ -160,31 +168,31 @@ public class Velociraptor extends Dinosaure
             switch (this.getSubSpecies())
             {
                 case 1:
-                    return "/assets/ere_geologique/textures/entity/raptor_adult_1.png";
+                    return "/assets/ere_geologique/textures/entity/raptor_blue_adult.png";
 
                 case 2:
-                    return "/assets/ere_geologique/textures/entity/raptor_adult_3.png";
+                    return "/assets/ere_geologique/textures/entity/raptor_green_adult.png";
                     
                 case 3:
-                    return "/assets/ere_geologique/textures/entity/raptor_adult_2.png";
+                    return "/assets/ere_geologique/textures/entity/raptor_brown_adult.png";
 
                 default:
-                	return "/assets/ere_geologique/textures/entity/raptor_adult_2.png";
+                	return "/assets/ere_geologique/textures/entity/raptor_brown_adult.png";
             }
         }
         switch (this.getSubSpecies())
         {
             case 1:
-                return "/assets/ere_geologique/textures/entity/raptor_Baby_1.png";
+                return "/assets/ere_geologique/textures/entity/raptor_blue_Baby.png";
 
             case 2:
-                return "/assets/ere_geologique/textures/entity/raptor_Baby_3.png";
+                return "/assets/ere_geologique/textures/entity/raptor_green_Baby.png";
             
             case 3:
-                return "/assets/ere_geologique/textures/entity/raptor_Baby_2.png";
+                return "/assets/ere_geologique/textures/entity/raptor_brown_Baby.png";
 
             default:
-            	return "/assets/ere_geologique/textures/entity/raptor_Baby_2.png";
+            	return "/assets/ere_geologique/textures/entity/raptor_brown_Baby.png";
         }
     }
     

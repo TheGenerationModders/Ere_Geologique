@@ -2,19 +2,18 @@ package ere_geologique.common.entity;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
+import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import ere_geologique.common.EreGeologique;
 import ere_geologique.common.entity.Enums.EnumDinoType;
@@ -24,7 +23,6 @@ import ere_geologique.common.entity.IA.DinoAIControlledByPlayer;
 import ere_geologique.common.entity.IA.DinoAIEat;
 import ere_geologique.common.entity.IA.DinoAIFollowOwner;
 import ere_geologique.common.entity.IA.DinoAIWander;
-import ere_geologique.common.tileentity.TileEntityFeeder;
 
 public class Brachiosaurus extends Dinosaure
 {
@@ -36,6 +34,7 @@ public class Brachiosaurus extends Dinosaure
     {
         super(var1,EnumDinoType.Brachiosaurus);
         
+        this.OrderStatus = EnumOrderType.FreeMove;
         this.updateSize();
         
         this.getNavigator().setAvoidsWater(true);
@@ -43,11 +42,15 @@ public class Brachiosaurus extends Dinosaure
         this.tasks.addTask(2, this.ridingHandler = new DinoAIControlledByPlayer(this));//, 0.34F));
         this.tasks.addTask(3, new EntityAILeapAtTarget(this, 0.4F));
         this.tasks.addTask(4, new DinoAIAttackOnCollide(this, 1.0D, true));
-        this.tasks.addTask(5, new DinoAIFollowOwner(this, 5.0F, 2.0F, 2.0F));
+        this.tasks.addTask(5, new DinoAIFollowOwner(this, 1.0D, 10.0F, 2.0F));
         this.tasks.addTask(7, new DinoAIWander(this, 1.0D));
         this.tasks.addTask(7, new DinoAIEat(this, 24));
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(9, new EntityAILookIdle(this));
+        
+        this.targetTasks.addTask(1, new EntityAIOwnerHurtByTarget(this));
+        this.targetTasks.addTask(2, new EntityAIOwnerHurtTarget(this));
+        this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
     }
 
     
@@ -58,6 +61,21 @@ public class Brachiosaurus extends Dinosaure
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D);
     }
     
+    
+    /**
+     * Returns the texture's file path as a String.
+     */
+    @Override
+    public String getTexture()
+    {
+        if (this.isModelized())
+            return super.getTexture();
+            switch (this.getSubSpecies())
+            {
+                default:
+                	return "ere_geologique:textures/entity/Brachiosaurus.png";
+            }
+    }
     
     @Override
     /**
@@ -84,14 +102,13 @@ public class Brachiosaurus extends Dinosaure
         return "ere_geologique:brachiosaurus_death";
     } 
 
-
-    /**
-     * Returns true if the Entity AI code should be run
-     */
-    public boolean isAIEnabled()
+    public int getVerticalFaceSpeed()
     {
-        return !this.isModelized();
+        return this.isSitting() ? 70 : super.getVerticalFaceSpeed();
     }
+    
+    /*
+     * This still needed?
 
     public Vec3 getBlockToEat(int SEARCH_RANGE)
     {
@@ -149,7 +166,7 @@ public class Brachiosaurus extends Dinosaure
                     {
                         TileEntity var14 = this.worldObj.getBlockTileEntity(var15, var16, var17);
 
-                        if (var14 != null && var14 instanceof TileEntityFeeder && !((TileEntityFeeder)var14).CheckIsEmpty(this.SelfType)/*isFilled()*/)
+                        if (var14 != null && var14 instanceof TileEntityFeeder && !((TileEntityFeeder)var14).CheckIsEmpty(this.SelfType))//isFilled())
                         {
                             var10 = ((double)var15 - this.posX) * ((double)var15 - this.posX) + ((double)var17 - this.posZ) * ((double)var17 - this.posZ);
 
@@ -165,6 +182,7 @@ public class Brachiosaurus extends Dinosaure
         }
         return null;
     }
+    */
     /**
      * Called when a player interacts with a mob. e.g. gets milk from a cow, gets into the saddle on a pig.
      */
@@ -175,16 +193,10 @@ public class Brachiosaurus extends Dinosaure
     }
 
     
-    public Brachiosaurus spawnBabyAnimal(EntityAgeable var1)
+    public Brachiosaurus spawnBabyAnimal(EntityAnimal var1)
     {
-        return new Brachiosaurus(this.worldObj);
+        return null;
     }
-    
-    @Override
-	public EntityAgeable createChild(EntityAgeable var1) 
-	{
-		return this.spawnBabyAnimal(var1);
-	}
 
     /**
      * Called to update the entity's position/logic.
@@ -192,7 +204,7 @@ public class Brachiosaurus extends Dinosaure
     public void onUpdate()
     {
         super.onUpdate();
-        if ((this.isTeen() || this.isAdult())&& !this.isModelized() && EreGeologique.EGOptions.Dino_Block_Breaking == true && this.riddenByEntity == null )//this.getDinoAge() >= 4)
+        if ((this.isTeen() || this.isAdult()) && !this.isModelized() && EreGeologique.EGOptions.Dino_Block_Breaking == true && this.riddenByEntity == null )//this.getDinoAge() >= 4)
         {
             this.BlockInteractive();
         }
@@ -216,6 +228,7 @@ public class Brachiosaurus extends Dinosaure
             }
         }
     }
+    
 
     public float getEyeHeight()
     {
@@ -302,40 +315,4 @@ public class Brachiosaurus extends Dinosaure
         }
     }
 
-    /**
-     * Time remaining during which the Animal is sped up and flees.
-     */
-    protected void updateWanderPath()
-    {
-        boolean var1 = false;
-        int var2 = -1;
-        int var3 = -1;
-        int var4 = -1;
-        float var5 = -99999.0F;
-
-        if (this.OrderStatus == EnumOrderType.FreeMove || !this.isTamed())
-        {
-            for (int var6 = 0; var6 < 10 + this.getDinoAge(); ++var6)
-            {
-                int var7 = MathHelper.floor_double(this.posX + (double)this.rand.nextInt(24 + (int)(this.width * this.width * 4.0F)) - (12.0D + (double)(this.width * this.width * 2.0F)));
-                int var8 = MathHelper.floor_double(this.posY + (double)this.rand.nextInt(7) - 3.0D);
-                int var9 = MathHelper.floor_double(this.posZ + (double)this.rand.nextInt(24 + (int)(this.width * this.width * 4.0F)) - (12.0D + (double)(this.width * this.width * 2.0F)));
-                float var10 = this.getBlockPathWeight(var7, var8, var9);
-
-                if (var10 > var5)
-                {
-                    var5 = var10;
-                    var2 = var7;
-                    var3 = var8;
-                    var4 = var9;
-                    var1 = true;
-                }
-            }
-
-            if (var1)
-            {
-                this.setPathToEntity(this.worldObj.getEntityPathToXYZ(this, var2, var3, var4, 10.0F, true, false, true, false));
-            }
-        }
-    }
 }

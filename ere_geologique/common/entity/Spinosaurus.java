@@ -8,6 +8,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAISwimming;
@@ -60,25 +61,7 @@ public class Spinosaurus extends Dinosaure implements IWaterDino
         this.HitboxXfactor=1.4F;
         this.HitboxYfactor=1.4F;
         this.HitboxZfactor=1.4F;
-        /*this.Width0=0.7F;
-        this.WidthInc=0.07F;
-        this.Length0=0.8F;
-        this.LengthInc=0.16F;
-        this.Height0=0.5F;
-        this.HeightInc=0.07F;
-        this.BaseattackStrength=4;
-        //this.AttackStrengthIncrease=;
-        //this.BreedingTime=;
-        this.BaseSpeed=0.22F;
-        this.SpeedIncrease=0.02F;
-        this.MaxAge=23;
-        //this.BaseHealth=;
-        this.HealthIncrease=5;
-        //this.AdultAge=;
-        //this.AgingTicks=;
-        this.MaxHunger=500;
-        //this.Hungrylevel=;*/
-        
+
         this.updateSize();
         
         this.getNavigator().setAvoidsWater(true);
@@ -92,14 +75,6 @@ public class Spinosaurus extends Dinosaure implements IWaterDino
         this.tasks.addTask(3, new DinoAIAttackOnCollide(this, 2.0D, true));
         this.tasks.addTask(6, new DinoAIWander(this, 1.0D));
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
-        /*this.tasks.addTask(8, new DinoAIPickItem(this, Item.porkRaw, this.moveSpeed, 24, this.HuntLimit));
-        this.tasks.addTask(8, new DinoAIPickItem(this, Item.beefRaw, this.moveSpeed, 24, this.HuntLimit));
-        this.tasks.addTask(8, new DinoAIPickItem(this, Item.chickenRaw, this.moveSpeed, 24, this.HuntLimit));
-        this.tasks.addTask(8, new DinoAIPickItem(this, Item.porkCooked, this.moveSpeed, 24, this.HuntLimit));
-        this.tasks.addTask(8, new DinoAIPickItem(this, Item.beefCooked, this.moveSpeed, 24, this.HuntLimit));
-        this.tasks.addTask(8, new DinoAIPickItem(this, Item.chickenCooked, this.moveSpeed, 24, this.HuntLimit));
-        this.tasks.addTask(8, new DinoAIPickItem(this, Fossil.rawDinoMeat, this.moveSpeed, 24, this.HuntLimit));
-        this.tasks.addTask(8, new DinoAIPickItem(this, Fossil.cookedDinoMeat, this.moveSpeed, 24, this.HuntLimit));*/
         this.tasks.addTask(6, new DinoAIEat(this, 24));
         this.tasks.addTask(9, new EntityAILookIdle(this));
         this.targetTasks.addTask(1, new EntityAIHurtByTarget(this, true));
@@ -113,7 +88,15 @@ public class Spinosaurus extends Dinosaure implements IWaterDino
     {
         return this.riddenByEntity == null && !this.isWeak();
     }
+    
+    protected void applyEntityAttributes()
+    {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.50000001192092896D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(21.0D);
 
+    }
+    
     /**
      * returns if this entity triggers Block.onEntityWalking on the blocks they walk on. used for spiders and wolves to
      * prevent them from trampling crops
@@ -522,7 +505,6 @@ public class Spinosaurus extends Dinosaure implements IWaterDino
      */
     public String getTexture()
     {
-
         return "/assets/ere_geologique/textures/entity/Spinosaurus_Adult.png";
     }
 

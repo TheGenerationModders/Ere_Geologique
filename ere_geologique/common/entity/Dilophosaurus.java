@@ -70,31 +70,7 @@ public class Dilophosaurus extends Dinosaure
     {
         super(var1,EnumDinoType.Dilophosaurus);
         this.looksWithInterest = false;
-        //this.CheckSkin();
-       // this.setSize(0.3F, 0.3F);
-        //this.health = 10;
-        //this.experienceValue=10;
-        
-        
-        /*this.Width0=0.4F;
-        this.WidthInc=0.16F;
-        this.Length0=0.4F;
-        this.LengthInc=0.17F;
-        this.Height0=0.4F;
-        this.HeightInc=0.16F;
-        //this.BaseattackStrength=;
-        //this.AttackStrengthIncrease=;
-        //this.BreedingTime=;
-        this.BaseSpeed=0.21F;
-        this.SpeedIncrease=0.026F;
-        this.MaxAge=9;
-        //this.BaseHealth=;
-        //this.HealthIncrease=;
-        //this.AdultAge=;
-        //this.AgingTicks=;
-        //this.MaxHunger=;
-        //this.Hungrylevel=;
-        //this.moveSpeed = this.getSpeed();//should work*/
+
         this.updateSize();
         
         //this.attackStrength = 2 + this.getDinoAge();
@@ -125,6 +101,14 @@ public class Dilophosaurus extends Dinosaure
             ((EntityLiving)var1).addPotionEffect(new PotionEffect(Potion.blindness.id, this.rand.nextInt(110) + 10, 0));
         }
         return super.attackEntityAsMob(var1);
+    }
+    
+    protected void applyEntityAttributes()
+    {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.30000001192092896D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(21.0D);
+
     }
 
     /**
@@ -543,7 +527,7 @@ public class Dilophosaurus extends Dinosaure
             this.texture = "/fossil/textures/UtaCalm.png";
         }
     }*/
-    //TEXTURECHECK!!! when attacking!
+    // TEXTURECHECK!!! when attacking!
     public boolean CheckSpace()
     {
         return !this.isEntityInsideOpaqueBlock();

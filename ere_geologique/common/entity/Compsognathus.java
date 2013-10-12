@@ -2,11 +2,10 @@ package ere_geologique.common.entity;
 
 import java.util.Vector;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.StepSound;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
@@ -18,8 +17,6 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.item.EnumAction;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
@@ -31,7 +28,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.client.LocalizationStrings;
 import ere_geologique.common.entity.Enums.EnumDinoType;
-import ere_geologique.common.entity.Enums.EnumOrderType;
 import ere_geologique.common.entity.Enums.EnumSituation;
 import ere_geologique.common.entity.IA.DinoAIAttackOnCollide;
 import ere_geologique.common.entity.IA.DinoAIEat;
@@ -43,22 +39,13 @@ import ere_geologique.common.gui.GuiPedia;
 public class Compsognathus extends Dinosaure
 {
     private boolean looksWithInterest;
-    /*public final float HuntLimit = (float)(this.getHungerLimit() * 4 / 5);
-    private float field_25048_b;
-    private float field_25054_c;
-    private boolean isWolfShaking;
-    private boolean field_25052_g;
-    private float timeWolfIsShaking;
-    private float prevTimeWolfIsShaking;
-    public ItemStack ItemInMouth = null;
-    public int BreedTick = 3000;*/
+    private float field_70926_e;
+    private float field_70924_f;
+    
     public int LearningChestTick = 900;
     public boolean PreyChecked = false;
     public boolean SupportChecked = false;
     public Vector MemberList = new Vector();
-    //public float SwingAngle = -1000.0F;
-    //public int FleeingTick = 0;
-    //public int DoorOpeningTick = 0; SEEMS TO BE PLANNED
 
     public Compsognathus(World var1)
     {
@@ -73,7 +60,7 @@ public class Compsognathus extends Dinosaure
         this.tasks.addTask(2, new EntityAIAvoidEntity(this, TRex.class, 8.0F, 0.3F, 0.35F));
         this.tasks.addTask(2, new EntityAIAvoidEntity(this, Brachiosaurus.class, 8.0F, 0.3F, 0.35F));
         this.tasks.addTask(3, new DinoAIAttackOnCollide(this, 1.0D, true));
-        this.tasks.addTask(5, new DinoAIFollowOwner(this, 5.0F, 2.0F, 2.0F));
+        this.tasks.addTask(5, new DinoAIFollowOwner(this, 1.0F, 10.0F, 2.0F));
         this.tasks.addTask(6, new DinoAIEat(this, 24));
         this.tasks.addTask(7, new DinoAIWander(this, 1.0D));
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
@@ -84,6 +71,12 @@ public class Compsognathus extends Dinosaure
         this.targetTasks.addTask(4, new DinoAITargetNonTamedExceptSelfClass(this, EntityLiving.class, 16.0F, 50, false));
     }
 
+    protected void applyEntityAttributes()
+    {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.3D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(1.0D);
+    }
     /**
      * Returns true if the newer Entity AI code should be run
      */
@@ -91,13 +84,6 @@ public class Compsognathus extends Dinosaure
     {
         return true;
     }
-    
-
-    /*protected void entityInit()
-    {
-        super.entityInit();
-        this.dataWatcher.addObject(24, new Byte((byte)0));
-    }*/
 
     /**
      * returns if this entity triggers Block.onEntityWalking on the blocks they walk on. used for spiders and wolves to
@@ -109,40 +95,40 @@ public class Compsognathus extends Dinosaure
     }
 
     /**
+     * Sets the active target the Task system uses for tracking
+     */
+    public void setAttackTarget(EntityLivingBase par1EntityLivingBase)
+    {
+        super.setAttackTarget(par1EntityLivingBase);
+
+        if (par1EntityLivingBase == null)
+        {
+            this.setAngry(false);
+        }
+        else if (!this.isTamed())
+        {
+            this.setAngry(true);
+        }
+    }
+    
+    /**
      * Returns the texture's file path as a String.
      */
     public String getTexture()
     {
-//        if (this.isModelized())
- //           return super.getTexture();
+        if (this.isModelized())
+            return super.getTexture();
             switch (this.getSubSpecies())
             {
                 case 1:
-                    return "/assets/ere_geologique/textures/entity/Compsognathus_Purple.png";
+                    return "ere_geologique:textures/entity/Compsognathus_Purple.png";
 
                 case 2:
-                    return "/assets/ere_geologique/textures/entity/Compsognathus_Green.png";
+                    return "ere_geologique:textures/entity/Compsognathus_Green.png";
 
                 default:
-                	return "/assets/ere_geologique/textures/entity/Compsognathus_Green.png";
+                	return "ere_geologique:textures/entity/Compsognathus_Green.png";
             }
-    }
-
-    /**
-     * Causes this entity to do an upwards motion (jumping).
-     */
-    protected void jump()
-    {
-        this.motionY = 0.41999998688697815D * (double)(1 + this.getDinoAge() / 16);
-
-        if (this.isSprinting())
-        {
-            float var1 = this.rotationYaw * 0.01745329F;
-            this.motionX -= (double)(MathHelper.sin(var1) * 0.2F);
-            this.motionZ += (double)(MathHelper.cos(var1) * 0.2F);
-        }
-
-        this.isAirBorne = true;
     }
 
     /**
@@ -152,24 +138,6 @@ public class Compsognathus extends Dinosaure
     {
         super.writeEntityToNBT(var1);
         var1.setInteger("LearningChestTick", this.LearningChestTick);
-
-        /*if (this.ItemInMouth != null)
-        {
-            var1.setShort("Itemid", (short)this.ItemInMouth.itemID);
-            var1.setByte("ItemCount", (byte)this.ItemInMouth.stackSize);
-            var1.setShort("ItemDamage", (short)this.ItemInMouth.getItemDamage());
-        }
-        else
-        {
-            var1.setShort("Itemid", (short) - 1);
-            var1.setByte("ItemCount", (byte)0);
-            var1.setShort("ItemDamage", (short)0);
-        }*/
-
-        //var1.setBoolean("Angry", this.isSelfAngry());
-        //var1.setBoolean("Sitting", this.isSelfSitting());
-        //var1.setInteger("SubType", this.getSubSpecies());
-        //this.isSelfAngry()
     }
 
     /**
@@ -179,28 +147,6 @@ public class Compsognathus extends Dinosaure
     {
         super.readEntityFromNBT(var1);
         this.LearningChestTick=var1.getInteger("LearningChestTick");
-        /*short var2 = var1.getShort("Itemid");
-        byte var3 = var1.getByte("ItemCount");
-        short var4 = var1.getShort("ItemDamage");
-
-        if (var2 != -1)
-        {
-            this.ItemInMouth = new ItemStack(var2, var3, var4);
-        }
-        else
-        {
-            this.ItemInMouth = null;
-        }*/
-
-        //this.setSelfAngry(var1.getBoolean("Angry"));
-        //this.setSelfSitting(var1.getBoolean("Sitting"));
-
-        /*if (var1.hasKey("SubType"))
-        {
-            this.setSubSpecies(var1.getInteger("SubType"));
-        }*/
-
-       // this.InitSize();
     }
 
 
@@ -224,26 +170,13 @@ public class Compsognathus extends Dinosaure
         	if(this.LearningChestTick==0)
         		this.SendStatusMessage(EnumSituation.LearningChest);//, this.SelfType);
         }
-        /*this.field_25054_c = this.field_25048_b;
-
-        if (this.looksWithInterest)
-        {
-            this.field_25048_b += (1.0F - this.field_25048_b) * 0.4F;
-        }
-        else
-        {
-            this.field_25048_b += (0.0F - this.field_25048_b) * 0.4F;
-        }
-
-        if (this.looksWithInterest)
-        {
-            this.numTicksToChaseTarget = 10;
-        }*/
     }
+    
     public boolean isLearnedChest()
     {
         return this.LearningChestTick == 0;
     }
+    
     private boolean isNearbyChest()
     {
         TileEntity var5 = null;
@@ -261,32 +194,6 @@ public class Compsognathus extends Dinosaure
         }
         return false;
     }
-
-    /*public boolean getSelfShaking()
-    {
-        return false;
-    }
-
-    public float getShadingWhileShaking(float var1)
-    {
-        return 0.75F + (this.prevTimeWolfIsShaking + (this.timeWolfIsShaking - this.prevTimeWolfIsShaking) * var1) / 2.0F * 0.25F;
-    }
-
-    public float getShakeAngle(float var1, float var2)
-    {
-        float var3 = (this.prevTimeWolfIsShaking + (this.timeWolfIsShaking - this.prevTimeWolfIsShaking) * var1 + var2) / 1.8F;
-
-        if (var3 < 0.0F)
-        {
-            var3 = 0.0F;
-        }
-        else if (var3 > 1.0F)
-        {
-            var3 = 1.0F;
-        }
-
-        return MathHelper.sin(var3 * (float)Math.PI) * MathHelper.sin(var3 * (float)Math.PI * 11.0F) * 0.15F * (float)Math.PI;
-    }*/
 
     public float getEyeHeight()
     {
@@ -310,62 +217,40 @@ public class Compsognathus extends Dinosaure
         return this.isSitting();// || this.field_25052_g;
     }
 
+    @SideOnly(Side.CLIENT)
+    public float getInterestedAngle(float par1)
+    {
+        return (this.field_70924_f + (this.field_70926_e - this.field_70924_f) * par1) * 0.15F * (float)Math.PI;
+    }
+    
+
     /**
      * Called when the entity is attacked.
      */
-    public boolean attackEntityFrom(DamageSource var1, int var2)
+    public boolean attackEntityFrom(DamageSource par1DamageSource, float par2)
     {
-        Entity var3 = var1.getEntity();
-        boolean var4 = false;
-
-        if (var3 != null && !(var3 instanceof EntityPlayer) && !(var3 instanceof EntityArrow))
-        {
-            var2 = (var2 + 1) / 2;
-        }
-
-        if (super.attackEntityFrom(var1, var2))
-        {
-            if (!this.isAngry())
-            {
-                if (var3 instanceof EntityPlayer)
-                {
-                    this.setTamed(false);
-                    this.setOwner("");
-                    this.ItemInMouth = null;
-                    this.PreyChecked = true;
-                    var4 = true;
-                }
-
-                if (var3 instanceof EntityArrow && ((EntityArrow)var3).shootingEntity != null)
-                {
-                    var3 = ((EntityArrow)var3).shootingEntity;
-                }
-
-                if (var3 instanceof EntityLiving)
-                {
-                    this.setAttackTarget((EntityLiving)var3);
-                }
-            }
-            else if (var3 != this && var3 != null)
-            {
-                this.entityToAttack = var3;
-            }
-
-            return true;
-        }
-        else
+        if (this.isEntityInvulnerable())
         {
             return false;
         }
+        else
+        {
+            Entity entity = par1DamageSource.getEntity();
+            this.aiSit.setSitting(false);
+
+            if (entity != null && !(entity instanceof EntityPlayer) && !(entity instanceof EntityArrow))
+            {
+                par2 = (par2 + 1.0F) / 2.0F;
+            }
+
+            return super.attackEntityFrom(par1DamageSource, par2);
+        }
     }
 
-    /**
-     * Finds the closest player within 16 blocks to attack, or null if this Entity isn't interested in attacking
-     * (Animals, Spiders at day, peaceful PigZombies).
-     */
-    protected Entity findPlayerToAttack()
+    public boolean attackEntityAsMob(Entity par1Entity)
     {
-        return null;
+        int i = this.isTamed() ? 4 : 2;
+        return par1Entity.attackEntityFrom(DamageSource.causeMobDamage(this), (float)i);
     }
 
     /**
@@ -398,65 +283,6 @@ public class Compsognathus extends Dinosaure
         }
     }
 
-    /**
-     * Called when a player interacts with a mob. e.g. gets milk from a cow, gets into the saddle on a pig.
-     */
-    public boolean interact(EntityPlayer var1)
-    {
-        ItemStack var2 = var1.inventory.getCurrentItem();
-        if (var2 != null)
-        {
-            if (var2.getItem().getItemUseAction(var2) == EnumAction.bow)
-            {
-                return false;
-            }
-        }
-        return super.interact(var1);
-    }
-
-    public void handleHealthUpdate(byte var1)
-    {
-        if (var1 == 7)
-        {
-            this.showHeartsOrSmokeFX(true);
-        }
-        else if (var1 == 6)
-        {
-            this.showHeartsOrSmokeFX(false);
-        }
-        else if (var1 == 8)
-        {
-            //this.field_25052_g = true;
-            //this.timeWolfIsShaking = 0.0F;
-            //this.prevTimeWolfIsShaking = 0.0F;
-        }
-        else
-        {
-            super.handleHealthUpdate(var1);
-        }
-    }
-
-    /*public boolean isSelfSitting()
-    {
-        return (this.dataWatcher.getWatchableObjectByte(16) & 1) != 0;
-    }*/
-
-
-
-    /*public void setSelfSitting(boolean var1)
-    {
-        byte var2 = this.dataWatcher.getWatchableObjectByte(16);
-
-        if (var1)
-        {
-            this.dataWatcher.updateObject(16, Byte.valueOf((byte)(var2 | 1)));
-        }
-        else
-        {
-            this.dataWatcher.updateObject(16, Byte.valueOf((byte)(var2 & -2)));
-        }
-    }
-
     public void setTamed(boolean var1)
     {
         byte var2 = this.dataWatcher.getWatchableObjectByte(16);
@@ -470,121 +296,8 @@ public class Compsognathus extends Dinosaure
             this.ItemInMouth = null;
             this.dataWatcher.updateObject(16, Byte.valueOf((byte)(var2 & -5)));
         }
-    }*/
-
-    /**
-     * Called when the mob is falling. Calculates and applies fall damage.
-     */
-    protected void fall(float var1)
-    {
-        if (this.riddenByEntity != null)
-        {
-            this.riddenByEntity.fallDistance = var1;
-        }
-
-        int var2 = (int)Math.ceil((double)(var1 - 3.0F));
-
-        if (var2 > 0)
-        {
-            this.attackEntityFrom(DamageSource.fall, 0);
-            int var3 = this.worldObj.getBlockId(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY - 0.20000000298023224D - (double)this.yOffset), MathHelper.floor_double(this.posZ));
-
-            if (this.worldObj.isRemote)
-            {
-                return;
-            }
-
-            if (var3 > 0)
-            {
-                StepSound var4 = Block.blocksList[var3].stepSound;
-                this.worldObj.playSoundAtEntity(this, var4.getBreakSound(), var4.getVolume() * 0.5F, var4.getPitch() * 0.75F);
-            }
-        }
     }
 
-    /**
-     * Time remaining during which the Animal is sped up and flees.
-     */
-    protected void updateWanderPath()
-    {
-        boolean var1 = false;
-        int var2 = -1;
-        int var3 = -1;
-        int var4 = -1;
-        float var5 = -99999.0F;
-        EnumOrderType var10001 = this.OrderStatus;
-
-        if (this.OrderStatus == EnumOrderType.FreeMove || !this.isTamed())
-        {
-            for (int var6 = 0; var6 < 10; ++var6)
-            {
-                int var7 = MathHelper.floor_double(this.posX + (double)this.rand.nextInt(13) - 6.0D);
-                int var8 = MathHelper.floor_double(this.posY + (double)this.rand.nextInt(7) - 3.0D);
-                int var9 = MathHelper.floor_double(this.posZ + (double)this.rand.nextInt(13) - 6.0D);
-                float var10 = this.getBlockPathWeight(var7, var8, var9);
-
-                if (var10 > var5)
-                {
-                    var5 = var10;
-                    var2 = var7;
-                    var3 = var8;
-                    var4 = var9;
-                    var1 = true;
-                }
-            }
-
-            if (var1)
-            {
-                this.setPathToEntity(this.worldObj.getEntityPathToXYZ(this, var2, var3, var4, 10.0F, true, false, true, false));
-            }
-        }
-    }
-
-   /* private void InitSize()
-    {
-        this.CheckSkin();
-        this.updateSize();
-        this.setPosition(this.posX, this.posY, this.posZ);
-    }
-
-    public void updateSize()
-    {
-    	this.setSize((float)(0.30000001192092896D + 0.1D * (double)((float)this.getAge())), (float)(0.30000001192092896D + 0.1D * (double)((float)this.getAge())));
-    }*/
-    
-    /*public boolean HandleEating(int var1)
-    {
-        if (this.getHunger() >= this.getHungerLimit())
-        {
-            return false;
-        }
-        else
-        {
-            this.increaseHunger(var1);
-            this.showHeartsOrSmokeFX(false);
-
-            if (this.getHunger() >= this.getHungerLimit())
-            {
-                this.setHunger(this.getHungerLimit());
-            }
-
-            return true;
-        }
-    }
-
-    public boolean isLeartChest()
-    {
-        return (this.dataWatcher.getWatchableObjectByte(16) & 16) == 0;
-    }*/
-
-    /*public void ChangeSubType(int var1)
-    {
-        if (var1 <= 2 && var1 >= 0)
-        {
-            this.setSubSpecies(var1);
-            this.CheckSkin();
-        }
-    }*/
 
     @SideOnly(Side.CLIENT)
     public void ShowPedia(GuiPedia p0)
@@ -593,122 +306,9 @@ public class Compsognathus extends Dinosaure
     	if(this.LearningChestTick==0)
     		p0.AddStringLR(StatCollector.translateToLocal(LocalizationStrings.PEDIA_TEXT_CHEST), true);
     }
-    /*public void ShowPedia(EntityPlayer var1)
-    {
-        this.PediaTextCorrection(this.SelfType, var1);
-
-        if (this.isTamed())
-        {
-            Fossil.ShowMessage(OwnerText + this.getOwnerName(), var1);
-            Fossil.ShowMessage(AgeText + this.getDinoAge(), var1);
-            Fossil.ShowMessage(HelthText + this.health + "/" + 20, var1);
-            Fossil.ShowMessage(HungerText + this.getHunger() + "/" + this.MaxHunger, var1);
-
-            /*if (this.isLeartChest())
-            {
-                Fossil.ShowMessage(EnableChestText, var1);
-            }*
-        }
-        else
-        {
-            Fossil.ShowMessage(UntamedText, var1);
-        }
-    }*/
-
-    /*public String[] additionalPediaMessage()
-    {
-        String[] var1 = null;
-
-        if (!this.isTamed())
-        {
-            var1 = new String[] {UntamedText};
-        }
-        else
-        {
-            ArrayList var2 = new ArrayList();
-
-            /*if (this.isLeartChest())
-            {
-                var2.add(EnableChestText);
-            }*
-
-            if (!var2.isEmpty())
-            {
-                var1 = new String[1];
-                var1 = (String[])var2.toArray(var1);
-            }
-        }
-
-        return var1;
-    }*/
-
-    /*public void SetOrder(EnumOrderType var1)
-    {
-        this.OrderStatus = var1;
-    }
-
-    public boolean HandleEating(int var1, boolean var2)
-    {
-        return this.HandleEating(var1);
-    }
-
-    public boolean CheckEatable(int var1)
-    {
-        if (!(Item.itemsList[var1] instanceof ItemFood))
-        {
-            return false;
-        }
-        else
-        {
-            Item var2 = Item.itemsList[var1];
-            boolean var3 = false;
-            var3 = var2 == Item.beefCooked || var2 == Item.beefRaw || var2 == Item.fishCooked || var2 == Item.fishRaw || var2 == Item.chickenCooked || var2 == Item.chickenRaw || var2 == Item.porkRaw || var2 == Item.porkCooked;
-            return var3;
-        }
-    }*/
 
     public EntityAnimal spawnBabyAnimal(EntityAnimal var1)
     {
         return new Compsognathus(this.worldObj);
     }
-
-    public boolean IsIdle()
-    {
-        return this.motionX < 0.03125D && this.motionY < 0.03125D && this.motionZ < 0.03125D;
-    }
-
-    /*public void setLearntChest(boolean var1)
-    {
-        byte var2 = this.dataWatcher.getWatchableObjectByte(24);
-
-        if (var1)
-        {
-            this.dataWatcher.updateObject(24, Byte.valueOf((byte)(var2 & -17)));
-        }
-        else
-        {
-            this.dataWatcher.updateObject(24, Byte.valueOf((byte)(var2 | 16)));
-        }
-    }*/
-
-    /*public float getGLX()
-    {
-        return (float)(0.20000000298023224D + 0.1D * (double)this.getDinoAge());
-    }
-
-    public float getGLY()
-    {
-        return (float)(0.3199999928474426D + 0.1D * (double)this.getDinoAge());
-    }*/
-
-    /*public EntityAgeable func_90011_a(EntityAgeable var1)
-    {
-        return null;
-    }*/
-
-	@Override
-	public EntityAgeable createChild(EntityAgeable var1) 
-	{
-		return null;
-	}
 }

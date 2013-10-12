@@ -530,10 +530,8 @@ public class DinoEgg extends Entity implements IEntityAdditionalSpawnData
                 }
                 else
                 {
-                	//System.err.println("EGGERROR-NOPLACE");
                     EreGeologique.ShowMessage(StatCollector.translateToLocal(LocalizationStrings.DINOEGG_NOSPACE), var4);
                     this.setBirthTick(this.getBirthTick()-500);
-                    //System.err.println("EGGERROR3"+String.valueOf(i));
                 }
             }
         }
@@ -563,61 +561,27 @@ public class DinoEgg extends Entity implements IEntityAdditionalSpawnData
     /**
      * Called when a player interacts with a mob. e.g. gets milk from a cow, gets into the saddle on a pig.
      */
-    public boolean interact(EntityPlayer var1)
+    @Override
+    public boolean interactFirst(EntityPlayer player)
     {
 
-    	//this.dataWatcher.updateObject(0, Byte.valueOf((byte)(this.dataWatcher.getWatchableObjectByte(0) & (byte)(0x11111110))));
-    	//this.dataWatcher.updateObject(0, (byte)0);
-    	//this.dataWatcher.updateObject(0, Byte.valueOf((byte)(this.dataWatcher.getWatchableObjectByte(0) & ~(1 << 0))));
-    	ItemStack var2 = var1.inventory.getCurrentItem();
-        if (var2 == null)
+    	ItemStack itemstack = player.inventory.getCurrentItem();
+        if (itemstack == null)
         {
-        	/*int id;
-        	switch(this.DinoInside)
-        	{
-    	    	case Triceratops:  id=Fossil.eggTriceratops.itemID;break;
-    	    	case Stegosaurus:  id= Fossil.eggStegosaurus.itemID;break;
-    	    	case Mosasaurus:   id= Fossil.eggMosasaurus.itemID;break;
-    	    	case Raptor:	    id= Fossil.eggRaptor.itemID;break;
-    	    	case TRex:		   id= Fossil.eggTRex.itemID;break;
-    	    	case Pterosaur:	  id= Fossil.eggPterosaur.itemID;break;
-    	    	case Plesiosaur:  id= Fossil.eggPlesiosaur.itemID;break;
-    	    	case Brachiosaurus:id= Fossil.eggBrachiosaurus.itemID;break;
-    	    	case Utahraptor:   id= Fossil.eggUtahraptor.itemID;break;
-    	    	default: id= Fossil.eggTriceratops.itemID;break;
-        	}
-        	System.out.println(String.valueOf(Fossil.eggTriceratops.itemID));
-        	Item var7=new ItemAncientEgg(id);*/
         	Item i0 = this.DinoInside.EggItem;
-        	/*switch(this.DinoInside)
-        	{
-    	    	case Triceratops:  i0=Fossil.eggTriceratops;break;
-    	    	case Stegosaurus:  i0= Fossil.eggStegosaurus;break;
-    	    	case Mosasaurus:   i0= Fossil.eggMosasaurus;break;
-    	    	case Velociraptor:	    i0= Fossil.eggVelociraptor;break;
-    	    	case TRex:		   i0= Fossil.eggTRex;break;
-    	    	case Pterosaur:	  i0= Fossil.eggPterosaur;break;
-    	    	case Plesiosaur:  i0= Fossil.eggPlesiosaur;break;
-    	    	case Brachiosaurus:i0= Fossil.eggBrachiosaurus;break;
-    	    	case Dilophosaurus:   i0= Fossil.eggDilophosaurus;break;
-    	    	case Spinosaurus:   i0= Fossil.eggSpinosaurus;break;
-    	    	default: i0= Fossil.eggTriceratops;System.out.println("FAULTY EGG!!!!:Dinotype " + String.valueOf(var1)+ " does not exist!");break;
-        	}*/
-        	
-        	//System.out.println(String.valueOf(var7.itemID));
-            ItemStack var3 = new ItemStack(i0/*this.DinoInside.EggItem/*var7*/, 1, 1);
-            if (var1.inventory.addItemStackToInventory(var3))
+
+            ItemStack var3 = new ItemStack(i0, 1, 1);
+            if (player.inventory.addItemStackToInventory(var3))
             {
-                this.worldObj.playSoundAtEntity(var1, "random.pop", 0.2F, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
+                this.worldObj.playSoundAtEntity(player, "random.pop", 0.2F, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
                 this.setDead();
             }
             return true;
         }
-        else if (FMLCommonHandler.instance().getSide().isClient() && var2.itemID == EGItemList.DinoPedia.itemID)
+        else if (FMLCommonHandler.instance().getSide().isClient() && itemstack.getItem().itemID == EGItemList.DinoPedia.itemID)
         {
-            //this.showpedia(var1);
         	this.setPedia();
-            var1.openGui(EreGeologique.Instance/*var1*/, 1, this.worldObj, (int)this.posX, (int)this.posY, (int)this.posZ);
+        	player.openGui(EreGeologique.Instance, 1, worldObj, (int)posX, (int)posY, (int)posZ);
             return true;
         }
         return false;
@@ -632,25 +596,10 @@ public class DinoEgg extends Entity implements IEntityAdditionalSpawnData
     public void ShowPedia(GuiPedia p0)
     {
     	Item it0 = this.DinoInside.EggItem;
-    	/*switch (this.DinoInside)
-        {
-            case Triceratops:it0=Fossil.eggTriceratops;break;
-            case Velociraptor:it0=Fossil.eggVelociraptor;break;
-            case TRex:it0=Fossil.eggTRex;break;
-            case Pterosaur:it0=Fossil.eggPterosaur;break;
-            case Plesiosaur:it0=Fossil.eggPlesiosaur;break;
-            case Mosasaurus:it0=Fossil.eggMosasaurus;break;
-            case Stegosaurus:it0=Fossil.eggStegosaurus;break;
-            case Dilophosaurus:it0=Fossil.eggDilophosaurus;break;
-            case Brachiosaurus:it0=Fossil.eggBrachiosaurus;break;
-            case Spinosaurus:it0=Fossil.eggSpinosaurus;break;
-
-
-            default:it0=Fossil.eggTriceratops;
-        }*/
+    	
     	p0.reset();
-    	p0.PrintItemXY(it0, 120, 7);
-    	p0.PrintStringLR(/*Fossil.GetLangTextByKey("PediaText.egg.Head")+ " "+*/StatCollector.translateToLocal("Dino."+this.DinoInside.toString()), false, 1,40,90,245);
+    	p0.PrintItemXY(it0, 140, 7);
+    	p0.PrintStringLR(StatCollector.translateToLocal("Dino."+this.DinoInside.toString()), false, 1,40,90,245);
     	int quot = (int)Math.floor(((float)this.getBirthTick() / (float)this.HatchingNeedTime * 100.0F));
     	String stat;
     	if (this.DinoInside == EnumDinoType.Mosasaurus)
@@ -674,35 +623,6 @@ public class DinoEgg extends Entity implements IEntityAdditionalSpawnData
         	p0.PrintStringLR(StatCollector.translateToLocal(LocalizationStrings.PEDIA_EGG_PROGRESS), false, 4,40,90,245);
         	p0.PrintStringLR(String.valueOf(quot) + "/100", false, 5);
         }
-        /*String var2 = "";
-        String var3 = Fossil.GetLangTextByKey("PediaText.egg.selfHead") + EntityDinosaur.GetNameByEnum(this.DinoInside, false) + Fossil.GetLangTextByKey("PediaText.egg.selfTail");
-        int var4 = (int)Math.floor((double)((float)this.BirthTick / (float)this.HatchingNeedTime * 100.0F));
-        Fossil.ShowMessage(var3, var1);
-
-        if (this.DinoInside == EnumDinoType.Mosasaurus)
-        {
-            if (this.BirthTick >= 0)
-            {
-                var2 = Fossil.GetLangTextByKey("PediaText.egg.wet");
-            }
-            else
-            {
-                var2 = Fossil.GetLangTextByKey("PediaText.egg.dry");
-            }
-        }
-        else if (this.BirthTick >= 0)
-        {
-            var2 = Fossil.GetLangTextByKey("PediaText.egg.warm");
-        }
-        else
-        {
-            var2 = Fossil.GetLangTextByKey("PediaText.egg.cold");
-        }
-
-        String var5 = Fossil.GetLangTextByKey("PediaText.egg.Status");
-        String var6 = Fossil.GetLangTextByKey("PediaText.egg.Progress");
-        Fossil.ShowMessage(var5 + var2, var1);
-        Fossil.ShowMessage(var6 + var4 + "/100", var1);*/
     }
 
     public void writeSpawnData(ByteArrayDataOutput var1)

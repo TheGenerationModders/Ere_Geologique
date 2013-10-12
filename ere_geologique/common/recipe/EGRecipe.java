@@ -40,7 +40,7 @@ public class EGRecipe
 		GameRegistry.addRecipe(new ItemStack(EGBlockList.Slab, 6, 3), new Object[] {"XXX", 'X', new ItemStack(EGBlockList.Wood, 1, 3)});
 		GameRegistry.addRecipe(new ItemStack(EGBlockList.Slab, 6, 4), new Object[] {"XXX", 'X', new ItemStack(EGBlockList.Wood, 1, 4)});
 		
-		if(!Loader.isModLoaded("IC2") && !Loader.isModLoaded("Railcraft"))
+		if(!Loader.isModLoaded("IC2") || !Loader.isModLoaded("Railcraft"))
 		{
 			GameRegistry.addRecipe(new ItemStack(EGBlockList.ReinforcedStone, 1), new Object[]{" X ", "XYX", " X ", 'X', EGItemList.SteelPlate, 'Y', Block.stone});
 			GameRegistry.addRecipe(new ItemStack(EGBlockList.ReinforcedGlass, 1), new Object[]{" X ", "XYX", " X ", 'X', EGItemList.SteelPlate, 'Y', Block.glass});

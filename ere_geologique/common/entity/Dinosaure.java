@@ -55,35 +55,21 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
     public static final int AGE_DATA_INDEX = 21;
     public static final int SUBSPECIES_INDEX = 22;
     public static final int MODELIZED_INDEX = 23;
-    public static final int HEALTH_INDEX = 24;
+//    public static final int HEALTH_INDEX = 24;
     
     public static final byte HEART_MESSAGE = 35;
     public static final byte SMOKE_MESSAGE = 36;
     public static final byte AGING_MESSAGE = 37;
     
-    //public static final int RIDER_STRAFE_INDEX = 25;
-    //public static final int RIDER_FORWARD_INDEX = 26;
-    //public static final int RIDER_JUMP_INDEX = 27;
-    /*public static String SelfName = "";
-    public static String OwnerText = "Owner:";
-    public static String UntamedText = "Untamed";
-    public static String EnableChestText = " * Chests";
-    public static String AgeText = "Age:";
-    public static String HelthText = "Health:";
-    public static String HungerText = "Hunger:";
-    public static String CautionText = "Dangerous";
-    public static String RidiableText = " * Rideable";
-    public static String WeakText = "Dying";
-    public static String FlyText = " * Can Fly";*/
     public float RiderStrafe= 0.0F;
     public float RiderForward=0.0F;
     public boolean RiderJump=false;
     public boolean RiderSneak=false;
     
     //Factors enlarging the Hitbox to a senseful value
-    public float HitboxXfactor=1.1F;
-    public float HitboxYfactor=1.1F;
-    public float HitboxZfactor=1.1F;
+    public float HitboxXfactor=1.0F;
+    public float HitboxYfactor=1.0F;
+    public float HitboxZfactor=1.0F;
     
     public EnumDinoType SelfType = null;
     
@@ -246,7 +232,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
             this.dataWatcher.updateObject(MODELIZED_INDEX, Byte.valueOf((byte)(var1 ? 0 : -1)));
 
 //            if (var1)
-//                this.texture = this.getModelTexture();
+//                this.getTexture = this.getModelTexture();
         }
     }
 
@@ -259,35 +245,31 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
         this.dataWatcher.addObject(HUNGER_TICK_DATA_INDEX, new Integer(300));
         this.dataWatcher.addObject(SUBSPECIES_INDEX, new Integer(1));
         this.dataWatcher.addObject(MODELIZED_INDEX, new Byte((byte) - 1));
-        this.dataWatcher.addObject(HEALTH_INDEX, new Integer(10));
+//        this.dataWatcher.addObject(HEALTH_INDEX, new Integer(10));
    //this.dataWatcher.addObject(RIDER_STRAFE_INDEX, new Integer(300));
         //this.dataWatcher.addObject(RIDER_FORWARD_INDEX, new Integer(1));
         //this.dataWatcher.addObject(RIDER_JUMP_INDEX, new Integer(0));
     }
 
     public int getSubSpecies()
-    {return this.dataWatcher.getWatchableObjectInt(SUBSPECIES_INDEX);}
+    {
+    	return this.dataWatcher.getWatchableObjectInt(SUBSPECIES_INDEX);
+    }
 
     public void setSubSpecies(int var1)
-    {this.dataWatcher.updateObject(SUBSPECIES_INDEX, Integer.valueOf(var1));}
-    
-    /*@SideOnly(Side.CLIENT)
-    public void getHealthData()
-    {this.setEntityHealth(this.dataWatcher.getWatchableObjectInt(HEALTH_INDEX));}*/
-    
-    /*
-    public int getHealthData()
-    {return this.dataWatcher.getWatchableObjectInt(HEALTH_INDEX);}
-
-    public void setHealthData()
-    {this.dataWatcher.updateObject(HEALTH_INDEX, Integer.valueOf(this.health));}
-   */
+    {
+    	this.dataWatcher.updateObject(SUBSPECIES_INDEX, Integer.valueOf(var1));
+    }
     
     public int getDinoAge()
-    {return this.dataWatcher.getWatchableObjectInt(AGE_DATA_INDEX);}
+    {
+    	return this.dataWatcher.getWatchableObjectInt(AGE_DATA_INDEX);
+    }
 
     public void setDinoAge(int var1)
-    {this.dataWatcher.updateObject(AGE_DATA_INDEX, Integer.valueOf(var1));}
+    {
+    	this.dataWatcher.updateObject(AGE_DATA_INDEX, Integer.valueOf(var1));
+    }
 
     /**
      * Tries to increase the dino age, returns if successful
@@ -317,26 +299,6 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
     
     public void setHunger(int var1)
     {this.dataWatcher.updateObject(HUNGER_DATA_INDEX, Integer.valueOf(var1));}
-    
-    
-    /*public float getRiderStrafe()
-    {return (float)(this.dataWatcher.getWatchableObjectInt(RIDER_STRAFE_INDEX)/100F);}
-    
-    public void setRiderStrafe(float var1)
-    {this.dataWatcher.updateObject(RIDER_STRAFE_INDEX, Integer.valueOf((int)(var1*100)));}
-    
-    public float getRiderForward()
-    {return (float)(this.dataWatcher.getWatchableObjectInt(RIDER_FORWARD_INDEX)/100.0F);}
-    
-    public void setRiderForward(float var1)
-    {this.dataWatcher.updateObject(RIDER_FORWARD_INDEX, Integer.valueOf((int)(var1*100)));}
-    
-    public boolean getRiderJump()
-    {return this.dataWatcher.getWatchableObjectInt(RIDER_JUMP_INDEX)==1?true:false;}
-    
-    public void setRiderJump(boolean var1)
-    {int a=var1?1:0;this.dataWatcher.updateObject(RIDER_JUMP_INDEX, Integer.valueOf(a));}*/
-    
     
     public boolean increaseHunger(int var1)
     {
@@ -382,14 +344,14 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
         if (this.getHungerTick() > 0)
             this.setHungerTick(this.getHungerTick() - 1);
     }
-
-    
     
     /**
      * Placeholder, returns the attack strength, should be customized for every Dino
      */
     public int getAttackStrength()
-    {return this.SelfType.Strength0+this.getDinoAge()*this.SelfType.StrengthInc;}
+    {
+    	return this.SelfType.Strength0+this.getDinoAge()*this.SelfType.StrengthInc;
+    }
     
     /**
      * Called when the entity is attacked.
@@ -401,18 +363,18 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
 
     protected String getModelTexture()
     {
-        return "/assets/ere_geologique/textures/entity/DinoModel" + this.SelfType.toString() + ".png";
+        return "ere_geologique::textures/mob/DinoModel" + this.SelfType.toString() + ".png";
     }
 
     /**
      * Returns the texture's file path as a String.
      */
-    /*
+    
     public String getTexture()
     {
-        return this.isModelized() ? this.getModelTexture() : this.texture;
+        return this.isModelized() ? this.getModelTexture() : "ere_geologique:textures/mob/DinoModel" + this.SelfType.toString() + ".png";
     }
-    */
+    
 
     /**
      * Get number of ticks, at least during which the living entity will be silent.
@@ -424,28 +386,23 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
     
     @SideOnly(Side.CLIENT)
     public void ShowPedia(GuiPedia p0)
-    {
-//    	String fullName = StatCollector.translateToLocal("Dino."+this.SelfType.toString());
-//    	String truncatedName = fullName.substring(0, 12);
-    			
+    {		
     	p0.reset();
-//    	p0.PrintItemXY(this.SelfType.DNAItem, 120, 7);
-    	p0.PrintPictXY(new ResourceLocation("ere_geologique:textures/items/"+ this.SelfType.toString() +"_DNA.png"), 120, 7, 16, 16);
-//    	p0.PrintStringXY(truncatedName, 97, 23,40,90,245);
+    	p0.PrintPictXY(new ResourceLocation("ere_geologique:textures/items/"+ this.SelfType.toString() +"_DNA.png"), 163, 7, 16, 16);
     	
     	if (this.hasCustomNameTag())
-    	p0.PrintStringXY(this.getCustomNameTag(), 97, 24,40,90,245);
-    	p0.PrintStringXY(StatCollector.translateToLocal("Dino."+this.SelfType.toString()), 97, 34,0,0,0);
+    	p0.PrintStringXY(this.getCustomNameTag(), 140, 24,40,90,245);
+    	p0.PrintStringXY(StatCollector.translateToLocal("Dino."+this.SelfType.toString()), 140, 34,0,0,0);
     	
-    	p0.PrintPictXY(pediaclock, 97, 46,8,8);
-    	p0.PrintPictXY(pediaheart, 97, 58,9,9);
-    	p0.PrintPictXY(pediafood, 97, 70,9,9);
+    	p0.PrintPictXY(pediaclock, 140, 46,8,8);
+    	p0.PrintPictXY(pediaheart, 140, 58,9,9);
+    	p0.PrintPictXY(pediafood, 140, 70,9,9);
     	if(this.getDinoAge()==1)
-    		p0.PrintStringXY(String.valueOf(this.getDinoAge()) +" "+ StatCollector.translateToLocal(LocalizationStrings.PEDIA_EGG_WARM), 109, 46);
+    		p0.PrintStringXY(String.valueOf(this.getDinoAge()) +" "+ StatCollector.translateToLocal(LocalizationStrings.PEDIA_EGG_DAY), 152, 46);
     	else
-    		p0.PrintStringXY(String.valueOf(this.getDinoAge()) +" "+ StatCollector.translateToLocal(LocalizationStrings.PEDIA_EGG_DAYS), 109, 46);
-    	p0.PrintStringXY(String.valueOf(this.getHealth()) + '/' + this.getMaxHealth(), 109, 58); //display the health
-    	p0.PrintStringXY(String.valueOf(this.getHunger()) + '/' + this.getMaxHunger(), 109, 70);
+    		p0.PrintStringXY(String.valueOf(this.getDinoAge()) +" "+ StatCollector.translateToLocal(LocalizationStrings.PEDIA_EGG_DAYS), 152, 46);
+    	p0.PrintStringXY(String.valueOf(this.getHealth()) + '/' + this.getMaxHealth(), 152, 58); //display the health
+    	p0.PrintStringXY(String.valueOf(this.getHunger()) + '/' + this.getMaxHunger(), 152, 70);
     	
     	if(this.SelfType.isRideable() && this.isAdult())
     		p0.AddStringLR(StatCollector.translateToLocal(LocalizationStrings.PEDIA_TEXT_RIDEABLE), true);
@@ -521,24 +478,29 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
         return i;
     }
 
-    //public static void UpdateGlobleText() {}
-
     /**
      * Returns true if the Entity AI code should be run
      */
     public boolean isAIEnabled()
-    {return false;}
+    {
+    	return false;
+    }
     
     /**
      * Tells if the dino is sitting
      */
     public boolean isSitting()
-    {return this.OrderStatus == EnumOrderType.Stay;}
+    {
+    	return this.OrderStatus == EnumOrderType.Stay;
+    }
+    
     /**
      * Disables a mob's ability to move on its own while true.
      */
     protected boolean isMovementCeased()
-    {return this.OrderStatus == EnumOrderType.Stay;}
+    {
+    	return this.OrderStatus == EnumOrderType.Stay;
+    }
     
     public boolean attackEntityAsMob(Entity var1)
     {
@@ -869,7 +831,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
 			String Status1=StatCollector.translateToLocal("status." + var1.toString()+".head");
 			String Dino=this.SelfType.toString();
 			String Status2=StatCollector.translateToLocal("status." + var1.toString());
-			EreGeologique.ShowMessage(Status1+Dino+Status2,(EntityPlayer)this.getOwner());
+			EreGeologique.ShowMessage(Status1 + Dino + Status2, (EntityPlayer)this.getOwner());
 		}
     }
 

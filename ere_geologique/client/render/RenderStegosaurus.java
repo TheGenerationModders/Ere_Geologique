@@ -25,21 +25,12 @@ public class RenderStegosaurus extends RenderLiving
         super(var1, var3);
         this.setRenderPassModel(var2);
     }
-    
-    /**
-     * Applies the scale to the transform matrix
-     * 
-     * Use this to grow the dinonsaur with age.
-     */
+
     protected void preRenderScale(Stegosaurus stegosaurus, float par2)
     {
         GL11.glScalef(stegosaurus.getDinoWidth(), stegosaurus.getDinoHeight(), stegosaurus.getDinoLength());
     }
 
-    /**
-     * Allows the render to do any OpenGL state modifications necessary before the model is rendered. Args:
-     * entityLiving, partialTickTime
-     */
     protected void preRenderCallback(EntityLivingBase par1EntityLivingBase, float par2)
     {
         this.preRenderScale((Stegosaurus)par1EntityLivingBase, par2);
@@ -47,7 +38,7 @@ public class RenderStegosaurus extends RenderLiving
     
     protected ResourceLocation func_110919_a(Stegosaurus par1Entity)
     {
-        return loc;
+        return new ResourceLocation(par1Entity.getTexture());
     }
     
     protected ResourceLocation getEntityTexture(Entity par1Entity)

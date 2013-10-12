@@ -8,6 +8,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.StepSound;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
 import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
@@ -62,30 +63,6 @@ public class Pterosaure extends Dinosaure
     {
         super(var1,EnumDinoType.Pterosaure);
         this.looksWithInterest = false;
-        //this.CheckSkin();
-        //this.setSize(0.8F, 0.8F);
-        //this.moveSpeed = 2.0F;
-        //this.health = 10;
-        //this.experienceValue=3;
-        
-        /*this.Width0=1.2F;
-        this.WidthInc=0.3F;
-        this.Length0=1.0F;
-        this.LengthInc=0.4F;
-        this.Height0=0.8F;
-        this.HeightInc=0.2F;
-        //this.BaseattackStrength=;
-        //this.AttackStrengthIncrease=;
-        //this.BreedingTime=;
-        //this.BaseSpeed=;
-        //this.SpeedIncrease=;
-        this.MaxAge=9;
-        this.BaseHealth=21;
-        this.HealthIncrease=1;
-        //this.AdultAge=;
-        //this.AgingTicks=;
-        //this.MaxHunger=;
-        //this.Hungrylevel=;*/
         this.updateSize();
         
         this.tasks.addTask(0, new EntityAISwimming(this));
@@ -108,6 +85,29 @@ public class Pterosaure extends Dinosaure
         this.targetTasks.addTask(3, new EntityAIHurtByTarget(this, true));
     }
 
+    /**
+     * Returns the texture's file path as a String.
+     */
+    @Override
+    public String getTexture()
+    {
+        if (this.isModelized())
+            return super.getTexture();
+            switch (this.getSubSpecies())
+            {
+                default:
+                	return "ere_geologique:textures/entity/Pterosaure.png";
+            }
+    }
+    
+    protected void applyEntityAttributes()
+    {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.20000001192092896D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(21.0D);
+
+    }
+    
     /**
      * returns if this entity triggers Block.onEntityWalking on the blocks they walk on. used for spiders and wolves to
      * prevent them from trampling crops

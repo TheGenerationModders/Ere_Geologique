@@ -5,6 +5,7 @@ import java.util.List;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
@@ -62,6 +63,14 @@ public class Pachycephalosaurus extends Dinosaure
         this.tasks.addTask(9, new EntityAILookIdle(this));
     }
 
+    protected void applyEntityAttributes()
+    {
+        super.applyEntityAttributes();
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.30000001192092896D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(21.0D);
+
+    }
+    
     @Override
     public boolean attackEntityAsMob(Entity var1)
     {
@@ -131,7 +140,7 @@ public class Pachycephalosaurus extends Dinosaure
                 return "/assets/ere_geologique/textures/entity/Pachy-Pumpkin.png";
 
             default:
-                return "/assets/ere_geologique/textures/entity/Pachy-Lime.png";
+                return "/assets/ere_geologique/textures/entity/Pachy-Pumpkin.png";
         }
     }
 

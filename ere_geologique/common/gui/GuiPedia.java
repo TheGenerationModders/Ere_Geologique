@@ -25,7 +25,8 @@ public class GuiPedia extends GuiContainer
 	private static final ResourceLocation loc = new ResourceLocation("ere_geologique:textures/gui/Dinopedia.png");
 	
 
-    
+//    public static final int rightLeftAlign = 140; //Left aligntment position for text on the RIGHT page of the pedia
+//    public int leftLeftAlign = 140; //Left aligntment position for text on the LEFT page of the pedia
 	int left;//counter for text added on the left side
 	int right;//same for the right side
 	int items;//counter for the minipics down
@@ -60,12 +61,12 @@ public class GuiPedia extends GuiContainer
      */
     public void PrintStringLR(String str0,boolean left0,int line)
     {
-    	this.fontRenderer.drawString(str0, 16+(left0? 0 : 81), 12*(line+1), 4210752);
+    	this.fontRenderer.drawString(str0, 59+(left0? 0 : 81), 12*(line+1), 4210752);
     }
     public void PrintStringLR(String str0,boolean left0,int line,int r,int g,int b)
     {
     	int col=(r << 16) | (g << 8) | b;
-    	this.fontRenderer.drawString(str0, 16+(left0? 0 : 81), 12*(line+1), col);
+    	this.fontRenderer.drawString(str0, 59+(left0? 0 : 81), 12*(line+1), col);
     }
     
     /**
@@ -73,12 +74,12 @@ public class GuiPedia extends GuiContainer
      */
     public void AddStringLR(String str0,boolean left0)
     {
-    	this.fontRenderer.drawString(str0, 16+(left0? 0 : 81), 12*((left0?this.left++:this.right++)+1), 4210752);
+    	this.fontRenderer.drawString(str0, 24+(left0? 0 : 81), 12*((left0?this.left++:this.right++)+1), 4210752);
     }
     public void AddStringLR(String str0,boolean left0,int r,int g,int b)
     {
     	int col=(r << 16) | (g << 8) | b;
-    	this.fontRenderer.drawString(str0, 16+(left0? 0 : 81), 12*((left0?this.left++:this.right++)+1), col);
+    	this.fontRenderer.drawString(str0, 24+(left0? 0 : 81), 12*((left0?this.left++:this.right++)+1), col);
     }
     /**
      * Print a String to X,Y
@@ -148,12 +149,6 @@ public class GuiPedia extends GuiContainer
     {
     	if(EreGeologique.ToPedia instanceof Dinosaure)((Dinosaure)EreGeologique.ToPedia).ShowPedia(this);	
     	if(EreGeologique.ToPedia instanceof DinoEgg)((DinoEgg)EreGeologique.ToPedia).ShowPedia(this);
-//    	if(Fossil.ToPedia instanceof EntityPregnantCow)((EntityPregnantCow)Fossil.ToPedia).ShowPedia(this);
-//    	if(Fossil.ToPedia instanceof EntityPregnantPig)((EntityPregnantPig)Fossil.ToPedia).ShowPedia(this);
-//    	if(Fossil.ToPedia instanceof EntityPregnantSheep)((EntityPregnantSheep)Fossil.ToPedia).ShowPedia(this);
-//    	if(Fossil.ToPedia instanceof EntityMammoth)((EntityMammoth)Fossil.ToPedia).ShowPedia(this);
-//    	if(Fossil.ToPedia instanceof EntitySmilodon)((EntitySmilodon)Fossil.ToPedia).ShowPedia(this);
-//        if(Fossil.ToPedia instanceof EntityDodo)((EntityDodo)Fossil.ToPedia).ShowPedia(this);
     }
 
     /**
