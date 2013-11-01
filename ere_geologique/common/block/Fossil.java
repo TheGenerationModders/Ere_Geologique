@@ -13,7 +13,7 @@ public class Fossil extends BlockStone
     public Fossil(int id)
     {
         super(id);
-        this.setCreativeTab(EGCreativeTab.EGCreativeTab);
+        this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
     }
 
     public int idDropped(int var1, Random var2, int var3)

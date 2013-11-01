@@ -34,7 +34,7 @@ public class Leaves extends BlockLeavesBase implements IShearable
     {
         super(id, Material.leaves, false);
         this.setTickRandomly(true);
-        this.setCreativeTab(EGCreativeTab.EGCreativeTab);
+        this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
     }
     
     @SideOnly(Side.CLIENT)

@@ -27,6 +27,7 @@ import ere_geologique.client.RiderInput;
 import ere_geologique.common.block.EGBlockList;
 import ere_geologique.common.config.EGProperties;
 import ere_geologique.common.creativetabs.EGCreativeTab;
+import ere_geologique.common.dimension.EGDimensionList;
 import ere_geologique.common.entity.EGEntityList;
 import ere_geologique.common.entity.Enums.EnumDinoFoodMob;
 import ere_geologique.common.entity.Enums.EnumDinoType;
@@ -75,7 +76,7 @@ public class EreGeologique
 			EGProperties.SlabID = cfg.getBlock("Slab Foug\350re", 2504).getInt();
 			EGProperties.DoubleSlabID = cfg.getBlock("Double Slab Foug\350re", 2505).getInt();
 			EGProperties.StairID = cfg.getBlock("Stair Foug\350re", 2506).getInt();
-			EGProperties.PortalID = cfg.getBlock("Portal", 2507).getInt();
+			EGProperties.GlaciaPortalID = cfg.getBlock("GlaciaPortal", 2507).getInt();
 			EGProperties.FeederIdleID = cfg.getBlock("FeederIdle", 2508).getInt();
 			EGProperties.FeederActiveID = cfg.getBlock("FeederActive", 2509).getInt();
 			EGProperties.AnalyzerIdleID = cfg.getBlock("AnalyzerIdle", 2510).getInt();
@@ -87,6 +88,7 @@ public class EreGeologique
 			EGProperties.ReinforcedGlassID = cfg.getBlock("ReinforcedGlass", 2515).getInt();
 			EGProperties.SteelBlockID = cfg.getBlock("SteelBlock", 2516).getInt();
 			EGProperties.FossilSkullID = cfg.getBlock("FossilSkull", 2517).getInt();
+			EGProperties.BlueFireID = cfg.getBlock("BlueFire", 2518).getInt();
 
 			//Items
 			EGProperties.IvoryIngotID = cfg.getItem("Ivory Ingot", 4000).getInt();
@@ -112,18 +114,19 @@ public class EreGeologique
 			EGProperties.RelicID = cfg.getItem("Relic", 4020).getInt();
 			EGProperties.cookedChickenSoupID = cfg.getItem("cookedChickenSoup", 4021).getInt();
 			EGProperties.rawChickenSoupID = cfg.getItem("rawChickenSoup", 4022).getInt();
+			EGProperties.FlintAndSteelID = cfg.getItem("FlintAndSteel", 4023).getInt();
 
 			for(int i=0;i<EnumDinoType.values().length;i++)
-			EGProperties.EGGIDs[i] = cfg.getItem("Egg" + EnumDinoType.values()[i].name(), 4023+i).getInt();
+			EGProperties.EGGIDs[i] = cfg.getItem("Egg" + EnumDinoType.values()[i].name(), 4024+i).getInt();
 
 			for(int i=0;i<EnumDinoType.values().length;i++)
-			EGProperties.RAWIDs[i] = cfg.getItem("raw" + EnumDinoType.values()[i].name(), 4037+i).getInt();
+			EGProperties.RAWIDs[i] = cfg.getItem("raw" + EnumDinoType.values()[i].name(), 4038+i).getInt();
 
 			for(int i=0;i<EnumDinoType.values().length;i++)
-			EGProperties.DNAIDs[i] = cfg.getItem("dna" + EnumDinoType.values()[i].name(), 4051+i).getInt();
+			EGProperties.DNAIDs[i] = cfg.getItem("dna" + EnumDinoType.values()[i].name(), 4052+i).getInt();
 
 			//Dimensions
-			EGProperties.GlaciaID = cfg.get("Dimension", "Glacia",-2).getInt();
+			EGProperties.GlaciaID = cfg.get("Dimension", "Glacia", 2).getInt();
 
 			//Config options
 			EGOptions.Heal_Dinos = cfg.get("option", "Heal_Dinos", true).getBoolean(true);
@@ -191,6 +194,8 @@ public class EreGeologique
 
 		//World Generator
 		GameRegistry.registerWorldGenerator(new FossilGenerator());
+		
+		EGDimensionList.loadDimension();//Dimension
 
 		//Other
 		proxy.registerRenderEntity();

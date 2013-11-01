@@ -19,7 +19,7 @@ public class Skull extends BlockDirectional
     {
         super(var1, Material.pumpkin);
         this.setTickRandomly(true);
-        this.setCreativeTab(EGCreativeTab.EGCreativeTab);
+        this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
     }
     
     public void registerIcons(IconRegister par1IconRegister)

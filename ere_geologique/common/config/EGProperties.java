@@ -12,7 +12,7 @@ public class EGProperties
 	public static int SlabID;
 	public static int DoubleSlabID;
 	public static int StairID;
-	public static int PortalID;
+	public static int GlaciaPortalID;
 	public static int FeederIdleID;
 	public static int FeederActiveID;
 	public static int AnalyzerIdleID;
@@ -24,6 +24,7 @@ public class EGProperties
 	public static int ReinforcedGlassID;
 	public static int SteelBlockID;
 	public static int FossilSkullID;
+	public static int BlueFireID;
 	
 	//Items
 	public static int IvoryIngotID;
@@ -49,6 +50,7 @@ public class EGProperties
 	public static int RelicID;
 	public static int cookedChickenSoupID;
 	public static int rawChickenSoupID;
+	public static int FlintAndSteelID;
 
 	//Dimensions
 	public static int GlaciaID;

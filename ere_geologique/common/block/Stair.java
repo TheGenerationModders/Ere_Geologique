@@ -10,7 +10,7 @@ public class Stair extends BlockStairs
 	public Stair(int par1, Block par2Block, int par2)
     {
         super(par1, par2Block, par2);
-        this.setCreativeTab(EGCreativeTab.EGCreativeTab);
+        this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
         this.setLightOpacity(0);
     }
  

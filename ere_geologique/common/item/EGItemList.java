@@ -32,6 +32,7 @@ public class EGItemList
 	public static Item Relic;
 	public static Item rawChickenSoup;
 	public static Item cookedChickenSoup;
+	public static Item FlintAndSteel;
 	
 	public static void loadItem()
 	{
@@ -51,7 +52,7 @@ public class EGItemList
 	       SkullStick = new EGItem(EGProperties.SkullStickID, "Skull_Stick").setUnlocalizedName("SkullStick");
 	       gem = new EGItem(EGProperties.gemID, "Scarab_Gem").setUnlocalizedName("gem");
 	       EmptyShell = new EGItem(EGProperties.EmptyShellID, "Empty_Shell").setUnlocalizedName("EmptyShell");
-	       MagicConch = new MagicConch(EGProperties.MagicConchID).setUnlocalizedName("MagicConch").setCreativeTab(EGCreativeTab.EGCreativeTab);
+	       MagicConch = new MagicConch(EGProperties.MagicConchID).setUnlocalizedName("MagicConch").setCreativeTab(EGCreativeTab.EGCreativeTabItem);
 	       sjl = new EGFood(EGProperties.sjlID, 8, 2.0F, false, "Sio_Chiu_Le").setUnlocalizedName("sJL");
 	       cookedDinoMeat = new EGFood(EGProperties.cookedDinoMeatID, 8, 0.8F, true,"Dino_Steak").setUnlocalizedName("dinoSteak");
 	       BrokenSapling = new EGItem(EGProperties.BrokenSaplingID, "Broken_Sapling").setUnlocalizedName(LocalizationStrings.BROKEN_SAPLING_NAME);
@@ -60,8 +61,10 @@ public class EGItemList
 	       Relic = new EGItem(EGProperties.RelicID, "Relic_Scrap").setUnlocalizedName("Relic_Srap");
 	       cookedChickenSoup = new EGItem(EGProperties.cookedChickenSoupID, "Cooked_Chicken_Soup").setUnlocalizedName("cookedChickenSoup").setMaxStackSize(1).setContainerItem(Item.bucketEmpty);
 	       rawChickenSoup = new EGItem(EGProperties.rawChickenSoupID, "Raw_Chicken_Soup").setUnlocalizedName("rawChickenSoup").setMaxStackSize(1).setContainerItem(Item.bucketEmpty);
+	       FlintAndSteel = new FlintAndSteel(EGProperties.FlintAndSteelID).setUnlocalizedName("FlintAndSteel");
+	       
 	       for(int i=0;i<EnumDinoType.values().length;i++)
-	       EnumDinoType.values()[i].EggItem = new Egg(EGProperties.EGGIDs[i], i).setUnlocalizedName("egg"+EnumDinoType.values()[i].name()).setCreativeTab(EGCreativeTab.EGCreativeTab);
+	       EnumDinoType.values()[i].EggItem = new Egg(EGProperties.EGGIDs[i], i).setUnlocalizedName("egg"+EnumDinoType.values()[i].name()).setCreativeTab(EGCreativeTab.EGCreativeTabItem);
 	       
 	       for(int i=0;i<EnumDinoType.values().length;i++)
 		   EnumDinoType.values()[i].DropItem = new EGFood(EGProperties.RAWIDs[i], 3, 0.3F, true, EnumDinoType.values()[i].name() + "_Meat").setUnlocalizedName("raw" + EnumDinoType.values()[i].name());

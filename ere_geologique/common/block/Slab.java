@@ -24,7 +24,7 @@ public class Slab extends BlockHalfSlab
 	public Slab(int id, boolean isDouble)
 	{
 		super(id, isDouble, Material.wood);
-		this.setCreativeTab(EGCreativeTab.EGCreativeTab);
+		this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
 		if(!this.isDoubleSlab)
 		{
 			this.setLightOpacity(0);

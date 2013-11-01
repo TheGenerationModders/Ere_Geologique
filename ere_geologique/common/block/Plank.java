@@ -21,7 +21,7 @@ public class Plank extends Block
 	public Plank(int par1)
     {
         super(par1, Material.wood);
-        this.setCreativeTab(EGCreativeTab.EGCreativeTab);
+        this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
         this.setBurnProperties(this.blockID, 5, 20);
     }
 	

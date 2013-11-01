@@ -8,6 +8,6 @@ public class IvoryIngot extends Item
 	public IvoryIngot(int id)
 	{
 		super(id);
-        this.setCreativeTab(EGCreativeTab.EGCreativeTab);
+        this.setCreativeTab(EGCreativeTab.EGCreativeTabItem);
 	}
 }

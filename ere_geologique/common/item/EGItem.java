@@ -12,7 +12,7 @@ public class EGItem extends Item
 	{
 		super(par1);
 		this.TextureFileName=TextureFileName0;
-		this.setCreativeTab(EGCreativeTab.EGCreativeTab);
+		this.setCreativeTab(EGCreativeTab.EGCreativeTabItem);
 	}
 	
 	@Override

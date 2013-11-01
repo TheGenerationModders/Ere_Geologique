@@ -27,7 +27,7 @@ public class Wood extends BlockRotatedPillar
     public Wood(int id)
     {
         super(id, Material.wood);
-        this.setCreativeTab(EGCreativeTab.EGCreativeTab);
+        this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
     }
     
     public int quantityDropped(Random rand)

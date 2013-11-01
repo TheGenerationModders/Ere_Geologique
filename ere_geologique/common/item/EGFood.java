@@ -12,7 +12,7 @@ public class EGFood extends ItemFood
 	{
 		super(par1,par2,par3,par4);
 		this.TextureFileName=TextureFileName0;
-		this.setCreativeTab(EGCreativeTab.EGCreativeTab);
+		this.setCreativeTab(EGCreativeTab.EGCreativeTabFood);
 	}
 	
 	@Override

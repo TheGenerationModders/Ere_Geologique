@@ -20,8 +20,10 @@ public enum EnumDinoFoodBlock
 	Sapling(Block.sapling,10,1),
 	TallGrass(Block.tallGrass,10,1),
 	LeavesFougere(EGBlockList.Leaves,50,3),
-	SaplingFougere(EGBlockList.Sapling,15,2)
-	;
+	SaplingFougere(EGBlockList.Sapling,15,2),
+	nanoLeaves(NanotechBlock.nanoLeaves, 50, 3),
+	nanoSaplings(NanotechBlock.nanoSaplings, 15, 2);
+	
     public Block block;
     public int FoodValue;
     public int HealValue;

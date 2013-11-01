@@ -1,26 +1,17 @@
 package ere_geologique.common.creativetabs;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.ItemStack;
-import ere_geologique.common.block.EGBlockList;
 
-public class EGCreativeTab extends CreativeTabs
+public class EGCreativeTab
 {
-	public static CreativeTabs EGCreativeTab;
+	public static CreativeTabs EGCreativeTabBlock;
+	public static CreativeTabs EGCreativeTabItem;
+	public static CreativeTabs EGCreativeTabFood;
 	
 	public static void loadCreativeTab()
 	{
-		EGCreativeTab = new EGCreativeTab("EGCreativeTab");
+		EGCreativeTabBlock = new EGCreativeTabBlock("EGCreativeTabBlock");
+		EGCreativeTabItem = new EGCreativeTabItem("EGCreativeTabItem");
+		EGCreativeTabFood = new EGCreativeTabFood("EGCreativeTabFood");
 	}
-	
-	 public EGCreativeTab(String name)
-	 {
-	        super(name);
-	 }
-	 
-	 @Override
-	 public ItemStack getIconItemStack()
-	 {
-		 return new ItemStack(EGBlockList.Wood);
-	 }
 }

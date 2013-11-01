@@ -10,7 +10,7 @@ public class DinoPedia extends Item
 	{
 		super(id);
 		this.setMaxStackSize(1);
-		this.setCreativeTab(EGCreativeTab.EGCreativeTab);
+		this.setCreativeTab(EGCreativeTab.EGCreativeTabItem);
 	}
 
 }

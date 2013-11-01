@@ -17,7 +17,7 @@ public class Whip extends ItemCarrotOnAStick
         super(var1);
         this.setMaxDamage(100);
         this.setMaxStackSize(1);
-        this.setCreativeTab(EGCreativeTab.EGCreativeTab);
+        this.setCreativeTab(EGCreativeTab.EGCreativeTabItem);
     }
     @SideOnly(Side.CLIENT)
 

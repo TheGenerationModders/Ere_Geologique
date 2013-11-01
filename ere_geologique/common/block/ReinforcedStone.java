@@ -10,7 +10,7 @@ public class ReinforcedStone extends Block
 	public ReinforcedStone(int id)
 	{
 		super(id, Material.rock);
-		this.setCreativeTab(EGCreativeTab.EGCreativeTab);
+		this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
 	}
 
 }
