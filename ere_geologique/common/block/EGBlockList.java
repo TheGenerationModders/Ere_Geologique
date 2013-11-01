@@ -3,6 +3,7 @@ package ere_geologique.common.block;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import ere_geologique.client.LocalizationStrings;
 import ere_geologique.common.EreGeologique;
@@ -31,6 +32,8 @@ public class EGBlockList
 	public static Block SteelBlock;
 	public static Block Skull;
 	public static BlueFire BlueFire;
+	
+    public static Block nanoLeavesBlock, nanoSaplingsBlock;
 	
 	public static void loadBlock()
 	{
@@ -86,5 +89,19 @@ public class EGBlockList
 			EreGeologique.EGLog.severe("Erreur lors de l'initialisation des blocs!");
 		}
 		EreGeologique.EGLog.info("Initialisation des blocs terminés!");
+		
+    	if(Loader.isModLoaded("Nanotech_mod"))
+    	{
+    		try
+    		{
+    			nanoLeavesBlock = (Block)Class.forName("fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.nanoLeaves").getField("nanoLeaves").get(null);
+    			nanoSaplingsBlock = (Block)Class.forName("fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.nanoSaplings").getField("nanoSaplings").get(null);
+    		}
+    		catch(Exception ex)
+    		{
+    			EreGeologique.EGLog.severe("Erreur lors de l'initialisation du Nanotech_mod");
+    		}
+    		EreGeologique.EGLog.info("Initialisation du Nanotech_mod terminé");
+    	}
 	}
 }
