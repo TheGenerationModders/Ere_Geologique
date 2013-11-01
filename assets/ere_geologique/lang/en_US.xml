@@ -186,5 +186,7 @@
     <!-- entity.Tricératops.name=Tricératops -->
     <entry key= "mob.failuresaurus">Failuresaurus</entry>
 <!-- Creative Tabs -->
-    <entry key="itemGroup.EGCreativeTab"> Ere Géologique</entry>
+    <entry key="itemGroup.EGCreativeTabBlock"> Ere Géologique</entry>
+    <entry key="itemGroup.EGCreativeTabItem"> Ere Géologique</entry>
+    <entry key="itemGroup.EGCreativeTabFood"> Ere Géologique</entry>
 </properties>
