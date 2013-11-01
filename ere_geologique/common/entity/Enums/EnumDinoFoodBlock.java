@@ -1,7 +1,9 @@
 package ere_geologique.common.entity.Enums;
 
-import ere_geologique.common.block.EGBlockList;
 import net.minecraft.block.Block;
+import cpw.mods.fml.common.Loader;
+import ere_geologique.common.EreGeologique;
+import ere_geologique.common.block.EGBlockList;
 
 public enum EnumDinoFoodBlock
 {
@@ -20,9 +22,9 @@ public enum EnumDinoFoodBlock
 	Sapling(Block.sapling,10,1),
 	TallGrass(Block.tallGrass,10,1),
 	LeavesFougere(EGBlockList.Leaves,50,3),
-	SaplingFougere(EGBlockList.Sapling,15,2),
-	nanoLeaves(NanotechBlock.nanoLeaves, 50, 3),
-	nanoSaplings(NanotechBlock.nanoSaplings, 15, 2);
+	SaplingFougere(EGBlockList.Sapling,15,2);
+//	nanoLeaves(NanotechBlock.nanoLeaves, 50, 3),
+//	nanoSaplings(NanotechBlock.nanoSaplings, 15, 2);
 	
     public Block block;
     public int FoodValue;
@@ -33,6 +35,20 @@ public enum EnumDinoFoodBlock
         block = Block;
         FoodValue = Food;
         HealValue = Heal;
+        
+    	if(Loader.isModLoaded("Nanotech_mod"))
+    	{
+    		try
+    		{
+    			Block nanoLeaves = (Block)Class.forName("fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.nanoLeaves").getField("nanoLeaves").get(null);
+    			Block nanoSaplings = (Block)Class.forName("fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.nanoSaplings").getField("nanoSaplings").get(null);
+    		}
+    		catch(Exception ex)
+    		{
+    			EreGeologique.EGLog.severe("Erreur lors de l'initialisation du Nanotech_mod");
+    		}
+    		EreGeologique.EGLog.info("Initialisation du Nanotech_mod terminé");
+    	}
     }
     /**
      * 
