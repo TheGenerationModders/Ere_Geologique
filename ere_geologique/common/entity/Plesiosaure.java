@@ -19,7 +19,7 @@ import net.minecraft.pathfinding.PathEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import ere_geologique.common.command.CommandHeal;
+import ere_geologique.common.command.CommandDino;
 import ere_geologique.common.entity.Enums.EnumDinoType;
 import ere_geologique.common.entity.Enums.EnumOrderType;
 import ere_geologique.common.entity.IA.DinoAIAttackOnCollide;
@@ -822,7 +822,7 @@ public class Plesiosaure extends Dinosaure implements IWaterDino
         {
             this.increaseHunger(100);
         }
-        if(CommandHeal.Heal_Dinos)
+        if(CommandDino.Heal_Dinos)
         	this.heal(5);
     }
 

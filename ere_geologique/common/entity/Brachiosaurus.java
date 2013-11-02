@@ -15,7 +15,7 @@ import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
-import ere_geologique.common.command.CommandBlockBreak;
+import ere_geologique.common.command.CommandDino;
 import ere_geologique.common.entity.Enums.EnumDinoType;
 import ere_geologique.common.entity.Enums.EnumOrderType;
 import ere_geologique.common.entity.IA.DinoAIAttackOnCollide;
@@ -204,7 +204,7 @@ public class Brachiosaurus extends Dinosaure
     public void onUpdate()
     {
         super.onUpdate();
-        if ((this.isTeen() || this.isAdult()) && !this.isModelized() && CommandBlockBreak.Dino_Block_Breaking == true && this.riddenByEntity == null )//this.getDinoAge() >= 4)
+        if ((this.isTeen() || this.isAdult()) && !this.isModelized() && CommandDino.Dino_Block_Breaking == true && this.riddenByEntity == null )//this.getDinoAge() >= 4)
         {
             this.BlockInteractive();
         }

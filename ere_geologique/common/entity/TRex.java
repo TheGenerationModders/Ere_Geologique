@@ -22,8 +22,7 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import ere_geologique.client.LocalizationStrings;
 import ere_geologique.common.EreGeologique;
-import ere_geologique.common.command.CommandBlockBreak;
-import ere_geologique.common.command.CommandHeal;
+import ere_geologique.common.command.CommandDino;
 import ere_geologique.common.entity.Enums.EnumDinoType;
 import ere_geologique.common.entity.IA.DinoAIAttackOnCollide;
 import ere_geologique.common.entity.IA.DinoAIControlledByPlayer;
@@ -180,7 +179,7 @@ public class TRex extends Dinosaure
     {
         super.onUpdate();
         //this.blockBreakingBehavior.execute();
-        if(this.isAdult() && CommandBlockBreak.Dino_Block_Breaking == true)
+        if(this.isAdult() && CommandDino.Dino_Block_Breaking == true)
             BlockInteractive();
         if (this.health > 0)
         {
@@ -402,7 +401,7 @@ public class TRex extends Dinosaure
             {
                 if (this.isWeak() && !this.isTamed())
                 {
-                    if(CommandHeal.Heal_Dinos)
+                    if(CommandDino.Heal_Dinos)
                         this.heal(200);
                     this.increaseHunger(500);
                     this.setTamed(true);

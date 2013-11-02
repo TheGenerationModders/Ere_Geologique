@@ -4,6 +4,25 @@
 	<comment>French (fr_FR) Localization File</comment>
 <!-- Default French translation-->
 <!-- NOTE THE SPACE BEFORE/AFTER SOME OF THE LINES. -->
+<!--Achievements-->
+    <entry key="achievement.InstallMod">Ere Geologique</entry>
+    <entry key="achievement.InstallMod.desc">Vous avez bien installés Ere Geologique</entry>
+    <entry key="achievement.Glacia">Glacia</entry>
+    <entry key="achievement.Glacia.desc">Retour à l'ère Glacière</entry>
+    <entry key="achievement.Prehistoria">Prehistoria</entry>
+    <entry key="achievement.Prehistoria.desc">Retour à l'ère Préhistorique</entry>
+    <entry key="achievement.Primitive">Primitive</entry>
+    <entry key="achievement.Primitive.desc">Retour à l'ère Primitive</entry>
+    <entry key="achievement.Fossil">Fossile</entry>
+    <entry key="achievement.Fossil.desc">Fossile découvert</entry>
+    <entry key="achievement.Feeder">Feeder</entry>
+    <entry key="achievement.Feeder.desc">Nourrisage automatique</entry>
+    <entry key="achievement.Analyser">Analyzeur</entry>
+    <entry key="achievement.Analyser.desc">Analyseur débloqué</entry>
+    <entry key="achievement.Cultivator">Cultivateur</entry>
+    <entry key="achievement.Cultivator.desc">Cultivateur débloqué</entry>
+<!--Commands-->
+    <entry key="commands.dino.usage">/dino &lt;nom&gt; &lt;valeur&gt;</entry>
 <!--Blocks-->
     <entry key="tile.Leaves.fougere.name">Feuilles de Fougère</entry>
     <entry key="tile.Leaves.cycas.name">Feuilles de Cycas</entry>

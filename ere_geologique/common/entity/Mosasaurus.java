@@ -25,7 +25,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import ere_geologique.common.command.CommandHeal;
+import ere_geologique.common.command.CommandDino;
 import ere_geologique.common.entity.Enums.EnumDinoType;
 import ere_geologique.common.entity.IA.DinoAIAttackOnCollide;
 import ere_geologique.common.entity.IA.DinoAIEat;
@@ -453,7 +453,7 @@ public class Mosasaurus extends Dinosaure implements IWaterDino
         {
             this.increaseHunger(30);
         }
-        if(CommandHeal.Heal_Dinos)
+        if(CommandDino.Heal_Dinos)
         	this.heal(5);
     }
 

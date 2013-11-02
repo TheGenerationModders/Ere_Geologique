@@ -36,7 +36,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.client.LocalizationStrings;
 import ere_geologique.common.EreGeologique;
-import ere_geologique.common.command.CommandHeal;
+import ere_geologique.common.command.CommandDino;
 import ere_geologique.common.entity.Enums.EnumDinoType;
 import ere_geologique.common.entity.Enums.EnumOrderType;
 import ere_geologique.common.entity.Enums.EnumSituation;
@@ -317,7 +317,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
     {
         super.onKillEntity(var1);
         this.increaseHunger(this.SelfType.FoodMobList.getMobFood(var1.getClass()));
-        if(CommandHeal.Heal_Dinos)
+        if(CommandDino.Heal_Dinos)
         	this.heal(this.SelfType.FoodMobList.getMobHeal(var1.getClass()));
     }
     
@@ -445,7 +445,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
     		while(i > 0 && this.getHunger() < this.getMaxHunger())
     		{
     			this.setHunger(this.getHunger()+ this.SelfType.FoodItemList.getItemFood(item0.itemID));
-    			if(CommandHeal.Heal_Dinos && !this.worldObj.isRemote)//!this.worldObj.isRemote)
+    			if(CommandDino.Heal_Dinos && !this.worldObj.isRemote)//!this.worldObj.isRemote)
     				this.heal(this.SelfType.FoodItemList.getItemHeal(item0.itemID));
     			i--;
     		}	
@@ -1326,7 +1326,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
 	                		//this.showHeartsOrSmokeFX(false);
 	            			this.worldObj.setEntityState(this, SMOKE_MESSAGE);
 	                		this.increaseHunger(this.SelfType.FoodItemList.getItemFood(var2.itemID)+this.SelfType.FoodBlockList.getBlockFood(var2.itemID));
-	                		if(CommandHeal.Heal_Dinos)
+	                		if(CommandDino.Heal_Dinos)
 	                		{
 	                			//System.out.println("Hbefore:"+String.valueOf(this.health));
 	                			this.heal(this.SelfType.FoodItemList.getItemHeal(var2.itemID)+this.SelfType.FoodBlockList.getBlockHeal(var2.itemID));

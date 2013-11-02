@@ -3,7 +3,7 @@ package ere_geologique.common.entity.IA;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
-import ere_geologique.common.command.CommandStarve;
+import ere_geologique.common.command.CommandDino;
 import ere_geologique.common.entity.Dinosaure;
 import ere_geologique.common.entity.Enums.EnumOrderType;
 import ere_geologique.common.entity.Enums.EnumSituation;
@@ -25,7 +25,7 @@ public class DinoAIStarvation extends EntityAIBase
         //if (EGOptions.DinoHunger)
         //{
             this.mover.decreaseHungerTick();
-            return this.mover.getHungerTick() <= 0 && CommandStarve.Dinos_Starve;// && this.mover.worldObj.difficultySetting > 0;
+            return this.mover.getHungerTick() <= 0 && CommandDino.Dinos_Starve;// && this.mover.worldObj.difficultySetting > 0;
         //}
         //return false;
     }

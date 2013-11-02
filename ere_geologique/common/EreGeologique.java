@@ -26,9 +26,7 @@ import ere_geologique.client.Localizations;
 import ere_geologique.client.RiderInput;
 import ere_geologique.common.achievement.EGAchievement;
 import ere_geologique.common.block.EGBlockList;
-import ere_geologique.common.command.CommandBlockBreak;
-import ere_geologique.common.command.CommandHeal;
-import ere_geologique.common.command.CommandStarve;
+import ere_geologique.common.command.CommandDino;
 import ere_geologique.common.config.EGProperties;
 import ere_geologique.common.creativetabs.EGCreativeTab;
 import ere_geologique.common.dimension.EGDimensionList;
@@ -241,9 +239,7 @@ public class EreGeologique
 	@EventHandler
 	public void serverStarting(FMLServerStartingEvent event)
 	{
-		event.registerServerCommand(new CommandBlockBreak());
-		event.registerServerCommand(new CommandHeal());
-		event.registerServerCommand(new CommandStarve());
+		event.registerServerCommand(new CommandDino());
 	}
 
 }
