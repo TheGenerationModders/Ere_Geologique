@@ -22,9 +22,6 @@ public class EGEntityList
 			EntityRegistry.registerModEntity(DinoEgg.class, "DinoEgg", 231, EreGeologique.Instance, 250, 5, true);
 			EntityRegistry.registerModEntity(Failuresaurus.class, "Failuresaurus", 232, EreGeologique.Instance, 250, 5, true);
 			
-//	        LanguageRegistry.instance().addStringLocalization("entity.fossil.Failuresaurus.name", StatCollector.translateToLocal(LocalizationStrings.MOB_FAILURESAURUS));
-//			for(int i=0;i<EnumDinoType.values().length;i++)
-//	        LanguageRegistry.instance().addStringLocalization("entity.fossil."+EnumDinoType.values()[i].name()+".name", StatCollector.translateToLocal("Dino."+EnumDinoType.values()[i].name()));
 		}
 		catch(Exception ex)
 		{

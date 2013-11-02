@@ -54,6 +54,8 @@ public class EGProperties
 
 	//Dimensions
 	public static int GlaciaID;
+	public static int PrehistoriaID;
+	public static int PrimitiveID;
 	
 	//Other
 	public static int[] EGGIDs = new int[EnumDinoType.values().length];

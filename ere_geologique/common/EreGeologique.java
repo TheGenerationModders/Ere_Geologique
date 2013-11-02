@@ -24,6 +24,7 @@ import ere_geologique.client.EGMessageHandler;
 import ere_geologique.client.EGOptions;
 import ere_geologique.client.Localizations;
 import ere_geologique.client.RiderInput;
+import ere_geologique.common.achievement.EGAchievement;
 import ere_geologique.common.block.EGBlockList;
 import ere_geologique.common.config.EGProperties;
 import ere_geologique.common.creativetabs.EGCreativeTab;
@@ -32,6 +33,7 @@ import ere_geologique.common.entity.EGEntityList;
 import ere_geologique.common.entity.Enums.EnumDinoFoodMob;
 import ere_geologique.common.entity.Enums.EnumDinoType;
 import ere_geologique.common.event.FougereBoneMeal;
+import ere_geologique.common.event.PlayerTracker;
 import ere_geologique.common.gui.GuiHandler;
 import ere_geologique.common.item.EGItemList;
 import ere_geologique.common.recipe.EGRecipe;
@@ -152,8 +154,9 @@ public class EreGeologique
 		}
 
 		EGCreativeTab.loadCreativeTab();//CreativeTab
-		EGBlockList.loadBlock();//Block
-		EGItemList.loadItem();//Item
+		EGBlockList.loadBlock();//Blocks
+		EGItemList.loadItem();//Items
+		EGAchievement.loadAchievement();//Achievements
 	}
 
 	@EventHandler
@@ -201,6 +204,7 @@ public class EreGeologique
 		proxy.registerRenderEntity();
 		proxy.registerRender();
 		MinecraftForge.EVENT_BUS.register(new FougereBoneMeal());
+		MinecraftForge.EVENT_BUS.register(new PlayerTracker());
 
 		EnumDinoType.init();
 		EnumDinoFoodMob.init();
