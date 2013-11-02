@@ -10,7 +10,7 @@ import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
-import ere_geologique.common.EreGeologique;
+import ere_geologique.common.command.CommandHeal;
 import ere_geologique.common.entity.Dinosaure;
 import ere_geologique.common.tileentity.TileEntityFeeder;
 
@@ -219,12 +219,12 @@ public class DinoAIEat extends EntityAIBase
                     if(!this.targetFeeder.isInvalid())
                     {
                         int healval=MathHelper.floor_double(this.targetFeeder.Feed(this.Dino, this.Dino.SelfType)/15D);
-                        if(EreGeologique.EGOptions.Heal_Dinos)
+                        if(CommandHeal.Heal_Dinos)
                             this.Dino.heal(healval);
                     }
                 break;
                 case BLOCK:
-                    if(EreGeologique.EGOptions.Heal_Dinos)
+                    if(CommandHeal.Heal_Dinos)
                         this.Dino.heal(this.Dino.SelfType.FoodBlockList.getBlockHeal(this.Dino.worldObj.getBlockId((int)destX, (int)destY, (int)destZ)));
                     this.Dino.increaseHunger(this.Dino.SelfType.FoodBlockList.getBlockFood(this.Dino.worldObj.getBlockId((int)destX, (int)destY, (int)destZ)));
                     this.Dino.worldObj.setBlock((int)destX, (int)destY, (int)destZ,0);

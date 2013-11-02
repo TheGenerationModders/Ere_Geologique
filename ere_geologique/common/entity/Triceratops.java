@@ -17,8 +17,8 @@ import net.minecraft.pathfinding.PathEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
-import ere_geologique.common.EreGeologique;
 import ere_geologique.common.block.EGBlockList;
+import ere_geologique.common.command.CommandBlockBreak;
 import ere_geologique.common.entity.Enums.EnumDinoType;
 import ere_geologique.common.entity.Enums.EnumOrderType;
 import ere_geologique.common.entity.IA.DinoAIAttackOnCollide;
@@ -498,7 +498,7 @@ public class Triceratops extends Dinosaure
     {
     	int destroyed=0;
     	
-    	if (!this.isAdult() && (EreGeologique.EGOptions.Dino_Block_Breaking == true) && this.riddenByEntity == null )
+    	if (!this.isAdult() && (CommandBlockBreak.Dino_Block_Breaking == true) && this.riddenByEntity == null )
     	{
 	        for (int var1 = (int)Math.round(this.boundingBox.minX) - 1; var1 <= (int)Math.round(this.boundingBox.maxX) + 1; ++var1)
 	        {

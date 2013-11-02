@@ -23,6 +23,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import ere_geologique.client.LocalizationStrings;
 import ere_geologique.common.EreGeologique;
+import ere_geologique.common.command.CommandBlockBreak;
+import ere_geologique.common.command.CommandHeal;
 import ere_geologique.common.entity.Enums.EnumDinoType;
 import ere_geologique.common.entity.IA.DinoAIAttackOnCollide;
 import ere_geologique.common.entity.IA.DinoAIControlledByPlayer;
@@ -146,7 +148,7 @@ public class Spinosaurus extends Dinosaure implements IWaterDino
     {
         super.onUpdate();
         //this.blockBreakingBehavior.execute();
-        if(this.isAdult() && EreGeologique.EGOptions.Dino_Block_Breaking == true)
+        if(this.isAdult() && CommandBlockBreak.Dino_Block_Breaking == true)
         	BlockInteractive();
         if (this.getHealth() > 0)
         {
@@ -368,7 +370,7 @@ public class Spinosaurus extends Dinosaure implements IWaterDino
             {
         		if (this.isWeak() && !this.isTamed())
                 {
-        			if(EreGeologique.EGOptions.Heal_Dinos)
+        			if(CommandHeal.Heal_Dinos)
         				this.heal(200);
                     this.increaseHunger(500);
                     this.setTamed(true);

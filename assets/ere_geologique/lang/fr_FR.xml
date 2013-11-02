@@ -51,7 +51,7 @@
     <entry key="item.IvoryNugget.name">Pépite d'Ivoire</entry>
     <entry key="item.IvoryGear.name">Boulon d'Ivoire</entry>
     <entry key="item.DinoPedia.name">DinoPedia</entry>
-    <entry key="item.ChickenEss.name">Essence of Chicken</entry>
+    <entry key="item.ChickenEss.name">Essence de Poulet</entry>
     <entry key="item.Whip.name">Whip</entry>
     <entry key="item.Leg_Bone.name">Leg Bone</entry>
 	<entry key="item.Claw.name">Claw</entry>
@@ -69,6 +69,7 @@
     <entry key="item.Relic_Srap.name">Relic Srap</entry>
     <entry key="item.cookedChickenSoup.name">cookedChickenSoup</entry>
     <entry key="item.rawChickenSoup.name">rawChickenSoup</entry>
+    <entry key="item.FlintAndSteel.name">Briquet gelé</entry>
     <!-- Dino Meat -->
 	<entry key="item.dinoSteak.name">Dino Steak</entry>
 	<entry key="item.rawTriceratops.name">Triceratops Meat</entry>
@@ -124,7 +125,7 @@
 	<entry key="status.Hungry.head"></entry>
 	<entry key="status.Hungry"> a faim.</entry>
 	<entry key="status.Starve.head"></entry>
-	<entry key="status.Starve"> was starved to death.</entry>
+	<entry key="status.Starve"> est mort de faim.</entry>
 	<entry key="status.LearningChest.head">A </entry>
 	<entry key="status.LearningChest"> has learned how to use chests.</entry>
 	<entry key="status.Betrayed.head">This </entry>
@@ -140,7 +141,7 @@
 	<entry key="status.GemErrorYoung">This T-Rex is still too young.</entry>
 	<entry key="status.GemErrorHealth">The scarab cannot afford such strong life energy.</entry>
     <entry key="status.GemErrorHealth">This T-Rex has already been tamed.</entry>
-    <entry key="status.EssenceFail">Essence of Chicken had no effect.</entry>
+    <entry key="status.EssenceFail">Essence de Poulet n'a pas d'effet.</entry>
 <!-- Dinosaur names. 11 characters MAX -->
 	<entry key="Dino.Triceratops">Tricératops</entry>
 	<entry key="Dino.Velociraptor">Velociraptor</entry>
@@ -174,9 +175,9 @@
 	<entry key="pedia.eggDays">Jours</entry>
 <!-- Dinoegg chat strings -->	
 	<entry key="dinoegg.hatched">L'oeuf de Dinosaure a éclos!</entry>
-	<entry key="dinoegg.noSpace">This egg cannot spawn here.</entry>
+	<entry key="dinoegg.noSpace">L'oeuf ne peux pas éclore ici.</entry>
 <!-- Hatching text -->		
-	<entry key="dinoegg.head">An egg of </entry>
+	<entry key="dinoegg.head">Oeuf de </entry>
 	<entry key="dinoegg.dry"> died because it was too dry.</entry>	
 	<entry key="dinoegg.cold"> died because it was too cold.</entry>
 <!-- Cultivator -->

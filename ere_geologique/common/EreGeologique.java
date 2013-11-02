@@ -15,17 +15,20 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.IChatListener;
 import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import ere_geologique.client.EGMessageHandler;
-import ere_geologique.client.EGOptions;
 import ere_geologique.client.Localizations;
 import ere_geologique.client.RiderInput;
 import ere_geologique.common.achievement.EGAchievement;
 import ere_geologique.common.block.EGBlockList;
+import ere_geologique.common.command.CommandBlockBreak;
+import ere_geologique.common.command.CommandHeal;
+import ere_geologique.common.command.CommandStarve;
 import ere_geologique.common.config.EGProperties;
 import ere_geologique.common.creativetabs.EGCreativeTab;
 import ere_geologique.common.dimension.EGDimensionList;
@@ -56,7 +59,6 @@ public class EreGeologique
 	public static File ConfigFile;
 	public static boolean DebugMode = true;
 	public static Object ToPedia;
-	public static EGOptions EGOptions;
 	public static GuiHandler guiHandler = new GuiHandler();
 	public static IChatListener messagerHandler = new EGMessageHandler();
 	public static IPacketHandler RiderInput = new RiderInput();
@@ -130,10 +132,6 @@ public class EreGeologique
 			//Dimensions
 			EGProperties.GlaciaID = cfg.get("Dimension", "Glacia", 2).getInt();
 
-			//Config options
-			EGOptions.Heal_Dinos = cfg.get("option", "Heal_Dinos", true).getBoolean(true);
-			EGOptions.Dinos_Starve = cfg.get("option", "Dinos_Starve", true).getBoolean(true);
-			EGOptions.Dino_Block_Breaking = cfg.get("option", "Dino_Block_Breaking", true).getBoolean(true);
 		}
 		catch(Exception ex)
 		{
@@ -189,7 +187,7 @@ public class EreGeologique
 			EGLog.info("Forestry integration loaded !");
 		}
 
-		//builcraft and industrialcraft
+		//buildcraft and industrialcraft
 		if (Loader.isModLoaded("BuildCraft|Core") && Loader.isModLoaded("IC2"))
 		{
 			Integration.loadIC_BC();
@@ -204,7 +202,7 @@ public class EreGeologique
 		proxy.registerRenderEntity();
 		proxy.registerRender();
 		MinecraftForge.EVENT_BUS.register(new FougereBoneMeal());
-		MinecraftForge.EVENT_BUS.register(new PlayerTracker());
+		GameRegistry.registerPlayerTracker(new PlayerTracker());
 
 		EnumDinoType.init();
 		EnumDinoFoodMob.init();
@@ -238,6 +236,14 @@ public class EreGeologique
 		Localizations.loadLanguages();
 		EGRecipe.loadRecipe();//Recipe
 		EGRecipe.loadSmelting();//Smelting
+	}
+	
+	@EventHandler
+	public void serverStarting(FMLServerStartingEvent event)
+	{
+		event.registerServerCommand(new CommandBlockBreak());
+		event.registerServerCommand(new CommandHeal());
+		event.registerServerCommand(new CommandStarve());
 	}
 
 }

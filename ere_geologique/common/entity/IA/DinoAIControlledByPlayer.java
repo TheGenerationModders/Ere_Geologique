@@ -5,7 +5,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.packet.Packet34EntityTeleport;
 import net.minecraft.world.WorldServer;
-import ere_geologique.common.EreGeologique;
+import ere_geologique.common.command.CommandBlockBreak;
 import ere_geologique.common.entity.Dinosaure;
 import ere_geologique.common.item.EGItemList;
 
@@ -119,7 +119,7 @@ public class DinoAIControlledByPlayer extends EntityAIBase
                 }*/
             }
         }
-        if (this.speedBoosted && this.motionTarget.RiderSneak && this.lastTimeSeenWhip==0 && this.motionTarget.onGround && EreGeologique.EGOptions.Dino_Block_Breaking)
+        if (this.speedBoosted && this.motionTarget.RiderSneak && this.lastTimeSeenWhip==0 && this.motionTarget.onGround && CommandBlockBreak.Dino_Block_Breaking)
         {
             int BlocksDestroyed=this.motionTarget.BlockInteractive();
             this.currentSpeed-=BlocksDestroyed*0.02;
