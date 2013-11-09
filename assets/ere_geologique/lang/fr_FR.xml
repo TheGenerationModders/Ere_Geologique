@@ -15,8 +15,8 @@
     <entry key="achievement.Primitive.desc">Retour à l'ère Primitive</entry>
     <entry key="achievement.Fossil">Fossile</entry>
     <entry key="achievement.Fossil.desc">Fossile découvert</entry>
-    <entry key="achievement.Feeder">Feeder</entry>
-    <entry key="achievement.Feeder.desc">Nourrisage automatique</entry>
+    <entry key="achievement.Feeder">Mangeoire</entry>
+    <entry key="achievement.Feeder.desc">Nourriseur automatique</entry>
     <entry key="achievement.Analyser">Analyzeur</entry>
     <entry key="achievement.Analyser.desc">Analyseur débloqué</entry>
     <entry key="achievement.Cultivator">Cultivateur</entry>
