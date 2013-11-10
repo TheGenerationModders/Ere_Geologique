@@ -550,10 +550,10 @@ public class TRex extends Dinosaure
         if(this.isModelized())
             return super.getTexture();
         if (this.isWeak())
-            return "ere_geologique:textures/mob/TRexWeak.png";
+            return "ere_geologique:textures/entity/TRexWeak.png";
         if (this.isAdult() && !this.isTamed()) 
-            return "ere_geologique:textures/mob/TRex_Adult.png";
-        return "ere_geologique:textures/mob/TRex.png";
+            return "ere_geologique:textures/entity/TRex_Adult.png";
+        return "ere_geologique:textures/entity/TRex.png";
     }
 
     /**

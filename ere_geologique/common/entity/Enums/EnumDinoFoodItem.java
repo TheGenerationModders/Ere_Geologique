@@ -28,8 +28,8 @@ public enum EnumDinoFoodItem
 	Egg(Item.egg,10,2),
 	Sjl(EGItemList.sjl,30,3),//SioChiuLe
 	Nautilus(EnumDinoType.Nautilus.DropItem,20,2),
-//	ChickenSoupRaw(Fossil.rawChickenSoup,30,3),
-//	ChickenSoupCooked(Fossil.cookedChickenSoup,40,3),
+	ChickenSoupRaw(EGItemList.rawChickenSoup,30,3),
+	ChickenSoupCooked(EGItemList.cookedChickenSoup,40,3),
 	Triceratops(EnumDinoType.Triceratops.DropItem,50,3),
 	Velociraptor(EnumDinoType.Velociraptor.DropItem,20,3),
 	TRex(EnumDinoType.TRex.DropItem,20,3),

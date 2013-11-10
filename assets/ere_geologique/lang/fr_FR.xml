@@ -17,8 +17,8 @@
     <entry key="achievement.Fossil.desc">Fossile découvert</entry>
     <entry key="achievement.Feeder">Mangeoire</entry>
     <entry key="achievement.Feeder.desc">Nourriseur automatique</entry>
-    <entry key="achievement.Analyser">Analyzeur</entry>
-    <entry key="achievement.Analyser.desc">Analyseur débloqué</entry>
+    <entry key="achievement.Analyzer">Analyzeur</entry>
+    <entry key="achievement.Analyzer.desc">Analyseur débloqué</entry>
     <entry key="achievement.Cultivator">Cultivateur</entry>
     <entry key="achievement.Cultivator.desc">Cultivateur débloqué</entry>
 <!--Commands-->
@@ -140,7 +140,7 @@
 	<entry key="order.Stay">Fixe</entry>
 	<entry key="order.Follow">Suivre</entry>
 	<entry key="order.FreeMove">Mouvement libre</entry>
-<!-- Dinosaur Statuses -->
+<!-- Dinosaure Status -->
 	<entry key="status.Hungry.head"></entry>
 	<entry key="status.Hungry"> a faim.</entry>
 	<entry key="status.Starve.head"></entry>
@@ -154,6 +154,7 @@
 	<entry key="status.StarveEsc"> has escaped because of starvation.</entry>
 	<entry key="status.SJLBite"> bit the Siu-Jiu-Le and ran away.</entry>
 	<entry key="status.ChewTime"> needs time to chew.</entry>
+	<entry key="status.Full.head"></entry>
 	<entry key="status.Full"> est plein.</entry>
 	<entry key="status.Nervous.Head">You made the little </entry>
 	<entry key="status.Nervous"> too nervous to hunt itself.</entry>

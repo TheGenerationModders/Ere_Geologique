@@ -53,60 +53,60 @@ public class Feeder extends BlockContainer
     	return 2303;
     }
 
-    public void onBlockAdded(World var1, int var2, int var3, int var4)
+    public void onBlockAdded(World world, int x, int y, int z)
     {
-        super.onBlockAdded(var1, var2, var3, var4);
-        this.setDefaultDirection(var1, var2, var3, var4);
+        super.onBlockAdded(world, x, y, z);
+        this.setDefaultDirection(world, x, y, z);
     }
 
-    private void setDefaultDirection(World var1, int var2, int var3, int var4)
+    private void setDefaultDirection(World world, int x, int y, int z)
     {
-        if (!var1.isRemote)
+        if (!world.isRemote)
         {
-            int var5 = var1.getBlockId(var2, var3, var4 - 1);
-            int var6 = var1.getBlockId(var2, var3, var4 + 1);
-            int var7 = var1.getBlockId(var2 - 1, var3, var4);
-            int var8 = var1.getBlockId(var2 + 1, var3, var4);
-            byte var9 = 3;
+            int l = world.getBlockId(x, y, z - 1);
+            int i1 = world.getBlockId(x, y, z + 1);
+            int j1 = world.getBlockId(x - 1, y, z);
+            int k1 = world.getBlockId(x + 1, y, z);
+            byte b0 = 3;
 
-            if (Block.opaqueCubeLookup[var5] && !Block.opaqueCubeLookup[var6])var9 = 3-2;
+            if (Block.opaqueCubeLookup[l] && !Block.opaqueCubeLookup[i1])b0 = 3-2;
 
-            if (Block.opaqueCubeLookup[var6] && !Block.opaqueCubeLookup[var5])var9 = 2-2;
+            if (Block.opaqueCubeLookup[i1] && !Block.opaqueCubeLookup[l])b0 = 5-2;
 
-            if (Block.opaqueCubeLookup[var7] && !Block.opaqueCubeLookup[var8])var9 = 5-2;
+            if (Block.opaqueCubeLookup[j1] && !Block.opaqueCubeLookup[k1])b0 = 4-2;
 
-            if (Block.opaqueCubeLookup[var8] && !Block.opaqueCubeLookup[var7])var9 = 4-2;
+            if (Block.opaqueCubeLookup[k1] && !Block.opaqueCubeLookup[j1])b0 = 2-2;
 
-            var1.setBlockMetadataWithNotify(var2, var3, var4, var9,2);
+            world.setBlockMetadataWithNotify(x, y, z, b0, 2);
         }
     }
 
-    public void randomDisplayTick(World var1, int var2, int var3, int var4, Random var5)
+    public void randomDisplayTick(World world, int x, int y, int z, Random random)
     {
-    	int var6 = var1.getBlockMetadata(var2, var3, var4);
-        if ((var6&BOTH_BITS)!=0 && var5.nextInt(25)==0)
+    	int l = world.getBlockMetadata(x, y, z);
+        if ((l&BOTH_BITS)!=0 && random.nextInt(25)==0)
         {
-            float var7 = (float)var2 + 0.5F;
-            float var8 = (float)var3 + 0.0F + var5.nextFloat() * 6.0F / 16.0F;
-            float var9 = (float)var4 + 0.5F;
-            float var10 = 0.52F;
-            float var11 = var5.nextFloat() * 0.6F - 0.3F;
+            float f = (float)x + 0.5F;
+            float f1 = (float)y + 0.0F + random.nextFloat() * 6.0F / 16.0F;
+            float f2 = (float)z + 0.5F;
+            float f3 = 0.52F;
+            float f4 = random.nextFloat() * 0.6F - 0.3F;
 
-            if ((var6&DIRECTION_BITS) == 4-2)
+            if ((l&DIRECTION_BITS) == 3-2)
             {
-                var1.spawnParticle("smoke", (double)(var7 - var10), (double)var8, (double)(var9 + var11), 0.0D, 0.0D, 0.0D);
+                world.spawnParticle("smoke", (double)(f - f3), (double)f1, (double)(f2 + f4), 0.0D, 0.0D, 0.0D);
             }
-            else if ((var6&DIRECTION_BITS) == 5-2)
+            else if ((l&DIRECTION_BITS) == 5-2)
             {
-                var1.spawnParticle("smoke", (double)(var7 + var10), (double)var8, (double)(var9 + var11), 0.0D, 0.0D, 0.0D);
+                world.spawnParticle("smoke", (double)(f + f3), (double)f1, (double)(f2 + f4), 0.0D, 0.0D, 0.0D);
             }
-            else if ((var6&DIRECTION_BITS) == 2-2)
+            else if ((l&DIRECTION_BITS) == 4-2)
             {
-                var1.spawnParticle("smoke", (double)(var7 + var11), (double)var8, (double)(var9 - var10), 0.0D, 0.0D, 0.0D);
+                world.spawnParticle("smoke", (double)(f + f4), (double)f1, (double)(f2 - f3), 0.0D, 0.0D, 0.0D);
             }
-            else if ((var6&DIRECTION_BITS) == 3-2)
+            else if ((l&DIRECTION_BITS) == 2-2)
             {
-                var1.spawnParticle("smoke", (double)(var7 + var11), (double)var8, (double)(var9 + var10), 0.0D, 0.0D, 0.0D);
+                world.spawnParticle("smoke", (double)(f + f4), (double)f1, (double)(f2 + f3), 0.0D, 0.0D, 0.0D);
             }
         }
     }
@@ -126,19 +126,19 @@ public class Feeder extends BlockContainer
         this.Front4 = par1IconRegister.registerIcon("ere_geologique:Feeder_Front4");
     }
 
-    public Icon getIcon(int par1, int par2)
+    public Icon getIcon(int side, int metadata)
     {
-    	if (par1 != 1 && ((par2&DIRECTION_BITS)+2) != par1)//Not Top and not Front=>Side
+    	if (side != 1 && ((metadata&DIRECTION_BITS)+2) != side)//Not Top and not Front=>Side
         {
             return this.blockIcon;
         }
         else
         {
-        	if(par1==0)//Bottom
+        	if(side==0)//Bottom
         		return this.Bottom;
-        	if(par1==1)//Top
+        	if(side==1)//Top
         	{
-        		switch(par2&BOTH_BITS)
+        		switch(metadata&BOTH_BITS)
         		{
         			case NO_BIT:return this.Top1;//no food
         			case HERB_BIT:return this.Top2;//herbivore
@@ -148,7 +148,7 @@ public class Feeder extends BlockContainer
         	}
         	else//Front
         	{
-        		switch(par2&BOTH_BITS)
+        		switch(metadata&BOTH_BITS)
         		{
         			case NO_BIT:return this.Front1;//no food
         			case HERB_BIT:return this.Front2;//herbivore
@@ -173,38 +173,38 @@ public class Feeder extends BlockContainer
         }
     }
 
-    public static void updateFurnaceBlockState(boolean herb,boolean carn, World var1, int var2, int var3, int var4)
+    public static void updateFurnaceBlockState(boolean herb,boolean carn, World world, int x, int y, int z)
     {
-    	if(var1.getBlockId(var2, var3, var4)==EGBlockList.FeederIdle.blockID)//won't be used anymore
-    		var1.setBlock(var2, var3, var4,EGBlockList.FeederActive.blockID,0,2);
-        int var5 = var1.getBlockMetadata(var2, var3, var4);
+    	if(world.getBlockId(x, y, z)==EGBlockList.FeederIdle.blockID)//won't be used anymore
+    		world.setBlock(x, y, z, EGBlockList.FeederActive.blockID, 0, 2);
+        int l = world.getBlockMetadata(x, y, z);
         if(herb)
-        	var5|=HERB_BIT;
+        	l|=HERB_BIT;
         else
-        	var5&=~HERB_BIT;
+        	l&=~HERB_BIT;
         if(carn)
-        	var5|=CARN_BIT;
+        	l|=CARN_BIT;
         else
-        	var5&=~CARN_BIT;
-        var1.setBlockMetadataWithNotify(var2, var3, var4, var5, 2);
+        	l&=~CARN_BIT;
+        world.setBlockMetadataWithNotify(x, y, z, l, 2);
     }
 
-    public TileEntity createNewTileEntity(World var1)
+    public TileEntity createNewTileEntity(World world)
     {
         return new TileEntityFeeder();
     }
 
-    public void onBlockPlacedBy(World var1, int var2, int var3, int var4, EntityLiving var5, ItemStack par6ItemStack)
+    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLiving living, ItemStack stack)
     {
-        int var6 = MathHelper.floor_double((double)(var5.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
+        int direction = MathHelper.floor_double((double)(living.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 
-        if (var6 == 0)var1.setBlockMetadataWithNotify(var2, var3, var4, 2-2,2);
+        if (direction == 0)world.setBlockMetadataWithNotify(x, y, z, 3-2, 2);
 
-        if (var6 == 1)var1.setBlockMetadataWithNotify(var2, var3, var4, 5-2,2);
+        if (direction == 1)world.setBlockMetadataWithNotify(x, y, z, 5-2, 2);
 
-        if (var6 == 2)var1.setBlockMetadataWithNotify(var2, var3, var4, 3-2,2);
+        if (direction == 2)world.setBlockMetadataWithNotify(x, y, z, 4-2, 2);
 
-        if (var6 == 3)var1.setBlockMetadataWithNotify(var2, var3, var4, 4-2,2);
+        if (direction == 3)world.setBlockMetadataWithNotify(x, y, z, 2-2, 2);
     }
 
     public void breakBlock(World var1, int var2, int var3, int var4, int var5, int var6)
