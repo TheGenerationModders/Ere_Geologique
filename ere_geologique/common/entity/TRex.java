@@ -80,6 +80,22 @@ public class TRex extends Dinosaure
         //this.Hungrylevel=;*/
         this.updateSize();
         
+        
+        /*
+         * EDIT VARIABLES PER DINOSAUR TYPE
+         */
+        
+        this.adultAge = EnumDinoType.TRex.AdultAge;
+        
+        // Set initial size for hitbox. (length/width, height)
+        this.setSize(1.5F, 1.25F);
+        
+        // Size of dinosaur at day 0.
+        this.minSize = 1.0F;
+        
+        // Size of dinosaur at age Adult.
+        this.maxSize = 4.5F;
+        
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(1, new EntityAISwimming(this));
         //this.attackStrength = 4 + this.getDinoAge();
@@ -111,23 +127,6 @@ public class TRex extends Dinosaure
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.50000001192092896D);
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(21.0D);
-
-    }
-    /**
-     * Returns true if the newer Entity AI code should be run
-     */
-    public boolean isAIEnabled()
-    {
-        return this.riddenByEntity == null && !this.isWeak();
-    }
-
-    /**
-     * returns if this entity triggers Block.onEntityWalking on the blocks they walk on. used for spiders and wolves to
-     * prevent them from trampling crops
-     */
-    protected boolean canTriggerWalking()
-    {
-        return false;
     }
 
     /**
@@ -443,7 +442,7 @@ public class TRex extends Dinosaure
                 }
                 return true;
             }
-            if (!EreGeologique.DebugMode)
+            if (!CommandDino.Debugmode)
             {
             if(var2.itemID == EGItemList.ChickenEss.itemID)
             {
@@ -481,7 +480,7 @@ public class TRex extends Dinosaure
     public void updateRiderPosition()
     {
         if (this.riddenByEntity != null)
-            this.riddenByEntity.setPosition(this.posX, this.posY + (double)this.getDinoHeight() * 1.5D, this.posZ);
+            this.riddenByEntity.setPosition(this.posX, this.posY + (double)this.height * 1.5D, this.posZ);
     }
 
     private void Flee(Entity var1, int var2)
@@ -549,12 +548,12 @@ public class TRex extends Dinosaure
     public String getTexture()
     {
         if(this.isModelized())
-//            return super.getTexture();
+            return super.getTexture();
         if (this.isWeak())
-            return "ere_geologique:textures/entity/TRexWeak.png";
+            return "ere_geologique:textures/mob/TRexWeak.png";
         if (this.isAdult() && !this.isTamed()) 
-            return "ere_geologique:textures/entity/TRex_Adult.png";
-        return "ere_geologique:textures/entity/TRex.png";
+            return "ere_geologique:textures/mob/TRex_Adult.png";
+        return "ere_geologique:textures/mob/TRex.png";
     }
 
     /**
@@ -671,7 +670,7 @@ public class TRex extends Dinosaure
 
                         if (!this.inWater)
                         {
-                            if ((double)Block.blocksList[var4].getBlockHardness(this.worldObj, (int)this.posX, (int)this.posY, (int)this.posZ) < 5.0D || (double)Block.blocksList[var4].getBlockHardness(this.worldObj, (int)this.posX, (int)this.posY, (int)this.posZ) >= 0.0D)
+                            if ((double)Block.blocksList[var4].getBlockHardness(this.worldObj, (int)this.posX, (int)this.posY, (int)this.posZ) < 5.0D)
                             {
                                 if ((new Random()).nextInt(10) < 2)
                                 {

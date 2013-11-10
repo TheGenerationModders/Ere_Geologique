@@ -41,7 +41,7 @@ public class Plesiosaure extends Dinosaure implements IWaterDino
     public int SubSpecies = 1;
     public boolean isBaby = true;*/
     //public int RushTick = 0;
-     
+
     public float TargetY = 0.0F;
     private float randomMotionSpeed;
     private float randomMotionVecX = 0.0F;
@@ -56,6 +56,24 @@ public class Plesiosaure extends Dinosaure implements IWaterDino
         this.setSubSpecies((new Random()).nextInt(3) + 1);
 
         this.updateSize(); 
+        
+        
+        
+        /*
+         * EDIT VARIABLES PER DINOSAUR TYPE
+         */
+        
+        this.adultAge = EnumDinoType.Plesiosaure.AdultAge;
+        
+        // Set initial size for hitbox. (length/width, height)
+        this.setSize(1.5F, 1.0F);
+        
+        // Size of dinosaur at day 0.
+        this.minSize = 1.0F;
+        
+        // Size of dinosaur at age Adult.
+        this.maxSize = 6.0F;
+        
         
         this.getNavigator().setCanSwim(true);
         this.tasks.addTask(2, this.ridingHandler = new DinoAIControlledByPlayer(this));
@@ -88,17 +106,11 @@ public class Plesiosaure extends Dinosaure implements IWaterDino
             switch (this.getSubSpecies())
             {
                 default:
-                	return "ere_geologique:textures/entity/Plesiosaure_adult.png";
+                	return "ere_geologique:textures/entity/Plesiosaur_adult.png";
             }
     }
     
-    /**
-     * Returns true if the newer Entity AI code should be run
-     */
-    public boolean isAIEnabled()
-    {
-        return !this.isModelized();
-    }
+
 
     /**
      * returns if this entity triggers Block.onEntityWalking on the blocks they walk on. used for spiders and wolves to
@@ -555,7 +567,7 @@ public class Plesiosaure extends Dinosaure implements IWaterDino
     {
         if (this.riddenByEntity != null)
         {
-            this.riddenByEntity.setPosition(this.posX, this.posY + (double)this.getDinoHeight() * 0.75D + 0.07D * (double)(18 - this.getDinoAge()), this.posZ);
+            this.riddenByEntity.setPosition(this.posX, this.posY + (double)this.height * 0.75D + 0.07D * (double)(18 - this.getDinoAge()), this.posZ);
         }
     }
 
@@ -792,7 +804,7 @@ public class Plesiosaure extends Dinosaure implements IWaterDino
                                     this.RushTick = 10;
                                 }
                             }
-                            else*/ if ((double)Block.blocksList[var4].getBlockHardness(this.worldObj, (int)this.posX, (int)this.posY, (int)this.posZ) <= 1.5D || var4 == Block.wood.blockID || var4 == Block.planks.blockID || var4 == Block.woodDoubleSlab.blockID || var4 == Block.woodSingleSlab.blockID || (double)Block.blocksList[var4].getBlockHardness(this.worldObj, (int)this.posX, (int)this.posY, (int)this.posZ) >= 0.0D)
+                            else*/ if ((double)Block.blocksList[var4].getBlockHardness(this.worldObj, (int)this.posX, (int)this.posY, (int)this.posZ) <= 1.5D || var4 == Block.wood.blockID || var4 == Block.planks.blockID || var4 == Block.woodDoubleSlab.blockID || var4 == Block.woodSingleSlab.blockID)
                             {
                                 if ((new Random()).nextInt(10) == 5)
                                 {

@@ -48,6 +48,22 @@ public class Pachycephalosaurus extends Dinosaure
         this.looksWithInterest = false;
         this.updateSize();
         
+        
+        /*
+         * EDIT VARIABLES PER DINOSAUR TYPE
+         */
+        
+        this.adultAge = EnumDinoType.Pachycephalosaurus.AdultAge;
+        
+        // Set initial size for hitbox. (length/width, height)
+        this.setSize(1.0F, 1.5F);
+        
+        // Size of dinosaur at day 0.
+        this.minSize = 1.0F;
+        
+        // Size of dinosaur at age Adult.
+        this.maxSize = 3.0F;
+        
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(2, new EntityAILeapAtTarget(this, 0.4F));
@@ -77,7 +93,7 @@ public class Pachycephalosaurus extends Dinosaure
         this.attackTimer = 10;
         this.worldObj.setEntityState(this, (byte)4);
         if (this.rand.nextInt(16) < 9 && var1 instanceof EntityLiving)
-        {//Has chance to blind the prey, after that handle normal attacking 
+        {
             this.headButt();
         }
         return super.attackEntityAsMob(var1);
@@ -131,16 +147,17 @@ public class Pachycephalosaurus extends Dinosaure
         switch (this.getSubSpecies())
         {
             case 1:
-                return "/assets/ere_geologique/textures/entity/Pachy-Lime.png";
+                return "ere_geologique:textures/entity/Pachy-Lime.png";
 
             case 2:
-                return "/assets/ere_geologique/textures/entity/Pachy-Monochrome.png";
+                return "ere_geologique:textures/entity/Pachy-Monochrome.png";
                 
             case 3:
-                return "/assets/ere_geologique/textures/entity/Pachy-Pumpkin.png";
+                return "ere_geologique:textures/entity/Pachy-Pumpkin.png";
 
             default:
-                return "/assets/ere_geologique/textures/entity/Pachy-Pumpkin.png";
+            	
+                return "ere_geologique:textures/entity/Pachy-Pumpkin.png";
         }
     }
 
@@ -295,11 +312,11 @@ public class Pachycephalosaurus extends Dinosaure
         }
         if (var1 == 7)
         {
-            this.showHeartsOrSmokeFX(true);
+            this.showHeartsOrSmokeFX(true, true);
         }
         else if (var1 == 6)
         {
-            this.showHeartsOrSmokeFX(false);
+            this.showHeartsOrSmokeFX(false, false);
         }
         else if (var1 == 8)
         {

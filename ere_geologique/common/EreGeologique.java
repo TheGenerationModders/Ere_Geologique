@@ -55,7 +55,6 @@ public class EreGeologique
 	public static EreGeologique Instance;
 	public static Logger EGLog = Logger.getLogger("EreGeologique");
 	public static File ConfigFile;
-	public static boolean DebugMode = true;
 	public static Object ToPedia;
 	public static GuiHandler guiHandler = new GuiHandler();
 	public static IChatListener messagerHandler = new EGMessageHandler();
@@ -212,17 +211,17 @@ public class EreGeologique
 		NetworkRegistry.instance().registerChannel(RiderInput, "PteroFlight");
 	}
 
-	public static void ShowMessage(String var0, EntityPlayer var1)
+	public static void ShowMessage(String string, EntityPlayer player)
 	{
-		if (var1 != null)
+		if (player != null)
 		{
-			var1.addChatMessage(var0);
+			player.addChatMessage(string);
 		}
 	}
 
 	public static void DebugMessage(String string)
 	{
-		if (DebugMode)
+		if (CommandDino.Debugmode)
 		{
 			EGLog.severe(string);
 		}

@@ -1,5 +1,6 @@
 package ere_geologique.common.item;
 
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.item.Item;
 import ere_geologique.client.LocalizationStrings;
 import ere_geologique.common.EreGeologique;
@@ -64,13 +65,47 @@ public class EGItemList
 	       FlintAndSteel = new FlintAndSteel(EGProperties.FlintAndSteelID).setUnlocalizedName("FlintAndSteel");
 	       
 	       for(int i=0;i<EnumDinoType.values().length;i++)
-	       EnumDinoType.values()[i].EggItem = new Egg(EGProperties.EGGIDs[i], i).setUnlocalizedName("egg"+EnumDinoType.values()[i].name()).setCreativeTab(EGCreativeTab.EGCreativeTabItem);
+	       EnumDinoType.values()[i].EggItem = new Egg(EGProperties.EGGIDs[i], i).setUnlocalizedName("egg" + EnumDinoType.values()[i].name()).setCreativeTab(EGCreativeTab.EGCreativeTabItem);
 	       
 	       for(int i=0;i<EnumDinoType.values().length;i++)
 		   EnumDinoType.values()[i].DropItem = new EGFood(EGProperties.RAWIDs[i], 3, 0.3F, true, EnumDinoType.values()[i].name() + "_Meat").setUnlocalizedName("raw" + EnumDinoType.values()[i].name());
 	       
 	       for(int i=0;i<EnumDinoType.values().length;i++)
 		   EnumDinoType.values()[i].DNAItem = new EGItem(EGProperties.DNAIDs[i], EnumDinoType.values()[i].name() + "_DNA").setUnlocalizedName("dna" + EnumDinoType.values()[i].name());
+	       
+	       GameRegistry.registerItem(IvoryIngot, "IvoryIngot", "ere_geologique");
+	       GameRegistry.registerItem(IvoryNugget, "IvoryNugget", "ere_geologique");
+	       GameRegistry.registerItem(IvoryGear, "IvoryGear", "ere_geologique");
+	       GameRegistry.registerItem(DinoPedia, "DinoPedia", "ere_geologique");
+	       GameRegistry.registerItem(ChickenEss, "ChickenEss", "ere_geologique");
+	       GameRegistry.registerItem(Whip, "Whip", "ere_geologique");
+	       GameRegistry.registerItem(LegBone, "LegBone", "ere_geologique");
+	       GameRegistry.registerItem(Claw, "Claw", "ere_geologique");
+	       GameRegistry.registerItem(Foot, "Foot", "ere_geologique");
+	       GameRegistry.registerItem(Skull, "Skull", "ere_geologique");
+	       GameRegistry.registerItem(BioFossil, "BioFossil", "ere_geologique");
+	       GameRegistry.registerItem(SkullStick, "SkullStick", "ere_geologique");
+	       GameRegistry.registerItem(gem, "gem", "ere_geologique");
+	       GameRegistry.registerItem(EmptyShell, "EmptyShell", "ere_geologique");
+	       GameRegistry.registerItem(MagicConch, "MagicConch", "ere_geologique");
+	       GameRegistry.registerItem(sjl, "sjl", "ere_geologique");
+	       GameRegistry.registerItem(cookedDinoMeat, "cookedDinoMeat", "ere_geologique");
+	       GameRegistry.registerItem(BrokenSapling, "BrokenSapling", "ere_geologique");
+	       GameRegistry.registerItem(SteelIngot, "SteelIngot", "ere_geologique");
+	       GameRegistry.registerItem(SteelPlate, "SteelPlate", "ere_geologique");
+	       GameRegistry.registerItem(Relic, "Relic", "ere_geologique");
+	       GameRegistry.registerItem(rawChickenSoup, "rawChickenSoup", "ere_geologique");
+	       GameRegistry.registerItem(cookedChickenSoup, "cookedChickenSoup", "ere_geologique");
+	       GameRegistry.registerItem(FlintAndSteel, "FlindAndSteel", "ere_geologique");
+	       
+	       for(int i=0;i<EnumDinoType.values().length;i++)
+	       GameRegistry.registerItem(EnumDinoType.values()[i].EggItem, "egg" + EnumDinoType.values()[i].name(), "ere_geologique");
+	       
+	       for(int i=0;i<EnumDinoType.values().length;i++)
+		   GameRegistry.registerItem(EnumDinoType.values()[i].DropItem, "raw" + EnumDinoType.values()[i].name(), "ere_geologique");
+	       
+	       for(int i=0;i<EnumDinoType.values().length;i++)
+		   GameRegistry.registerItem(EnumDinoType.values()[i].DNAItem, "dna" + EnumDinoType.values()[i].name(), "ere_geologique");
 		}
 		catch(Exception ex)
 		{

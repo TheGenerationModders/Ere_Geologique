@@ -57,8 +57,6 @@ public class Dilophosaurus extends Dinosaure
     
     //public ItemStack ItemInMouth = null;
     public int LearningChestTick = 900;
-    //public int BreedTick = 3000;
-    
     
     public boolean PreyChecked = false;
     public boolean SupportChecked = false;
@@ -72,6 +70,23 @@ public class Dilophosaurus extends Dinosaure
         this.looksWithInterest = false;
 
         this.updateSize();
+        
+        
+        /*
+         * EDIT VARIABLES PER DINOSAUR TYPE
+         */
+        
+        this.adultAge = EnumDinoType.Dilophosaurus.AdultAge;
+        
+        // Set initial size for hitbox. (length/width, height)
+        this.setSize(1.5F, 1.5F);
+        
+        // Size of dinosaur at day 0.
+        this.minSize = 0.5F;
+        
+        // Size of dinosaur at age Adult.
+        this.maxSize = 2.0F;
+        
         
         //this.attackStrength = 2 + this.getDinoAge();
         this.getNavigator().setAvoidsWater(true);
@@ -106,32 +121,30 @@ public class Dilophosaurus extends Dinosaure
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.30000001192092896D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.34000001192092896D);
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(21.0D);
 
     }
-
+    
     /**
-     * Returns true if the newer Entity AI code should be run
+     * Returns the texture's file path as a String.
      */
-    public boolean isAIEnabled()
+    @Override
+    public String getTexture()
     {
-        return true;
+        if (this.isModelized())
+            return super.getTexture();
+            switch (this.getSubSpecies())
+            {
+                default:
+                	return "ere_geologique:textures/entity/Dilophosaurus_Adult.png";
+            }
     }
-
-    /**
-     * returns if this entity triggers Block.onEntityWalking on the blocks they walk on. used for spiders and wolves to
-     * prevent them from trampling crops
-     */
-    protected boolean canTriggerWalking()
-    {
-        return false;
-    }
-
 
     /**
      * Causes this entity to do an upwards motion (jumping).
      */
+    /*
     protected void jump()
     {
         this.motionY = 0.41999998688697815D * (double)(1 + this.getDinoAge() / 16);
@@ -145,6 +158,7 @@ public class Dilophosaurus extends Dinosaure
 
         this.isAirBorne = true;
     }
+    */
 
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.

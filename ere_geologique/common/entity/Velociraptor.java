@@ -92,6 +92,24 @@ public class Velociraptor extends Dinosaure
         //this.Hungrylevel=;*/
         this.updateSize();
         
+        
+        
+        
+        /*
+         * EDIT VARIABLES PER DINOSAUR TYPE
+         */
+        
+        this.adultAge = EnumDinoType.Velociraptor.AdultAge;
+        
+        // Set initial size for hitbox. (length/width, height)
+        this.setSize(1.5F, 1.5F);
+        
+        // Size of dinosaur at day 0.
+        this.minSize = 0.25F;
+        
+        // Size of dinosaur at age Adult.
+        this.maxSize = 0.5F;
+        
         //this.setHunger(this.getHungerLimit());
         //this.attackStrength = 2 + this.getDinoAge();
         this.getNavigator().setAvoidsWater(true);
@@ -132,14 +150,6 @@ public class Velociraptor extends Dinosaure
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(21.0D);
 
     }
-    /**
-     * Returns true if the newer Entity AI code should be run
-     */
-    public boolean isAIEnabled()
-    {
-        return true;
-    }
-    
 
     /*protected void entityInit()
     {
@@ -168,31 +178,31 @@ public class Velociraptor extends Dinosaure
             switch (this.getSubSpecies())
             {
                 case 1:
-                    return "/assets/ere_geologique/textures/entity/raptor_blue_adult.png";
+                    return "ere_geologique:textures/entity/Velociraptor_Blue_Adult.png";
 
                 case 2:
-                    return "/assets/ere_geologique/textures/entity/raptor_green_adult.png";
+                    return "ere_geologique:textures/entity/Velociraptor_Green_Adult.png";
                     
                 case 3:
-                    return "/assets/ere_geologique/textures/entity/raptor_brown_adult.png";
+                    return "ere_geologique:textures/entity/Velociraptor_brown_Adult.png";
 
                 default:
-                	return "/assets/ere_geologique/textures/entity/raptor_brown_adult.png";
+                	return "ere_geologique:textures/entity/Velociraptor_brown_Adult.png";
             }
         }
         switch (this.getSubSpecies())
         {
             case 1:
-                return "/assets/ere_geologique/textures/entity/raptor_blue_Baby.png";
+                return "ere_geologique:textures/entity/Velociraptor_Blue_Baby.png";
 
             case 2:
-                return "/assets/ere_geologique/textures/entity/raptor_green_Baby.png";
+                return "ere_geologique:textures/entity/Velociraptor_Green_Baby.png";
             
             case 3:
-                return "/assets/ere_geologique/textures/entity/raptor_brown_Baby.png";
+                return "ere_geologique:textures/entity/Velociraptor_Brown_Baby.png";
 
             default:
-            	return "/assets/ere_geologique/textures/entity/raptor_brown_Baby.png";
+            	return "ere_geologique:textures/entity/Velociraptor_Brown_Baby.png";
         }
     }
     
@@ -203,7 +213,7 @@ public class Velociraptor extends Dinosaure
      */
     protected String getLivingSound()
     {
-        return this.isTamed() ? "ere_geologique:velociraptor_living_tame" : "ere_geologique:velociraptor_living_wild";
+        return this.isTamed() ? "fossil:velociraptor_living_tame" : "fossil:velociraptor_living_wild";
     }
 
     /**
@@ -495,11 +505,11 @@ public class Velociraptor extends Dinosaure
     {
         if (var1 == 7)
         {
-            this.showHeartsOrSmokeFX(true);
+            this.showHeartsOrSmokeFX(true, true);
         }
         else if (var1 == 6)
         {
-            this.showHeartsOrSmokeFX(false);
+            this.showHeartsOrSmokeFX(false, false);
         }
         else if (var1 == 8)
         {

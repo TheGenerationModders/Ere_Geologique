@@ -5,6 +5,7 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.texture.TextureManager;
+import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
@@ -109,15 +110,13 @@ public class GuiPedia extends GuiContainer
     	if(i<0)i=4;
     	if(i==0)i=8;
     	if(i>160)i=160;
-
+    	GL11.glDisable(GL11.GL_LIGHTING);
+        this.mc.getTextureManager().bindTexture(TextureMap.locationItemsTexture);
     	RenderItem r= new RenderItem();
     	ItemStack it=new ItemStack(it0,1);
     	Icon icon = it.getIconIndex();
- //   	this.mc.getTextureManager().bindTexture(new ResourceLocation("/gui/items.png"));
-    	GL11.glDisable(GL11.GL_LIGHTING);
     	GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-    	this.drawTexturedModelRectFromIcon(x0, y0, icon, i, i);
- //   	r.renderIcon(x0, y0, icon, i, i);
+        this.drawTexturedModelRectFromIcon(x0, y0, icon, i, i);
     	GL11.glEnable(GL11.GL_LIGHTING);
     }
     
@@ -125,7 +124,7 @@ public class GuiPedia extends GuiContainer
      * Places a half-sized item at the bottom of dinopedia
      */
     public void AddMiniItem(Item it0)
-    {this.PrintItemXY(it0, 99+8*(items%8),100-8*(items/8),0);items++;}
+    {this.PrintItemXY(it0, 140+8*(items%8),130-8*(items/8),0);items++;}
     
     /**
      * Print a Picture at X,Y
@@ -149,6 +148,12 @@ public class GuiPedia extends GuiContainer
     {
     	if(EreGeologique.ToPedia instanceof Dinosaure)((Dinosaure)EreGeologique.ToPedia).ShowPedia(this);	
     	if(EreGeologique.ToPedia instanceof DinoEgg)((DinoEgg)EreGeologique.ToPedia).ShowPedia(this);
+//    	if(EreGeologique.ToPedia instanceof EntityPregnantCow)((EntityPregnantCow)EreGeologique.ToPedia).ShowPedia(this);
+//    	if(EreGeologique.ToPedia instanceof EntityPregnantPig)((EntityPregnantPig)EreGeologique.ToPedia).ShowPedia(this);
+//    	if(EreGeologique.ToPedia instanceof EntityPregnantSheep)((EntityPregnantSheep)EreGeologique.ToPedia).ShowPedia(this);
+//    	if(EreGeologique.ToPedia instanceof EntityMammoth)((EntityMammoth)EreGeologique.ToPedia).ShowPedia(this);
+//    	if(EreGeologique.ToPedia instanceof EntitySmilodon)((EntitySmilodon)EreGeologique.ToPedia).ShowPedia(this);
+//        if(EreGeologique.ToPedia instanceof EntityDodo)((EntityDodo)EreGeologique.ToPedia).ShowPedia(this);
     }
 
     /**
@@ -196,7 +201,7 @@ public class GuiPedia extends GuiContainer
     public void onGuiClosed()
     {
         //EntityDinosaur.pediaingDino = null;
-        //Fossil.ToPedia=null;
+        //EreGeologique.ToPedia=null;
         super.onGuiClosed();
     }
 }

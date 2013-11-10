@@ -30,6 +30,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.client.LocalizationStrings;
 import ere_geologique.common.EreGeologique;
+import ere_geologique.common.command.CommandDino;
 import ere_geologique.common.entity.Enums.EnumDinoType;
 import ere_geologique.common.gui.GuiPedia;
 import ere_geologique.common.item.EGItemList;
@@ -100,7 +101,7 @@ public class DinoEgg extends Entity implements IEntityAdditionalSpawnData
 
     protected void entityInit()
     {
-        if (EreGeologique.DebugMode)
+        if (CommandDino.Debugmode)
         {
             this.HatchTime = 100;
         }

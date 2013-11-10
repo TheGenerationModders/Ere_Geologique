@@ -15,18 +15,25 @@ import ere_geologique.common.entity.Spinosaurus;
 @SideOnly(Side.CLIENT)
 public class RenderSpinosaurus extends RenderLiving
 {
-    private static final ResourceLocation loc = new ResourceLocation("ere_geologique:textures/entity/Spinosaurus_Adult.png");
-
     public RenderSpinosaurus(ModelBase par1ModelBase, float par2)
     {
         super(par1ModelBase, par2);
     }
-
+    
+    /**
+     * Applies the scale to the transform matrix
+     * 
+     * Use this to grow the dinonsaur with age.
+     */
     protected void preRenderScale(Spinosaurus entitydinosaur, float par2)
     {
-        GL11.glScalef(entitydinosaur.getDinoWidth(), entitydinosaur.getDinoHeight(), entitydinosaur.getDinoLength());
+        GL11.glScalef(entitydinosaur.getDinosaurSize(), entitydinosaur.getDinosaurSize(), entitydinosaur.getDinosaurSize());
     }
-
+    
+    /**
+     * Allows the render to do any OpenGL state modifications necessary before the model is rendered. Args:
+     * entityLiving, partialTickTime
+     */
     protected void preRenderCallback(EntityLivingBase par1EntityLivingBase, float par2)
     {
         this.preRenderScale((Spinosaurus)par1EntityLivingBase, par2);
@@ -36,7 +43,10 @@ public class RenderSpinosaurus extends RenderLiving
     {
         return new ResourceLocation(par1Entity.getTexture());
     }
-    
+  
+    /**
+     * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
+     */
     protected ResourceLocation getEntityTexture(Entity par1Entity)
     {
         return this.func_110919_a((Spinosaurus)par1Entity);

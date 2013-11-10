@@ -53,6 +53,22 @@ public class Compsognathus extends Dinosaure
         this.looksWithInterest = false;
         this.updateSize();
         
+        
+        /*
+         * EDIT VARIABLES PER DINOSAUR TYPE
+         */
+        
+        this.adultAge = EnumDinoType.Compsognathus.AdultAge;
+        
+        // Set initial size for hitbox. (length/width, height)
+        this.setSize(1.0F, 1.0F);
+        
+        // Size of dinosaur at day 0.
+        this.minSize = 0.25F;
+        
+        // Size of dinosaur at age Adult.
+        this.maxSize = 1.0F;        
+        
 
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(0, new EntityAISwimming(this));
@@ -74,17 +90,10 @@ public class Compsognathus extends Dinosaure
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.3D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.31D);
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(1.0D);
     }
-    /**
-     * Returns true if the newer Entity AI code should be run
-     */
-    public boolean isAIEnabled()
-    {
-        return true;
-    }
-
+    
     /**
      * returns if this entity triggers Block.onEntityWalking on the blocks they walk on. used for spiders and wolves to
      * prevent them from trampling crops

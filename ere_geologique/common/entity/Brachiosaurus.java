@@ -1,6 +1,5 @@
 package ere_geologique.common.entity;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -15,9 +14,7 @@ import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
-import ere_geologique.common.command.CommandDino;
 import ere_geologique.common.entity.Enums.EnumDinoType;
-import ere_geologique.common.entity.Enums.EnumOrderType;
 import ere_geologique.common.entity.IA.DinoAIAttackOnCollide;
 import ere_geologique.common.entity.IA.DinoAIControlledByPlayer;
 import ere_geologique.common.entity.IA.DinoAIEat;
@@ -33,9 +30,24 @@ public class Brachiosaurus extends Dinosaure
     public Brachiosaurus(World var1)
     {
         super(var1,EnumDinoType.Brachiosaurus);
-        
-        this.OrderStatus = EnumOrderType.FreeMove;
         this.updateSize();
+        
+        
+        /*
+         * EDIT VARIABLES PER DINOSAUR TYPE
+         */
+        
+        this.adultAge = EnumDinoType.Brachiosaurus.AdultAge;
+        
+        // Set initial size for hitbox. (length/width, height)
+        this.setSize(1.5F, 2.0F);
+        
+        // Size of dinosaur at day 0.
+        this.minSize = 1.0F;
+        
+        // Size of dinosaur at age Adult.
+        this.maxSize = 4.5F;
+
         
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(1, new EntityAISwimming(this));
@@ -60,7 +72,6 @@ public class Brachiosaurus extends Dinosaure
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.25D);
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D);
     }
-    
     
     /**
      * Returns the texture's file path as a String.
@@ -108,7 +119,7 @@ public class Brachiosaurus extends Dinosaure
     }
     
     /*
-     * This still needed?
+     *  This still needed?
 
     public Vec3 getBlockToEat(int SEARCH_RANGE)
     {
@@ -201,14 +212,16 @@ public class Brachiosaurus extends Dinosaure
     /**
      * Called to update the entity's position/logic.
      */
+    /*
     public void onUpdate()
     {
         super.onUpdate();
-        if ((this.isTeen() || this.isAdult()) && !this.isModelized() && CommandDino.Dino_Block_Breaking == true && this.riddenByEntity == null )//this.getDinoAge() >= 4)
+        if ((this.isTeen() || this.isAdult()) && !this.isModelized() && Fossil.FossilOptions.Dino_Block_Breaking == true && this.riddenByEntity == null )//this.getDinoAge() >= 4)
         {
             this.BlockInteractive();
         }
     }
+    */
 
     /**
      * Applies a velocity to each of the entities pushing them away from each other. Args: entity
@@ -232,14 +245,14 @@ public class Brachiosaurus extends Dinosaure
 
     public float getEyeHeight()
     {
-        return 4.0F + (float)this.getDinoAge() / 1.8F;
+        return 2.0F + (float)this.getDinoAge() / 1.8F;
     }
 
     public float getHalfHeight()
     {
-        return this.getEyeHeight() / 2.0F;
+        return this.getEyeHeight() / 2.0F + 0.7F;
     }
-
+/*
     public int BlockInteractive()
     {
 
@@ -256,7 +269,7 @@ public class Brachiosaurus extends Dinosaure
                     {
                         float var10000 = Block.blocksList[var8].getBlockHardness(this.worldObj, (int)this.posX, (int)this.posY, (int)this.posZ);
 
-                        if (var10000 < 0.5F || (this.RiderSneak && (var10000<2.0F || var8 == Block.wood.blockID || var8 == Block.planks.blockID || var8 == Block.woodDoubleSlab.blockID || var8 == Block.woodSingleSlab.blockID || (double)Block.blocksList[var10].getBlockHardness(this.worldObj, (int)this.posX, (int)this.posY, (int)this.posZ) >= 0.0D)))
+                        if (var10000 < 0.5F || (this.RiderSneak && (var10000<2.0F || var8 == Block.wood.blockID || var8 == Block.planks.blockID || var8 == Block.woodDoubleSlab.blockID || var8 == Block.woodSingleSlab.blockID)))
                         {
                             int var7 = this.GetObjectTall(var5, var10, var6);
 
@@ -271,7 +284,7 @@ public class Brachiosaurus extends Dinosaure
         }
         return 0;
     }
-
+*/
     private boolean isObjectTooTall(int var1, int var2, int var3)
     {
         return (float)this.GetObjectTall(var1, var2, var3) > this.getHalfHeight();
@@ -311,7 +324,7 @@ public class Brachiosaurus extends Dinosaure
     {
         if (this.riddenByEntity != null)
         {
-            this.riddenByEntity.setPosition(this.posX, this.posY + (double)this.getHalfHeight() * 1.5D, this.posZ);
+            this.riddenByEntity.setPosition(this.posX, this.posY + (double)this.getHalfHeight(), this.posZ);
         }
     }
 

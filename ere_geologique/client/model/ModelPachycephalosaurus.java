@@ -4,11 +4,11 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.MathHelper;
+import ere_geologique.common.entity.Dinosaure;
 import ere_geologique.common.entity.Pachycephalosaurus;
 
 public class ModelPachycephalosaurus extends ModelDinosaure
 {
-	
     public boolean isAttacking = false;
     
   //fields
@@ -160,7 +160,7 @@ public class ModelPachycephalosaurus extends ModelDinosaure
   public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5)
   {
     super.render(entity, f, f1, f2, f3, f4, f5);
-    setRotationAngles(f, f1, f2, f3, f4, f5);
+    setRotationAngles(f, f1, f2, f3, f4, f5, ((Dinosaure)entity).isModelized());
     Body.render(f5);
   }
   

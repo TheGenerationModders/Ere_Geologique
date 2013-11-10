@@ -8,29 +8,32 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.common.entity.Stegosaurus;
 
+@SideOnly(Side.CLIENT)
 public class RenderStegosaurus extends RenderLiving
 {
-    private static final ResourceLocation loc = new ResourceLocation("ere_geologique:textures/entity/Stegosaurus_Adult.png");
-    
-    public RenderStegosaurus(ModelBase var1, float var2)
+    public RenderStegosaurus(ModelBase par1ModelBase, float par2)
     {
-        super(var1, var2);
-        this.setRenderPassModel(var1);
+        super(par1ModelBase, par2);
     }
     
-    public RenderStegosaurus(ModelBase var1, ModelBase var2, float var3)
+    /**
+     * Applies the scale to the transform matrix
+     * 
+     * Use this to grow the dinonsaur with age.
+     */
+    protected void preRenderScale(Stegosaurus entitydinosaur, float par2)
     {
-        super(var1, var3);
-        this.setRenderPassModel(var2);
+        GL11.glScalef(entitydinosaur.getDinosaurSize(), entitydinosaur.getDinosaurSize(), entitydinosaur.getDinosaurSize());
     }
-
-    protected void preRenderScale(Stegosaurus stegosaurus, float par2)
-    {
-        GL11.glScalef(stegosaurus.getDinoWidth(), stegosaurus.getDinoHeight(), stegosaurus.getDinoLength());
-    }
-
+    
+    /**
+     * Allows the render to do any OpenGL state modifications necessary before the model is rendered. Args:
+     * entityLiving, partialTickTime
+     */
     protected void preRenderCallback(EntityLivingBase par1EntityLivingBase, float par2)
     {
         this.preRenderScale((Stegosaurus)par1EntityLivingBase, par2);
@@ -40,7 +43,10 @@ public class RenderStegosaurus extends RenderLiving
     {
         return new ResourceLocation(par1Entity.getTexture());
     }
-    
+  
+    /**
+     * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
+     */
     protected ResourceLocation getEntityTexture(Entity par1Entity)
     {
         return this.func_110919_a((Stegosaurus)par1Entity);

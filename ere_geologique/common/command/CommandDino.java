@@ -14,6 +14,7 @@ public class CommandDino extends CommandBase
 	public static boolean Dino_Block_Breaking;
 	public static boolean Heal_Dinos;
 	public static boolean Dinos_Starve;
+	public static boolean Debugmode;
 	
 	@Override
 	public String getCommandName()
@@ -38,27 +39,27 @@ public class CommandDino extends CommandBase
 	{
 		if(arguments.length <= 0)
 			throw new WrongUsageException("Type '" + this.getCommandUsage(sender) + "' for help.");
-		if(arguments[0].matches("blockbreack"))
-		{
+		if(arguments[0].matches("blockbreack")) {
 			commandBlockBreack(sender, arguments);
 			return;
-		}else if(arguments[0].matches("heal"))
-		{
+		}else if(arguments[0].matches("heal")) {
 			commandHeal(sender, arguments);
 			return;
-		}else if(arguments[0].matches("starve"))
-		{
+		}else if(arguments[0].matches("starve")) {
 			commandStarve(sender, arguments);
 			return;
-		}else if (arguments[0].matches("help")) {
+		}else if(arguments[0].matches("debug")) { 
+			commandDebug(sender, arguments);
+			return;
+		}else if(arguments[0].matches("help")) {
 			sender.sendChatToPlayer(ChatMessageComponent.createFromText("Format: '" + this.getCommandName() + " <command> <arguments>'"));
 			sender.sendChatToPlayer(ChatMessageComponent.createFromText("Available commands:"));
 			sender.sendChatToPlayer(ChatMessageComponent.createFromText("- blockbreack : " + LocalizationStrings.COMMAND_Descr_B + " ."));
 			sender.sendChatToPlayer(ChatMessageComponent.createFromText("- heal : " + LocalizationStrings.COMMAND_Descr_H + " ."));
 			sender.sendChatToPlayer(ChatMessageComponent.createFromText("- starve : " + LocalizationStrings.COMMAND_Descr_S + " ."));
+			sender.sendChatToPlayer(ChatMessageComponent.createFromText("- debug : " + LocalizationStrings.COMMAND_Descr_D + " ."));
 			return;
 		}
-		
 		throw new WrongUsageException(this.getCommandUsage(sender));
 	}
 	
@@ -93,6 +94,18 @@ public class CommandDino extends CommandBase
 			return;
 		}else if(arguments[1].matches("false")) {
 			Dinos_Starve = false;
+			return;
+		}
+	}
+	
+	private void commandDebug(ICommandSender sender, String[] arguments)
+	{
+		if(arguments[1].matches("true"))
+		{
+			Debugmode = true;
+			return;
+		}else if(arguments[1].matches("false")) {
+			Debugmode = false;
 			return;
 		}
 	}

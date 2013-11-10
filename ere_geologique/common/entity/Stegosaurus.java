@@ -70,6 +70,23 @@ public class Stegosaurus extends Dinosaure
         
         this.setSubSpecies((new Random()).nextInt(3) + 1);
         
+        
+        
+        /*
+         * EDIT VARIABLES PER DINOSAUR TYPE
+         */
+        
+        this.adultAge = EnumDinoType.Stegosaurus.AdultAge;
+        
+        // Set initial size for hitbox. (length/width, height)
+        this.setSize(1.0F, 0.8F);
+        
+        // Size of dinosaur at day 0.
+        this.minSize = 1.0F;
+        
+        // Size of dinosaur at age Adult.
+        this.maxSize = 8.0F;
+        
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(2, new EntityAILeapAtTarget(this, 0.4F));
@@ -80,22 +97,14 @@ public class Stegosaurus extends Dinosaure
         this.tasks.addTask(8, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(9, new EntityAILookIdle(this));
     }
-
-    /**
-     * Returns true if the newer Entity AI code should be run
-     */
-    public boolean isAIEnabled()
-    {
-        return this.riddenByEntity == null;
-    }
     
     public String getTexture()
     {
         if (this.isModelized())
             return super.getModelTexture();
         if(this.isAdult())
-            return "/assets/ere_geologique/textures/entity/Stegosaurus_Adult.png";
-		return "/assets/ere_geologique/textures/entity/Stegosaurus_Baby.png";
+            return "ere_geologique:textures/entity/Stegosaurus_Adult.png";
+		return "ere_geologique:textures/entity/Stegosaurus_Baby.png";
     }
 
 
@@ -255,11 +264,11 @@ public class Stegosaurus extends Dinosaure
     {
         if (var1 == 7)
         {
-            this.showHeartsOrSmokeFX(true);
+            this.showHeartsOrSmokeFX(true, true);
         }
         else if (var1 == 6)
         {
-            this.showHeartsOrSmokeFX(false);
+            this.showHeartsOrSmokeFX(false, false);
         }
         else if (var1 == 8)
         {

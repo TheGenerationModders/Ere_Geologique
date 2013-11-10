@@ -16,11 +16,9 @@ import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.pathfinding.PathEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeHooks;
 import ere_geologique.common.block.EGBlockList;
 import ere_geologique.common.command.CommandDino;
 import ere_geologique.common.entity.Enums.EnumDinoType;
-import ere_geologique.common.entity.Enums.EnumOrderType;
 import ere_geologique.common.entity.IA.DinoAIAttackOnCollide;
 import ere_geologique.common.entity.IA.DinoAIControlledByPlayer;
 import ere_geologique.common.entity.IA.DinoAIEat;
@@ -40,12 +38,26 @@ public class Triceratops extends Dinosaure
     public Triceratops(World var1)
     {
         super(var1,EnumDinoType.Triceratops);
-        this.OrderStatus = EnumOrderType.FreeMove;
         this.looksWithInterest = false;
-
         this.updateSize();
-        
         this.setSubSpecies((new Random()).nextInt(3) + 1);
+        
+        
+        /*
+         * EDIT VARIABLES PER DINOSAUR TYPE
+         */
+        
+        this.adultAge = EnumDinoType.Triceratops.AdultAge;
+        
+        // Set initial size for hitbox. (length/width, height)
+        this.setSize(0.8F, 0.8F);
+        
+        // Size of dinosaur at day 0.
+        this.minSize = 1.0F;
+        
+        // Size of dinosaur at age Adult.
+        this.maxSize = 8.0F;        
+        
         this.getNavigator().setAvoidsWater(true);
         //this.tasks.addTask(0, new DinoAIGrowup(this));
         //this.tasks.addTask(0, new DinoAIStarvation(this));
@@ -62,14 +74,7 @@ public class Triceratops extends Dinosaure
         this.tasks.addTask(10, new EntityAILookIdle(this));
     }
 
-    
-    /**
-     * Returns true if the newer Entity AI code should be run
-     */
-    public boolean isAIEnabled()
-    {
-        return !this.isModelized();
-    }
+
 
     protected void applyEntityAttributes()
     {
@@ -158,16 +163,6 @@ public class Triceratops extends Dinosaure
         //this.setSelfAngry(var1.getBoolean("Angry"));
         //this.InitSize();
     }*/
-    /**
-     * Causes this entity to do an upwards motion (jumping).
-     */
-    protected void jump()
-    {
-        this.motionY = 0.5;
-        this.isAirBorne = true;
-        ForgeHooks.onLivingJump(this);
-    }
-
 
     /**
      * Called to update the entity's position/logic.
@@ -376,7 +371,7 @@ public class Triceratops extends Dinosaure
     {
         if (this.riddenByEntity != null)
         {
-            this.riddenByEntity.setPosition(this.posX, this.posY + (double)this.getDinoHeight() * 0.65D + 0.07D * (double)(12 - this.getDinoAge()), this.posZ);
+            this.riddenByEntity.setPosition(this.posX, this.posY + (double)this.height * 0.65D + 0.07D * (double)(12 - this.getDinoAge()), this.posZ);
         }
     }
 
@@ -520,7 +515,7 @@ public class Triceratops extends Dinosaure
 	                                    this.RushTick = 10;
 	                                }
 	                            }
-	                            else*/ if ((double)Block.blocksList[var4].getBlockHardness(this.worldObj, (int)this.posX, (int)this.posY, (int)this.posZ) <= 1.5D || var4 == Block.wood.blockID || var4 == Block.planks.blockID || var4 == Block.woodDoubleSlab.blockID || var4 == Block.woodSingleSlab.blockID || (double)Block.blocksList[var4].getBlockHardness(this.worldObj, (int)this.posX, (int)this.posY, (int)this.posZ) >= 0.0D)
+	                            else*/ if ((double)Block.blocksList[var4].getBlockHardness(this.worldObj, (int)this.posX, (int)this.posY, (int)this.posZ) <= 1.5D || var4 == Block.wood.blockID || var4 == Block.planks.blockID || var4 == Block.woodDoubleSlab.blockID || var4 == Block.woodSingleSlab.blockID)
 	                            {
 	                                if ((new Random()).nextInt(10) == 5)
 	                                {

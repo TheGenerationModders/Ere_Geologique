@@ -15,13 +15,11 @@ import ere_geologique.common.entity.Ankylosaurus;
 @SideOnly(Side.CLIENT)
 public class RenderAnkylosaurus extends RenderLiving
 {
-    private static final ResourceLocation loc = new ResourceLocation("ere_geologique:textures/entity/Ankylosaurus.png");
-
     public RenderAnkylosaurus(ModelBase par1ModelBase, float par2)
     {
         super(par1ModelBase, par2);
     }
-
+    
     /**
      * Applies the scale to the transform matrix
      * 
@@ -29,9 +27,9 @@ public class RenderAnkylosaurus extends RenderLiving
      */
     protected void preRenderScale(Ankylosaurus entitydinosaur, float par2)
     {
-        GL11.glScalef(entitydinosaur.getDinoWidth(), entitydinosaur.getDinoHeight(), entitydinosaur.getDinoLength());
+        GL11.glScalef(entitydinosaur.getDinosaurSize(), entitydinosaur.getDinosaurSize(), entitydinosaur.getDinosaurSize());
     }
-
+    
     /**
      * Allows the render to do any OpenGL state modifications necessary before the model is rendered. Args:
      * entityLiving, partialTickTime
@@ -43,7 +41,7 @@ public class RenderAnkylosaurus extends RenderLiving
     
     protected ResourceLocation func_110919_a(Ankylosaurus par1Entity)
     {
-        return loc;
+        return new ResourceLocation(par1Entity.getTexture());
     }
   
     /**
@@ -53,6 +51,4 @@ public class RenderAnkylosaurus extends RenderLiving
     {
         return this.func_110919_a((Ankylosaurus)par1Entity);
     }
-    
-
 }

@@ -1,6 +1,6 @@
 package ere_geologique.common.entity.Enums;
 
-import ere_geologique.common.EreGeologique;
+import ere_geologique.common.command.CommandDino;
 
 public enum EnumAnimalType
 {
@@ -16,7 +16,7 @@ public enum EnumAnimalType
     
     private EnumAnimalType(int grow0)
     {
-        if (EreGeologique.DebugMode)
+        if (CommandDino.Debugmode)
         {
             GrowTime=100;
         }
