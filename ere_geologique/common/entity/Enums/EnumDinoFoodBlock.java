@@ -42,7 +42,7 @@ public enum EnumDinoFoodBlock
 	{
 		for (int i=0;i<EnumDinoFoodBlock.values().length;i++)
 		{
-			if (EnumDinoFoodBlock.values()[i].block.blockID==i0)
+			if (EnumDinoFoodBlock.values()[i].block != null && EnumDinoFoodBlock.values()[i].block.blockID==i0)
 				return EnumDinoFoodBlock.values()[i].FoodValue;
 		}
 		return 0;	
