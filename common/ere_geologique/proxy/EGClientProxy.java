@@ -53,7 +53,6 @@ import ere_geologique.common.entity.Stegosaurus;
 import ere_geologique.common.entity.TRex;
 import ere_geologique.common.entity.Triceratops;
 import ere_geologique.common.entity.Velociraptor;
-import ere_geologique.common.tileentity.TileEntityRendererFeeder;
 
 public class EGClientProxy extends EGCommonProxy
 {
@@ -64,7 +63,6 @@ public class EGClientProxy extends EGCommonProxy
 	
 	public void registerRender()
 	{
-		RenderingRegistry.registerBlockHandler(2303, TileEntityRendererFeeder.INSTANCE);
 	}
 
 	@Override

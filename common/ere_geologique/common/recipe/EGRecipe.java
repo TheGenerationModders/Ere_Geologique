@@ -15,7 +15,7 @@ public class EGRecipe
 	{
 		GameRegistry.addRecipe(new ItemStack(EGBlockList.CultivatorIdle, 1), new Object[] {"XYX", "XWX", "ZZZ", 'X', Block.glass, 'Y', new ItemStack(Item.dyePowder, 1, 2), 'W', Item.bucketWater, 'Z', Item.ingotIron});
 		GameRegistry.addRecipe(new ItemStack(EGBlockList.AnalyzerIdle, 1), new Object[] {"XYX", "XWX", 'X', Item.ingotIron, 'Y', EGItemList.Relic, 'W', EGItemList.BioFossil});
-		GameRegistry.addRecipe(new ItemStack(EGBlockList.FeederIdle, 1), new Object[] {"XYX", "ZAB", "BBB", 'X', Item.ingotIron, 'Y', Block.glass, 'Z', Block.stoneButton, 'A', Item.bucketEmpty, 'B', Block.stone});
+		GameRegistry.addRecipe(new ItemStack(EGBlockList.Feeder, 1), new Object[] {"XYX", "ZAB", "BBB", 'X', Item.ingotIron, 'Y', Block.glass, 'Z', Block.stoneButton, 'A', Item.bucketEmpty, 'B', Block.stone});
 		for(int i=0;i<EnumDinoType.values().length;i++)
 		GameRegistry.addRecipe(new ItemStack(Item.cake, 1), new Object[] {"MMM", "SES", "WWW", 'M', Item.bucketMilk, 'S', Item.sugar, 'W', Item.wheat, 'E', EnumDinoType.values()[i].EggItem});
 		

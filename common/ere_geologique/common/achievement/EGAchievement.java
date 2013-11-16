@@ -27,7 +27,7 @@ public class EGAchievement
 		Fossil = new Achievement(1004, "Fossil", 4, 0, EGItemList.BioFossil, Installmod).registerAchievement();
 		Cultivator = new Achievement(1005, "Cultivator", 4, 2, EGBlockList.CultivatorIdle, Fossil).registerAchievement();
 		Analyser = new Achievement(1006, "Analyzer", 4, -2, EGBlockList.AnalyzerIdle, Fossil).registerAchievement();
-		Feeder = new Achievement(1007, "Feeder", 6, 0, EGBlockList.FeederIdle, Fossil).registerAchievement();
+		Feeder = new Achievement(1007, "Feeder", 6, 0, EGBlockList.Feeder, Fossil).registerAchievement();
 		
 		pageGlacia = new AchievementPage("Glacia", Installmod, DimensionGlacia);
         AchievementPage.registerAchievementPage(pageGlacia);

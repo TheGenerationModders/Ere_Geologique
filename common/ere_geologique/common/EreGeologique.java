@@ -81,7 +81,7 @@ public class EreGeologique
 			EGProperties.DoubleSlabID = cfg.getBlock("Double Slab Foug\350re", 2505).getInt();
 			EGProperties.StairID = cfg.getBlock("Stair Foug\350re", 2506).getInt();
 			EGProperties.GlaciaPortalID = cfg.getBlock("GlaciaPortal", 2507).getInt();
-			EGProperties.FeederIdleID = cfg.getBlock("FeederIdle", 2508).getInt();
+			//ID 2508 no used
 			EGProperties.FeederActiveID = cfg.getBlock("FeederActive", 2509).getInt();
 			EGProperties.AnalyzerIdleID = cfg.getBlock("AnalyzerIdle", 2510).getInt();
 			EGProperties.AnalyzerActiveID = cfg.getBlock("AnalyzerActive", 2511).getInt();

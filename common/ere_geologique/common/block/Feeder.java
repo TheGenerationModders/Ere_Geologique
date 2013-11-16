@@ -18,14 +18,13 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.common.EreGeologique;
 import ere_geologique.common.tileentity.TileEntityFeeder;
+import ere_geologique.proxy.EGClientProxy;
 
 public class Feeder extends BlockContainer
 {
-	private Random furnaceRand = new Random();
-	private Icon top1;// None
-	private Icon top2;// Herb
-	private Icon top3;// Carn
-	private Icon top4;// Both
+	private Random rand = new Random();
+	private Icon topEmply1, topEmply2, topEmply3, topEmply4, topHerb1, topHerb2, topHerb3, topHerb4, topCan1, topCan2, topCan3, topCan4;
+	private Icon topBoth1, topBoth2, topBoth3, topBoth4;// Both
 	private Icon front1;
 	private Icon front2;
 	private Icon front3;
@@ -37,16 +36,7 @@ public class Feeder extends BlockContainer
 		super(id, Material.rock);
 	}
 
-	public int idDropped(int var1, Random var2, int var3)
-	{
-		return EGBlockList.FeederActive.blockID;
-	}
-
-	public int getRenderType()
-	{
-		return 2303;
-	}
-
+	@SideOnly(Side.CLIENT)
 	public void randomDisplayTick(World world, int x, int y, int z, Random random)
 	{
 		int l = world.getBlockMetadata(x, y, z);
@@ -82,10 +72,22 @@ public class Feeder extends BlockContainer
 	{
 		this.blockIcon = iconRegister.registerIcon("ere_geologique:Feeder_Sides");
 		this.bottom = iconRegister.registerIcon("ere_geologique:Feeder_Bottom");
-		this.top1 = iconRegister.registerIcon("ere_geologique:Feeder_Top1");
-		this.top2 = iconRegister.registerIcon("ere_geologique:Feeder_Top2");
-		this.top3 = iconRegister.registerIcon("ere_geologique:Feeder_Top3");
-		this.top4 = iconRegister.registerIcon("ere_geologique:Feeder_Top4");
+		this.topEmply1 = iconRegister.registerIcon("ere_geologique:Feeder_top_empty_1");
+		this.topEmply2 = iconRegister.registerIcon("ere_geologique:Feeder_top_empty_2");
+		this.topEmply3 = iconRegister.registerIcon("ere_geologique:Feeder_top_empty_3");
+		this.topEmply4 = iconRegister.registerIcon("ere_geologique:Feeder_top_empty_4");
+		this.topHerb1 = iconRegister.registerIcon("ere_geologique:Feeder_top_herb_1");
+		this.topHerb2 = iconRegister.registerIcon("ere_geologique:Feeder_top_herb_2");
+		this.topHerb3 = iconRegister.registerIcon("ere_geologique:Feeder_top_herb_3");
+		this.topHerb4 = iconRegister.registerIcon("ere_geologique:Feeder_top_herb_4");
+		this.topCan1 = iconRegister.registerIcon("ere_geologique:Feeder_top_carn_1");
+		this.topCan2 = iconRegister.registerIcon("ere_geologique:Feeder_top_carn_2");
+		this.topCan3 = iconRegister.registerIcon("ere_geologique:Feeder_top_carn_3");
+		this.topCan4 = iconRegister.registerIcon("ere_geologique:Feeder_top_carn_4");
+		this.topBoth1 = iconRegister.registerIcon("ere_geologique:Feeder_top_both_1");
+		this.topBoth2 = iconRegister.registerIcon("ere_geologique:Feeder_top_both_2");
+		this.topBoth3 = iconRegister.registerIcon("ere_geologique:Feeder_top_both_3");
+		this.topBoth4 = iconRegister.registerIcon("ere_geologique:Feeder_top_both_4");
 		this.front1 = iconRegister.registerIcon("ere_geologique:Feeder_Front1");
 		this.front2 = iconRegister.registerIcon("ere_geologique:Feeder_Front2");
 		this.front3 = iconRegister.registerIcon("ere_geologique:Feeder_Front3");
@@ -106,19 +108,19 @@ public class Feeder extends BlockContainer
 			}
 			if(feeder.getCurreentVeg() > 0 && feeder.getCurrentMeat() == 0)
 			{
-				return side == 1 ? top2 : (direction == 2 && side == 2 ? front2 : (direction == 3 && side == 5 ? front2 : (direction == 0 && side == 3 ? front2 : (direction == 1 && side == 4 ? front2 : this.blockIcon))));
+				return side == 1 ? (direction == 0 ? topHerb1 : direction == 1 ? topHerb2 : direction == 2 ? topHerb3 : topHerb4) : (direction == 2 && side == 2 ? front2 : (direction == 3 && side == 5 ? front2 : (direction == 0 && side == 3 ? front2 : (direction == 1 && side == 4 ? front2 : this.blockIcon))));
 			}
 			else if(feeder.getCurreentVeg() == 0 && feeder.getCurrentMeat() > 0)
 			{					
-				return side == 1 ? top3 : (direction == 2 && side == 2 ? front3 : (direction == 3 && side == 5 ? front3 : (direction == 0 && side == 3 ? front3 : (direction == 1 && side == 4 ? front3 : this.blockIcon))));
+				return side == 1 ? (direction == 0 ? topCan1 : direction == 1 ? topCan2 : direction == 2 ? topCan3 : topCan4) : (direction == 2 && side == 2 ? front3 : (direction == 3 && side == 5 ? front3 : (direction == 0 && side == 3 ? front3 : (direction == 1 && side == 4 ? front3 : this.blockIcon))));
 			}
 			else if(feeder.getCurreentVeg() > 0 && feeder.getCurrentMeat() > 0)
 			{
-				return side == 1 ? top4 : (direction == 2 && side == 2 ? front4 : (direction == 3 && side == 5 ? front4 : (direction == 0 && side == 3 ? front4 : (direction == 1 && side == 4 ? front4 : this.blockIcon))));
+				return side == 1 ? (direction == 0 ? topBoth1 : direction == 1 ? topBoth2 : direction == 2 ? topBoth3 : topBoth4) : (direction == 2 && side == 2 ? front4 : (direction == 3 && side == 5 ? front4 : (direction == 0 && side == 3 ? front4 : (direction == 1 && side == 4 ? front4 : this.blockIcon))));
 			}
 			else
 			{
-				return side == 1 ? top1 : (direction == 2 && side == 2 ? front1 : (direction == 3 && side == 5 ? front1 : (direction == 0 && side == 3 ? front1 : (direction == 1 && side == 4 ? front1 : this.blockIcon))));
+				return side == 1 ? (direction == 0 ? topEmply1 : direction == 1 ? topEmply2 : direction == 2 ? topEmply3 : topEmply4) : (direction == 2 && side == 2 ? front1 : (direction == 3 && side == 5 ? front1 : (direction == 0 && side == 3 ? front1 : (direction == 1 && side == 4 ? front1 : this.blockIcon))));
 			}
 		}
 		return this.getIcon(side, blockAccess.getBlockMetadata(x, y, z));
@@ -127,7 +129,7 @@ public class Feeder extends BlockContainer
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int side, int metadata)
 	{
-		return side == 0 ? this.bottom : side == 1 ? this.top1 : side == 3 ? this.front1 : this.blockIcon;
+		return side == 0 ? this.bottom : side == 1 ? this.topEmply1 : side == 3 ? this.front1 : this.blockIcon;
 	}
 
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ)
@@ -142,15 +144,6 @@ public class Feeder extends BlockContainer
 			return true;
 		}
 	}
-
-	/*public static void updateFurnaceBlockState(boolean herb, boolean carn, World world, int x, int y, int z)
-	{
-		if(world.getBlockId(x, y, z) == EGBlockList.FeederIdle.blockID)// won't be used anymore
-			world.setBlock(x, y, z, EGBlockList.FeederActive.blockID, 0, 2);
-		int l = world.getBlockMetadata(x, y, z);
-		world.setBlockMetadataWithNotify(x, y, z, l, 2);
-		
-	}*/
 
 	public TileEntity createNewTileEntity(World world)
 	{
@@ -180,13 +173,13 @@ public class Feeder extends BlockContainer
 
 				if(stack != null)
 				{
-					float var10 = this.furnaceRand.nextFloat() * 0.8F + 0.1F;
-					float var11 = this.furnaceRand.nextFloat() * 0.8F + 0.1F;
-					float var12 = this.furnaceRand.nextFloat() * 0.8F + 0.1F;
+					float var10 = this.rand.nextFloat() * 0.8F + 0.1F;
+					float var11 = this.rand.nextFloat() * 0.8F + 0.1F;
+					float var12 = this.rand.nextFloat() * 0.8F + 0.1F;
 
 					while(stack.stackSize > 0)
 					{
-						int quantity = this.furnaceRand.nextInt(21) + 10;
+						int quantity = this.rand.nextInt(21) + 10;
 
 						if(quantity > stack.stackSize)
 						{
@@ -196,9 +189,9 @@ public class Feeder extends BlockContainer
 						stack.stackSize -= quantity;
 						EntityItem item = new EntityItem(world, (double)((float)x + var10), (double)((float)y + var11), (double)((float)z + var12), new ItemStack(stack.itemID, quantity, stack.getItemDamage()));
 						float var15 = 0.05F;
-						item.motionX = (double)((float)this.furnaceRand.nextGaussian() * var15);
-						item.motionY = (double)((float)this.furnaceRand.nextGaussian() * var15 + 0.2F);
-						item.motionZ = (double)((float)this.furnaceRand.nextGaussian() * var15);
+						item.motionX = (double)((float)this.rand.nextGaussian() * var15);
+						item.motionY = (double)((float)this.rand.nextGaussian() * var15 + 0.2F);
+						item.motionZ = (double)((float)this.rand.nextGaussian() * var15);
 						world.spawnEntityInWorld(item);
 					}
 				}

@@ -20,8 +20,7 @@ public class EGBlockList
 	public static Block Slab;
 	public static Block Stair;
 	public static GlaciaPortal GlaciaPortal;
-	public static Block FeederIdle;
-	public static Block FeederActive;
+	public static Block Feeder;
 	public static Block AnalyzerIdle;
 	public static Block AnalyserActive;
 	public static Block CultivatorIdle;
@@ -47,8 +46,7 @@ public class EGBlockList
 	       DoubleSlab = new Slab(EGProperties.DoubleSlabID, true).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("Slab");
 	       Stair = new Stair(EGProperties.StairID, Plank,1).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("Stair");
 	       GlaciaPortal = (GlaciaPortal) new GlaciaPortal(EGProperties.GlaciaPortalID).setHardness(-1.0F).setStepSound(Block.soundGlassFootstep).setLightValue(0.75F).setUnlocalizedName("GlaciaPortal").setTextureName("ere_geologique:GlaciaPortal");
-	       FeederIdle = new Feeder(EGProperties.FeederIdleID).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName(LocalizationStrings.FEEDERIDLE_NAME);
-	       FeederActive = new Feeder(EGProperties.FeederActiveID).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName(LocalizationStrings.FEEDERACTIVE_NAME).setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
+	       Feeder = new Feeder(EGProperties.FeederActiveID).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName(LocalizationStrings.FEEDERACTIVE_NAME).setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
 	       AnalyzerIdle = new Analyzer(EGProperties.AnalyzerIdleID, false).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName(LocalizationStrings.ANALYZER_IDLE_NAME).setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
 	       AnalyserActive = new Analyzer(EGProperties.AnalyzerActiveID, true).setLightValue(0.9375F).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName(LocalizationStrings.ANALYZER_ACTIVE_NAME);
 	       CultivatorIdle = new Cultivator(EGProperties.CultivatorIdleID, false).setLightValue(0.9375F).setHardness(0.3F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName(LocalizationStrings.CULTIVATE_IDLE_NAME).setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
@@ -68,8 +66,7 @@ public class EGBlockList
 	       GameRegistry.registerBlock(DoubleSlab, ItemBlockSlab.class, "DoubleSlab");
 	       GameRegistry.registerBlock(Stair, "Stair");
 	       GameRegistry.registerBlock(GlaciaPortal, "GlaciaPortal");
-	       GameRegistry.registerBlock(FeederIdle, "FeederIdle");
-	       GameRegistry.registerBlock(FeederActive, "FeederActive");
+	       GameRegistry.registerBlock(Feeder, "Feeder");
 	       GameRegistry.registerBlock(AnalyzerIdle, "AnalyzerIdle");
 	       GameRegistry.registerBlock(AnalyserActive, "AnalyserActive");
 	       GameRegistry.registerBlock(CultivatorIdle, "CultivatorIdle");
