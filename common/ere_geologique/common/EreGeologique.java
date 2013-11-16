@@ -81,12 +81,11 @@ public class EreGeologique
 			EGProperties.DoubleSlabID = cfg.getBlock("Double Slab Foug\350re", 2505).getInt();
 			EGProperties.StairID = cfg.getBlock("Stair Foug\350re", 2506).getInt();
 			EGProperties.GlaciaPortalID = cfg.getBlock("GlaciaPortal", 2507).getInt();
-			//ID 2508 no used
-			EGProperties.FeederActiveID = cfg.getBlock("FeederActive", 2509).getInt();
-			EGProperties.AnalyzerIdleID = cfg.getBlock("AnalyzerIdle", 2510).getInt();
-			EGProperties.AnalyzerActiveID = cfg.getBlock("AnalyzerActive", 2511).getInt();
-			EGProperties.CultivatorIdleID = cfg.getBlock("CultivatorIdle", 2512).getInt();
-			EGProperties.CultivatorActiveID = cfg.getBlock("CultivatorActive", 2513).getInt();
+			EGProperties.FeederID = cfg.getBlock("Feeder", 2508).getInt();
+			EGProperties.AnalyzerIdleID = cfg.getBlock("AnalyzerIdle", 2509).getInt();
+			EGProperties.AnalyzerActiveID = cfg.getBlock("AnalyzerActive", 2510).getInt();
+			EGProperties.CultivatorIdleID = cfg.getBlock("CultivatorIdle", 2511).getInt();
+			EGProperties.CultivatorActiveID = cfg.getBlock("CultivatorActive", 2512).getInt();
 			EGProperties.FossilID = cfg.getBlock("Fossil", 2513).getInt();
 			EGProperties.ReinforcedStoneID = cfg.getBlock("ReinforcedStone", 2514).getInt();
 			EGProperties.ReinforcedGlassID = cfg.getBlock("ReinforcedGlass", 2515).getInt();

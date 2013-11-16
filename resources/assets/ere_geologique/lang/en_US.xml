@@ -17,8 +17,8 @@
     <entry key="achievement.Fossil.desc">Fossil discovered</entry>
     <entry key="achievement.Feeder">Feeder</entry>
     <entry key="achievement.Feeder.desc">Automatic feeder</entry>
-    <entry key="achievement.Analyser">Analyzer</entry>
-    <entry key="achievement.Analyser.desc">Analyser released</entry>
+    <entry key="achievement.Analyzer">Analyzer</entry>
+    <entry key="achievement.Analyzer.desc">Analyzer released</entry>
     <entry key="achievement.Cultivator">Cultivator</entry>
     <entry key="achievement.Cultivator.desc">Cultivator released</entry>
 <!--Commands-->
@@ -59,7 +59,6 @@
 	<entry key="tile.cultureVat.name">Culture Vat</entry>
     <entry key="tile.feeder.name">Feeder</entry>
     <entry key="container.feeder">Feeder</entry>
-	<entry key="tile.feeder.name">Feeder</entry>
     <entry key="tile.Fossil.name">Fossil</entry>
 	<entry key="tile.ReinforcedStone.name">ReinforcedStone</entry>
     <entry key="tile.ReinforcedGlass.name">ReinforcedGlass</entry>

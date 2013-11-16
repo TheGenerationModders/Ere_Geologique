@@ -13,7 +13,7 @@ public class EGAchievement
 	
 	public static Achievement Fossil;
 	
-	public static Achievement Cultivator, Analyser, Feeder;
+	public static Achievement Cultivator, Analyzer, Feeder;
 	
 	public static AchievementPage pageGlacia, pagePrehistoria, pagePrimitive;
 	
@@ -26,7 +26,7 @@ public class EGAchievement
 		
 		Fossil = new Achievement(1004, "Fossil", 4, 0, EGItemList.BioFossil, Installmod).registerAchievement();
 		Cultivator = new Achievement(1005, "Cultivator", 4, 2, EGBlockList.CultivatorIdle, Fossil).registerAchievement();
-		Analyser = new Achievement(1006, "Analyzer", 4, -2, EGBlockList.AnalyzerIdle, Fossil).registerAchievement();
+		Analyzer = new Achievement(1006, "Analyzer", 4, -2, EGBlockList.AnalyzerIdle, Fossil).registerAchievement();
 		Feeder = new Achievement(1007, "Feeder", 6, 0, EGBlockList.Feeder, Fossil).registerAchievement();
 		
 		pageGlacia = new AchievementPage("Glacia", Installmod, DimensionGlacia);

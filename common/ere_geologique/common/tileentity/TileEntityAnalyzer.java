@@ -361,7 +361,7 @@ public class TileEntityAnalyzer extends TileEntity implements IInventory, ISided
 
     public boolean canExtractItem(int par1, ItemStack par2ItemStack, int par3)
     {
-        return false;
+        return par3 != 0 || par1 != 1;
     }
 
     public ItemStack getStackInSlotOnClosing(int var1)

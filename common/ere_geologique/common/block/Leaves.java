@@ -301,7 +301,7 @@ public class Leaves extends BlockLeavesBase implements IShearable
 
             for (int j = 0; j < leafTextureTypes[i].length; ++j)
             {
-                this.IconArray[i][j] = par1IconRegister.registerIcon("ere_geologique" + leafTextureTypes[i][j]);
+                this.IconArray[i][j] = par1IconRegister.registerIcon("ere_geologique:" + leafTextureTypes[i][j]);
             }
         }    }
  

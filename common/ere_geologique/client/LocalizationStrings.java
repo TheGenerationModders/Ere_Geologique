@@ -6,8 +6,7 @@ public class LocalizationStrings
     public static final String ANALYZER_ACTIVE_NAME = "analyzerActive";
     public static final String CULTIVATE_IDLE_NAME = "cultureVat";
     public static final String CULTIVATE_ACTIVE_NAME = "cultureVatActive";
-	public static final String FEEDERIDLE_NAME = "feeder";
-    public static final String FEEDERACTIVE_NAME = "feeder";
+    public static final String FEEDER_NAME = "feeder";
 	
     public static final String BROKEN_SAPLING_NAME = "plantFossil";
     

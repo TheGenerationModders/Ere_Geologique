@@ -18,7 +18,7 @@
     <entry key="achievement.Feeder">Mangeoire</entry>
     <entry key="achievement.Feeder.desc">Nourriseur automatique</entry>
     <entry key="achievement.Analyzer">Analyzeur</entry>
-    <entry key="achievement.Analyzer.desc">Analyseur débloqué</entry>
+    <entry key="achievement.Analyzer.desc">Analyzeur débloqué</entry>
     <entry key="achievement.Cultivator">Cultivateur</entry>
     <entry key="achievement.Cultivator.desc">Cultivateur débloqué</entry>
 <!--Commands-->
@@ -55,16 +55,15 @@
     <entry key="tile.DoubleSlab.metasequoias.name">Double dalle de Métaséquoias</entry>
     <entry key="tile.DoubleSlab.ginkgos.name">Double dalle de Ginkgos</entry>
     <entry key="tile.Stair.name">Escalier de Fougère</entry>
-    <entry key="tile.analyzer.name">Analyzer</entry>
-	<entry key="tile.cultureVat.name">Culture Vat</entry>
-    <entry key="tile.feederIdle.name">Feeder</entry>
-    <entry key="container.feederIdle">Feeder</entry>
-	<entry key="tile.feederActive.name">Feeder</entry>
-    <entry key="tile.Fossil.name">Fossil</entry>
+    <entry key="tile.analyzer.name">Analyzeur</entry>
+	<entry key="tile.cultureVat.name">Cultivateur</entry>
+    <entry key="container.feeder">Mangeoire</entry>
+	<entry key="tile.feeder.name">Mangeoire</entry>
+    <entry key="tile.Fossil.name">Fossile</entry>
 	<entry key="tile.ReinforcedStone.name">Roche renforcé</entry>
     <entry key="tile.ReinforcedGlass.name">Verre renforcé</entry>
     <entry key="tile.SteelBlock.name">Bloc d'acier</entry>
-    <entry key="tile.FossilSkull.name">FossilSkull</entry>
+    <entry key="tile.FossilSkull.name">Tête Fosilisée</entry>
 <!-- Items -->
     <entry key="item.IvoryIngot.name">Ivoire</entry>
     <entry key="item.IvoryNugget.name">Pépite d'Ivoire</entry>

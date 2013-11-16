@@ -22,6 +22,10 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
     public int furnaceBurnTime = 0;
     public int currentItemBurnTime = 0;
     public int furnaceCookTime = 0;
+    
+    private static final int[] slot_bottom = new int[]{0};
+    private static final int[] slot_right = new int[]{2, 1};
+    private static final int[] slot_top = new int[]{1};
 
     public int getSizeInventory()
     {
@@ -323,22 +327,22 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
 	}
 
 	@Override
-    public boolean isItemValidForSlot(int par1, ItemStack par2ItemStack) {
-		return false;
+    public boolean isItemValidForSlot(int i, ItemStack itemstack) {
+		return true;
 	}
 
 	@Override
 	public int[] getAccessibleSlotsFromSide(int var1) {
-		return null;
+		return var1 == 0 ? slot_right : (var1 == 1 ? slot_bottom : slot_top);
 	}
 
 	@Override
 	public boolean canInsertItem(int i, ItemStack itemstack, int j) {
-		return false;
+		return this.isItemValidForSlot(i, itemstack);
 	}
 
 	@Override
 	public boolean canExtractItem(int i, ItemStack itemstack, int j) {
-		return false;
+		return j != 0 || i != 1;
 	}
 }

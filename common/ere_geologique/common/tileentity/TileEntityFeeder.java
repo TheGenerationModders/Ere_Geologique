@@ -28,8 +28,8 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 	public int VegMax = 10000;
 	private int direction;
 	public boolean[] ContainType = new boolean[EnumDinoType.values().length];
-	private static final int[] slot_right = new int[] {4};
-	private static final int[] slot_left = new int[] {5};
+	private static final int[] slot_right = new int[] {1};
+	private static final int[] slot_left = new int[] {0};
 
 	public TileEntityFeeder()
 	{

@@ -13,8 +13,7 @@ public class EGProperties
 	public static int DoubleSlabID;
 	public static int StairID;
 	public static int GlaciaPortalID;
-	public static int FeederIdleID;
-	public static int FeederActiveID;
+	public static int FeederID;
 	public static int AnalyzerIdleID;
 	public static int AnalyzerActiveID;
 	public static int CultivatorIdleID;
