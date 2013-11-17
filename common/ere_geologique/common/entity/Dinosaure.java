@@ -11,7 +11,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingData;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIControlledByPlayer;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
@@ -175,7 +174,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
     	
     	//setSize(this.getDinoWidth(),this.getDinoHeight());
  //   	setPosition(this.posX, this.posY, this.posZ);
-    	this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(this.getHealth() + this.getDinoAge()*this.SelfType.HealthInc);
+    	//this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(this.getHealth() + this.getDinoAge()*this.SelfType.HealthInc);
     }
 	
     /*
@@ -391,7 +390,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
 
     protected String getModelTexture()
     {
-        return "ere_geologique:textures/mob/DinoModel" + this.SelfType.toString() + ".png";
+        return "ere_geologique:textures/entity/DinoModel" + this.SelfType.toString() + ".png";
     }
 
     /**
@@ -399,7 +398,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
      */
     public String getTexture()
     {
-        return this.isModelized() ? this.getModelTexture() : "ere_geologique:textures/mob/DinoModel" + this.SelfType.toString() + ".png";
+        return this.isModelized() ? this.getModelTexture() : "ere_geologique:textures/entity/DinoModel" + this.SelfType.toString() + ".png";
     }
 
     public void moveEntityWithHeading(float par1, float par2)
@@ -429,7 +428,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
     public void ShowPedia(GuiPedia p0)
     {		
     	p0.reset();
-    	p0.PrintPictXY(new ResourceLocation("ere_geologique:textures/items/"+ this.SelfType.toString() +"_DNA.png"), 175, 7, 16, 16);
+    	p0.PrintPictXY(new ResourceLocation("ere_geologique:textures/items/"+ this.SelfType.toString() +"_DNA.png"), 185, 7, 16, 16);
     	
     	if (this.hasCustomNameTag())
     	p0.PrintStringXY(this.getCustomNameTag(), 140, 24,40,90,245);
@@ -440,35 +439,42 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
     	p0.PrintPictXY(pediaheart, 140, 58,9,9);
     	p0.PrintPictXY(pediafood, 140, 70,9,9);
     	
+    	//Print "Day" after age
     	if(this.getDinoAge()==1)
     		p0.PrintStringXY(String.valueOf(this.getDinoAge()) +" "+ StatCollector.translateToLocal(LocalizationStrings.PEDIA_EGG_DAY), 152, 46);
     	else
     		p0.PrintStringXY(String.valueOf(this.getDinoAge()) +" "+ StatCollector.translateToLocal(LocalizationStrings.PEDIA_EGG_DAYS), 152, 46);
  
-    	p0.PrintStringXY(String.valueOf(this.getHealth()) + '/' + this.getMaxHealth(), 152, 58); //display the health
+    	//Display Health
+    	p0.PrintStringXY(String.valueOf(this.getHealth()) + '/' + this.getMaxHealth(), 152, 58);
+    	
+    	//Display Hunger
     	p0.PrintStringXY(String.valueOf(this.getHunger()) + '/' + this.getMaxHunger(), 152, 70);
  
+    	//Display owner name
     	if(this.SelfType.isTameable() && this.isTamed())
     	{
     		p0.AddStringLR( StatCollector.translateToLocal(LocalizationStrings.PEDIA_TEXT_OWNER), true);
     		String s0=this.getOwnerName();
-    		
     		if(s0.length()>11)
     			s0=this.getOwnerName().substring(0, 11);
-    		
     		p0.AddStringLR(s0, true);
     	}
     	
+    	//Display if Rideable
     	if(this.SelfType.isRideable() && this.isAdult())
     		p0.AddStringLR(StatCollector.translateToLocal(LocalizationStrings.PEDIA_TEXT_RIDEABLE), true);
 
-
+    	
+    	p0.AddStringLR(StatCollector.translateToLocal("Order: " + this.SelfType.OrderItem.getStatName()), true);
     	
     	for(int i=0; i<this.SelfType.FoodItemList.index;i++)
     	{
     		if(this.SelfType.FoodItemList.getItem(i)!=null)
     			p0.AddMiniItem(this.SelfType.FoodItemList.getItem(i));
     	}
+    	
+    	
     	//show all blocks the dino can eat
     }
     
@@ -1226,20 +1232,6 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
 
             if (var2 != null)
             {
-            	/*
-            	if (var2.itemID == Fossil.dinoPedia.itemID && !player.worldObj.isRemote && var2.getDisplayName().equalsIgnoreCase("debugpedia"))
-            	{
-            		//DEBUG//
-            		Fossil.Console("----- DEBUG -----");
-            		//Fossil.Console("Step: " + this.Step);
-            		//Fossil.Console("SizeMin: " + this.SizeMin);
-            		//Fossil.Console("adultstep: " + adultstep);
-            		Fossil.Console("AdultAge: " + this.SelfType.AdultAge);
-            		Fossil.Console("getDinoAge: " + this.getDinoAge());
-            		Fossil.Console("getDinosaurSize: " + this.getDinosaurSize());
-            		Fossil.Console("------ ----------");
-            	}
-            	*/
             	if (var2.itemID == EGItemList.ChickenEss.itemID && !player.worldObj.isRemote)
             	{// Be grown up by chicken essence
             		if (this.getDinoAge() < this.SelfType.AdultAge && this.getHunger() > 0)
@@ -1259,6 +1251,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
                         EreGeologique.ShowMessage(StatCollector.translateToLocal(LocalizationStrings.STATUS_ESSENCE_FAIL), player);
             	     return false;
             	}
+            	
             	if (this.SelfType.FoodItemList.CheckItemById(var2.itemID) || this.SelfType.FoodBlockList.CheckBlockById(var2.itemID))
             	{//Item is one of the dinos food items
             		if(!player.worldObj.isRemote)
@@ -1333,7 +1326,9 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
     	                player.openGui(EreGeologique.Instance/*player*/, 1, this.worldObj, (int)this.posX, (int)this.posY, (int)this.posZ);
     	                return true;
     	            }
-            		if (var2.itemID == EGItemList.Whip.itemID && this.isTamed() && this.SelfType.isRideable() && this.isAdult() && !this.worldObj.isRemote && this.riddenByEntity == null)
+            		if (var2.itemID == EGItemList.Whip.itemID && this.isTamed() && this.SelfType.isRideable() 
+            				&& this.isAdult() && !this.worldObj.isRemote && this.riddenByEntity == null
+            				&& player.username.equalsIgnoreCase(this.getOwnerName()))
     	            {
     	              //  player.rotationYaw = this.rotationYaw;
     	              //  player.mountEntity(this);
@@ -1355,20 +1350,6 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
     	                    	this.getNavigator().clearPathEntity();
     	                    	this.setPathToEntity(null);
     	                    }
-    	
-    	                    /*switch (EntityTriceratops$1.$SwitchMap$mod_Fossil$EnumOrderType[this.OrderStatus.ordinal()])
-    	                    {//This is not neccessary anymore because the sitting is handled directly through the orderstatus
-    	                        case 1:
-    	                            this.setSitting(true);
-    	                            break;
-    	
-    	                        case 2:
-    	                            this.setSitting(false);
-    	                            break;
-    	
-    	                        case 3:
-    	                            this.setSitting(false);
-    	                    }*/
     	                }
     	                return true;
                 	}
@@ -1406,6 +1387,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
 	                }
 	                return true;
             	}
+            	/*
             	if (this.isTamed() && this.SelfType.isRideable() && this.isAdult() && !this.worldObj.isRemote && (this.riddenByEntity == null || this.riddenByEntity == player))
 	            {
 	                player.rotationYaw = this.rotationYaw;
@@ -1414,6 +1396,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
 	                this.renderYawOffset = this.rotationYaw;
 	                return true;
 	            }
+	            */
             }
             return super.interact(player);
         }
@@ -1494,7 +1477,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
     }
     
     public void riderJump() {
-    	EreGeologique.EGLog.info("isRiderJumping");
+    	EreGeologique.DebugMessage("isRiderJumping");
         motionY += 0.5;
     }
 }

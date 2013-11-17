@@ -13,6 +13,8 @@ public class EGAchievement
 	
 	public static Achievement Fossil;
 	
+	public static Achievement FirstEgg, AllEggs;
+
 	public static Achievement Cultivator, Analyzer, Feeder;
 	
 	public static AchievementPage pageGlacia, pagePrehistoria, pagePrimitive;
@@ -21,21 +23,21 @@ public class EGAchievement
 	{
 		Installmod = new Achievement(1000, "InstallMod", 0, 0, EGItemList.DinoPedia, null).registerAchievement().setSpecial();
 		DimensionGlacia = new Achievement(1001, "Glacia", 2, 0, EGItemList.FlintAndSteel, Installmod).registerAchievement();
-		DimensionPrehistoria = new Achievement(1002, "Prehistoria", 2, 0, EGItemList.DinoPedia, Installmod).registerAchievement();
-		DimensionPrimitive = new Achievement(1003, "Primitive", 2, 0, EGItemList.DinoPedia, Installmod).registerAchievement();
+//		DimensionPrehistoria = new Achievement(1002, "Prehistoria", 2, 0, EGItemList.DinoPedia, Installmod).registerAchievement();
+//		DimensionPrimitive = new Achievement(1003, "Primitive", 2, 0, EGItemList.DinoPedia, Installmod).registerAchievement();
 		
-		Fossil = new Achievement(1004, "Fossil", 4, 0, EGItemList.BioFossil, Installmod).registerAchievement();
+		Fossil = new Achievement(1004, "Fossil", 4, 0, EGItemList.BioFossil, DimensionGlacia).registerAchievement();
 		Cultivator = new Achievement(1005, "Cultivator", 4, 2, EGBlockList.CultivatorIdle, Fossil).registerAchievement();
 		Analyzer = new Achievement(1006, "Analyzer", 4, -2, EGBlockList.AnalyzerIdle, Fossil).registerAchievement();
 		Feeder = new Achievement(1007, "Feeder", 6, 0, EGBlockList.Feeder, Fossil).registerAchievement();
 		
-		pageGlacia = new AchievementPage("Glacia", Installmod, DimensionGlacia);
+		pageGlacia = new AchievementPage("Glacia", Installmod, DimensionGlacia, Fossil, Cultivator, Analyzer, Feeder);
         AchievementPage.registerAchievementPage(pageGlacia);
         
-        pagePrehistoria = new AchievementPage("Prehistoria", Installmod, DimensionPrehistoria);
+/*        pagePrehistoria = new AchievementPage("Prehistoria", Installmod, DimensionPrehistoria);
         AchievementPage.registerAchievementPage(pagePrehistoria);
         
         pagePrimitive = new AchievementPage("Primitive", Installmod, DimensionPrimitive);
-        AchievementPage.registerAchievementPage(pagePrimitive);
+        AchievementPage.registerAchievementPage(pagePrimitive);*/
 	}
 }

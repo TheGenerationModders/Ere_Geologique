@@ -17,14 +17,12 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.IChatListener;
-import cpw.mods.fml.common.network.IPacketHandler;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkMod.SidedPacketHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import ere_geologique.client.EGMessageHandler;
 import ere_geologique.client.Localizations;
-import ere_geologique.client.RiderInput;
 import ere_geologique.common.achievement.EGAchievement;
 import ere_geologique.common.block.EGBlockList;
 import ere_geologique.common.command.CommandDino;
@@ -34,7 +32,9 @@ import ere_geologique.common.dimension.EGDimensionList;
 import ere_geologique.common.entity.EGEntityList;
 import ere_geologique.common.entity.Enums.EnumDinoFoodMob;
 import ere_geologique.common.entity.Enums.EnumDinoType;
+import ere_geologique.common.event.CraftingHandler;
 import ere_geologique.common.event.FougereBoneMeal;
+import ere_geologique.common.event.PickupHandler;
 import ere_geologique.common.event.PlayerTracker;
 import ere_geologique.common.gui.GuiHandler;
 import ere_geologique.common.item.EGItemList;
@@ -61,7 +61,6 @@ public class EreGeologique
 	public static Object ToPedia;
 	public static GuiHandler guiHandler = new GuiHandler();
 	public static IChatListener messagerHandler = new EGMessageHandler();
-//	public static IPacketHandler RiderInput = new RiderInput();
 
 	@EventHandler
 	public void preload(FMLPreInitializationEvent event)
@@ -118,15 +117,16 @@ public class EreGeologique
 			EGProperties.cookedChickenSoupID = cfg.getItem("cookedChickenSoup", 4021).getInt();
 			EGProperties.rawChickenSoupID = cfg.getItem("rawChickenSoup", 4022).getInt();
 			EGProperties.FlintAndSteelID = cfg.getItem("FlintAndSteel", 4023).getInt();
+			EGProperties.archNotebookID = cfg.getItem("arckNotebook", 4024).getInt();
 
 			for(int i=0;i<EnumDinoType.values().length;i++)
-			EGProperties.EGGIDs[i] = cfg.getItem("Egg" + EnumDinoType.values()[i].name(), 4024+i).getInt();
+			EGProperties.EGGIDs[i] = cfg.getItem("Egg" + EnumDinoType.values()[i].name(), 4025+i).getInt();
 
 			for(int i=0;i<EnumDinoType.values().length;i++)
-			EGProperties.RAWIDs[i] = cfg.getItem("raw" + EnumDinoType.values()[i].name(), 4038+i).getInt();
+			EGProperties.RAWIDs[i] = cfg.getItem("raw" + EnumDinoType.values()[i].name(), 4039+i).getInt();
 
 			for(int i=0;i<EnumDinoType.values().length;i++)
-			EGProperties.DNAIDs[i] = cfg.getItem("dna" + EnumDinoType.values()[i].name(), 4052+i).getInt();
+			EGProperties.DNAIDs[i] = cfg.getItem("dna" + EnumDinoType.values()[i].name(), 4053+i).getInt();
 
 			//Dimensions
 			EGProperties.GlaciaID = cfg.get("Dimension", "Glacia", 2).getInt();
@@ -202,6 +202,8 @@ public class EreGeologique
 		proxy.registerRender();
 		MinecraftForge.EVENT_BUS.register(new FougereBoneMeal());
 		GameRegistry.registerPlayerTracker(new PlayerTracker());
+		GameRegistry.registerCraftingHandler(new CraftingHandler());
+		GameRegistry.registerPickupHandler(new PickupHandler());
 
 		EnumDinoType.init();
 		EnumDinoFoodMob.init();
@@ -209,8 +211,6 @@ public class EreGeologique
 		EGTEntityList.loadTileEntity();
 		NetworkRegistry.instance().registerGuiHandler(this.Instance, new GuiHandler());
 		NetworkRegistry.instance().registerChatListener(messagerHandler);
-//		NetworkRegistry.instance().registerChannel(RiderInput, "RiderInput");
-//		NetworkRegistry.instance().registerChannel(RiderInput, "PteroFlight");
 	}
 
 	public static void ShowMessage(String string, EntityPlayer player)

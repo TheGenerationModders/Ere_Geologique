@@ -1,37 +1,32 @@
 package ere_geologique.common.entity;
 
-import java.util.Random;
-
-import net.minecraft.block.Block;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
+import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIControlledByPlayer;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
+import net.minecraft.entity.ai.EntityAILeapAtTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
 import net.minecraft.entity.ai.EntityAISwimming;
+import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.pathfinding.PathEntity;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import ere_geologique.client.LocalizationStrings;
 import ere_geologique.common.EreGeologique;
-import ere_geologique.common.block.Fossil;
 import ere_geologique.common.command.CommandDino;
 import ere_geologique.common.entity.Enums.EnumDinoType;
-import ere_geologique.common.entity.IA.DinoAIAttackOnCollide;
 import ere_geologique.common.entity.IA.DinoAIEat;
 import ere_geologique.common.entity.IA.DinoAIFollowOwner;
 import ere_geologique.common.entity.IA.DinoAIRideGround;
 import ere_geologique.common.entity.IA.DinoAITargetNonTamedExceptSelfClass;
-import ere_geologique.common.entity.IA.DinoAIWander;
 import ere_geologique.common.gui.GuiPedia;
 import ere_geologique.common.item.EGItemList;
 
@@ -57,30 +52,7 @@ public class TRex extends Dinosaure
         super(var1,EnumDinoType.TRex);
         //this.blockBreakingBehavior = new BlockBreakingRule(this.worldObj, this, 5.0F);
         this.looksWithInterest = false;
-        //this.texture = "/mods/fossil/textures/TRex.png";
-        //this.setSize(2.5F, 2.5F);
-        //this.moveSpeed = 0.3F;
-        //this.health = 10;
-        //this.experienceValue=20;
-        
-        /*this.Width0=0.7F;
-        this.WidthInc=0.07F;
-        this.Length0=0.8F;
-        this.LengthInc=0.16F;
-        this.Height0=0.5F;
-        this.HeightInc=0.07F;
-        this.BaseattackStrength=4;
-        //this.AttackStrengthIncrease=;
-        //this.BreedingTime=;
-        this.BaseSpeed=0.22F;
-        this.SpeedIncrease=0.02F;
-        this.MaxAge=23;
-        //this.BaseHealth=;
-        this.HealthIncrease=5;
-        //this.AdultAge=;
-        //this.AgingTicks=;
-        this.MaxHunger=500;
-        //this.Hungrylevel=;*/
+
         this.updateSize();
         
         
@@ -98,23 +70,17 @@ public class TRex extends Dinosaure
         
         // Size of dinosaur at age Adult.
         this.maxSize = 4.5F;
-        
-        
-        
-        
-        
-        
-        
+
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(1, new EntityAISwimming(this));
         //this.attackStrength = 4 + this.getDinoAge();
         //this.tasks.addTask(0, new DinoAIGrowup(this, 8, 23));
         //this.tasks.addTask(0, new DinoAIStarvation(this));
         //this.tasks.addTask(1, new DinoAIAvoidEntityWhenYoung(this, EntityPlayer.class, 8.0F, 0.3F, 0.35F));
-        //this.tasks.addTask(2, new EntityAILeapAtTarget(this, 0.4F));
-        this.tasks.addTask(3, new DinoAIAttackOnCollide(this, 1.0D, true));
+        this.tasks.addTask(2, new EntityAILeapAtTarget(this, 0.4F));
+        this.tasks.addTask(3, new EntityAIAttackOnCollide(this, 1.0D, true));
         this.tasks.addTask(4, new DinoAIFollowOwner(this, 5.0F, 2.0F, 1.0F));
-        this.tasks.addTask(6, new DinoAIWander(this, 1.0D));
+        this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
         this.tasks.addTask(6, new DinoAIEat(this, 24));
         this.tasks.addTask(9, new EntityAILookIdle(this));
@@ -140,33 +106,11 @@ public class TRex extends Dinosaure
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.50000001192092896D);
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(21.0D);
+        //this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(8.0D);
 
     }
 
-    /**
-     * (abstract) Protected helper method to write subclass entity data to NBT.
-     */
-    /*public void writeEntityToNBT(NBTTagCompound var1)
-    {
-        super.writeEntityToNBT(var1);
-        //var1.setBoolean("Angry", this.isSelfAngry());
-        //var1.setBoolean("Sitting", this.isSelfSitting());
-        //var1.setInteger("WeakToDeath", this.WeakToDeath);
-    }*/
-
-    /**
-     * (abstract) Protected helper method to read subclass entity data from NBT.
-     */
-    /*public void readEntityFromNBT(NBTTagCompound var1)
-    {
-        super.readEntityFromNBT(var1);
-        //this.setSelfAngry(var1.getBoolean("Angry"));
-        //this.setSelfSitting(var1.getBoolean("Sitting"));
-        //this.InitSize();
-        //this.WeakToDeath = var1.getInteger("WeakToDeath");
-    }*/
-
-    protected void updateEntityActionState() {}
+    //protected void updateEntityActionState() {}
 
     /**
      * Checks if the entity's current position is a valid location to spawn this entity.
@@ -177,24 +121,15 @@ public class TRex extends Dinosaure
     }
 
     /**
-     * Checks if this entity is inside water (if inWater field is true as a result of handleWaterMovement() returning
-     * true)
-     */
-    public boolean isInWater()
-    {
-        return this.onGround ? false : super.isInWater();
-    }
-
-    /**
      * Called to update the entity's position/logic.
      */
     public void onUpdate()
     {
         super.onUpdate();
         //this.blockBreakingBehavior.execute();
-        if(this.isAdult() && CommandDino.Dino_Block_Breaking == true)
-            BlockInteractive();
-        if (this.health > 0)
+        //if(this.isAdult() && Fossil.FossilOptions.Dino_Block_Breaking == true)
+        //    BlockInteractive();
+        if (this.getHealth() > 0)
         {
             /*this.field_25054_c = this.field_25048_b;
 
@@ -237,9 +172,14 @@ public class TRex extends Dinosaure
 
     public float getEyeHeight()
     {
-        return this.height * 0.8F;
+        return 2.0F + (float)this.getDinoAge() / 1.8F;
     }
 
+    public float getRideHeight()
+    {
+        return this.getEyeHeight() + 0.2F;
+    }
+/*
     /**
      * The speed it takes to move the entityliving's rotationPitch through the faceEntity method. This is only currently
      * use in wolves.
@@ -320,18 +260,6 @@ public class TRex extends Dinosaure
         }
     }
 
-    /**
-     * Deals damage to the entity. If its a EntityPlayer then will take damage from the armor first and then health
-     * second with the reduced value. Args: damageAmount
-     */
-    protected void damageEntity(DamageSource var1, float var2)
-    {
-        var2 = this.applyArmorCalculations(var1, var2);
-        var2 = this.applyPotionDamageCalculations(var1, var2);
-        this.prevHealth=this.health;
-        this.health -= var2;
-    }
-
     public boolean isAngry()
     {
         return true;
@@ -342,12 +270,13 @@ public class TRex extends Dinosaure
      */
     protected Entity findPlayerToAttack()
     {
-        return this.isAngry() ? this.worldObj.getClosestPlayerToEntity(this, 16.0D) : null;
+        return this.isAngry() || !this.isTamed() ? this.worldObj.getClosestPlayerToEntity(this, 16.0D) : null;
     }
 
     /**
      * Basic mob attack. Default to touch of death in EntityCreature. Overridden by each mob to define their attack.
      */
+    /*
     protected void attackEntity(Entity var1, float var2)
     {
         this.faceEntity(var1, 30.0F, 30.0F);
@@ -387,6 +316,7 @@ public class TRex extends Dinosaure
             var1.attackEntityFrom(DamageSource.causeMobDamage(this), this.getAttackStrength());
         }
     }
+    */
 
     /**
      * This method gets called when the entity kills another one.
@@ -410,6 +340,7 @@ public class TRex extends Dinosaure
 
         if (var2 != null)
         {
+        	
             if (var2.itemID == EGItemList.gem.itemID)
             {
                 if (this.isWeak() && !this.isTamed())
@@ -418,6 +349,8 @@ public class TRex extends Dinosaure
                         this.heal(200);
                     this.increaseHunger(500);
                     this.setTamed(true);
+                    setPathToEntity(null);
+                    setAttackTarget(null);
                     this.setOwner(var1.username);
                     --var2.stackSize;
                     if (var2.stackSize <= 0)
@@ -432,32 +365,22 @@ public class TRex extends Dinosaure
                     {
                         if (!this.worldObj.isRemote)
                         {
-                        EreGeologique.ShowMessage(StatCollector.translateToLocal(LocalizationStrings.STATUS_GEM_ERROR_HEALTH),var1);
+                        	EreGeologique.ShowMessage(StatCollector.translateToLocal(LocalizationStrings.STATUS_GEM_ERROR_HEALTH),var1);
                         }
-                        }
-                        if (!this.isAdult())
+                    }
+                    if (!this.isAdult())
+                    {
+                    	if (!this.worldObj.isRemote)
                         {
-                            if (!this.worldObj.isRemote)
-                            {
-                        EreGeologique.ShowMessage(StatCollector.translateToLocal(LocalizationStrings.STATUS_GEM_ERROR_YOUNG),var1);
-                            }
+                            EreGeologique.ShowMessage(StatCollector.translateToLocal(LocalizationStrings.STATUS_GEM_ERROR_YOUNG),var1);
                         }
-                        return true;
+                    }
+                    return false;
                 }
              }
-            if (var2.itemID == EGItemList.Whip.itemID && this.isTamed() && this.SelfType.isRideable() && this.isAdult() && !this.worldObj.isRemote && this.riddenByEntity == null)
-            {
-                if (var1.username.equalsIgnoreCase(this.getOwnerName()))
-                {
-                    var1.rotationYaw = this.rotationYaw;
-                    var1.mountEntity(this);
-                    this.setPathToEntity((PathEntity)null);
-                    this.renderYawOffset = this.rotationYaw;
-                }
-                return true;
-            }
-            if (!CommandDino.Debugmode)
-            {
+             
+        if (!CommandDino.Debugmode)
+        {
             if(var2.itemID == EGItemList.ChickenEss.itemID)
             {
                 if (!this.worldObj.isRemote)
@@ -467,25 +390,11 @@ public class TRex extends Dinosaure
                 }
             }
          }
-        else 
-        {
-            if (this.isTamed() && this.SelfType.isRideable() && this.isAdult() && !this.worldObj.isRemote && (this.riddenByEntity == null || this.riddenByEntity == var1))
-            {
-                if (var1.username.equalsIgnoreCase(this.getOwnerName()))
-                {
-                    var1.rotationYaw = this.rotationYaw;
-                    var1.mountEntity(this);
-                    this.setPathToEntity((PathEntity)null);
-                    this.renderYawOffset = this.rotationYaw;
-                }
-                return true;
-            }
-        }
         }
         return super.interact(var1);
         
     }
-
+    
     public boolean CheckSpace()
     {
         return !this.isEntityInsideOpaqueBlock();
@@ -494,9 +403,10 @@ public class TRex extends Dinosaure
     public void updateRiderPosition()
     {
         if (this.riddenByEntity != null)
-            this.riddenByEntity.setPosition(this.posX, this.posY + (double)this.height * 1.5D, this.posZ);
+        		this.riddenByEntity.setPosition(this.posX, this.posY + (double)this.getRideHeight(), this.posZ);
     }
 
+    /*
     private void Flee(Entity var1, int var2)
     {
         int var3 = (new Random()).nextInt(var2) + 1;
@@ -544,7 +454,7 @@ public class TRex extends Dinosaure
         this.setOwner("");
         this.setPathToEntity(this.worldObj.getEntityPathToXYZ(this, var14, var6, var15, (float)var2, true, false, true, false));
     }
-
+*/
     /**
      * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons
      * use this to react to sunlight and start to burn.
@@ -573,6 +483,7 @@ public class TRex extends Dinosaure
     /**
      * Causes this entity to do an upwards motion (jumping).
      */
+    /*
     protected void jump()
     {
         if (!this.isInWater())
@@ -591,22 +502,23 @@ public class TRex extends Dinosaure
             this.motionY -= 0.1D;
         }
     }
+    */
 
+    /**
+     * Check if the dinosaur is in a weakened state.
+     * @return
+     */
     public boolean isWeak()
     {
-//        return this.getHealth() < 8 && this.getDinoAge()>8 && !this.isTamed(); 
-    	return false;//this.getHealthData() < 8 && this.getDinoAge()>8 && !this.isTamed();
+    	this.setSitting(true);
+        return this.getHealth() < 15 && this.getDinoAge()>5 && !this.isTamed(); 
+    	//return false;//this.getHealthData() < 8 && this.getDinoAge()>8 && !this.isTamed();
     }
 
     private void HandleWeak()
     {
         if (!this.worldObj.isRemote)
         {
- /*           if (this.texture != "/fossil/textures/TRexWeak.png")
-            {
-                this.texture = "/fossil/textures/TRexWeak.png";
-            }
-*/
             ++this.WeakToDeath;
 
             if (this.WeakToDeath >= 200)
@@ -640,6 +552,7 @@ public class TRex extends Dinosaure
      * This method returns a value to be applied directly to entity speed, this factor is less than 1 when a slowdown
      * potion effect is applied, more than 1 when a haste potion effect is applied and 2 for fleeing entities.
      */
+    /*
     public float getSpeedModifier()
     {
         float var1 = 1.0F;
@@ -669,6 +582,8 @@ public class TRex extends Dinosaure
 
         return var1;
     }
+    */
+    /*
     public int BlockInteractive()
     {
         int destroyed=0;
@@ -702,22 +617,7 @@ public class TRex extends Dinosaure
         }
         return destroyed;
     }
-
-    /*public float getGLX()
-    {
-        return (float)(0.5D + 0.5125D * (double)this.getDinoAge());
-    }
-
-    public float getGLY()
-    {
-        return (float)(0.5D + 0.5125D * (double)this.getDinoAge());
-    }*/
-
-    /*public EntityAgeable func_90011_a(EntityAgeable var1)
-    {
-        return this.spawnBabyAnimal(var1);
-    }*/
-
+    */
     @Override
     public EntityAgeable createChild(EntityAgeable var1) 
     {

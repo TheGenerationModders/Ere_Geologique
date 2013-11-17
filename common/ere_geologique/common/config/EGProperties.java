@@ -50,6 +50,7 @@ public class EGProperties
 	public static int cookedChickenSoupID;
 	public static int rawChickenSoupID;
 	public static int FlintAndSteelID;
+	public static int archNotebookID;
 
 	//Dimensions
 	public static int GlaciaID;

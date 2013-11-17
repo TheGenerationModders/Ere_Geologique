@@ -419,11 +419,11 @@ public class DinoEgg extends Entity implements IEntityAdditionalSpawnData
     {
     	//this.getClass();//needed to set which is the actual instance using this function
         float var2 = this.getBrightness(1.0F);
-        EntityPlayer var4 = null;
+        EntityPlayer player = null;
 
         if ((this.ParentOwner == "" || this.worldObj.getPlayerEntityByName(this.ParentOwner) == null) && this.worldObj.getClosestPlayerToEntity(this, 16.0D) != null)
         {
-            var4 = this.worldObj.getClosestPlayerToEntity(this, 16.0D);
+            player = this.worldObj.getClosestPlayerToEntity(this, 16.0D);
         }
 
         if (this.DinoInside == EnumDinoType.Mosasaurus)
@@ -445,7 +445,7 @@ public class DinoEgg extends Entity implements IEntityAdditionalSpawnData
         }
         if (this.getBirthTick() <= -this.HatchingNeedTime)
         {
-        	if(var4!=null)
+        	if(player!=null)
         	{
 	            String var6;
 	
@@ -460,7 +460,7 @@ public class DinoEgg extends Entity implements IEntityAdditionalSpawnData
 	
 	            String var1 = StatCollector.translateToLocal(LocalizationStrings.DINOEGG_HEAD);
 	            if(FMLCommonHandler.instance().getSide().isServer())
-	            	EreGeologique.ShowMessage(var1 + StatCollector.translateToLocal("Dino."+this.DinoInside.toString())/*EntityDinosaur.GetNameByEnum(this.DinoInside, false)*/ + var6, var4);
+	            	EreGeologique.ShowMessage(var1 + StatCollector.translateToLocal("Dino."+this.DinoInside.toString())/*EntityDinosaur.GetNameByEnum(this.DinoInside, false)*/ + var6, player);
         	}
         	this.setDead();
         }
@@ -497,6 +497,7 @@ public class DinoEgg extends Entity implements IEntityAdditionalSpawnData
                         ((Pachycephalosaurus)var5).setSubSpecies(2);
                     else
                         ((Pachycephalosaurus)var5).setSubSpecies(3);break;
+                        
                     case Compsognathus:var5 = new Compsognathus(this.worldObj);
                         if (var3 instanceof BiomeGenSnow || var3 instanceof BiomeGenDesert)
                         ((Compsognathus)var5).setSubSpecies(1);
@@ -505,14 +506,14 @@ public class DinoEgg extends Entity implements IEntityAdditionalSpawnData
                     case Ankylosaurus:var5 = new Ankylosaurus(this.worldObj);break;
 
                     default:
-                        EreGeologique.ShowMessage("Bug: Impossible result.", var4);
+                        EreGeologique.ShowMessage("Bug: Impossible result.", player);
                         //System.err.println("EGGERROR2"+String.valueOf(i));
                         this.setDead();
                         return;
                 }
-                if(((Dinosaure)var5).SelfType.isTameable() && var4 != null)
+                if(((Dinosaure)var5).SelfType.isTameable() && player != null)
                 {// Tameable and player next to it
-                	((Dinosaure)var5).setOwner(var4.username);
+                	((Dinosaure)var5).setOwner(player.username);
                     ((Dinosaure)var5).setTamed(true);
                 }
 
@@ -523,16 +524,18 @@ public class DinoEgg extends Entity implements IEntityAdditionalSpawnData
                     //if (!this.worldObj.isRemote)
                     {
                         this.worldObj.spawnEntityInWorld((Entity)var5);
-                        if (var4!=null)
-                            EreGeologique.ShowMessage(StatCollector.translateToLocal(LocalizationStrings.DINOEGG_HATCHED), var4);
+                        if (player!=null)
+                            EreGeologique.ShowMessage(StatCollector.translateToLocal(LocalizationStrings.DINOEGG_HATCHED), player);
                         
                     }
                     this.setDead();
                 }
                 else
                 {
-                    EreGeologique.ShowMessage(StatCollector.translateToLocal(LocalizationStrings.DINOEGG_NOSPACE), var4);
+                	//System.err.println("EGGERROR-NOPLACE");
+                    EreGeologique.ShowMessage(StatCollector.translateToLocal(LocalizationStrings.DINOEGG_NOSPACE), player);
                     this.setBirthTick(this.getBirthTick()-500);
+                    //System.err.println("EGGERROR3"+String.valueOf(i));
                 }
             }
         }
@@ -571,7 +574,7 @@ public class DinoEgg extends Entity implements IEntityAdditionalSpawnData
         {
         	Item i0 = this.DinoInside.EggItem;
 
-            ItemStack var3 = new ItemStack(i0, 1, 1);
+            ItemStack var3 = new ItemStack(i0/*this.DinoInside.EggItem/*var7*/, 1, 1);
             if (player.inventory.addItemStackToInventory(var3))
             {
                 this.worldObj.playSoundAtEntity(player, "random.pop", 0.2F, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
@@ -597,10 +600,25 @@ public class DinoEgg extends Entity implements IEntityAdditionalSpawnData
     public void ShowPedia(GuiPedia p0)
     {
     	Item it0 = this.DinoInside.EggItem;
-    	
+    	/*switch (this.DinoInside)
+        {
+            case Triceratops:it0=Fossil.eggTriceratops;break;
+            case Velociraptor:it0=Fossil.eggVelociraptor;break;
+            case TRex:it0=Fossil.eggTRex;break;
+            case Pterosaur:it0=Fossil.eggPterosaur;break;
+            case Plesiosaur:it0=Fossil.eggPlesiosaur;break;
+            case Mosasaurus:it0=Fossil.eggMosasaurus;break;
+            case Stegosaurus:it0=Fossil.eggStegosaurus;break;
+            case Dilophosaurus:it0=Fossil.eggDilophosaurus;break;
+            case Brachiosaurus:it0=Fossil.eggBrachiosaurus;break;
+            case Spinosaurus:it0=Fossil.eggSpinosaurus;break;
+
+
+            default:it0=Fossil.eggTriceratops;
+        }*/
     	p0.reset();
     	p0.PrintItemXY(it0, 140, 7);
-    	p0.PrintStringLR(StatCollector.translateToLocal("Dino."+this.DinoInside.toString()), false, 1,40,90,245);
+    	p0.PrintStringLR(/*Fossil.GetLangTextByKey("PediaText.egg.Head")+ " "+*/StatCollector.translateToLocal("Dino."+this.DinoInside.toString()), false, 1,40,90,245);
     	int quot = (int)Math.floor(((float)this.getBirthTick() / (float)this.HatchingNeedTime * 100.0F));
     	String stat;
     	if (this.DinoInside == EnumDinoType.Mosasaurus)
@@ -624,6 +642,35 @@ public class DinoEgg extends Entity implements IEntityAdditionalSpawnData
         	p0.PrintStringLR(StatCollector.translateToLocal(LocalizationStrings.PEDIA_EGG_PROGRESS), false, 4,40,90,245);
         	p0.PrintStringLR(String.valueOf(quot) + "/100", false, 5);
         }
+        /*String var2 = "";
+        String var3 = Fossil.GetLangTextByKey("PediaText.egg.selfHead") + EntityDinosaur.GetNameByEnum(this.DinoInside, false) + Fossil.GetLangTextByKey("PediaText.egg.selfTail");
+        int var4 = (int)Math.floor((double)((float)this.BirthTick / (float)this.HatchingNeedTime * 100.0F));
+        Fossil.ShowMessage(var3, var1);
+
+        if (this.DinoInside == EnumDinoType.Mosasaurus)
+        {
+            if (this.BirthTick >= 0)
+            {
+                var2 = Fossil.GetLangTextByKey("PediaText.egg.wet");
+            }
+            else
+            {
+                var2 = Fossil.GetLangTextByKey("PediaText.egg.dry");
+            }
+        }
+        else if (this.BirthTick >= 0)
+        {
+            var2 = Fossil.GetLangTextByKey("PediaText.egg.warm");
+        }
+        else
+        {
+            var2 = Fossil.GetLangTextByKey("PediaText.egg.cold");
+        }
+
+        String var5 = Fossil.GetLangTextByKey("PediaText.egg.Status");
+        String var6 = Fossil.GetLangTextByKey("PediaText.egg.Progress");
+        Fossil.ShowMessage(var5 + var2, var1);
+        Fossil.ShowMessage(var6 + var4 + "/100", var1);*/
     }
 
     public void writeSpawnData(ByteArrayDataOutput var1)

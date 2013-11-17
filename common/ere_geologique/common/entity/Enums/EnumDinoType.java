@@ -38,20 +38,21 @@ interface C
 
 public enum EnumDinoType
 {
-    Triceratops(Triceratops.class, 	C.MODEL | C.TAME  | C.RIDE | C.HERBIVORE),
-    Velociraptor(Velociraptor.class, 	C.TAME  | C.CARRY | C.CARNIVORE),
-    TRex(TRex.class, 					C.RIDE  | C.CARNIVORE),
-    Pterosaure(Pterosaure.class, 		C.MODEL | C.TAME  | C.RIDE | C.CARNIVORE),
-    Nautilus(Nautilus.class, 			C.NOTHING),
-    Plesiosaure(Plesiosaure.class, 		C.MODEL | C.TAME  | C.RIDE | C.CARNIVORE),
-    Mosasaurus(Mosasaurus.class, 		C.NOTHING),
-    Stegosaurus(Stegosaurus.class, 	C.TAME | C.HERBIVORE),
-    Dilophosaurus(Dilophosaurus.class,C.TAME | C.CARRY | C.CARNIVORE),
-    Brachiosaurus(Brachiosaurus.class,C.MODEL | C.TAME | C.RIDE | C.HERBIVORE),
-    Spinosaurus(Spinosaurus.class, 	C.CARNIVORE),
-    Compsognathus(Compsognathus.class,C.CARNIVORE | C.TAME),
-    Ankylosaurus(Ankylosaurus.class,  C.TAME  | C.HERBIVORE),
-    Pachycephalosaurus(Pachycephalosaurus.class, C.TAME  | C.HERBIVORE);
+	//											C.MODEL	| C.TAME	| C.RIDE	| C.HERBIVORE/CARNIVORE
+    Triceratops(Triceratops.class, 				C.MODEL | C.TAME  	| C.RIDE 	| C.HERBIVORE),
+    Velociraptor(Velociraptor.class,					  C.TAME  				| C.CARNIVORE),
+    TRex(TRex.class, 							  		  C.TAME  	| C.RIDE  	| C.CARNIVORE),
+    Pterosaure(Pterosaure.class, 				C.MODEL | C.TAME  	| C.RIDE 	| C.CARNIVORE),
+    Plesiosaure(Plesiosaure.class, 				C.MODEL | C.TAME  	| C.RIDE 	| C.CARNIVORE),
+    Stegosaurus(Stegosaurus.class, 				C.MODEL | C.TAME  				| C.HERBIVORE),
+    Dilophosaurus(Dilophosaurus.class,					  C.TAME  	| C.CARRY 	| C.CARNIVORE),
+    Brachiosaurus(Brachiosaurus.class,			C.MODEL | C.TAME  	| C.RIDE 	| C.HERBIVORE),
+    Spinosaurus(Spinosaurus.class, 						  C.TAME				| C.CARNIVORE),
+    Compsognathus(Compsognathus.class,					  C.TAME				| C.CARNIVORE),
+    Ankylosaurus(Ankylosaurus.class,  					  C.TAME  	| C.RIDE  	| C.HERBIVORE),
+    Pachycephalosaurus(Pachycephalosaurus.class,		  C.TAME 				| C.HERBIVORE),
+    Mosasaurus(Mosasaurus.class, 						  		  				  C.CARNIVORE),
+    Nautilus(Nautilus.class, 					C.NOTHING);
     
     private final Class dinoClass;
 

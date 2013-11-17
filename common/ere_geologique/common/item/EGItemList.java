@@ -34,6 +34,7 @@ public class EGItemList
 	public static Item rawChickenSoup;
 	public static Item cookedChickenSoup;
 	public static Item FlintAndSteel;
+	public static Item archNotebook;
 	
 	public static void loadItem()
 	{
@@ -48,7 +49,7 @@ public class EGItemList
 	       LegBone = new EGItem(EGProperties.LegBoneID,"Leg_Bone").setUnlocalizedName("Leg_Bone");
 	       Claw = new EGItem(EGProperties.ClawID,"Claw").setUnlocalizedName("Claw");
 	       Foot = new EGItem(EGProperties.FootID,"Foot").setUnlocalizedName("Foot");
-	       Skull = new EGItem(EGProperties.SkullID,"Skull").setUnlocalizedName("Skull");
+	       Skull = new EGItem(EGProperties.SkullID,"Skull").setUnlocalizedName("DinoSkull");
 	       BioFossil = new ItemBioFossil(EGProperties.BioFossilID).setUnlocalizedName("BioFossil").setTextureName("ere_geologique:Bio_Fossil");
 	       SkullStick = new EGItem(EGProperties.SkullStickID, "Skull_Stick").setUnlocalizedName("SkullStick");
 	       gem = new EGItem(EGProperties.gemID, "Scarab_Gem").setUnlocalizedName("gem");
@@ -63,6 +64,7 @@ public class EGItemList
 	       cookedChickenSoup = new EGItem(EGProperties.cookedChickenSoupID, "Cooked_Chicken_Soup").setUnlocalizedName("cookedChickenSoup").setMaxStackSize(1).setContainerItem(Item.bucketEmpty);
 	       rawChickenSoup = new EGItem(EGProperties.rawChickenSoupID, "Raw_Chicken_Soup").setUnlocalizedName("rawChickenSoup").setMaxStackSize(1).setContainerItem(Item.bucketEmpty);
 	       FlintAndSteel = new FlintAndSteel(EGProperties.FlintAndSteelID).setUnlocalizedName("FlintAndSteel");
+	       archNotebook = new EGItem(EGProperties.archNotebookID, "Arch_Notebook").setUnlocalizedName("archNotebook");
 	       
 	       for(int i=0;i<EnumDinoType.values().length;i++)
 	       EnumDinoType.values()[i].EggItem = new Egg(EGProperties.EGGIDs[i], i).setUnlocalizedName("egg" + EnumDinoType.values()[i].name()).setCreativeTab(EGCreativeTab.EGCreativeTabItem);
@@ -82,7 +84,7 @@ public class EGItemList
 	       GameRegistry.registerItem(LegBone, "LegBone", "ere_geologique");
 	       GameRegistry.registerItem(Claw, "Claw", "ere_geologique");
 	       GameRegistry.registerItem(Foot, "Foot", "ere_geologique");
-	       GameRegistry.registerItem(Skull, "Skull", "ere_geologique");
+	       GameRegistry.registerItem(Skull, "DinoSkull", "ere_geologique");
 	       GameRegistry.registerItem(BioFossil, "BioFossil", "ere_geologique");
 	       GameRegistry.registerItem(SkullStick, "SkullStick", "ere_geologique");
 	       GameRegistry.registerItem(gem, "gem", "ere_geologique");
@@ -97,6 +99,7 @@ public class EGItemList
 	       GameRegistry.registerItem(rawChickenSoup, "rawChickenSoup", "ere_geologique");
 	       GameRegistry.registerItem(cookedChickenSoup, "cookedChickenSoup", "ere_geologique");
 	       GameRegistry.registerItem(FlintAndSteel, "FlindAndSteel", "ere_geologique");
+	       GameRegistry.registerItem(archNotebook, "archNotebook", "ere_geologique");
 	       
 	       for(int i=0;i<EnumDinoType.values().length;i++)
 	       GameRegistry.registerItem(EnumDinoType.values()[i].EggItem, "egg" + EnumDinoType.values()[i].name(), "ere_geologique");

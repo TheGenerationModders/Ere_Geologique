@@ -34,8 +34,8 @@ public class GuiPedia extends GuiContainer
     public GuiPedia(/*InventoryPlayer var1*/)
     {
         super(new ContainerPedia());
-        this.xSize = 244;
-        this.ySize = 174;
+        this.xSize = 256;
+        this.ySize = 180;
         left=0;
         right=0;
         items=0;
@@ -148,12 +148,6 @@ public class GuiPedia extends GuiContainer
     {
     	if(EreGeologique.ToPedia instanceof Dinosaure)((Dinosaure)EreGeologique.ToPedia).ShowPedia(this);	
     	if(EreGeologique.ToPedia instanceof DinoEgg)((DinoEgg)EreGeologique.ToPedia).ShowPedia(this);
-//    	if(EreGeologique.ToPedia instanceof EntityPregnantCow)((EntityPregnantCow)EreGeologique.ToPedia).ShowPedia(this);
-//    	if(EreGeologique.ToPedia instanceof EntityPregnantPig)((EntityPregnantPig)EreGeologique.ToPedia).ShowPedia(this);
-//    	if(EreGeologique.ToPedia instanceof EntityPregnantSheep)((EntityPregnantSheep)EreGeologique.ToPedia).ShowPedia(this);
-//    	if(EreGeologique.ToPedia instanceof EntityMammoth)((EntityMammoth)EreGeologique.ToPedia).ShowPedia(this);
-//    	if(EreGeologique.ToPedia instanceof EntitySmilodon)((EntitySmilodon)EreGeologique.ToPedia).ShowPedia(this);
-//        if(EreGeologique.ToPedia instanceof EntityDodo)((EntityDodo)EreGeologique.ToPedia).ShowPedia(this);
     }
 
     /**
@@ -169,39 +163,21 @@ public class GuiPedia extends GuiContainer
      */
     protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3)
     {
+    	int x = var2;
+    	int y = var3;
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         mc.getTextureManager().bindTexture(loc);
         int var5 = (this.width - this.xSize) / 2;
         int var6 = (this.height - this.ySize) / 2;
         this.drawTexturedModalRect(var5, var6, 0, 0, this.xSize, this.ySize);
+
     }
-    
-    /**
-     * Draws the screen and all the components in it.
-     */
-    /*public void drawScreen(int var1, int var2, float var3)
-    {
-        super.drawScreen(var1, var2, var3);
-        int var4 = (this.width - this.xSize) / 2;
-        int var5 = (this.height - this.ySize) / 2;
-        GL11.glPushMatrix();
-        RenderHelper.enableGUIStandardItemLighting();
-        GL11.glDisable(GL11.GL_LIGHTING);
-        GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-        GL11.glEnable(GL11.GL_COLOR_MATERIAL);
-        GL11.glPopMatrix();
-        GL11.glEnable(GL11.GL_LIGHTING);
-        GL11.glEnable(GL11.GL_DEPTH_TEST);
-        RenderHelper.enableStandardItemLighting();
-    }*/
 
     /**
      * Called when the screen is unloaded. Used to disable keyboard repeat events
      */
     public void onGuiClosed()
     {
-        //EntityDinosaur.pediaingDino = null;
-        //EreGeologique.ToPedia=null;
         super.onGuiClosed();
     }
 }

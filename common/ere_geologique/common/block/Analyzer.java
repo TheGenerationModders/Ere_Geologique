@@ -132,13 +132,13 @@ public class Analyzer extends BlockContainer
     {
         int var6 = MathHelper.floor_double((double)(var5.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
 
-        if (var6 == 0)var1.setBlockMetadataWithNotify(var2, var3, var4, 2,2);
+        if (var6 == 1)var1.setBlockMetadataWithNotify(var2, var3, var4, 2,2);
 
-        if (var6 == 1)var1.setBlockMetadataWithNotify(var2, var3, var4, 5,2);
+        if (var6 == 3)var1.setBlockMetadataWithNotify(var2, var3, var4, 5,2);
 
         if (var6 == 2)var1.setBlockMetadataWithNotify(var2, var3, var4, 3,2);
 
-        if (var6 == 3)var1.setBlockMetadataWithNotify(var2, var3, var4, 4,2);
+        if (var6 == 0)var1.setBlockMetadataWithNotify(var2, var3, var4, 4,2);
     }
 
     public void breakBlock(World var1, int var2, int var3, int var4, int var5, int var6)

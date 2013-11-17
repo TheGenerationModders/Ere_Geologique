@@ -29,9 +29,15 @@ public class CommandDino extends CommandBase
 	}
 	
 	@Override
-	public List addTabCompletionOptions(ICommandSender par1ICommandSender, String[] par2ArrayOfStr)
+	public int getRequiredPermissionLevel()
 	{
-		return null;
+		return 2;
+	}
+	
+	@Override
+	public List addTabCompletionOptions(ICommandSender sender, String[] arguments)
+	{
+		return arguments.length == 1 ? getListOfStringsMatchingLastWord(arguments, new String[] {"blockbreack", "heal", "starve", "debug"}) : (arguments.length == 2 ? getListOfStringsMatchingLastWord(arguments, new String[] {"true", "false"}) : null);
 	}
 
 	@Override
@@ -62,7 +68,7 @@ public class CommandDino extends CommandBase
 		}
 		throw new WrongUsageException(this.getCommandUsage(sender));
 	}
-	
+
 	private void commandBlockBreack(ICommandSender sender, String[] arguments)
 	{
 		if(arguments[1].matches("true")){

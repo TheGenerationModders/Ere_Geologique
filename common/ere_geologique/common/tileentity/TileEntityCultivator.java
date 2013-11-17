@@ -13,6 +13,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.ForgeDirection;
 import ere_geologique.common.block.Cultivator;
 import ere_geologique.common.block.EGBlockList;
+import ere_geologique.common.command.CommandDino;
 import ere_geologique.common.entity.Enums.EnumDinoType;
 import ere_geologique.common.item.EGItemList;
 
@@ -154,6 +155,15 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
     {
         boolean var1 = this.furnaceCookTime > 0;
         boolean var2 = false;
+        int cookvalue;
+        
+        if(CommandDino.Debugmode)
+        {
+        	cookvalue = 300;
+        }else
+        {
+        	cookvalue = 6000;
+        }
 
         if (this.furnaceBurnTime > 0)
         {
@@ -193,7 +203,7 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
             {
                 ++this.furnaceCookTime;
 
-                if (this.furnaceCookTime == 6000)
+                if (this.furnaceCookTime == cookvalue)
                 {
                     this.furnaceCookTime = 0;
                     this.smeltItem();
