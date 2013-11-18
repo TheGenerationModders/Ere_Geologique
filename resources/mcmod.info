@@ -1,0 +1,17 @@
+﻿[
+{
+  "modid": "ere_geologique",
+  "name": "Ere G\351ologique",
+  "description": "Ce mod rajoute 3 dimensions, des mobs hostiles, des mobs passifs, des armes, des outils, des minerais...",
+  "version": "@VERSION@",
+  "credits": "",
+  "logoFile": "",
+  "mcversion": "@MC_VERSION@",
+  "url": "",
+  "updateUrl": "",
+  "authors": ["Superloup10",  "sevenno07"],
+  "parent":"",
+  "screenshots": [],
+  "dependencies": []
+}
+]
