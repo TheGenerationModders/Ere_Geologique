@@ -88,6 +88,7 @@
     <entry key="item.cookedChickenSoup.name">cookedChickenSoup</entry>
     <entry key="item.rawChickenSoup.name">rawChickenSoup</entry>
     <entry key="item.FlintAndSteel.name">FrozenFlintAndSteel</entry>
+    <entry key="item.archNotebook.name">archNotebook</entry>
     <!-- Dino Meat -->
 	<entry key="item.dinoSteak.name">Dino Steak</entry>
 	<entry key="item.rawTriceratops.name">Triceratops Meat</entry>

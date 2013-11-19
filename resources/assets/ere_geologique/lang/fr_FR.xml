@@ -70,12 +70,12 @@
     <entry key="item.IvoryGear.name">Boulon d'Ivoire</entry>
     <entry key="item.DinoPedia.name">DinoPedia</entry>
     <entry key="item.ChickenEss.name">Essence de Poulet</entry>
-    <entry key="item.Whip.name">Whip</entry>
+    <entry key="item.Whip.name">Fouet</entry>
     <entry key="item.Leg_Bone.name">Leg Bone</entry>
 	<entry key="item.Claw.name">Claw</entry>
 	<entry key="item.Foot.name">Foot</entry>
 	<entry key="item.Skull.name">Skull</entry>
-    <entry key="item.BioFossil.name">Bio-Fossil</entry>
+    <entry key="item.BioFossil.name">Fossile Biologique</entry>
     <entry key="item.SkullStick.name">Skull Stick</entry>
     <entry key="item.gem.name">Gem</entry>
     <entry key="item.EmptyShell.name">Empty Shell</entry>
@@ -88,6 +88,7 @@
     <entry key="item.cookedChickenSoup.name">cookedChickenSoup</entry>
     <entry key="item.rawChickenSoup.name">rawChickenSoup</entry>
     <entry key="item.FlintAndSteel.name">Briquet gelé</entry>
+    <entry key="item.archNotebook.name">Livre d'archeologie</entry>
     <!-- Dino Meat -->
 	<entry key="item.dinoSteak.name">Dino Steak</entry>
 	<entry key="item.rawTriceratops.name">Triceratops Meat</entry>

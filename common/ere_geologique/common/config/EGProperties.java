@@ -61,4 +61,6 @@ public class EGProperties
 	public static int[] EGGIDs = new int[EnumDinoType.values().length];
 	public static int[] RAWIDs = new int[EnumDinoType.values().length];
 	public static int[] DNAIDs = new int[EnumDinoType.values().length];
+	public static boolean CURRENT_CONTINUOUS;
+	public static final String MOD = "EreGeologique";
 }

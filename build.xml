@@ -76,7 +76,9 @@
         <propertyfile file="build.properties">
             <entry key="eg_version" type="string" default="error"/>
         </propertyfile>
-        <replace file="${mcp.dir}\src\minecraft\ere_geologique\common\EreGeologique.java" token="@VERSION@" value="${buildprop.eg_version}" />
+        <replace file="${mcp.dir}\src\minecraft\ere_geologique\common\Version.java" token="@VERSION@" value="${buildprop.eg_version}" />
+        <replace file="${mcp.dir}\src\minecraft\ere_geologique\common\Version.java" token="@BUILD_NUMBER@" value="${env.BUILD_NUMBER}" />
+        <replace file="${mcp.dir}\src\minecraft\ere_geologique\common\Version.java" token="@MC_VERSION@" value="${buildprop.mc}" />
         <replace file="${mcp.dir}\src\minecraft\mcmod.info" token="@VERSION@" value="${buildprop.eg_version}" />
         <replace file="${mcp.dir}\src\minecraft\mcmod.info" token="@MC_VERSION@" value="${buildprop.mc}" />
     </target>
