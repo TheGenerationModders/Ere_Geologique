@@ -70,10 +70,9 @@ public class Slab extends BlockHalfSlab
 
 	public void getSubBlocks(int id, CreativeTabs creativeTabs, List list)
 	{
-		if (id != EGBlockList.Slab.blockID)
+		if (id != EGBlockList.DoubleSlab.blockID)
 		{
-
-			for (int i = 0; i < 5; i++)
+			for (int i = 0; i < woodType.length; i++)
 			{
 				list.add(new ItemStack(id, 1, i));
 			}
