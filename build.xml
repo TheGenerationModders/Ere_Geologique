@@ -5,6 +5,7 @@
     <property name="mcp.dir" value="${forge.dir}\${buildprop.forge}\mcp"/>
     <available property="mcp-exists" file="${mcp.dir}"/>
     <available property="ic2-exists" file="libs\ic2.name"/>
+    <available property="forestry-exists" file="libs\forestry.name"/>
     <property environment="env"/>
     
     <!-- Download and setup forge -->
@@ -61,10 +62,17 @@
         <get src="http://ic2api.player.to:8080/job/IC2_experimental/${buildprop.ic2_build}/artifact/packages/${buildprop.ic2_name}" dest="libs/" usetimestamp="True"/>
     </target>
     
-    <!-- Extract IC2 into bin -->
-    <target name="extract_ic2">
+    <!-- Download forestry -->
+    <target name="download_forestry" unless="forestry-exists">
+        <mkdir dir="libs/"/>
+        <get src="http://bit.ly/GXrNLD" dest="libs/" usetimestamp="True"/>
+    </target>
+    
+    <!-- Extract mod into bin -->
+    <target name="extract_mod">
         <copy todir="${mcp.dir}\lib\">
             <fileset file="libs\${buildprop.ic2_name}" />
+            <fileset file="libs\${buildprop.forestry_name}"/>
         </copy>
         <copy todir="${mcp.dir}\src\minecraft\">
             <fileset dir="external_api\" />
@@ -76,9 +84,9 @@
         <propertyfile file="build.properties">
             <entry key="eg_version" type="string" default="error"/>
         </propertyfile>
-        <replace file="${mcp.dir}\src\minecraft\ere_geologique\common\Version.java" token="@VERSION@" value="${buildprop.eg_version}" />
-        <replace file="${mcp.dir}\src\minecraft\ere_geologique\common\Version.java" token="@BUILD_NUMBER@" value="${env.BUILD_NUMBER}" />
-        <replace file="${mcp.dir}\src\minecraft\ere_geologique\common\Version.java" token="@MC_VERSION@" value="${buildprop.mc}" />
+        <replace file="${mcp.dir}\src\minecraft\ere_geologique\common\config\Version.java" token="@VERSION@" value="${buildprop.eg_version}" />
+        <replace file="${mcp.dir}\src\minecraft\ere_geologique\common\config\Version.java" token="@BUILD_NUMBER@" value="${env.BUILD_NUMBER}" />
+        <replace file="${mcp.dir}\src\minecraft\ere_geologique\common\config\Version.java" token="@MC_VERSION@" value="${buildprop.mc}" />
         <replace file="${mcp.dir}\src\minecraft\mcmod.info" token="@VERSION@" value="${buildprop.eg_version}" />
         <replace file="${mcp.dir}\src\minecraft\mcmod.info" token="@MC_VERSION@" value="${buildprop.mc}" />
     </target>
@@ -128,8 +136,9 @@
         <antcall target="clean" />
         <antcall target="download-and-setup-forge" />
         <antcall target="download_ic2" />
+        <antcall target="download_forestry" />
         <antcall target="copy_eg_sources" />
-        <antcall target="extract_ic2" />
+        <antcall target="extract_mod" />
         <antcall target="replace_tokens" />
         <antcall target="recompile" />
         <antcall target="reobfuscate" />
