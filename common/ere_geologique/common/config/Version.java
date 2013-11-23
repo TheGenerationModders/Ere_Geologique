@@ -21,8 +21,8 @@ public class Version implements Runnable
 	public static final String VERSION = "@VERSION@";
 	public static final String BUILD_NUMBER = "@BUILD_NUMBER@";
 	public static final String MC_VERSION = "@MC_VERSION@";
-	private static final String REMOTE_VERSION_FILE = "";
-	private static final String REMOTE_CHANGELOG_ROOT = "";
+	private static final String REMOTE_VERSION_FILE = "http://bit.ly/eregeologiqueversion";
+	private static final String REMOTE_CHANGELOG_ROOT = "https://dl.dropboxusercontent.com/u/135157801/EreGeologique/changelogs/";
 	public static EnumUpdateState currentVersion = EnumUpdateState.CURRENT;
 	public static final int FORGE_VERSION_MAJOR = 4;
 	public static final int FORGE_VERSION_MINOR = 0;

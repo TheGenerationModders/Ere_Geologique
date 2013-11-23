@@ -18,7 +18,11 @@ public class EGBlockList
 	public static Block Plank;
 	public static Block DoubleSlab;
 	public static Block Slab;
-	public static Block Stair;
+	public static Block StairFougere;
+    public static Block StairCycas;
+    public static Block StairAraucarias;
+    public static Block StairMetasequoias;
+    public static Block StairGinkgos;
 	public static GlaciaPortal GlaciaPortal;
 	public static Block Feeder;
 	public static Block AnalyzerIdle;
@@ -44,7 +48,11 @@ public class EGBlockList
 	       Plank = new Plank(EGProperties.PlankID).setStepSound(Block.soundWoodFootstep).setHardness(2.0F).setResistance(5.0F).setUnlocalizedName("Plank").setTextureName("ere_geologique:Plank");
 	       Slab = new Slab(EGProperties.SlabID, false).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("Slab").setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
 	       DoubleSlab = new Slab(EGProperties.DoubleSlabID, true).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("Slab");
-	       Stair = new Stair(EGProperties.StairID, Plank,1).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("Stair");
+	       StairFougere = new Stair(EGProperties.StairFougereID, Plank, 0).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("StairFougere");
+	       StairCycas = new Stair(EGProperties.StairCycasID, Plank, 1).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("StairCycas");
+	       StairAraucarias = new Stair(EGProperties.StairAraucariasID, Plank, 2).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("StairAraucarias");
+	       StairMetasequoias = new Stair(EGProperties.StairMetasequoiasID, Plank, 3).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("StairMetasequoias");
+	       StairGinkgos = new Stair(EGProperties.StairGingkosID, Plank, 5).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("StairGinkgos");
 	       GlaciaPortal = (GlaciaPortal) new GlaciaPortal(EGProperties.GlaciaPortalID).setHardness(-1.0F).setStepSound(Block.soundGlassFootstep).setLightValue(0.75F).setUnlocalizedName("GlaciaPortal").setTextureName("ere_geologique:GlaciaPortal");
 	       Feeder = new Feeder(EGProperties.FeederID).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName(LocalizationStrings.FEEDER_NAME).setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
 	       AnalyzerIdle = new Analyzer(EGProperties.AnalyzerIdleID, false).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName(LocalizationStrings.ANALYZER_IDLE_NAME).setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
@@ -64,7 +72,11 @@ public class EGBlockList
 	       GameRegistry.registerBlock(Plank, ItemBlockPlank.class, "Plank");
 	       GameRegistry.registerBlock(Slab, ItemBlockSlab.class, "Slab");
 	       GameRegistry.registerBlock(DoubleSlab, ItemBlockSlab.class, "DoubleSlab");
-	       GameRegistry.registerBlock(Stair, "Stair");
+	       GameRegistry.registerBlock(StairFougere, "StairFougere");
+	       GameRegistry.registerBlock(StairCycas, "StairCycas");
+	       GameRegistry.registerBlock(StairAraucarias, "StairAraucarias");
+	       GameRegistry.registerBlock(StairMetasequoias, "StairMetasequoias");
+	       GameRegistry.registerBlock(StairGinkgos, "StairGingkos");
 	       GameRegistry.registerBlock(GlaciaPortal, "GlaciaPortal");
 	       GameRegistry.registerBlock(Feeder, "Feeder");
 	       GameRegistry.registerBlock(AnalyzerIdle, "AnalyzerIdle");

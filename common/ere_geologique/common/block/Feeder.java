@@ -9,7 +9,6 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
@@ -20,7 +19,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.common.EreGeologique;
 import ere_geologique.common.tileentity.TileEntityFeeder;
-import ere_geologique.proxy.EGClientProxy;
 
 public class Feeder extends BlockContainer
 {
@@ -202,7 +200,7 @@ public class Feeder extends BlockContainer
 		super.breakBlock(world, x, y, z, var5, var6);
 	}
 	
-	@Override
+/*	@Override
 	public boolean hasComparatorInputOverride()
     {
         return true;
@@ -210,6 +208,11 @@ public class Feeder extends BlockContainer
 	
 	public int getComparatorInputOverride(World par1World, int par2, int par3, int par4, int par5)
     {
-        return 15;
+        return Container.calcRedstoneFromInventory(getFeederTile(par1World, par2, par3, par4));
     }
+	
+	public static TileEntityFeeder getFeederTile(IBlockAccess par0IBlockAccess, int par1, int par2, int par3)
+    {
+        return (TileEntityFeeder)par0IBlockAccess.getBlockTileEntity(par1, par2, par3);
+    }*/
 }

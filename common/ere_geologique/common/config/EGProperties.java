@@ -11,7 +11,11 @@ public class EGProperties
 	public static int PlankID;
 	public static int SlabID;
 	public static int DoubleSlabID;
-	public static int StairID;
+	public static int StairFougereID;
+	public static int StairCycasID;
+	public static int StairAraucariasID;
+	public static int StairMetasequoiasID;
+	public static int StairGingkosID;
 	public static int GlaciaPortalID;
 	public static int FeederID;
 	public static int AnalyzerIdleID;
@@ -61,6 +65,5 @@ public class EGProperties
 	public static int[] EGGIDs = new int[EnumDinoType.values().length];
 	public static int[] RAWIDs = new int[EnumDinoType.values().length];
 	public static int[] DNAIDs = new int[EnumDinoType.values().length];
-	public static boolean CURRENT_CONTINUOUS;
 	public static final String MOD = "EreGeologique";
 }

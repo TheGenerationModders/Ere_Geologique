@@ -69,7 +69,7 @@ public class Plank extends Block
 
         for (int i = 0; i < this.IconArray.length; ++i)
         {
-            this.IconArray[i] = par1IconRegister.registerIcon("ere_geologique:" + this.getTextureName() + "_" + woodType[i]);
+            this.IconArray[i] = par1IconRegister.registerIcon(this.getTextureName() + "_" + woodType[i]);
         }
     }
 }

@@ -69,7 +69,7 @@ public class Sapling extends BlockSapling
 
         for (int i = 0; i < this.SaplingIcon.length; ++i)
         {
-            this.SaplingIcon[i] = par1IconRegister.registerIcon("ere_geologique" + this.getTextureName() + "_" + saplingtype[i]);
+            this.SaplingIcon[i] = par1IconRegister.registerIcon(this.getTextureName() + "_" + saplingtype[i]);
         }
     }
 

@@ -8,6 +8,7 @@ import net.minecraft.command.ICommandSender;
 import net.minecraft.command.WrongUsageException;
 import net.minecraft.util.ChatMessageComponent;
 import ere_geologique.client.LocalizationStrings;
+import ere_geologique.common.config.Version;
 
 public class CommandDino extends CommandBase
 {
@@ -57,6 +58,9 @@ public class CommandDino extends CommandBase
 		}else if(arguments[0].matches("debug")) { 
 			commandDebug(sender, arguments);
 			return;
+		}else if(arguments[0].matches("version")) { 
+			commandVersion(sender, arguments);
+			return;
 		}else if(arguments[0].matches("help")) {
 			sender.sendChatToPlayer(ChatMessageComponent.createFromText("Format: '" + this.getCommandName() + " <command> <arguments>'"));
 			sender.sendChatToPlayer(ChatMessageComponent.createFromText("Available commands:"));
@@ -64,6 +68,7 @@ public class CommandDino extends CommandBase
 			sender.sendChatToPlayer(ChatMessageComponent.createFromText("- heal : " + LocalizationStrings.COMMAND_Descr_H + " ."));
 			sender.sendChatToPlayer(ChatMessageComponent.createFromText("- starve : " + LocalizationStrings.COMMAND_Descr_S + " ."));
 			sender.sendChatToPlayer(ChatMessageComponent.createFromText("- debug : " + LocalizationStrings.COMMAND_Descr_D + " ."));
+			sender.sendChatToPlayer(ChatMessageComponent.createFromText("- version : " + LocalizationStrings.COMMAND_Descr_V + " ."));
 			return;
 		}
 		throw new WrongUsageException(this.getCommandUsage(sender));
@@ -113,6 +118,21 @@ public class CommandDino extends CommandBase
 		}else if(arguments[1].matches("false")) {
 			Debugmode = false;
 			return;
+		}
+	}
+	
+	private void commandVersion(ICommandSender sender, String[] arguments)
+	{
+		String colour = Version.isOutdated() ? "\u00A7c" : "\u00A7a";
+
+		sender.sendChatToPlayer(ChatMessageComponent.createFromText(String.format(colour + "EreGeologique %s for Minecraft %s (Latest: %s).", Version.getVersion(),
+				Version.MC_VERSION, Version.getRecommendedVersion())));
+		if (Version.isOutdated())
+		{
+			for (String updateLine : Version.getChangelog())
+			{
+				sender.sendChatToPlayer(ChatMessageComponent.createFromText("\u00A79" + updateLine));
+			}
 		}
 	}
 }

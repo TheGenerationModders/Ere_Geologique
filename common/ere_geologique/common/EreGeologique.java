@@ -65,8 +65,6 @@ public class EreGeologique
 	public static GuiHandler guiHandler = new GuiHandler();
 	public static IChatListener messagerHandler = new EGMessageHandler();
 
-	public static boolean continuousCurrentModel;
-
 	@EventHandler
 	public void preload(FMLPreInitializationEvent event)
 	{
@@ -81,10 +79,6 @@ public class EreGeologique
 			if (updateCheck.getBoolean(true)) {
 				Version.check();
 			}
-
-			Property continuousCurrent = ConfigFile.get(Configuration.CATEGORY_GENERAL, "current.continuous", EGProperties.CURRENT_CONTINUOUS);
-			continuousCurrent.comment = "set to true for allowing machines to be driven by continuous current";
-			continuousCurrentModel = continuousCurrent.getBoolean(EGProperties.CURRENT_CONTINUOUS);
 			
 			//Blocks
 			EGProperties.LeavesID = ConfigFile.getBlock("Leaves Foug\350re", 2500).getInt();
@@ -93,19 +87,23 @@ public class EreGeologique
 			EGProperties.PlankID = ConfigFile.getBlock("Plank Foug\350re", 2503).getInt();
 			EGProperties.SlabID = ConfigFile.getBlock("Slab Foug\350re", 2504).getInt();
 			EGProperties.DoubleSlabID = ConfigFile.getBlock("Double Slab Foug\350re", 2505).getInt();
-			EGProperties.StairID = ConfigFile.getBlock("Stair Foug\350re", 2506).getInt();
-			EGProperties.GlaciaPortalID = ConfigFile.getBlock("GlaciaPortal", 2507).getInt();
-			EGProperties.FeederID = ConfigFile.getBlock("Feeder", 2508).getInt();
-			EGProperties.AnalyzerIdleID = ConfigFile.getBlock("AnalyzerIdle", 2509).getInt();
-			EGProperties.AnalyzerActiveID = ConfigFile.getBlock("AnalyzerActive", 2510).getInt();
-			EGProperties.CultivatorIdleID = ConfigFile.getBlock("CultivatorIdle", 2511).getInt();
-			EGProperties.CultivatorActiveID = ConfigFile.getBlock("CultivatorActive", 2512).getInt();
-			EGProperties.FossilID = ConfigFile.getBlock("Fossil", 2513).getInt();
-			EGProperties.ReinforcedStoneID = ConfigFile.getBlock("ReinforcedStone", 2514).getInt();
-			EGProperties.ReinforcedGlassID = ConfigFile.getBlock("ReinforcedGlass", 2515).getInt();
-			EGProperties.SteelBlockID = ConfigFile.getBlock("SteelBlock", 2516).getInt();
-			EGProperties.FossilSkullID = ConfigFile.getBlock("FossilSkull", 2517).getInt();
-			EGProperties.BlueFireID = ConfigFile.getBlock("BlueFire", 2518).getInt();
+			EGProperties.StairFougereID = ConfigFile.getBlock("Stair Foug\350re", 2506).getInt();
+			EGProperties.StairCycasID = ConfigFile.getBlock("Stair Cycas", 2507).getInt();
+			EGProperties.StairAraucariasID = ConfigFile.getBlock("Stair Araucarias", 2508).getInt();
+			EGProperties.StairMetasequoiasID = ConfigFile.getBlock("Stair M\351tas\351quoias", 2509).getInt();
+			EGProperties.StairGingkosID = ConfigFile.getBlock("Stair Gingkos", 2510).getInt();
+			EGProperties.GlaciaPortalID = ConfigFile.getBlock("GlaciaPortal", 2511).getInt();
+			EGProperties.FeederID = ConfigFile.getBlock("Feeder", 2512).getInt();
+			EGProperties.AnalyzerIdleID = ConfigFile.getBlock("AnalyzerIdle", 2513).getInt();
+			EGProperties.AnalyzerActiveID = ConfigFile.getBlock("AnalyzerActive", 2513).getInt();
+			EGProperties.CultivatorIdleID = ConfigFile.getBlock("CultivatorIdle", 2514).getInt();
+			EGProperties.CultivatorActiveID = ConfigFile.getBlock("CultivatorActive", 2515).getInt();
+			EGProperties.FossilID = ConfigFile.getBlock("Fossil", 2516).getInt();
+			EGProperties.ReinforcedStoneID = ConfigFile.getBlock("ReinforcedStone", 2517).getInt();
+			EGProperties.ReinforcedGlassID = ConfigFile.getBlock("ReinforcedGlass", 2518).getInt();
+			EGProperties.SteelBlockID = ConfigFile.getBlock("SteelBlock", 2519).getInt();
+			EGProperties.FossilSkullID = ConfigFile.getBlock("FossilSkull", 2520).getInt();
+			EGProperties.BlueFireID = ConfigFile.getBlock("BlueFire", 2521).getInt();
 
 			//Items
 			EGProperties.IvoryIngotID = ConfigFile.getItem("Ivory Ingot", 4000).getInt();
