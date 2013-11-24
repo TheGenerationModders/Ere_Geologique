@@ -6,7 +6,6 @@
     <available property="mcp-exists" file="${mcp.dir}"/>
     <available property="ic2-exists" file="libs\ic2.name"/>
     <available property="forestry-exists" file="libs\forestry.name"/>
-    <property environment="env"/>
     
     <!-- Download and setup forge -->
     <target name="download-and-setup-forge" unless="mcp-exists">
@@ -19,6 +18,13 @@
             <property name="forge.name" value="minecraftforge-src-${buildprop.mc}-${buildprop.forge}.zip"/>
 
         <get src="http://files.minecraftforge.net/${forge.name}" dest="..\" usetimestamp="True"/>
+        
+        <!-- Build Number -->
+    <target name="increment_build_number">
+        <propertyfile file="build.properties">
+        <entry key="build_number" type="int" operation="+" default="1"/>
+        </propertyfile>
+    </target>
         
         <!-- setup -->
         <mkdir dir="..\forgetemp"/>
@@ -85,7 +91,7 @@
             <entry key="eg_version" type="string" default="error"/>
         </propertyfile>
         <replace file="${mcp.dir}\src\minecraft\ere_geologique\common\config\Version.java" token="@VERSION@" value="${buildprop.eg_version}" />
-        <replace file="${mcp.dir}\src\minecraft\ere_geologique\common\config\Version.java" token="@BUILD_NUMBER@" value="${env.BUILD_NUMBER}" />
+        <replace file="${mcp.dir}\src\minecraft\ere_geologique\common\config\Version.java" token="@BUILD_NUMBER@" value="${buildprop.build_number}" />
         <replace file="${mcp.dir}\src\minecraft\ere_geologique\common\config\Version.java" token="@MC_VERSION@" value="${buildprop.mc}" />
         <replace file="${mcp.dir}\src\minecraft\mcmod.info" token="@VERSION@" value="${buildprop.eg_version}" />
         <replace file="${mcp.dir}\src\minecraft\mcmod.info" token="@MC_VERSION@" value="${buildprop.mc}" />
@@ -114,7 +120,7 @@
     <!-- Build the jar -->
     <target name="create_eg_jar">
         <mkdir dir="releases\" />
-        <jar destfile="releases\EreGeologique-universal-${buildprop.eg_version}.${env.BUILD_NUMBER}-mc${buildprop.mc}.jar">
+        <jar destfile="releases\EreGeologique-universal-${buildprop.eg_version}.${buildprop.build_number}-mc${buildprop.mc}.jar">
             <fileset dir="resources\">
                 <include name ="assets\ere_geologique\**" /> 
                 <exclude name ="assets\ere_geologique\**.db" /> 
@@ -135,6 +141,7 @@
         <delete dir="releases\" />
         <antcall target="clean" />
         <antcall target="download-and-setup-forge" />
+        <antcall target="increment_build_number" />
         <antcall target="download_ic2" />
         <antcall target="download_forestry" />
         <antcall target="copy_eg_sources" />
@@ -143,17 +150,6 @@
         <antcall target="recompile" />
         <antcall target="reobfuscate" />
         <antcall target="create_eg_jar" />        
-        <antcall target="clean" />
-    </target>
-
-    <target name="buildeg">
-        <antcall target="clean" />
-        <antcall target="download-and-setup-forge" />
-        <antcall target="copy_eg_sources" />
-        <antcall target="replace_tokens" />
-        <antcall target="recompile" />        
-        <antcall target="reobfuscate" />
-        <antcall target="create_eg_jar" />
         <antcall target="clean" />
     </target>
 
