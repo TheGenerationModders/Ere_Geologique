@@ -19,13 +19,6 @@
 
         <get src="http://files.minecraftforge.net/${forge.name}" dest="..\" usetimestamp="True"/>
         
-        <!-- Build Number -->
-    <target name="increment_build_number">
-        <propertyfile file="build.properties">
-        <entry key="build_number" type="int" operation="+" default="1"/>
-        </propertyfile>
-    </target>
-        
         <!-- setup -->
         <mkdir dir="..\forgetemp"/>
         <unzip dest="..\forgetemp" src="..\${forge.name}"/>
@@ -49,6 +42,13 @@
         <exec dir="${forge.dir}/${buildprop.forge}" executable="sh" osfamily="unix">
             <arg value="install.sh"/>
         </exec>
+    </target>
+    
+    <!-- Build Number -->
+    <target name="increment_build_number">
+        <propertyfile file="build.properties">
+        <entry key="build_number" type="int" operation="+" default="1"/>
+        </propertyfile>
     </target>
     
     <!-- Copy ere_geologique source into mcp -->
