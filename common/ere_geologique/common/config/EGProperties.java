@@ -1,5 +1,6 @@
 package ere_geologique.common.config;
 
+import net.minecraftforge.common.Property;
 import ere_geologique.common.entity.Enums.EnumDinoType;
 
 public class EGProperties
@@ -66,4 +67,6 @@ public class EGProperties
 	public static int[] RAWIDs = new int[EnumDinoType.values().length];
 	public static int[] DNAIDs = new int[EnumDinoType.values().length];
 	public static final String MOD = "EreGeologique";
+	public static Property updateCheck;
+
 }

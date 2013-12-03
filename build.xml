@@ -6,6 +6,7 @@
     <available property="mcp-exists" file="${mcp.dir}"/>
     <available property="ic2-exists" file="libs\ic2.name"/>
     <available property="forestry-exists" file="libs\forestry.name"/>
+    <available property="buildcraft-exists" file="external_api\buildcraft.name"/>
     
     <!-- Download and setup forge -->
     <target name="download-and-setup-forge" unless="mcp-exists">
@@ -47,15 +48,15 @@
     <!-- Build Number -->
     <target name="increment_build_number">
         <propertyfile file="build.properties">
-        <entry key="build_number" type="int" operation="+" default="1"/>
+        <entry key="build_number" type="int" operation="+" default="error"/>
         </propertyfile>
     </target>
     
     <!-- Copy ere_geologique source into mcp -->
     <target name="copy_eg_sources">
         <copy todir="${mcp.dir}\src\minecraft\">
-            <fileset dir="common\">
-            </fileset>
+            <fileset dir="common\"/>
+	    <fileset dir="api\"/>
             <fileset dir="resources\">
                 <include name="mcmod.info"/>
             </fileset>
@@ -71,8 +72,14 @@
     <!-- Download forestry -->
     <target name="download_forestry" unless="forestry-exists">
         <mkdir dir="libs/"/>
-        <get src="http://bit.ly/GXrNLD" dest="libs/" usetimestamp="True"/>
+        <get src="https://dl.dropboxusercontent.com/u/8609213/Porcupine/${buildprop.forestry_name}" dest="libs/" usetimestamp="True"/>
     </target>
+
+<!--	 Download buildcraft
+    <target name="download_buildcraft" unless="buildcraft-exists">
+		<mkdir dir="external_api/"/>
+		<get src="https://github.com/BuildCraft/BuildCraft/archive/marmot.zip" dest="external_api/" usetimestamp="True" />
+	</target> -->
     
     <!-- Extract mod into bin -->
     <target name="extract_mod">
@@ -82,6 +89,7 @@
         </copy>
         <copy todir="${mcp.dir}\src\minecraft\">
             <fileset dir="external_api\" />
+			<!-- <exclude name="README.md"/> -->
         </copy>
     </target>
 
@@ -134,6 +142,7 @@
     <target name="clean">
         <delete file="${mcp.dir}\src\minecraft\mcmod.info" />
         <delete dir="${mcp.dir}\src\minecraft\ere_geologique" />
+		<!-- <delete dir="${mpc.dir}\src\minecraft\buildcraft"/> -->
         <delete dir="${mcp.dir}\reobf\minecraft" />
     </target>
 
@@ -144,6 +153,7 @@
         <antcall target="increment_build_number" />
         <antcall target="download_ic2" />
         <antcall target="download_forestry" />
+        <!-- <antcall target="download_buildcraft" /> -->
         <antcall target="copy_eg_sources" />
         <antcall target="extract_mod" />
         <antcall target="replace_tokens" />

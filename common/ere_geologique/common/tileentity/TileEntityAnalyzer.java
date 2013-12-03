@@ -23,6 +23,7 @@ public class TileEntityAnalyzer extends TileEntity implements IInventory, ISided
     public int analyzerCookTime = 0;
     private int RawIndex = -1;
     private int SpaceIndex = -1;
+    private int direction;
     
     private static final int[] field_102010_d = new int[] {0};
     private static final int[] field_102011_e = new int[] {2, 1};
@@ -87,11 +88,21 @@ public class TileEntityAnalyzer extends TileEntity implements IInventory, ISided
     {
         return "Analyzer";
     }
+    
+    public int getDirection()
+	{
+		return this.direction;
+	}
+	
+	public void setDirection(int i)
+	{
+		this.direction = i;
+	}
 
-    public void readFromNBT(NBTTagCompound var1)
+    public void readFromNBT(NBTTagCompound nbtTag)
     {
-        super.readFromNBT(var1);
-        NBTTagList var2 = var1.getTagList("Items");
+        super.readFromNBT(nbtTag);
+        NBTTagList var2 = nbtTag.getTagList("Items");
         this.analyzerItemStacks = new ItemStack[this.getSizeInventory()];
 
         for (int var3 = 0; var3 < var2.tagCount(); ++var3)
@@ -105,16 +116,17 @@ public class TileEntityAnalyzer extends TileEntity implements IInventory, ISided
             }
         }
 
-        this.analyzerBurnTime = var1.getShort("BurnTime");
-        this.analyzerCookTime = var1.getShort("CookTime");
+        this.analyzerBurnTime = nbtTag.getShort("BurnTime");
+        this.analyzerCookTime = nbtTag.getShort("CookTime");
         this.currentItemBurnTime = 100;
+        this.direction = nbtTag.getInteger("direction");
     }
 
-    public void writeToNBT(NBTTagCompound var1)
+    public void writeToNBT(NBTTagCompound nbtTagCompound)
     {
-        super.writeToNBT(var1);
-        var1.setShort("BurnTime", (short)this.analyzerBurnTime);
-        var1.setShort("CookTime", (short)this.analyzerCookTime);
+        super.writeToNBT(nbtTagCompound);
+        nbtTagCompound.setShort("BurnTime", (short)this.analyzerBurnTime);
+        nbtTagCompound.setShort("CookTime", (short)this.analyzerCookTime);
         NBTTagList var2 = new NBTTagList();
 
         for (int var3 = 0; var3 < this.analyzerItemStacks.length; ++var3)
@@ -128,7 +140,8 @@ public class TileEntityAnalyzer extends TileEntity implements IInventory, ISided
             }
         }
 
-        var1.setTag("Items", var2);
+        nbtTagCompound.setTag("Items", var2);
+		nbtTagCompound.setInteger("Direction", this.direction);
     }
 
     public int getInventoryStackLimit()

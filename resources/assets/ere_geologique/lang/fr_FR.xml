@@ -23,6 +23,15 @@
     <entry key="achievement.Cultivator.desc">Cultivateur débloqué</entry>
 <!--Commands-->
     <entry key="commands.dino.usage">/dino &lt;nom&gt; &lt;valeur&gt;</entry>
+    <entry key="commands.dino.help">Les commandes disponibles sont blockbreack (true ou false), heal (true ou false), starve (true ou false) et version</entry>
+    <entry key="commands.dino.blockbreack.true">Les dinos peuvent casser des blocks.</entry>
+    <entry key="commands.dino.blockbreack.false">Les dinos ne peuvent plus casser de blocks.</entry>
+    <entry key="commands.dino.heal.true">Soin activé</entry>
+    <entry key="commands.dino.heal.false">Soin désactivé</entry>
+    <entry key="commands.dino.starve.true">Faim activé</entry>
+    <entry key="commands.dino.starve.false">Faim désactivé</entry>
+    <entry key="commands.dino.debug.true">Debug activé</entry>
+    <entry key="commands.dino.debug.false">Debug désactivé</entry>
 <!--Blocks-->
     <entry key="tile.Leaves.fougere.name">Feuilles de Fougère</entry>
     <entry key="tile.Leaves.cycas.name">Feuilles de Cycas</entry>
@@ -74,7 +83,7 @@
     <entry key="item.Leg_Bone.name">Leg Bone</entry>
 	<entry key="item.Claw.name">Claw</entry>
 	<entry key="item.Foot.name">Foot</entry>
-	<entry key="item.Skull.name">Skull</entry>
+	<entry key="item.DinoSkull.name">Skull</entry>
     <entry key="item.BioFossil.name">Fossile Biologique</entry>
     <entry key="item.SkullStick.name">Skull Stick</entry>
     <entry key="item.gem.name">Gem</entry>
@@ -204,7 +213,6 @@
 	<entry key="cultivate.outBreak">Warning! Cultivating failed!</entry>
 <!-- Entity -->
     <entry key= "entity.CroMagnon.name">CroMagnon</entry>
-    <!-- entity.Tricératops.name=Tricératops -->
     <entry key= "mob.failuresaurus">Failuresaurus</entry>
 <!-- Creative Tabs -->
     <entry key="itemGroup.EGCreativeTabBlock"> Ere Géologique</entry>

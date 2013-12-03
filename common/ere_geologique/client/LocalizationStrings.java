@@ -47,10 +47,5 @@ public class LocalizationStrings
     public static final String CULTIVATE_OUTBREAK = "cultivate.outBreak";
     
     public static final String MOB_FAILURESAURUS = "mob.failuresaurus";
-    
-    public static final String COMMAND_Descr_B = "BlockBreaking";
-    public static final String COMMAND_Descr_H = "Heal";
-    public static final String COMMAND_Descr_S = "Starve";
-	public static final String COMMAND_Descr_D = "Debugmode";
-	public static final String COMMAND_Descr_V = "Version";
+
 }

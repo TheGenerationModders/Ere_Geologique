@@ -13,10 +13,10 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.ForgeDirection;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import ere_geologique.api.food.EnumDinoFoodBlock;
+import ere_geologique.api.food.EnumDinoFoodItem;
 import ere_geologique.common.block.Feeder;
 import ere_geologique.common.entity.Dinosaure;
-import ere_geologique.common.entity.Enums.EnumDinoFoodBlock;
-import ere_geologique.common.entity.Enums.EnumDinoFoodItem;
 import ere_geologique.common.entity.Enums.EnumDinoType;
 
 public class TileEntityFeeder extends TileEntity implements IInventory, ISidedInventory
@@ -253,11 +253,6 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 				}
 			}
 
-			/*if(var2 != (((this.MeatCurrent > 0) ? 2 : 0) + ((this.VegCurrent > 0) ? 1 : 0)))
-			{
-				Feeder.updateFurnaceBlockState(this.VegCurrent > 0, this.MeatCurrent > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
-			}*/
-
 			if(var1)
 			{
 				this.onInventoryChanged();
@@ -302,7 +297,6 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 		if(m > 0 && this.MeatCurrent == 0)// the carn. part is empty so it cant
 											// contain raw dino meat
 			this.ClearTypeRecord();
-		//Feeder.updateFurnaceBlockState(this.VegCurrent > 0, this.MeatCurrent > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
 		return a;// amount fed to the dino
 	}
 

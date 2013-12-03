@@ -382,10 +382,11 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
     /**
      * Called when the entity is attacked.
      */
-    public boolean attackEntityFrom(DamageSource var1, int var2)
+    public boolean attackEntityFrom(DamageSource par1DamageSource, float par2)
     {
     	//when modelized just drop the model else handle normal attacking
-        return this.modelizedDrop() ? true : super.attackEntityFrom(var1, var2);
+        Entity entity = par1DamageSource.getEntity();
+        return this.riddenByEntity != null && this.riddenByEntity.equals(entity) ? false : super.attackEntityFrom(par1DamageSource, par2) || this.modelizedDrop() ? true : super.attackEntityFrom(par1DamageSource, par2);
     }
 
     protected String getModelTexture()

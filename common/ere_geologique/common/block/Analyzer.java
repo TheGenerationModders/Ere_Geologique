@@ -7,6 +7,7 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -19,6 +20,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.common.EreGeologique;
 import ere_geologique.common.tileentity.TileEntityAnalyzer;
+import ere_geologique.common.tileentity.TileEntityFeeder;
 
 public class Analyzer extends BlockContainer
 {
@@ -128,17 +130,15 @@ public class Analyzer extends BlockContainer
         }
     }
 
-    public void onBlockPlacedBy(World var1, int var2, int var3, int var4, EntityLiving var5, ItemStack par6ItemStack)
+    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase living, ItemStack stack)
     {
-        int var6 = MathHelper.floor_double((double)(var5.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
-
-        if (var6 == 1)var1.setBlockMetadataWithNotify(var2, var3, var4, 2,2);
-
-        if (var6 == 3)var1.setBlockMetadataWithNotify(var2, var3, var4, 5,2);
-
-        if (var6 == 2)var1.setBlockMetadataWithNotify(var2, var3, var4, 3,2);
-
-        if (var6 == 0)var1.setBlockMetadataWithNotify(var2, var3, var4, 4,2);
+    	int direction = MathHelper.floor_double((double)(living.rotationYaw * 4.0F / 360.0F) + 2.5D) & 3;
+		TileEntity te = world.getBlockTileEntity(x, y, z);
+		if(te != null && te instanceof TileEntityFeeder)
+		{
+			((TileEntityAnalyzer)te).setDirection(direction);
+			world.markBlockForUpdate(x, y, z);
+		}
     }
 
     public void breakBlock(World var1, int var2, int var3, int var4, int var5, int var6)
