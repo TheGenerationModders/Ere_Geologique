@@ -160,6 +160,11 @@ public class Pachycephalosaurus extends Dinosaure
                 return "ere_geologique:textures/entity/Pachy-Pumpkin.png";
         }
     }
+    
+    public String getDinosaurName()
+    {
+          return EnumDinoType.Pachycephalosaurus.name();
+    }
 
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.

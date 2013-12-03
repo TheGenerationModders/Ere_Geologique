@@ -56,7 +56,7 @@
     <target name="copy_eg_sources">
         <copy todir="${mcp.dir}\src\minecraft\">
             <fileset dir="common\"/>
-	    <fileset dir="api\"/>
+			<fileset dir="api\"/>
             <fileset dir="resources\">
                 <include name="mcmod.info"/>
             </fileset>

@@ -139,6 +139,11 @@ public class Compsognathus extends Dinosaure
                 	return "ere_geologique:textures/entity/Compsognathus_Green.png";
             }
     }
+    
+    public String getDinosaurName()
+    {
+          return EnumDinoType.Compsognathus.name();
+    }
 
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.

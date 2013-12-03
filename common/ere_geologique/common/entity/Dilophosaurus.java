@@ -140,6 +140,11 @@ public class Dilophosaurus extends Dinosaure
                 	return "ere_geologique:textures/entity/Dilophosaurus_Adult.png";
             }
     }
+    
+    public String getDinosaurName()
+    {
+          return EnumDinoType.Dilophosaurus.name();
+    }
 
     /**
      * Causes this entity to do an upwards motion (jumping).

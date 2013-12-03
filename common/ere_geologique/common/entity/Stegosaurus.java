@@ -106,8 +106,12 @@ public class Stegosaurus extends Dinosaure
             return "ere_geologique:textures/entity/Stegosaurus_Adult.png";
 		return "ere_geologique:textures/entity/Stegosaurus_Baby.png";
     }
-
-
+    
+    public String getDinosaurName()
+    {
+          return EnumDinoType.Stegosaurus.name();
+    }
+    
     protected void updateEntityActionState()
     {
         if (this.riddenByEntity == null)

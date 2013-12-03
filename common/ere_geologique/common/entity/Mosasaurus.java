@@ -57,6 +57,11 @@ public class Mosasaurus extends SwimmingDino implements IMob
 		return "ere_geologique:textures/entity/Mosasaurus.png";
     }
     
+    public String getDinosaurName()
+    {
+          return EnumDinoType.Mosasaurus.name();
+    }
+    
     /**
      * Returns true if the Entity AI code should be run
      * 

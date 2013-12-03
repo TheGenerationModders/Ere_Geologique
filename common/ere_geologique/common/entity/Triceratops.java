@@ -165,6 +165,11 @@ public class Triceratops extends Dinosaure
         }
 
     }
+    
+    public String getDinosaurName()
+    {
+          return EnumDinoType.Triceratops.name();
+    }
 
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.

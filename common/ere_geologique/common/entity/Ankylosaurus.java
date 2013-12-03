@@ -104,6 +104,11 @@ public class Ankylosaurus extends Dinosaure
             }
     }
     
+    public String getDinosaurName()
+    {
+          return EnumDinoType.Ankylosaurus.name();
+    }
+    
     /**
      * Finds the closest player within 16 blocks to attack, or null if this Entity isn't interested in attacking
      * (Animals, Spiders at day, peaceful PigZombies).

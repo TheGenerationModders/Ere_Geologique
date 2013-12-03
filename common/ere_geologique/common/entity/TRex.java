@@ -109,6 +109,11 @@ public class TRex extends Dinosaure
         //this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(8.0D);
 
     }
+    
+    public String getDinosaurName()
+    {
+          return EnumDinoType.TRex.name();
+    }
 
     //protected void updateEntityActionState() {}
 

@@ -388,6 +388,23 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
         Entity entity = par1DamageSource.getEntity();
         return this.riddenByEntity != null && this.riddenByEntity.equals(entity) ? false : super.attackEntityFrom(par1DamageSource, par2) || this.modelizedDrop() ? true : super.attackEntityFrom(par1DamageSource, par2);
     }
+    
+    public String getEntityName()
+    {
+        if (this.hasCustomNameTag())
+        {
+            return this.getCustomNameTag();
+        }
+        else
+        {
+              return this.getDinosaurName();
+        }
+    }
+    
+    public String getDinosaurName()
+    {
+          return null;
+    }
 
     protected String getModelTexture()
     {

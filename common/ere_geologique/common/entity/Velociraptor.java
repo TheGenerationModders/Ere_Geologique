@@ -206,6 +206,11 @@ public class Velociraptor extends Dinosaure
         }
     }
     
+    public String getDinosaurName()
+    {
+          return EnumDinoType.Velociraptor.name();
+    }
+    
     
     @Override
     /**
@@ -213,7 +218,7 @@ public class Velociraptor extends Dinosaure
      */
     protected String getLivingSound()
     {
-        return this.isTamed() ? "fossil:velociraptor_living_tame" : "fossil:velociraptor_living_wild";
+        return this.isTamed() ? "ere_geologique:velociraptor_living_tame" : "ere_geologique:velociraptor_living_wild";
     }
 
     /**

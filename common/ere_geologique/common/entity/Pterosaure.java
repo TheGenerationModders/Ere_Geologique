@@ -136,6 +136,11 @@ public class Pterosaure extends FlyingDino
             }
     }
     
+    public String getDinosaurName()
+    {
+          return EnumDinoType.Pterosaure.name();
+    }
+    
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();

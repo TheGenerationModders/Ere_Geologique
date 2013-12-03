@@ -126,7 +126,10 @@ public class Plesiosaure extends Dinosaure implements IWaterDino
             }
     }
     
-
+    public String getDinosaurName()
+    {
+          return EnumDinoType.Plesiosaure.name();
+    }
 
     /**
      * returns if this entity triggers Block.onEntityWalking on the blocks they walk on. used for spiders and wolves to

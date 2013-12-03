@@ -98,6 +98,11 @@ public class Brachiosaurus extends Dinosaure
             }
     }
     
+    public String getDinosaurName()
+    {
+          return EnumDinoType.Brachiosaurus.name();
+    }
+    
     @Override
     /**
      * Returns the sound this mob makes while it's alive.

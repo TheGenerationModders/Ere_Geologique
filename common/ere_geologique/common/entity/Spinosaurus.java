@@ -101,6 +101,11 @@ public class Spinosaurus extends Dinosaure implements IWaterDino
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(21.0D);
 
     }
+    
+    public String getDinosaurName()
+    {
+          return EnumDinoType.Spinosaurus.name();
+    }
 
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.
