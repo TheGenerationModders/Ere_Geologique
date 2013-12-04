@@ -3,6 +3,7 @@ package ere_geologique.common.entity.IA;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+import ere_geologique.api.food.DinoFood;
 import ere_geologique.common.command.CommandDino;
 import ere_geologique.common.entity.Dinosaure;
 import ere_geologique.common.entity.Enums.EnumOrderType;
@@ -53,11 +54,11 @@ public class DinoAIStarvation extends EntityAIBase
         	}
 	        if(this.mover.ItemInMouth != null)//The Dino has something in its mouth and gets hungry
 	        {
-	        	if(this.mover.SelfType.FoodItemList.CheckItemById(this.mover.ItemInMouth.itemID))
+	        	if(DinoFood.getFoodByDino(this.mover.SelfType, this.mover.ItemInMouth.itemID, this.mover.ItemInMouth.itemID) != null)
 	        	{//its food
-	        		if(this.mover.IsHungry() || this.mover.SelfType.MaxHunger-this.mover.getHunger()>this.mover.SelfType.FoodItemList.getItemFood(this.mover.ItemInMouth.itemID))
+	        		if(this.mover.IsHungry() || this.mover.SelfType.MaxHunger-this.mover.getHunger() > DinoFood.getFoodByDino(this.mover.SelfType, this.mover.ItemInMouth.itemID, this.mover.ItemInMouth.getItemDamage()).getFoodValue())
 	            	{//it's hungry or there is enough place in the stomach free
-	            		this.mover.setHunger(this.mover.getHunger()+this.mover.SelfType.FoodItemList.getItemFood(this.mover.ItemInMouth.itemID));
+	            		this.mover.setHunger(DinoFood.getFoodByDino(this.mover.SelfType, this.mover.ItemInMouth.itemID, this.mover.ItemInMouth.getItemDamage()).getFoodValue());
 	            		this.mover.ItemInMouth = null;
 	            	}
 	        	}

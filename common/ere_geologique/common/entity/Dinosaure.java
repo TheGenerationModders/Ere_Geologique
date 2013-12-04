@@ -35,6 +35,8 @@ import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import ere_geologique.api.food.DinoFood;
+import ere_geologique.api.food.DinoFood.DinoFoodEntry;
 import ere_geologique.client.LocalizationStrings;
 import ere_geologique.common.EreGeologique;
 import ere_geologique.common.command.CommandDino;
@@ -486,10 +488,9 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
     	
     	p0.AddStringLR(StatCollector.translateToLocal("Order: " + this.SelfType.OrderItem.getStatName()), true);
     	
-    	for(int i=0; i<this.SelfType.FoodItemList.index;i++)
+    	for(DinoFoodEntry list : this.SelfType.dinoFood)
     	{
-    		if(this.SelfType.FoodItemList.getItem(i)!=null)
-    			p0.AddMiniItem(this.SelfType.FoodItemList.getItem(i));
+    		p0.AddMiniItem(Item.itemsList[list.getId()]);
     	}
     	
     	
@@ -503,15 +504,15 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
     {
     	int i=item0.stackSize;
     	//it looks like the blocks are missing here...cant be eaten
-    	if(this.IsHungry() && this.SelfType.FoodItemList.CheckItemById(item0.itemID))
+    	if(this.IsHungry() && DinoFood.isFood(this.SelfType, item0.itemID, item0.getItemDamage()))
     	{	//The Dino is Hungry and it can eat the item
     		//this.showHeartsOrSmokeFX(false);
     		this.worldObj.setEntityState(this, SMOKE_MESSAGE);
     		while(i > 0 && this.getHunger() < this.getMaxHunger())
     		{
-    			this.setHunger(this.getHunger()+ this.SelfType.FoodItemList.getItemFood(item0.itemID));
+    			this.setHunger(this.getHunger()+ DinoFood.getFoodByDino(this.SelfType, item0.itemID, item0.getItemDamage()).getFoodValue());
     			if(CommandDino.Heal_Dinos && !this.worldObj.isRemote)//!this.worldObj.isRemote)
-    				this.heal(this.SelfType.FoodItemList.getItemHeal(item0.itemID));
+    				this.heal(DinoFood.getFoodByDino(this.SelfType, item0.itemID, item0.getItemDamage()).getHealValue());
     			i--;
     		}	
     		if(this.getHunger() > this.getMaxHunger())
@@ -536,7 +537,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
     public int PickUpItem(ItemStack var1)
     {
     	int i=Eat(var1);
-    	if(i>0 && (this.SelfType.canCarryItems() || this.SelfType.FoodItemList.CheckItemById(var1.getItem().itemID)) && this.ItemInMouth == null)
+    	if(i>0 && (this.SelfType.canCarryItems() || DinoFood.isDinoFoodByDino(this.SelfType, var1.getItem().itemID, var1.getItemDamage())) && this.ItemInMouth == null)
     	{//if there are items left after trying to eat and he has nothing atm and the dino is able to carry things or its his food he takes it in the mouth
     		this.HoldItem(var1);
     		i--;
@@ -595,12 +596,12 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
 	        {
 	            for (int dy = 4; dy > -5; dy--)
 	            {
-                    if(this.posY+dy >= 0 && this.posY+dy <= this.worldObj.getHeight() && this.SelfType.FoodBlockList.CheckBlockById(this.worldObj.getBlockId(MathHelper.floor_double(this.posX+ds), MathHelper.floor_double(this.posY+dy), MathHelper.floor_double(this.posZ-r))))
+                    if(this.posY+dy >= 0 && this.posY+dy <= this.worldObj.getHeight() && DinoFood.isDinoFoodByDino(this.SelfType, this.worldObj.getBlockId(MathHelper.floor_double(this.posX+ds), MathHelper.floor_double(this.posY+dy), MathHelper.floor_double(this.posZ-r)), this.worldObj.getBlockMetadata(MathHelper.floor_double(this.posX+ds), MathHelper.floor_double(this.posY+dy), MathHelper.floor_double(this.posZ-r))))
                     {
                     	pos = Vec3.createVectorHelper(MathHelper.floor_double(this.posX+ds), MathHelper.floor_double(this.posY+dy), MathHelper.floor_double(this.posZ-r));
                     	return pos;
                     }
-                    if(this.posY+dy >= 0 && this.posY+dy <= this.worldObj.getHeight() && this.SelfType.FoodBlockList.CheckBlockById(this.worldObj.getBlockId(MathHelper.floor_double(this.posX+ds), MathHelper.floor_double(this.posY+dy), MathHelper.floor_double(this.posZ+r))))
+                    if(this.posY+dy >= 0 && this.posY+dy <= this.worldObj.getHeight() && DinoFood.isDinoFoodByDino(this.SelfType, this.worldObj.getBlockId(MathHelper.floor_double(this.posX+ds), MathHelper.floor_double(this.posY+dy), MathHelper.floor_double(this.posZ+r)), this.worldObj.getBlockMetadata(MathHelper.floor_double(this.posX+ds), MathHelper.floor_double(this.posY+dy), MathHelper.floor_double(this.posZ+r))))
                     {
                     	pos = Vec3.createVectorHelper(MathHelper.floor_double(this.posX+ds), MathHelper.floor_double(this.posY+dy), MathHelper.floor_double(this.posZ+r));
                     	return pos;
@@ -611,12 +612,12 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
 	        {
 	            for (int dy = 4; dy > -5; dy--)
 	            {
-                    if(this.posY+dy >= 0 && this.posY+dy <= this.worldObj.getHeight() && this.SelfType.FoodBlockList.CheckBlockById(this.worldObj.getBlockId(MathHelper.floor_double(this.posX-r), MathHelper.floor_double(this.posY+dy), MathHelper.floor_double(this.posZ+ds))))
+                    if(this.posY+dy >= 0 && this.posY+dy <= this.worldObj.getHeight() && DinoFood.isDinoFoodByDino(this.SelfType, this.worldObj.getBlockId(MathHelper.floor_double(this.posX-r), MathHelper.floor_double(this.posY+dy), MathHelper.floor_double(this.posZ+ds)), this.worldObj.getBlockMetadata(MathHelper.floor_double(this.posX-r), MathHelper.floor_double(this.posY+dy), MathHelper.floor_double(this.posZ+ds))))
                     {
                     	pos = Vec3.createVectorHelper(MathHelper.floor_double(this.posX-r), MathHelper.floor_double(this.posY+dy), MathHelper.floor_double(this.posZ+ds));
                     	return pos;
                     }
-                    if(this.posY+dy >= 0 && this.posY+dy <= this.worldObj.getHeight() && this.SelfType.FoodBlockList.CheckBlockById(this.worldObj.getBlockId(MathHelper.floor_double(this.posX+r), MathHelper.floor_double(this.posY+dy), MathHelper.floor_double(this.posZ+ds))))
+                    if(this.posY+dy >= 0 && this.posY+dy <= this.worldObj.getHeight() && DinoFood.isDinoFoodByDino(this.SelfType, this.worldObj.getBlockId(MathHelper.floor_double(this.posX+r), MathHelper.floor_double(this.posY+dy), MathHelper.floor_double(this.posZ+ds)), this.worldObj.getBlockMetadata(MathHelper.floor_double(this.posX+r), MathHelper.floor_double(this.posY+dy), MathHelper.floor_double(this.posZ+ds))))
                     {
                     	pos = Vec3.createVectorHelper(MathHelper.floor_double(this.posX+r), MathHelper.floor_double(this.posY+dy), MathHelper.floor_double(this.posZ+ds));
                     	return pos;
@@ -1270,7 +1271,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
             	     return false;
             	}
             	
-            	if (this.SelfType.FoodItemList.CheckItemById(var2.itemID) || this.SelfType.FoodBlockList.CheckBlockById(var2.itemID))
+            	if (DinoFood.isDinoFoodByDino(this.SelfType, var2.itemID, var2.getItemDamage()))
             	{//Item is one of the dinos food items
             		if(!player.worldObj.isRemote)
             		{
@@ -1278,11 +1279,11 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
 	                	{	//The Dino is Hungry and it can eat the item
 	                		//this.showHeartsOrSmokeFX(false);
 	            			this.worldObj.setEntityState(this, SMOKE_MESSAGE);
-	                		this.increaseHunger(this.SelfType.FoodItemList.getItemFood(var2.itemID)+this.SelfType.FoodBlockList.getBlockFood(var2.itemID));
+	                		this.increaseHunger(DinoFood.getFoodByDino(this.SelfType, var2.itemID, var2.getItemDamage()).getFoodValue());
 	                		if(CommandDino.Heal_Dinos)
 	                		{
 	                			//System.out.println("Hbefore:"+String.valueOf(this.health));
-	                			this.heal(this.SelfType.FoodItemList.getItemHeal(var2.itemID)+this.SelfType.FoodBlockList.getBlockHeal(var2.itemID));
+	                			this.heal(DinoFood.getFoodByDino(this.SelfType, var2.itemID, var2.getItemDamage()).getHealValue());
 	                			//System.out.println("ItemHealValueInDino:"+String.valueOf(this.FoodItemList.getItemHeal(var2.itemID)+this.FoodBlockList.getBlockHeal(var2.itemID)));
 	                			//System.out.println("Hafter:"+String.valueOf(this.health));
 	                		}
@@ -1320,7 +1321,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
 	            			}
 	            			else
 	            			{
-	            				if(this.SelfType.FoodItemList.getItemFood(ItemInMouth.itemID)+this.SelfType.FoodBlockList.getBlockFood(ItemInMouth.itemID)<this.SelfType.FoodItemList.getItemFood(var2.itemID)+this.SelfType.FoodBlockList.getBlockFood(var2.itemID))
+	            				if(DinoFood.getFoodByDino(this.SelfType, ItemInMouth.itemID, ItemInMouth.getItemDamage()).getFoodValue() < DinoFood.getFoodByDino(this.SelfType, var2.itemID, var2.getItemDamage()).getFoodValue())
 	            				{//The item given is better food for the dino
 	            					entityDropItem(new ItemStack(this.ItemInMouth.itemID, 1, 0), 0.5F);//Spit out the old item
 	            					this.HoldItem(var2);
