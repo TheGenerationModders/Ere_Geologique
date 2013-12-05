@@ -11,11 +11,8 @@ import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.ForgeDirection;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import ere_geologique.api.food.EnumDinoFoodBlock;
-import ere_geologique.api.food.EnumDinoFoodItem;
-import ere_geologique.common.block.Feeder;
+import ere_geologique.api.food.DinoFood;
+import ere_geologique.api.food.EnumFoodType;
 import ere_geologique.common.entity.Dinosaure;
 import ere_geologique.common.entity.Enums.EnumDinoType;
 
@@ -194,12 +191,11 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 		{
 			int var3;
 
-			if(this.feederItemStacks[0] != null && this.MeatCurrent < this.MeatMax && EnumDinoFoodItem.foodtype(this.feederItemStacks[0].itemID) == EnumDinoFoodItem.ISCARNIVOROUS)// the
-																																													// carnivore
-																																													// part
+			if(this.feederItemStacks[0] != null && this.MeatCurrent < this.MeatMax && DinoFood.getGlobalFood(this.feederItemStacks[0].itemID, this.feederItemStacks[0].getItemDamage()).getFoodType() == EnumFoodType.CARNIVOROUS)// the
+																																													// carnivore																																							// part
 			{
 
-				int val = EnumDinoFoodItem.getItemFood(this.feederItemStacks[0].itemID);
+				int val = DinoFood.getGlobalFood(this.feederItemStacks[0].itemID, this.feederItemStacks[0].getItemDamage()).getFoodValue();
 
 				{
 					if(EnumDinoType.isDinoDrop(this.feederItemStacks[0].getItem()))
@@ -227,10 +223,10 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 				}
 			}
 
-			if(this.feederItemStacks[1] != null && this.VegCurrent < this.VegMax && (EnumDinoFoodItem.foodtype(this.feederItemStacks[1].itemID) == EnumDinoFoodItem.ISHERBIVOROUS || EnumDinoFoodBlock.getBlockFood(this.feederItemStacks[1].itemID) > 0))// herbivore
+			if(this.feederItemStacks[1] != null && this.VegCurrent < this.VegMax && (DinoFood.getGlobalFood(this.feederItemStacks[0].itemID, this.feederItemStacks[1].getItemDamage()).getFoodType() == EnumFoodType.HERBIVOROUS || DinoFood.getGlobalFood(this.feederItemStacks[0].itemID, this.feederItemStacks[1].getItemDamage()).getFoodValue() > 0))// herbivore
 																																																															// part
 			{
-				int val = EnumDinoFoodItem.getItemFood(this.feederItemStacks[1].itemID) + EnumDinoFoodBlock.getBlockFood(this.feederItemStacks[1].itemID);
+				int val = DinoFood.getGlobalFood(this.feederItemStacks[1].itemID, this.feederItemStacks[1].getItemDamage()).getFoodValue();
 				if(val * this.feederItemStacks[1].stackSize + this.VegCurrent < this.VegMax)
 				{
 					this.VegCurrent += val * this.feederItemStacks[1].stackSize;
