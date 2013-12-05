@@ -1,9 +1,9 @@
 package ere_geologique.client.model;
 
+import ere_geologique.common.entity.Dinosaure;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
-import ere_geologique.common.entity.Dinosaure;
 
 public class ModelDilophosaurus extends ModelDinosaure
 {
@@ -223,6 +223,14 @@ public class ModelDilophosaurus extends ModelDinosaure
     {
         if (!var7)
         {
+            this.Head.rotateAngleX = var5 / (180F / (float)Math.PI);
+            this.Head.rotateAngleY = var4 / (180F / (float)Math.PI);
+            this.Jaw1.rotateAngleX = this.Jaw2.rotateAngleX
+                                     = this.Crest.rotateAngleX = this.Crest2.rotateAngleX
+                                             = this.Crest3.rotateAngleX = this.Crest4.rotateAngleX = this.Head.rotateAngleX;
+            this.Jaw1.rotateAngleY = this.Jaw2.rotateAngleY
+                                     = this.Crest.rotateAngleY = this.Crest2.rotateAngleY
+                                             = this.Crest3.rotateAngleY = this.Crest4.rotateAngleY = this.Head.rotateAngleY;
             this.Thigh2.rotateAngleX = MathHelper.cos(var1 * 0.6662F) * 1.4F * var2;
             this.Heel2.rotateAngleX = MathHelper.cos(var1 * 0.6662F) * 1.4F * var2 - 0.372F;
             this.Feet2.rotateAngleX = MathHelper.cos(var1 * 0.6662F) * 1.4F * var2;

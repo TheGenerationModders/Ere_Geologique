@@ -324,8 +324,6 @@ public class ModelSpinosaurus extends ModelDinosaure
   {
       if (!var7)
       {
-//          this.Head.rotateAngleY = -var4 / (180F / (float)Math.PI);
-
           this.Thigh1.rotateAngleX = MathHelper.cos(var1 * 0.6662F) * 1.0F * var2;
          this.Thigh2.rotateAngleX = MathHelper.cos(var1 * 0.6662F + (float)Math.PI) * 1.0F * var2;
 

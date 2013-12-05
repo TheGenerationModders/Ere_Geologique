@@ -10,6 +10,8 @@ import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import ere_geologique.client.model.ModelTRex;
+import ere_geologique.client.model.ModelWeakTRex;
 import ere_geologique.common.entity.TRex;
 
 @SideOnly(Side.CLIENT)
@@ -37,6 +39,17 @@ public class RenderTRex extends RenderLiving
     protected void preRenderCallback(EntityLivingBase par1EntityLivingBase, float par2)
     {
         this.preRenderScale((TRex)par1EntityLivingBase, par2);
+        if (((TRex)par1EntityLivingBase).isWeak())
+        {
+            if (!(this.mainModel instanceof ModelWeakTRex))
+            {
+                this.mainModel = new ModelWeakTRex();
+            }
+        }
+        else if (this.mainModel instanceof ModelWeakTRex)
+        {
+            this.mainModel = new ModelTRex();
+        }
     }
     
     protected ResourceLocation func_110919_a(TRex par1Entity)
@@ -51,6 +64,4 @@ public class RenderTRex extends RenderLiving
     {
         return this.func_110919_a((TRex)par1Entity);
     }
-    
-
 }

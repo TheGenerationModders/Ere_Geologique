@@ -46,9 +46,9 @@ public class DinoAIGrowup extends EntityAIBase
 	            //this.AITarget.CheckSkin();
 	            this.AITarget.updateSize();
 	            if (this.AITarget.getMaxHealth() < this.AITarget.getHealth())
-	            {//the dino heals itself 5% when growing up
+	            {//the dino heals itself 15% when growing up
 	            	if(CommandDino.Heal_Dinos)
-	            		this.AITarget.heal(MathHelper.ceiling_double_int(this.AITarget.getHealth()*0.05f));
+	            		this.AITarget.heal(MathHelper.ceiling_double_int(this.AITarget.getHealth()*0.15f));
 	            }
 	            /*this.AITarget.setDinoAge(this.AITarget.getDinoAge()-1);
 	            this.AITarget.worldObj.setEntityState(this.AITarget, this.AITarget.AGING_MESSAGE);

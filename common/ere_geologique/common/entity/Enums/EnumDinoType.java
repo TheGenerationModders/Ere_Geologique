@@ -44,11 +44,11 @@ public enum EnumDinoType
 	//											C.MODEL	| C.TAME	| C.RIDE	| C.HERBIVORE/CARNIVORE
     Triceratops(Triceratops.class, 				C.MODEL | C.TAME  	| C.RIDE 	| C.HERBIVORE),
     Velociraptor(Velociraptor.class,					  C.TAME  				| C.CARNIVORE),
-    TRex(TRex.class, 							  		  C.TAME  	| C.RIDE  	| C.CARNIVORE),
+    TRex(TRex.class, 							  		    	      C.RIDE  	| C.CARNIVORE),
     Pterosaure(Pterosaure.class, 				C.MODEL | C.TAME  	| C.RIDE 	| C.CARNIVORE),
     Plesiosaure(Plesiosaure.class, 				C.MODEL | C.TAME  	| C.RIDE 	| C.CARNIVORE),
     Stegosaurus(Stegosaurus.class, 				C.MODEL | C.TAME  				| C.HERBIVORE),
-    Dilophosaurus(Dilophosaurus.class,					  C.TAME  	| C.CARRY 	| C.CARNIVORE),
+    Dilophosaurus(Dilophosaurus.class,					  C.TAME  	        	| C.CARNIVORE),
     Brachiosaurus(Brachiosaurus.class,			C.MODEL | C.TAME  	| C.RIDE 	| C.HERBIVORE),
     Spinosaurus(Spinosaurus.class, 						  C.TAME				| C.CARNIVORE),
     Compsognathus(Compsognathus.class,					  C.TAME				| C.CARNIVORE),
@@ -277,7 +277,7 @@ public enum EnumDinoType
     	
         Velociraptor.setItems(		Item.bone);//,			Fossil.rawVelociraptor, Fossil.dnaVelociraptor, Fossil.eggVelociraptor);
         Velociraptor.setDimensions(0.3F, 0.12F, 0.3F, 0.13F, 0.3F, 0.1F);
-        Velociraptor.setAges(-1, -1, -1);
+        Velociraptor.setAges(-1, 6, -1);
         Velociraptor.setProperties(21, 1, -1, -1, 0.3F, 0.025F, -1);
         Velociraptor.setExperience(0.7F, 0.7F);
         
