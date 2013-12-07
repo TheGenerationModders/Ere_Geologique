@@ -6,7 +6,6 @@ import java.util.List;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import ere_geologique.common.entity.Enums.EnumDinoType;
-import ere_geologique.common.food.FoodList;
 
 public class DinoFood
 {
@@ -15,6 +14,7 @@ public class DinoFood
 	public static class DinoFoodEntry
 	{
 		private int id;
+		//private Class preyClass;
 		private int metadata;
 		private int foodValue;
 		private int healValue;
@@ -29,6 +29,14 @@ public class DinoFood
 		{
 			this(item.itemID, metadata, food, heal, type);
 		}
+		
+		/*public DinoFoodEntry(Class pclass, int food, int heal, EnumFoodType type)
+		{
+			this.preyClass = pclass;
+			this.foodValue = food;
+			this.healValue = heal;
+			this.foodType = type;
+		}*/
 
 		public DinoFoodEntry(int id, int metadata, int food, int heal, EnumFoodType type)
 		{
@@ -38,7 +46,7 @@ public class DinoFood
 			this.metadata = metadata;
 			this.foodType = type;
 		}
-
+		
 		public int getId()
 		{
 			return this.id;

@@ -63,7 +63,11 @@
     <entry key="tile.DoubleSlab.araucarias.name">Double dalle d'Araucarias</entry>
     <entry key="tile.DoubleSlab.metasequoias.name">Double dalle de Métaséquoias</entry>
     <entry key="tile.DoubleSlab.ginkgos.name">Double dalle de Ginkgos</entry>
-    <entry key="tile.Stair.name">Escalier de Fougère</entry>
+    <entry key="tile.StairFougere.name">Escalier de Fougère</entry>
+    <entry key="tile.StairCycas.name">Escalier de Cycas</entry>
+    <entry key="tile.StairAraucarias.name">Escalier de Araucarias</entry>
+    <entry key="tile.StairMetasequoias.name">Escalier de Métaséquoias</entry>
+    <entry key="tile.StairGingkos.name">Escalier de Gingkos</entry>
     <entry key="tile.analyzer.name">Analyzeur</entry>
 	<entry key="tile.cultureVat.name">Cultivateur</entry>
     <entry key="container.feeder">Mangeoire</entry>
@@ -164,7 +168,7 @@
 	<entry key="status.SJLBite"> bit the Siu-Jiu-Le and ran away.</entry>
 	<entry key="status.ChewTime"> needs time to chew.</entry>
 	<entry key="status.Full.head"></entry>
-	<entry key="status.Full"> est plein.</entry>
+	<entry key="status.Full"> n'a plus faim.</entry>
 	<entry key="status.Nervous.Head">You made the little </entry>
 	<entry key="status.Nervous"> too nervous to hunt itself.</entry>
 	<entry key="status.GemErrorYoung">This T-Rex is still too young.</entry>
@@ -215,7 +219,7 @@
     <entry key= "entity.CroMagnon.name">CroMagnon</entry>
     <entry key= "mob.failuresaurus">Failuresaurus</entry>
 <!-- Creative Tabs -->
-    <entry key="itemGroup.EGCreativeTabBlock"> Ere Géologique</entry>
-    <entry key="itemGroup.EGCreativeTabItem"> Ere Géologique</entry>
-    <entry key="itemGroup.EGCreativeTabFood"> Ere Géologique</entry>
+    <entry key="itemGroup.EGCreativeTabBlock">Ere Géologique</entry>
+    <entry key="itemGroup.EGCreativeTabItem">Ere Géologique</entry>
+    <entry key="itemGroup.EGCreativeTabFood">Ere Géologique</entry>
 </properties>

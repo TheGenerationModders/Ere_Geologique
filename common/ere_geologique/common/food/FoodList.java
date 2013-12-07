@@ -73,7 +73,30 @@ public class FoodList
 	public static DinoFoodEntry Ankylosaurus = new DinoFoodEntry(EnumDinoType.Ankylosaurus.DropItem, 50, 0, 3, EnumFoodType.CARNIVOROUS);
 	public static DinoFoodEntry Pachycephalosaurus = new DinoFoodEntry(EnumDinoType.Pachycephalosaurus.DropItem, 0, 50, 3, EnumFoodType.CARNIVOROUS);
 	public static DinoFoodEntry DinoMeatCooked = new DinoFoodEntry(EGItemList.cookedDinoMeat, 0, 50, 5, EnumFoodType.CARNIVOROUS);
-
+	
+	
+	/*//Entity
+	public static DinoFoodEntry Player = new DinoFoodEntry(EntityPlayer.class,30,2, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Chicken = new DinoFoodEntry(EntityChicken.class,20,2, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Cow = new DinoFoodEntry(EntityCow.class,50,5, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Pig = new DinoFoodEntry(EntityPig.class,30,3, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Sheep = new DinoFoodEntry(EntitySheep.class,35,3, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Squid = new DinoFoodEntry(EntitySquid.class,30,3, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Mob = new DinoFoodEntry(EntityMob.class,20,1, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Nautilus_mob = new DinoFoodEntry(Nautilus.class,100,5, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Triceratops_mob = new DinoFoodEntry(Triceratops.class,50,3, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Velociraptor_mob = new DinoFoodEntry(Velociraptor.class,20,3, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry TRex_mob = new DinoFoodEntry(TRex.class,70,5, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Pterosaure_mob = new DinoFoodEntry(Pterosaure.class,35,2, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Plesiosaure_mob = new DinoFoodEntry(Plesiosaure.class,50,3, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Mosasaurus_mob = new DinoFoodEntry(Mosasaurus.class,50,3, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Stegosaurus_mob = new DinoFoodEntry(Stegosaurus.class,50,3, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Dilophosaurus_mob = new DinoFoodEntry(Dilophosaurus.class,25,2, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Brachiosaurus_mob = new DinoFoodEntry(Brachiosaurus.class,80,5, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Spinosaurus_mob = new DinoFoodEntry(Spinosaurus.class,70,5, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Compsognathus_mob = new DinoFoodEntry(Compsognathus.class,20,3, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Ankylosaurus_mob = new DinoFoodEntry(Ankylosaurus.class,50,3, EnumFoodType.CARNIVOROUS);*/
+	
 	public FoodList()
 	{
 		DinoFood.globalDinoFood.add(CakeBlock);

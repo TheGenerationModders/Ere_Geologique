@@ -63,7 +63,11 @@
     <entry key="tile.DoubleSlab.araucarias.name">Double dalle d'Araucarias</entry>
     <entry key="tile.DoubleSlab.metasequoias.name">Double dalle de Métaséquoias</entry>
     <entry key="tile.DoubleSlab.ginkgos.name">Double dalle de Ginkgos</entry>
-    <entry key="tile.Stair.name">Escalier de Fougère</entry>
+    <entry key="tile.StairFougere.name">Escalier de Fougère</entry>
+    <entry key="tile.StairCycas.name">Escalier de Cycas</entry>
+    <entry key="tile.StairAraucarias.name">Escalier de Araucarias</entry>
+    <entry key="tile.StairMetasequoias.name">Escalier de Métaséquoias</entry>
+    <entry key="tile.StairGingkos.name">Escalier de Gingkos</entry>
     <entry key="tile.analyzer.name">Analyzer</entry>
 	<entry key="tile.cultureVat.name">Culture Vat</entry>
     <entry key="tile.feeder.name">Feeder</entry>

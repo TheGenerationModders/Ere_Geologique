@@ -121,10 +121,13 @@ public class Velociraptor extends Dinosaure
                     return "ere_geologique:textures/entity/Velociraptor_Green_Adult.png";
 
                 case 3:
-                    return "ere_geologique:textures/entity/Velociraptor_brown_Adult.png";
+                    return "ere_geologique:textures/entity/Velociraptor_Brown_Adult.png";
+                    
+                case 4:
+                	return "ere_geologique:textures/entity/Velociraptor_Tamed.png";
 
                 default:
-                    return "ere_geologique:textures/entity/Velociraptor_brown_Adult.png";
+                    return "ere_geologique:textures/entity/Velociraptor_Brown_Adult.png";
             }
         }
 
