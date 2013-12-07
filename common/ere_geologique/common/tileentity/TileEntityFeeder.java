@@ -61,7 +61,7 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 			{
 				var3 = this.feederItemStacks[var1];
 				this.feederItemStacks[var1] = null;
-                this.onInventoryChanged();
+				this.onInventoryChanged();
 				this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
 				return var3;
 			}
@@ -73,7 +73,7 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 				{
 					this.feederItemStacks[var1] = null;
 				}
-                this.onInventoryChanged();
+				this.onInventoryChanged();
 				this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
 				return var3;
 			}
@@ -92,7 +92,7 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 		{
 			var2.stackSize = this.getInventoryStackLimit();
 		}
-        this.onInventoryChanged();
+		this.onInventoryChanged();
 		this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
 	}
 
@@ -112,12 +112,12 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 	{
 		this.readFromNBT(pkt.data);
 	}
-	
+
 	public int getDirection()
 	{
 		return this.direction;
 	}
-	
+
 	public void setDirection(int i)
 	{
 		this.direction = i;
@@ -191,16 +191,11 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 		{
 			int var3;
 
-			if(this.feederItemStacks[0] != null && this.MeatCurrent < this.MeatMax && DinoFood.getGlobalFood(this.feederItemStacks[0].itemID, this.feederItemStacks[0].getItemDamage()).getFoodType() == EnumFoodType.CARNIVOROUS)// the
-																																													// carnivore																																							// part
+			if(this.feederItemStacks[0] != null && this.MeatCurrent < this.MeatMax && DinoFood.getGlobalFood(this.feederItemStacks[0].itemID, this.feederItemStacks[0].getItemDamage()) != null && DinoFood.getGlobalFood(this.feederItemStacks[0].itemID, this.feederItemStacks[0].getItemDamage()).getFoodType() == EnumFoodType.CARNIVOROUS)
 			{
-
 				int val = DinoFood.getGlobalFood(this.feederItemStacks[0].itemID, this.feederItemStacks[0].getItemDamage()).getFoodValue();
-
-				{
-					if(EnumDinoType.isDinoDrop(this.feederItemStacks[0].getItem()))
-						this.ContainType[EnumDinoType.getIndex(this.feederItemStacks[0].getItem())] = true;
-				}
+				if(EnumDinoType.isDinoDrop(this.feederItemStacks[0].getItem()))
+					this.ContainType[EnumDinoType.getIndex(this.feederItemStacks[0].getItem())] = true;
 				if(val * this.feederItemStacks[0].stackSize + this.MeatCurrent < this.MeatMax)
 				{
 					this.MeatCurrent += val * this.feederItemStacks[0].stackSize;
@@ -223,8 +218,8 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 				}
 			}
 
-			if(this.feederItemStacks[1] != null && this.VegCurrent < this.VegMax && (DinoFood.getGlobalFood(this.feederItemStacks[0].itemID, this.feederItemStacks[1].getItemDamage()).getFoodType() == EnumFoodType.HERBIVOROUS || DinoFood.getGlobalFood(this.feederItemStacks[0].itemID, this.feederItemStacks[1].getItemDamage()).getFoodValue() > 0))// herbivore
-																																																															// part
+			if(this.feederItemStacks[1] != null && this.VegCurrent < this.VegMax && DinoFood.getGlobalFood(this.feederItemStacks[1].itemID, this.feederItemStacks[1].getItemDamage()) != null && (DinoFood.getGlobalFood(this.feederItemStacks[1].itemID, this.feederItemStacks[1].getItemDamage()).getFoodType() == EnumFoodType.HERBIVOROUS || DinoFood.getGlobalFood(this.feederItemStacks[1].itemID, this.feederItemStacks[1].getItemDamage()).getFoodValue() > 0))// herbivore
+			// part
 			{
 				int val = DinoFood.getGlobalFood(this.feederItemStacks[1].itemID, this.feederItemStacks[1].getItemDamage()).getFoodValue();
 				if(val * this.feederItemStacks[1].stackSize + this.VegCurrent < this.VegMax)
@@ -333,7 +328,8 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 		if(var1 == 4)
 		{
 			return slot_right;
-		}else if(var1 == 5)
+		}
+		else if(var1 == 5)
 		{
 			return slot_left;
 		}
