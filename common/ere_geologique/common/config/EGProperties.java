@@ -29,6 +29,7 @@ public class EGProperties
 	public static int SteelBlockID;
 	public static int FossilSkullID;
 	public static int BlueFireID;
+	public static int DrumID;
 	
 	//Items
 	public static int IvoryIngotID;

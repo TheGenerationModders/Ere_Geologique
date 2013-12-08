@@ -102,7 +102,8 @@ public class EreGeologique
 			EGProperties.SteelBlockID = ConfigFile.getBlock("SteelBlock", 2520).getInt();
 			EGProperties.FossilSkullID = ConfigFile.getBlock("FossilSkull", 2521).getInt();
 			EGProperties.BlueFireID = ConfigFile.getBlock("BlueFire", 2522).getInt();
-
+			EGProperties.DrumID = ConfigFile.getBlock("Drum", 2523).getInt();
+			
 			//Items
 			EGProperties.IvoryIngotID = ConfigFile.getItem("Ivory Ingot", 4000).getInt();
 			EGProperties.IvoryNuggetID = ConfigFile.getItem("Ivory Nugget", 4001).getInt();

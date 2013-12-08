@@ -9,6 +9,7 @@ import ere_geologique.client.LocalizationStrings;
 import ere_geologique.common.EreGeologique;
 import ere_geologique.common.config.EGProperties;
 import ere_geologique.common.creativetabs.EGCreativeTab;
+import ere_geologique.common.creativetabs.EGCreativeTabBlock;
 
 public class EGBlockList
 {
@@ -35,6 +36,7 @@ public class EGBlockList
 	public static Block SteelBlock;
 	public static Block Skull;
 	public static BlueFire BlueFire;
+	public static Block Drum;
 	
     public static Block nanoLeavesBlock, nanoSaplingsBlock;
 	
@@ -65,6 +67,7 @@ public class EGBlockList
 	       SteelBlock = new ReinforcedStone(EGProperties.SteelBlockID).setHardness(5.0F).setResistance(10.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("SteelBlock").setTextureName("ere_geologique:steel_block");
 	       Skull = new Skull(EGProperties.FossilSkullID).setHardness(1.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("FossilSkull");
 	       BlueFire = (BlueFire) new BlueFire(EGProperties.BlueFireID).setHardness(0.0F).setLightValue(1.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("BlueFire");
+	       Drum = new Drum(EGProperties.DrumID).setHardness(0.8F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("Drum").setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
 	       
 	       GameRegistry.registerBlock(Leaves, ItemBlockLeaves.class, "Leaves");
 	       GameRegistry.registerBlock(Wood, ItemBlockWood.class, "Wood");
@@ -89,6 +92,7 @@ public class EGBlockList
 	       GameRegistry.registerBlock(SteelBlock, "Steelblock");
 	       GameRegistry.registerBlock(Skull, "Skull");
 	       GameRegistry.registerBlock(BlueFire, "BlueFire");
+	       GameRegistry.registerBlock(Drum, "Drum");
 
 	       MinecraftForge.setBlockHarvestLevel(Fossil, 0, "pickaxe", 2);
 

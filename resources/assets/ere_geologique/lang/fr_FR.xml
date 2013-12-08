@@ -67,7 +67,7 @@
     <entry key="tile.StairCycas.name">Escalier de Cycas</entry>
     <entry key="tile.StairAraucarias.name">Escalier de Araucarias</entry>
     <entry key="tile.StairMetasequoias.name">Escalier de Métaséquoias</entry>
-    <entry key="tile.StairGingkos.name">Escalier de Gingkos</entry>
+    <entry key="tile.StairGinkgos.name">Escalier de Gingkos</entry>
     <entry key="tile.analyzer.name">Analyzeur</entry>
 	<entry key="tile.cultureVat.name">Cultivateur</entry>
     <entry key="container.feeder">Mangeoire</entry>
@@ -76,7 +76,8 @@
 	<entry key="tile.ReinforcedStone.name">Roche renforcé</entry>
     <entry key="tile.ReinforcedGlass.name">Verre renforcé</entry>
     <entry key="tile.SteelBlock.name">Bloc d'acier</entry>
-    <entry key="tile.FossilSkull.name">Tête Fosilisée</entry>
+    <entry key="tile.FossilSkull.name">Tête Fossilisée</entry>
+    <entry key="tile.Drum.name">Drum</entry>
 <!-- Items -->
     <entry key="item.IvoryIngot.name">Ivoire</entry>
     <entry key="item.IvoryNugget.name">Pépite d'Ivoire</entry>
@@ -213,6 +214,12 @@
 	<entry key="dinoegg.head">Oeuf de </entry>
 	<entry key="dinoegg.dry"> died because it was too dry.</entry>	
 	<entry key="dinoegg.cold"> died because it was too cold.</entry>
+<!-- Drum Message Chat -->
+    <entry key="drum.trigger">Drum Order:</entry>
+    <entry key="drum.order">Ordering</entry>
+    <entry key="drum.tRex1">Ordering T-Rexes to breakfast.</entry>
+    <entry key="drum.tRex2">Ordering T-Rexes to lunch.</entry>
+    <entry key="drum.tRex3">Ordering T-Rexes to dinner.</entry>
 <!-- Cultivator -->
 	<entry key="cultivate.outBreak">Warning! Cultivating failed!</entry>
 <!-- Entity -->

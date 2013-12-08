@@ -73,6 +73,8 @@ public class DinoSoundHandler
     		manager.addSound("ere_geologique:velociraptor_living_wild1.wav");
     		manager.addSound("ere_geologique:velociraptor_living_wild2.wav");
     		manager.addSound("ere_geologique:whip.wav");
+    		manager.addSound("ere_geologique:drum_single.wav");
+    		manager.addSound("ere_geologique:drum_triple.wav");
         }
         catch(Exception e)
         {

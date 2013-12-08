@@ -12,6 +12,7 @@ public class EGTEntityList
 			GameRegistry.registerTileEntity(TileEntityFeeder.class, "TileEntityFeeder");
 			GameRegistry.registerTileEntity(TileEntityAnalyzer.class, "TileEntityAnalyzer");
 			GameRegistry.registerTileEntity(TileEntityCultivator.class, "TileEntityCultivator");
+			GameRegistry.registerTileEntity(TileEntityDrum.class, "TileEntityDrum");
 		}
 		catch(Exception ex)
 		{
