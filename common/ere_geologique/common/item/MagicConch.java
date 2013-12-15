@@ -46,15 +46,15 @@ public class MagicConch extends Item
      */
     public ItemStack onItemRightClick(ItemStack var1, World var2, EntityPlayer var3)
     {
-        String var4 = "Drum.";
-        String var5 = "Msg.";
-        String var6 = "Head";
-        String var7 = "Middle";
-        String var8 = "Tail";
-        String var9 = StatCollector.translateToLocal("Dino.Plesiosaur");//Dinosaure.GetNameByEnum(EnumDinoType.Plesiosaur, true);
-        String var10 = StatCollector.translateToLocal("Drum.Msg.Head");
-        String var11 = StatCollector.translateToLocal("Drum.Msg.Middle");
-        String var12 = StatCollector.translateToLocal("Drum.Msg.Tail");
+       // String var4 = "Drum.";
+      //  String var5 = "Msg.";
+       // String var6 = "Head";
+      //  String var7 = "Middle";
+      //  String var8 = "Tail";
+        String var9 = StatCollector.translateToLocal("Dino.Plesiosaure");//EntityDinosaur.GetNameByEnum(EnumDinoType.Plesiosaur, true);
+        String var10 = StatCollector.translateToLocal("mGCName.head");
+        //String var11 = StatCollector.translateToLocal("Drum.Msg.Middle");
+        //String var12 = StatCollector.translateToLocal("Drum.Msg.Tail");
         String var13 = "";
         List var14 = var2.getEntitiesWithinAABB(Plesiosaure.class, AxisAlignedBB.getAABBPool().getAABB(var3.posX, var3.posY, var3.posZ, var3.posX + 1.0D, var3.posY + 1.0D, var3.posZ + 1.0D).expand(30.0D, 4.0D, 30.0D));
         Iterator var15 = var14.iterator();
@@ -71,15 +71,18 @@ public class MagicConch extends Item
             }
         }
 
-        var13 = StatCollector.translateToLocal("order." +EnumOrderType.values()[var1.getItemDamage()].toString());
-        EreGeologique.ShowMessage(var10 + var9 + var11 + " " + var13 + var12, var3);
+        var13 = StatCollector.translateToLocal("order." + EnumOrderType.values()[var1.getItemDamage()].toString());
+       // Fossil.ShowMessage(var10 + var9 + var11 + " " + var13 + var12, var3);
+        if (!var3.worldObj.isRemote)
+        {
+        EreGeologique.ShowMessage(var10 + var9 + " " + var13, var3);
+        }
         return var1;
     }
-    
-    @Override
-	public void registerIcons(IconRegister iconRegister)
-	{
-		itemIcon = iconRegister.registerIcon("ere_geologique:Magic_Conch");
-    }
 
+    @Override
+    public void registerIcons(IconRegister iconRegister)
+    {
+        itemIcon = iconRegister.registerIcon("ere_geologique:Magic_Conch");
+    }
 }

@@ -144,6 +144,24 @@ public class Compsognathus extends Dinosaure
     {
           return EnumDinoType.Compsognathus.name();
     }
+    
+    @Override
+    protected String getLivingSound()
+    {
+        return this.isTamed() ? "ere_geologique:compsognathus_living_tame" : "ere_geologique:compsognathus_living_wild";
+    }
+    
+    @Override
+    protected String getHurtSound()
+    {
+        return "ere_geologique:compsognathus_hurt";
+    }
+    
+    @Override
+    protected String getDeathSound()
+    {
+        return "ere_geologique:compsognathus_death";
+    }
 
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.

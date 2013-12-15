@@ -103,6 +103,24 @@ public class Ankylosaurus extends Dinosaure
     {
     	return EnumDinoType.Ankylosaurus.name();
     }
+    
+    @Override
+    protected String getLivingSound()
+    {
+        return "ere_geologique:ankylosaurus_living";
+    }
+    
+    @Override
+    protected String getHurtSound()
+    {
+        return "ere_geologique:ankylosaurus_hurt";
+    }
+    
+    @Override
+    protected String getDeathSound()
+    {
+        return "ere_geologique:ankylosaurus_death";
+    }
 
     /**
      * Finds the closest player within 16 blocks to attack, or null if this Entity isn't interested in attacking

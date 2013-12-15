@@ -143,6 +143,24 @@ public class Triceratops extends Dinosaure
     {
     	return EnumDinoType.Triceratops.name();
     }
+    
+    @Override
+    protected String getLivingSound()
+    {
+        return "ere_geologique:triceratops_living";
+    }
+    
+    @Override
+    protected String getHurtSound()
+    {
+        return "ere_geologique:triceratops_hurt";
+    }
+    
+    @Override
+    protected String getDeathSound()
+    {
+        return "ere_geologique:triceratops_death";
+    }
 
     /*public float getInterestedAngle(float var1)
     {

@@ -165,6 +165,24 @@ public class Pachycephalosaurus extends Dinosaure
     {
           return EnumDinoType.Pachycephalosaurus.name();
     }
+    
+    @Override
+    protected String getLivingSound()
+    {
+        return "ere_geologique:pachycephalosaurus_living";
+    }
+    
+    @Override
+    protected String getHurtSound()
+    {
+        return "ere_geologique:pachycephalosaurus_hurt";
+    }
+    
+    @Override
+    protected String getDeathSound()
+    {
+        return "ere_geologique:pachycephalosaurus_death";
+    }
 
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.

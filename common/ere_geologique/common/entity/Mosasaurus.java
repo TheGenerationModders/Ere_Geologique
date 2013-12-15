@@ -1,15 +1,17 @@
 package ere_geologique.common.entity;
 
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.EnchantmentThorns;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
-import net.minecraft.entity.ai.EntityAILeapAtTarget;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import ere_geologique.common.entity.Enums.EnumDinoType;
-import ere_geologique.common.entity.IA.WaterDinoAIWander;
+import ere_geologique.common.entity.IA.WaterDinoAIAttack;
 
 public class Mosasaurus extends SwimmingDino implements IMob
 {
@@ -41,10 +43,14 @@ public class Mosasaurus extends SwimmingDino implements IMob
         this.experienceValue = 5;
         
         this.tasks.addTask(6, new EntityAIAttackOnCollide(this, 1, true));
-        this.tasks.addTask(7, new WaterDinoAIWander(this, 100.0D));
-        this.tasks.addTask(2, new EntityAILeapAtTarget(this, 0.4F));
+        this.tasks.addTask(7, new WaterDinoAIAttack(this, 2.0D));
     }
 
+    public boolean canBreatheUnderwater()
+    {
+        return true;
+    }
+    
     public String getTexture()
     {
         if (this.isModelized())
@@ -63,6 +69,35 @@ public class Mosasaurus extends SwimmingDino implements IMob
     public String getDinosaurName()
     {
     	return EnumDinoType.Mosasaurus.name();
+    }
+    
+    @Override
+    /**
+     * Returns the sound this mob makes while it's alive.
+     */
+    protected String getLivingSound()
+    {
+    	if(this.isInWater())
+        return "ere_geologique:mosasaurus_living";
+    	else
+    	return "ere_geologique:mosasaurus_outside";	
+    }
+
+    /**
+     * Returns the sound this mob makes when it is hurt.
+     */
+    @Override
+    protected String getHurtSound()
+    {
+        return "ere_geologique:mosasaurus_hurt";
+    }
+    @Override
+    /**
+     * Returns the sound this mob makes on death.
+     */
+    protected String getDeathSound()
+    {
+        return "ere_geologique:mosasaurus_death";
     }
 
     /**
@@ -105,6 +140,7 @@ public class Mosasaurus extends SwimmingDino implements IMob
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(10.0D);
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.5D);
+        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(8.0D);
     }
 
     protected void updateEntityActionState()
@@ -112,29 +148,41 @@ public class Mosasaurus extends SwimmingDino implements IMob
 
     }
 
-
-    /**
-     * Returns the sound this mob makes while it's alive.
-     */
-    protected String getLivingSound()
+    @Override
+    public boolean attackEntityAsMob(Entity victim)
     {
-        return "ere_geologique:mosasaurus_living";
-    }
+        float attackDamage = (float) getEntityAttribute(SharedMonsterAttributes.attackDamage).getAttributeValue();
+        int knockback = 0;
 
-    /**
-     * Returns the sound this mob makes when it is hurt.
-     */
-    protected String getHurtSound()
-    {
-        return "ere_geologique:mosasaurus_hurt";
-    }
+        if (victim instanceof EntityLivingBase)
+        {
+            attackDamage += EnchantmentHelper.getEnchantmentModifierLiving(this, (EntityLivingBase) victim);
+            knockback += EnchantmentHelper.getKnockbackModifier(this, (EntityLivingBase) victim);
+        }
 
-    /**
-     * Returns the sound this mob makes on death.
-     */
-    protected String getDeathSound()
-    {
-        return "ere_geologique:mosasaurus_death";
+        boolean attacked = victim.attackEntityFrom(DamageSource.causeMobDamage(this), attackDamage);
+
+        if (attacked)
+        {
+            if (knockback > 0)
+            {
+                double vx = -Math.sin(Math.toRadians(rotationYaw)) * knockback * 0.5;
+                double vy = 0.1;
+                double vz = Math.cos(Math.toRadians(rotationYaw)) * knockback * 0.5;
+                victim.addVelocity(vx, vy, vz);
+                motionX *= 0.6;
+                motionZ *= 0.6;
+            }
+
+            if (victim instanceof EntityLivingBase)
+            {
+                EnchantmentThorns.func_92096_a(this, (EntityLivingBase) victim, rand);
+            }
+
+            setLastAttacker(victim);
+        }
+
+        return attacked;
     }
 
     /**

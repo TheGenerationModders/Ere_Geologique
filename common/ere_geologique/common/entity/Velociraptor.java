@@ -160,6 +160,18 @@ public class Velociraptor extends Dinosaure
     {
         return this.isTamed() ? "ere_geologique:velociraptor_living_tame" : "ere_geologique:velociraptor_living_wild";
     }
+    
+    @Override
+    protected String getHurtSound()
+    {
+        return "ere_geologique:velociraptor_hurt";
+    }
+    
+    @Override
+    protected String getDeathSound()
+    {
+        return "ere_geologique:velociraptor_death";
+    }
 
     /**
      * Causes this entity to do an upwards motion (jumping).

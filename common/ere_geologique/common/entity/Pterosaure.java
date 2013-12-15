@@ -129,6 +129,24 @@ public class Pterosaure extends Dinosaure
     	return EnumDinoType.Pterosaure.name();
     }
     
+    @Override
+    protected String getLivingSound()
+    {
+        return "ere_geologique:pterosaurus_living";
+    }
+    
+    @Override
+    protected String getHurtSound()
+    {
+        return "ere_geologique:pterosaurus_hurt";
+    }
+    
+    @Override
+    protected String getDeathSound()
+    {
+        return "ere_geologique:pterosaurus_death";
+    }
+    
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();

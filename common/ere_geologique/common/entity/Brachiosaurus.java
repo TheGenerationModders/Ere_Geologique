@@ -95,25 +95,18 @@ public class Brachiosaurus extends Dinosaure
     }
 
     @Override
-    /**
-     * Returns the sound this mob makes while it's alive.
-     */
     protected String getLivingSound()
     {
         return "ere_geologique:brachiosaurus_living";
     }
+    
     @Override
-    /**
-     * Returns the sound this mob makes when it is hurt.
-     */
     protected String getHurtSound()
     {
         return "ere_geologique:brachiosaurus_hurt";
     }
+    
     @Override
-    /**
-     * Returns the sound this mob makes on death.
-     */
     protected String getDeathSound()
     {
         return "ere_geologique:brachiosaurus_death";

@@ -106,6 +106,24 @@ public class Spinosaurus extends Dinosaure implements IWaterDino
     {
           return EnumDinoType.Spinosaurus.name();
     }
+    
+    @Override
+    protected String getLivingSound()
+    {
+        return "ere_geologique:spinosaurus_living";
+    }
+    
+    @Override
+    protected String getHurtSound()
+    {
+        return "ere_geologique:spinosaurus_hurt";
+    }
+    
+    @Override
+    protected String getDeathSound()
+    {
+        return "ere_geologique:spinosaurus_death";
+    }
 
     /**
      * (abstract) Protected helper method to write subclass entity data to NBT.

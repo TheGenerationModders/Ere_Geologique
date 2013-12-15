@@ -145,6 +145,24 @@ public class Dilophosaurus extends Dinosaure
     {
           return EnumDinoType.Dilophosaurus.name();
     }
+    
+    @Override
+    protected String getLivingSound()
+    {
+        return "ere_geologique:dilophosaurus_living";
+    }
+    
+    @Override
+    protected String getHurtSound()
+    {
+        return "ere_geologique:dilophosaurus_hurt";
+    }
+    
+    @Override
+    protected String getDeathSound()
+    {
+        return "ere_geologique:dilophosaurus_death";
+    }
 
     /**
      * Causes this entity to do an upwards motion (jumping).

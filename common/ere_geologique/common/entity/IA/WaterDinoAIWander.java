@@ -41,10 +41,10 @@ public class WaterDinoAIWander extends EntityAIBase
     
     private World worldObj;
 
-    public WaterDinoAIWander(Dinosaure dinosaur, double par2)
+    public WaterDinoAIWander(Dinosaure dinosaure, double speed)
     {
-        this.entity = dinosaur;
-        this.speed = par2;
+        this.entity = dinosaure;
+        this.speed = speed;
         this.setMutexBits(1);
     }
 
@@ -112,10 +112,10 @@ public class WaterDinoAIWander extends EntityAIBase
         }
 
         //this.targetedEntity = this.worldObj.getClosestVulnerablePlayerToEntity(this, 100.0D);
- //       this.targetedEntity = this.worldObj.getClosestVulnerablePlayerToEntity(this.entity, 100.0D);
+        this.targetedEntity = this.entity.worldObj.getClosestVulnerablePlayerToEntity(this.entity, 20.0D);
 
-        if (this.entity.isInWater() && this.targetedEntity != null && this.targetedEntity.isInWater())
-           //     &&  this.targetedEntity.getDistanceSqToEntity(this) < d4 * d4)
+        if (this.entity.isInWater() && this.targetedEntity != null && this.targetedEntity.isInWater()
+                &&  this.targetedEntity.getDistanceSqToEntity(this.entity) < d4 * d4)
         {
             // Simple "pathfinding" to attack closest player.
             this.deltaX = this.targetedEntity.posX - this.entity.posX;
@@ -123,9 +123,9 @@ public class WaterDinoAIWander extends EntityAIBase
             this.deltaZ = this.targetedEntity.posZ - this.entity.posZ;
             this.length = Math.sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ);
             //Normalize?
-            deltaX /= length + 1.5D;
-            deltaY /= length + 1.5D;
-            deltaZ /= length + 1.5D;
+            deltaX /= length + 1.0D;
+            deltaY /= length + 1.0D;
+            deltaZ /= length + 1.0D;
             //Set waypoint for player's current location.
             this.waypointX += deltaX;
             this.waypointY += deltaY;

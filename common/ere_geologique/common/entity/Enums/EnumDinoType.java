@@ -44,7 +44,7 @@ public enum EnumDinoType
 	//											C.MODEL	| C.TAME	| C.RIDE	| C.HERBIVORE/CARNIVORE
     Triceratops(Triceratops.class, 				C.MODEL | C.TAME  	| C.RIDE 	| C.HERBIVORE),
     Velociraptor(Velociraptor.class,					  C.TAME  				| C.CARNIVORE),
-    TRex(TRex.class, 							  		    	      C.RIDE  	| C.CARNIVORE),
+    TRex(TRex.class, 							  		              C.RIDE  	| C.CARNIVORE),
     Pterosaure(Pterosaure.class, 				C.MODEL | C.TAME  	| C.RIDE 	| C.CARNIVORE),
     Plesiosaure(Plesiosaure.class, 				C.MODEL | C.TAME  	| C.RIDE 	| C.CARNIVORE),
     Stegosaurus(Stegosaurus.class, 				C.MODEL | C.TAME  				| C.HERBIVORE),

@@ -112,6 +112,24 @@ public class Stegosaurus extends Dinosaure
           return EnumDinoType.Stegosaurus.name();
     }
     
+    @Override
+    protected String getLivingSound()
+    {
+        return "ere_geologique:stegosaurus_living";
+    }
+    
+    @Override
+    protected String getHurtSound()
+    {
+        return "ere_geologique:stegosaurus_hurt";
+    }
+    
+    @Override
+    protected String getDeathSound()
+    {
+        return "ere_geologique:stegosaurus_death";
+    }
+    
     protected void updateEntityActionState()
     {
         if (this.riddenByEntity == null)

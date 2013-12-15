@@ -1,5 +1,8 @@
 package ere_geologique.common.entity;
 
+import java.util.Random;
+
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
@@ -9,6 +12,7 @@ import net.minecraft.entity.ai.EntityAIControlledByPlayer;
 import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityAILeapAtTarget;
 import net.minecraft.entity.ai.EntityAILookIdle;
+import net.minecraft.entity.ai.EntityAINearestAttackableTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.entity.ai.EntityAIWander;
 import net.minecraft.entity.ai.EntityAIWatchClosest;
@@ -67,7 +71,7 @@ public class TRex extends Dinosaure
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(2, new EntityAILeapAtTarget(this, 0.4F));
-        this.tasks.addTask(3, new DinoAIAttackOnCollide(this, 1.0D, true));
+        this.tasks.addTask(3, new DinoAIAttackOnCollide(this, 1.1D, true));
         this.tasks.addTask(4, new DinoAIFollowOwner(this, 5.0F, 2.0F, 1.0F));
         this.tasks.addTask(6, new EntityAIWander(this, 1.0D));
         this.tasks.addTask(7, new EntityAIWatchClosest(this, EntityPlayer.class, 8.0F));
@@ -80,6 +84,8 @@ public class TRex extends Dinosaure
         
         this.targetTasks.addTask(5, new DinoAIHunt(this, EntityLiving.class, 500, false));
         
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, 0, true));
+        
     }
 
     /**
@@ -88,7 +94,7 @@ public class TRex extends Dinosaure
     @Override
     public boolean isAIEnabled()
     {
-        return !this.isModelized() || !this.isWeak();
+        return !this.isModelized() && !this.isWeak();
     }
     
     /**
@@ -104,7 +110,12 @@ public class TRex extends Dinosaure
         super.applyEntityAttributes();
         this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.40000001192092896D);
         this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(21.0D);
-        //this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(8.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(8.0D);
+    }
+    
+    public String getDinosaurName()
+    {
+    	return EnumDinoType.TRex.name();
     }
 
     //protected void updateEntityActionState() {}
@@ -136,9 +147,37 @@ public class TRex extends Dinosaure
         }
     }
 
+    @Override
+    /**
+     * Returns the sound this mob makes while it's alive.
+     */
+    protected String getLivingSound()
+    {
+        return "ere_geologique:tyrannosaurus_living";
+    }
+
+    /**
+     * Returns the sound this mob makes when it is hurt.
+     */
+    @Override
+    protected String getHurtSound()
+    {
+        return "ere_geologique:tyrannosaurus_hurt";
+    }
+    @Override
+    /**
+     * Returns the sound this mob makes on death.
+     */
+    protected String getDeathSound()
+    {
+        return "ere_geologique:tyrannosaurus_death";
+    }
+    
     /**
      * Applies a velocity to each of the entities pushing them away from each other. Args: entity
      */
+    
+   /*
     public void applyEntityCollision(Entity var1)
     {
         if (var1 instanceof EntityLiving && !(var1 instanceof EntityPlayer) && this.getHunger() < this.SelfType.MaxHunger / 2 && this.onGround && this.getDinoAge() > 3)
@@ -146,6 +185,8 @@ public class TRex extends Dinosaure
             ((EntityLiving)var1).attackEntityFrom(DamageSource.causeMobDamage(this), 10);
         }
     }
+    */
+    
 
     public float getEyeHeight()
     {
@@ -163,7 +204,7 @@ public class TRex extends Dinosaure
          */
     public int getVerticalFaceSpeed()
     {
-        return this.isSitting() ? 20 : super.getVerticalFaceSpeed();
+        return 50;
     }
 
     private void handleScream()
@@ -248,9 +289,42 @@ public class TRex extends Dinosaure
      */
     protected Entity findPlayerToAttack()
     {
-        return this.isAngry() || !this.isTamed() ? this.worldObj.getClosestPlayerToEntity(this, 16.0D) : null;
+        return this.isAngry() && !this.isTamed() && !this.isWeak() ? this.worldObj.getClosestPlayerToEntity(this, 16.0D) : null;
     }
 
+    @Override
+    public boolean attackEntityAsMob(Entity victim)
+    {
+    	Random random = new Random();
+        float attackDamage = (float) getEntityAttribute(SharedMonsterAttributes.attackDamage).getAttributeValue();
+        int knockback = 0;
+
+        if (victim instanceof EntityLivingBase)
+        {
+            attackDamage += EnchantmentHelper.getEnchantmentModifierLiving(this, (EntityLivingBase) victim);
+            knockback += EnchantmentHelper.getKnockbackModifier(this, (EntityLivingBase) victim);
+        }
+        boolean attacked = victim.attackEntityFrom(DamageSource.causeMobDamage(this), attackDamage);
+        if (random.nextInt(10) == 1)
+        this.worldObj.playSoundAtEntity(this, "ere_geologique:tyrannosaurus_scream", this.getSoundVolume(), this.getDinoAge());
+        if (attacked)
+        {
+            if (knockback > 0)
+            {
+                double vx = -Math.sin(Math.toRadians(rotationYaw)) * knockback * 0.5;
+                double vy = 0.1;
+                double vz = Math.cos(Math.toRadians(rotationYaw)) * knockback * 0.5;
+                victim.addVelocity(vx, vy, vz);
+                motionX *= 0.6;
+                motionZ *= 0.6;
+            }
+
+            setLastAttacker(victim);
+        }
+
+        return attacked;
+    }
+    
     /**
      * Basic mob attack. Default to touch of death in EntityCreature. Overridden by each mob to define their attack.
      */
@@ -303,10 +377,10 @@ public class TRex extends Dinosaure
     {
         super.onKillEntity(var1);
 
-        if (this.getDinoAge() >= 3)
-        {
-            this.worldObj.playSoundAtEntity(this, "ere_geologique:tyrannosaurus_scream", this.getSoundVolume() * 2.0F, 1.0F);
-        }
+     //   if (this.getDinoAge() >= 3)
+     //   {
+            this.worldObj.playSoundAtEntity(this, "ere_geologique:tyrannosaurus_scream", this.getSoundVolume(), this.getDinoAge());
+     //   }
     }
 
     /**
@@ -322,11 +396,7 @@ public class TRex extends Dinosaure
             {
                 if (this.isWeak() && !this.isTamed())
                 {
-                    if (CommandDino.Heal_Dinos)
-                    {
-                        this.heal(200);
-                    }
-
+                    this.heal(200);
                     this.increaseHunger(500);
                     this.setTamed(true);
                     setPathToEntity(null);
@@ -477,11 +547,6 @@ public class TRex extends Dinosaure
 
         return "ere_geologique:textures/entity/TRex.png";
     }
-    
-    public String getDinosaurName()
-    {
-    	return EnumDinoType.TRex.name();
-    }
 
     /**
      * Causes this entity to do an upwards motion (jumping).
@@ -513,7 +578,7 @@ public class TRex extends Dinosaure
      */
     public boolean isWeak()
     {
-        return this.getHealth() < 15 && this.getDinoAge() > 5 && !this.isTamed();
+        return this.getHealth() < 8 && this.getDinoAge() > 5 && !this.isTamed();
         //return false;//this.getHealthData() < 8 && this.getDinoAge()>8 && !this.isTamed();
     }
 
