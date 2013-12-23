@@ -64,9 +64,9 @@ public class Analyzer extends BlockContainer
 		return this.getIcon(side, blockAccess.getBlockMetadata(x, y, z));
 	}
 
-	public Icon getIcon(int par1, int par2)
+	public Icon getIcon(int side, int metadata)
 	{
-		return par1 == 1 ? this.Top : ((par1 == par2 && par1 != 0) || (par2 == 3 && par1 == 0) ? this.Front : this.blockIcon);
+		return side == 1 ? this.Top : side == 3 ? this.Front : this.blockIcon;
 	}
 
 	public void randomDisplayTick(World var1, int var2, int var3, int var4, Random var5)
