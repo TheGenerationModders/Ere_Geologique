@@ -27,30 +27,22 @@ import ere_geologique.common.tileentity.TileEntityFeeder;
 public class Analyzer extends BlockContainer
 {
 	private Random furnaceRand = new Random();
-	private final boolean isActive;
-	private static boolean keepFurnaceInventory = false;
-	private Icon Top;
-	private Icon Front;
+	private Icon top, front, frontActive;
 
-	public Analyzer(int id, boolean var2)
+	public Analyzer(int id)
 	{
 		super(id, Material.iron);
-		this.isActive = var2;
-	}
-
-	public int idDropped(int var1, Random var2, int var3)
-	{
-		return EGBlockList.AnalyzerIdle.blockID;
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister)
+	public void registerIcons(IconRegister iconRegister)
 	{
-		this.blockIcon = par1IconRegister.registerIcon("ere_geologique:Analyser_Sides");
-		this.Top = par1IconRegister.registerIcon("ere_geologique:Analyser_Top");
-		this.Front = this.isActive ? par1IconRegister.registerIcon("ere_geologique:Analyser_Front_Active") : par1IconRegister.registerIcon("ere_geologique:Analyser_Front_Idle");
+		this.blockIcon = iconRegister.registerIcon("ere_geologique:Analyser_Sides");
+		this.top = iconRegister.registerIcon("ere_geologique:Analyser_Top");
+		this.front = iconRegister.registerIcon("ere_geologique:Analyser_Front_Idle");
+		this.frontActive = iconRegister.registerIcon("ere_geologique:Analyser_Front_Active");
 	}
-	
+
 	@SideOnly(Side.CLIENT)
 	public Icon getBlockTexture(IBlockAccess blockAccess, int x, int y, int z, int side)
 	{
@@ -59,55 +51,43 @@ public class Analyzer extends BlockContainer
 		{
 			TileEntityAnalyzer analyzer = (TileEntityAnalyzer)te;
 			int direction = analyzer.getDirection();
-			return side == 1 ? this.Top : (side == 0 ? this.blockIcon : (direction == 2 && side == 2 ? this.Front : (direction == 3 && side == 5 ? this.Front : (direction == 0 && side == 3 ? this.Front : (direction == 1 && side == 4 ? this.Front : this.blockIcon)))));
+			if(analyzer.isActive())
+			{
+				return side == 1 ? this.top : (side == 0 ? this.blockIcon : (direction == 2 && side == 2 ? this.frontActive : (direction == 3 && side == 5 ? this.frontActive : (direction == 0 && side == 3 ? this.frontActive : (direction == 1 && side == 4 ? this.frontActive : this.blockIcon)))));
+			}
+			else
+			{
+				return side == 1 ? this.top : (side == 0 ? this.blockIcon : (direction == 2 && side == 2 ? this.front : (direction == 3 && side == 5 ? this.front : (direction == 0 && side == 3 ? this.front : (direction == 1 && side == 4 ? this.front : this.blockIcon)))));
+			}
 		}
 		return this.getIcon(side, blockAccess.getBlockMetadata(x, y, z));
 	}
 
+	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int side, int metadata)
 	{
-		return side == 1 ? this.Top : side == 3 ? this.Front : this.blockIcon;
+		return side == 1 ? this.top : side == 3 ? this.front : this.blockIcon;
 	}
 
-	public void randomDisplayTick(World var1, int var2, int var3, int var4, Random var5)
-	{}
-
-	public boolean onBlockActivated(World var1, int var2, int var3, int var4, EntityPlayer var5, int var6, float var7, float var8, float var9)
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ)
 	{
-		if(var1.isRemote)
+		if(!world.isRemote)
 		{
+			player.openGui(EreGeologique.Instance, 2, world, x, y, z);
 			return true;
 		}
-		else
+		if(player.isSneaking())
 		{
-			var5.openGui(EreGeologique.Instance, 2, var1, var2, var3, var4);
-			return true;
-		}
-	}
-
-	public static void updateFurnaceBlockState(boolean var0, World world, int var2, int var3, int var4)
-	{
-		int var5 = world.getBlockMetadata(var2, var3, var4);
-		TileEntity var6 = world.getBlockTileEntity(var2, var3, var4);
-
-		if(var6 != null)
-		{
-			keepFurnaceInventory = true;
-
-			if(var0)
+			TileEntity te = world.getBlockTileEntity(x, y, z);
+			if(te != null && te instanceof TileEntityAnalyzer)
 			{
-				world.setBlock(var2, var3, var4, EGBlockList.AnalyserActive.blockID);
+				TileEntityAnalyzer analyzer = (TileEntityAnalyzer)te;
+				System.out.println(analyzer.isActive());
+				System.out.println(analyzer.getDirection());
+				return true;
 			}
-			else
-			{
-				world.setBlock(var2, var3, var4, EGBlockList.AnalyzerIdle.blockID);
-			}
-
-			keepFurnaceInventory = false;
-			world.setBlockMetadataWithNotify(var2, var3, var4, var5, 2);
-			var6.validate();
-			world.setBlockTileEntity(var2, var3, var4, var6);
 		}
+		return false;
 	}
 
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase living, ItemStack stack)
@@ -120,59 +100,56 @@ public class Analyzer extends BlockContainer
 			world.markBlockForUpdate(x, y, z);
 		}
 	}
-
-	public void breakBlock(World world, int var2, int var3, int var4, int var5, int var6)
+	
+	public TileEntity createNewTileEntity(World world)
 	{
-		if(!keepFurnaceInventory)
+		return new TileEntityAnalyzer();
+	}
+
+	public void breakBlock(World world, int x, int y, int z, int var5, int var6)
+	{
+		TileEntityAnalyzer analyzer = (TileEntityAnalyzer)world.getBlockTileEntity(x, y, z);
+
+		if(analyzer != null)
 		{
-			TileEntityAnalyzer var7 = (TileEntityAnalyzer)world.getBlockTileEntity(var2, var3, var4);
-
-			if(var7 != null)
+			for(int slotId = 0; slotId < analyzer.getSizeInventory(); ++slotId)
 			{
-				for(int var8 = 0; var8 < var7.getSizeInventory(); ++var8)
+				ItemStack stack = analyzer.getStackInSlot(slotId);
+
+				if(stack != null)
 				{
-					ItemStack var9 = var7.getStackInSlot(var8);
+					float var10 = this.furnaceRand.nextFloat() * 0.8F + 0.1F;
+					float var11 = this.furnaceRand.nextFloat() * 0.8F + 0.1F;
+					float var12 = this.furnaceRand.nextFloat() * 0.8F + 0.1F;
 
-					if(var9 != null)
+					while(stack.stackSize > 0)
 					{
-						float var10 = this.furnaceRand.nextFloat() * 0.8F + 0.1F;
-						float var11 = this.furnaceRand.nextFloat() * 0.8F + 0.1F;
-						float var12 = this.furnaceRand.nextFloat() * 0.8F + 0.1F;
+						int var13 = this.furnaceRand.nextInt(21) + 10;
 
-						while(var9.stackSize > 0)
+						if(var13 > stack.stackSize)
 						{
-							int var13 = this.furnaceRand.nextInt(21) + 10;
-
-							if(var13 > var9.stackSize)
-							{
-								var13 = var9.stackSize;
-							}
-
-							var9.stackSize -= var13;
-							EntityItem var14 = new EntityItem(world, (double)((float)var2 + var10), (double)((float)var3 + var11), (double)((float)var4 + var12), new ItemStack(var9.itemID, var13, var9.getItemDamage()));
-
-							if(var9.hasTagCompound())
-							{
-								var14.getEntityItem().setTagCompound((NBTTagCompound)var9.getTagCompound().copy());
-							}
-
-							float var15 = 0.05F;
-							var14.motionX = (double)((float)this.furnaceRand.nextGaussian() * var15);
-							var14.motionY = (double)((float)this.furnaceRand.nextGaussian() * var15 + 0.2F);
-							var14.motionZ = (double)((float)this.furnaceRand.nextGaussian() * var15);
-							world.spawnEntityInWorld(var14);
+							var13 = stack.stackSize;
 						}
+
+						stack.stackSize -= var13;
+						EntityItem entityItem = new EntityItem(world, (double)((float)x + var10), (double)((float)y + var11), (double)((float)z + var12), new ItemStack(stack.itemID, var13, stack.getItemDamage()));
+
+						if(stack.hasTagCompound())
+						{
+							entityItem.getEntityItem().setTagCompound((NBTTagCompound)stack.getTagCompound().copy());
+						}
+
+						float var15 = 0.05F;
+						entityItem.motionX = (double)((float)this.furnaceRand.nextGaussian() * var15);
+						entityItem.motionY = (double)((float)this.furnaceRand.nextGaussian() * var15 + 0.2F);
+						entityItem.motionZ = (double)((float)this.furnaceRand.nextGaussian() * var15);
+						world.spawnEntityInWorld(entityItem);
 					}
 				}
 			}
 		}
 
-		super.breakBlock(world, var2, var3, var4, var5, var6);
-	}
-
-	public TileEntity createNewTileEntity(World world)
-	{
-		return new TileEntityAnalyzer();
+		super.breakBlock(world, x, y, z, var5, var6);
 	}
 
 	public boolean hasComparatorInputOverride()
@@ -180,14 +157,8 @@ public class Analyzer extends BlockContainer
 		return true;
 	}
 
-	public int getComparatorInputOverride(World world, int par2, int par3, int par4, int par5)
+	public int getComparatorInputOverride(World world, int x, int y, int z, int par5)
 	{
-		return Container.calcRedstoneFromInventory((IInventory)world.getBlockTileEntity(par2, par3, par4));
-	}
-
-	@SideOnly(Side.CLIENT)
-	public int idPicked(World world, int par2, int par3, int par4)
-	{
-		return EGBlockList.AnalyzerIdle.blockID;
+		return Container.calcRedstoneFromInventory((IInventory)world.getBlockTileEntity(x, y, z));
 	}
 }

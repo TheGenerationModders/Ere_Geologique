@@ -210,10 +210,4 @@ public class Feeder extends BlockContainer
 	{
 		return Container.calcRedstoneFromInventory((IInventory)par1World.getBlockTileEntity(par2, par3, par4));
 	}
-
-	@SideOnly(Side.CLIENT)
-	public int idPicked(World par1World, int par2, int par3, int par4)
-	{
-		return EGBlockList.Feeder.blockID;
-	}
 }

@@ -93,17 +93,16 @@ public class EreGeologique
 			EGProperties.StairGingkosID = ConfigFile.getBlock("Stair Gingkos", 2510).getInt();
 			EGProperties.GlaciaPortalID = ConfigFile.getBlock("GlaciaPortal", 2511).getInt();
 			EGProperties.FeederID = ConfigFile.getBlock("Feeder", 2512).getInt();
-			EGProperties.AnalyzerIdleID = ConfigFile.getBlock("AnalyzerIdle", 2513).getInt();
-			EGProperties.AnalyzerActiveID = ConfigFile.getBlock("AnalyzerActive", 2514).getInt();
-			EGProperties.CultivatorIdleID = ConfigFile.getBlock("CultivatorIdle", 2515).getInt();
-			EGProperties.CultivatorActiveID = ConfigFile.getBlock("CultivatorActive", 2516).getInt();
-			EGProperties.FossilID = ConfigFile.getBlock("Fossil", 2517).getInt();
-			EGProperties.ReinforcedStoneID = ConfigFile.getBlock("ReinforcedStone", 2518).getInt();
-			EGProperties.ReinforcedGlassID = ConfigFile.getBlock("ReinforcedGlass", 2519).getInt();
-			EGProperties.SteelBlockID = ConfigFile.getBlock("SteelBlock", 2520).getInt();
-			EGProperties.FossilSkullID = ConfigFile.getBlock("FossilSkull", 2521).getInt();
-			EGProperties.BlueFireID = ConfigFile.getBlock("BlueFire", 2522).getInt();
-			EGProperties.DrumID = ConfigFile.getBlock("Drum", 2523).getInt();
+			EGProperties.AnalyzerID = ConfigFile.getBlock("AnalyzerIdle", 2513).getInt();
+			EGProperties.CultivatorIdleID = ConfigFile.getBlock("CultivatorIdle", 2514).getInt();
+			EGProperties.CultivatorActiveID = ConfigFile.getBlock("CultivatorActive", 2515).getInt();
+			EGProperties.FossilID = ConfigFile.getBlock("Fossil", 2516).getInt();
+			EGProperties.ReinforcedStoneID = ConfigFile.getBlock("ReinforcedStone", 2517).getInt();
+			EGProperties.ReinforcedGlassID = ConfigFile.getBlock("ReinforcedGlass", 2518).getInt();
+			EGProperties.SteelBlockID = ConfigFile.getBlock("SteelBlock", 2519).getInt();
+			EGProperties.FossilSkullID = ConfigFile.getBlock("FossilSkull", 2520).getInt();
+			EGProperties.BlueFireID = ConfigFile.getBlock("BlueFire", 2521).getInt();
+			EGProperties.DrumID = ConfigFile.getBlock("Drum", 2522).getInt();
 			
 			//Items
 			EGProperties.IvoryIngotID = ConfigFile.getItem("Ivory Ingot", 4000).getInt();

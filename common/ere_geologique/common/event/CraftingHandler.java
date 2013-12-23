@@ -24,7 +24,7 @@ public class CraftingHandler implements ICraftingHandler
 		if(item.itemID == EGBlockList.Feeder.blockID)
 		{
 			player.addStat(EGAchievement.Feeder, 1);
-		}else if(item.itemID == EGBlockList.AnalyzerIdle.blockID)
+		}else if(item.itemID == EGBlockList.Analyzer.blockID)
 		{
 			player.addStat(EGAchievement.Analyzer, 1);
 		}else if(item.itemID == EGBlockList.CultivatorIdle.blockID)

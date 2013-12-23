@@ -26,8 +26,7 @@ public class EGBlockList
     public static Block StairGinkgos;
 	public static GlaciaPortal GlaciaPortal;
 	public static Block Feeder;
-	public static Block AnalyzerIdle;
-	public static Block AnalyserActive;
+	public static Block Analyzer;
 	public static Block CultivatorIdle;
 	public static Block CultivatorActive;
 	public static Block Fossil;
@@ -55,8 +54,7 @@ public class EGBlockList
 	       StairGinkgos = new Stair(EGProperties.StairGingkosID, Plank, 5).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("StairGinkgos");
 	       GlaciaPortal = (GlaciaPortal) new GlaciaPortal(EGProperties.GlaciaPortalID).setHardness(-1.0F).setStepSound(Block.soundGlassFootstep).setLightValue(0.75F).setUnlocalizedName("GlaciaPortal").setTextureName("ere_geologique:GlaciaPortal");
 	       Feeder = new Feeder(EGProperties.FeederID).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName(LocalizationStrings.FEEDER_NAME).setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
-	       AnalyzerIdle = new Analyzer(EGProperties.AnalyzerIdleID, false).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName(LocalizationStrings.ANALYZER_IDLE_NAME).setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
-	       AnalyserActive = new Analyzer(EGProperties.AnalyzerActiveID, true).setLightValue(0.9375F).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName(LocalizationStrings.ANALYZER_ACTIVE_NAME);
+	       Analyzer = new Analyzer(EGProperties.AnalyzerID).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName(LocalizationStrings.ANALYZER_NAME).setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
 	       CultivatorIdle = new Cultivator(EGProperties.CultivatorIdleID, false).setLightValue(0.9375F).setHardness(0.3F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName(LocalizationStrings.CULTIVATE_IDLE_NAME).setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
 	       CultivatorActive = new Cultivator(EGProperties.CultivatorActiveID, true).setLightValue(0.9375F).setHardness(0.3F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName(LocalizationStrings.CULTIVATE_ACTIVE_NAME);
 	       Fossil = new Fossil(EGProperties.FossilID).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("Fossil").setTextureName("ere_geologique:Fossil");
@@ -80,8 +78,7 @@ public class EGBlockList
 	       GameRegistry.registerBlock(StairGinkgos, "StairGingkos");
 	       GameRegistry.registerBlock(GlaciaPortal, "GlaciaPortal");
 	       GameRegistry.registerBlock(Feeder, "Feeder");
-	       GameRegistry.registerBlock(AnalyzerIdle, "AnalyzerIdle");
-	       GameRegistry.registerBlock(AnalyserActive, "AnalyserActive");
+	       GameRegistry.registerBlock(Analyzer, "Analyzer");
 	       GameRegistry.registerBlock(CultivatorIdle, "CultivatorIdle");
 	       GameRegistry.registerBlock(CultivatorActive, "CultivatorActive");
 	       GameRegistry.registerBlock(Fossil, "Fossil");

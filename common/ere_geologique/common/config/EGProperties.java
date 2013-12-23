@@ -19,8 +19,7 @@ public class EGProperties
 	public static int StairGingkosID;
 	public static int GlaciaPortalID;
 	public static int FeederID;
-	public static int AnalyzerIdleID;
-	public static int AnalyzerActiveID;
+	public static int AnalyzerID;
 	public static int CultivatorIdleID;
 	public static int CultivatorActiveID;
 	public static int FossilID;

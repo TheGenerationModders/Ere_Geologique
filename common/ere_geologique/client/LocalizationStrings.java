@@ -2,8 +2,7 @@ package ere_geologique.client;
 
 public class LocalizationStrings
 {
-	public static final String ANALYZER_IDLE_NAME = "analyzer";
-    public static final String ANALYZER_ACTIVE_NAME = "analyzerActive";
+	public static final String ANALYZER_NAME = "analyzer";
     public static final String CULTIVATE_IDLE_NAME = "cultureVat";
     public static final String CULTIVATE_ACTIVE_NAME = "cultureVatActive";
     public static final String FEEDER_NAME = "feeder";
