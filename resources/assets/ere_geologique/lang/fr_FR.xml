@@ -17,8 +17,8 @@
     <entry key="achievement.Fossil.desc">Fossile découvert</entry>
     <entry key="achievement.Feeder">Mangeoire</entry>
     <entry key="achievement.Feeder.desc">Nourriseur automatique</entry>
-    <entry key="achievement.Analyzer">Analyzeur</entry>
-    <entry key="achievement.Analyzer.desc">Analyzeur débloqué</entry>
+    <entry key="achievement.Analyzer">Analyseur</entry>
+    <entry key="achievement.Analyzer.desc">Analyseur débloqué</entry>
     <entry key="achievement.Cultivator">Cultivateur</entry>
     <entry key="achievement.Cultivator.desc">Cultivateur débloqué</entry>
 <!--Commands-->
@@ -68,12 +68,12 @@
     <entry key="tile.StairAraucarias.name">Escalier de Araucarias</entry>
     <entry key="tile.StairMetasequoias.name">Escalier de Métaséquoias</entry>
     <entry key="tile.StairGinkgos.name">Escalier de Gingkos</entry>
-    <entry key="tile.analyzer.name">Analyzeur</entry>
-	<entry key="tile.cultureVat.name">Cultivateur</entry>
+    <entry key="tile.analyzer.name">Analyseur</entry>
+    <entry key="tile.cultureVat.name">Cultivateur</entry>
     <entry key="container.feeder">Mangeoire</entry>
-	<entry key="tile.feeder.name">Mangeoire</entry>
+    <entry key="tile.feeder.name">Mangeoire</entry>
     <entry key="tile.Fossil.name">Fossile</entry>
-	<entry key="tile.ReinforcedStone.name">Roche renforcé</entry>
+    <entry key="tile.ReinforcedStone.name">Roche renforcé</entry>
     <entry key="tile.ReinforcedGlass.name">Verre renforcé</entry>
     <entry key="tile.SteelBlock.name">Bloc d'acier</entry>
     <entry key="tile.FossilSkull.name">Tête Fossilisée</entry>
