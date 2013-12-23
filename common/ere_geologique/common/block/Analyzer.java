@@ -6,10 +6,11 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
@@ -20,7 +21,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.common.EreGeologique;
 import ere_geologique.common.tileentity.TileEntityAnalyzer;
-import ere_geologique.common.tileentity.TileEntityFeeder;
 
 public class Analyzer extends BlockContainer
 {
@@ -134,7 +134,7 @@ public class Analyzer extends BlockContainer
     {
     	int direction = MathHelper.floor_double((double)(living.rotationYaw * 4.0F / 360.0F) + 2.5D) & 3;
 		TileEntity te = world.getBlockTileEntity(x, y, z);
-		if(te != null && te instanceof TileEntityFeeder)
+		if(te != null && te instanceof TileEntityAnalyzer)
 		{
 			((TileEntityAnalyzer)te).setDirection(direction);
 			world.markBlockForUpdate(x, y, z);
@@ -193,5 +193,21 @@ public class Analyzer extends BlockContainer
     public TileEntity createNewTileEntity(World var1)
     {
         return new TileEntityAnalyzer();
+    }
+    
+    public boolean hasComparatorInputOverride()
+    {
+    	return true;
+    }
+
+    public int getComparatorInputOverride(World par1World, int par2, int par3, int par4, int par5)
+    {
+    	return Container.calcRedstoneFromInventory((IInventory)par1World.getBlockTileEntity(par2, par3, par4));
+    }
+
+    @SideOnly(Side.CLIENT)
+    public int idPicked(World par1World, int par2, int par3, int par4)
+    {
+    	return EGBlockList.AnalyzerIdle.blockID;
     }
 }

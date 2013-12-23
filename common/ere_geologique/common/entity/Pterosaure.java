@@ -829,9 +829,4 @@ public class Pterosaure extends Dinosaure
     {
         return this.spawnBabyAnimal(var1);
     }
-
-    @Override
-    public Entity getOwner() {
-        return null;
-    }
 }

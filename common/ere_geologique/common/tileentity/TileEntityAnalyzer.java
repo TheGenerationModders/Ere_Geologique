@@ -25,9 +25,9 @@ public class TileEntityAnalyzer extends TileEntity implements IInventory, ISided
     private int SpaceIndex = -1;
     private int direction;
     
-    private static final int[] field_102010_d = new int[] {0};
-    private static final int[] field_102011_e = new int[] {2, 1};
-    private static final int[] field_102009_f = new int[] {1};
+    private static final int[] slots_top = new int[] {};
+    private static final int[] slots_bottom = new int[] {10, 11, 12};
+    private static final int[] slots_sides = new int[] {0, 1, 2, 3, 4, 5, 6, 7, 8};
 
     public TileEntityAnalyzer ()
     {
@@ -362,36 +362,34 @@ public class TileEntityAnalyzer extends TileEntity implements IInventory, ISided
         return par1 > 8 ? false : (par1 < 8 ? isItemFuel(par2ItemStack) : true);
     }
 
-    public int[] getAccessibleSlotsFromSide(int par1)
-    {
-        return par1 == 0 ? field_102011_e : (par1 == 1 ? field_102010_d : field_102009_f);
-    }
-
-    public boolean canInsertItem(int par1, ItemStack par2ItemStack, int par3)
-    {
-        return this.isStackValidForSlot(par1, par2ItemStack);
-    }
-
-    public boolean canExtractItem(int par1, ItemStack par2ItemStack, int par3)
-    {
-        return par3 != 0 || par1 != 1;
-    }
-
     public ItemStack getStackInSlotOnClosing(int var1)
     {
         return null;
     }
-    
-	@Override
-	public boolean isInvNameLocalized()
-	{
-		return false;
-	}
-	
-	@Override
-	public boolean isItemValidForSlot(int i, ItemStack itemstack)
-	{
-        return i == 2 ? false : (i == 1 ? isItemFuel(itemstack) : true);
-	}
-	
+
+    @Override
+    public boolean isInvNameLocalized()
+    {
+        return false;
+    }
+
+    public boolean isItemValidForSlot(int par1, ItemStack par2ItemStack)
+    {
+        return par1 == 2 ? false : (par1 == 1 ? isItemFuel(par2ItemStack) : true);
+    }
+
+    public int[] getAccessibleSlotsFromSide(int par1)
+    {
+    	return par1 == 0 ? slots_bottom : (par1 == 1 ? slots_top : slots_sides);
+    }
+
+    public boolean canInsertItem(int par1, ItemStack par2ItemStack, int par3)
+    {
+        return this.isItemValidForSlot(par1, par2ItemStack);
+    }
+
+    public boolean canExtractItem(int par1, ItemStack par2ItemStack, int par3)
+    {
+    	return par3 != 0 || par1 != 1 || par2ItemStack.itemID == Item.bucketEmpty.itemID;
+    }
 }

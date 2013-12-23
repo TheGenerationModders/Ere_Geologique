@@ -208,9 +208,4 @@ public class Mosasaurus extends SwimmingDino implements IMob
     {
         return 1;
     }
-
-    @Override
-    public Entity getOwner() {
-        return null;
-    }
 }

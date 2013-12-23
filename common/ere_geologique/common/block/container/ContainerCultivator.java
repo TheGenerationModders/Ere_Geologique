@@ -100,68 +100,75 @@ public class ContainerCultivator extends Container
         return this.furnace.isUseableByPlayer(var1);
     }
 
-    public ItemStack transferStackInSlot(EntityPlayer var1, int var2)
+    public ItemStack transferStackInSlot(EntityPlayer player, int par2)
     {
-        ItemStack var3 = null;
-        Slot var4 = (Slot)this.inventorySlots.get(var2);
+        ItemStack itemstack = null;
+        Slot slot = (Slot)this.inventorySlots.get(par2);
 
-        if (var4 != null && var4.getHasStack())
+        if (slot != null && slot.getHasStack())
         {
-            ItemStack var5 = var4.getStack();
-            var3 = var5.copy();
+            ItemStack itemstack1 = slot.getStack();
+            itemstack = itemstack1.copy();
 
-            if (var2 == 2)
+            if (par2 == 2)
             {
-                if (!this.mergeItemStack(var5, 3, 39, true))
+                if (!this.mergeItemStack(itemstack1, 3, 39, true))
                 {
                     return null;
                 }
 
-                var4.onSlotChange(var5, var3);
+                slot.onSlotChange(itemstack1, itemstack);
             }
-            else if (var2 != 1 && var2 != 0)
+            else if (par2 != 1 && par2 != 0)
             {
-                if (FurnaceRecipes.smelting().getSmeltingResult(var5) != null)
+                if (FurnaceRecipes.smelting().getSmeltingResult(itemstack1) != null)
                 {
-                    if (!this.mergeItemStack(var5, 0, 1, false))
+                    if (!this.mergeItemStack(itemstack1, 0, 1, false))
                     {
                         return null;
                     }
                 }
-                else if (var2 >= 3 && var2 < 30)
+                else if (TileEntityCultivator.isItemFuel(itemstack1))
                 {
-                    if (!this.mergeItemStack(var5, 30, 39, false))
+                    if (!this.mergeItemStack(itemstack1, 1, 2, false))
                     {
                         return null;
                     }
                 }
-                else if (var2 >= 30 && var2 < 39 && !this.mergeItemStack(var5, 3, 30, false))
+                else if (par2 >= 3 && par2 < 30)
+                {
+                    if (!this.mergeItemStack(itemstack1, 30, 39, false))
+                	{
+                		return null;
+                	}
+             	}
+                else if (par2 >= 30 && par2 < 39 && !this.mergeItemStack(itemstack1, 3, 30, false))
                 {
                     return null;
                 }
             }
-            else if (!this.mergeItemStack(var5, 3, 39, false))
+            else if (!this.mergeItemStack(itemstack1, 3, 39, false))
             {
                 return null;
             }
 
-            if (var5.stackSize == 0)
+            if (itemstack1.stackSize == 0)
             {
-                var4.putStack((ItemStack)null);
+                slot.putStack((ItemStack)null);
             }
             else
             {
-                var4.onSlotChanged();
+                slot.onSlotChanged();
             }
 
-            if (var5.stackSize == var3.stackSize)
+            if (itemstack1.stackSize == itemstack.stackSize)
             {
                 return null;
             }
 
-            var4.onPickupFromSlot(var1, var5);
+            slot.onPickupFromSlot(player, itemstack1);
         }
 
-        return var3;
+        return itemstack;
     }
 }

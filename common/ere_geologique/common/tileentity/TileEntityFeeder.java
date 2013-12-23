@@ -25,8 +25,8 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 	public int VegMax = 10000;
 	private int direction;
 	public boolean[] ContainType = new boolean[EnumDinoType.values().length];
-	private static final int[] slot_right = new int[] {1};
-	private static final int[] slot_left = new int[] {0};
+	private static final int[] slot_herb = new int[] {1};
+	private static final int[] slot_carn = new int[] {0};
 
 	public TileEntityFeeder()
 	{
@@ -291,16 +291,6 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 		return a;// amount fed to the dino
 	}
 
-	public int getSizeInventorySide(ForgeDirection var1)
-	{
-		return 1;
-	}
-
-	public int getStartInventorySide(ForgeDirection var1)
-	{
-		return var1 == ForgeDirection.DOWN ? 1 : (var1 == ForgeDirection.UP ? 0 : 2);
-	}
-
 	public ItemStack getStackInSlotOnClosing(int var1)
 	{
 		return null;
@@ -316,39 +306,34 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 		return this.VegCurrent;
 	}
 
-	@Override
 	public boolean isInvNameLocalized()
 	{
 		return false;
 	}
 
-	@Override
 	public int[] getAccessibleSlotsFromSide(int var1)
 	{
 		if(var1 == 4)
 		{
-			return slot_right;
+			return slot_herb;
 		}
 		else if(var1 == 5)
 		{
-			return slot_left;
+			return slot_carn;
 		}
 		return null;
 	}
 
-	@Override
 	public boolean canInsertItem(int i, ItemStack itemstack, int j)
 	{
 		return this.isItemValidForSlot(i, itemstack);
 	}
 
-	@Override
 	public boolean canExtractItem(int i, ItemStack itemstack, int j)
 	{
 		return false;
 	}
 
-	@Override
 	public boolean isItemValidForSlot(int i, ItemStack itemstack)
 	{
 		return true;

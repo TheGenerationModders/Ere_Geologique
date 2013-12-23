@@ -24,9 +24,9 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
     public int currentItemBurnTime = 0;
     public int furnaceCookTime = 0;
     
-    private static final int[] slot_bottom = new int[]{0};
-    private static final int[] slot_right = new int[]{2, 1};
-    private static final int[] slot_top = new int[]{1};
+    private static final int[] slots_top = new int[]{0};
+    private static final int[] slots_bottom = new int[]{2, 1};
+    private static final int[] slots_sides = new int[]{1};
 
     public int getSizeInventory()
     {
@@ -277,7 +277,7 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
         }
     }
 
-    private int getItemBurnTime(ItemStack var1)
+    private static int getItemBurnTime(ItemStack var1)
     {
         if (var1 != null)
         {
@@ -316,43 +316,39 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
 
     public void closeChest() {}
 
-    public int getSizeInventorySide(ForgeDirection var1)
-    {
-        return 1;
-    }
-
-    public int getStartInventorySide(ForgeDirection var1)
-    {
-        return var1 == ForgeDirection.DOWN ? 1 : (var1 == ForgeDirection.UP ? 0 : 2);
-    }
-
     public ItemStack getStackInSlotOnClosing(int var1)
     {
         return null;
     }
 
 	@Override
-	public boolean isInvNameLocalized() {
+	public boolean isInvNameLocalized()
+	{
 		return false;
 	}
 
-	@Override
-    public boolean isItemValidForSlot(int i, ItemStack itemstack) {
-		return true;
+	public static boolean isItemFuel(ItemStack par0ItemStack)
+	{
+		return getItemBurnTime(par0ItemStack) > 0;
+	}
+	
+    public boolean isItemValidForSlot(int i, ItemStack itemstack)
+    {
+		return i == 2 ? false : (i == 1 ? isItemFuel(itemstack) : true);
 	}
 
-	@Override
-	public int[] getAccessibleSlotsFromSide(int var1) {
-		return var1 == 0 ? slot_right : (var1 == 1 ? slot_bottom : slot_top);
+	public int[] getAccessibleSlotsFromSide(int var1)
+	{
+		return var1 == 0 ? slots_bottom : (var1 == 1 ? slots_top : slots_sides);
 	}
 
-	@Override
-	public boolean canInsertItem(int i, ItemStack itemstack, int j) {
+	public boolean canInsertItem(int i, ItemStack itemstack, int j)
+	{
 		return this.isItemValidForSlot(i, itemstack);
 	}
 
-	@Override
-	public boolean canExtractItem(int i, ItemStack itemstack, int j) {
-		return j != 0 || i != 1;
+	public boolean canExtractItem(int i, ItemStack itemstack, int j)
+	{
+		return j != 0 || i != 1 || itemstack.itemID == Item.bucketEmpty.itemID;
 	}
 }

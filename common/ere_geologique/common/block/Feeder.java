@@ -9,6 +9,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Icon;
@@ -199,20 +200,20 @@ public class Feeder extends BlockContainer
 		}
 		super.breakBlock(world, x, y, z, var5, var6);
 	}
-	
-/*	@Override
+
 	public boolean hasComparatorInputOverride()
-    {
-        return true;
-    }
-	
+	{
+		return true;
+	}
+
 	public int getComparatorInputOverride(World par1World, int par2, int par3, int par4, int par5)
-    {
-        return Container.calcRedstoneFromInventory(getFeederTile(par1World, par2, par3, par4));
-    }
-	
-	public static TileEntityFeeder getFeederTile(IBlockAccess par0IBlockAccess, int par1, int par2, int par3)
-    {
-        return (TileEntityFeeder)par0IBlockAccess.getBlockTileEntity(par1, par2, par3);
-    }*/
+	{
+		return Container.calcRedstoneFromInventory((IInventory)par1World.getBlockTileEntity(par2, par3, par4));
+	}
+
+	@SideOnly(Side.CLIENT)
+	public int idPicked(World par1World, int par2, int par3, int par4)
+	{
+		return EGBlockList.Feeder.blockID;
+	}
 }

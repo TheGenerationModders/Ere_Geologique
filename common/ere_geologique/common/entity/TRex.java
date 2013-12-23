@@ -695,9 +695,4 @@ public class TRex extends Dinosaure
     {
         return null;
     }
-
-    @Override
-    public Entity getOwner() {
-        return null;
-    }
 }
