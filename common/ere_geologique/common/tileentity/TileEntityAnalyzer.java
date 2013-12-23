@@ -171,7 +171,7 @@ public class TileEntityAnalyzer extends TileEntity implements IInventory, ISided
 		
 		nbtTagCompound.setInteger("BurnTime", (short)this.analyzerBurnTime);
 		nbtTagCompound.setInteger("CookTime", (short)this.analyzerCookTime);
-		nbtTagCompound.setInteger("Direction", this.direction);
+		nbtTagCompound.setInteger("direction", this.direction);
 		nbtTagCompound.setBoolean("active", this.active);
 	}
 
