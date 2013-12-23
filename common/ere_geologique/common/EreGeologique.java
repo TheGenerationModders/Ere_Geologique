@@ -38,6 +38,7 @@ import ere_geologique.common.event.CraftingHandler;
 import ere_geologique.common.event.FougereBoneMeal;
 import ere_geologique.common.event.PickupHandler;
 import ere_geologique.common.event.PlayerTracker;
+import ere_geologique.common.food.FoodList;
 import ere_geologique.common.gui.GuiHandler;
 import ere_geologique.common.item.EGItemList;
 import ere_geologique.common.recipe.EGRecipe;
@@ -172,6 +173,7 @@ public class EreGeologique
 	public void load(FMLInitializationEvent event)
 	{
 		EGEntityList.loadEntity();//Entity
+		FoodList.load();
 
 		//IC2 integration
 		if (Loader.isModLoaded("IC2"))

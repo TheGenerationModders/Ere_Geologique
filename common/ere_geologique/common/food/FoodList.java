@@ -6,6 +6,7 @@ import cpw.mods.fml.common.Loader;
 import ere_geologique.api.food.DinoFood;
 import ere_geologique.api.food.DinoFood.DinoFoodEntry;
 import ere_geologique.api.food.EnumFoodType;
+import ere_geologique.common.EreGeologique;
 import ere_geologique.common.block.EGBlockList;
 import ere_geologique.common.entity.Enums.EnumDinoType;
 import ere_geologique.common.item.EGItemList;
@@ -97,7 +98,7 @@ public class FoodList
 	public static DinoFoodEntry Compsognathus_mob = new DinoFoodEntry(Compsognathus.class,20,3, EnumFoodType.CARNIVOROUS);
 	public static DinoFoodEntry Ankylosaurus_mob = new DinoFoodEntry(Ankylosaurus.class,50,3, EnumFoodType.CARNIVOROUS);*/
 	
-	public FoodList()
+	public static void load()
 	{
 		DinoFood.globalDinoFood.add(CakeBlock);
 		DinoFood.globalDinoFood.add(CarrotBlock);
@@ -154,10 +155,22 @@ public class FoodList
 		DinoFood.globalDinoFood.add(Ankylosaurus);
 		DinoFood.globalDinoFood.add(Pachycephalosaurus);
 		DinoFood.globalDinoFood.add(DinoMeatCooked);
+
 		if(Loader.isModLoaded("Nanotech_mod"))
 		{
-			nanoLeaves = new DinoFoodEntry(EGBlockList.nanoLeavesBlock, 0, 50, 3, EnumFoodType.HERBIVOROUS);
-			nanoSaplings = new DinoFoodEntry(EGBlockList.nanoSaplingsBlock, 0, 15, 2, EnumFoodType.HERBIVOROUS);
+		    Block nanoLeavesBlock, nanoSaplingsBlock;
+    		try
+    		{
+    			nanoLeavesBlock = (Block)Class.forName("fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock").getField("nanoLeaves").get(null);
+    			nanoSaplingsBlock = (Block)Class.forName("fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock").getField("nanoSaplings").get(null);
+    			nanoLeaves = new DinoFoodEntry(nanoLeavesBlock, 0, 50, 3, EnumFoodType.HERBIVOROUS);
+    			nanoSaplings = new DinoFoodEntry(nanoSaplingsBlock, 0, 15, 2, EnumFoodType.HERBIVOROUS);
+    		}
+    		catch(Exception ex)
+    		{
+    			EreGeologique.EGLog.severe("Erreur lors de l'initialisation du Nanotech_mod");
+    		}
+    		EreGeologique.EGLog.info("Initialisation de Nanotech_mod terminé");
 		}
 	}
 }

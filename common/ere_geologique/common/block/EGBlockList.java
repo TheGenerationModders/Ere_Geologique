@@ -38,8 +38,6 @@ public class EGBlockList
 	public static BlueFire BlueFire;
 	public static Block Drum;
 	
-    public static Block nanoLeavesBlock, nanoSaplingsBlock;
-	
 	public static void loadBlock()
 	{
 		try
@@ -102,19 +100,5 @@ public class EGBlockList
 			EreGeologique.EGLog.severe("Erreur lors de l'initialisation des blocs!");
 		}
 		EreGeologique.EGLog.info("Initialisation des blocs terminés!");
-		
-    	if(Loader.isModLoaded("Nanotech_mod"))
-    	{
-    		try
-    		{
-    			nanoLeavesBlock = (Block)Class.forName("fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.nanoLeaves").getField("nanoLeaves").get(null);
-    			nanoSaplingsBlock = (Block)Class.forName("fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.nanoSaplings").getField("nanoSaplings").get(null);
-    		}
-    		catch(Exception ex)
-    		{
-    			EreGeologique.EGLog.severe("Erreur lors de l'initialisation du Nanotech_mod");
-    		}
-    		EreGeologique.EGLog.info("Initialisation du Nanotech_mod terminé");
-    	}
 	}
 }
