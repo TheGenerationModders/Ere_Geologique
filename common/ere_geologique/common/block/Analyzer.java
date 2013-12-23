@@ -2,7 +2,6 @@ package ere_geologique.common.block;
 
 import java.util.Random;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -22,7 +21,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.common.EreGeologique;
 import ere_geologique.common.tileentity.TileEntityAnalyzer;
-import ere_geologique.common.tileentity.TileEntityFeeder;
 
 public class Analyzer extends BlockContainer
 {
@@ -69,44 +67,45 @@ public class Analyzer extends BlockContainer
 		return side == 1 ? this.Top : side == 3 ? this.Front : this.blockIcon;
 	}
 
-	public void randomDisplayTick(World var1, int var2, int var3, int var4, Random var5)
+	public void randomDisplayTick(World world, int x, int y, int z, Random rand)
 	{}
 
-	public boolean onBlockActivated(World var1, int var2, int var3, int var4, EntityPlayer var5, int var6, float var7, float var8, float var9)
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int var6, float var7, float var8, float var9)
 	{
-		if(var1.isRemote)
+		if(world.isRemote)
 		{
 			return true;
 		}
 		else
 		{
-			var5.openGui(EreGeologique.Instance, 2, var1, var2, var3, var4);
+			player.openGui(EreGeologique.Instance, 2, world, x, y, z);
 			return true;
 		}
 	}
 
-	public static void updateFurnaceBlockState(boolean var0, World world, int var2, int var3, int var4)
+	public static void updateFurnaceBlockState(boolean Boolean, World world, int x, int y, int z)
 	{
-		int var5 = world.getBlockMetadata(var2, var3, var4);
-		TileEntity var6 = world.getBlockTileEntity(var2, var3, var4);
+		int metadata = world.getBlockMetadata(x, y, z);
+		TileEntity tileentity = world.getBlockTileEntity(x, y, z);
 
-		if(var6 != null)
+		keepFurnaceInventory = true;
+
+		if(Boolean)
 		{
-			keepFurnaceInventory = true;
+			world.setBlock(x, y, z, EGBlockList.AnalyserActive.blockID, metadata, 2);
+		}
+		else
+		{
+			world.setBlock(x, y, z, EGBlockList.AnalyzerIdle.blockID, metadata, 2);
+		}
 
-			if(var0)
-			{
-				world.setBlock(var2, var3, var4, EGBlockList.AnalyserActive.blockID);
-			}
-			else
-			{
-				world.setBlock(var2, var3, var4, EGBlockList.AnalyzerIdle.blockID);
-			}
-
-			keepFurnaceInventory = false;
-			world.setBlockMetadataWithNotify(var2, var3, var4, var5, 2);
-			var6.validate();
-			world.setBlockTileEntity(var2, var3, var4, var6);
+		keepFurnaceInventory = false;
+		world.setBlockMetadataWithNotify(x, y, z, metadata, 2);
+		
+		if(tileentity != null)
+		{
+			tileentity.validate();
+			world.setBlockTileEntity(x, y, z, tileentity);
 		}
 	}
 
