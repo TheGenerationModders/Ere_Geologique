@@ -2,7 +2,6 @@ package ere_geologique.common.block;
 
 import java.util.Random;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IconRegister;
@@ -22,7 +21,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.common.EreGeologique;
 import ere_geologique.common.tileentity.TileEntityAnalyzer;
-import ere_geologique.common.tileentity.TileEntityFeeder;
 
 public class Analyzer extends BlockContainer
 {
@@ -75,17 +73,6 @@ public class Analyzer extends BlockContainer
 		{
 			player.openGui(EreGeologique.Instance, 2, world, x, y, z);
 			return true;
-		}
-		if(player.isSneaking())
-		{
-			TileEntity te = world.getBlockTileEntity(x, y, z);
-			if(te != null && te instanceof TileEntityAnalyzer)
-			{
-				TileEntityAnalyzer analyzer = (TileEntityAnalyzer)te;
-				System.out.println(analyzer.isActive());
-				System.out.println(analyzer.getDirection());
-				return true;
-			}
 		}
 		return false;
 	}
