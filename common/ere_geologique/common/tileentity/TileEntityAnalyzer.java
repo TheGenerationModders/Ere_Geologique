@@ -264,7 +264,7 @@ public class TileEntityAnalyzer extends TileEntity implements IInventory, ISided
 			{
 				int var2 = this.analyzerItemStacks[var1].getItem().itemID;
 
-				if(EnumDinoType.isDinoDrop(this.analyzerItemStacks[var1].getItem()) || (var2 == EGItemList.BioFossil.itemID) || /*( var2 == Fossil.rawDinoMeat . itemID ) ||*/(var2 == Item.porkRaw.itemID) || (var2 == Item.beefRaw.itemID) || (var2 == Item.egg.itemID) || (var2 == Item.chickenRaw.itemID) || (var2 == Block.cloth.blockID))
+				if(EnumDinoType.isDinoDrop(this.analyzerItemStacks[var1].getItem()) || (var2 == EGItemList.bioFossil.itemID) || /*( var2 == Fossil.rawDinoMeat . itemID ) ||*/(var2 == Item.porkRaw.itemID) || (var2 == Item.beefRaw.itemID) || (var2 == Item.egg.itemID) || (var2 == Item.chickenRaw.itemID) || (var2 == Block.cloth.blockID))
 				{
 					this.RawIndex = var1;
 					break;
@@ -299,11 +299,11 @@ public class TileEntityAnalyzer extends TileEntity implements IInventory, ISided
 			int var2 = (new Random()).nextInt(100);
 			int var3;
 
-			if(this.analyzerItemStacks[this.RawIndex].getItem() == EGItemList.BioFossil)
+			if(this.analyzerItemStacks[this.RawIndex].getItem() == EGItemList.bioFossil)
 			{
 				if(var2 < 1)
 				{
-					var1 = new ItemStack(EGItemList.BrokenSapling, 1);
+					var1 = new ItemStack(EGItemList.brokenSapling, 1);
 				}
 				if(var2 > 1 && var2 <= 45)
 				{
@@ -318,16 +318,16 @@ public class TileEntityAnalyzer extends TileEntity implements IInventory, ISided
 					int i = (new Random()).nextInt(EnumDinoType.values().length + 1);// +1 for the sapling
 					Item i0 = null;
 					if(i == 0)
-						i0 = EGItemList.BrokenSapling;
+						i0 = EGItemList.brokenSapling;
 					else
-						i0 = EnumDinoType.values()[i - 1].DNAItem;
+						i0 = EnumDinoType.values()[i - 1].dnaItem;
 					var1 = new ItemStack(i0, 1);
 				}
 			}
 
 			if(EnumDinoType.getDNA(this.analyzerItemStacks[this.RawIndex].getItem()) != null)
 				var1 = new ItemStack(EnumDinoType.getDNA(this.analyzerItemStacks[this.RawIndex].getItem()), 1);
-			if(this.analyzerItemStacks[this.RawIndex].getItem() == EGItemList.Relic)
+			if(this.analyzerItemStacks[this.RawIndex].getItem() == EGItemList.relic)
 			{
 				if(var2 <= 40)
 					var1 = new ItemStack(Block.gravel, 2);
@@ -337,7 +337,7 @@ public class TileEntityAnalyzer extends TileEntity implements IInventory, ISided
 			}
 			if(var1 != null)
 			{
-				if(var1.itemID == Item.dyePowder.itemID || var1.itemID == Item.flint.itemID || var1.itemID == Block.gravel.blockID || var1.itemID == EGItemList.Relic.itemID || var1.itemID == EGItemList.BrokenSapling.itemID || var1.itemID == Block.sand.blockID)
+				if(var1.itemID == Item.dyePowder.itemID || var1.itemID == Item.flint.itemID || var1.itemID == Block.gravel.blockID || var1.itemID == EGItemList.relic.itemID || var1.itemID == EGItemList.brokenSapling.itemID || var1.itemID == Block.sand.blockID)
 				{
 					for(var3 = 12; var3 > 8; --var3)
 					{

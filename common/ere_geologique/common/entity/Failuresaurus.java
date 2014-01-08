@@ -14,7 +14,7 @@ public class Failuresaurus extends EntityZombie
 
     protected int getDropItemId()
     {
-        return EGItemList.BioFossil.itemID;
+        return EGItemList.bioFossil.itemID;
     }
 
     protected void jump() {}

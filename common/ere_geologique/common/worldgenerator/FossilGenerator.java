@@ -28,7 +28,7 @@ public class FossilGenerator implements IWorldGenerator
 			int Xcoord = blockX + random.nextInt(16);
 			int Ycoord = random.nextInt(100);
 			int Zcoord = blockZ + random.nextInt(16);	  
-			(new WorldGenMinable(EGBlockList.Fossil.blockID, 5+random.nextInt(6))).generate(world, random, Xcoord, Ycoord, Zcoord);
+			(new WorldGenMinable(EGBlockList.fossil.blockID, 5+random.nextInt(6))).generate(world, random, Xcoord, Ycoord, Zcoord);
 		}
 	 }
 	private void generateNether(World world, Random random, int blockX, int blockZ) 

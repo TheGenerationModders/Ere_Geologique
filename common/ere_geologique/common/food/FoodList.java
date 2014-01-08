@@ -28,8 +28,8 @@ public class FoodList
 	public static DinoFoodEntry Reed = new DinoFoodEntry(Block.reed, 0, 10, 1, EnumFoodType.HERBIVOROUS);
 	public static DinoFoodEntry Sapling = new DinoFoodEntry(Block.sapling, 0, 10, 1, EnumFoodType.HERBIVOROUS);
 	public static DinoFoodEntry TallGrass = new DinoFoodEntry(Block.tallGrass, 0, 10, 1, EnumFoodType.HERBIVOROUS);
-	public static DinoFoodEntry LeavesFougere = new DinoFoodEntry(EGBlockList.Leaves, 0, 50, 3, EnumFoodType.HERBIVOROUS);
-	public static DinoFoodEntry SaplingFougere = new DinoFoodEntry(EGBlockList.Sapling, 0, 15, 2, EnumFoodType.HERBIVOROUS);
+	public static DinoFoodEntry LeavesFougere = new DinoFoodEntry(EGBlockList.leaves, 0, 50, 3, EnumFoodType.HERBIVOROUS);
+	public static DinoFoodEntry SaplingFougere = new DinoFoodEntry(EGBlockList.sapling, 0, 15, 2, EnumFoodType.HERBIVOROUS);
 
 	public static DinoFoodEntry nanoLeaves = null;
 	public static DinoFoodEntry nanoSaplings = null;
@@ -57,22 +57,22 @@ public class FoodList
 	public static DinoFoodEntry PorkCooked = new DinoFoodEntry(Item.porkCooked, 0, 50, 3, EnumFoodType.CARNIVOROUS);
 	public static DinoFoodEntry Egg = new DinoFoodEntry(Item.egg, 0, 10, 2, EnumFoodType.CARNIVOROUS);
 	public static DinoFoodEntry Sjl = new DinoFoodEntry(EGItemList.sjl, 0, 30, 3, EnumFoodType.CARNIVOROUS);// SioChiuLe
-	public static DinoFoodEntry Nautilus = new DinoFoodEntry(EnumDinoType.Nautilus.DropItem, 0, 20, 2, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Nautilus = new DinoFoodEntry(EnumDinoType.Nautilus.dropItem, 0, 20, 2, EnumFoodType.CARNIVOROUS);
 	public static DinoFoodEntry ChickenSoupRaw = new DinoFoodEntry(EGItemList.rawChickenSoup, 0, 30, 3, EnumFoodType.CARNIVOROUS);
 	public static DinoFoodEntry ChickenSoupCooked = new DinoFoodEntry(EGItemList.cookedChickenSoup, 0, 40, 3, EnumFoodType.CARNIVOROUS);
-	public static DinoFoodEntry Triceratops = new DinoFoodEntry(EnumDinoType.Triceratops.DropItem, 0, 50, 3, EnumFoodType.CARNIVOROUS);
-	public static DinoFoodEntry Velociraptor = new DinoFoodEntry(EnumDinoType.Velociraptor.DropItem, 0, 20, 3, EnumFoodType.CARNIVOROUS);
-	public static DinoFoodEntry TRex = new DinoFoodEntry(EnumDinoType.TRex.DropItem, 0, 20, 3, EnumFoodType.CARNIVOROUS);
-	public static DinoFoodEntry Pterosaure = new DinoFoodEntry(EnumDinoType.Pterosaure.DropItem, 0, 15, 2, EnumFoodType.CARNIVOROUS);
-	public static DinoFoodEntry Plesiosaure = new DinoFoodEntry(EnumDinoType.Plesiosaure.DropItem, 0, 30, 3, EnumFoodType.CARNIVOROUS);
-	public static DinoFoodEntry Mosasaurus = new DinoFoodEntry(EnumDinoType.Mosasaurus.DropItem, 0, 20, 3, EnumFoodType.CARNIVOROUS);
-	public static DinoFoodEntry Stegosaurus = new DinoFoodEntry(EnumDinoType.Stegosaurus.DropItem, 0, 50, 3, EnumFoodType.CARNIVOROUS);
-	public static DinoFoodEntry Dilophosaurus = new DinoFoodEntry(EnumDinoType.Dilophosaurus.DropItem, 0, 25, 2, EnumFoodType.CARNIVOROUS);
-	public static DinoFoodEntry Brachiosaure = new DinoFoodEntry(EnumDinoType.Brachiosaurus.DropItem, 0, 50, 4, EnumFoodType.CARNIVOROUS);
-	public static DinoFoodEntry Spinosaurus = new DinoFoodEntry(EnumDinoType.Spinosaurus.DropItem, 0, 20, 3, EnumFoodType.CARNIVOROUS);
-	public static DinoFoodEntry Compsognathus = new DinoFoodEntry(EnumDinoType.Compsognathus.DropItem, 0, 20, 3, EnumFoodType.CARNIVOROUS);
-	public static DinoFoodEntry Ankylosaurus = new DinoFoodEntry(EnumDinoType.Ankylosaurus.DropItem, 50, 0, 3, EnumFoodType.CARNIVOROUS);
-	public static DinoFoodEntry Pachycephalosaurus = new DinoFoodEntry(EnumDinoType.Pachycephalosaurus.DropItem, 0, 50, 3, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Triceratops = new DinoFoodEntry(EnumDinoType.Triceratops.dropItem, 0, 50, 3, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Velociraptor = new DinoFoodEntry(EnumDinoType.Velociraptor.dropItem, 0, 20, 3, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry TRex = new DinoFoodEntry(EnumDinoType.TRex.dropItem, 0, 20, 3, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Pterosaure = new DinoFoodEntry(EnumDinoType.Pterosaure.dropItem, 0, 15, 2, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Plesiosaure = new DinoFoodEntry(EnumDinoType.Plesiosaure.dropItem, 0, 30, 3, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Mosasaurus = new DinoFoodEntry(EnumDinoType.Mosasaurus.dropItem, 0, 20, 3, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Stegosaurus = new DinoFoodEntry(EnumDinoType.Stegosaurus.dropItem, 0, 50, 3, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Dilophosaurus = new DinoFoodEntry(EnumDinoType.Dilophosaurus.dropItem, 0, 25, 2, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Brachiosaure = new DinoFoodEntry(EnumDinoType.Brachiosaurus.dropItem, 0, 50, 4, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Spinosaurus = new DinoFoodEntry(EnumDinoType.Spinosaurus.dropItem, 0, 20, 3, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Compsognathus = new DinoFoodEntry(EnumDinoType.Compsognathus.dropItem, 0, 20, 3, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Ankylosaurus = new DinoFoodEntry(EnumDinoType.Ankylosaurus.dropItem, 50, 0, 3, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Pachycephalosaurus = new DinoFoodEntry(EnumDinoType.Pachycephalosaurus.dropItem, 0, 50, 3, EnumFoodType.CARNIVOROUS);
 	public static DinoFoodEntry DinoMeatCooked = new DinoFoodEntry(EGItemList.cookedDinoMeat, 0, 50, 5, EnumFoodType.CARNIVOROUS);
 	
 	

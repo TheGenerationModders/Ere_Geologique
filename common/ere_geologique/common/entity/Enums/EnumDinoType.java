@@ -61,9 +61,9 @@ public enum EnumDinoType
 
     public int Flags=0;
     public Item OrderItem;
-    public Item DropItem;
-    public Item DNAItem;
-    public Item EggItem;
+    public Item dropItem;
+    public Item dnaItem;
+    public Item eggItem;
     
     //List of the eatable Items and block with the FoodValue and HealingValue belonging to
 	public List<DinoFoodEntry> dinoFood = new ArrayList();
@@ -315,7 +315,7 @@ public enum EnumDinoType
         Compsognathus.FoodMobList.addMob(EnumDinoFoodMob.Pig);
         Compsognathus.FoodMobList.addMob(EnumDinoFoodMob.Chicken);
         
-        TRex.setItems(				EGItemList.SkullStick);//,	Fossil.rawTRex, 		Fossil.dnaTRex, 		Fossil.eggTRex);
+        TRex.setItems(				EGItemList.skullStick);//,	Fossil.rawTRex, 		Fossil.dnaTRex, 		Fossil.eggTRex);
         TRex.setDimensions(0.7F, 0.57F, 0.8F, 0.66F, 0.5F, 0.57F);
         TRex.setAges(-1, -1, 23);
         TRex.setProperties(-1, 5, 4, -1, 0.22F, 0.02F, 250);
@@ -360,7 +360,7 @@ public enum EnumDinoType
         Nautilus.setItems(			null);//,				Fossil.rawNautilus, 	Fossil.dnaNautilus, 	Fossil.shellNautilus);
         Nautilus.setExperience(1.0F, 0F);
         
-        Plesiosaure.setItems(		EGItemList.MagicConch);//,	Fossil.rawPlesiosaur, 	Fossil.dnaPlesiosaur, 	Fossil.eggPlesiosaur);
+        Plesiosaure.setItems(		EGItemList.magicConch);//,	Fossil.rawPlesiosaur, 	Fossil.dnaPlesiosaur, 	Fossil.eggPlesiosaur);
         Plesiosaure.setDimensions(0.5F, 0.3F, 0.5F, 0.5F, 0.5F, 0.3F);
         Plesiosaure.setProperties(30, 10, 3, -1, 0.18F, 0.02F, 500);
         Plesiosaure.setExperience(0.5F, 0.25F);
@@ -431,7 +431,7 @@ public enum EnumDinoType
         
         Brachiosaurus.dinoFood.add(FoodList.Leaves);
 		
-		Spinosaurus.setItems(		EGItemList.SkullStick);//,	Fossil.rawSpinosaurus,	Fossil.dnaSpinosaurus,	Fossil.eggSpinosaurus);
+		Spinosaurus.setItems(		EGItemList.skullStick);//,	Fossil.rawSpinosaurus,	Fossil.dnaSpinosaurus,	Fossil.eggSpinosaurus);
 //		Spinosaurus.setDimensions(0.5F,0.3F,0.5F,0.3F,0.5F,0.3F); New model dimensions
       Spinosaurus.setDimensions(0.8F,0.7F,0.5F,0.7F,0.5F,0.7F); // Dimensions for Dragonith's Spinosaur.
 		Spinosaurus.setAges(-1, -1, 23);
@@ -469,7 +469,7 @@ public enum EnumDinoType
     {
 		for(int i=0;i<values().length;i++)
 		{
-		    if(values()[i].DNAItem.itemID == i0.itemID)
+		    if(values()[i].dnaItem.itemID == i0.itemID)
 		    	return true;
 		}
 		return false;
@@ -482,7 +482,7 @@ public enum EnumDinoType
     {
 		for(int i=0;i<values().length;i++)
 		{
-		    if(values()[i].DropItem.itemID == i0.itemID)
+		    if(values()[i].dropItem.itemID == i0.itemID)
 		    	return true;
 		}
 		return false;
@@ -495,8 +495,8 @@ public enum EnumDinoType
     {
 		for(int i=0;i<values().length;i++)
 		{
-		    if(values()[i].DropItem.itemID == i0.itemID || values()[i].EggItem.itemID == i0.itemID)
-		    	return values()[i].DNAItem;
+		    if(values()[i].dropItem.itemID == i0.itemID || values()[i].eggItem.itemID == i0.itemID)
+		    	return values()[i].dnaItem;
 		}
 		return null;
     }
@@ -508,8 +508,8 @@ public enum EnumDinoType
     {
 		for(int i=0;i<values().length;i++)
 		{
-		    if(values()[i].DNAItem.itemID == i0.itemID || values()[i].EggItem.itemID == i0.itemID)
-		    	return values()[i].DropItem;
+		    if(values()[i].dnaItem.itemID == i0.itemID || values()[i].eggItem.itemID == i0.itemID)
+		    	return values()[i].dropItem;
 		}
 		return null;
     }
@@ -521,8 +521,8 @@ public enum EnumDinoType
     {
 		for(int i=0;i<values().length;i++)
 		{
-		    if(values()[i].DNAItem.itemID == i0.itemID || values()[i].DropItem.itemID == i0.itemID)
-		    	return values()[i].EggItem;
+		    if(values()[i].dnaItem.itemID == i0.itemID || values()[i].dropItem.itemID == i0.itemID)
+		    	return values()[i].eggItem;
 		}
 		return null;
     }
@@ -533,7 +533,7 @@ public enum EnumDinoType
     {
 		for(int i=0;i<values().length;i++)
 		{
-		    if(values()[i].DNAItem.itemID == i0.itemID || values()[i].DropItem.itemID == i0.itemID || values()[i].EggItem.itemID == i0.itemID)
+		    if(values()[i].dnaItem.itemID == i0.itemID || values()[i].dropItem.itemID == i0.itemID || values()[i].eggItem.itemID == i0.itemID)
 		    	return i;
 		}
 		return -1;

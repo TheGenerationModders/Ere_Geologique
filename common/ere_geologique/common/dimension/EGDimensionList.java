@@ -7,7 +7,7 @@ public class EGDimensionList
 {	
 	public static void loadDimension()
 	{
-		DimensionManager.registerProviderType(EGProperties.GlaciaID, WorldProviderGlacia.class, false);
-		DimensionManager.registerDimension(EGProperties.GlaciaID, EGProperties.GlaciaID);
+		DimensionManager.registerProviderType(EGProperties.glaciaID, WorldProviderGlacia.class, false);
+		DimensionManager.registerDimension(EGProperties.glaciaID, EGProperties.glaciaID);
 	}
 }

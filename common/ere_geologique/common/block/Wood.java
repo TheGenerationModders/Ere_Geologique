@@ -37,7 +37,7 @@ public class Wood extends BlockRotatedPillar
     
     public int idDropped(int id, Random rand, int fortune)
     {
-        return EGProperties.WoodID;
+        return EGProperties.woodID;
     }
     
     @SideOnly(Side.CLIENT)

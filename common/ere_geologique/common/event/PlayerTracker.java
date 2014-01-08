@@ -10,7 +10,7 @@ public class PlayerTracker implements IPlayerTracker
 	@Override
 	public void onPlayerLogin(EntityPlayer player)
 	{
-		player.triggerAchievement(EGAchievement.Installmod);
+		player.triggerAchievement(EGAchievement.installmod);
 	}
 
 	@Override
@@ -22,15 +22,15 @@ public class PlayerTracker implements IPlayerTracker
 	@Override
 	public void onPlayerChangedDimension(EntityPlayer player)
 	{
-		if(player.dimension == EGProperties.GlaciaID)
+		if(player.dimension == EGProperties.glaciaID)
         {
-                player.triggerAchievement(EGAchievement.DimensionGlacia);
-        }else if(player.dimension == EGProperties.PrehistoriaID)
+                player.triggerAchievement(EGAchievement.dimensionGlacia);
+        }else if(player.dimension == EGProperties.prehistoriaID)
         {
-            player.triggerAchievement(EGAchievement.DimensionPrehistoria);
-        }else if(player.dimension == EGProperties.PrimitiveID)
+            player.triggerAchievement(EGAchievement.dimensionPrehistoria);
+        }else if(player.dimension == EGProperties.primitiveID)
         {
-            player.triggerAchievement(EGAchievement.DimensionPrimitive);
+            player.triggerAchievement(EGAchievement.dimensionPrimitive);
 		}
 	}
 
@@ -39,5 +39,4 @@ public class PlayerTracker implements IPlayerTracker
 	{
 		
 	}
-
 }

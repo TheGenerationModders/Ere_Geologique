@@ -116,7 +116,7 @@ public class DinoAIControlledByPlayer extends EntityAIBase
             //decrease the whips uses left
             ItemStack I = P.getHeldItem();
 
-            if (I != null && I.itemID == EGItemList.Whip.itemID)
+            if (I != null && I.itemID == EGItemList.whip.itemID)
             {
                 //var21.damageItem(1, P);
                 I.setItemDamage(I.getItemDamage() + 1);
@@ -128,7 +128,7 @@ public class DinoAIControlledByPlayer extends EntityAIBase
             }
         }
 
-        if (this.speedBoosted && this.motionTarget.RiderSneak && this.lastTimeSeenWhip == 0 && this.motionTarget.onGround && CommandDino.Dino_Block_Breaking)
+        if (this.speedBoosted && this.motionTarget.RiderSneak && this.lastTimeSeenWhip == 0 && this.motionTarget.onGround && CommandDino.dino_Block_Breaking)
         {
             int BlocksDestroyed = this.motionTarget.BlockInteractive();
             this.currentSpeed -= BlocksDestroyed * 0.02;

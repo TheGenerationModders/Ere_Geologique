@@ -265,7 +265,7 @@ public class BlueFire extends BlockFire
 
 	public void onBlockAdded(World par1World, int par2, int par3, int par4)
 	{
-		if ((par1World.getBlockId(par2, par3 - 1, par4) != Block.ice.blockID) || (!EGBlockList.GlaciaPortal.tryToCreatePortal(par1World, par2, par3, par4)))
+		if ((par1World.getBlockId(par2, par3 - 1, par4) != Block.ice.blockID) || (!EGBlockList.glaciaPortal.tryToCreatePortal(par1World, par2, par3, par4)))
 		{
 			if ((!par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4)) && (!canNeighborBurn(par1World, par2, par3, par4)))
 			{
@@ -284,9 +284,9 @@ public class BlueFire extends BlockFire
 		{
 			par1World.playSound(par2 + 0.5F, par3 + 0.5F, par4 + 0.5F, "fire.fire", 1.0F + par5Random.nextFloat(), par5Random.nextFloat() * 0.7F + 0.3F, false);
 		}
-		if ((!par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4)) && (!EGBlockList.BlueFire.canBlockCatchFire(par1World, par2, par3 - 1, par4, ForgeDirection.UP)))
+		if ((!par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4)) && (!EGBlockList.blueFire.canBlockCatchFire(par1World, par2, par3 - 1, par4, ForgeDirection.UP)))
 		{
-			if (EGBlockList.BlueFire.canBlockCatchFire(par1World, par2 - 1, par3, par4, ForgeDirection.EAST))
+			if (EGBlockList.blueFire.canBlockCatchFire(par1World, par2 - 1, par3, par4, ForgeDirection.EAST))
 			{
 				for (int l = 0; l < 2; l++)
 				{
@@ -296,7 +296,7 @@ public class BlueFire extends BlockFire
 					par1World.spawnParticle("largesmoke", f, f1, f2, 0.0D, 0.0D, 0.0D);
 				}
 			}
-			if (EGBlockList.BlueFire.canBlockCatchFire(par1World, par2 + 1, par3, par4, ForgeDirection.WEST))
+			if (EGBlockList.blueFire.canBlockCatchFire(par1World, par2 + 1, par3, par4, ForgeDirection.WEST))
 			{
 				for (int l = 0; l < 2; l++)
 				{
@@ -306,7 +306,7 @@ public class BlueFire extends BlockFire
 					par1World.spawnParticle("largesmoke", f, f1, f2, 0.0D, 0.0D, 0.0D);
 				}
 			}
-			if (EGBlockList.BlueFire.canBlockCatchFire(par1World, par2, par3, par4 - 1, ForgeDirection.SOUTH))
+			if (EGBlockList.blueFire.canBlockCatchFire(par1World, par2, par3, par4 - 1, ForgeDirection.SOUTH))
 			{
 				for (int l = 0; l < 2; l++)
 				{
@@ -316,7 +316,7 @@ public class BlueFire extends BlockFire
 					par1World.spawnParticle("largesmoke", f, f1, f2, 0.0D, 0.0D, 0.0D);
 				}
 			}
-			if (EGBlockList.BlueFire.canBlockCatchFire(par1World, par2, par3, par4 + 1, ForgeDirection.NORTH))
+			if (EGBlockList.blueFire.canBlockCatchFire(par1World, par2, par3, par4 + 1, ForgeDirection.NORTH))
 			{
 				for (int l = 0; l < 2; l++)
 				{
@@ -326,7 +326,7 @@ public class BlueFire extends BlockFire
 					par1World.spawnParticle("largesmoke", f, f1, f2, 0.0D, 0.0D, 0.0D);
 				}
 			}
-			if (EGBlockList.BlueFire.canBlockCatchFire(par1World, par2, par3 + 1, par4, ForgeDirection.DOWN))
+			if (EGBlockList.blueFire.canBlockCatchFire(par1World, par2, par3 + 1, par4, ForgeDirection.DOWN))
 			{
 				for (int l = 0; l < 2; l++)
 				{

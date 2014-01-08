@@ -18,9 +18,9 @@ public class ItemBlockSlab extends ItemBlock
 	public ItemBlockSlab(int id)
 	{
 		super(id);
-		this.theHalfSlab = EGBlockList.Slab;
-		this.doubleSlab = EGBlockList.DoubleSlab;
-		if(id - 256 == EGBlockList.DoubleSlab.blockID)
+		this.theHalfSlab = EGBlockList.slab;
+		this.doubleSlab = EGBlockList.doubleSlab;
+		if(id - 256 == EGBlockList.doubleSlab.blockID)
 		{
 			this.isFullBlock = true;
 		}

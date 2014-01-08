@@ -165,7 +165,7 @@ public class Spinosaurus extends Dinosaure implements IWaterDino
     {
         super.onUpdate();
         //this.blockBreakingBehavior.execute();
-        if(this.isAdult() && CommandDino.Dino_Block_Breaking == true)
+        if(this.isAdult() && CommandDino.dino_Block_Breaking == true)
         	BlockInteractive();
         if (this.getHealth() > 0)
         {
@@ -387,7 +387,7 @@ public class Spinosaurus extends Dinosaure implements IWaterDino
             {
         		if (this.isWeak() && !this.isTamed())
                 {
-        			if(CommandDino.Heal_Dinos)
+        			if(CommandDino.heal_Dinos)
         				this.heal(200);
                     this.increaseHunger(500);
                     this.setTamed(true);
@@ -418,7 +418,7 @@ public class Spinosaurus extends Dinosaure implements IWaterDino
                         return true;
                 }
              }
-        	if (var2.itemID == EGItemList.Whip.itemID && this.isTamed() && this.SelfType.isRideable() && this.isAdult() && !this.worldObj.isRemote && this.riddenByEntity == null)
+        	if (var2.itemID == EGItemList.whip.itemID && this.isTamed() && this.SelfType.isRideable() && this.isAdult() && !this.worldObj.isRemote && this.riddenByEntity == null)
             {
                 if (var1.username.equalsIgnoreCase(this.getOwnerName()))
 		        {
@@ -429,7 +429,7 @@ public class Spinosaurus extends Dinosaure implements IWaterDino
 		        }
                 return true;
             }
-            if(var2.itemID == EGItemList.ChickenEss.itemID)
+            if(var2.itemID == EGItemList.chickenEss.itemID)
             {
                 if (!this.worldObj.isRemote)
                 {

@@ -6,67 +6,68 @@ import ere_geologique.common.entity.Enums.EnumDinoType;
 public class EGProperties
 {
 	//Block
-	public static int LeavesID;
-	public static int WoodID;
-	public static int SaplingID;
-	public static int PlankID;
-	public static int SlabID;
-	public static int DoubleSlabID;
-	public static int StairFougereID;
-	public static int StairCycasID;
-	public static int StairAraucariasID;
-	public static int StairMetasequoiasID;
-	public static int StairGingkosID;
-	public static int GlaciaPortalID;
-	public static int FeederID;
-	public static int AnalyzerID;
-	public static int CultivatorIdleID;
-	public static int CultivatorActiveID;
-	public static int FossilID;
-	public static int ReinforcedStoneID;
-	public static int ReinforcedGlassID;
-	public static int SteelBlockID;
-	public static int FossilSkullID;
-	public static int BlueFireID;
-	public static int DrumID;
+	public static int leavesID;
+	public static int woodID;
+	public static int saplingID;
+	public static int plankID;
+	public static int slabID;
+	public static int doubleSlabID;
+	public static int stairFougereID;
+	public static int stairCycasID;
+	public static int stairAraucariasID;
+	public static int stairMetasequoiasID;
+	public static int stairGingkosID;
+	public static int glaciaPortalID;
+	public static int feederID;
+	public static int analyzerID;
+	public static int cultivatorIdleID;
+	public static int cultivatorActiveID;
+	public static int fossilID;
+	public static int reinforcedStoneID;
+	public static int reinforcedGlassID;
+	public static int steelBlockID;
+	public static int fossilSkullID;
+	public static int blueFireID;
+	public static int drumID;
 	
 	//Items
-	public static int IvoryIngotID;
-	public static int IvoryNuggetID;
-	public static int IvoryGearID;
-	public static int DinoPediaID;
-	public static int ChickenEssID;
-	public static int WhipID;
-	public static int LegBoneID;
-	public static int ClawID;
-	public static int FootID;
-	public static int SkullID;
-	public static int BioFossilID;
-	public static int SkullStickID;
+	public static int ivoryIngotID;
+	public static int ivoryNuggetID;
+	public static int ivoryGearID;
+	public static int dinoPediaID;
+	public static int chickenEssID;
+	public static int whipID;
+	public static int legBoneID;
+	public static int clawID;
+	public static int footID;
+	public static int skullID;
+	public static int bioFossilID;
+	public static int skullStickID;
 	public static int gemID;
-	public static int EmptyShellID;
-	public static int MagicConchID;
+	public static int emptyShellID;
+	public static int magicConchID;
 	public static int sjlID;
 	public static int cookedDinoMeatID;
-	public static int BrokenSaplingID;
-	public static int SteelIngotID;
-	public static int SteelPlateID;
-	public static int RelicID;
+	public static int brokenSaplingID;
+	public static int steelIngotID;
+	public static int steelPlateID;
+	public static int relicID;
 	public static int cookedChickenSoupID;
 	public static int rawChickenSoupID;
-	public static int FlintAndSteelID;
+	public static int flintAndSteelID;
 	public static int archNotebookID;
+	public static int tranquilizerDartID;
+	public static int gunID;
 
 	//Dimensions
-	public static int GlaciaID;
-	public static int PrehistoriaID;
-	public static int PrimitiveID;
+	public static int glaciaID;
+	public static int prehistoriaID;
+	public static int primitiveID;
 	
 	//Other
-	public static int[] EGGIDs = new int[EnumDinoType.values().length];
-	public static int[] RAWIDs = new int[EnumDinoType.values().length];
-	public static int[] DNAIDs = new int[EnumDinoType.values().length];
-	public static final String MOD = "EreGeologique";
+	public static int[] eggIDs = new int[EnumDinoType.values().length];
+	public static int[] rawIDs = new int[EnumDinoType.values().length];
+	public static int[] dnaIDs = new int[EnumDinoType.values().length];
+	public static final String mod = "EreGeologique";
 	public static Property updateCheck;
-
 }

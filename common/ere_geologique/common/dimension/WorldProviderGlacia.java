@@ -19,7 +19,7 @@ public class WorldProviderGlacia extends WorldProvider
 	public void registerWorldChunkManager()
 	{
 		this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.icePlains, this.dimensionId, this.dimensionId);
-		this.dimensionId = EGProperties.GlaciaID;
+		this.dimensionId = EGProperties.glaciaID;
 		this.hasNoSky = false;
 	}
 

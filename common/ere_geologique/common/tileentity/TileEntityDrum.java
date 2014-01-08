@@ -55,7 +55,7 @@ public class TileEntityDrum extends TileEntity
     {
         this.worldObj.playSoundEffect((double)this.xCoord, (double)this.yCoord, (double)this.zCoord, "ere_geologique:drum_triple", 8.0F, 1.0F); // (float)Math.pow(2.0D, (double)(this.Order.ordinal()/*ToInt() - 1*/)));
 
-        if (var1 != EGItemList.SkullStick.itemID)
+        if (var1 != EGItemList.skullStick.itemID)
         {
             for (int i = 0; i < EnumDinoType.values().length; ++i)
             {

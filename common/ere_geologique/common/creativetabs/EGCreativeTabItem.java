@@ -15,6 +15,6 @@ public class EGCreativeTabItem extends CreativeTabs
 	 @Override
 	 public ItemStack getIconItemStack()
 	 {
-		 return new ItemStack(EGItemList.DinoPedia);
+		 return new ItemStack(EGItemList.dinoPedia);
 	 }
 }

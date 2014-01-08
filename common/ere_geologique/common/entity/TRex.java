@@ -433,9 +433,9 @@ public class TRex extends Dinosaure
                 }
             }
 
-            if (!CommandDino.Debugmode)
+            if (!CommandDino.debugMode)
             {
-                if (var2.itemID == EGItemList.ChickenEss.itemID)
+                if (var2.itemID == EGItemList.chickenEss.itemID)
                 {
                     if (!this.worldObj.isRemote)
                     {

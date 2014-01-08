@@ -248,7 +248,7 @@ public class Leaves extends BlockLeavesBase implements IShearable
     
     public int idDropped(int par1, Random par2Random, int par3)
     {
-        return EGProperties.SaplingID;
+        return EGProperties.saplingID;
     }
     
     public void harvestBlock(World par1World, EntityPlayer par2EntityPlayer, int par3, int par4, int par5, int par6)

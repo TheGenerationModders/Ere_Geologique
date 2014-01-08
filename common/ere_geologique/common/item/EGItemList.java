@@ -10,105 +10,111 @@ import ere_geologique.common.entity.Enums.EnumDinoType;
 
 public class EGItemList
 {
-	public static Item IvoryNugget;
-	public static Item IvoryIngot;
-	public static Item IvoryGear;
-	public static Item DinoPedia;
-	public static Item ChickenEss;
-	public static Item Whip;
-	public static Item LegBone;
-	public static Item Claw;
-	public static Item Foot;
-	public static Item Skull;
-	public static Item BioFossil;
-	public static Item SkullStick;
+	public static Item ivoryNugget;
+	public static Item ivoryIngot;
+	public static Item ivoryGear;
+	public static Item dinoPedia;
+	public static Item chickenEss;
+	public static Item whip;
+	public static Item legBone;
+	public static Item claw;
+	public static Item foot;
+	public static Item skull;
+	public static Item bioFossil;
+	public static Item skullStick;
 	public static Item gem;
-	public static Item EmptyShell;
-	public static Item MagicConch;
+	public static Item emptyShell;
+	public static Item magicConch;
 	public static Item sjl;
 	public static Item cookedDinoMeat;
-	public static Item BrokenSapling;
-	public static Item SteelIngot;
-	public static Item SteelPlate;
-	public static Item Relic;
+	public static Item brokenSapling;
+	public static Item steelIngot;
+	public static Item steelPlate;
+	public static Item relic;
 	public static Item rawChickenSoup;
 	public static Item cookedChickenSoup;
-	public static Item FlintAndSteel;
+	public static Item flintAndSteel;
 	public static Item archNotebook;
+	public static Item tranquilizerDart;
+	public static Item gun;
 	
 	public static void loadItem()
 	{
 		try
 		{
-	       IvoryIngot = new IvoryIngot(EGProperties.IvoryIngotID).setUnlocalizedName("IvoryIngot").setTextureName("ere_geologique:IvoryIngot");
-	       IvoryNugget = new IvoryIngot(EGProperties.IvoryNuggetID).setUnlocalizedName("IvoryNugget").setTextureName("ere_geologique:IvoryNugget");
-	       IvoryGear = new IvoryIngot(EGProperties.IvoryGearID).setUnlocalizedName("IvoryGear").setTextureName("ere_geologique:IvoryGear");
-	       DinoPedia = new DinoPedia(EGProperties.DinoPediaID).setUnlocalizedName("DinoPedia").setTextureName("ere_geologique:Dinopedia");
-	       ChickenEss = new ChickenEss(EGProperties.ChickenEssID, 10, 0.0F, false, "Essence_Of_Chicken").setUnlocalizedName("ChickenEss").setContainerItem(Item.glassBottle);
-	       Whip = new Whip(EGProperties.WhipID).setUnlocalizedName("Whip").setTextureName("ere_geologique:Whip");
-	       LegBone = new EGItem(EGProperties.LegBoneID,"Leg_Bone").setUnlocalizedName("Leg_Bone");
-	       Claw = new EGItem(EGProperties.ClawID,"Claw").setUnlocalizedName("Claw");
-	       Foot = new EGItem(EGProperties.FootID,"Foot").setUnlocalizedName("Foot");
-	       Skull = new EGItem(EGProperties.SkullID,"Skull").setUnlocalizedName("DinoSkull");
-	       BioFossil = new ItemBioFossil(EGProperties.BioFossilID).setUnlocalizedName("BioFossil").setTextureName("ere_geologique:Bio_Fossil");
-	       SkullStick = new EGItem(EGProperties.SkullStickID, "Skull_Stick").setUnlocalizedName("SkullStick");
+	       ivoryIngot = new IvoryIngot(EGProperties.ivoryIngotID).setUnlocalizedName("IvoryIngot").setTextureName("ere_geologique:IvoryIngot");
+	       ivoryNugget = new IvoryIngot(EGProperties.ivoryNuggetID).setUnlocalizedName("IvoryNugget").setTextureName("ere_geologique:IvoryNugget");
+	       ivoryGear = new IvoryIngot(EGProperties.ivoryGearID).setUnlocalizedName("IvoryGear").setTextureName("ere_geologique:IvoryGear");
+	       dinoPedia = new DinoPedia(EGProperties.dinoPediaID).setUnlocalizedName("DinoPedia").setTextureName("ere_geologique:Dinopedia");
+	       chickenEss = new ChickenEss(EGProperties.chickenEssID, 10, 0.0F, false, "Essence_Of_Chicken").setUnlocalizedName("ChickenEss").setContainerItem(Item.glassBottle);
+	       whip = new Whip(EGProperties.whipID).setUnlocalizedName("Whip").setTextureName("ere_geologique:Whip");
+	       legBone = new EGItem(EGProperties.legBoneID,"Leg_Bone").setUnlocalizedName("Leg_Bone");
+	       claw = new EGItem(EGProperties.clawID,"Claw").setUnlocalizedName("Claw");
+	       foot = new EGItem(EGProperties.footID,"Foot").setUnlocalizedName("Foot");
+	       skull = new EGItem(EGProperties.skullID,"Skull").setUnlocalizedName("DinoSkull");
+	       bioFossil = new ItemBioFossil(EGProperties.bioFossilID).setUnlocalizedName("BioFossil").setTextureName("ere_geologique:Bio_Fossil");
+	       skullStick = new EGItem(EGProperties.skullStickID, "Skull_Stick").setUnlocalizedName("SkullStick");
 	       gem = new EGItem(EGProperties.gemID, "Scarab_Gem").setUnlocalizedName("gem");
-	       EmptyShell = new EGItem(EGProperties.EmptyShellID, "Empty_Shell").setUnlocalizedName("EmptyShell");
-	       MagicConch = new MagicConch(EGProperties.MagicConchID).setUnlocalizedName("MagicConch").setCreativeTab(EGCreativeTab.EGCreativeTabItem);
+	       emptyShell = new EGItem(EGProperties.emptyShellID, "Empty_Shell").setUnlocalizedName("EmptyShell");
+	       magicConch = new MagicConch(EGProperties.magicConchID).setUnlocalizedName("MagicConch").setCreativeTab(EGCreativeTab.EGCreativeTabItem);
 	       sjl = new EGFood(EGProperties.sjlID, 8, 2.0F, false, "Sio_Chiu_Le").setUnlocalizedName("sJL");
 	       cookedDinoMeat = new EGFood(EGProperties.cookedDinoMeatID, 8, 0.8F, true,"Dino_Steak").setUnlocalizedName("dinoSteak");
-	       BrokenSapling = new EGItem(EGProperties.BrokenSaplingID, "Broken_Sapling").setUnlocalizedName(LocalizationStrings.BROKEN_SAPLING_NAME);
-	       SteelIngot = new EGItem(EGProperties.SteelIngotID, "SteelIngot").setUnlocalizedName("SteelIngot");
-	       SteelPlate = new EGItem(EGProperties.SteelPlateID, "SteelPlate").setUnlocalizedName("SteelPlate");
-	       Relic = new EGItem(EGProperties.RelicID, "Relic_Scrap").setUnlocalizedName("Relic_Srap");
+	       brokenSapling = new EGItem(EGProperties.brokenSaplingID, "Broken_Sapling").setUnlocalizedName(LocalizationStrings.BROKEN_SAPLING_NAME);
+	       steelIngot = new EGItem(EGProperties.steelIngotID, "SteelIngot").setUnlocalizedName("SteelIngot");
+	       steelPlate = new EGItem(EGProperties.steelPlateID, "SteelPlate").setUnlocalizedName("SteelPlate");
+	       relic = new EGItem(EGProperties.relicID, "Relic_Scrap").setUnlocalizedName("Relic_Srap");
 	       cookedChickenSoup = new EGItem(EGProperties.cookedChickenSoupID, "Cooked_Chicken_Soup").setUnlocalizedName("cookedChickenSoup").setMaxStackSize(1).setContainerItem(Item.bucketEmpty);
 	       rawChickenSoup = new EGItem(EGProperties.rawChickenSoupID, "Raw_Chicken_Soup").setUnlocalizedName("rawChickenSoup").setMaxStackSize(1).setContainerItem(Item.bucketEmpty);
-	       FlintAndSteel = new FlintAndSteel(EGProperties.FlintAndSteelID).setUnlocalizedName("FlintAndSteel");
+	       flintAndSteel = new FlintAndSteel(EGProperties.flintAndSteelID).setUnlocalizedName("FlintAndSteel");
 	       archNotebook = new EGItem(EGProperties.archNotebookID, "Arch_Notebook").setUnlocalizedName("archNotebook");
+	       tranquilizerDart = new TranquilizerDart(EGProperties.tranquilizerDartID);
+	       gun = new Gun(EGProperties.gunID);
 	       
 	       for(int i=0;i<EnumDinoType.values().length;i++)
-	       EnumDinoType.values()[i].EggItem = new Egg(EGProperties.EGGIDs[i], i).setUnlocalizedName("egg" + EnumDinoType.values()[i].name()).setCreativeTab(EGCreativeTab.EGCreativeTabItem);
+	       EnumDinoType.values()[i].eggItem = new Egg(EGProperties.eggIDs[i], i).setUnlocalizedName("egg" + EnumDinoType.values()[i].name()).setCreativeTab(EGCreativeTab.EGCreativeTabItem);
 	       
 	       for(int i=0;i<EnumDinoType.values().length;i++)
-		   EnumDinoType.values()[i].DropItem = new EGFood(EGProperties.RAWIDs[i], 3, 0.3F, true, EnumDinoType.values()[i].name() + "_Meat").setUnlocalizedName("raw" + EnumDinoType.values()[i].name());
+		   EnumDinoType.values()[i].dropItem = new EGFood(EGProperties.rawIDs[i], 3, 0.3F, true, EnumDinoType.values()[i].name() + "_Meat").setUnlocalizedName("raw" + EnumDinoType.values()[i].name());
 	       
 	       for(int i=0;i<EnumDinoType.values().length;i++)
-		   EnumDinoType.values()[i].DNAItem = new EGItem(EGProperties.DNAIDs[i], EnumDinoType.values()[i].name() + "_DNA").setUnlocalizedName("dna" + EnumDinoType.values()[i].name());
+		   EnumDinoType.values()[i].dnaItem = new EGItem(EGProperties.dnaIDs[i], EnumDinoType.values()[i].name() + "_DNA").setUnlocalizedName("dna" + EnumDinoType.values()[i].name());
 	       
-	       GameRegistry.registerItem(IvoryIngot, "IvoryIngot", "Ere G\351ologique");
-	       GameRegistry.registerItem(IvoryNugget, "IvoryNugget", "Ere G\351ologique");
-	       GameRegistry.registerItem(IvoryGear, "IvoryGear", "Ere G\351ologique");
-	       GameRegistry.registerItem(DinoPedia, "DinoPedia", "Ere G\351ologique");
-	       GameRegistry.registerItem(ChickenEss, "ChickenEss", "Ere G\351ologique");
-	       GameRegistry.registerItem(Whip, "Whip", "Ere G\351ologique");
-	       GameRegistry.registerItem(LegBone, "LegBone", "Ere G\351ologique");
-	       GameRegistry.registerItem(Claw, "Claw", "Ere G\351ologique");
-	       GameRegistry.registerItem(Foot, "Foot", "Ere G\351ologique");
-	       GameRegistry.registerItem(Skull, "DinoSkull", "Ere G\351ologique");
-	       GameRegistry.registerItem(BioFossil, "BioFossil", "Ere G\351ologique");
-	       GameRegistry.registerItem(SkullStick, "SkullStick", "Ere G\351ologique");
+	       GameRegistry.registerItem(ivoryIngot, "IvoryIngot", "Ere G\351ologique");
+	       GameRegistry.registerItem(ivoryNugget, "IvoryNugget", "Ere G\351ologique");
+	       GameRegistry.registerItem(ivoryGear, "IvoryGear", "Ere G\351ologique");
+	       GameRegistry.registerItem(dinoPedia, "DinoPedia", "Ere G\351ologique");
+	       GameRegistry.registerItem(chickenEss, "ChickenEss", "Ere G\351ologique");
+	       GameRegistry.registerItem(whip, "Whip", "Ere G\351ologique");
+	       GameRegistry.registerItem(legBone, "LegBone", "Ere G\351ologique");
+	       GameRegistry.registerItem(claw, "Claw", "Ere G\351ologique");
+	       GameRegistry.registerItem(foot, "Foot", "Ere G\351ologique");
+	       GameRegistry.registerItem(skull, "DinoSkull", "Ere G\351ologique");
+	       GameRegistry.registerItem(bioFossil, "BioFossil", "Ere G\351ologique");
+	       GameRegistry.registerItem(skullStick, "SkullStick", "Ere G\351ologique");
 	       GameRegistry.registerItem(gem, "gem", "Ere G\351ologique");
-	       GameRegistry.registerItem(EmptyShell, "EmptyShell", "Ere G\351ologique");
-	       GameRegistry.registerItem(MagicConch, "MagicConch", "Ere G\351ologique");
+	       GameRegistry.registerItem(emptyShell, "EmptyShell", "Ere G\351ologique");
+	       GameRegistry.registerItem(magicConch, "MagicConch", "Ere G\351ologique");
 	       GameRegistry.registerItem(sjl, "sjl", "Ere G\351ologique");
 	       GameRegistry.registerItem(cookedDinoMeat, "cookedDinoMeat", "Ere G\351ologique");
-	       GameRegistry.registerItem(BrokenSapling, "BrokenSapling", "Ere G\351ologique");
-	       GameRegistry.registerItem(SteelIngot, "SteelIngot", "Ere G\351ologique");
-	       GameRegistry.registerItem(SteelPlate, "SteelPlate", "Ere G\351ologique");
-	       GameRegistry.registerItem(Relic, "Relic", "Ere G\351ologique");
+	       GameRegistry.registerItem(brokenSapling, "BrokenSapling", "Ere G\351ologique");
+	       GameRegistry.registerItem(steelIngot, "SteelIngot", "Ere G\351ologique");
+	       GameRegistry.registerItem(steelPlate, "SteelPlate", "Ere G\351ologique");
+	       GameRegistry.registerItem(relic, "Relic", "Ere G\351ologique");
 	       GameRegistry.registerItem(rawChickenSoup, "rawChickenSoup", "Ere G\351ologique");
 	       GameRegistry.registerItem(cookedChickenSoup, "cookedChickenSoup", "Ere G\351ologique");
-	       GameRegistry.registerItem(FlintAndSteel, "FlindAndSteel", "Ere G\351ologique");
+	       GameRegistry.registerItem(flintAndSteel, "FlindAndSteel", "Ere G\351ologique");
 	       GameRegistry.registerItem(archNotebook, "archNotebook", "Ere G\351ologique");
+	       GameRegistry.registerItem(tranquilizerDart, "tranquilizertDart", "Ere G\351ologique");
+	       GameRegistry.registerItem(gun, "gun", "Ere G\351ologique");
+
+	       for(int i=0;i<EnumDinoType.values().length;i++)
+	       GameRegistry.registerItem(EnumDinoType.values()[i].eggItem, "egg" + EnumDinoType.values()[i].name(), "Ere G\351ologique");
 	       
 	       for(int i=0;i<EnumDinoType.values().length;i++)
-	       GameRegistry.registerItem(EnumDinoType.values()[i].EggItem, "egg" + EnumDinoType.values()[i].name(), "Ere G\351ologique");
+		   GameRegistry.registerItem(EnumDinoType.values()[i].dropItem, "raw" + EnumDinoType.values()[i].name(), "Ere G\351ologique");
 	       
 	       for(int i=0;i<EnumDinoType.values().length;i++)
-		   GameRegistry.registerItem(EnumDinoType.values()[i].DropItem, "raw" + EnumDinoType.values()[i].name(), "Ere G\351ologique");
-	       
-	       for(int i=0;i<EnumDinoType.values().length;i++)
-		   GameRegistry.registerItem(EnumDinoType.values()[i].DNAItem, "dna" + EnumDinoType.values()[i].name(), "Ere G\351ologique");
+		   GameRegistry.registerItem(EnumDinoType.values()[i].dnaItem, "dna" + EnumDinoType.values()[i].name(), "Ere G\351ologique");
 		}
 		catch(Exception ex)
 		{

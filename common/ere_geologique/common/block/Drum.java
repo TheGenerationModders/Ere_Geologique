@@ -30,7 +30,7 @@ public class Drum extends BlockContainer
      */
     public int idDropped(int var1, Random var2, int var3)
     {
-        return EGProperties.DrumID;
+        return EGProperties.drumID;
     }
 
     

@@ -112,10 +112,10 @@ public class TeleporterGlacia extends Teleporter
 					for (int i2 = this.worldServerInstance.getActualHeight() - 1; i2 >= 0; --i2)
 					{
 						/** change this block **/
-						if (this.worldServerInstance.getBlockId(k1, i2, l1) == EGBlockList.GlaciaPortal.blockID)
+						if (this.worldServerInstance.getBlockId(k1, i2, l1) == EGBlockList.glaciaPortal.blockID)
 						{
 							/** change this block **/
-							while (this.worldServerInstance.getBlockId(k1, i2 - 1, l1) == EGBlockList.GlaciaPortal.blockID)
+							while (this.worldServerInstance.getBlockId(k1, i2 - 1, l1) == EGBlockList.glaciaPortal.blockID)
 							{
 								--i2;
 							}
@@ -143,22 +143,22 @@ public class TeleporterGlacia extends Teleporter
 			d4 = (double) k + 0.5D;
 			int j2 = -1;
 			/** change this block **/
-			if (this.worldServerInstance.getBlockId(i - 1, j, k) == EGBlockList.GlaciaPortal.blockID)
+			if (this.worldServerInstance.getBlockId(i - 1, j, k) == EGBlockList.glaciaPortal.blockID)
 			{
 				j2 = 2;
 			}
 			/** change this block **/
-			if (this.worldServerInstance.getBlockId(i + 1, j, k) == EGBlockList.GlaciaPortal.blockID)
+			if (this.worldServerInstance.getBlockId(i + 1, j, k) == EGBlockList.glaciaPortal.blockID)
 			{
 				j2 = 0;
 			}
 			/** change this block **/
-			if (this.worldServerInstance.getBlockId(i, j, k - 1) == EGBlockList.GlaciaPortal.blockID)
+			if (this.worldServerInstance.getBlockId(i, j, k - 1) == EGBlockList.glaciaPortal.blockID)
 			{
 				j2 = 3;
 			}
 			/** change this block **/
-			if (this.worldServerInstance.getBlockId(i, j, k + 1) == EGBlockList.GlaciaPortal.blockID)
+			if (this.worldServerInstance.getBlockId(i, j, k + 1) == EGBlockList.glaciaPortal.blockID)
 			{
 				j2 = 1;
 			}
@@ -416,7 +416,7 @@ public class TeleporterGlacia extends Teleporter
 					flag = i3 == 0 || i3 == 3 || l2 == -1 || l2 == 3;
 
 					/** change these blocks **/
-					this.worldServerInstance.setBlock(k3, j3, i4, flag ? Block.ice.blockID : EGBlockList.GlaciaPortal.blockID, 0, 2);
+					this.worldServerInstance.setBlock(k3, j3, i4, flag ? Block.ice.blockID : EGBlockList.glaciaPortal.blockID, 0, 2);
 				}
 			}
 			for (i3 = 0; i3 < 4; ++i3)

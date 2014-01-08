@@ -45,7 +45,7 @@ public class DinoAIRideGround extends DinoAIRide
 		float speedX = rider.moveForward / PLAYER_SPEED;
 		float speedY = rider.moveStrafing / PLAYER_SPEED;
 
-		if (hasEquipped(rider, EGItemList.Whip))
+		if (hasEquipped(rider, EGItemList.whip))
 		{
 
 			float speedPlayer = Math.max(Math.abs(speedX), Math.abs(speedY));

@@ -96,7 +96,7 @@ public class Nautilus extends EntityWaterMob
      */
     protected int getDropItemId()
     {
-        return EGItemList.EmptyShell.itemID;
+        return EGItemList.emptyShell.itemID;
     }
 
     /**
@@ -108,12 +108,12 @@ public class Nautilus extends EntityWaterMob
 
         if (var3 <= 3)
         {
-            this.dropItem(EGItemList.EmptyShell.itemID, 1);
+            this.dropItem(EGItemList.emptyShell.itemID, 1);
 //            this.dropItem(EnumDinoType.Nautilus.DropItem.itemID, 1);
         }
         else
         {
-            this.dropItem(EGItemList.MagicConch.itemID, 1);
+            this.dropItem(EGItemList.magicConch.itemID, 1);
         }
     }
 
@@ -126,7 +126,7 @@ public class Nautilus extends EntityWaterMob
 
         if (var2 == null)
         {
-            ItemStack var3 = new ItemStack(EnumDinoType.Nautilus.EggItem/*Fossil.shellNautilusFossil.ancientegg*/, 1);
+            ItemStack var3 = new ItemStack(EnumDinoType.Nautilus.eggItem, 1);
 
             if (var1.inventory.addItemStackToInventory(var3))
             {

@@ -45,7 +45,7 @@ public class Cultivator extends BlockContainer
 
     public int idDropped(int var1, Random var2, int var3)
     {
-        return EGBlockList.CultivatorIdle.blockID;
+        return EGBlockList.cultivatorIdle.blockID;
     }
 
     public void onBlockAdded(World var1, int var2, int var3, int var4)
@@ -124,11 +124,11 @@ public class Cultivator extends BlockContainer
 
         if (var0)
         {
-            var1.setBlock(var2, var3, var4, EGBlockList.CultivatorActive.blockID);
+            var1.setBlock(var2, var3, var4, EGBlockList.cultivatorActive.blockID);
         }
         else
         {
-            var1.setBlock(var2, var3, var4, EGBlockList.CultivatorIdle.blockID);
+            var1.setBlock(var2, var3, var4, EGBlockList.cultivatorIdle.blockID);
         }
 
         keepFurnaceInventory = false;
@@ -275,6 +275,6 @@ public class Cultivator extends BlockContainer
     @SideOnly(Side.CLIENT)
     public int idPicked(World par1World, int par2, int par3, int par4)
     {
-    	return EGBlockList.CultivatorIdle.blockID;
+    	return EGBlockList.cultivatorIdle.blockID;
     }
 }

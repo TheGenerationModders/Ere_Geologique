@@ -157,7 +157,7 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
         boolean var2 = false;
         int cookvalue;
         
-        if(CommandDino.Debugmode)
+        if(CommandDino.debugMode)
         {
         	cookvalue = 300;
         }else
@@ -229,7 +229,7 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
 
         if (this.furnaceCookTime == 3001 && (new Random()).nextInt(100) < 20)
         {
-            ((Cultivator)EGBlockList.CultivatorIdle).onBlockRemovalLost(this.worldObj, this.xCoord, this.yCoord, this.zCoord, true);
+            ((Cultivator)EGBlockList.cultivatorIdle).onBlockRemovalLost(this.worldObj, this.xCoord, this.yCoord, this.zCoord, true);
         }
     }
 
@@ -282,7 +282,7 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
         if (var1 != null)
         {
             int var2 = var1.getItem().itemID;
-            if(var2 == EGItemList.BioFossil.itemID) return 300;
+            if(var2 == EGItemList.bioFossil.itemID) return 300;
             if(var2 == Item.porkRaw.itemID)return 3000;
             if(var2 == Item.fishRaw.itemID)return 3000;
             if(var2 == Item.beefRaw.itemID)return 4000;
@@ -307,7 +307,7 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
     private ItemStack CheckSmelt(ItemStack var1)
     {
        
-    	if(var1.itemID==EGItemList.BrokenSapling.itemID)return new ItemStack(EGBlockList.Sapling, 1);
+    	if(var1.itemID==EGItemList.brokenSapling.itemID)return new ItemStack(EGBlockList.sapling, 1);
     	if(EnumDinoType.getEgg(var1.getItem())!=null)return new ItemStack(EnumDinoType.getEgg(var1.getItem()),1);//converts dino dna to dino egg
     	return null;
     }

@@ -6,7 +6,6 @@ import ere_geologique.common.block.EGBlockList;
 
 public class EGCreativeTabBlock extends CreativeTabs
 {
-	
 	 public EGCreativeTabBlock(String name)
 	 {
 	        super(name);
@@ -15,6 +14,6 @@ public class EGCreativeTabBlock extends CreativeTabs
 	 @Override
 	 public ItemStack getIconItemStack()
 	 {
-		 return new ItemStack(EGBlockList.Wood);
+		 return new ItemStack(EGBlockList.wood);
 	 }
 }

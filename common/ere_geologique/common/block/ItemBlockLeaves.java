@@ -24,7 +24,7 @@ public class ItemBlockLeaves extends ItemBlock
     @SideOnly(Side.CLIENT)
     public Icon getIconFromDamage(int par1)
     {
-        return EGBlockList.Leaves.getIcon(0, par1);
+        return EGBlockList.leaves.getIcon(0, par1);
     }
 
     @SideOnly(Side.CLIENT)

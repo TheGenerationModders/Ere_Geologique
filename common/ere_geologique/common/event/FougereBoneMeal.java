@@ -12,11 +12,11 @@ public class FougereBoneMeal
 	@ForgeSubscribe
 	public void onUseBonemeal(BonemealEvent event)
 	{
-		if (event.ID == EGProperties.SaplingID)
+		if (event.ID == EGProperties.saplingID)
 		{
 			if (!event.world.isRemote)
 			{
-				((Sapling) EGBlockList.Sapling).growTree(event.world, event.X, event.Y, event.Z, event.world.rand);
+				((Sapling) EGBlockList.sapling).growTree(event.world, event.X, event.Y, event.Z, event.world.rand);
 				event.setResult(Event.Result.ALLOW);
 			}
 		}

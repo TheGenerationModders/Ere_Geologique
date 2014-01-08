@@ -26,7 +26,7 @@ public class DinoAIStarvation extends EntityAIBase
         //if (EGOptions.DinoHunger)
         //{
             this.mover.decreaseHungerTick();
-            return this.mover.getHungerTick() <= 0 && CommandDino.Dinos_Starve;// && this.mover.worldObj.difficultySetting > 0;
+            return this.mover.getHungerTick() <= 0 && CommandDino.dinos_Starve;// && this.mover.worldObj.difficultySetting > 0;
         //}
         //return false;
     }

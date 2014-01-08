@@ -220,12 +220,12 @@ public class DinoAIEat extends EntityAIBase
                     if(!this.targetFeeder.isInvalid())
                     {
                         int healval=MathHelper.floor_double(this.targetFeeder.Feed(this.dinosaur, this.dinosaur.SelfType)/15D);
-                        if(CommandDino.Heal_Dinos)
+                        if(CommandDino.heal_Dinos)
                             this.dinosaur.heal(healval);
                     }
                 break;
                 case BLOCK:
-                    if(CommandDino.Heal_Dinos)
+                    if(CommandDino.heal_Dinos)
                         this.dinosaur.heal(DinoFood.getFoodByDino(this.dinosaur.SelfType, this.dinosaur.worldObj.getBlockId((int)destX, (int)destY, (int)destZ), this.dinosaur.worldObj.getBlockMetadata((int)destX, (int)destY, (int)destZ)).getHealValue());
                     this.dinosaur.increaseHunger(DinoFood.getFoodByDino(this.dinosaur.SelfType, this.dinosaur.worldObj.getBlockId((int)destX, (int)destY, (int)destZ), this.dinosaur.worldObj.getBlockMetadata((int)destX, (int)destY, (int)destZ)).getFoodValue());
                     this.dinosaur.worldObj.setBlock((int)destX, (int)destY, (int)destZ,0);

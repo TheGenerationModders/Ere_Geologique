@@ -33,29 +33,29 @@ public class Slab extends BlockHalfSlab
 	@SideOnly(Side.CLIENT)
 	private static boolean isBlockSingleSlab(int id)
 	{
-		return id == EGBlockList.Slab.blockID;
+		return id == EGBlockList.slab.blockID;
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public int idPicked(World world, int x, int y, int z)
 	{
-		return isBlockSingleSlab(this.blockID) ? this.blockID : EGBlockList.DoubleSlab.blockID;
+		return isBlockSingleSlab(this.blockID) ? this.blockID : EGBlockList.doubleSlab.blockID;
 	}
 	
 	@SideOnly(Side.CLIENT)
 	public Icon getIcon(int side, int metadata)
 	{
-		return EGBlockList.Plank.getIcon(side, metadata & 7);
+		return EGBlockList.plank.getIcon(side, metadata & 7);
 	}
 
 	public int idDropped(int id, Random rand, int fortune)
 	{
-		return EGBlockList.Slab.blockID;
+		return EGBlockList.slab.blockID;
 	}
 
 	protected ItemStack createStackedBlock(int metadata)
 	{
-		return new ItemStack(EGBlockList.Slab.blockID, 2, metadata & 7);
+		return new ItemStack(EGBlockList.slab.blockID, 2, metadata & 7);
 	}
 
 	public String getFullSlabName(int metadata)
@@ -70,7 +70,7 @@ public class Slab extends BlockHalfSlab
 
 	public void getSubBlocks(int id, CreativeTabs creativeTabs, List list)
 	{
-		if (id != EGBlockList.DoubleSlab.blockID)
+		if (id != EGBlockList.doubleSlab.blockID)
 		{
 			for (int i = 0; i < woodType.length; i++)
 			{

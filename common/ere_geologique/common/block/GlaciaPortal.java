@@ -141,7 +141,7 @@ public class GlaciaPortal extends BlockBreakable
 							{
 								return false;
 							}
-						} else if (j1 != 0 && j1 != EGBlockList.BlueFire.blockID)
+						} else if (j1 != 0 && j1 != EGBlockList.blueFire.blockID)
 						{
 							return false;
 						}
@@ -152,7 +152,7 @@ public class GlaciaPortal extends BlockBreakable
 			{
 				for (i1 = 0; i1 < 3; ++i1)
 				{
-					par1World.setBlock(par2 + b0 * l, par3 + i1, par4 + b1 * l, EGBlockList.GlaciaPortal.blockID, 0, 2);
+					par1World.setBlock(par2 + b0 * l, par3 + i1, par4 + b1 * l, EGBlockList.glaciaPortal.blockID, 0, 2);
 				}
 			}
 			return true;
@@ -250,10 +250,10 @@ public class GlaciaPortal extends BlockBreakable
 			if (thePlayer.timeUntilPortal > 0)
 			{
 				thePlayer.timeUntilPortal = 10;
-			} else if (thePlayer.dimension != EGProperties.GlaciaID)
+			} else if (thePlayer.dimension != EGProperties.glaciaID)
 			{
 				thePlayer.timeUntilPortal = 10;
-				thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, EGProperties.GlaciaID, new TeleporterGlacia(thePlayer.mcServer.worldServerForDimension(EGProperties.GlaciaID)));
+				thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, EGProperties.glaciaID, new TeleporterGlacia(thePlayer.mcServer.worldServerForDimension(EGProperties.glaciaID)));
 			} else {
 				thePlayer.timeUntilPortal = 10;
 				thePlayer.mcServer.getConfigurationManager().transferPlayerToDimension(thePlayer, 0, new TeleporterGlacia(thePlayer.mcServer.worldServerForDimension(0)));

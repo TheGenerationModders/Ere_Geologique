@@ -880,7 +880,7 @@ public class Plesiosaure extends SwimmingDino implements IMob
             this.increaseHunger(100);
         }
 
-        if (CommandDino.Heal_Dinos)
+        if (CommandDino.heal_Dinos)
         {
             this.heal(5);
         }

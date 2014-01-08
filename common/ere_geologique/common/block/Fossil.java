@@ -20,13 +20,13 @@ public class Fossil extends BlockStone
     {
         int i = (new Random()).nextInt(1000);
         if(i < 1)	return EGItemList.gem.itemID;
-        if(i < 13) 	return EGItemList.LegBone.itemID;
-        if(i < 15)	return EGItemList.Skull.itemID;
-        if(i < 17)	return EGItemList.Claw.itemID;
-        if(i < 19)  return EGItemList.Foot.itemID;
-        if(i < 50)	return EGBlockList.Skull.blockID;
-        if(i < 250)	return EGItemList.BioFossil.itemID;
-        if(i < 450)	return EGItemList.Relic.itemID;
+        if(i < 13) 	return EGItemList.legBone.itemID;
+        if(i < 15)	return EGItemList.skull.itemID;
+        if(i < 17)	return EGItemList.claw.itemID;
+        if(i < 19)  return EGItemList.foot.itemID;
+        if(i < 50)	return EGBlockList.skull.blockID;
+        if(i < 250)	return EGItemList.bioFossil.itemID;
+        if(i < 450)	return EGItemList.relic.itemID;
         if(i < 900)	return Item.bone.itemID;
         return Block.cobblestone.blockID;
     }  

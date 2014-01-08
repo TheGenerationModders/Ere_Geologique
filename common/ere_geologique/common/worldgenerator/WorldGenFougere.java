@@ -60,7 +60,7 @@ public class WorldGenFougere extends WorldGenerator
                                      {
                                              int i3 = world.getBlockId(k1, i1, i2);
                                              //ce code indique sur quel block l'arbre peut se generer
-                                             if (i3 != 0 && i3 != EGProperties.LeavesID && i3 != Block.dirt.blockID && i3 != EGProperties.WoodID)
+                                             if (i3 != 0 && i3 != EGProperties.leavesID && i3 != Block.dirt.blockID && i3 != EGProperties.woodID)
                                              {
                                                      flag = false;
                                              }
@@ -85,7 +85,7 @@ public class WorldGenFougere extends WorldGenerator
                      return false;
              }
 
-             func_50073_a(world, i, j - 1, k, EGProperties.WoodID);
+             func_50073_a(world, i, j - 1, k, EGProperties.woodID);
              byte byte1 = 3;
              int l1 = 0;
 
@@ -104,7 +104,7 @@ public class WorldGenFougere extends WorldGenerator
 
                                      if ((Math.abs(i5) != i4 || Math.abs(l5) != i4 || random.nextInt(2) != 0 && j3 != 0) && !Block.opaqueCubeLookup[world.getBlockId(k4, j2, k5)])
                                      {
-                                             setBlockAndMetadata(world, k4, j2, k5, EGProperties.LeavesID, field_48199_d);
+                                             setBlockAndMetadata(world, k4, j2, k5, EGProperties.leavesID, field_48199_d);
                                      }
                              }
                      }
@@ -114,12 +114,12 @@ public class WorldGenFougere extends WorldGenerator
              {
                      int k3 = world.getBlockId(i, j + k2, k);
 
-                     if (k3 != 0 && k3 != EGProperties.LeavesID)
+                     if (k3 != 0 && k3 != EGProperties.leavesID)
                      {
                              continue;
                      }
 
-                     setBlockAndMetadata(world, i, j + k2, k, EGProperties.WoodID, field_48201_c);
+                     setBlockAndMetadata(world, i, j + k2, k, EGProperties.woodID, field_48201_c);
 
                      if (!field_48200_b || k2 <= 0)
                      {
@@ -158,7 +158,7 @@ public class WorldGenFougere extends WorldGenerator
                              {
                                      for (int j5 = k - j4; j5 <= k + j4; j5++)
                                      {
-                                             if (world.getBlockId(l4, l2, j5) != EGProperties.WoodID)
+                                             if (world.getBlockId(l4, l2, j5) != EGProperties.woodID)
                                              {
                                                      continue;
                                              }

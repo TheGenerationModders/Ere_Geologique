@@ -21,15 +21,15 @@ public class CraftingHandler implements ICraftingHandler
 	@Override
 	public void onCrafting(EntityPlayer player, ItemStack item, IInventory craftMatrix)
 	{
-		if(item.itemID == EGBlockList.Feeder.blockID)
+		if(item.itemID == EGBlockList.feeder.blockID)
 		{
-			player.addStat(EGAchievement.Feeder, 1);
-		}else if(item.itemID == EGBlockList.Analyzer.blockID)
+			player.addStat(EGAchievement.feeder, 1);
+		}else if(item.itemID == EGBlockList.analyzer.blockID)
 		{
-			player.addStat(EGAchievement.Analyzer, 1);
-		}else if(item.itemID == EGBlockList.CultivatorIdle.blockID)
+			player.addStat(EGAchievement.analyzer, 1);
+		}else if(item.itemID == EGBlockList.cultivatorIdle.blockID)
 		{
-			player.addStat(EGAchievement.Cultivator, 1);
+			player.addStat(EGAchievement.cultivator, 1);
 		}
 		
 	}
@@ -39,21 +39,21 @@ public class CraftingHandler implements ICraftingHandler
 	{
 		for (int i = 0; i < EnumDinoType.values().length; i++)
 		{
-			if (item.itemID == EnumDinoType.values()[i].EggItem.itemID)
+			if (item.itemID == EnumDinoType.values()[i].eggItem.itemID)
 			{
-				player.addStat(EGAchievement.FirstEgg, 1);
+				player.addStat(EGAchievement.firstEgg, 1);
 				if (!eggsFound.contains(i))
 					this.eggsFound.add(i);
 			}
 		}
 
-		EreGeologique.DebugMessage("eggsTotal: " + this.eggsTotal);
+		/*EreGeologique.DebugMessage("eggsTotal: " + this.eggsTotal);
 		EreGeologique.DebugMessage("eggsFound: " + this.eggsFound);
-		EreGeologique.DebugMessage("" + eggsFound.containsAll(eggsTotal));
+		EreGeologique.DebugMessage("" + eggsFound.containsAll(eggsTotal));*/
 
 		if (eggsFound.containsAll(eggsTotal))
 		{
-			player.addStat(EGAchievement.AllEggs, 1);
+			player.addStat(EGAchievement.allEggs, 1);
 		}
 	}
 }

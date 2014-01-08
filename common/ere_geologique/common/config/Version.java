@@ -45,7 +45,7 @@ public class Version implements Runnable
 		if (!isOutdated())
 			return false;
 
-		Property property = EreGeologique.ConfigFile.get("vars", "version.seen", VERSION);
+		Property property = EreGeologique.configFile.get("vars", "version.seen", VERSION);
 		property.comment = "indicates the last version the user has been informed about and will suppress further notices on it.";
 		String seenVersion = property.getString();
 
@@ -53,7 +53,7 @@ public class Version implements Runnable
 			return false;
 
 		property.set(recommendedVersion);
-		EreGeologique.ConfigFile.save();
+		EreGeologique.configFile.save();
 		return true;
 	}
 	
@@ -94,7 +94,7 @@ public class Version implements Runnable
 			{
 				String[] tokens = line.split(":");
 				if (MC_VERSION.matches(tokens[0])) {
-					if (EGProperties.MOD.matches(tokens[1]))
+					if (EGProperties.mod.matches(tokens[1]))
 					{
 						if (VERSION.matches(tokens[2]))
 						{
@@ -180,7 +180,7 @@ public class Version implements Runnable
 			EreGeologique.EGLog.warning("Unable to read changelog from remote site.");
 		}
 
-		return new String[]{String.format("Unable to retrieve changelog for %s %s", EGProperties.MOD, version)};
+		return new String[]{String.format("Unable to retrieve changelog for %s %s", EGProperties.mod, version)};
 	}
 	
 	@Override

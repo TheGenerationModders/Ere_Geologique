@@ -12,17 +12,17 @@ public enum EnumAnimalType
     Mammoth(6000),
     Dodo(1500);
     
-    public int GrowTime;
+    public int growTime;
     
     private EnumAnimalType(int grow0)
     {
-        if (CommandDino.Debugmode)
+        if (CommandDino.debugMode)
         {
-            GrowTime=100;
+            growTime=100;
         }
         else
         {
-    	GrowTime=grow0;
+        	growTime=grow0;
         }
     }
 }
