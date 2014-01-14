@@ -98,7 +98,6 @@ public class TileEntityDrum extends TileEntity
                 }
             }
         }
-
         return true;
     }
 }

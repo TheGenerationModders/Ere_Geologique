@@ -1,7 +1,7 @@
 package ere_geologique.common.creativetabs;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.Item;
 import ere_geologique.common.block.EGBlockList;
 
 public class EGCreativeTabBlock extends CreativeTabs
@@ -10,10 +10,10 @@ public class EGCreativeTabBlock extends CreativeTabs
 	 {
 	        super(name);
 	 }
-	 
-	 @Override
-	 public ItemStack getIconItemStack()
-	 {
-		 return new ItemStack(EGBlockList.wood);
-	 }
+
+	@Override
+	public Item getTabIconItem()
+	{
+		return Item.func_150898_a(EGBlockList.wood);
+	}
 }

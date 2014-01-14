@@ -1,9 +1,7 @@
 package ere_geologique.api.food;
 
-
 public class DinoFoodMobList
 {
-	
 	EnumDinoFoodMob[] Mobs;
 	
 	int index;	
@@ -13,11 +11,13 @@ public class DinoFoodMobList
 		index=0;
 		this.Mobs = new EnumDinoFoodMob[100];
 	}
+	
 	public void addMob(EnumDinoFoodMob mob)
 	{
 		this.Mobs[index]=mob;
 		index++;
 	}
+	
 	public boolean CheckMobByClass(Class mobclass)
 	{
 		for (int i=0;i<index;i++)
@@ -27,6 +27,7 @@ public class DinoFoodMobList
 		}
 		return false;
 	}
+	
 	public int getMobFood(Class mobclass)
 	{
 		for (int i=0;i<index;i++)
@@ -36,6 +37,7 @@ public class DinoFoodMobList
 		}
 		return 0;	
 	}
+	
 	public int getMobHeal(Class mobclass)
 	{
 		for (int i=0;i<index;i++)
@@ -45,6 +47,7 @@ public class DinoFoodMobList
 		}
 		return 0;	
 	}
+	
 	public boolean IsEmpty()
 	{
 		return index==0;

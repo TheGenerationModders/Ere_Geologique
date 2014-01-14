@@ -1,7 +1,6 @@
 package ere_geologique.common.item;
 
-import cpw.mods.fml.relauncher.Side;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -60,8 +59,8 @@ public class FlintAndSteel extends Item
 	}
 	
 	@Override
-	public void registerIcons(IconRegister iconRegister)
+	public void registerIcons(IIconRegister iconRegister)
 	{
-		itemIcon = iconRegister.registerIcon("ere_geologique:frozen_flit_and_steel");
+		itemIcon = iconRegister.registerIcon("ere_geologique:frozen_flint_and_steel");
     }
 }

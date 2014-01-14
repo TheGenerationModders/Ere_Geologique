@@ -7,11 +7,11 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockLeavesBase;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.ColorizerFoliage;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -27,7 +27,7 @@ public class Leaves extends BlockLeavesBase implements IShearable
 	public static final String[][] leafTextureTypes = new String[][] {{"leaves", "leaves_cycas", "leaves_araucarias", "leaves_metasequoias", "leaves_ginkgos"},{"leaves_opaque", "leaves_cycas_opaque", "leaves_araucarias_opaque", "leaves_metasequoias_opaque", "leaves_ginkgos_opaque"}};
 	@SideOnly(Side.CLIENT)
 	private int LEAF;
-	private Icon[][] IconArray = new Icon[2][];
+	private IIcon[][] IconArray = new IIcon[2][];
     int[] adjacentTreeBlocks;
  
     public Leaves(int id)
@@ -266,7 +266,7 @@ public class Leaves extends BlockLeavesBase implements IShearable
         return !this.graphicsLevel;
     }
     
-    public Icon getIcon(int side, int metadata)
+    public IIcon getIcon(int side, int metadata)
     {
         return (metadata & 4) == 1 ? this.IconArray[this.LEAF][1] : ((metadata & 4) == 3 ? this.IconArray[this.LEAF][3] : this.IconArray[this.LEAF][0]);
     }
@@ -293,11 +293,11 @@ public class Leaves extends BlockLeavesBase implements IShearable
     }
  
     @Override
-    public void registerIcons(IconRegister par1IconRegister)
+    public void registerIcons(IIconRegister par1IconRegister)
     {
     	for (int i = 0; i < leafTextureTypes.length; ++i)
         {
-            this.IconArray[i] = new Icon[leafTextureTypes[i].length];
+            this.IconArray[i] = new IIcon[leafTextureTypes[i].length];
 
             for (int j = 0; j < leafTextureTypes[i].length; ++j)
             {

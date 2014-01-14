@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.Random;
 
 import net.minecraft.block.BlockSapling;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import cpw.mods.fml.relauncher.Side;
@@ -19,7 +19,7 @@ public class Sapling extends BlockSapling
 {
 	public static final String[] saplingtype = new String[] {"fougere", "cycas", "araucarias", "metasequoias", "ginkgos"};
 	@SideOnly(Side.CLIENT)
-	private Icon[] SaplingIcon;
+	private IIcon[] SaplingIcon;
 	
     public Sapling(int id)
     {
@@ -41,7 +41,7 @@ public class Sapling extends BlockSapling
             }
     }
     
-    public Icon getIcon(int side, int metadata)
+    public IIcon getIcon(int side, int metadata)
     {
     	metadata &= 4;
     	return this.SaplingIcon[metadata];
@@ -63,9 +63,9 @@ public class Sapling extends BlockSapling
     }
     
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister par1IconRegister)
+    public void registerIcons(IIconRegister par1IconRegister)
     {
-        this.SaplingIcon = new Icon[saplingtype.length];
+        this.SaplingIcon = new IIcon[saplingtype.length];
 
         for (int i = 0; i < this.SaplingIcon.length; ++i)
         {

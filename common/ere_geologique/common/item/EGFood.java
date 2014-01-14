@@ -1,7 +1,7 @@
 package ere_geologique.common.item;
 
 import ere_geologique.common.creativetabs.EGCreativeTab;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.item.ItemFood;
 
 public class EGFood extends ItemFood
@@ -16,9 +16,8 @@ public class EGFood extends ItemFood
 	}
 	
 	@Override
-	public void registerIcons(IconRegister iconRegister)
+	public void registerIcons(IIconRegister iconRegister)
 	{
 		itemIcon = iconRegister.registerIcon("ere_geologique:" + TextureFileName);
     }
-
 }

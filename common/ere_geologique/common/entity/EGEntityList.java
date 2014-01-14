@@ -17,7 +17,7 @@ public class EGEntityList
 			EntityRegistry.addSpawn(CroMagnon.class, 5, 2, 4, EnumCreatureType.monster, BiomeGenBase.plains);
 	   
 			for(int i=0;i<EnumDinoType.values().length;i++)
-			EntityRegistry.registerModEntity(EnumDinoType.values()[i].getDinoClass(),EnumDinoType.values()[i].name(),233+i, EreGeologique.Instance, 250, 3, true);
+			EntityRegistry.registerModEntity(EnumDinoType.values()[i].getDinoClass(), EnumDinoType.values()[i].name(),233+i, EreGeologique.Instance, 250, 3, true);
 	   
 			EntityRegistry.registerModEntity(DinoEgg.class, "DinoEgg", 231, EreGeologique.Instance, 250, 5, true);
 			EntityRegistry.registerModEntity(Failuresaurus.class, "Failuresaurus", 232, EreGeologique.Instance, 250, 5, true);

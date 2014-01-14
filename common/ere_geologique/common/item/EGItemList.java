@@ -1,5 +1,6 @@
 package ere_geologique.common.item;
 
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import cpw.mods.fml.common.registry.GameRegistry;
 import ere_geologique.client.LocalizationStrings;
@@ -46,7 +47,7 @@ public class EGItemList
 	       ivoryNugget = new IvoryIngot(EGProperties.ivoryNuggetID).setUnlocalizedName("IvoryNugget").setTextureName("ere_geologique:IvoryNugget");
 	       ivoryGear = new IvoryIngot(EGProperties.ivoryGearID).setUnlocalizedName("IvoryGear").setTextureName("ere_geologique:IvoryGear");
 	       dinoPedia = new DinoPedia(EGProperties.dinoPediaID).setUnlocalizedName("DinoPedia").setTextureName("ere_geologique:Dinopedia");
-	       chickenEss = new ChickenEss(EGProperties.chickenEssID, 10, 0.0F, false, "Essence_Of_Chicken").setUnlocalizedName("ChickenEss").setContainerItem(Item.glassBottle);
+	       chickenEss = new ChickenEss(EGProperties.chickenEssID, 10, 0.0F, false, "Essence_Of_Chicken").setUnlocalizedName("ChickenEss").setContainerItem(Items.glass_bottle);
 	       whip = new Whip(EGProperties.whipID).setUnlocalizedName("Whip").setTextureName("ere_geologique:Whip");
 	       legBone = new EGItem(EGProperties.legBoneID,"Leg_Bone").setUnlocalizedName("Leg_Bone");
 	       claw = new EGItem(EGProperties.clawID,"Claw").setUnlocalizedName("Claw");
@@ -63,8 +64,8 @@ public class EGItemList
 	       steelIngot = new EGItem(EGProperties.steelIngotID, "SteelIngot").setUnlocalizedName("SteelIngot");
 	       steelPlate = new EGItem(EGProperties.steelPlateID, "SteelPlate").setUnlocalizedName("SteelPlate");
 	       relic = new EGItem(EGProperties.relicID, "Relic_Scrap").setUnlocalizedName("Relic_Srap");
-	       cookedChickenSoup = new EGItem(EGProperties.cookedChickenSoupID, "Cooked_Chicken_Soup").setUnlocalizedName("cookedChickenSoup").setMaxStackSize(1).setContainerItem(Item.bucketEmpty);
-	       rawChickenSoup = new EGItem(EGProperties.rawChickenSoupID, "Raw_Chicken_Soup").setUnlocalizedName("rawChickenSoup").setMaxStackSize(1).setContainerItem(Item.bucketEmpty);
+	       cookedChickenSoup = new EGItem(EGProperties.cookedChickenSoupID, "Cooked_Chicken_Soup").setUnlocalizedName("cookedChickenSoup").setMaxStackSize(1).setContainerItem(Items.bucket);
+	       rawChickenSoup = new EGItem(EGProperties.rawChickenSoupID, "Raw_Chicken_Soup").setUnlocalizedName("rawChickenSoup").setMaxStackSize(1).setContainerItem(Items.bucket);
 	       flintAndSteel = new FlintAndSteel(EGProperties.flintAndSteelID).setUnlocalizedName("FlintAndSteel");
 	       archNotebook = new EGItem(EGProperties.archNotebookID, "Arch_Notebook").setUnlocalizedName("archNotebook");
 	       tranquilizerDart = new TranquilizerDart(EGProperties.tranquilizerDartID);

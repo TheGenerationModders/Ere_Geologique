@@ -1,7 +1,5 @@
 package ere_geologique.common.entity.Enums;
 
-import ere_geologique.common.EreGeologique;
-
 public enum EnumOrderType
 {
     Stay,

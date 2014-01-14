@@ -3,8 +3,8 @@ package ere_geologique.common.entity.IA;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.network.packet.Packet34EntityTeleport;
-import net.minecraft.world.WorldServer;
+//import net.minecraft.network.packet.Packet34EntityTeleport;
+//import net.minecraft.world.WorldServer;
 import ere_geologique.common.command.CommandDino;
 import ere_geologique.common.entity.Dinosaure;
 import ere_geologique.common.item.EGItemList;
@@ -116,7 +116,7 @@ public class DinoAIControlledByPlayer extends EntityAIBase
             //decrease the whips uses left
             ItemStack I = P.getHeldItem();
 
-            if (I != null && I.itemID == EGItemList.whip.itemID)
+            if (I != null && I.getItem().equals(EGItemList.whip))
             {
                 //var21.damageItem(1, P);
                 I.setItemDamage(I.getItemDamage() + 1);
@@ -141,7 +141,7 @@ public class DinoAIControlledByPlayer extends EntityAIBase
             this.speedBoostTime += BlocksDestroyed;
         }
 
-        ((WorldServer)this.motionTarget.worldObj).getEntityTracker().sendPacketToAllPlayersTrackingEntity(this.motionTarget, new Packet34EntityTeleport(this.motionTarget));
+//        ((WorldServer)this.motionTarget.worldObj).getEntityTracker().sendPacketToAllPlayersTrackingEntity(this.motionTarget, new Packet34EntityTeleport(this.motionTarget));
     }
 
     /**

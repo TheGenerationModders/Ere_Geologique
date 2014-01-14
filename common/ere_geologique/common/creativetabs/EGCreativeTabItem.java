@@ -1,20 +1,19 @@
 package ere_geologique.common.creativetabs;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.Item;
 import ere_geologique.common.item.EGItemList;
 
 public class EGCreativeTabItem extends CreativeTabs
 {
-	
 	 public EGCreativeTabItem(String name)
 	 {
 	        super(name);
 	 }
-	 
-	 @Override
-	 public ItemStack getIconItemStack()
-	 {
-		 return new ItemStack(EGItemList.dinoPedia);
-	 }
+
+	@Override
+	public Item getTabIconItem()
+	{
+		return EGItemList.dinoPedia;
+	}
 }

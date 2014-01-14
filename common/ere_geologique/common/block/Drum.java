@@ -4,10 +4,10 @@ import java.util.Random;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -16,10 +16,10 @@ import ere_geologique.common.tileentity.TileEntityDrum;
 
 public class Drum extends BlockContainer
 {
-    Icon Top1;
-    Icon Top2;
-    Icon Top3;
-    Icon Bottom;
+    IIcon Top1;
+    IIcon Top2;
+    IIcon Top3;
+    IIcon Bottom;
     public Drum(int var1)
     {
         super(var1, Material.wood);
@@ -40,7 +40,7 @@ public class Drum extends BlockContainer
      * When this method is called, your block should register all the icons it needs with the given IconRegister. This
      * is the only chance you get to register icons.
      */
-    public void registerIcons(IconRegister par1IconRegister)
+    public void registerIcons(IIconRegister par1IconRegister)
     {
         this.blockIcon = par1IconRegister.registerIcon("ere_geologique:Drum_Side");
         this.Top1 = par1IconRegister.registerIcon("ere_geologique:Drum_Top1");
@@ -52,7 +52,7 @@ public class Drum extends BlockContainer
     /**
      * From the specified side and block metadata retrieves the blocks texture. Args: side, metadata
      */
-    public Icon getIcon(int par1, int par2)
+    public IIcon getIcon(int par1, int par2)
     {
         if (par1 != 1 && par1 != 0)
         {

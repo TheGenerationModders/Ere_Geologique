@@ -6,10 +6,10 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRotatedPillar;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -20,9 +20,9 @@ public class Wood extends BlockRotatedPillar
 {
 	public static final String[] woodType = new String[] {"fougere", "cycas", "araucarias", "metasequoias", "ginkgos"};
 	@SideOnly(Side.CLIENT)
-	private Icon[] IconArray;
+	private IIcon[] IconArray;
 	@SideOnly(Side.CLIENT)
-	private Icon[] wood_top;
+	private IIcon[] wood_top;
 	
     public Wood(int id)
     {
@@ -41,13 +41,13 @@ public class Wood extends BlockRotatedPillar
     }
     
     @SideOnly(Side.CLIENT)
-    protected Icon getSideIcon(int par1)
+    protected IIcon getSideIcon(int par1)
     {
         return this.IconArray[par1];
     }
 
     @SideOnly(Side.CLIENT)
-    protected Icon getEndIcon(int par1)
+    protected IIcon getEndIcon(int par1)
     {
         return this.wood_top[par1];
     }
@@ -77,10 +77,10 @@ public class Wood extends BlockRotatedPillar
         return new ItemStack(this.blockID, 1, limitToValidMetadata(par1));
     }
  
-    public void registerIcons(IconRegister register)
+    public void registerIcons(IIconRegister register)
     {
-    	this.wood_top = new Icon[woodType.length];
-        this.IconArray = new Icon[woodType.length];
+    	this.wood_top = new IIcon[woodType.length];
+        this.IconArray = new IIcon[woodType.length];
 
         for (int i = 0; i < this.IconArray.length; ++i)
         {

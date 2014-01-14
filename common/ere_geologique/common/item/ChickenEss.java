@@ -3,7 +3,7 @@ package ere_geologique.common.item;
 import java.util.List;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
@@ -21,7 +21,7 @@ public class ChickenEss extends EGFood
     {
     	if(!var3.capabilities.isCreativeMode)
     	{
-    		var3.inventory.addItemStackToInventory(new ItemStack(Item.glassBottle));
+    		var3.inventory.addItemStackToInventory(new ItemStack(Items.glass_bottle));
     	}
         //return super.onFoodEaten(var1, var2, var3);
     }
@@ -29,6 +29,6 @@ public class ChickenEss extends EGFood
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean i)
     {
-    list.add("Feed this to your dinosaurs to make them grow!");
+    	list.add("Feed this to your dinosaurs to make them grow!");
     }
 }

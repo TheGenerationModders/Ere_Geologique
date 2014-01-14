@@ -3,14 +3,13 @@ package ere_geologique.common.item;
 import java.util.Iterator;
 import java.util.List;
 
-import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.EnumMovingObjectType;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
@@ -35,7 +34,7 @@ public class Egg extends Item
         this.DinoType=DinoType0;
     }
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister par1IconRegister)
+    public void registerIcons(IIconRegister par1IconRegister)
     {
         this.itemIcon = par1IconRegister.registerIcon("ere_geologique:"+EnumDinoType.values()[DinoType].name()+"_Egg");
     }
@@ -104,11 +103,11 @@ public class Egg extends Item
 
                     if (!var2.isRemote)
                     {
-                        if (var2.getBlockId(var34, var32, var33) == Block.snow.blockID)
+                        if (var2.getBlockId(var34, var32, var33) == Blocks.snow.blockID)
                         {
                             --var32;
                         }
-                        EnumDinoType i=this.GetTypeFromInt(/*var1.itemID*/var3.inventory.getCurrentItem().getItem());
+                        EnumDinoType i=this.GetTypeFromInt(var3.inventory.getCurrentItem().getItem());
                         if (!spawnCreature(var2, i, (double)((float)var34 + 0.5F), (double)((float)var32 + 1.0F), (double)((float)var33 + 0.5F)))
                         {
                             return var1;
@@ -150,20 +149,6 @@ public class Egg extends Item
 
     private EnumDinoType GetTypeFromInt(Item var1)
     {
-    	/*if(var1==Fossil.eggTriceratops.itemID)return EnumDinoType.Triceratops;
-    	if(var1==Fossil.eggBrachiosaurus.itemID)return EnumDinoType.Brachiosaurus;
-    	if(var1==Fossil.eggPlesiosaur.itemID)return EnumDinoType.Plesiosaur;
-    	if(var1==Fossil.eggVelociraptor.itemID)return EnumDinoType.Velociraptor;
-    	if(var1==Fossil.eggTRex.itemID)return EnumDinoType.TRex;
-    	if(var1==Fossil.eggDilophosaurus.itemID)return EnumDinoType.Dilophosaurus;
-    	if(var1==Fossil.eggMosasaurus.itemID)return EnumDinoType.Mosasaurus;
-    	if(var1==Fossil.eggPterosaur.itemID)return EnumDinoType.Pterosaur;
-    	if(var1==Fossil.eggStegosaurus.itemID)return EnumDinoType.Stegosaurus;
-    	if(var1==Fossil.shellNautilus.itemID)return EnumDinoType.Nautilus;
-    	if(var1==Fossil.eggSpinosaurus.itemID)return EnumDinoType.Spinosaurus;
-
-    	System.out.println("FAULT!!!!:Dinotype " + String.valueOf(var1)+ " does not exist!");
-    	return EnumDinoType.Triceratops;*/
     	return EnumDinoType.values()[EnumDinoType.getIndex(var1)];
     }
 }

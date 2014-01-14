@@ -1,11 +1,7 @@
 package ere_geologique.common.gui.elements.dinosaures;
 
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.util.MathHelper;
-
 public class PediaDinosaure
 {
-
     public static String[] leftPage = {
     	"Ankylosaurus", 
     	"\"ang-ky-lo-sawr-us\"", 

@@ -9,11 +9,11 @@ import net.minecraft.enchantment.EnchantmentThorns;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.EntityLivingData;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIControlledByPlayer;
 import net.minecraft.entity.passive.EntityTameable;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -1104,7 +1104,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
 
         if (var2 != null)
         {
-            if (var2.itemID == Item.bone.itemID)
+            if (var2.getItem().equals(Items.bone))
             {
                 this.increaseDinoAge();
                 --var2.stackSize;
@@ -1305,7 +1305,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
 
             if (var2 != null)
             {
-                if (var2.itemID == EGItemList.chickenEss.itemID && !player.worldObj.isRemote)
+                if (var2.getItem().equals(EGItemList.chickenEss) && !player.worldObj.isRemote)
                 {
                     // Be grown up by chicken essence
                     if (this.getDinoAge() < this.SelfType.AdultAge && this.getHunger() > 0)
@@ -1419,7 +1419,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
                 }
                 else//no food, but not nothing
                 {
-                    if (FMLCommonHandler.instance().getSide().isClient() && var2.itemID == EGItemList.dinoPedia.itemID)
+                    if (FMLCommonHandler.instance().getSide().isClient() && var2.getItem().equals(EGItemList.dinoPedia))
                     {
                         //DINOPEDIA
                         //EntityDinosaur.pediaingDino = this;
@@ -1428,7 +1428,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
                         return true;
                     }
 
-                    if (var2.itemID == EGItemList.whip.itemID && this.isTamed() && this.SelfType.isRideable()
+                    if (var2.getItem().equals(EGItemList.whip) && this.isTamed() && this.SelfType.isRideable()
                             && this.isAdult() && !this.worldObj.isRemote && this.riddenByEntity == null
                             && player.username.equalsIgnoreCase(this.getOwnerName()))
                     {
@@ -1440,7 +1440,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
                         //    return true;
                     }
 
-                    if (this.SelfType.OrderItem != null && var2.itemID == this.SelfType.OrderItem.itemID && this.isTamed() && player.username.equalsIgnoreCase(this.getOwnerName()))
+                    if (this.SelfType.OrderItem != null && var2.getItem().equals(this.SelfType.OrderItem) && this.isTamed() && player.username.equalsIgnoreCase(this.getOwnerName()))
                     {
                         //THIS DINOS ITEM TO BE CONTROLLED WITH
                         if (!this.worldObj.isRemote)

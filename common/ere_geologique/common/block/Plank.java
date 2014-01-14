@@ -4,10 +4,10 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.common.creativetabs.EGCreativeTab;
@@ -16,7 +16,7 @@ public class Plank extends Block
 {
 	public static final String[] woodType = new String[] {"fougere", "cycas", "araucarias", "metasequoias", "ginkgos"};
 	@SideOnly(Side.CLIENT)
-	private Icon[] IconArray;
+	private IIcon[] IconArray;
 	
 	public Plank(int par1)
     {
@@ -37,7 +37,7 @@ public class Plank extends Block
     }
     
     @SideOnly(Side.CLIENT)
-    public Icon getIcon(int side, int metadata)
+    public IIcon getIcon(int side, int metadata)
     {
         if (metadata < 0 || metadata >= this.IconArray.length)
         {
@@ -63,9 +63,9 @@ public class Plank extends Block
     }
 
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister par1IconRegister)
+    public void registerIcons(IIconRegister par1IconRegister)
     {
-        this.IconArray = new Icon[woodType.length];
+        this.IconArray = new IIcon[woodType.length];
 
         for (int i = 0; i < this.IconArray.length; ++i)
         {

@@ -1,19 +1,19 @@
 package ere_geologique.common.block;
 
-import ere_geologique.common.creativetabs.EGCreativeTab;
 import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import ere_geologique.common.creativetabs.EGCreativeTab;
 
 public class Skull extends BlockDirectional
 {
-    private Icon Front;
-    private Icon Back;
+    private IIcon Front;
+    private IIcon Back;
 
     public Skull(int var1)
     {
@@ -22,14 +22,14 @@ public class Skull extends BlockDirectional
         this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
     }
     
-    public void registerIcons(IconRegister par1IconRegister)
+    public void registerIcons(IIconRegister par1IconRegister)
     {
         this.blockIcon = par1IconRegister.registerIcon("ere_geologique:Skull_Side");
         this.Front = par1IconRegister.registerIcon("ere_geologique:Skull_Front");
         this.Back = par1IconRegister.registerIcon("ere_geologique:Skull_Back");//Bottom!
     }
 
-    public Icon getIcon(int par1, int par2)
+    public IIcon getIcon(int par1, int par2)
     {
         return par1 == 1 || par1 == 0 || (par1>3 && par2<4) || (par1<4 && par2>3)? this.blockIcon : par1!=par2 ? this.Front : this.Back;
     }

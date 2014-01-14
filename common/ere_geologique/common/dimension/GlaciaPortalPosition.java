@@ -1,7 +1,6 @@
 package ere_geologique.common.dimension;
 
 import net.minecraft.util.ChunkCoordinates;
-import net.minecraft.world.Teleporter;
 
 public class GlaciaPortalPosition extends ChunkCoordinates
 {

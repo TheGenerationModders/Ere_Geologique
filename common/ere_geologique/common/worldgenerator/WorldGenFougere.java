@@ -3,6 +3,7 @@ package ere_geologique.common.worldgenerator;
 import java.util.Random;
 
 import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import ere_geologique.common.config.EGProperties;
@@ -16,51 +17,51 @@ public class WorldGenFougere extends WorldGenerator
 
      public WorldGenFougere(boolean flag)
      {
-             this(flag, 4, 0, 0, false);
+    	 this(flag, 4, 0, 0, false);
      }
 
      public WorldGenFougere(boolean flag, int i, int j, int k, boolean flag1)
      {
-             super(flag);
-             field_48202_a = i;
-             field_48201_c = j;
-             field_48199_d = k;
-             field_48200_b = flag1;
+    	 super(flag);
+         field_48202_a = i;
+         field_48201_c = j;
+         field_48199_d = k;
+         field_48200_b = flag1;
      }
 
      public boolean generate(World world, Random random, int i, int j, int k)
      {
-             int l = random.nextInt(3) + field_48202_a;
-             boolean flag = true;
+         int l = random.nextInt(3) + field_48202_a;
+         boolean flag = true;
 
-             if (j < 1 || j + l + 1 > 256)
+         if (j < 1 || j + l + 1 > 256)
+         {
+        	 return false;
+         }
+
+         for (int i1 = j; i1 <= j + 1 + l; i1++)
+         {
+        	 byte byte0 = 1;
+
+             if (i1 == j)
              {
-                     return false;
+            	 byte0 = 0;
              }
 
-             for (int i1 = j; i1 <= j + 1 + l; i1++)
+             if (i1 >= (j + 1 + l) - 2)
              {
-                     byte byte0 = 1;
+            	 byte0 = 2;
+             }
 
-                     if (i1 == j)
-                     {
-                             byte0 = 0;
-                     }
-
-                     if (i1 >= (j + 1 + l) - 2)
-                     {
-                             byte0 = 2;
-                     }
-
-                     for (int k1 = i - byte0; k1 <= i + byte0 && flag; k1++)
-                     {
-                             for (int i2 = k - byte0; i2 <= k + byte0 && flag; i2++)
-                             {
+             for (int k1 = i - byte0; k1 <= i + byte0 && flag; k1++)
+             {
+            	 for (int i2 = k - byte0; i2 <= k + byte0 && flag; i2++)
+                 {
                                      if (i1 >= 0 && i1 < 256)
                                      {
                                              int i3 = world.getBlockId(k1, i1, i2);
                                              //ce code indique sur quel block l'arbre peut se generer
-                                             if (i3 != 0 && i3 != EGProperties.leavesID && i3 != Block.dirt.blockID && i3 != EGProperties.woodID)
+                                             if (i3 != 0 && i3 != EGProperties.leavesID && i3 != Blocks.dirt.blockID && i3 != EGProperties.woodID)
                                              {
                                                      flag = false;
                                              }
@@ -80,7 +81,7 @@ public class WorldGenFougere extends WorldGenerator
 
              int j1 = world.getBlockId(i, j - 1, k);
 
-             if (j1 != Block.dirt.blockID && j1 != Block.grass.blockID || j >= 256 - l - 1)
+             if (j1 != Blocks.dirt.blockID && j1 != Blocks.grass.blockID || j >= 256 - l - 1)
              {
                      return false;
              }
@@ -197,11 +198,11 @@ public class WorldGenFougere extends WorldGenerator
 
      private void func_48198_a(World world, int i, int j, int k, int l)
      {
-             setBlockAndMetadata(world, i, j, k, Block.dirt.blockID, l);
+             setBlockAndMetadata(world, i, j, k, Blocks.dirt.blockID, l);
 
              for (int i1 = 4; world.getBlockId(i, --j, k) == 0 && i1 > 0; i1--)
              {
-                     setBlockAndMetadata(world, i, j, k, Block.dirt.blockID, l);
+                     setBlockAndMetadata(world, i, j, k, Blocks.dirt.blockID, l);
              }
      }
 

@@ -10,7 +10,7 @@ import net.minecraft.network.INetworkManager;
 import net.minecraft.network.packet.Packet;
 import net.minecraft.network.packet.Packet132TileEntityData;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import ere_geologique.api.food.DinoFood;
 import ere_geologique.api.food.EnumFoodType;
 import ere_geologique.common.entity.Dinosaure;
@@ -337,5 +337,17 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 	public boolean isItemValidForSlot(int i, ItemStack itemstack)
 	{
 		return true;
+	}
+
+	@Override
+	public String func_145825_b()
+	{
+		return null;
+	}
+
+	@Override
+	public boolean func_145818_k_()
+	{
+		return false;
 	}
 }

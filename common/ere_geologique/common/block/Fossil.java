@@ -4,6 +4,8 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockStone;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import ere_geologique.common.creativetabs.EGCreativeTab;
 import ere_geologique.common.item.EGItemList;
@@ -27,7 +29,7 @@ public class Fossil extends BlockStone
         if(i < 50)	return EGBlockList.skull.blockID;
         if(i < 250)	return EGItemList.bioFossil.itemID;
         if(i < 450)	return EGItemList.relic.itemID;
-        if(i < 900)	return Item.bone.itemID;
-        return Block.cobblestone.blockID;
+        if(i < 900)	return Items.bone.itemID;
+        return Blocks.cobblestone.blockID;
     }  
 }

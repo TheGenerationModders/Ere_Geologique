@@ -2,7 +2,7 @@ package ere_geologique.common.block;
 
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.ColorizerFoliage;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -22,7 +22,7 @@ public class ItemBlockLeaves extends ItemBlock
     }
 
     @SideOnly(Side.CLIENT)
-    public Icon getIconFromDamage(int par1)
+    public IIcon getIconFromDamage(int par1)
     {
         return EGBlockList.leaves.getIcon(0, par1);
     }

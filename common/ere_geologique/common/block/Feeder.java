@@ -4,7 +4,7 @@ import java.util.Random;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,7 +12,7 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -24,13 +24,13 @@ import ere_geologique.common.tileentity.TileEntityFeeder;
 public class Feeder extends BlockContainer
 {
 	private Random rand = new Random();
-	private Icon topEmply1, topEmply2, topEmply3, topEmply4, topHerb1, topHerb2, topHerb3, topHerb4, topCan1, topCan2, topCan3, topCan4;
-	private Icon topBoth1, topBoth2, topBoth3, topBoth4;// Both
-	private Icon front1;
-	private Icon front2;
-	private Icon front3;
-	private Icon front4;
-	private Icon bottom;
+	private IIcon topEmply1, topEmply2, topEmply3, topEmply4, topHerb1, topHerb2, topHerb3, topHerb4, topCan1, topCan2, topCan3, topCan4;
+	private IIcon topBoth1, topBoth2, topBoth3, topBoth4;// Both
+	private IIcon front1;
+	private IIcon front2;
+	private IIcon front3;
+	private IIcon front4;
+	private IIcon bottom;
 
 	public Feeder(int id)
 	{
@@ -69,7 +69,7 @@ public class Feeder extends BlockContainer
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister iconRegister)
+	public void registerIcons(IIconRegister iconRegister)
 	{
 		this.blockIcon = iconRegister.registerIcon("ere_geologique:Feeder_Sides");
 		this.bottom = iconRegister.registerIcon("ere_geologique:Feeder_Bottom");
@@ -96,7 +96,7 @@ public class Feeder extends BlockContainer
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getBlockTexture(IBlockAccess blockAccess, int x, int y, int z, int side)
+	public IIcon getBlockTexture(IBlockAccess blockAccess, int x, int y, int z, int side)
 	{
 		TileEntity te = blockAccess.getBlockTileEntity(x, y, z);
 		if(te != null && te instanceof TileEntityFeeder)
@@ -128,7 +128,7 @@ public class Feeder extends BlockContainer
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int metadata)
+	public IIcon getIcon(int side, int metadata)
 	{
 		return side == 0 ? this.bottom : side == 1 ? this.topEmply1 : side == 3 ? this.front1 : this.blockIcon;
 	}

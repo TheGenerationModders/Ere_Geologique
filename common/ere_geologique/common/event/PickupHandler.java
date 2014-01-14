@@ -10,7 +10,6 @@ import ere_geologique.common.item.EGItemList;
 
 public class PickupHandler implements IPickupNotifier
 {
-
 	@Override
 	public void notifyPickup(EntityItem item, EntityPlayer player)
 	{

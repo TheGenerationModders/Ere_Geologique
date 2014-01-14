@@ -5,13 +5,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.Direction;
 import net.minecraft.util.LongHashMap;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.ChunkCoordIntPair;
-import net.minecraft.world.PortalPosition;
 import net.minecraft.world.Teleporter;
 import net.minecraft.world.WorldServer;
 import ere_geologique.common.block.EGBlockList;
@@ -67,7 +66,7 @@ public class TeleporterGlacia extends Teleporter
 						boolean flag = j1 < 0;
 
 						/** change this block **/
-						this.worldServerInstance.setBlock(k1, l1, i2, flag ? Block.ice.blockID : 0);
+						this.worldServerInstance.setBlock(k1, l1, i2, flag ? Blocks.ice.blockID : 0);
 					}
 				}
 			}
@@ -399,7 +398,7 @@ public class TeleporterGlacia extends Teleporter
 						flag = l2 < 0;
 
 						/** change this block **/
-						this.worldServerInstance.setBlock(k3, j3, i4, flag ? Block.ice.blockID : 0);
+						this.worldServerInstance.setBlock(k3, j3, i4, flag ? Blocks.ice.blockID : 0);
 					}
 				}
 			}
@@ -416,7 +415,7 @@ public class TeleporterGlacia extends Teleporter
 					flag = i3 == 0 || i3 == 3 || l2 == -1 || l2 == 3;
 
 					/** change these blocks **/
-					this.worldServerInstance.setBlock(k3, j3, i4, flag ? Block.ice.blockID : EGBlockList.glaciaPortal.blockID, 0, 2);
+					this.worldServerInstance.setBlock(k3, j3, i4, flag ? Blocks.ice.blockID : EGBlockList.glaciaPortal.blockID, 0, 2);
 				}
 			}
 			for (i3 = 0; i3 < 4; ++i3)

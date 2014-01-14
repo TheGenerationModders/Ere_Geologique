@@ -5,12 +5,10 @@ import net.minecraft.item.Item;
 
 public class DinoPedia extends Item
 {
-
 	public DinoPedia(int id)
 	{
 		super(id);
 		this.setMaxStackSize(1);
 		this.setCreativeTab(EGCreativeTab.EGCreativeTabItem);
 	}
-
 }

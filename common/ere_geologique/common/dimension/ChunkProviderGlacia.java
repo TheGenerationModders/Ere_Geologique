@@ -2,24 +2,24 @@ package ere_geologique.common.dimension;
 
 import java.util.List;
 import java.util.Random;
-import net.minecraft.block.Block;
+
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.IProgressUpdate;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.SpawnerAnimals;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.MapGenBase;
 import net.minecraft.world.gen.MapGenCaves;
 import net.minecraft.world.gen.MapGenRavine;
 import net.minecraft.world.gen.NoiseGeneratorOctaves;
-import net.minecraft.world.gen.feature.MapGenScatteredFeature;
 import net.minecraft.world.gen.feature.WorldGenLakes;
 import net.minecraft.world.gen.structure.MapGenMineshaft;
+import net.minecraft.world.gen.structure.MapGenScatteredFeature;
 import net.minecraft.world.gen.structure.MapGenStronghold;
 import net.minecraft.world.gen.structure.MapGenVillage;
 
@@ -110,10 +110,10 @@ public class ChunkProviderGlacia implements IChunkProvider
 							{
 								if ((d16 += d15) > 0.0D)
 								{
-									par3ArrayOfByte[j2 += short1] = (byte) Block.stone.blockID;
+									par3ArrayOfByte[j2 += short1] = (byte) Blocks.stone.blockID;
 								} else if (k1 * 8 + l1 < b2)
 								{
-									par3ArrayOfByte[j2 += short1] = (byte) Block.waterStill.blockID;
+									par3ArrayOfByte[j2 += short1] = (byte) Blocks.water.blockID;
 								} else
 								{
 									par3ArrayOfByte[j2 += short1] = 0;
@@ -152,7 +152,7 @@ public class ChunkProviderGlacia implements IChunkProvider
 					int var17 = (var9 * 16 + var8) * 128 + var16;
 					if (var16 <= 0 + this.rand.nextInt(5))
 					{
-						par3ArrayOfByte[var17] = ((byte) Block.bedrock.blockID);
+						par3ArrayOfByte[var17] = ((byte) Blocks.bedrock.blockID);
 					} else
 					{
 						byte var18 = par3ArrayOfByte[var17];
@@ -161,7 +161,7 @@ public class ChunkProviderGlacia implements IChunkProvider
 							var13 = -1;
 						}
 
-						else if (var18 != Block.stone.blockID)
+						else if (var18 != Blocks.stone.blockID)
 						{
 							if (var13 == -1)
 							{
@@ -169,7 +169,7 @@ public class ChunkProviderGlacia implements IChunkProvider
 								{
 									var14 = 0;
 
-									var15 = (byte) Block.dirt.blockID;
+									var15 = (byte) Blocks.dirt.blockID;
 								} else if ((var16 >= var5 - 4) && (var16 <= var5 + 1))
 								{
 									var14 = var10.topBlock;
@@ -179,9 +179,9 @@ public class ChunkProviderGlacia implements IChunkProvider
 								{
 									if (var11 < 0.15F)
 									{
-										var14 = (byte) Block.ice.blockID;
+										var14 = (byte) Blocks.ice.blockID;
 									} else {
-										var14 = (byte) Block.waterStill.blockID;
+										var14 = (byte) Blocks.water.blockID;
 									}
 								}
 								var13 = var12;
@@ -196,10 +196,10 @@ public class ChunkProviderGlacia implements IChunkProvider
 							{
 								var13--;
 								par3ArrayOfByte[var17] = var15;
-								if ((var13 == 0) && (var15 == Block.sand.blockID))
+								if ((var13 == 0) && (var15 == Blocks.sand.blockID))
 								{
 									var13 = this.rand.nextInt(4);
-									var15 = (byte) Block.sandStone.blockID;
+									var15 = (byte) Blocks.sandStone.blockID;
 								}
 							}
 						}
@@ -388,7 +388,7 @@ public class ChunkProviderGlacia implements IChunkProvider
 			int var12 = var4 + this.rand.nextInt(16) + 8;
 			int var13 = this.rand.nextInt(128);
 			int var14 = var5 + this.rand.nextInt(16) + 8;
-			new WorldGenLakes(Block.waterStill.blockID).generate(this.worldObj, this.rand, var12, var13, var14);
+			new WorldGenLakes(Blocks.water.blockID).generate(this.worldObj, this.rand, var12, var13, var14);
 		}
 		var6.decorate(this.worldObj, this.rand, var4, var5);
 		SpawnerAnimals.performWorldGenSpawning(this.worldObj, var6, var4 + 8, var5 + 8, 16, 16, this.rand);
@@ -401,11 +401,11 @@ public class ChunkProviderGlacia implements IChunkProvider
 				int var14 = this.worldObj.getPrecipitationHeight(var4 + var12, var5 + var13);
 				if (this.worldObj.isBlockFreezable(var12 + var4, var14 - 1, var13 + var5))
 				{
-					this.worldObj.setBlock(var12 + var4, var14 - 1, var13 + var5, Block.ice.blockID);
+					this.worldObj.setBlock(var12 + var4, var14 - 1, var13 + var5, Blocks.ice.blockID);
 				}
 				if (this.worldObj.canSnowAt(var12 + var4, var14, var13 + var5))
 				{
-					this.worldObj.setBlock(var12 + var4, var14, var13 + var5, Block.snow.blockID);
+					this.worldObj.setBlock(var12 + var4, var14, var13 + var5, Blocks.snow.blockID);
 				}
 			}
 		}

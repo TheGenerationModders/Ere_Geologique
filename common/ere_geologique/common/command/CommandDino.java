@@ -3,11 +3,8 @@ package ere_geologique.common.command;
 import java.util.List;
 
 import net.minecraft.command.CommandBase;
-import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.command.WrongUsageException;
-import net.minecraft.util.ChatMessageComponent;
-import ere_geologique.client.LocalizationStrings;
 import ere_geologique.common.config.Version;
 
 public class CommandDino extends CommandBase
@@ -138,5 +135,11 @@ public class CommandDino extends CommandBase
 				sender.sendChatToPlayer(ChatMessageComponent.createFromText("\u00A79" + updateLine));
 			}
 		}
+	}
+
+	@Override
+	public int compareTo(Object o)
+	{
+		return 0;
 	}
 }

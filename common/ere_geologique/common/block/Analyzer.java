@@ -4,7 +4,7 @@ import java.util.Random;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,7 +13,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -25,7 +25,7 @@ import ere_geologique.common.tileentity.TileEntityAnalyzer;
 public class Analyzer extends BlockContainer
 {
 	private Random furnaceRand = new Random();
-	private Icon top, front, frontActive;
+	private IIcon top, front, frontActive;
 
 	public Analyzer(int id)
 	{
@@ -33,7 +33,7 @@ public class Analyzer extends BlockContainer
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister iconRegister)
+	public void registerIcons(IIconRegister iconRegister)
 	{
 		this.blockIcon = iconRegister.registerIcon("ere_geologique:Analyser_Sides");
 		this.top = iconRegister.registerIcon("ere_geologique:Analyser_Top");
@@ -42,7 +42,7 @@ public class Analyzer extends BlockContainer
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getBlockTexture(IBlockAccess blockAccess, int x, int y, int z, int side)
+	public IIcon getBlockTexture(IBlockAccess blockAccess, int x, int y, int z, int side)
 	{
 		TileEntity te = blockAccess.getBlockTileEntity(x, y, z);
 		if(te != null && te instanceof TileEntityAnalyzer)
@@ -62,7 +62,7 @@ public class Analyzer extends BlockContainer
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int metadata)
+	public IIcon getIcon(int side, int metadata)
 	{
 		return side == 1 ? this.top : side == 3 ? this.front : this.blockIcon;
 	}

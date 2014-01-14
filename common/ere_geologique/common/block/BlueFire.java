@@ -4,12 +4,12 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFire;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -18,7 +18,7 @@ public class BlueFire extends BlockFire
 	private int[] chanceToEncourageFire = new int[256];
 	private int[] abilityToCatchFire = new int[256];
 	@SideOnly(Side.CLIENT)
-	private Icon[] iconArray;
+	private IIcon[] iconArray;
 
 	public BlueFire(int par1)
 	{
@@ -26,7 +26,7 @@ public class BlueFire extends BlockFire
 		setTickRandomly(true);
 	}
 
-	public Icon getIcon(int par1, int par2)
+	public IIcon getIcon(int par1, int par2)
 	{
 		return this.blockIcon;
 	}
@@ -370,19 +370,19 @@ public class BlueFire extends BlockFire
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister)
+	public void registerIcons(IIconRegister par1IconRegister)
 	{
-		this.iconArray = new Icon[]{par1IconRegister.registerIcon("ere_geologique:Bluefire_0"), par1IconRegister.registerIcon("ere_geologique:Bluefire_1")};
+		this.iconArray = new IIcon[]{par1IconRegister.registerIcon("ere_geologique:Bluefire_0"), par1IconRegister.registerIcon("ere_geologique:Bluefire_1")};
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon func_94438_c(int par1)
+	public IIcon func_94438_c(int par1)
 	{
 		return this.iconArray[par1];
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getBlockTextureFromSideAndMetadata(int par1, int par2)
+	public IIcon getBlockTextureFromSideAndMetadata(int par1, int par2)
 	{
 		return this.iconArray[0];
 	}

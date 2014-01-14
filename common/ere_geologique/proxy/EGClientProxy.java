@@ -1,7 +1,7 @@
 package ere_geologique.proxy;
 
-import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.FMLCommonHandler;
 import ere_geologique.client.audio.DinoSoundHandler;
 import ere_geologique.client.model.ModelAnkylosaurus;
 import ere_geologique.client.model.ModelBrachiosaurus;
@@ -58,7 +58,7 @@ public class EGClientProxy extends EGCommonProxy
 {
 	public void initSound()
 	{
-		MinecraftForge.EVENT_BUS.register(new DinoSoundHandler());
+		FMLCommonHandler.instance().bus().register(new DinoSoundHandler());
 	}
 	
 	public void registerRender()

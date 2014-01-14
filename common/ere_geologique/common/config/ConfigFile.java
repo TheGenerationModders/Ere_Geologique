@@ -2,13 +2,11 @@ package ere_geologique.common.config;
 
 import java.io.File;
 
-
-import net.minecraftforge.common.Configuration;
-import net.minecraftforge.common.Property;
+import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.config.Property;
 
 public class ConfigFile extends Configuration
 {
-
 	public ConfigFile(File file)
 	{
 		super(file);

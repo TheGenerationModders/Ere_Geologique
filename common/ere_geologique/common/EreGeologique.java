@@ -8,9 +8,9 @@ import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.RenderPlayerEvent;
-import net.minecraftforge.common.Configuration;
+import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.ForgeSubscribe;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
@@ -23,11 +23,9 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.IChatListener;
-import cpw.mods.fml.common.network.NetworkMod;
-import cpw.mods.fml.common.network.NetworkMod.SidedPacketHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.TickRegistry;
+import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.relauncher.Side;
 import ere_geologique.api.food.EnumDinoFoodMob;
 import ere_geologique.client.EGMessageHandler;
@@ -59,7 +57,7 @@ import ere_geologique.proxy.network.ServerPacketHandler;
 import ere_geologique.proxy.network.TickHandlerClient;
 
 @Mod(modid = "Ere G\351ologique", name = "Ere G\351ologique", version = Version.VERSION, dependencies = "required-after:Forge@[9.10.1.870,)", acceptedMinecraftVersions=Version.MC_VERSION)
-@NetworkMod(clientSideRequired = true, serverSideRequired = false, serverPacketHandlerSpec = @SidedPacketHandler(channels = {"EreGeologique"}, packetHandler = ServerPacketHandler.class))
+//@NetworkMod(clientSideRequired = true, serverSideRequired = false, serverPacketHandlerSpec = @SidedPacketHandler(channels = {"EreGeologique"}, packetHandler = ServerPacketHandler.class))
 
 public class EreGeologique
 {
@@ -219,15 +217,15 @@ public class EreGeologique
 		}
 
 		//World Generator
-		GameRegistry.registerWorldGenerator(new FossilGenerator());
+		GameRegistry.registerWorldGenerator(new FossilGenerator(), 0);
 		
 		EGDimensionList.loadDimension();//Dimension
 
 		//Other
 		proxy.registerRenderEntity();
 		proxy.registerRender();
-		MinecraftForge.EVENT_BUS.register(new FougereBoneMeal());
-		MinecraftForge.EVENT_BUS.register(this);
+		FMLCommonHandler.instance().bus().register(new FougereBoneMeal());
+		FMLCommonHandler.instance().bus().register(this);
 		GameRegistry.registerPlayerTracker(new PlayerTracker());
 		GameRegistry.registerCraftingHandler(new CraftingHandler());
 		GameRegistry.registerPickupHandler(new PickupHandler());
@@ -236,9 +234,9 @@ public class EreGeologique
 		EnumDinoFoodMob.init();
 
 		EGTEntityList.loadTileEntity();
-		NetworkRegistry.instance().registerGuiHandler(this.Instance, new GuiHandler());
-		NetworkRegistry.instance().registerChatListener(messagerHandler);
-		TickRegistry.registerTickHandler(this.tickHandlerClient, Side.CLIENT);
+		NetworkRegistry.INSTANCE.registerGuiHandler(this.Instance, new GuiHandler());
+		NetworkRegistry.INSTANCE.registerChatListener(messagerHandler);
+		TickEvent.registerTickHandler(this.tickHandlerClient, Side.CLIENT);
 	}
 
 	public static void ShowMessage(String string, EntityPlayer player)

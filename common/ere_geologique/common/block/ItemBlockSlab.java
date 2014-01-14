@@ -6,7 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 public class ItemBlockSlab extends ItemBlock
@@ -33,7 +33,7 @@ public class ItemBlockSlab extends ItemBlock
 	}
 
 	@SideOnly(Side.CLIENT)
-	public Icon getIconFromDamage(int metadata)
+	public IIcon getIconFromDamage(int metadata)
 	{
 		return Block.blocksList[this.itemID].getIcon(2, metadata);
 	}

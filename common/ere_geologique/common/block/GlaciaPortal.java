@@ -7,6 +7,7 @@ import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemMonsterPlacer;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
@@ -137,7 +138,7 @@ public class GlaciaPortal extends BlockBreakable
 						int j1 = par1World.getBlockId(par2 + b0 * l, par3 + i1, par4 + b1 * l);
 						if (flag)
 						{
-							if (j1 != Block.ice.blockID)
+							if (j1 != Blocks.ice.blockID)
 							{
 								return false;
 							}
@@ -178,7 +179,7 @@ public class GlaciaPortal extends BlockBreakable
 		{
 			;
 		}
-		if (par1World.getBlockId(par2, i1 - 1, par4) != Block.ice.blockID)
+		if (par1World.getBlockId(par2, i1 - 1, par4) != Blocks.ice.blockID)
 		{
 			par1World.setBlockToAir(par2, par3, par4);
 		} else {

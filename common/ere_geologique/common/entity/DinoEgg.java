@@ -7,6 +7,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityBoat;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -394,7 +395,7 @@ public class DinoEgg extends Entity implements IEntityAdditionalSpawnData
             int var25 = MathHelper.floor_double(this.posY);
             int var20 = MathHelper.floor_double(this.posZ + ((double)(var23 / 2) - 0.5D) * 0.8D);
 
-            if (this.worldObj.getBlockId(var24, var25, var20) == Block.snow.blockID)
+            if (this.worldObj.getBlockId(var24, var25, var20) == Blocks.snow.blockID)
             {
                 this.worldObj.setBlock(var24, var25, var20, 0);
             }
@@ -578,7 +579,7 @@ public class DinoEgg extends Entity implements IEntityAdditionalSpawnData
             }
             return true;
         }
-        else if (FMLCommonHandler.instance().getSide().isClient() && itemStack.getItem().itemID == EGItemList.dinoPedia.itemID)
+        else if (FMLCommonHandler.instance().getSide().isClient() && itemStack.getItem().equals(EGItemList.dinoPedia))
         {
         	this.setPedia();
         	player.openGui(EreGeologique.Instance, 1, worldObj, (int)posX, (int)posY, (int)posZ);

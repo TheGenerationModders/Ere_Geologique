@@ -3,13 +3,13 @@ package ere_geologique.common.block;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.block.BlockHalfSlab;
+import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -17,7 +17,7 @@ import ere_geologique.common.EreGeologique;
 import ere_geologique.common.config.EGProperties;
 import ere_geologique.common.creativetabs.EGCreativeTab;
 
-public class Slab extends BlockHalfSlab
+public class Slab extends BlockSlab
 {
 	public static final String[] woodType = new String[] { "fougere", "cycas", "araucarias", "metasequoias", "ginkgos" };
 
@@ -43,7 +43,7 @@ public class Slab extends BlockHalfSlab
 	}
 	
 	@SideOnly(Side.CLIENT)
-	public Icon getIcon(int side, int metadata)
+	public IIcon getIcon(int side, int metadata)
 	{
 		return EGBlockList.plank.getIcon(side, metadata & 7);
 	}
@@ -80,5 +80,5 @@ public class Slab extends BlockHalfSlab
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IconRegister par1IconRegister) {}
+	public void registerIcons(IIconRegister par1IconRegister) {}
 }

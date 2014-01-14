@@ -10,7 +10,6 @@ import ere_geologique.common.creativetabs.EGCreativeTab;
 
 public class ReinforcedGlass extends BlockBreakable
 {
-
 	public ReinforcedGlass(int id, Material material, boolean par3)
 	{
 		super(id, "ere_geologique:reinforced_glass", material, par3);

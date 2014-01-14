@@ -3,6 +3,7 @@ package ere_geologique.common.tileentity;
 import java.util.Random;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
@@ -10,7 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.ForgeDirection;
+import net.minecraftforge.common.util.ForgeDirection;
 import ere_geologique.common.block.Cultivator;
 import ere_geologique.common.block.EGBlockList;
 import ere_geologique.common.command.CommandDino;
@@ -283,13 +284,13 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
         {
             int var2 = var1.getItem().itemID;
             if(var2 == EGItemList.bioFossil.itemID) return 300;
-            if(var2 == Item.porkRaw.itemID)return 3000;
-            if(var2 == Item.fishRaw.itemID)return 3000;
-            if(var2 == Item.beefRaw.itemID)return 4000;
-            if(var2 == Item.chickenRaw.itemID)return 1500;
-            if(var2 == Item.egg.itemID)return 1000;
-            if(var2 == Item.slimeBall.itemID)return 800;
-            if(var2 == Item.bucketMilk.itemID)return 6000;
+            if(var2 == Items.porkchop.itemID)return 3000;
+            if(var2 == Items.fish.itemID)return 3000;
+            if(var2 == Items.beef.itemID)return 4000;
+            if(var2 == Items.chicken.itemID)return 1500;
+            if(var2 == Items.egg.itemID)return 1000;
+            if(var2 == Items.slime_ball.itemID)return 800;
+            if(var2 == Items.milk_bucket.itemID)return 6000;
         }
         return 0;
     }
@@ -299,16 +300,17 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
         return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : var1.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
     }
 
+    @Deprecated
     private ItemStack CheckSmelt(int var1)
     {
         return null;
     }
 
-    private ItemStack CheckSmelt(ItemStack var1)
+    private ItemStack CheckSmelt(ItemStack itemStack)
     {
        
-    	if(var1.itemID==EGItemList.brokenSapling.itemID)return new ItemStack(EGBlockList.sapling, 1);
-    	if(EnumDinoType.getEgg(var1.getItem())!=null)return new ItemStack(EnumDinoType.getEgg(var1.getItem()),1);//converts dino dna to dino egg
+    	if(itemStack.getItem().equals(EGItemList.brokenSapling))return new ItemStack(EGBlockList.sapling, 1);
+    	if(EnumDinoType.getEgg(itemStack.getItem())!=null)return new ItemStack(EnumDinoType.getEgg(itemStack.getItem()),1);//converts dino dna to dino egg
     	return null;
     }
 
@@ -321,11 +323,11 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
         return null;
     }
 
-	@Override
+/*	@Override
 	public boolean isInvNameLocalized()
 	{
 		return false;
-	}
+	}*/
 
 	public static boolean isItemFuel(ItemStack par0ItemStack)
 	{
@@ -349,6 +351,18 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
 
 	public boolean canExtractItem(int i, ItemStack itemstack, int j)
 	{
-		return j != 0 || i != 1 || itemstack.itemID == Item.bucketEmpty.itemID;
+		return j != 0 || i != 1 || itemstack.getItem().equals(Items.bucket);
+	}
+
+	@Override
+	public String func_145825_b()
+	{
+		return null;
+	}
+
+	@Override
+	public boolean func_145818_k_()
+	{
+		return false;
 	}
 }

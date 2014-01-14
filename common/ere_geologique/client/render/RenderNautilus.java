@@ -34,7 +34,7 @@ public class RenderNautilus extends RenderLiving
      */
     public void renderLivingSquid(Nautilus var1, double var2, double var4, double var6, float var8, float var9)
     {
-        super.doRenderLiving(var1, var2, var4, var6, var8, var9);
+        super.doRender(var1, var2, var4, var6, var8, var9);
     }
 
     /**

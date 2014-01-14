@@ -1,6 +1,6 @@
 package ere_geologique.common.item;
 
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemCarrotOnAStick;
 import net.minecraft.item.ItemStack;
@@ -69,7 +69,7 @@ public class Whip extends ItemCarrotOnAStick
     }
     
     @Override
-	public void registerIcons(IconRegister iconRegister)
+	public void registerIcons(IIconRegister iconRegister)
 	{
 		this.itemIcon = iconRegister.registerIcon("ere_geologique:Whip");
     }

@@ -5,19 +5,20 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.monster.EntityPigZombie;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
@@ -33,9 +34,9 @@ public class Cultivator extends BlockContainer
     private final boolean isActive;
     private static boolean keepFurnaceInventory = false;
     @SideOnly(Side.CLIENT)
-    private Icon Top;
+    private IIcon Top;
     @SideOnly(Side.CLIENT)
-    private Icon Bottom;
+    private IIcon Bottom;
 
     public Cultivator(int var1, boolean var2)
     {
@@ -88,14 +89,14 @@ public class Cultivator extends BlockContainer
         }
     }
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IconRegister par1IconRegister)
+    public void registerIcons(IIconRegister par1IconRegister)
     {
         this.blockIcon = par1IconRegister.registerIcon(this.isActive? "ere_geologique:Culture_Sides_Active" : "ere_geologique:Culture_Sides_Idle");
         this.Bottom = par1IconRegister.registerIcon("ere_geologique:Culture_Bottom");
         this.Top = par1IconRegister.registerIcon("ere_geologique:Culture_Top");
     }
 
-    public Icon getIcon(int par1, int par2)
+    public IIcon getIcon(int par1, int par2)
     {
         return par1 == 1 ? this.Top : (par1 != 0 ? this.blockIcon : this.Bottom);
     }
@@ -144,7 +145,7 @@ public class Cultivator extends BlockContainer
 
     private void ReturnIron(World var1, int var2, int var3, int var4)
     {
-        ItemStack var5 = new ItemStack(Item.ingotIron, 3);
+        ItemStack var5 = new ItemStack(Items.iron_ingot, 3);
         float var6 = this.furnaceRand.nextFloat() * 0.8F + 0.1F;
         float var7 = this.furnaceRand.nextFloat() * 0.8F + 0.1F;
         float var8 = this.furnaceRand.nextFloat() * 0.8F + 0.1F;
@@ -187,8 +188,8 @@ public class Cultivator extends BlockContainer
         if (var5)
         {
             Object var9 = null;
-            var1.playAuxSFX(2001, var2, var3, var4, Block.glass.blockID);
-            var1.setBlock(var2, var3, var4, Block.waterMoving.blockID);
+            var1.playAuxSFX(2001, var2, var3, var4, Blocks.glass.blockID);
+            var1.setBlock(var2, var3, var4, Blocks.water.blockID);
 
             if (var1.isRemote)
             {

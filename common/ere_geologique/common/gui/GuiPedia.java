@@ -8,7 +8,7 @@ import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.Icon;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
@@ -114,7 +114,7 @@ public class GuiPedia extends GuiContainer
         this.mc.getTextureManager().bindTexture(TextureMap.locationItemsTexture);
     	RenderItem r= new RenderItem();
     	ItemStack it=new ItemStack(it0,1);
-    	Icon icon = it.getIconIndex();
+    	IIcon icon = it.getIconIndex();
     	GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         this.drawTexturedModelRectFromIcon(x0, y0, icon, i, i);
     	GL11.glEnable(GL11.GL_LIGHTING);

@@ -2,8 +2,9 @@ package ere_geologique.common.tileentity;
 
 import java.util.Random;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.Item;
@@ -264,7 +265,7 @@ public class TileEntityAnalyzer extends TileEntity implements IInventory, ISided
 			{
 				int var2 = this.analyzerItemStacks[var1].getItem().itemID;
 
-				if(EnumDinoType.isDinoDrop(this.analyzerItemStacks[var1].getItem()) || (var2 == EGItemList.bioFossil.itemID) || /*( var2 == Fossil.rawDinoMeat . itemID ) ||*/(var2 == Item.porkRaw.itemID) || (var2 == Item.beefRaw.itemID) || (var2 == Item.egg.itemID) || (var2 == Item.chickenRaw.itemID) || (var2 == Block.cloth.blockID))
+				if(EnumDinoType.isDinoDrop(this.analyzerItemStacks[var1].getItem()) || (var2 == EGItemList.bioFossil.itemID) || /*( var2 == Fossil.rawDinoMeat . itemID ) ||*/(var2 == Items.porkchop.itemID) || (var2 == Items.beef.itemID) || (var2 == Items.egg.itemID) || (var2 == Items.chicken.itemID) || (var2 == Blocks.wool.blockID))
 				{
 					this.RawIndex = var1;
 					break;
@@ -295,7 +296,7 @@ public class TileEntityAnalyzer extends TileEntity implements IInventory, ISided
 	{
 		if(this.canSmelt())
 		{
-			ItemStack var1 = null;
+			ItemStack itemStack = null;
 			int var2 = (new Random()).nextInt(100);
 			int var3;
 
@@ -303,15 +304,15 @@ public class TileEntityAnalyzer extends TileEntity implements IInventory, ISided
 			{
 				if(var2 < 1)
 				{
-					var1 = new ItemStack(EGItemList.brokenSapling, 1);
+					itemStack = new ItemStack(EGItemList.brokenSapling, 1);
 				}
 				if(var2 > 1 && var2 <= 45)
 				{
-					var1 = new ItemStack(Item.dyePowder, 3, 15);
+					itemStack = new ItemStack(Items.dye, 3, 15);
 				}
 				if(var2 > 45 && var2 <= 85)
 				{
-					var1 = new ItemStack(Block.sand, 3);
+					itemStack = new ItemStack(Blocks.sand, 3);
 				}
 				if(var2 > 85)
 				{
@@ -321,44 +322,44 @@ public class TileEntityAnalyzer extends TileEntity implements IInventory, ISided
 						i0 = EGItemList.brokenSapling;
 					else
 						i0 = EnumDinoType.values()[i - 1].dnaItem;
-					var1 = new ItemStack(i0, 1);
+					itemStack = new ItemStack(i0, 1);
 				}
 			}
 
 			if(EnumDinoType.getDNA(this.analyzerItemStacks[this.RawIndex].getItem()) != null)
-				var1 = new ItemStack(EnumDinoType.getDNA(this.analyzerItemStacks[this.RawIndex].getItem()), 1);
+				itemStack = new ItemStack(EnumDinoType.getDNA(this.analyzerItemStacks[this.RawIndex].getItem()), 1);
 			if(this.analyzerItemStacks[this.RawIndex].getItem() == EGItemList.relic)
 			{
 				if(var2 <= 40)
-					var1 = new ItemStack(Block.gravel, 2);
+					itemStack = new ItemStack(Blocks.gravel, 2);
 
 				if(var2 > 40)
-					var1 = new ItemStack(Item.flint, 2);
+					itemStack = new ItemStack(Items.flint, 2);
 			}
-			if(var1 != null)
+			if(itemStack != null)
 			{
-				if(var1.itemID == Item.dyePowder.itemID || var1.itemID == Item.flint.itemID || var1.itemID == Block.gravel.blockID || var1.itemID == EGItemList.relic.itemID || var1.itemID == EGItemList.brokenSapling.itemID || var1.itemID == Block.sand.blockID)
+				if(itemStack.getItem().equals(Items.dye) || itemStack.getItem().equals(Items.flint) || itemStack.getItem().equals(Blocks.gravel) || itemStack.getItem().equals(EGItemList.relic) || itemStack.getItem().equals(EGItemList.brokenSapling) || itemStack.getItem().equals(Blocks.sand))
 				{
 					for(var3 = 12; var3 > 8; --var3)
 					{
-						if(this.analyzerItemStacks[var3] != null && var1.itemID == this.analyzerItemStacks[var3].itemID)
+						if(this.analyzerItemStacks[var3] != null && itemStack.getItem().equals(this.analyzerItemStacks[var3]))
 						{
-							if(this.analyzerItemStacks[var3].stackSize + var1.stackSize <= this.analyzerItemStacks[var3].getMaxStackSize())
+							if(this.analyzerItemStacks[var3].stackSize + itemStack.stackSize <= this.analyzerItemStacks[var3].getMaxStackSize())
 							{
-								this.analyzerItemStacks[var3].stackSize += var1.stackSize;
-								var1.stackSize = 0;
+								this.analyzerItemStacks[var3].stackSize += itemStack.stackSize;
+								itemStack.stackSize = 0;
 								break;
 							}
 
-							var1.stackSize -= this.analyzerItemStacks[var3].getMaxStackSize() - this.analyzerItemStacks[var3].stackSize;
+							itemStack.stackSize -= this.analyzerItemStacks[var3].getMaxStackSize() - this.analyzerItemStacks[var3].stackSize;
 							this.analyzerItemStacks[var3].stackSize = this.analyzerItemStacks[var3].getMaxStackSize();
 						}
 					}
 				}
 
-				if(var1.stackSize != 0 && this.analyzerItemStacks[this.SpaceIndex] == null)
+				if(itemStack.stackSize != 0 && this.analyzerItemStacks[this.SpaceIndex] == null)
 				{
-					this.analyzerItemStacks[this.SpaceIndex] = var1.copy();
+					this.analyzerItemStacks[this.SpaceIndex] = itemStack.copy();
 				}
 
 				--this.analyzerItemStacks[this.RawIndex].stackSize;
@@ -402,11 +403,11 @@ public class TileEntityAnalyzer extends TileEntity implements IInventory, ISided
 		return null;
 	}
 
-	@Override
+/*	@Override
 	public boolean isInvNameLocalized()
 	{
 		return false;
-	}
+	}*/
 
 	public boolean isItemValidForSlot(int par1, ItemStack par2ItemStack)
 	{
@@ -425,6 +426,18 @@ public class TileEntityAnalyzer extends TileEntity implements IInventory, ISided
 
 	public boolean canExtractItem(int par1, ItemStack par2ItemStack, int par3)
 	{
-		return par3 != 0 || par1 != 1 || par2ItemStack.itemID == Item.bucketEmpty.itemID;
+		return par3 != 0 || par1 != 1 || par2ItemStack.getItem().equals(Items.bucket);
+	}
+
+	@Override
+	public String func_145825_b()
+	{
+		return null;
+	}
+
+	@Override
+	public boolean func_145818_k_()
+	{
+		return false;
 	}
 }
