@@ -12,7 +12,7 @@ public class FlintAndSteel extends Item
 {
 	public FlintAndSteel(int par1)
 	{
-		super(par1);
+		super();
 		this.maxStackSize = 1;
 		setMaxDamage(64);
 		setCreativeTab(EGCreativeTab.EGCreativeTabItem);
@@ -48,11 +48,10 @@ public class FlintAndSteel extends Item
 		{
 			return false;
 		}
-		int i1 = par3World.getBlockId(par4, par5, par6);
-		if (i1 == 0)
+		if (par3World.func_147437_c(par4, par5, par6))
 		{
 			par3World.playSoundEffect(par4 + 0.5D, par5 + 0.5D, par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-			par3World.setBlock(par4, par5, par6, EGBlockList.blueFire.blockID);
+			par3World.func_147449_b(par4, par5, par6, EGBlockList.blueFire);
 		}
 		par1ItemStack.damageItem(1, par2EntityPlayer);
 		return true;

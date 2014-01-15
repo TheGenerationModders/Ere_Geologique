@@ -589,7 +589,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
 
         for (DinoFoodEntry list : this.SelfType.dinoFood)
         {
-                pedia.AddMiniItem(Item.itemsList[list.getId()]);
+        	pedia.AddMiniItem(Item.itemsList[list.getId()]);
         }
 
         //show all blocks the dino can eat
@@ -964,7 +964,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
     {
         if (this.isModelized())
         {
-            return Item.bone.itemID;
+            return Items.bone.itemID;
         }
 
         return this.SelfType.dropItem.itemID;

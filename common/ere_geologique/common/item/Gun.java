@@ -11,7 +11,7 @@ public class Gun extends Item
 {
 	public Gun(int id)
 	{
-		super(id);
+		super();
 		this.setFull3D();
 		this.setCreativeTab(EGCreativeTab.EGCreativeTabItem);
 		this.setMaxStackSize(1);
@@ -25,7 +25,7 @@ public class Gun extends Item
 	
 	public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player)
     {
-		if(player.capabilities.isCreativeMode || player.inventory.hasItem(EGItemList.tranquilizerDart.itemID))
+		if(player.capabilities.isCreativeMode || player.inventory.func_146028_b(EGItemList.tranquilizerDart))
 		player.setItemInUse(stack, 7200);
 		return stack;
     }

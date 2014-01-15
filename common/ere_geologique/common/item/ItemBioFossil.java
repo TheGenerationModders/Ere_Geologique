@@ -21,7 +21,7 @@ public class ItemBioFossil extends Item
 {
     public ItemBioFossil(int var1)
     {
-        super(var1);
+        super();
         this.maxStackSize = 64;
         this.setCreativeTab(EGCreativeTab.EGCreativeTabItem);
     }

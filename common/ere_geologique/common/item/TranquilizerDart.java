@@ -7,7 +7,7 @@ public class TranquilizerDart extends Item
 {
 	public TranquilizerDart(int id)
 	{
-		super(id);
+		super();
 		this.setCreativeTab(EGCreativeTab.EGCreativeTabItem);
 		this.setMaxStackSize(64);
 	}

@@ -10,7 +10,7 @@ public class EGItem extends Item
 	
 	public EGItem(int par1, String TextureFileName0)
 	{
-		super(par1);
+		super();
 		this.TextureFileName=TextureFileName0;
 		this.setCreativeTab(EGCreativeTab.EGCreativeTabItem);
 	}

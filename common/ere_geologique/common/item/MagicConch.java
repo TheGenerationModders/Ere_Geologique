@@ -20,7 +20,7 @@ public class MagicConch extends Item
 {
     public MagicConch(int var1)
     {
-        super(var1);
+        super();
         //this.setHasSubtypes(true);
         this.setMaxDamage(0);
         this.maxStackSize = 1;

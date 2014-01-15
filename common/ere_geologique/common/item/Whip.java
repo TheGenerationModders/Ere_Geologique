@@ -14,7 +14,7 @@ public class Whip extends ItemCarrotOnAStick
 {
     public Whip(int var1)
     {
-        super(var1);
+        super();
         this.setMaxDamage(100);
         this.setMaxStackSize(1);
         this.setCreativeTab(EGCreativeTab.EGCreativeTabItem);

@@ -1,13 +1,13 @@
 package ere_geologique.common.item;
 
-import ere_geologique.common.creativetabs.EGCreativeTab;
 import net.minecraft.item.Item;
+import ere_geologique.common.creativetabs.EGCreativeTab;
 
 public class DinoPedia extends Item
 {
 	public DinoPedia(int id)
 	{
-		super(id);
+		super();
 		this.setMaxStackSize(1);
 		this.setCreativeTab(EGCreativeTab.EGCreativeTabItem);
 	}

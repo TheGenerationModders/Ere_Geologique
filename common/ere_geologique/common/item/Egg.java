@@ -25,9 +25,9 @@ public class Egg extends Item
     public static final int TypeCount = EnumDinoType.values().length;
     private int DinoType;
 
-    public Egg(int var1,int DinoType0)
+    public Egg(int var1, int DinoType0)
     {
-        super(var1);
+        super();
         this.setHasSubtypes(true);
         this.setMaxDamage(0);
         this.maxStackSize = 1;
