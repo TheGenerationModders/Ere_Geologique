@@ -35,7 +35,7 @@ public class Analyzer extends BlockContainer
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister iconRegister)
 	{
-		this.blockIcon = iconRegister.registerIcon("ere_geologique:Analyser_Sides");
+		this.field_149761_L = iconRegister.registerIcon("ere_geologique:Analyser_Sides");
 		this.top = iconRegister.registerIcon("ere_geologique:Analyser_Top");
 		this.front = iconRegister.registerIcon("ere_geologique:Analyser_Front_Idle");
 		this.frontActive = iconRegister.registerIcon("ere_geologique:Analyser_Front_Active");
@@ -51,11 +51,11 @@ public class Analyzer extends BlockContainer
 			int direction = analyzer.getDirection();
 			if(analyzer.isActive())
 			{
-				return side == 1 ? this.top : (side == 0 ? this.blockIcon : (direction == 2 && side == 2 ? this.frontActive : (direction == 3 && side == 5 ? this.frontActive : (direction == 0 && side == 3 ? this.frontActive : (direction == 1 && side == 4 ? this.frontActive : this.blockIcon)))));
+				return side == 1 ? this.top : (side == 0 ? this.field_149761_L : (direction == 2 && side == 2 ? this.frontActive : (direction == 3 && side == 5 ? this.frontActive : (direction == 0 && side == 3 ? this.frontActive : (direction == 1 && side == 4 ? this.frontActive : this.field_149761_L)))));
 			}
 			else
 			{
-				return side == 1 ? this.top : (side == 0 ? this.blockIcon : (direction == 2 && side == 2 ? this.front : (direction == 3 && side == 5 ? this.front : (direction == 0 && side == 3 ? this.front : (direction == 1 && side == 4 ? this.front : this.blockIcon)))));
+				return side == 1 ? this.top : (side == 0 ? this.field_149761_L : (direction == 2 && side == 2 ? this.front : (direction == 3 && side == 5 ? this.front : (direction == 0 && side == 3 ? this.front : (direction == 1 && side == 4 ? this.front : this.field_149761_L)))));
 			}
 		}
 		return this.getIcon(side, blockAccess.getBlockMetadata(x, y, z));
@@ -64,7 +64,7 @@ public class Analyzer extends BlockContainer
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata)
 	{
-		return side == 1 ? this.top : side == 3 ? this.front : this.blockIcon;
+		return side == 1 ? this.top : side == 3 ? this.front : this.field_149761_L;
 	}
 
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ)
@@ -146,6 +146,11 @@ public class Analyzer extends BlockContainer
 
 	public int getComparatorInputOverride(World world, int x, int y, int z, int par5)
 	{
-		return Container.calcRedstoneFromInventory((IInventory)world.getBlockTileEntity(x, y, z));
+		return Container.calcRedstoneFromInventory((IInventory)world.func_147438_o(x, y, z));
+	}
+
+	@Override
+	public TileEntity func_149915_a(World var1, int var2) {
+		return null;
 	}
 }

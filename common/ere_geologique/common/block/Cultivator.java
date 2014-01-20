@@ -278,4 +278,10 @@ public class Cultivator extends BlockContainer
     {
     	return EGBlockList.cultivatorIdle.blockID;
     }
+
+	@Override
+	public TileEntity func_149915_a(World var1, int var2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

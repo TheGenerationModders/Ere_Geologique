@@ -76,7 +76,7 @@ public class EreGeologique
 	@EventHandler
 	public void preload(FMLPreInitializationEvent event)
 	{
-		EGLog.setParent(FMLLog.getLogger());
+		EGLog.setParent((Logger) FMLLog.getLogger());
 		configFile = new ConfigFile(new File(event.getModConfigurationDirectory(), "EreGeologique.cfg"));
 		try
 		{
