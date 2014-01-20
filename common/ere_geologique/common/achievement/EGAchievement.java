@@ -21,15 +21,15 @@ public class EGAchievement
 	
 	public static void loadAchievement()
 	{
-		installmod = new Achievement(1000, "InstallMod", 0, 0, EGItemList.dinoPedia, null).registerAchievement().setSpecial();
-		dimensionGlacia = new Achievement(1001, "Glacia", 2, 0, EGItemList.flintAndSteel, installmod).registerAchievement();
+		installmod = new Achievement("achievement.InstallMod", "InstallMod", 0, 0, EGItemList.dinoPedia, null).registerStat().setSpecial();
+		dimensionGlacia = new Achievement("achievement.Glacia", "Glacia", 2, 0, EGItemList.flintAndSteel, installmod).registerStat();
 //		DimensionPrehistoria = new Achievement(1002, "Prehistoria", 2, 0, EGItemList.DinoPedia, Installmod).registerAchievement();
 //		DimensionPrimitive = new Achievement(1003, "Primitive", 2, 0, EGItemList.DinoPedia, Installmod).registerAchievement();
 		
-		fossil = new Achievement(1004, "Fossil", 4, 0, EGItemList.bioFossil, dimensionGlacia).registerAchievement();
-		cultivator = new Achievement(1005, "Cultivator", 4, 2, EGBlockList.cultivatorIdle, fossil).registerAchievement();
-		analyzer = new Achievement(1006, "Analyzer", 4, -2, EGBlockList.analyzer, fossil).registerAchievement();
-		feeder = new Achievement(1007, "Feeder", 6, 0, EGBlockList.feeder, fossil).registerAchievement();
+		fossil = new Achievement("achievement.Fossil", "Fossil", 4, 0, EGItemList.bioFossil, dimensionGlacia).registerStat();
+		cultivator = new Achievement("achievement.Cultivator", "Cultivator", 4, 2, EGBlockList.cultivatorIdle, fossil).registerStat();
+		analyzer = new Achievement("achievement.Analyzer", "Analyzer", 4, -2, EGBlockList.analyzer, fossil).registerStat();
+		feeder = new Achievement("achievement.Feeder", "Feeder", 6, 0, EGBlockList.feeder, fossil).registerStat();
 		
 		pageGlacia = new AchievementPage("Glacia", installmod, dimensionGlacia, fossil, cultivator, analyzer, feeder);
         AchievementPage.registerAchievementPage(pageGlacia);

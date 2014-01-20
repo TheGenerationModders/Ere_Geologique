@@ -1,7 +1,8 @@
 package ere_geologique.common.food;
 
 import net.minecraft.block.Block;
-import net.minecraft.item.Item;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import cpw.mods.fml.common.Loader;
 import ere_geologique.api.food.DinoFood;
 import ere_geologique.api.food.DinoFood.DinoFoodEntry;
@@ -14,20 +15,20 @@ import ere_geologique.common.item.EGItemList;
 public class FoodList
 {
 	// Block
-	public static DinoFoodEntry CakeBlock = new DinoFoodEntry(Block.cake, 0, 25, 5, EnumFoodType.HERBIVOROUS);
-	public static DinoFoodEntry CarrotBlock = new DinoFoodEntry(Block.carrot, 0, 25, 3, EnumFoodType.HERBIVOROUS);
-	public static DinoFoodEntry Crops = new DinoFoodEntry(Block.crops, 0, 10, 2, EnumFoodType.HERBIVOROUS);
-	public static DinoFoodEntry Leaves = new DinoFoodEntry(Block.leaves, 0, 15, 2, EnumFoodType.HERBIVOROUS);
-	public static DinoFoodEntry MelonBlock = new DinoFoodEntry(Block.melon, 0, 60, 4, EnumFoodType.HERBIVOROUS);
-	public static DinoFoodEntry BrownMushroom = new DinoFoodEntry(Block.mushroomBrown, 0, 15, 1, EnumFoodType.HERBIVOROUS);
-	public static DinoFoodEntry RedMushroom = new DinoFoodEntry(Block.mushroomRed, 0, 15, 1, EnumFoodType.HERBIVOROUS);
-	public static DinoFoodEntry RedFlower = new DinoFoodEntry(Block.plantRed, 0, 10, 1, EnumFoodType.HERBIVOROUS);
-	public static DinoFoodEntry YellowFlower = new DinoFoodEntry(Block.plantYellow, 0, 10, 1, EnumFoodType.HERBIVOROUS);
-	public static DinoFoodEntry PotatoBlock = new DinoFoodEntry(Block.potato, 0, 25, 2, EnumFoodType.HERBIVOROUS);
-	public static DinoFoodEntry Pumpkin = new DinoFoodEntry(Block.pumpkin, 0, 20, 1, EnumFoodType.HERBIVOROUS);
-	public static DinoFoodEntry Reed = new DinoFoodEntry(Block.reed, 0, 10, 1, EnumFoodType.HERBIVOROUS);
-	public static DinoFoodEntry Sapling = new DinoFoodEntry(Block.sapling, 0, 10, 1, EnumFoodType.HERBIVOROUS);
-	public static DinoFoodEntry TallGrass = new DinoFoodEntry(Block.tallGrass, 0, 10, 1, EnumFoodType.HERBIVOROUS);
+	public static DinoFoodEntry CakeBlock = new DinoFoodEntry(Blocks.cake, 0, 25, 5, EnumFoodType.HERBIVOROUS);
+	public static DinoFoodEntry CarrotBlock = new DinoFoodEntry(Blocks.carrots, 0, 25, 3, EnumFoodType.HERBIVOROUS);
+	public static DinoFoodEntry Crops = new DinoFoodEntry(Blocks.wheat, 0, 10, 2, EnumFoodType.HERBIVOROUS);
+	public static DinoFoodEntry Leaves = new DinoFoodEntry(Blocks.leaves, 0, 15, 2, EnumFoodType.HERBIVOROUS);
+	public static DinoFoodEntry MelonBlock = new DinoFoodEntry(Blocks.melon_stem, 0, 60, 4, EnumFoodType.HERBIVOROUS);
+	public static DinoFoodEntry BrownMushroom = new DinoFoodEntry(Blocks.brown_mushroom, 0, 15, 1, EnumFoodType.HERBIVOROUS);
+	public static DinoFoodEntry RedMushroom = new DinoFoodEntry(Blocks.red_mushroom, 0, 15, 1, EnumFoodType.HERBIVOROUS);
+	public static DinoFoodEntry RedFlower = new DinoFoodEntry(Blocks.red_flower, 0, 10, 1, EnumFoodType.HERBIVOROUS);
+	public static DinoFoodEntry YellowFlower = new DinoFoodEntry(Blocks.yellow_flower, 0, 10, 1, EnumFoodType.HERBIVOROUS);
+	public static DinoFoodEntry PotatoBlock = new DinoFoodEntry(Blocks.potatoes, 0, 25, 2, EnumFoodType.HERBIVOROUS);
+	public static DinoFoodEntry Pumpkin = new DinoFoodEntry(Blocks.pumpkin, 0, 20, 1, EnumFoodType.HERBIVOROUS);
+	public static DinoFoodEntry Reed = new DinoFoodEntry(Blocks.reeds, 0, 10, 1, EnumFoodType.HERBIVOROUS);
+	public static DinoFoodEntry Sapling = new DinoFoodEntry(Blocks.sapling, 0, 10, 1, EnumFoodType.HERBIVOROUS);
+	public static DinoFoodEntry TallGrass = new DinoFoodEntry(Blocks.tallgrass, 0, 10, 1, EnumFoodType.HERBIVOROUS);
 	public static DinoFoodEntry LeavesFougere = new DinoFoodEntry(EGBlockList.leaves, 0, 50, 3, EnumFoodType.HERBIVOROUS);
 	public static DinoFoodEntry SaplingFougere = new DinoFoodEntry(EGBlockList.sapling, 0, 15, 2, EnumFoodType.HERBIVOROUS);
 
@@ -35,27 +36,27 @@ public class FoodList
 	public static DinoFoodEntry nanoSaplings = null;
 
 	// Item
-	public static DinoFoodEntry Wheat = new DinoFoodEntry(Item.wheat, 0, 10, 2, EnumFoodType.HERBIVOROUS);// Veggie Foods
-	public static DinoFoodEntry Melon = new DinoFoodEntry(Item.melon, 0, 10, 2, EnumFoodType.HERBIVOROUS);
-	public static DinoFoodEntry Apple = new DinoFoodEntry(Item.appleRed, 0, 15, 3, EnumFoodType.HERBIVOROUS);
-	public static DinoFoodEntry Potato = new DinoFoodEntry(Item.potato, 0, 10, 2, EnumFoodType.HERBIVOROUS);
-	public static DinoFoodEntry BakedPotato = new DinoFoodEntry(Item.bakedPotato, 0, 15, 3, EnumFoodType.HERBIVOROUS);
-	public static DinoFoodEntry Cake = new DinoFoodEntry(Item.cake, 0, 25, 5, EnumFoodType.HERBIVOROUS);
-	public static DinoFoodEntry Carrot = new DinoFoodEntry(Item.carrot, 0, 10, 2, EnumFoodType.HERBIVOROUS);
-	public static DinoFoodEntry Cookie = new DinoFoodEntry(Item.cookie, 0, 15, 4, EnumFoodType.HERBIVOROUS);
-	public static DinoFoodEntry PumpkinPie = new DinoFoodEntry(Item.pumpkinPie, 0, 20, 4, EnumFoodType.HERBIVOROUS);
-	public static DinoFoodEntry Sugar = new DinoFoodEntry(Item.sugar, 0, 10, 2, EnumFoodType.HERBIVOROUS);
-	public static DinoFoodEntry Bread = new DinoFoodEntry(Item.bread, 0, 25, 2, EnumFoodType.HERBIVOROUS);
+	public static DinoFoodEntry Wheat = new DinoFoodEntry(Items.wheat, 0, 10, 2, EnumFoodType.HERBIVOROUS);// Veggie Foods
+	public static DinoFoodEntry Melon = new DinoFoodEntry(Items.melon, 0, 10, 2, EnumFoodType.HERBIVOROUS);
+	public static DinoFoodEntry Apple = new DinoFoodEntry(Items.apple, 0, 15, 3, EnumFoodType.HERBIVOROUS);
+	public static DinoFoodEntry Potato = new DinoFoodEntry(Items.potato, 0, 10, 2, EnumFoodType.HERBIVOROUS);
+	public static DinoFoodEntry BakedPotato = new DinoFoodEntry(Items.baked_potato, 0, 15, 3, EnumFoodType.HERBIVOROUS);
+	public static DinoFoodEntry Cake = new DinoFoodEntry(Items.cake, 0, 25, 5, EnumFoodType.HERBIVOROUS);
+	public static DinoFoodEntry Carrot = new DinoFoodEntry(Items.carrot, 0, 10, 2, EnumFoodType.HERBIVOROUS);
+	public static DinoFoodEntry Cookie = new DinoFoodEntry(Items.cookie, 0, 15, 4, EnumFoodType.HERBIVOROUS);
+	public static DinoFoodEntry PumpkinPie = new DinoFoodEntry(Items.pumpkin_pie, 0, 20, 4, EnumFoodType.HERBIVOROUS);
+	public static DinoFoodEntry Sugar = new DinoFoodEntry(Items.sugar, 0, 10, 2, EnumFoodType.HERBIVOROUS);
+	public static DinoFoodEntry Bread = new DinoFoodEntry(Items.bread, 0, 25, 2, EnumFoodType.HERBIVOROUS);
 
-	public static DinoFoodEntry FishRaw = new DinoFoodEntry(Item.fishRaw, 0, 30, 3, EnumFoodType.CARNIVOROUS);// this MUST BE the first carnivore food!
-	public static DinoFoodEntry FishCooked = new DinoFoodEntry(Item.fishCooked, 0, 40, 4, EnumFoodType.CARNIVOROUS);
-	public static DinoFoodEntry BeefCooked = new DinoFoodEntry(Item.beefCooked, 0, 50, 5, EnumFoodType.CARNIVOROUS);
-	public static DinoFoodEntry BeefRaw = new DinoFoodEntry(Item.beefRaw, 0, 40, 4, EnumFoodType.CARNIVOROUS);
-	public static DinoFoodEntry ChickenCooked = new DinoFoodEntry(Item.chickenCooked, 0, 30, 3, EnumFoodType.CARNIVOROUS);
-	public static DinoFoodEntry ChickenRaw = new DinoFoodEntry(Item.chickenRaw, 0, 40, 4, EnumFoodType.CARNIVOROUS);
-	public static DinoFoodEntry PorkRaw = new DinoFoodEntry(Item.porkRaw, 0, 30, 2, EnumFoodType.CARNIVOROUS);
-	public static DinoFoodEntry PorkCooked = new DinoFoodEntry(Item.porkCooked, 0, 50, 3, EnumFoodType.CARNIVOROUS);
-	public static DinoFoodEntry Egg = new DinoFoodEntry(Item.egg, 0, 10, 2, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry FishRaw = new DinoFoodEntry(Items.fish, 0, 30, 3, EnumFoodType.CARNIVOROUS);// this MUST BE the first carnivore food!
+	public static DinoFoodEntry FishCooked = new DinoFoodEntry(Items.cooked_fished, 0, 40, 4, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry BeefCooked = new DinoFoodEntry(Items.cooked_beef, 0, 50, 5, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry BeefRaw = new DinoFoodEntry(Items.beef, 0, 40, 4, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry ChickenCooked = new DinoFoodEntry(Items.cooked_chicken, 0, 30, 3, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry ChickenRaw = new DinoFoodEntry(Items.chicken, 0, 40, 4, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry PorkRaw = new DinoFoodEntry(Items.porkchop, 0, 30, 2, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry PorkCooked = new DinoFoodEntry(Items.cooked_porkchop, 0, 50, 3, EnumFoodType.CARNIVOROUS);
+	public static DinoFoodEntry Egg = new DinoFoodEntry(Items.egg, 0, 10, 2, EnumFoodType.CARNIVOROUS);
 	public static DinoFoodEntry Sjl = new DinoFoodEntry(EGItemList.sjl, 0, 30, 3, EnumFoodType.CARNIVOROUS);// SioChiuLe
 	public static DinoFoodEntry Nautilus = new DinoFoodEntry(EnumDinoType.Nautilus.dropItem, 0, 20, 2, EnumFoodType.CARNIVOROUS);
 	public static DinoFoodEntry ChickenSoupRaw = new DinoFoodEntry(EGItemList.rawChickenSoup, 0, 30, 3, EnumFoodType.CARNIVOROUS);
