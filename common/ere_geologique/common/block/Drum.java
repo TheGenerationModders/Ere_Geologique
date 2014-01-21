@@ -6,12 +6,12 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ere_geologique.common.config.EGProperties;
 import ere_geologique.common.tileentity.TileEntityDrum;
 
 public class Drum extends BlockContainer
@@ -20,17 +20,17 @@ public class Drum extends BlockContainer
     IIcon Top2;
     IIcon Top3;
     IIcon Bottom;
-    public Drum(int var1)
+    public Drum()
     {
-        super(var1, Material.wood);
+        super(Material.field_151575_d);
     }
 
     /**
      * Returns the ID of the items to drop on destruction.
      */
-    public int idDropped(int var1, Random var2, int var3)
+    public Item idDropped(int var1, Random var2, int var3)
     {
-        return EGProperties.drumID;
+        return Item.func_150898_a(EGBlockList.drum);
     }
 
     
@@ -42,7 +42,7 @@ public class Drum extends BlockContainer
      */
     public void registerIcons(IIconRegister par1IconRegister)
     {
-        this.blockIcon = par1IconRegister.registerIcon("ere_geologique:Drum_Side");
+        this.field_149761_L = par1IconRegister.registerIcon("ere_geologique:Drum_Side");
         this.Top1 = par1IconRegister.registerIcon("ere_geologique:Drum_Top1");
         this.Top2 = par1IconRegister.registerIcon("ere_geologique:Drum_Top2");
         this.Top3 = par1IconRegister.registerIcon("ere_geologique:Drum_Top3");
@@ -56,7 +56,7 @@ public class Drum extends BlockContainer
     {
         if (par1 != 1 && par1 != 0)
         {
-            return blockIcon;
+            return field_149761_L;
         }
         else
         {
@@ -83,13 +83,13 @@ public class Drum extends BlockContainer
     /**
      * Called upon block activation (right click on the block.)
      */
-    public boolean onBlockActivated(World var1, int var2, int var3, int var4, EntityPlayer var5, int var6, float var7, float var8, float var9)
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ)
     {
-        if (!var1.isRemote)
+        if (!world.isRemote)
         {
-            TileEntityDrum var10 = (TileEntityDrum)var1.getBlockTileEntity(var2, var3, var4);
-            var10.TriggerOrder(var5);
-            var1.setBlockMetadataWithNotify(var2, var3, var4, var10.Order.ordinal(), var6);
+            TileEntityDrum var10 = (TileEntityDrum)world.func_147438_o(x, y, z);
+            var10.TriggerOrder(player);
+            world.setBlockMetadataWithNotify(x, y, z, var10.Order.ordinal(), side);
         }
 
         return true;
@@ -98,15 +98,15 @@ public class Drum extends BlockContainer
     /**
      * Called when the block is clicked by a player. Args: x, y, z, entityPlayer
      */
-    public void onBlockClicked(World var1, int var2, int var3, int var4, EntityPlayer var5)
+    public void onBlockClicked(World world, int x, int y, int z, EntityPlayer player)
     {
-        if (!var1.isRemote)
+        if (!world.isRemote)
         {
-            TileEntityDrum var6 = (TileEntityDrum)var1.getBlockTileEntity(var2, var3, var4);
+            TileEntityDrum var6 = (TileEntityDrum)world.func_147438_o(x, y, z);
 
-            if (var5.inventory.getCurrentItem() != null)
+            if (player.inventory.getCurrentItem().getItem() != null)
             {
-                var6.SendOrder(var5.inventory.getCurrentItem().itemID, var5);
+                var6.SendOrder(player.inventory.getCurrentItem().getItem(), player);
             }
         }
     }
@@ -114,7 +114,7 @@ public class Drum extends BlockContainer
     /**
      * Returns a new instance of a block's tile entity class. Called on placing the block.
      */
-    public TileEntity createNewTileEntity(World var1)
+    public TileEntity func_149915_a(World world, int par2)
     {
         return new TileEntityDrum();
     }

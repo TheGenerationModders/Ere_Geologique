@@ -61,7 +61,7 @@ public class EGBlockList
 	       steelBlock = new ReinforcedStone(EGProperties.steelBlockID).setHardness(5.0F).setResistance(10.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("SteelBlock").setTextureName("ere_geologique:steel_block");
 	       skull = new Skull(EGProperties.fossilSkullID).setHardness(1.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("FossilSkull");
 	       blueFire = (BlueFire) new BlueFire(EGProperties.blueFireID).setHardness(0.0F).setLightValue(1.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("BlueFire");
-	       drum = new Drum(EGProperties.drumID).setHardness(0.8F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("Drum").setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
+	       drum = new Drum().setHardness(0.8F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("Drum").setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
 	       
 	       GameRegistry.registerBlock(leaves, ItemBlockLeaves.class, "Leaves");
 	       GameRegistry.registerBlock(wood, ItemBlockWood.class, "Wood");
