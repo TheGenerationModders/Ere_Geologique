@@ -84,15 +84,15 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
         return "Cultivate";
     }
 
-    public void readFromNBT(NBTTagCompound var1)
+    public void func_145839_a(NBTTagCompound var1)
     {
-        super.readFromNBT(var1);
-        NBTTagList var2 = var1.getTagList("Items");
+        super.func_145839_a(var1);
+        NBTTagList nbtTagList = var1.func_150295_c("Items", 10);
         this.cultivateItemStacks = new ItemStack[this.getSizeInventory()];
 
-        for (int var3 = 0; var3 < var2.tagCount(); ++var3)
+        for (int i = 0; i < nbtTagList.tagCount(); ++i)
         {
-            NBTTagCompound var4 = (NBTTagCompound)var2.tagAt(var3);
+            NBTTagCompound var4 = (NBTTagCompound)nbtTagList.func_150305_b(i);
             byte var5 = var4.getByte("Slot");
 
             if (var5 >= 0 && var5 < this.cultivateItemStacks.length)
@@ -106,9 +106,9 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
         this.currentItemBurnTime = this.getItemBurnTime(this.cultivateItemStacks[1]);
     }
 
-    public void writeToNBT(NBTTagCompound var1)
+    public void func_145841_b(NBTTagCompound var1)
     {
-        super.writeToNBT(var1);
+        super.func_145841_b(var1);
         var1.setShort("BurnTime", (short)this.furnaceBurnTime);
         var1.setShort("CookTime", (short)this.furnaceCookTime);
         NBTTagList var2 = new NBTTagList();
@@ -171,7 +171,7 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
             --this.furnaceBurnTime;
         }
 
-        if (!this.worldObj.isRemote)
+        if (!this.field_145850_b.isRemote)
         {
             if (this.furnaceBurnTime == 0 && this.canSmelt())
             {
@@ -219,7 +219,7 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
             if (var1 != this.furnaceCookTime > 0)
             {
                 var2 = true;
-                Cultivator.updateFurnaceBlockState(this.furnaceCookTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+                Cultivator.updateFurnaceBlockState(this.furnaceCookTime > 0, this.field_145850_b, this.field_145851_c, this.field_145848_d, this.field_145849_e);
             }
         }
 
@@ -230,7 +230,7 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
 
         if (this.furnaceCookTime == 3001 && (new Random()).nextInt(100) < 20)
         {
-            ((Cultivator)EGBlockList.cultivatorIdle).onBlockRemovalLost(this.worldObj, this.xCoord, this.yCoord, this.zCoord, true);
+            ((Cultivator)EGBlockList.cultivatorIdle).onBlockRemovalLost(this.field_145850_b, this.field_145851_c, this.field_145848_d, this.field_145849_e, true);
         }
     }
 
@@ -251,15 +251,15 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
     {
         if (this.canSmelt())
         {
-            ItemStack var1 = this.CheckSmelt(this.cultivateItemStacks[0]);
+            ItemStack itemStack = this.CheckSmelt(this.cultivateItemStacks[0]);
 
             if (this.cultivateItemStacks[2] == null)
             {
-                this.cultivateItemStacks[2] = var1.copy();
+                this.cultivateItemStacks[2] = itemStack.copy();
             }
-            else if (this.cultivateItemStacks[2].itemID == var1.itemID)
+            else if (this.cultivateItemStacks[2].getItem() == itemStack.getItem())
             {
-                this.cultivateItemStacks[2].stackSize += var1.stackSize;
+                this.cultivateItemStacks[2].stackSize += itemStack.stackSize;
             }
 
             if (this.cultivateItemStacks[0].getItem().hasContainerItem())
@@ -278,26 +278,26 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
         }
     }
 
-    private static int getItemBurnTime(ItemStack var1)
+    private static int getItemBurnTime(ItemStack itemStack)
     {
-        if (var1 != null)
+        if (itemStack != null)
         {
-            int var2 = var1.getItem().itemID;
-            if(var2 == EGItemList.bioFossil.itemID) return 300;
-            if(var2 == Items.porkchop.itemID)return 3000;
-            if(var2 == Items.fish.itemID)return 3000;
-            if(var2 == Items.beef.itemID)return 4000;
-            if(var2 == Items.chicken.itemID)return 1500;
-            if(var2 == Items.egg.itemID)return 1000;
-            if(var2 == Items.slime_ball.itemID)return 800;
-            if(var2 == Items.milk_bucket.itemID)return 6000;
+            Item item = itemStack.getItem();
+            if(item == EGItemList.bioFossil) return 300;
+            if(item == Items.porkchop)return 3000;
+            if(item == Items.fish)return 3000;
+            if(item == Items.beef)return 4000;
+            if(item == Items.chicken)return 1500;
+            if(item == Items.egg)return 1000;
+            if(item == Items.slime_ball)return 800;
+            if(item == Items.milk_bucket)return 6000;
         }
         return 0;
     }
 
     public boolean isUseableByPlayer(EntityPlayer var1)
     {
-        return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : var1.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
+        return this.field_145850_b.func_147438_o(this.field_145851_c, this.field_145848_d, this.field_145849_e) != this ? false : var1.getDistanceSq((double)this.field_145851_c + 0.5D, (double)this.field_145848_d + 0.5D, (double)this.field_145849_e + 0.5D) <= 64.0D;
     }
 
     @Deprecated
