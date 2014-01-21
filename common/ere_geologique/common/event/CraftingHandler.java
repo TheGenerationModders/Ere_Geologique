@@ -21,13 +21,13 @@ public class CraftingHandler implements ICraftingHandler
 	@Override
 	public void onCrafting(EntityPlayer player, ItemStack item, IInventory craftMatrix)
 	{
-		if(item.itemID == EGBlockList.feeder.blockID)
+		if(item.itemID == EGBlockList.feeder)
 		{
 			player.addStat(EGAchievement.feeder, 1);
-		}else if(item.itemID == EGBlockList.analyzer.blockID)
+		}else if(item.itemID == EGBlockList.analyzer)
 		{
 			player.addStat(EGAchievement.analyzer, 1);
-		}else if(item.itemID == EGBlockList.cultivatorIdle.blockID)
+		}else if(item.itemID == EGBlockList.cultivatorIdle)
 		{
 			player.addStat(EGAchievement.cultivator, 1);
 		}
@@ -39,7 +39,7 @@ public class CraftingHandler implements ICraftingHandler
 	{
 		for (int i = 0; i < EnumDinoType.values().length; i++)
 		{
-			if (item.itemID == EnumDinoType.values()[i].eggItem.itemID)
+			if (item.itemID == EnumDinoType.values()[i].eggItem)
 			{
 				player.addStat(EGAchievement.firstEgg, 1);
 				if (!eggsFound.contains(i))

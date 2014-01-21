@@ -7,7 +7,6 @@ import ere_geologique.common.EreGeologique;
 
 public class DinoSoundHandler
 {    
-	
     @ForgeSubscribe
     public void onSoundLoad(SoundLoadEvent event)
     {

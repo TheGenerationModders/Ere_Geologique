@@ -34,8 +34,8 @@ public class GuiPedia extends GuiContainer
     public GuiPedia(/*InventoryPlayer var1*/)
     {
         super(new ContainerPedia());
-        this.xSize = 256;
-        this.ySize = 180;
+        this.field_146999_f = 256;
+        this.field_147000_g = 180;
         left=0;
         right=0;
         items=0;
@@ -62,12 +62,12 @@ public class GuiPedia extends GuiContainer
      */
     public void PrintStringLR(String str0,boolean left0,int line)
     {
-    	this.fontRenderer.drawString(str0, 59+(left0? 0 : 81), 12*(line+1), 4210752);
+    	this.field_146289_q.drawString(str0, 59+(left0? 0 : 81), 12*(line+1), 4210752);
     }
     public void PrintStringLR(String str0,boolean left0,int line,int r,int g,int b)
     {
     	int col=(r << 16) | (g << 8) | b;
-    	this.fontRenderer.drawString(str0, 59+(left0? 0 : 81), 12*(line+1), col);
+    	this.field_146289_q.drawString(str0, 59+(left0? 0 : 81), 12*(line+1), col);
     }
     
     /**
@@ -75,24 +75,24 @@ public class GuiPedia extends GuiContainer
      */
     public void AddStringLR(String str0,boolean left0)
     {
-    	this.fontRenderer.drawString(str0, 24+(left0? 0 : 81), 12*((left0?this.left++:this.right++)+1), 4210752);
+    	this.field_146289_q.drawString(str0, 24+(left0? 0 : 81), 12*((left0?this.left++:this.right++)+1), 4210752);
     }
     public void AddStringLR(String str0,boolean left0,int r,int g,int b)
     {
     	int col=(r << 16) | (g << 8) | b;
-    	this.fontRenderer.drawString(str0, 24+(left0? 0 : 81), 12*((left0?this.left++:this.right++)+1), col);
+    	this.field_146289_q.drawString(str0, 24+(left0? 0 : 81), 12*((left0?this.left++:this.right++)+1), col);
     }
     /**
      * Print a String to X,Y
      */
     public void PrintStringXY(String str0,int x0,int y0)
     {
-    	this.fontRenderer.drawString(str0, x0, y0, 4210752);
+    	this.field_146289_q.drawString(str0, x0, y0, 4210752);
     }
     public void PrintStringXY(String str0,int x0,int y0,int r,int g,int b)
     {
     	int col=(r << 16) | (g << 8) | b;
-    	this.fontRenderer.drawString(str0, x0, y0, col);
+    	this.field_146289_q.drawString(str0, x0, y0, col);
     }
     
     /**
@@ -111,7 +111,7 @@ public class GuiPedia extends GuiContainer
     	if(i==0)i=8;
     	if(i>160)i=160;
     	GL11.glDisable(GL11.GL_LIGHTING);
-        this.mc.getTextureManager().bindTexture(TextureMap.locationItemsTexture);
+        this.field_146297_k.getTextureManager().bindTexture(TextureMap.locationItemsTexture);
     	RenderItem r= new RenderItem();
     	ItemStack it=new ItemStack(it0,1);
     	IIcon icon = it.getIconIndex();
@@ -131,7 +131,7 @@ public class GuiPedia extends GuiContainer
      */
     public void PrintPictXY(ResourceLocation str0,int x0,int y0,int width,int height)
     {
-    	this.mc.getTextureManager().bindTexture(str0);
+    	this.field_146297_k.getTextureManager().bindTexture(str0);
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.2F);
         Tessellator var9 = Tessellator.instance;
         var9.startDrawingQuads();
@@ -161,16 +161,15 @@ public class GuiPedia extends GuiContainer
     /**
      * Draw the background layer for the GuiContainer (everything behind the items)
      */
-    protected void drawGuiContainerBackgroundLayer(float var1, int var2, int var3)
+    protected void func_146976_a(float var1, int var2, int var3)
     {
     	int x = var2;
     	int y = var3;
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        mc.getTextureManager().bindTexture(loc);
-        int var5 = (this.width - this.xSize) / 2;
-        int var6 = (this.height - this.ySize) / 2;
-        this.drawTexturedModalRect(var5, var6, 0, 0, this.xSize, this.ySize);
-
+        field_146297_k.getTextureManager().bindTexture(loc);
+        int var5 = (this.field_146294_l - this.field_146999_f) / 2;
+        int var6 = (this.field_146295_m - this.field_147000_g) / 2;
+        this.drawTexturedModalRect(var5, var6, 0, 0, this.field_146999_f, this.field_147000_g);
     }
 
     /**

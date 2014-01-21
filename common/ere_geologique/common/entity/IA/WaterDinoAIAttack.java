@@ -159,7 +159,7 @@ public class WaterDinoAIAttack extends EntityAIBase
         AxisAlignedBB axisalignedbb = this.entity.boundingBox.copy();
         axisalignedbb.offset(d4, d5, d6);
 
-    	while (this.entity.worldObj.isAABBInMaterial(axisalignedbb, Material.air))
+    	while (this.entity.worldObj.isAABBInMaterial(axisalignedbb, Material.field_151579_a))
     	{
         axisalignedbb.offset(d4, d5, d6);
         d5 -= 1;      		

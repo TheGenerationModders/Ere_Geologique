@@ -7,7 +7,6 @@ import ere_geologique.proxy.network.ServerPacketHandler;
 
 public abstract class DinoAIRide extends EntityAIBase
 {
-
     protected final Dinosaure dinosaure;
     protected EntityPlayer rider;
     private ServerPacketHandler remoteKey = ServerPacketHandler.getInstance();
@@ -30,7 +29,7 @@ public abstract class DinoAIRide extends EntityAIBase
     
     protected boolean isRiderJumping()
     {
-    	return remoteKey.isKeyPressed(rider.username, "key.jump");
+    	return remoteKey.isKeyPressed(rider.func_146103_bH().getName(), "key.jump");
     }
     
     @Override

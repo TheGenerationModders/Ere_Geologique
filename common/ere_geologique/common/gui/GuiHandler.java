@@ -15,12 +15,10 @@ import ere_geologique.common.tileentity.TileEntityFeeder;
 
 public class GuiHandler implements IGuiHandler
 {
-
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-		TileEntity tile_entity = world.getBlockTileEntity(x, y, z);
-		
+		TileEntity tile_entity = world.func_147438_o(x, y, z);
 		switch(ID)
 		{
 			case 0:return new ContainerFeeder(player.inventory, (TileEntityFeeder) tile_entity);
@@ -35,7 +33,7 @@ public class GuiHandler implements IGuiHandler
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
 	{
-		TileEntity tile_entity = world.getBlockTileEntity(x, y, z);
+		TileEntity tile_entity = world.func_147438_o(x, y, z);
 		switch(ID)
 		{
 			case 0:return new GuiFeeder(player.inventory, (TileEntityFeeder) tile_entity);
@@ -46,5 +44,4 @@ public class GuiHandler implements IGuiHandler
 		}
 		return null;
 	}
-
 }
