@@ -4,7 +4,7 @@ import java.util.Random;
 
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.item.Item;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
@@ -42,7 +42,7 @@ public class DinoAIFishing extends EntityAIBase
 
         for (int var2 = 0; var2 <= var1.nextInt(3); ++var2)
         {
-            EntityItem var3 = new EntityItem(this.theEntity.worldObj, this.theEntity.posX, this.theEntity.posY, this.theEntity.posZ, new ItemStack(Item.fishRaw));
+            EntityItem var3 = new EntityItem(this.theEntity.worldObj, this.theEntity.posX, this.theEntity.posY, this.theEntity.posZ, new ItemStack(Items.fish));
             double var4 = (double)(var1.nextInt(5) - 2);
             double var6 = (double)(var1.nextInt(5) - 2);
             double var8 = (double)(var1.nextInt(5) - 2);
