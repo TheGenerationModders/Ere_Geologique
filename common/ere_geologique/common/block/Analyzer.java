@@ -2,6 +2,7 @@ package ere_geologique.common.block;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -27,9 +28,9 @@ public class Analyzer extends BlockContainer
 	private Random furnaceRand = new Random();
 	private IIcon top, front, frontActive;
 
-	public Analyzer(int id)
+	public Analyzer()
 	{
-		super(id, Material.iron);
+		super(Material.field_151573_f);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -44,7 +45,7 @@ public class Analyzer extends BlockContainer
 	@SideOnly(Side.CLIENT)
 	public IIcon getBlockTexture(IBlockAccess blockAccess, int x, int y, int z, int side)
 	{
-		TileEntity te = blockAccess.getBlockTileEntity(x, y, z);
+		TileEntity te = blockAccess.func_147438_o(x, y, z);
 		if(te != null && te instanceof TileEntityAnalyzer)
 		{
 			TileEntityAnalyzer analyzer = (TileEntityAnalyzer)te;
@@ -80,22 +81,22 @@ public class Analyzer extends BlockContainer
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase living, ItemStack stack)
 	{
 		int direction = MathHelper.floor_double((double)(living.rotationYaw * 4.0F / 360.0F) + 2.5D) & 3;
-		TileEntity te = world.getBlockTileEntity(x, y, z);
+		TileEntity te = world.func_147438_o(x, y, z);
 		if(te != null && te instanceof TileEntityAnalyzer)
 		{
 			((TileEntityAnalyzer)te).setDirection(direction);
 			world.markBlockForUpdate(x, y, z);
 		}
 	}
-	
+	/*
 	public TileEntity createNewTileEntity(World world)
 	{
 		return new TileEntityAnalyzer();
-	}
+	}*/
 
-	public void breakBlock(World world, int x, int y, int z, int var5, int var6)
+	public void breakBlock(World world, int x, int y, int z, Block var5, int var6)
 	{
-		TileEntityAnalyzer analyzer = (TileEntityAnalyzer)world.getBlockTileEntity(x, y, z);
+		TileEntityAnalyzer analyzer = (TileEntityAnalyzer)world.func_147438_o(x, y, z);
 
 		if(analyzer != null)
 		{
@@ -119,7 +120,7 @@ public class Analyzer extends BlockContainer
 						}
 
 						stack.stackSize -= var13;
-						EntityItem entityItem = new EntityItem(world, (double)((float)x + var10), (double)((float)y + var11), (double)((float)z + var12), new ItemStack(stack.itemID, var13, stack.getItemDamage()));
+						EntityItem entityItem = new EntityItem(world, (double)((float)x + var10), (double)((float)y + var11), (double)((float)z + var12), new ItemStack(stack.getItem(), var13, stack.getItemDamage()));
 
 						if(stack.hasTagCompound())
 						{
@@ -136,7 +137,7 @@ public class Analyzer extends BlockContainer
 			}
 		}
 
-		super.breakBlock(world, x, y, z, var5, var6);
+		super.func_149749_a(world, x, y, z, var5, var6);
 	}
 
 	public boolean hasComparatorInputOverride()
@@ -150,7 +151,8 @@ public class Analyzer extends BlockContainer
 	}
 
 	@Override
-	public TileEntity func_149915_a(World var1, int var2) {
-		return null;
+	public TileEntity func_149915_a(World var1, int var2)
+	{
+		return new TileEntityAnalyzer();
 	}
 }

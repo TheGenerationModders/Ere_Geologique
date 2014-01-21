@@ -52,9 +52,9 @@ public class EGBlockList
 	       stairGinkgos = new Stair(EGProperties.stairGingkosID, plank, 5).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("StairGinkgos");
 	       glaciaPortal = (GlaciaPortal) new GlaciaPortal(EGProperties.glaciaPortalID).setHardness(-1.0F).setStepSound(Block.soundGlassFootstep).setLightValue(0.75F).setUnlocalizedName("GlaciaPortal").setTextureName("ere_geologique:GlaciaPortal");
 	       feeder = new Feeder(EGProperties.feederID).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName(LocalizationStrings.FEEDER_NAME).setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
-	       analyzer = new Analyzer(EGProperties.analyzerID).setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName(LocalizationStrings.ANALYZER_NAME).setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
-	       cultivatorIdle = new Cultivator(EGProperties.cultivatorIdleID, false).setLightValue(0.9375F).setHardness(0.3F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName(LocalizationStrings.CULTIVATE_IDLE_NAME).setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
-	       cultivatorActive = new Cultivator(EGProperties.cultivatorActiveID, true).setLightValue(0.9375F).setHardness(0.3F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName(LocalizationStrings.CULTIVATE_ACTIVE_NAME);
+	       analyzer = new Analyzer().setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName(LocalizationStrings.ANALYZER_NAME).setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
+	       cultivatorIdle = new Cultivator(false).setLightValue(0.9375F).setHardness(0.3F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName(LocalizationStrings.CULTIVATE_IDLE_NAME).setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
+	       cultivatorActive = new Cultivator(true).setLightValue(0.9375F).setHardness(0.3F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName(LocalizationStrings.CULTIVATE_ACTIVE_NAME);
 	       fossil = new Fossil(EGProperties.fossilID).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("Fossil").setTextureName("ere_geologique:Fossil");
 	       reinforcedStone = new ReinforcedStone(EGProperties.reinforcedStoneID).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("ReinforcedStone").setTextureName("ere_geologique:reinforced_stone");
 	       reinforcedGlass = new ReinforcedGlass(EGProperties.reinforcedGlassID, Material.glass, false).setHardness(0.3F).setResistance(10.0F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("ReinforcedGlass").setTextureName("ere_geologique:reinforced_glass");
@@ -88,7 +88,6 @@ public class EGBlockList
 	       GameRegistry.registerBlock(drum, "Drum");
 
 	       MinecraftForge.setBlockHarvestLevel(fossil, 0, "pickaxe", 2);
-
 		}
 		catch(Exception ex)
 		{
