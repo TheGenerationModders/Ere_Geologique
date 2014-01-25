@@ -121,7 +121,7 @@ public class ContainerCultivator extends Container
             }
             else if (par2 != 1 && par2 != 0)
             {
-                if (FurnaceRecipes.smelting().getSmeltingResult(itemstack1) != null)
+                if (FurnaceRecipes.smelting().func_151395_a(itemstack1) != null)
                 {
                     if (!this.mergeItemStack(itemstack1, 0, 1, false))
                     {
