@@ -8,7 +8,7 @@ public class EGItem extends Item
 {
 	String TextureFileName;
 	
-	public EGItem(int par1, String TextureFileName0)
+	public EGItem(String TextureFileName0)
 	{
 		super();
 		this.TextureFileName=TextureFileName0;

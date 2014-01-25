@@ -11,9 +11,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ChickenEss extends EGFood
 {
-    public ChickenEss(int var1, int var2, float var3, boolean var4, String textname)
+    public ChickenEss(int var2, float var3, boolean var4, String textname)
     {
-        super(var1, var2, var3, var4,textname);
+        super(var2, var3, var4,textname);
     }
 
     @Override

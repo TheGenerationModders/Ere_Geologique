@@ -1,33 +1,27 @@
 package ere_geologique.common.block;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockSlab;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBlockSlab extends ItemBlock
 {
 	private final boolean isFullBlock;
-	private final Block theHalfSlab;
-	private final Block doubleSlab;
+	private final BlockSlab theHalfSlab;
+	private final BlockSlab doubleSlab;
 
-	public ItemBlockSlab(int id)
+	public ItemBlockSlab(Block block, BlockSlab blockSlab, BlockSlab blockSlab2, boolean b)
 	{
-		super(id);
-		this.theHalfSlab = EGBlockList.slab;
-		this.doubleSlab = EGBlockList.doubleSlab;
-		if(id - 256 == EGBlockList.doubleSlab.blockID)
-		{
-			this.isFullBlock = true;
-		}
-		else
-		{
-			this.isFullBlock = false;
-		}
+		super(block);
+		this.theHalfSlab = blockSlab;
+		this.doubleSlab = blockSlab2;
+	    this.isFullBlock = b;
 		this.setMaxDamage(0);
 		this.setHasSubtypes(true);
 	}
@@ -35,7 +29,7 @@ public class ItemBlockSlab extends ItemBlock
 	@SideOnly(Side.CLIENT)
 	public IIcon getIconFromDamage(int metadata)
 	{
-		return Block.blocksList[this.itemID].getIcon(2, metadata);
+		return Block.func_149634_a(this).func_149691_a(2, metadata);
 	}
 
 	public int getMetadata(int metadata)
@@ -45,7 +39,7 @@ public class ItemBlockSlab extends ItemBlock
 
 	public String getUnlocalizedName(ItemStack stack)
 	{
-		return ((Slab)theHalfSlab).getFullSlabName(stack.getItemDamage());
+		return ((Slab)theHalfSlab).func_150002_b(stack.getItemDamage());
 	}
 
 	public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, float par8, float par9, float par10)
@@ -64,16 +58,16 @@ public class ItemBlockSlab extends ItemBlock
 		}
 		else
 		{
-			int i1 = world.getBlockId(x, y, z);
+			Block block = world.func_147439_a(x, y, z);
 			int j1 = world.getBlockMetadata(x, y, z);
 			int k1 = j1 & 7;
 			boolean flag = (j1 & 8) != 0;
 
-			if((side == 1 && !flag || side == 0 && flag) && i1 == this.theHalfSlab.blockID && k1 == stack.getItemDamage())
+			if((side == 1 && !flag || side == 0 && flag) && block == this.theHalfSlab && k1 == stack.getItemDamage())
 			{
-				if(world.checkNoEntityCollision(this.doubleSlab.getCollisionBoundingBoxFromPool(world, x, y, z)) && world.setBlock(x, y, z, this.doubleSlab.blockID, k1, 3))
+				if(world.checkNoEntityCollision(this.doubleSlab.func_149668_a(world, x, y, z)) && world.func_147465_d(x, y, z, this.doubleSlab, k1, 3))
 				{
-					world.playSoundEffect((double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), this.doubleSlab.stepSound.getPlaceSound(), (this.doubleSlab.stepSound.getVolume() + 1.0F) / 2.0F, this.doubleSlab.stepSound.getPitch() * 0.8F);
+					world.playSoundEffect((double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), this.doubleSlab.field_149762_H.func_150496_b(), (this.doubleSlab.field_149762_H.func_150497_c() + 1.0F) / 2.0F, this.doubleSlab.field_149762_H.func_150494_d() * 0.8F);
 					--stack.stackSize;
 				}
 				return true;
@@ -91,12 +85,12 @@ public class ItemBlockSlab extends ItemBlock
 		int i1 = x;
 		int j1 = y;
 		int k1 = z;
-		int id = world.getBlockId(x, y, z);
+		Block block = world.func_147439_a(x, y, z);
 		int meta = world.getBlockMetadata(x, y, z);
 		int j2 = meta & 7;
 		boolean flag = (meta & 8) != 0;
 
-		if((side == 1 && !flag || side == 0 && flag) && id == this.theHalfSlab.blockID && j2 == stack.getItemDamage())
+		if((side == 1 && !flag || side == 0 && flag) && block == this.theHalfSlab && j2 == stack.getItemDamage())
 		{
 			return true;
 		}
@@ -132,11 +126,11 @@ public class ItemBlockSlab extends ItemBlock
 				++x;
 			}
 
-			id = world.getBlockId(x, y, z);
+			block = world.func_147439_a(x, y, z);
 			meta = world.getBlockMetadata(x, y, z);
 			j2 = meta & 7;
 			flag = (meta & 8) != 0;
-			return id == this.theHalfSlab.blockID && j2 == stack.getItemDamage() ? true : super.canPlaceItemBlockOnSide(world, i1, j1, k1, side, player, stack);
+			return block == this.theHalfSlab && j2 == stack.getItemDamage() ? true : super.func_150936_a(world, i1, j1, k1, side, player, stack);
 		}
 	}
 
@@ -172,18 +166,17 @@ public class ItemBlockSlab extends ItemBlock
 			++x;
 		}
 
-		int i1 = world.getBlockId(x, y, z);
+		Block block = world.func_147439_a(x, y, z);
 		int j1 = world.getBlockMetadata(x, y, z);
 		int k1 = j1 & 7;
 
-		if(i1 == this.theHalfSlab.blockID && k1 == stack.getItemDamage())
+		if(block == this.theHalfSlab && k1 == stack.getItemDamage())
 		{
-			if(world.checkNoEntityCollision(this.doubleSlab.getCollisionBoundingBoxFromPool(world, x, y, z)) && world.setBlock(x, y, z, this.doubleSlab.blockID, k1, 3))
+			if(world.checkNoEntityCollision(this.doubleSlab.func_149668_a(world, x, y, z)) && world.func_147465_d(x, y, z, this.doubleSlab, k1, 3))
 			{
-				world.playSoundEffect((double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), this.doubleSlab.stepSound.getPlaceSound(), (this.doubleSlab.stepSound.getVolume() + 1.0F) / 2.0F, this.doubleSlab.stepSound.getPitch() * 0.8F);
+				world.playSoundEffect((double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), this.doubleSlab.field_149762_H.func_150496_b(), (this.doubleSlab.field_149762_H.func_150497_c() + 1.0F) / 2.0F, this.doubleSlab.field_149762_H.func_150494_d() * 0.8F);
 				--stack.stackSize;
 			}
-
 			return true;
 		}
 		else

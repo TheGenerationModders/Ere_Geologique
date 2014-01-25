@@ -19,29 +19,28 @@ import ere_geologique.common.dimension.TeleporterGlacia;
 
 public class GlaciaPortal extends BlockBreakable
 {
-	public GlaciaPortal(int par1)
+	public GlaciaPortal()
 	{
-		super(par1, "ere_geologique:GlaciaPortal", Material.portal, false);
-		this.setTickRandomly(true);
+		super("ere_geologique:GlaciaPortal", Material.field_151567_E, false);
+		this.func_149675_a(true);
 	}
 
 	/**
 	 * Ticks the block if it's been scheduled
 	 */
-	public void updateTick(World par1World, int par2, int par3, int par4,
-			Random par5Random)
+	public void func_149674_a(World world, int x, int y, int z, Random rand)
 	{
-		super.updateTick(par1World, par2, par3, par4, par5Random);
-		if (par1World.provider.isSurfaceWorld() && par5Random.nextInt(2000) < par1World.difficultySetting)
+		super.func_149674_a(world, x, y, z, rand);
+		if (world.provider.isSurfaceWorld() && world.getGameRules().getGameRuleBooleanValue("DoMobSpawning") && rand.nextInt(2000) < world.difficultySetting.func_151525_a())
 		{
 			int l;
-			for (l = par3; !par1World.doesBlockHaveSolidTopSurface(par2, l, par4) && l > 0; --l)
+			for (l = y; !world.func_147466_a(world, x, l, z) && l > 0; --l)
 			{
 				;
 			}
-			if (l > 0 && !par1World.isBlockNormalCube(par2, l + 1, par4))
+			if (l > 0 && !world.func_147439_a(x, l + 1, z).func_149721_r())
 			{
-				Entity entity = ItemMonsterPlacer.spawnCreature(par1World, 57, (double) par2 + 0.5D, (double) l + 1.1D, (double) par4 + 0.5D);
+				Entity entity = ItemMonsterPlacer.spawnCreature(world, 57, (double) x + 0.5D, (double) l + 1.1D, (double) z + 0.5D);
 				if (entity != null)
 				{
 					entity.timeUntilPortal = entity.getPortalCooldown();
@@ -63,20 +62,20 @@ public class GlaciaPortal extends BlockBreakable
 	 * Updates the blocks bounds based on its current state. Args: world, x, y,
 	 * z
 	 */
-	public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
+	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z)
 	{
 		float f;
 		float f1;
-		if (par1IBlockAccess.getBlockId(par2 - 1, par3, par4) != this.blockID && par1IBlockAccess.getBlockId(par2 + 1, par3, par4) != this.blockID)
+		if (world.func_147439_a(x - 1, y, z) != this && world.func_147439_a(x + 1, y, z) != this)
 		{
 			f = 0.125F;
 			f1 = 0.5F;
-			this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f1, 0.5F + f, 1.0F, 0.5F + f1);
+			this.func_149676_a(0.5F - f, 0.0F, 0.5F - f1, 0.5F + f, 1.0F, 0.5F + f1);
 		} else
 		{
 			f = 0.5F;
 			f1 = 0.125F;
-			this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f1, 0.5F + f, 1.0F, 0.5F + f1);
+			this.func_149676_a(0.5F - f, 0.0F, 0.5F - f1, 0.5F + f, 1.0F, 0.5F + f1);
 		}
 	}
 
@@ -91,20 +90,10 @@ public class GlaciaPortal extends BlockBreakable
 	}
 
 	/**
-	 * If this block doesn't render as an ordinary block it will return False
-	 * (examples: signs, buttons, stairs, etc)
-	 */
-	@Override
-	public boolean renderAsNormalBlock()
-	{
-		return false;
-	}
-
-	/**
 	 * Checks to see if this location is valid to create a portal and will
 	 * return True if it does. Args: world, x, y, z
 	 */
-	public boolean tryToCreatePortal(World par1World, int par2, int par3, int par4)
+	public boolean tryToCreatePortal(World world, int x, int y, int z)
 	{
 		byte b0 = 0;
 		byte b1 = 0;

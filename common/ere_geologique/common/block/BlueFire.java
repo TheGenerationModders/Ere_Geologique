@@ -20,15 +20,15 @@ public class BlueFire extends BlockFire
 	@SideOnly(Side.CLIENT)
 	private IIcon[] iconArray;
 
-	public BlueFire(int par1)
+	public BlueFire()
 	{
-		super(par1);
+		super();
 		setTickRandomly(true);
 	}
 
 	public IIcon getIcon(int par1, int par2)
 	{
-		return this.blockIcon;
+		return this.field_149761_L;
 	}
 
 	public void initializeBlock()

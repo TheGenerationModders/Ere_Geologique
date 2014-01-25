@@ -30,9 +30,9 @@ public class Leaves extends BlockLeavesBase implements IShearable
 	private IIcon[][] IconArray = new IIcon[2][];
     int[] adjacentTreeBlocks;
  
-    public Leaves(int id)
+    public Leaves()
     {
-        super(id, Material.leaves, false);
+        super(Material.leaves, false);
         this.setTickRandomly(true);
         this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
     }

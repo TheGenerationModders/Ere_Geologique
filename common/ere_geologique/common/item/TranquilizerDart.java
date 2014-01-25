@@ -5,7 +5,7 @@ import ere_geologique.common.creativetabs.EGCreativeTab;
 
 public class TranquilizerDart extends Item
 {
-	public TranquilizerDart(int id)
+	public TranquilizerDart()
 	{
 		super();
 		this.setCreativeTab(EGCreativeTab.EGCreativeTabItem);

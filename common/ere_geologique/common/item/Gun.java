@@ -9,7 +9,7 @@ import ere_geologique.common.creativetabs.EGCreativeTab;
 
 public class Gun extends Item
 {
-	public Gun(int id)
+	public Gun()
 	{
 		super();
 		this.setFull3D();

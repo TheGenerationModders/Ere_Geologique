@@ -1,13 +1,14 @@
 package ere_geologique.common.block;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 
 public class ItemBlockWood extends ItemBlock
 {
-	public ItemBlockWood(int id)
+	public ItemBlockWood(Block block)
 	{
-		super(id);
+		super(block);
 		this.setHasSubtypes(true);
 	}
 	

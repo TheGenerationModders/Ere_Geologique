@@ -12,7 +12,7 @@ import ere_geologique.common.entity.Dinosaure;
 
 public class Whip extends ItemCarrotOnAStick
 {
-    public Whip(int var1)
+    public Whip()
     {
         super();
         this.setMaxDamage(100);

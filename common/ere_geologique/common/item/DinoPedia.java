@@ -5,7 +5,7 @@ import ere_geologique.common.creativetabs.EGCreativeTab;
 
 public class DinoPedia extends Item
 {
-	public DinoPedia(int id)
+	public DinoPedia()
 	{
 		super();
 		this.setMaxStackSize(1);

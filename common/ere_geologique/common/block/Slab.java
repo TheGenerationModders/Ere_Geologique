@@ -7,74 +7,54 @@ import net.minecraft.block.BlockSlab;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLiving;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ere_geologique.common.EreGeologique;
-import ere_geologique.common.config.EGProperties;
-import ere_geologique.common.creativetabs.EGCreativeTab;
 
 public class Slab extends BlockSlab
 {
 	public static final String[] woodType = new String[] { "fougere", "cycas", "araucarias", "metasequoias", "ginkgos" };
 
-	public Slab(int id, boolean isDouble)
+	public Slab(boolean isDouble)
 	{
-		super(id, isDouble, Material.wood);
-		if(!this.isDoubleSlab)
-		{
-			this.setLightOpacity(0);
-		}
+		super(isDouble, Material.field_151575_d);
 	}
 	
 	@SideOnly(Side.CLIENT)
-	private static boolean isBlockSingleSlab(int id)
+	public IIcon func_149691_a(int side, int metadata)
 	{
-		return id == EGBlockList.slab.blockID;
-	}
-	
-	@SideOnly(Side.CLIENT)
-	public int idPicked(World world, int x, int y, int z)
-	{
-		return isBlockSingleSlab(this.blockID) ? this.blockID : EGBlockList.doubleSlab.blockID;
-	}
-	
-	@SideOnly(Side.CLIENT)
-	public IIcon getIcon(int side, int metadata)
-	{
-		return EGBlockList.plank.getIcon(side, metadata & 7);
+		return EGBlockList.plank.func_149691_a(side, metadata & 7);
 	}
 
-	public int idDropped(int id, Random rand, int fortune)
+	public Item idDropped(int id, Random rand, int fortune)
 	{
-		return EGBlockList.slab.blockID;
+		return Item.func_150898_a(EGBlockList.slab);
 	}
 
 	protected ItemStack createStackedBlock(int metadata)
 	{
-		return new ItemStack(EGBlockList.slab.blockID, 2, metadata & 7);
+		return new ItemStack(Item.func_150898_a(EGBlockList.slab), 2, metadata & 7);
 	}
 
-	public String getFullSlabName(int metadata)
+	public String func_150002_b(int metadata)
 	{
 		if (metadata < 0 || metadata >= woodType.length)
 		{
 			metadata = 0;
 		}
-
-		return super.getUnlocalizedName() + "." + woodType[metadata];
+		return super.func_149739_a() + "." + woodType[metadata];
 	}
-
-	public void getSubBlocks(int id, CreativeTabs creativeTabs, List list)
+	
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
 	{
-		if (id != EGBlockList.doubleSlab.blockID)
+		if (item != Item.func_150898_a(EGBlockList.doubleSlab))
 		{
 			for (int i = 0; i < woodType.length; i++)
 			{
-				list.add(new ItemStack(id, 1, i));
+				list.add(new ItemStack(item, 1, i));
 			}
 		}
 	}

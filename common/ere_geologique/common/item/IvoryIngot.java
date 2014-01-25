@@ -5,7 +5,7 @@ import ere_geologique.common.creativetabs.EGCreativeTab;
 
 public class IvoryIngot extends Item
 {
-	public IvoryIngot(int id)
+	public IvoryIngot()
 	{
 		super();
         this.setCreativeTab(EGCreativeTab.EGCreativeTabItem);

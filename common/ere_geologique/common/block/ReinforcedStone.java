@@ -6,9 +6,9 @@ import net.minecraft.block.material.Material;
 
 public class ReinforcedStone extends Block
 {
-	public ReinforcedStone(int id)
+	public ReinforcedStone()
 	{
-		super(id, Material.rock);
-		this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
+		super(Material.rock);
+		this.func_149647_a(EGCreativeTab.EGCreativeTabBlock);
 	}
 }

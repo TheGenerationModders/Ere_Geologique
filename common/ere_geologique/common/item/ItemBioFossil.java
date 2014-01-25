@@ -19,7 +19,7 @@ import ere_geologique.common.entity.Enums.EnumDinoType;
 
 public class ItemBioFossil extends Item
 {
-    public ItemBioFossil(int var1)
+    public ItemBioFossil()
     {
         super();
         this.maxStackSize = 64;

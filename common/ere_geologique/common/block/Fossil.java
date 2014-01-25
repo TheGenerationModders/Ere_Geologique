@@ -2,7 +2,6 @@ package ere_geologique.common.block;
 
 import java.util.Random;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockStone;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -12,24 +11,24 @@ import ere_geologique.common.item.EGItemList;
 
 public class Fossil extends BlockStone
 {
-    public Fossil(int id)
+    public Fossil()
     {
-        super(id);
-        this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
+        super();
+        this.func_149647_a(EGCreativeTab.EGCreativeTabBlock);
     }
 
-    public int idDropped(int var1, Random var2, int var3)
+    public Item idDropped(int var1, Random var2, int var3)
     {
         int i = (new Random()).nextInt(1000);
-        if(i < 1)	return EGItemList.gem.itemID;
-        if(i < 13) 	return EGItemList.legBone.itemID;
-        if(i < 15)	return EGItemList.skull.itemID;
-        if(i < 17)	return EGItemList.claw.itemID;
-        if(i < 19)  return EGItemList.foot.itemID;
-        if(i < 50)	return EGBlockList.skull.blockID;
-        if(i < 250)	return EGItemList.bioFossil.itemID;
-        if(i < 450)	return EGItemList.relic.itemID;
-        if(i < 900)	return Items.bone.itemID;
-        return Blocks.cobblestone.blockID;
+        if(i < 1)	return EGItemList.gem;
+        if(i < 13) 	return EGItemList.legBone;
+        if(i < 15)	return EGItemList.skull;
+        if(i < 17)	return EGItemList.claw;
+        if(i < 19)  return EGItemList.foot;
+        if(i < 50)	return Item.func_150898_a(EGBlockList.skull);
+        if(i < 250)	return EGItemList.bioFossil;
+        if(i < 450)	return EGItemList.relic;
+        if(i < 900)	return Items.bone;
+        return Item.func_150898_a(Blocks.cobblestone);
     }  
 }

@@ -24,10 +24,10 @@ public class Wood extends BlockRotatedPillar
 	@SideOnly(Side.CLIENT)
 	private IIcon[] wood_top;
 	
-    public Wood(int id)
+    public Wood()
     {
-        super(id, Material.wood);
-        this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
+        super(Material.wood);
+        this.func_149647_a(EGCreativeTab.EGCreativeTabBlock);
     }
     
     public int quantityDropped(Random rand)

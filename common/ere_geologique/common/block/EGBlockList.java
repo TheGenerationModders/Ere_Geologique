@@ -5,7 +5,6 @@ import net.minecraft.block.material.Material;
 import cpw.mods.fml.common.registry.GameRegistry;
 import ere_geologique.client.LocalizationStrings;
 import ere_geologique.common.EreGeologique;
-import ere_geologique.common.config.EGProperties;
 import ere_geologique.common.creativetabs.EGCreativeTab;
 
 public class EGBlockList
@@ -38,28 +37,28 @@ public class EGBlockList
 	{
 		try
 		{
-		   leaves = new Leaves(EGProperties.leavesID).func_149672_a(Block.field_149779_h).func_149711_c(0.2F).func_149663_c("Leaves");
-	       wood = new Wood(EGProperties.woodID).func_149672_a(Block.field_149766_f).func_149711_c(2.0F).func_149663_c("Wood").func_149658_d("ere_geologique:Wood");
-	       sapling = new Sapling(EGProperties.saplingID).func_149672_a(Block.field_149779_h).func_149711_c(0.0F).func_149663_c("Sapling").func_149658_d("ere_geologique:Sapling");
-	       plank = new Plank(EGProperties.plankID).func_149672_a(Block.field_149766_f).func_149711_c(2.0F).func_149752_b(5.0F).func_149663_c("Plank").func_149658_d("ere_geologique:Plank");
-	       slab = new Slab(EGProperties.slabID, false).func_149672_a(Block.field_149766_f).func_149711_c(3F).func_149752_b(1.0F).func_149663_c("Slab").func_149647_a(EGCreativeTab.EGCreativeTabBlock);
-	       doubleSlab = new Slab(EGProperties.doubleSlabID, true).func_149672_a(Block.field_149766_f).func_149711_c(3F).func_149752_b(1.0F).func_149663_c("Slab");
-	       stairFougere = new Stair(EGProperties.stairFougereID, plank, 0).func_149672_a(Block.field_149766_f).func_149711_c(3F).func_149752_b(1.0F).func_149663_c("StairFougere");
-	       stairCycas = new Stair(EGProperties.stairCycasID, plank, 1).func_149672_a(Block.field_149766_f).func_149711_c(3F).func_149752_b(1.0F).func_149663_c("StairCycas");
-	       stairAraucarias = new Stair(EGProperties.stairAraucariasID, plank, 2).func_149672_a(Block.field_149766_f).func_149711_c(3F).func_149752_b(1.0F).func_149663_c("StairAraucarias");
-	       stairMetasequoias = new Stair(EGProperties.stairMetasequoiasID, plank, 3).func_149672_a(Block.field_149766_f).func_149711_c(3F).func_149752_b(1.0F).func_149663_c("StairMetasequoias");
-	       stairGinkgos = new Stair(EGProperties.stairGingkosID, plank, 5).func_149672_a(Block.field_149766_f).func_149711_c(3F).func_149752_b(1.0F).func_149663_c("StairGinkgos");
-	       glaciaPortal = (GlaciaPortal) new GlaciaPortal(EGProperties.glaciaPortalID).func_149711_c(-1.0F).func_149672_a(Block.field_149778_k).func_149715_a(0.75F).func_149663_c("GlaciaPortal").func_149658_d("ere_geologique:GlaciaPortal");
+		   leaves = new Leaves().func_149672_a(Block.field_149779_h).func_149711_c(0.2F).func_149663_c("Leaves");
+	       wood = new Wood().func_149672_a(Block.field_149766_f).func_149711_c(2.0F).func_149663_c("Wood").func_149658_d("ere_geologique:Wood");
+	       sapling = new Sapling().func_149672_a(Block.field_149779_h).func_149711_c(0.0F).func_149663_c("Sapling").func_149658_d("ere_geologique:Sapling");
+	       plank = new Plank().func_149672_a(Block.field_149766_f).func_149711_c(2.0F).func_149752_b(5.0F).func_149663_c("Plank").func_149658_d("ere_geologique:Plank");
+	       slab = new Slab(false).func_149672_a(Block.field_149766_f).func_149711_c(3F).func_149752_b(1.0F).func_149663_c("Slab").func_149647_a(EGCreativeTab.EGCreativeTabBlock);
+	       doubleSlab = new Slab(true).func_149672_a(Block.field_149766_f).func_149711_c(3F).func_149752_b(1.0F).func_149663_c("Slab");
+	       stairFougere = new Stair(plank, 0).func_149672_a(Block.field_149766_f).func_149711_c(3F).func_149752_b(1.0F).func_149663_c("StairFougere");
+	       stairCycas = new Stair(plank, 1).func_149672_a(Block.field_149766_f).func_149711_c(3F).func_149752_b(1.0F).func_149663_c("StairCycas");
+	       stairAraucarias = new Stair(plank, 2).func_149672_a(Block.field_149766_f).func_149711_c(3F).func_149752_b(1.0F).func_149663_c("StairAraucarias");
+	       stairMetasequoias = new Stair(plank, 3).func_149672_a(Block.field_149766_f).func_149711_c(3F).func_149752_b(1.0F).func_149663_c("StairMetasequoias");
+	       stairGinkgos = new Stair(plank, 5).func_149672_a(Block.field_149766_f).func_149711_c(3F).func_149752_b(1.0F).func_149663_c("StairGinkgos");
+	       glaciaPortal = (GlaciaPortal) new GlaciaPortal().func_149711_c(-1.0F).func_149672_a(Block.field_149778_k).func_149715_a(0.75F).func_149663_c("GlaciaPortal").func_149658_d("ere_geologique:GlaciaPortal");
 	       feeder = new Feeder().func_149711_c(3.5F).func_149672_a(Block.field_149780_i).func_149663_c(LocalizationStrings.FEEDER_NAME).func_149647_a(EGCreativeTab.EGCreativeTabBlock);
 	       analyzer = new Analyzer().func_149711_c(3.0F).func_149672_a(Block.field_149777_j).func_149663_c(LocalizationStrings.ANALYZER_NAME).func_149647_a(EGCreativeTab.EGCreativeTabBlock);
 	       cultivatorIdle = new Cultivator(false).func_149715_a(0.9375F).func_149711_c(0.3F).func_149672_a(Block.field_149778_k).func_149663_c(LocalizationStrings.CULTIVATE_IDLE_NAME).func_149647_a(EGCreativeTab.EGCreativeTabBlock);
 	       cultivatorActive = new Cultivator(true).func_149715_a(0.9375F).func_149711_c(0.3F).func_149672_a(Block.field_149778_k).func_149663_c(LocalizationStrings.CULTIVATE_ACTIVE_NAME);
-	       fossil = new Fossil(EGProperties.fossilID).func_149711_c(3.0F).func_149752_b(5.0F).func_149672_a(Block.field_149780_i).func_149663_c("Fossil").func_149658_d("ere_geologique:Fossil");
-	       reinforcedStone = new ReinforcedStone(EGProperties.reinforcedStoneID).func_149711_c(1.5F).func_149752_b(10.0F).func_149672_a(Block.field_149780_i).func_149663_c("ReinforcedStone").func_149658_d("ere_geologique:reinforced_stone");
-	       reinforcedGlass = new ReinforcedGlass(EGProperties.reinforcedGlassID, Material.field_151592_s, false).func_149711_c(0.3F).func_149752_b(10.0F).func_149672_a(Block.field_149778_k).func_149663_c("ReinforcedGlass").func_149658_d("ere_geologique:reinforced_glass");
-	       steelBlock = new ReinforcedStone(EGProperties.steelBlockID).func_149711_c(5.0F).func_149752_b(10.0F).func_149672_a(Block.field_149777_j).func_149663_c("SteelBlock").func_149658_d("ere_geologique:steel_block");
-	       skull = new Skull(EGProperties.fossilSkullID).func_149711_c(1.0F).func_149672_a(Block.field_149780_i).func_149663_c("FossilSkull");
-	       blueFire = (BlueFire) new BlueFire(EGProperties.blueFireID).func_149711_c(0.0F).func_149715_a(1.0F).func_149672_a(Block.field_149766_f).func_149663_c("BlueFire");
+	       fossil = new Fossil().func_149711_c(3.0F).func_149752_b(5.0F).func_149672_a(Block.field_149780_i).func_149663_c("Fossil").func_149658_d("ere_geologique:Fossil");
+	       reinforcedStone = new ReinforcedStone().func_149711_c(1.5F).func_149752_b(10.0F).func_149672_a(Block.field_149780_i).func_149663_c("ReinforcedStone").func_149658_d("ere_geologique:reinforced_stone");
+	       reinforcedGlass = new ReinforcedGlass(Material.field_151592_s, false).func_149711_c(0.3F).func_149752_b(10.0F).func_149672_a(Block.field_149778_k).func_149663_c("ReinforcedGlass").func_149658_d("ere_geologique:reinforced_glass");
+	       steelBlock = new ReinforcedStone().func_149711_c(5.0F).func_149752_b(10.0F).func_149672_a(Block.field_149777_j).func_149663_c("SteelBlock").func_149658_d("ere_geologique:steel_block");
+	       skull = new Skull().func_149711_c(1.0F).func_149672_a(Block.field_149780_i).func_149663_c("FossilSkull");
+	       blueFire = (BlueFire) new BlueFire().func_149711_c(0.0F).func_149715_a(1.0F).func_149672_a(Block.field_149766_f).func_149663_c("BlueFire");
 	       drum = new Drum().func_149711_c(0.8F).func_149672_a(Block.field_149766_f).func_149663_c("Drum").func_149647_a(EGCreativeTab.EGCreativeTabBlock);
 	       
 	       GameRegistry.registerBlock(leaves, ItemBlockLeaves.class, "Leaves");

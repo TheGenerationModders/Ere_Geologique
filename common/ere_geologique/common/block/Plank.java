@@ -18,9 +18,9 @@ public class Plank extends Block
 	@SideOnly(Side.CLIENT)
 	private IIcon[] IconArray;
 	
-	public Plank(int par1)
+	public Plank()
     {
-        super(par1, Material.wood);
+        super(Material.wood);
         this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
         this.setBurnProperties(this.blockID, 5, 20);
     }

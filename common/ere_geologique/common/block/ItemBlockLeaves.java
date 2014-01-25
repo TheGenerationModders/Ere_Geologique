@@ -1,5 +1,6 @@
 package ere_geologique.common.block;
 
+import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
@@ -9,9 +10,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemBlockLeaves extends ItemBlock
 {
-    public ItemBlockLeaves(int id)
+    public ItemBlockLeaves(Block block)
     {
-        super(id);
+        super(block);
         this.setMaxDamage(0);
         this.setHasSubtypes(true);
     }
@@ -42,7 +43,6 @@ public class ItemBlockLeaves extends ItemBlock
         {
             i = 0;
         }
-
         return super.getUnlocalizedName() + "." + Leaves.leafType[i];
     }
 }

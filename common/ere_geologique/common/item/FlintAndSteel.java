@@ -10,7 +10,7 @@ import ere_geologique.common.creativetabs.EGCreativeTab;
 
 public class FlintAndSteel extends Item
 {
-	public FlintAndSteel(int par1)
+	public FlintAndSteel()
 	{
 		super();
 		this.maxStackSize = 1;

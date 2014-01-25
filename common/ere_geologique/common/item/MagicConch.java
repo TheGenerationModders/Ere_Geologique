@@ -18,7 +18,7 @@ import ere_geologique.common.entity.Enums.EnumOrderType;
 
 public class MagicConch extends Item
 {
-    public MagicConch(int var1)
+    public MagicConch()
     {
         super();
         //this.setHasSubtypes(true);

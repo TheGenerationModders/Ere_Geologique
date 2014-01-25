@@ -15,23 +15,23 @@ public class Skull extends BlockDirectional
     private IIcon Front;
     private IIcon Back;
 
-    public Skull(int var1)
+    public Skull()
     {
-        super(var1, Material.pumpkin);
+        super(Material.pumpkin);
         this.setTickRandomly(true);
-        this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
+        this.func_149647_a(EGCreativeTab.EGCreativeTabBlock);
     }
     
     public void registerIcons(IIconRegister par1IconRegister)
     {
-        this.blockIcon = par1IconRegister.registerIcon("ere_geologique:Skull_Side");
+        this.field_149761_L = par1IconRegister.registerIcon("ere_geologique:Skull_Side");
         this.Front = par1IconRegister.registerIcon("ere_geologique:Skull_Front");
         this.Back = par1IconRegister.registerIcon("ere_geologique:Skull_Back");//Bottom!
     }
 
     public IIcon getIcon(int par1, int par2)
     {
-        return par1 == 1 || par1 == 0 || (par1>3 && par2<4) || (par1<4 && par2>3)? this.blockIcon : par1!=par2 ? this.Front : this.Back;
+        return par1 == 1 || par1 == 0 || (par1>3 && par2<4) || (par1<4 && par2>3)? this.field_149761_L : par1!=par2 ? this.Front : this.Back;
     }
 
     public void onBlockAdded(World var1, int var2, int var3, int var4)

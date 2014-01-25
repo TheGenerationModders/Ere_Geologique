@@ -6,10 +6,10 @@ import ere_geologique.common.creativetabs.EGCreativeTab;
 
 public class Stair extends BlockStairs
 {	
-	public Stair(int id, Block block, int metadata)
+	public Stair(Block block, int metadata)
     {
-        super(id, block, metadata);
-        this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
+        super(block, metadata);
+        this.func_149647_a(EGCreativeTab.EGCreativeTabBlock);
         this.setLightOpacity(0);
     }
 }

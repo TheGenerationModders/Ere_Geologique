@@ -10,10 +10,10 @@ import ere_geologique.common.creativetabs.EGCreativeTab;
 
 public class ReinforcedGlass extends BlockBreakable
 {
-	public ReinforcedGlass(int id, Material material, boolean par3)
+	public ReinforcedGlass(Material material, boolean par3)
 	{
-		super(id, "ere_geologique:reinforced_glass", material, par3);
-		this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
+		super("ere_geologique:reinforced_glass", material, par3);
+		this.func_149647_a(EGCreativeTab.EGCreativeTabBlock);
 	}
 	public int quantityDropped(Random par1Random)
     {

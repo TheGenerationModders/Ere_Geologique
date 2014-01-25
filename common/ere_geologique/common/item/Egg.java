@@ -25,7 +25,7 @@ public class Egg extends Item
     public static final int TypeCount = EnumDinoType.values().length;
     private int DinoType;
 
-    public Egg(int var1, int DinoType0)
+    public Egg(int DinoType0)
     {
         super();
         this.setHasSubtypes(true);
@@ -42,15 +42,15 @@ public class Egg extends Item
     /**
      * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
      */
-    public ItemStack onItemRightClick(ItemStack var1, World var2, EntityPlayer var3)
+    public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer entityPlayer)
     {
         float var4 = 1.0F;
-        float var5 = var3.prevRotationPitch + (var3.rotationPitch - var3.prevRotationPitch) * var4;
-        float var6 = var3.prevRotationYaw + (var3.rotationYaw - var3.prevRotationYaw) * var4;
-        double var7 = var3.prevPosX + (var3.posX - var3.prevPosX) * (double)var4;
-        double var9 = var3.prevPosY + (var3.posY - var3.prevPosY) * (double)var4 + 1.62D - (double)var3.yOffset;
-        double var11 = var3.prevPosZ + (var3.posZ - var3.prevPosZ) * (double)var4;
-        Vec3 var13 = var2.getWorldVec3Pool().getVecFromPool(var7, var9, var11);
+        float var5 = entityPlayer.prevRotationPitch + (entityPlayer.rotationPitch - entityPlayer.prevRotationPitch) * var4;
+        float var6 = entityPlayer.prevRotationYaw + (entityPlayer.rotationYaw - entityPlayer.prevRotationYaw) * var4;
+        double var7 = entityPlayer.prevPosX + (entityPlayer.posX - entityPlayer.prevPosX) * (double)var4;
+        double var9 = entityPlayer.prevPosY + (entityPlayer.posY - entityPlayer.prevPosY) * (double)var4 + 1.62D - (double)entityPlayer.yOffset;
+        double var11 = entityPlayer.prevPosZ + (entityPlayer.posZ - entityPlayer.prevPosZ) * (double)var4;
+        Vec3 var13 = world.getWorldVec3Pool().getVecFromPool(var7, var9, var11);
         float var14 = MathHelper.cos(-var6 * 0.017453292F - (float)Math.PI);
         float var15 = MathHelper.sin(-var6 * 0.017453292F - (float)Math.PI);
         float var16 = -MathHelper.cos(-var5 * 0.017453292F);
@@ -59,18 +59,18 @@ public class Egg extends Item
         float var19 = var14 * var16;
         double var20 = 5.0D;
         Vec3 var22 = var13.addVector((double)var18 * var20, (double)var17 * var20, (double)var19 * var20);
-        MovingObjectPosition var23 = var2.rayTraceBlocks_do_do(var13, var22, true, false);
+        MovingObjectPosition var23 = world.rayTraceBlocks_do_do(var13, var22, true, false);
 
         if (var23 == null)
         {
-            return var1;
+            return itemStack;
         }
         else
         {
-            Vec3 var24 = var3.getLook(var4);
+            Vec3 var24 = entityPlayer.getLook(var4);
             boolean var25 = false;
             float var26 = 1.0F;
-            List var27 = var2.getEntitiesWithinAABBExcludingEntity(var3, var3.boundingBox.addCoord(var24.xCoord * var20, var24.yCoord * var20, var24.zCoord * var20).expand((double)var26, (double)var26, (double)var26));
+            List var27 = world.getEntitiesWithinAABBExcludingEntity(entityPlayer, entityPlayer.boundingBox.addCoord(var24.xCoord * var20, var24.yCoord * var20, var24.zCoord * var20).expand((double)var26, (double)var26, (double)var26));
             Iterator var28 = var27.iterator();
 
             while (var28.hasNext())
@@ -91,7 +91,7 @@ public class Egg extends Item
 
             if (var25)
             {
-                return var1;
+                return itemStack;
             }
             else
             {
@@ -101,26 +101,26 @@ public class Egg extends Item
                     int var32 = var23.blockY;
                     int var33 = var23.blockZ;
 
-                    if (!var2.isRemote)
+                    if (!world.isRemote)
                     {
-                        if (var2.getBlockId(var34, var32, var33) == Blocks.snow.blockID)
+                        if (world.getBlockId(var34, var32, var33) == Blocks.snow.blockID)
                         {
                             --var32;
                         }
-                        EnumDinoType i=this.GetTypeFromInt(var3.inventory.getCurrentItem().getItem());
-                        if (!spawnCreature(var2, i, (double)((float)var34 + 0.5F), (double)((float)var32 + 1.0F), (double)((float)var33 + 0.5F)))
+                        EnumDinoType i=this.GetTypeFromInt(entityPlayer.inventory.getCurrentItem().getItem());
+                        if (!spawnCreature(world, i, (double)((float)var34 + 0.5F), (double)((float)var32 + 1.0F), (double)((float)var33 + 0.5F)))
                         {
-                            return var1;
+                            return itemStack;
                         }
                     }
 
-                    if (!var3.capabilities.isCreativeMode)
+                    if (!entityPlayer.capabilities.isCreativeMode)
                     {
-                        --var1.stackSize;
+                        --itemStack.stackSize;
                     }
                 }
 
-                return var1;
+                return itemStack;
             }
         }
     }
