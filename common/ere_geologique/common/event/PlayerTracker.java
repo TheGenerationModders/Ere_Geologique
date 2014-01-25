@@ -1,30 +1,30 @@
 package ere_geologique.common.event;
 
 import net.minecraft.entity.player.EntityPlayer;
-import cpw.mods.fml.common.IPlayerTracker;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import ere_geologique.common.achievement.EGAchievement;
 import ere_geologique.common.config.EGProperties;
 
-public class PlayerTracker implements IPlayerTracker
+public class PlayerTracker
 {
-	@Override
-	public void onPlayerLogin(EntityPlayer player)
+	@SubscribeEvent
+	public void PlayerLoggedInEvent(EntityPlayer player)
 	{
 		player.triggerAchievement(EGAchievement.installmod);
 	}
 
-	@Override
-	public void onPlayerLogout(EntityPlayer player)
+	@SubscribeEvent
+	public void PlayerLoggedOutEvent(EntityPlayer player)
 	{
 
 	}
 
-	@Override
-	public void onPlayerChangedDimension(EntityPlayer player)
+	@SubscribeEvent
+	public void PlayerChangedDimensionEvent(EntityPlayer player)
 	{
 		if(player.dimension == EGProperties.glaciaID)
         {
-                player.triggerAchievement(EGAchievement.dimensionGlacia);
+			player.triggerAchievement(EGAchievement.dimensionGlacia);
         }else if(player.dimension == EGProperties.prehistoriaID)
         {
             player.triggerAchievement(EGAchievement.dimensionPrehistoria);
@@ -34,8 +34,8 @@ public class PlayerTracker implements IPlayerTracker
 		}
 	}
 
-	@Override
-	public void onPlayerRespawn(EntityPlayer player)
+	@SubscribeEvent
+	public void PlayerRespawnEvent(EntityPlayer player)
 	{
 		
 	}

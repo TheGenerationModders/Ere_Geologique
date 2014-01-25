@@ -7,7 +7,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.network.packet.Packet250CustomPayload;
+import net.minecraft.network.play.client.C17PacketCustomPayload;
 import ere_geologique.common.EreGeologique;
 
 public class KeyHandler
@@ -26,7 +26,7 @@ public class KeyHandler
 		this(kb.keyDescription, kb.pressed);
 	}
 
-	public KeyHandler(Packet250CustomPayload packet)
+	public KeyHandler(C17PacketCustomPayload packet)
 	{
 		read(packet.data);
 	}

@@ -7,6 +7,7 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderPlayer;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.MinecraftForge;
@@ -227,9 +228,9 @@ public class EreGeologique
 		proxy.registerRender();
 		FMLCommonHandler.instance().bus().register(new FougereBoneMeal());
 		FMLCommonHandler.instance().bus().register(this);
-		GameRegistry.registerPlayerTracker(new PlayerTracker());
-		GameRegistry.registerCraftingHandler(new CraftingHandler());
-		GameRegistry.registerPickupHandler(new PickupHandler());
+		FMLCommonHandler.instance().bus().register(new PlayerTracker());
+		FMLCommonHandler.instance().bus().register(new CraftingHandler());
+		FMLCommonHandler.instance().bus().register(new PickupHandler());
 
 		EnumDinoType.init();
 		EnumDinoFoodMob.init();
@@ -244,7 +245,7 @@ public class EreGeologique
 	{
 		if (player != null)
 		{
-			player.addChatMessage(string);
+			player.func_145747_a(new ChatComponentText(string));
 		}
 	}
 

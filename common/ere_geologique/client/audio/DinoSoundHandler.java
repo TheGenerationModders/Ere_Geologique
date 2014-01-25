@@ -1,13 +1,13 @@
 package ere_geologique.client.audio;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.audio.SoundManager;
 import net.minecraftforge.client.event.sound.SoundLoadEvent;
-import net.minecraftforge.event.ForgeSubscribe;
 import ere_geologique.common.EreGeologique;
 
 public class DinoSoundHandler
 {    
-    @ForgeSubscribe
+    @SubscribeEvent
     public void onSoundLoad(SoundLoadEvent event)
     {
     	SoundManager manager = event.manager;
