@@ -22,6 +22,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.network.IChatListener;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -269,7 +270,7 @@ public class EreGeologique
 		event.registerServerCommand(new CommandDino());
 	}
 	
-	@ForgeSubscribe
+	@SubscribeEvent
 	public void preRenderPlayer(RenderPlayerEvent.Pre event)
 	{
 		EntityPlayer player = event.entityPlayer;
