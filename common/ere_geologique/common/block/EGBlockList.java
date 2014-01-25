@@ -2,7 +2,6 @@ package ere_geologique.common.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.registry.GameRegistry;
 import ere_geologique.client.LocalizationStrings;
 import ere_geologique.common.EreGeologique;
@@ -39,29 +38,29 @@ public class EGBlockList
 	{
 		try
 		{
-		   leaves = new Leaves(EGProperties.leavesID).setStepSound(Block.soundGrassFootstep).setHardness(0.2F).setLightOpacity(1).setUnlocalizedName("Leaves");
-	       wood = new Wood(EGProperties.woodID).setStepSound(Block.soundWoodFootstep).setHardness(2.0F).setUnlocalizedName("Wood").setTextureName("ere_geologique:Wood");
-	       sapling = new Sapling(EGProperties.saplingID).setStepSound(Block.soundGrassFootstep).setHardness(0.0F).setUnlocalizedName("Sapling").setTextureName("ere_geologique:Sapling");
-	       plank = new Plank(EGProperties.plankID).setStepSound(Block.soundWoodFootstep).setHardness(2.0F).setResistance(5.0F).setUnlocalizedName("Plank").setTextureName("ere_geologique:Plank");
-	       slab = new Slab(EGProperties.slabID, false).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("Slab").setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
-	       doubleSlab = new Slab(EGProperties.doubleSlabID, true).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("Slab");
-	       stairFougere = new Stair(EGProperties.stairFougereID, plank, 0).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("StairFougere");
-	       stairCycas = new Stair(EGProperties.stairCycasID, plank, 1).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("StairCycas");
-	       stairAraucarias = new Stair(EGProperties.stairAraucariasID, plank, 2).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("StairAraucarias");
-	       stairMetasequoias = new Stair(EGProperties.stairMetasequoiasID, plank, 3).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("StairMetasequoias");
-	       stairGinkgos = new Stair(EGProperties.stairGingkosID, plank, 5).setStepSound(Block.soundWoodFootstep).setHardness(3F).setResistance(1.0F).setUnlocalizedName("StairGinkgos");
-	       glaciaPortal = (GlaciaPortal) new GlaciaPortal(EGProperties.glaciaPortalID).setHardness(-1.0F).setStepSound(Block.soundGlassFootstep).setLightValue(0.75F).setUnlocalizedName("GlaciaPortal").setTextureName("ere_geologique:GlaciaPortal");
-	       feeder = new Feeder(EGProperties.feederID).setHardness(3.5F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName(LocalizationStrings.FEEDER_NAME).setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
-	       analyzer = new Analyzer().setHardness(3.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName(LocalizationStrings.ANALYZER_NAME).setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
-	       cultivatorIdle = new Cultivator(false).setLightValue(0.9375F).setHardness(0.3F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName(LocalizationStrings.CULTIVATE_IDLE_NAME).setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
-	       cultivatorActive = new Cultivator(true).setLightValue(0.9375F).setHardness(0.3F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName(LocalizationStrings.CULTIVATE_ACTIVE_NAME);
-	       fossil = new Fossil(EGProperties.fossilID).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("Fossil").setTextureName("ere_geologique:Fossil");
-	       reinforcedStone = new ReinforcedStone(EGProperties.reinforcedStoneID).setHardness(1.5F).setResistance(10.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("ReinforcedStone").setTextureName("ere_geologique:reinforced_stone");
-	       reinforcedGlass = new ReinforcedGlass(EGProperties.reinforcedGlassID, Material.glass, false).setHardness(0.3F).setResistance(10.0F).setStepSound(Block.soundGlassFootstep).setUnlocalizedName("ReinforcedGlass").setTextureName("ere_geologique:reinforced_glass");
-	       steelBlock = new ReinforcedStone(EGProperties.steelBlockID).setHardness(5.0F).setResistance(10.0F).setStepSound(Block.soundMetalFootstep).setUnlocalizedName("SteelBlock").setTextureName("ere_geologique:steel_block");
-	       skull = new Skull(EGProperties.fossilSkullID).setHardness(1.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("FossilSkull");
-	       blueFire = (BlueFire) new BlueFire(EGProperties.blueFireID).setHardness(0.0F).setLightValue(1.0F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("BlueFire");
-	       drum = new Drum().setHardness(0.8F).setStepSound(Block.soundWoodFootstep).setUnlocalizedName("Drum").setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
+		   leaves = new Leaves(EGProperties.leavesID).func_149672_a(Block.field_149779_h).func_149711_c(0.2F).func_149663_c("Leaves");
+	       wood = new Wood(EGProperties.woodID).func_149672_a(Block.field_149766_f).func_149711_c(2.0F).func_149663_c("Wood").func_149658_d("ere_geologique:Wood");
+	       sapling = new Sapling(EGProperties.saplingID).func_149672_a(Block.field_149779_h).func_149711_c(0.0F).func_149663_c("Sapling").func_149658_d("ere_geologique:Sapling");
+	       plank = new Plank(EGProperties.plankID).func_149672_a(Block.field_149766_f).func_149711_c(2.0F).func_149752_b(5.0F).func_149663_c("Plank").func_149658_d("ere_geologique:Plank");
+	       slab = new Slab(EGProperties.slabID, false).func_149672_a(Block.field_149766_f).func_149711_c(3F).func_149752_b(1.0F).func_149663_c("Slab").func_149647_a(EGCreativeTab.EGCreativeTabBlock);
+	       doubleSlab = new Slab(EGProperties.doubleSlabID, true).func_149672_a(Block.field_149766_f).func_149711_c(3F).func_149752_b(1.0F).func_149663_c("Slab");
+	       stairFougere = new Stair(EGProperties.stairFougereID, plank, 0).func_149672_a(Block.field_149766_f).func_149711_c(3F).func_149752_b(1.0F).func_149663_c("StairFougere");
+	       stairCycas = new Stair(EGProperties.stairCycasID, plank, 1).func_149672_a(Block.field_149766_f).func_149711_c(3F).func_149752_b(1.0F).func_149663_c("StairCycas");
+	       stairAraucarias = new Stair(EGProperties.stairAraucariasID, plank, 2).func_149672_a(Block.field_149766_f).func_149711_c(3F).func_149752_b(1.0F).func_149663_c("StairAraucarias");
+	       stairMetasequoias = new Stair(EGProperties.stairMetasequoiasID, plank, 3).func_149672_a(Block.field_149766_f).func_149711_c(3F).func_149752_b(1.0F).func_149663_c("StairMetasequoias");
+	       stairGinkgos = new Stair(EGProperties.stairGingkosID, plank, 5).func_149672_a(Block.field_149766_f).func_149711_c(3F).func_149752_b(1.0F).func_149663_c("StairGinkgos");
+	       glaciaPortal = (GlaciaPortal) new GlaciaPortal(EGProperties.glaciaPortalID).func_149711_c(-1.0F).func_149672_a(Block.field_149778_k).func_149715_a(0.75F).func_149663_c("GlaciaPortal").func_149658_d("ere_geologique:GlaciaPortal");
+	       feeder = new Feeder().func_149711_c(3.5F).func_149672_a(Block.field_149780_i).func_149663_c(LocalizationStrings.FEEDER_NAME).func_149647_a(EGCreativeTab.EGCreativeTabBlock);
+	       analyzer = new Analyzer().func_149711_c(3.0F).func_149672_a(Block.field_149777_j).func_149663_c(LocalizationStrings.ANALYZER_NAME).func_149647_a(EGCreativeTab.EGCreativeTabBlock);
+	       cultivatorIdle = new Cultivator(false).func_149715_a(0.9375F).func_149711_c(0.3F).func_149672_a(Block.field_149778_k).func_149663_c(LocalizationStrings.CULTIVATE_IDLE_NAME).func_149647_a(EGCreativeTab.EGCreativeTabBlock);
+	       cultivatorActive = new Cultivator(true).func_149715_a(0.9375F).func_149711_c(0.3F).func_149672_a(Block.field_149778_k).func_149663_c(LocalizationStrings.CULTIVATE_ACTIVE_NAME);
+	       fossil = new Fossil(EGProperties.fossilID).func_149711_c(3.0F).func_149752_b(5.0F).func_149672_a(Block.field_149780_i).func_149663_c("Fossil").func_149658_d("ere_geologique:Fossil");
+	       reinforcedStone = new ReinforcedStone(EGProperties.reinforcedStoneID).func_149711_c(1.5F).func_149752_b(10.0F).func_149672_a(Block.field_149780_i).func_149663_c("ReinforcedStone").func_149658_d("ere_geologique:reinforced_stone");
+	       reinforcedGlass = new ReinforcedGlass(EGProperties.reinforcedGlassID, Material.field_151592_s, false).func_149711_c(0.3F).func_149752_b(10.0F).func_149672_a(Block.field_149778_k).func_149663_c("ReinforcedGlass").func_149658_d("ere_geologique:reinforced_glass");
+	       steelBlock = new ReinforcedStone(EGProperties.steelBlockID).func_149711_c(5.0F).func_149752_b(10.0F).func_149672_a(Block.field_149777_j).func_149663_c("SteelBlock").func_149658_d("ere_geologique:steel_block");
+	       skull = new Skull(EGProperties.fossilSkullID).func_149711_c(1.0F).func_149672_a(Block.field_149780_i).func_149663_c("FossilSkull");
+	       blueFire = (BlueFire) new BlueFire(EGProperties.blueFireID).func_149711_c(0.0F).func_149715_a(1.0F).func_149672_a(Block.field_149766_f).func_149663_c("BlueFire");
+	       drum = new Drum().func_149711_c(0.8F).func_149672_a(Block.field_149766_f).func_149663_c("Drum").func_149647_a(EGCreativeTab.EGCreativeTabBlock);
 	       
 	       GameRegistry.registerBlock(leaves, ItemBlockLeaves.class, "Leaves");
 	       GameRegistry.registerBlock(wood, ItemBlockWood.class, "Wood");
@@ -87,7 +86,7 @@ public class EGBlockList
 	       GameRegistry.registerBlock(blueFire, "BlueFire");
 	       GameRegistry.registerBlock(drum, "Drum");
 
-	       MinecraftForge.setBlockHarvestLevel(fossil, 0, "pickaxe", 2);
+	       //MinecraftForge.setBlockHarvestLevel(fossil, 0, "pickaxe", 2);
 		}
 		catch(Exception ex)
 		{
