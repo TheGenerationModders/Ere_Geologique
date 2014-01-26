@@ -1,4 +1,4 @@
-package ere_geologique.common.event;
+/*package ere_geologique.common.event;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -81,4 +81,4 @@ public class KeyHandler
         	 EreGeologique.EGLog.severe("Can't read packet");
          }
      }
-}
+}*/

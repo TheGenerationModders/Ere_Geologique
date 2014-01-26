@@ -1,4 +1,4 @@
-package ere_geologique.common.dimension;
+/*package ere_geologique.common.dimension;
 
 import ere_geologique.common.config.EGProperties;
 import net.minecraftforge.common.DimensionManager;
@@ -10,4 +10,4 @@ public class EGDimensionList
 		DimensionManager.registerProviderType(EGProperties.glaciaID, WorldProviderGlacia.class, false);
 		DimensionManager.registerDimension(EGProperties.glaciaID, EGProperties.glaciaID);
 	}
-}
+}*/

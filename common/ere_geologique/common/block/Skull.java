@@ -17,7 +17,7 @@ public class Skull extends BlockDirectional
 
     public Skull()
     {
-        super(Material.pumpkin);
+        super(Material.field_151572_C);
         this.setTickRandomly(true);
         this.func_149647_a(EGCreativeTab.EGCreativeTabBlock);
     }
@@ -34,9 +34,9 @@ public class Skull extends BlockDirectional
         return par1 == 1 || par1 == 0 || (par1>3 && par2<4) || (par1<4 && par2>3)? this.field_149761_L : par1!=par2 ? this.Front : this.Back;
     }
 
-    public void onBlockAdded(World var1, int var2, int var3, int var4)
+    public void onBlockAdded(World world, int x, int y, int z)
     {
-        super.onBlockAdded(var1, var2, var3, var4);
+        super.onBlockAdded(world, x, y, z);
     }
 
     public void onBlockPlacedBy(World var1, int var2, int var3, int var4, EntityLiving var5, ItemStack par6ItemStack)

@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
@@ -20,20 +21,8 @@ public class Plank extends Block
 	
 	public Plank()
     {
-        super(Material.wood);
-        this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
-        this.setBurnProperties(this.blockID, 5, 20);
-    }
-	
-    private void setBurnRate(int par1, int par2, int par3)
-    {
-            Block.setBurnProperties(par1,  par2, par3);
-    }
-    
-    public static void setBurnProperties(int id, int encouragement, int flammability)
-    {
-            blockFireSpreadSpeed[id] = encouragement;
-            blockFlammability[id] = flammability;
+        super(Material.field_151575_d);
+        this.func_149647_a(EGCreativeTab.EGCreativeTabBlock);
     }
     
     @SideOnly(Side.CLIENT)
@@ -53,13 +42,13 @@ public class Plank extends Block
     }
 
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks(int id, CreativeTabs creativeTabs, List list)
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
     {
-        list.add(new ItemStack(id, 1, 0));
-        list.add(new ItemStack(id, 1, 1));
-        list.add(new ItemStack(id, 1, 2));
-        list.add(new ItemStack(id, 1, 3));
-        list.add(new ItemStack(id, 1, 4));
+        list.add(new ItemStack(item, 1, 0));
+        list.add(new ItemStack(item, 1, 1));
+        list.add(new ItemStack(item, 1, 2));
+        list.add(new ItemStack(item, 1, 3));
+        list.add(new ItemStack(item, 1, 4));
     }
 
     @SideOnly(Side.CLIENT)
@@ -69,7 +58,7 @@ public class Plank extends Block
 
         for (int i = 0; i < this.IconArray.length; ++i)
         {
-            this.IconArray[i] = par1IconRegister.registerIcon(this.getTextureName() + "_" + woodType[i]);
+            this.IconArray[i] = par1IconRegister.registerIcon(this.func_149641_N() + "_" + woodType[i]);
         }
     }
 }

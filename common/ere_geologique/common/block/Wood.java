@@ -3,17 +3,15 @@ package ere_geologique.common.block;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockRotatedPillar;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ere_geologique.common.config.EGProperties;
 import ere_geologique.common.creativetabs.EGCreativeTab;
 
 public class Wood extends BlockRotatedPillar
@@ -26,7 +24,7 @@ public class Wood extends BlockRotatedPillar
 	
     public Wood()
     {
-        super(Material.wood);
+        super(Material.field_151575_d);
         this.func_149647_a(EGCreativeTab.EGCreativeTabBlock);
     }
     
@@ -35,13 +33,13 @@ public class Wood extends BlockRotatedPillar
     	return 1;
     }
     
-    public int idDropped(int id, Random rand, int fortune)
+    public Item idDropped(Item item, Random rand, int fortune)
     {
-        return EGProperties.woodID;
+        return Item.func_150898_a(EGBlockList.wood);
     }
     
     @SideOnly(Side.CLIENT)
-    protected IIcon getSideIcon(int par1)
+    protected IIcon func_150163_b(int par1)
     {
         return this.IconArray[par1];
     }
@@ -62,19 +60,14 @@ public class Wood extends BlockRotatedPillar
         return par0 & 4;
     }
     
-    public void getSubBlocks(int id, CreativeTabs creativeTabs, List list)
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
     {
-        list.add(new ItemStack(id, 1, 0));
-        list.add(new ItemStack(id, 1, 1));
-        list.add(new ItemStack(id, 1, 2));
-        list.add(new ItemStack(id, 1, 3));
-        list.add(new ItemStack(id, 1, 4));
+        list.add(new ItemStack(item, 1, 0));
+        list.add(new ItemStack(item, 1, 1));
+        list.add(new ItemStack(item, 1, 2));
+        list.add(new ItemStack(item, 1, 3));
+        list.add(new ItemStack(item, 1, 4));
  
-    }
-    
-    protected ItemStack createStackedBlock(int par1)
-    {
-        return new ItemStack(this.blockID, 1, limitToValidMetadata(par1));
     }
  
     public void registerIcons(IIconRegister register)
@@ -84,45 +77,8 @@ public class Wood extends BlockRotatedPillar
 
         for (int i = 0; i < this.IconArray.length; ++i)
         {
-            this.IconArray[i] = register.registerIcon(this.getTextureName() + "_" + woodType[i]);
-            this.wood_top[i] = register.registerIcon(this.getTextureName() + "_" + woodType[i] + "_top");
+            this.IconArray[i] = register.registerIcon(this.func_149641_N() + "_" + woodType[i]);
+            this.wood_top[i] = register.registerIcon(this.func_149641_N() + "_" + woodType[i] + "_top");
         }
-    }
-    
-    public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)
-    {
-        byte b0 = 4;
-        int j1 = b0 + 1;
-
-        if (par1World.checkChunksExist(par2 - j1, par3 - j1, par4 - j1, par2 + j1, par3 + j1, par4 + j1))
-        {
-            for (int k1 = -b0; k1 <= b0; ++k1)
-            {
-                for (int l1 = -b0; l1 <= b0; ++l1)
-                {
-                    for (int i2 = -b0; i2 <= b0; ++i2)
-                    {
-                        int j2 = par1World.getBlockId(par2 + k1, par3 + l1, par4 + i2);
-
-                        if (Block.blocksList[j2] != null)
-                        {
-                            Block.blocksList[j2].beginLeavesDecay(par1World, par2 + k1, par3 + l1, par4 + i2);
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    @Override
-    public boolean canSustainLeaves(World world, int x, int y, int z)
-    {
-        return true;
-    }
-
-    @Override
-    public boolean isWood(World world, int x, int y, int z)
-    {
-        return true;
     }
 }

@@ -1,4 +1,4 @@
-package ere_geologique.client;
+/*package ere_geologique.client;
 
 import java.util.EnumSet;
 
@@ -110,4 +110,4 @@ public class EGKeyHandler extends KeyBindingRegistry
     {
         return EnumSet.of(TickType.PLAYER);
     }
-}
+}*/

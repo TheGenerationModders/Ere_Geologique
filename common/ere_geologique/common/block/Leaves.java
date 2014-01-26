@@ -306,13 +306,13 @@ public class Leaves extends BlockLeavesBase implements IShearable
         }    }
  
     @Override
-    public boolean isShearable(ItemStack item, World world, int x, int y, int z)
+    public boolean isShearable(ItemStack item, IBlockAccess world, int x, int y, int z)
     {
         return true;
     }
  
     @Override
-    public ArrayList<ItemStack> onSheared(ItemStack item, World world, int x, int y, int z, int fortune)
+    public ArrayList<ItemStack> onSheared(ItemStack item, IBlockAccess world, int x, int y, int z, int fortune)
     {
         ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
         ret.add(new ItemStack(this, 1, world.getBlockMetadata(x, y, z) & 4));
@@ -323,11 +323,5 @@ public class Leaves extends BlockLeavesBase implements IShearable
     public void beginLeavesDecay(World world, int x, int y, int z)
     {
         world.setBlockMetadataWithNotify(x, y, z, world.getBlockMetadata(x, y, z) | 8, 4);
-    }
- 
-    @Override
-    public boolean isLeaves(World world, int x, int y, int z)
-    {
-        return true;
     }
 }

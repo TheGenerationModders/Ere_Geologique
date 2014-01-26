@@ -1,4 +1,4 @@
-package ere_geologique.client.audio;
+/*package ere_geologique.client.audio;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.audio.SoundManager;
@@ -80,4 +80,4 @@ public class DinoSoundHandler
             EreGeologique.EGLog.severe("Failed loading sound file: ");
         }
     }
-}
+}*/

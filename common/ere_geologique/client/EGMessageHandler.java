@@ -1,4 +1,4 @@
-package ere_geologique.client;
+/*package ere_geologique.client;
 
 import net.minecraft.network.packet.NetHandler;
 import net.minecraft.network.packet.Packet3Chat;
@@ -17,4 +17,4 @@ public class EGMessageHandler implements IChatListener
 	{
 		return message;
 	}
-}
+}*/

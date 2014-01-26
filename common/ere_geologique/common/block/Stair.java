@@ -10,6 +10,6 @@ public class Stair extends BlockStairs
     {
         super(block, metadata);
         this.func_149647_a(EGCreativeTab.EGCreativeTabBlock);
-        this.setLightOpacity(0);
+        this.func_149713_g(0);
     }
 }

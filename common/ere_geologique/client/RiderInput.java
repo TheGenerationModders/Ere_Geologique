@@ -1,4 +1,4 @@
-package ere_geologique.client;
+/*package ere_geologique.client;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
@@ -16,7 +16,6 @@ import ere_geologique.common.entity.Pterosaure;
 
 public class RiderInput implements IPacketHandler
 {
-
 	@Override
 	public void onPacketData(INetworkManager manager, Packet250CustomPayload packet, Player player)
 	{
@@ -69,5 +68,4 @@ public class RiderInput implements IPacketHandler
 	        }
 		}
 	}
-
-}
+}*/

@@ -6,6 +6,7 @@ import java.util.Random;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
@@ -23,43 +24,43 @@ public class Sapling extends BlockSapling
 	
     public Sapling()
     {
-            super();
-            float f = 0.4F;
-            setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
-            this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
+    	super();
+        float f = 0.4F;
+        func_149676_a(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
+        this.func_149647_a(EGCreativeTab.EGCreativeTabBlock);
     }
 
-    public void growTree(World world, int i, int j, int k, Random random)
+    public void growTree(World world, int x, int y, int z, Random random)
     {
-            int l = world.getBlockMetadata(i, j, k) & 3;
-            world.setBlock(i, j, k, 0);
-            Object obj = null;
-            obj = new WorldGenFougere(false);
-            if(!((WorldGenerator) (obj)).generate(world, random, i, j, k))
-            {
-                    world.setBlockMetadataWithNotify(i, j, k, blockID, l);
-            }
+        int l = world.getBlockMetadata(x, y, z) & 5;
+        world.setBlock(x, y, z, 0);
+        Object obj = null;
+        obj = new WorldGenFougere(false);
+        if(!((WorldGenerator) (obj)).generate(world, random, x, y, z))
+        {
+        	world.setBlockMetadataWithNotify(x, y, z, blockID, l);
+        }
     }
     
     public IIcon getIcon(int side, int metadata)
     {
-    	metadata &= 4;
+    	metadata &= 5;
     	return this.SaplingIcon[metadata];
     }
     
     public int damageDropped(int id)
     {
-    	return id & 4;
+    	return id & 5;
     }
 
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks(int id, CreativeTabs creativeTabs, List list)
+    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
     {
-        list.add(new ItemStack(id, 1, 0));
-        list.add(new ItemStack(id, 1, 1));
-        list.add(new ItemStack(id, 1, 2));
-        list.add(new ItemStack(id, 1, 3));
-        list.add(new ItemStack(id, 1, 4));
+        list.add(new ItemStack(item, 1, 0));
+        list.add(new ItemStack(item, 1, 1));
+        list.add(new ItemStack(item, 1, 2));
+        list.add(new ItemStack(item, 1, 3));
+        list.add(new ItemStack(item, 1, 4));
     }
     
     @SideOnly(Side.CLIENT)
@@ -69,7 +70,7 @@ public class Sapling extends BlockSapling
 
         for (int i = 0; i < this.SaplingIcon.length; ++i)
         {
-            this.SaplingIcon[i] = par1IconRegister.registerIcon(this.getTextureName() + "_" + saplingtype[i]);
+            this.SaplingIcon[i] = par1IconRegister.registerIcon(this.func_149641_N() + "_" + saplingtype[i]);
         }
     }
 

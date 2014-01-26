@@ -35,21 +35,21 @@ public class BlueFire extends BlockFire
 	{
 		this.abilityToCatchFire = Block.blockFlammability;
 		this.chanceToEncourageFire = Block.blockFireSpreadSpeed;
-		setBurnRate(Block.planks.blockID, 5, 20);
-		setBurnRate(Block.woodDoubleSlab.blockID, 5, 20);
-		setBurnRate(Block.woodSingleSlab.blockID, 5, 20);
-		setBurnRate(Block.fence.blockID, 5, 20);
-		setBurnRate(Block.stairsWoodOak.blockID, 5, 20);
-		setBurnRate(Block.stairsWoodBirch.blockID, 5, 20);
-		setBurnRate(Block.stairsWoodSpruce.blockID, 5, 20);
-		setBurnRate(Block.stairsWoodJungle.blockID, 5, 20);
-		setBurnRate(Block.wood.blockID, 5, 5);
-		setBurnRate(Block.leaves.blockID, 30, 60);
-		setBurnRate(Block.bookShelf.blockID, 30, 20);
-		setBurnRate(Block.tnt.blockID, 15, 100);
-		setBurnRate(Block.tallGrass.blockID, 60, 100);
-		setBurnRate(Block.cloth.blockID, 30, 60);
-		setBurnRate(Block.vine.blockID, 15, 100);
+		setBurnRate(Blocks.planks.blockID, 5, 20);
+		setBurnRate(Blocks.woodDoubleSlab.blockID, 5, 20);
+		setBurnRate(Blocks.woodSingleSlab.blockID, 5, 20);
+		setBurnRate(Blocks.fence.blockID, 5, 20);
+		setBurnRate(Blocks.stairsWoodOak.blockID, 5, 20);
+		setBurnRate(Blocks.stairsWoodBirch.blockID, 5, 20);
+		setBurnRate(Blocks.stairsWoodSpruce.blockID, 5, 20);
+		setBurnRate(Blocks.stairsWoodJungle.blockID, 5, 20);
+		setBurnRate(Blocks.wood.blockID, 5, 5);
+		setBurnRate(Blocks.leaves.blockID, 30, 60);
+		setBurnRate(Blocks.bookShelf.blockID, 30, 20);
+		setBurnRate(Blocks.tnt.blockID, 15, 100);
+		setBurnRate(Blocks.tallGrass.blockID, 60, 100);
+		setBurnRate(Blocks.cloth.blockID, 30, 60);
+		setBurnRate(Blocks.vine.blockID, 15, 100);
 	}
 
 	private void setBurnRate(int par1, int par2, int par3)

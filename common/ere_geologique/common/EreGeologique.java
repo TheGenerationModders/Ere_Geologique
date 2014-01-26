@@ -24,13 +24,13 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.network.IChatListener;
+//import cpw.mods.fml.common.network.IChatListener;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.relauncher.Side;
 import ere_geologique.api.food.EnumDinoFoodMob;
-import ere_geologique.client.EGMessageHandler;
+//import ere_geologique.client.EGMessageHandler;
 import ere_geologique.client.Localizations;
 import ere_geologique.common.achievement.EGAchievement;
 import ere_geologique.common.block.EGBlockList;
@@ -39,7 +39,7 @@ import ere_geologique.common.config.ConfigFile;
 import ere_geologique.common.config.EGProperties;
 import ere_geologique.common.config.Version;
 import ere_geologique.common.creativetabs.EGCreativeTab;
-import ere_geologique.common.dimension.EGDimensionList;
+//import ere_geologique.common.dimension.EGDimensionList;
 import ere_geologique.common.entity.EGEntityList;
 import ere_geologique.common.entity.Enums.EnumDinoType;
 import ere_geologique.common.event.CraftingHandler;
@@ -72,7 +72,7 @@ public class EreGeologique
 	public static ConfigFile configFile;
 	public static Object ToPedia;
 	public static GuiHandler guiHandler = new GuiHandler();
-	public static IChatListener messagerHandler = new EGMessageHandler();
+//	public static IChatListener messagerHandler = new EGMessageHandler();
 	public static TickHandlerClient tickHandlerClient = new TickHandlerClient();
 
 	@EventHandler
@@ -90,7 +90,7 @@ public class EreGeologique
 				Version.check();
 			}
 			
-			//Blocks
+			/*//Blocks
 			EGProperties.leavesID = configFile.getBlock("Leaves Foug\350re", 2500).getInt();
 			EGProperties.woodID = configFile.getBlock("Wood Foug\350re", 2501).getInt();
 			EGProperties.saplingID = configFile.getBlock("Sapling Foug\350re", 2502).getInt();
@@ -154,7 +154,7 @@ public class EreGeologique
 			EGProperties.dnaIDs[i] = configFile.getItem("dna" + EnumDinoType.values()[i].name(), 4055+i).getInt();
 
 			//Dimensions
-			EGProperties.glaciaID = configFile.get("Dimension", "Glacia", 2).getInt();
+			EGProperties.glaciaID = configFile.get("Dimension", "Glacia", 2).getInt();*/
 
 		}
 		catch(Exception ex)
@@ -221,7 +221,7 @@ public class EreGeologique
 		//World Generator
 		GameRegistry.registerWorldGenerator(new FossilGenerator(), 0);
 		
-		EGDimensionList.loadDimension();//Dimension
+		//EGDimensionList.loadDimension();//Dimension
 
 		//Other
 		proxy.registerRenderEntity();
@@ -237,7 +237,7 @@ public class EreGeologique
 
 		EGTEntityList.loadTileEntity();
 		NetworkRegistry.INSTANCE.registerGuiHandler(this.Instance, new GuiHandler());
-		NetworkRegistry.INSTANCE.registerChatListener(messagerHandler);
+//		NetworkRegistry.INSTANCE.registerChatListener(messagerHandler);
 		TickEvent.registerTickHandler(this.tickHandlerClient, Side.CLIENT);
 	}
 
