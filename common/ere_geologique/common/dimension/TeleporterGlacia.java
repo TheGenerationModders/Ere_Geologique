@@ -1,4 +1,4 @@
-/*package ere_geologique.common.dimension;
+package ere_geologique.common.dimension;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -18,14 +18,14 @@ import ere_geologique.common.block.EGBlockList;
 public class TeleporterGlacia extends Teleporter
 {
 	private final WorldServer worldServerInstance;
-	/** A private Random() function in Teleporter *
+	/** A private Random() function in Teleporter */
 	private final Random random;
-	/** Stores successful portal placement locations for rapid lookup. *
+	/** Stores successful portal placement locations for rapid lookup. */
 	private final LongHashMap destinationCoordinateCache = new LongHashMap();
 	/**
 	 * A list of valid keys for the destinationCoordainteCache. These are based
 	 * on the X & Z of the players initial location.
-	 *
+	 */
 	private final List destinationCoordinateKeys = new ArrayList();
 
 	public TeleporterGlacia(WorldServer par1WorldServer)
@@ -37,7 +37,7 @@ public class TeleporterGlacia extends Teleporter
 
 	/**
 	 * Place an entity in a nearby portal, creating one if necessary.
-	 *
+	 */
 	public void placeInPortal(Entity par1Entity, double par2, double par4, double par6, float par8)
 	{
 		if (this.worldServerInstance.provider.dimensionId != 1)
@@ -65,7 +65,7 @@ public class TeleporterGlacia extends Teleporter
 						int i2 = k + i1 * b1 - l * b0;
 						boolean flag = j1 < 0;
 
-						/** change this block **
+						/** change this block **/
 						this.worldServerInstance.setBlock(k1, l1, i2, flag ? Blocks.ice.blockID : 0);
 					}
 				}
@@ -77,7 +77,7 @@ public class TeleporterGlacia extends Teleporter
 
 	/**
 	 * Place an entity in a nearby portal which already exists.
-	 *
+	 */
 	public boolean placeInExistingPortal(Entity par1Entity, double par2, double par4, double par6, float par8)
 	{
 		short short1 = 128;
@@ -110,10 +110,10 @@ public class TeleporterGlacia extends Teleporter
 					double d6 = (double) l1 + 0.5D - par1Entity.posZ;
 					for (int i2 = this.worldServerInstance.getActualHeight() - 1; i2 >= 0; --i2)
 					{
-						/** change this block **
+						/** change this block **/
 						if (this.worldServerInstance.getBlockId(k1, i2, l1) == EGBlockList.glaciaPortal.blockID)
 						{
-							/** change this block **
+							/** change this block **/
 							while (this.worldServerInstance.getBlockId(k1, i2 - 1, l1) == EGBlockList.glaciaPortal.blockID)
 							{
 								--i2;
@@ -141,22 +141,22 @@ public class TeleporterGlacia extends Teleporter
 			double d9 = (double) j + 0.5D;
 			d4 = (double) k + 0.5D;
 			int j2 = -1;
-			/** change this block **
+			/** change this block **/
 			if (this.worldServerInstance.getBlockId(i - 1, j, k) == EGBlockList.glaciaPortal.blockID)
 			{
 				j2 = 2;
 			}
-			/** change this block **
+			/** change this block **/
 			if (this.worldServerInstance.getBlockId(i + 1, j, k) == EGBlockList.glaciaPortal.blockID)
 			{
 				j2 = 0;
 			}
-			/** change this block **
+			/** change this block **/
 			if (this.worldServerInstance.getBlockId(i, j, k - 1) == EGBlockList.glaciaPortal.blockID)
 			{
 				j2 = 3;
 			}
-			/** change this block **
+			/** change this block **/
 			if (this.worldServerInstance.getBlockId(i, j, k + 1) == EGBlockList.glaciaPortal.blockID)
 			{
 				j2 = 1;
@@ -397,7 +397,7 @@ public class TeleporterGlacia extends Teleporter
 						i4 = j2 + (i3 - 1) * l5 - k2 * k5;
 						flag = l2 < 0;
 
-						/** change this block **
+						/** change this block **/
 						this.worldServerInstance.setBlock(k3, j3, i4, flag ? Blocks.ice.blockID : 0);
 					}
 				}
@@ -414,7 +414,7 @@ public class TeleporterGlacia extends Teleporter
 					i4 = j2 + (i3 - 1) * l5;
 					flag = i3 == 0 || i3 == 3 || l2 == -1 || l2 == 3;
 
-					/** change these blocks **
+					/** change these blocks **/
 					this.worldServerInstance.setBlock(k3, j3, i4, flag ? Blocks.ice.blockID : EGBlockList.glaciaPortal.blockID, 0, 2);
 				}
 			}
@@ -435,7 +435,7 @@ public class TeleporterGlacia extends Teleporter
 	/**
 	 * called periodically to remove out-of-date portal locations from the cache
 	 * list. Argument par1 is a WorldServer.getTotalWorldTime() value.
-	 *
+	 */
 	public void removeStalePortalLocations(long par1)
 	{
 		if (par1 % 100L == 0L) 
@@ -454,4 +454,4 @@ public class TeleporterGlacia extends Teleporter
 			}
 		}
 	}
-}*/
+}

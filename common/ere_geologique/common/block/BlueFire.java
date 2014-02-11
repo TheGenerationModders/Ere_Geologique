@@ -1,21 +1,31 @@
 package ere_geologique.common.block;
 
+import static net.minecraftforge.common.util.ForgeDirection.UP;
+
+import java.util.IdentityHashMap;
+import java.util.Map.Entry;
 import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFire;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+
+import com.google.common.collect.Maps;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlueFire extends BlockFire
 {
+	@Deprecated
 	private int[] chanceToEncourageFire = new int[256];
+	@Deprecated
 	private int[] abilityToCatchFire = new int[256];
 	@SideOnly(Side.CLIENT)
 	private IIcon[] iconArray;
@@ -28,34 +38,33 @@ public class BlueFire extends BlockFire
 
 	public IIcon getIcon(int par1, int par2)
 	{
-		return this.field_149761_L;
+		return this.blockIcon;
 	}
 
 	public void initializeBlock()
 	{
-		this.abilityToCatchFire = Block.blockFlammability;
-		this.chanceToEncourageFire = Block.blockFireSpreadSpeed;
-		setBurnRate(Blocks.planks.blockID, 5, 20);
-		setBurnRate(Blocks.woodDoubleSlab.blockID, 5, 20);
-		setBurnRate(Blocks.woodSingleSlab.blockID, 5, 20);
-		setBurnRate(Blocks.fence.blockID, 5, 20);
-		setBurnRate(Blocks.stairsWoodOak.blockID, 5, 20);
-		setBurnRate(Blocks.stairsWoodBirch.blockID, 5, 20);
-		setBurnRate(Blocks.stairsWoodSpruce.blockID, 5, 20);
-		setBurnRate(Blocks.stairsWoodJungle.blockID, 5, 20);
-		setBurnRate(Blocks.wood.blockID, 5, 5);
-		setBurnRate(Blocks.leaves.blockID, 30, 60);
-		setBurnRate(Blocks.bookShelf.blockID, 30, 20);
-		setBurnRate(Blocks.tnt.blockID, 15, 100);
-		setBurnRate(Blocks.tallGrass.blockID, 60, 100);
-		setBurnRate(Blocks.cloth.blockID, 30, 60);
-		setBurnRate(Blocks.vine.blockID, 15, 100);
+		EGBlockList.blueFire.func_149842_a(getIdFromBlock(Blocks.planks), 5, 20);
+		EGBlockList.blueFire.func_149842_a(getIdFromBlock(Blocks.double_wooden_slab), 5, 20);
+		EGBlockList.blueFire.func_149842_a(getIdFromBlock(Blocks.wooden_slab), 5, 20);
+		EGBlockList.blueFire.func_149842_a(getIdFromBlock(Blocks.fence), 5, 20);
+		EGBlockList.blueFire.func_149842_a(getIdFromBlock(Blocks.oak_stairs), 5, 20);
+		EGBlockList.blueFire.func_149842_a(getIdFromBlock(Blocks.birch_stairs), 5, 20);
+		EGBlockList.blueFire.func_149842_a(getIdFromBlock(Blocks.spruce_stairs), 5, 20);
+		EGBlockList.blueFire.func_149842_a(getIdFromBlock(Blocks.jungle_stairs), 5, 20);
+		EGBlockList.blueFire.func_149842_a(getIdFromBlock(Blocks.log), 5, 5);
+		EGBlockList.blueFire.func_149842_a(getIdFromBlock(Blocks.leaves), 30, 60);
+		EGBlockList.blueFire.func_149842_a(getIdFromBlock(Blocks.bookshelf), 30, 20);
+		EGBlockList.blueFire.func_149842_a(getIdFromBlock(Blocks.tnt), 15, 100);
+		EGBlockList.blueFire.func_149842_a(getIdFromBlock(Blocks.grass), 60, 100);
+		EGBlockList.blueFire.func_149842_a(getIdFromBlock(Blocks.wool), 30, 60);
+		EGBlockList.blueFire.func_149842_a(getIdFromBlock(Blocks.vine), 15, 100);
 	}
 
-	private void setBurnRate(int par1, int par2, int par3)
-	{
-		Block.setBurnProperties(par1, par2, par3);
-	}
+	@Deprecated // Use setFireInfo
+    public void func_149842_a(int p_149842_1_, int p_149842_2_, int p_149842_3_)
+    {
+        this.setFireInfo((Block)Block.blockRegistry.getObjectById(p_149842_1_), p_149842_2_, p_149842_3_);
+    }
 
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
 	{
@@ -87,79 +96,78 @@ public class BlueFire extends BlockFire
 		return 30;
 	}
 
-	public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random)
+	public void updateTick(World world, int x, int y, int z, Random rand)
 	{
-		if (par1World.getGameRules().getGameRuleBooleanValue("doFireTick"))
+		if (world.getGameRules().getGameRuleBooleanValue("doFireTick"))
 		{
-			Block base = Block.blocksList[par1World.getBlockId(par2, par3 - 1, par4)];
-			boolean flag = (base != null) && (base.isFireSource(par1World, par2, par3 - 1, par4, par1World.getBlockMetadata(par2, par3 - 1, par4), ForgeDirection.UP));
-			if (!canPlaceBlockAt(par1World, par2, par3, par4))
+			boolean flag = world.getBlock(x, y, z).isFireSource(world, x, y - 1, z, ForgeDirection.UP);
+			if (!canPlaceBlockAt(world, x, y, z))
 			{
-				par1World.setBlockToAir(par2, par3, par4);
+				world.setBlockToAir(x, y, z);
 			}
-			if ((!flag) && (par1World.isRaining()) && ((par1World.canLightningStrikeAt(par2, par3, par4)) || (par1World.canLightningStrikeAt(par2 - 1, par3, par4)) || (par1World.canLightningStrikeAt(par2 + 1, par3, par4)) || (par1World.canLightningStrikeAt(par2, par3, par4 - 1)) || (par1World.canLightningStrikeAt(par2, par3, par4 + 1))))
+			if ((!flag) && (world.isRaining()) && ((world.canLightningStrikeAt(x, y, z)) || (world.canLightningStrikeAt(x - 1, y, z)) || (world.canLightningStrikeAt(x + 1, y, z)) || (world.canLightningStrikeAt(x, y, z - 1)) || (world.canLightningStrikeAt(x, y, z + 1))))
 			{
-				par1World.setBlockToAir(par2, par3, par4);
+				world.setBlockToAir(x, y, z);
 			} else
 			{
-				int l = par1World.getBlockMetadata(par2, par3, par4);
+				int l = world.getBlockMetadata(x, y, z);
 				if (l < 15)
 				{
-					par1World.setBlockMetadataWithNotify(par2, par3, par4, l + par5Random.nextInt(3) / 2, 4);
+					world.setBlockMetadataWithNotify(x, y, z, l + rand.nextInt(3) / 2, 4);
 				}
-				par1World.scheduleBlockUpdate(par2, par3, par4, this.blockID, tickRate(par1World) + par5Random.nextInt(10));
-				if ((!flag) && (!canNeighborBurn(par1World, par2, par3, par4)))
+				world.scheduleBlockUpdate(x, y, z, this, tickRate(world) + rand.nextInt(10));
+				if ((!flag) && (!canNeighborBurn(world, x, y, z)))
 				{
-					if ((!par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4)) || (l > 3))
+					if ((!world.doesBlockHaveSolidTopSurface(world, x, y - 1, z)) || (l > 3))
 					{
-						par1World.setBlockToAir(par2, par3, par4);
+						world.setBlockToAir(x, y, z);
 					}
-				} else if ((!flag) && (!canBlockCatchFire(par1World, par2, par3 - 1, par4, ForgeDirection.UP)) && (l == 15) && (par5Random.nextInt(4) == 0))
+				} else if ((!flag) && (!canBlockCatchFire(world, x, y - 1, z, ForgeDirection.UP)) && (l == 15) && (rand.nextInt(4) == 0))
 				{
-					par1World.setBlockToAir(par2, par3, par4);
+					world.setBlockToAir(x, y, z);
 				} else
 				{
-					boolean flag1 = par1World.isBlockHighHumidity(par2, par3, par4);
+					boolean flag1 = world.isBlockHighHumidity(x, y, z);
 					byte b0 = 0;
 					if (flag1)
 					{
 						b0 = -50;
 					}
-					tryToCatchBlockOnFire(par1World, par2 + 1, par3, par4, 300 + b0, par5Random, l, ForgeDirection.WEST);
-					tryToCatchBlockOnFire(par1World, par2 - 1, par3, par4, 300 + b0, par5Random, l, ForgeDirection.EAST);
-					tryToCatchBlockOnFire(par1World, par2, par3 - 1, par4, 250 + b0, par5Random, l, ForgeDirection.UP);
-					tryToCatchBlockOnFire(par1World, par2, par3 + 1, par4, 250 + b0, par5Random, l, ForgeDirection.DOWN);
-					tryToCatchBlockOnFire(par1World, par2, par3, par4 - 1, 300 + b0, par5Random, l, ForgeDirection.SOUTH);
-					tryToCatchBlockOnFire(par1World, par2, par3, par4 + 1, 300 + b0, par5Random, l, ForgeDirection.NORTH);
-					for (int i1 = par2 - 1; i1 <= par2 + 1; i1++)
+					tryToCatchBlockOnFire(world, x + 1, y, z, 300 + b0, rand, l, ForgeDirection.WEST);
+					tryToCatchBlockOnFire(world, x - 1, y, z, 300 + b0, rand, l, ForgeDirection.EAST);
+					tryToCatchBlockOnFire(world, x, y - 1, z, 250 + b0, rand, l, ForgeDirection.UP);
+					tryToCatchBlockOnFire(world, x, y + 1, z, 250 + b0, rand, l, ForgeDirection.DOWN);
+					tryToCatchBlockOnFire(world, x, y, z - 1, 300 + b0, rand, l, ForgeDirection.SOUTH);
+					tryToCatchBlockOnFire(world, x, y, z + 1, 300 + b0, rand, l, ForgeDirection.NORTH);
+					for (int i1 = x - 1; i1 <= x + 1; i1++)
 					{
-						for (int j1 = par4 - 1; j1 <= par4 + 1; j1++)
+						for (int j1 = z - 1; j1 <= z + 1; j1++)
 						{
-							for (int k1 = par3 - 1; k1 <= par3 + 4; k1++)
+							for (int k1 = y - 1; k1 <= y + 4; k1++)
 							{
-								if ((i1 != par2) || (k1 != par3) || (j1 != par4))
+								if ((i1 != x) || (k1 != y) || (j1 != z))
 								{
 									int l1 = 100;
-									if (k1 > par3 + 1)
+									if (k1 > y + 1)
 									{
-										l1 += (k1 - (par3 + 1)) * 100;
+										l1 += (k1 - (y + 1)) * 100;
 									}
-									int i2 = getChanceOfNeighborsEncouragingFire(par1World, i1, k1, j1);
+									int i2 = getChanceOfNeighborsEncouragingFire(world, i1, k1, j1);
 									if (i2 > 0)
 									{
-										int j2 = (i2 + 40 + par1World.difficultySetting * 7)/ (l + 30);
+										int j2 = (i2 + 40 + world.difficultySetting.getDifficultyId() * 7)/ (l + 30);
 										if (flag1)
 										{
 											j2 /= 2;
 										}
-										if ((j2 > 0) && (par5Random.nextInt(l1) <= j2) && ((!par1World.isRaining()) || (!par1World.canLightningStrikeAt(i1, k1, j1))) && (!par1World.canLightningStrikeAt(i1 - 1, k1, par4)) && (!par1World.canLightningStrikeAt(i1 + 1, k1, j1)) && (!par1World.canLightningStrikeAt(i1, k1, j1 - 1)) && (!par1World.canLightningStrikeAt(i1, k1, j1 + 1)))
+										if ((j2 > 0) && (rand.nextInt(l1) <= j2) && ((!world.isRaining()) || (!world.canLightningStrikeAt(i1, k1, j1))) && (!world.canLightningStrikeAt(i1 - 1, k1, z)) && (!world.canLightningStrikeAt(i1 + 1, k1, j1)) && (!world.canLightningStrikeAt(i1, k1, j1 - 1)) && (!world.canLightningStrikeAt(i1, k1, j1 + 1)))
 										{
-											int k2 = l + par5Random.nextInt(5) / 4;
+											int k2 = l + rand.nextInt(5) / 4;
 											if (k2 > 15)
 											{
 												k2 = 15;
 											}
-											par1World.setBlock(i1, k1, j1,this.blockID, k2, 3);
+											world.setBlock(i1, k1, j1,this, k2, 3);
 										}
 									}
 								}
@@ -182,32 +190,28 @@ public class BlueFire extends BlockFire
 		tryToCatchBlockOnFire(par1World, par2, par3, par4, par5, par6Random, par7, ForgeDirection.UP);
 	}
 
-	private void tryToCatchBlockOnFire(World par1World, int par2, int par3,int par4, int par5, Random par6Random, int par7, ForgeDirection face)
+	private void tryToCatchBlockOnFire(World world, int x, int y,int z, int par5, Random rand, int par7, ForgeDirection face)
 	{
-		int j1 = 0;
-		Block block = Block.blocksList[par1World.getBlockId(par2, par3, par4)];
-		if (block != null)
+		int j1 = world.getBlock(x, y, z).getFlammability(world, x, y, z, face);
+
+		if (rand.nextInt(par5) < j1)
 		{
-			j1 = block.getFlammability(par1World, par2, par3, par4, par1World.getBlockMetadata(par2, par3, par4), face);
-		}
-		if (par6Random.nextInt(par5) < j1)
-		{
-			boolean flag = par1World.getBlockId(par2, par3, par4) == Block.tnt.blockID;
-			if ((par6Random.nextInt(par7 + 10) < 5)&& (!par1World.canLightningStrikeAt(par2, par3, par4)))
+			boolean flag = world.getBlock(x, y, z) == Blocks.tnt;
+			if ((rand.nextInt(par7 + 10) < 5)&& (!world.canLightningStrikeAt(x, y, z)))
 			{
-				int k1 = par7 + par6Random.nextInt(5) / 4;
+				int k1 = par7 + rand.nextInt(5) / 4;
 				if (k1 > 15)
 				{
 					k1 = 15;
 				}
-				par1World.setBlock(par2, par3, par4, this.blockID, k1, 3);
+				world.setBlock(x, y, z, this, k1, 3);
 			} else
 			{
-				par1World.setBlockToAir(par2, par3, par4);
+				world.setBlockToAir(x, y, z);
 			}
 			if (flag)
 			{
-				Block.tnt.onBlockDestroyedByPlayer(par1World, par2, par3, par4, 1);
+				Blocks.tnt.onBlockDestroyedByPlayer(world, x, y, z, 1);
 			}
 		}
 	}
@@ -252,12 +256,12 @@ public class BlueFire extends BlockFire
 
 	public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4)
 	{
-		return (par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4)) || (canNeighborBurn(par1World, par2, par3, par4));
+		return (par1World.doesBlockHaveSolidTopSurface(par1World, par2, par3 - 1, par4)) || (canNeighborBurn(par1World, par2, par3, par4));
 	}
 
 	public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5)
 	{
-		if ((!par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4)) && (!canNeighborBurn(par1World, par2, par3, par4)))
+		if ((!par1World.doesBlockHaveSolidTopSurface(par1World, par2, par3 - 1, par4)) && (!canNeighborBurn(par1World, par2, par3, par4)))
 		{
 			par1World.setBlockToAir(par2, par3, par4);
 		}
@@ -265,14 +269,14 @@ public class BlueFire extends BlockFire
 
 	public void onBlockAdded(World par1World, int par2, int par3, int par4)
 	{
-		if ((par1World.getBlockId(par2, par3 - 1, par4) != Block.ice.blockID) || (!EGBlockList.glaciaPortal.tryToCreatePortal(par1World, par2, par3, par4)))
+		if ((par1World.getBlock(par2, par3 - 1, par4) != Blocks.ice) || (!EGBlockList.glaciaPortal.tryToCreatePortal(par1World, par2, par3, par4)))
 		{
-			if ((!par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4)) && (!canNeighborBurn(par1World, par2, par3, par4)))
+			if ((!par1World.doesBlockHaveSolidTopSurface(par1World, par2, par3 - 1, par4)) && (!canNeighborBurn(par1World, par2, par3, par4)))
 			{
 				par1World.setBlockToAir(par2, par3, par4);
 			} else
 			{
-				par1World.scheduleBlockUpdate(par2, par3, par4, this.blockID, tickRate(par1World) + par1World.rand.nextInt(10));
+				par1World.scheduleBlockUpdate(par2, par3, par4, this, tickRate(par1World) + par1World.rand.nextInt(10));
 			}
 		}
 	}
@@ -284,7 +288,7 @@ public class BlueFire extends BlockFire
 		{
 			par1World.playSound(par2 + 0.5F, par3 + 0.5F, par4 + 0.5F, "fire.fire", 1.0F + par5Random.nextFloat(), par5Random.nextFloat() * 0.7F + 0.3F, false);
 		}
-		if ((!par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4)) && (!EGBlockList.blueFire.canBlockCatchFire(par1World, par2, par3 - 1, par4, ForgeDirection.UP)))
+		if ((!par1World.doesBlockHaveSolidTopSurface(par1World, par2, par3 - 1, par4)) && (!EGBlockList.blueFire.canBlockCatchFire(par1World, par2, par3 - 1, par4, ForgeDirection.UP)))
 		{
 			if (EGBlockList.blueFire.canBlockCatchFire(par1World, par2 - 1, par3, par4, ForgeDirection.EAST))
 			{
@@ -347,26 +351,17 @@ public class BlueFire extends BlockFire
 			}
 		}
 	}
-
+	
+	@Deprecated
 	public boolean canBlockCatchFire(IBlockAccess world, int x, int y, int z, ForgeDirection face)
 	{
-		Block block = Block.blocksList[world.getBlockId(x, y, z)];
-		if (block != null)
-		{
-			return block.isFlammable(world, x, y, z, world.getBlockMetadata(x, y, z), face);
-		}
-		return false;
+        return canCatchFire(world, x, y, z, UP);
 	}
-
-	public int getChanceToEncourageFire(World world, int x, int y, int z, int oldChance, ForgeDirection face)
+	
+	@Deprecated
+	public int func_149846_a(World world, int x, int y, int z, int oldChance, ForgeDirection face)
 	{
-		int newChance = 0;
-		Block block = Block.blocksList[world.getBlockId(x, y, z)];
-		if (block != null)
-		{
-			newChance = block.getFireSpreadSpeed(world, x, y, z, world.getBlockMetadata(x, y, z), face);
-		}
-		return newChance > oldChance ? newChance : oldChance;
+        return getChanceToEncourageFire(world, x, y, z, oldChance, UP);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -386,4 +381,99 @@ public class BlueFire extends BlockFire
 	{
 		return this.iconArray[0];
 	}
+	
+	private static class FireInfo
+    {
+        private int encouragement = 0;
+        private int flammibility = 0;
+    }
+    private IdentityHashMap<Block, FireInfo> blockInfo = Maps.newIdentityHashMap();
+
+    public void setFireInfo(Block block, int encouragement, int flammibility)
+    {
+        if (block == Blocks.air) throw new IllegalArgumentException("Tried to set air on fire... This is bad.");
+        int id = Block.getIdFromBlock(block);
+        this.chanceToEncourageFire[id] = encouragement;
+        this.abilityToCatchFire[id] = flammibility;
+
+        FireInfo info = getInfo(block, true);
+        info.encouragement = encouragement;
+        info.flammibility = flammibility;
+    }
+
+    private FireInfo getInfo(Block block, boolean garentee)
+    {
+        FireInfo ret = blockInfo.get(block);
+        if (ret == null && garentee)
+        {
+            ret = new FireInfo();
+            blockInfo.put(block, ret);
+        }
+        return ret;
+    }
+
+    public void rebuildFireInfo()
+    {
+        for (int x = 0; x < 4096; x++)
+        {
+            //If we care.. we could detect changes in here and make sure we keep them, however 
+            //it's my thinking that anyone who hacks into the private variables should DIAF and we don't care about them.
+            chanceToEncourageFire[x] = 0;
+            abilityToCatchFire[x] = 0;
+        }
+
+        for (Entry<Block, FireInfo> e : blockInfo.entrySet())
+        {
+            int id = Block.getIdFromBlock(e.getKey());
+            if (id >= 0 && id < 4096)
+            {
+                chanceToEncourageFire[id] = e.getValue().encouragement;
+                abilityToCatchFire[id] = e.getValue().flammibility;
+            }
+        }
+    }
+
+    public int getFlammability(Block block)
+    {
+        int id = Block.getIdFromBlock(block);
+        return id >= 0 && id < 4096 ? abilityToCatchFire[id] : 0;
+    }
+
+    public int getEncouragement(Block block)
+    {
+        int id = Block.getIdFromBlock(block);
+        return id >= 0 && id < 4096 ? chanceToEncourageFire[id] : 0;
+    }
+
+    /**
+     * Side sensitive version that calls the block function.
+     * 
+     * @param world The current world
+     * @param x X Position
+     * @param y Y Position
+     * @param z Z Position
+     * @param face The side the fire is coming from
+     * @return True if the face can catch fire.
+     */
+    public boolean canCatchFire(IBlockAccess world, int x, int y, int z, ForgeDirection face)
+    {
+        return world.getBlock(x, y, z).isFlammable(world, x, y, z, face);
+    }
+
+    /**
+     * Side sensitive version that calls the block function.
+     * 
+     * @param world The current world
+     * @param x X Position
+     * @param y Y Position
+     * @param z Z Position
+     * @param oldChance The previous maximum chance.
+     * @param face The side the fire is coming from
+     * @return The chance of the block catching fire, or oldChance if it is higher
+     */
+    public int getChanceToEncourageFire(IBlockAccess world, int x, int y, int z, int oldChance, ForgeDirection face)
+    {
+        int newChance = world.getBlock(x, y, z).getFireSpreadSpeed(world, x, y, z, face);
+        return (newChance > oldChance ? newChance : oldChance);
+    }
 }

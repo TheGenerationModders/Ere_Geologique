@@ -29,7 +29,7 @@ public abstract class DinoAIRide extends EntityAIBase
     
     protected boolean isRiderJumping()
     {
-    	return remoteKey.isKeyPressed(rider.func_146103_bH().getName(), "key.jump");
+    	return remoteKey.isKeyPressed(rider.getDisplayName(), "key.jump");
     }
     
     @Override

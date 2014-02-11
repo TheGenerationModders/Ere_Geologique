@@ -132,12 +132,12 @@ public class TileEntityAnalyzer extends TileEntity implements IInventory, ISided
 	public void readFromNBT(NBTTagCompound nbtTag)
 	{
 		super.readFromNBT(nbtTag);
-		NBTTagList var2 = nbtTag.getTagList("Items");
+		NBTTagList var2 = nbtTag.getTagList("Items", 0);
 		this.analyzerItemStacks = new ItemStack[this.getSizeInventory()];
 
 		for(int var3 = 0; var3 < var2.tagCount(); ++var3)
 		{
-			NBTTagCompound var4 = (NBTTagCompound)var2.tagAt(var3);
+			NBTTagCompound var4 = (NBTTagCompound)var2.getCompoundTagAt(var3);
 			byte var5 = var4.getByte("Slot");
 
 			if(var5 >= 0 && var5 < this.analyzerItemStacks.length)
@@ -384,15 +384,9 @@ public class TileEntityAnalyzer extends TileEntity implements IInventory, ISided
 
 	public boolean isUseableByPlayer(EntityPlayer var1)
 	{
-		return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : var1.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
+		return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : var1.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
 	}
-
-	public void openChest()
-	{}
-
-	public void closeChest()
-	{}
-
+	
 	public boolean isStackValidForSlot(int par1, ItemStack par2ItemStack)
 	{
 		return par1 > 8 ? false : (par1 < 8 ? isItemFuel(par2ItemStack) : true);
@@ -402,12 +396,6 @@ public class TileEntityAnalyzer extends TileEntity implements IInventory, ISided
 	{
 		return null;
 	}
-
-/*	@Override
-	public boolean isInvNameLocalized()
-	{
-		return false;
-	}*/
 
 	public boolean isItemValidForSlot(int par1, ItemStack par2ItemStack)
 	{
@@ -430,14 +418,26 @@ public class TileEntityAnalyzer extends TileEntity implements IInventory, ISided
 	}
 
 	@Override
-	public String func_145825_b()
+	public String getInventoryName()
 	{
 		return null;
 	}
 
 	@Override
-	public boolean func_145818_k_()
+	public boolean hasCustomInventoryName()
 	{
 		return false;
+	}
+
+	@Override
+	public void openInventory()
+	{
+		
+	}
+
+	@Override
+	public void closeInventory()
+	{
+		
 	}
 }

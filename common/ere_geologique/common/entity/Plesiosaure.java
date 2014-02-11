@@ -939,7 +939,7 @@ public class Plesiosaure extends SwimmingDino implements IMob
             this.motionY *= 0.800000011920929D;
             this.motionZ *= 0.800000011920929D;
 //           if(this.riddenByEntity==null)
-            this.motionY += 0.02D;//TODO + -> - gravity is on it if not ridden, then handling the riding...going straight forward
+            this.motionY += 0.02D;//-> - gravity is on it if not ridden, then handling the riding...going straight forward
 
             if (this.isCollidedHorizontally && this.isOffsetPositionInLiquid(this.motionX, this.motionY + 0.6000000238418579D - this.posY + var9, this.motionZ))
             {

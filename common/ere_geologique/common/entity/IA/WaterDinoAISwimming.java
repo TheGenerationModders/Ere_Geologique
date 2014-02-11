@@ -102,7 +102,7 @@ public class WaterDinoAISwimming extends EntityAIBase
             double var9 = this.entity.boundingBox.minY + (this.entity.boundingBox.maxY - this.entity.boundingBox.minY) * (double)(var6 + 1) / (double)var1 - 0.125D;
             AxisAlignedBB var11 = AxisAlignedBB.getAABBPool().getAABB(this.entity.boundingBox.minX, var7, this.entity.boundingBox.minZ, this.entity.boundingBox.maxX, var9, this.entity.boundingBox.maxZ);
 
-            if (this.entity.worldObj.isAABBInMaterial(var11, Material.field_151586_h))
+            if (this.entity.worldObj.isAABBInMaterial(var11, Material.water))
             {
                 var2 += 1.0D / (double)var1;
             }
@@ -119,7 +119,6 @@ public class WaterDinoAISwimming extends EntityAIBase
             {
                 this.entity.motionY = 0.0D;
             }
-
             this.entity.motionY += (double)this.FAST_FLOAT_SPEED;
         }
     }

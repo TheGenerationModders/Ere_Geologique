@@ -64,8 +64,8 @@ public class Version implements Runnable
 
 	public static void versionCheck()
 	{
-		try {
-
+		try
+		{
 			if ("0.0.0".equals(VERSION))
 				return;
 
@@ -126,15 +126,14 @@ public class Version implements Runnable
 		{
 			cachedChangelog = grabChangelog(recommendedVersion);
 		}
-
 		return cachedChangelog;
 	}
 
 	public static String[] grabChangelog(String version)
 	{
 
-		try {
-
+		try
+		{
 			String location = REMOTE_CHANGELOG_ROOT + version;
 			HttpURLConnection conn = null;
 			while (location != null && !location.isEmpty())
@@ -149,7 +148,6 @@ public class Version implements Runnable
 				conn.connect();
 				location = conn.getHeaderField("Location");
 			}
-
 			if (conn == null)
 				throw new NullPointerException();
 
@@ -171,15 +169,12 @@ public class Version implements Runnable
 
 				changelog.add(line);
 			}
-
 			return changelog.toArray(new String[0]);
-
 		} catch (Exception ex)
 		{
 			ex.printStackTrace();
 			EreGeologique.EGLog.warning("Unable to read changelog from remote site.");
 		}
-
 		return new String[]{String.format("Unable to retrieve changelog for %s %s", EGProperties.mod, version)};
 	}
 	
@@ -216,7 +211,6 @@ public class Version implements Runnable
 	
 	public static void check()
 	{
-
 		new Thread(instance).start();
 	}
 }

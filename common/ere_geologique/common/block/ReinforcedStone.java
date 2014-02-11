@@ -8,7 +8,7 @@ public class ReinforcedStone extends Block
 {
 	public ReinforcedStone()
 	{
-		super(Material.field_151576_e);
-		this.func_149647_a(EGCreativeTab.EGCreativeTabBlock);
+		super(Material.rock);
+		this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
 	}
 }

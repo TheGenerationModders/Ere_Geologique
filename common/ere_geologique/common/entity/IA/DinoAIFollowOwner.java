@@ -123,7 +123,7 @@ public class DinoAIFollowOwner extends EntityAIBase
                             {
                                 for (int i1 = 0; i1 <= 4; ++i1)
                                 {
-                                    if ((l < 1 || i1 < 1 || l > 3 || i1 > 3) && this.theWorld.doesBlockHaveSolidTopSurface(i + l, k - 1, j + i1) && !this.theWorld.isBlockNormalCube(i + l, k, j + i1) && !this.theWorld.isBlockNormalCube(i + l, k + 1, j + i1))
+                                    if ((l < 1 || i1 < 1 || l > 3 || i1 > 3) && this.theWorld.doesBlockHaveSolidTopSurface(theWorld, i + l, k - 1, j + i1) && !this.theWorld.isBlockNormalCubeDefault(i + l, k, j + i1, field_75344_i) && !this.theWorld.isBlockNormalCubeDefault(i + l, k + 1, j + i1, field_75344_i))
                                     {
                                         this.DinoEntity.setLocationAndAngles((double)((float)(i + l) + 0.5F), (double)k, (double)((float)(j + i1) + 0.5F), this.DinoEntity.rotationYaw, this.DinoEntity.rotationPitch);
                                         this.petPathfinder.clearPathEntity();

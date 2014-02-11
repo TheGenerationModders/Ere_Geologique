@@ -14,6 +14,6 @@ public class EGCreativeTabBlock extends CreativeTabs
 	@Override
 	public Item getTabIconItem()
 	{
-		return Item.func_150898_a(EGBlockList.wood);
+		return Item.getItemFromBlock(EGBlockList.wood);
 	}
 }

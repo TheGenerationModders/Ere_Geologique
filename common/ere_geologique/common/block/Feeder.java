@@ -2,6 +2,7 @@ package ere_geologique.common.block;
 
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -34,7 +35,7 @@ public class Feeder extends BlockContainer
 
 	public Feeder()
 	{
-		super(Material.field_151576_e);
+		super(Material.rock);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -71,7 +72,7 @@ public class Feeder extends BlockContainer
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister iconRegister)
 	{
-		this.field_149761_L = iconRegister.registerIcon("ere_geologique:Feeder_Sides");
+		this.blockIcon = iconRegister.registerIcon("ere_geologique:Feeder_Sides");
 		this.bottom = iconRegister.registerIcon("ere_geologique:Feeder_Bottom");
 		this.topEmply1 = iconRegister.registerIcon("ere_geologique:Feeder_top_empty_1");
 		this.topEmply2 = iconRegister.registerIcon("ere_geologique:Feeder_top_empty_2");
@@ -98,7 +99,7 @@ public class Feeder extends BlockContainer
 	@SideOnly(Side.CLIENT)
 	public IIcon getBlockTexture(IBlockAccess blockAccess, int x, int y, int z, int side)
 	{
-		TileEntity te = blockAccess.func_147438_o(x, y, z);
+		TileEntity te = blockAccess.getTileEntity(x, y, z);
 		if(te != null && te instanceof TileEntityFeeder)
 		{
 			TileEntityFeeder feeder = (TileEntityFeeder)te;
@@ -109,19 +110,19 @@ public class Feeder extends BlockContainer
 			}
 			if(feeder.getCurreentVeg() > 0 && feeder.getCurrentMeat() == 0)
 			{
-				return side == 1 ? (direction == 0 ? topHerb1 : direction == 1 ? topHerb2 : direction == 2 ? topHerb3 : topHerb4) : (direction == 2 && side == 2 ? front2 : (direction == 3 && side == 5 ? front2 : (direction == 0 && side == 3 ? front2 : (direction == 1 && side == 4 ? front2 : this.field_149761_L))));
+				return side == 1 ? (direction == 0 ? topHerb1 : direction == 1 ? topHerb2 : direction == 2 ? topHerb3 : topHerb4) : (direction == 2 && side == 2 ? front2 : (direction == 3 && side == 5 ? front2 : (direction == 0 && side == 3 ? front2 : (direction == 1 && side == 4 ? front2 : this.blockIcon))));
 			}
 			else if(feeder.getCurreentVeg() == 0 && feeder.getCurrentMeat() > 0)
 			{					
-				return side == 1 ? (direction == 0 ? topCan1 : direction == 1 ? topCan2 : direction == 2 ? topCan3 : topCan4) : (direction == 2 && side == 2 ? front3 : (direction == 3 && side == 5 ? front3 : (direction == 0 && side == 3 ? front3 : (direction == 1 && side == 4 ? front3 : this.field_149761_L))));
+				return side == 1 ? (direction == 0 ? topCan1 : direction == 1 ? topCan2 : direction == 2 ? topCan3 : topCan4) : (direction == 2 && side == 2 ? front3 : (direction == 3 && side == 5 ? front3 : (direction == 0 && side == 3 ? front3 : (direction == 1 && side == 4 ? front3 : this.blockIcon))));
 			}
 			else if(feeder.getCurreentVeg() > 0 && feeder.getCurrentMeat() > 0)
 			{
-				return side == 1 ? (direction == 0 ? topBoth1 : direction == 1 ? topBoth2 : direction == 2 ? topBoth3 : topBoth4) : (direction == 2 && side == 2 ? front4 : (direction == 3 && side == 5 ? front4 : (direction == 0 && side == 3 ? front4 : (direction == 1 && side == 4 ? front4 : this.field_149761_L))));
+				return side == 1 ? (direction == 0 ? topBoth1 : direction == 1 ? topBoth2 : direction == 2 ? topBoth3 : topBoth4) : (direction == 2 && side == 2 ? front4 : (direction == 3 && side == 5 ? front4 : (direction == 0 && side == 3 ? front4 : (direction == 1 && side == 4 ? front4 : this.blockIcon))));
 			}
 			else
 			{
-				return side == 1 ? (direction == 0 ? topEmply1 : direction == 1 ? topEmply2 : direction == 2 ? topEmply3 : topEmply4) : (direction == 2 && side == 2 ? front1 : (direction == 3 && side == 5 ? front1 : (direction == 0 && side == 3 ? front1 : (direction == 1 && side == 4 ? front1 : this.field_149761_L))));
+				return side == 1 ? (direction == 0 ? topEmply1 : direction == 1 ? topEmply2 : direction == 2 ? topEmply3 : topEmply4) : (direction == 2 && side == 2 ? front1 : (direction == 3 && side == 5 ? front1 : (direction == 0 && side == 3 ? front1 : (direction == 1 && side == 4 ? front1 : this.blockIcon))));
 			}
 		}
 		return this.getIcon(side, blockAccess.getBlockMetadata(x, y, z));
@@ -130,7 +131,7 @@ public class Feeder extends BlockContainer
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata)
 	{
-		return side == 0 ? this.bottom : side == 1 ? this.topEmply1 : side == 3 ? this.front1 : this.field_149761_L;
+		return side == 0 ? this.bottom : side == 1 ? this.topEmply1 : side == 3 ? this.front1 : this.blockIcon;
 	}
 
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ)
@@ -154,7 +155,7 @@ public class Feeder extends BlockContainer
     public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase living, ItemStack stack)
 	{
 		int direction = MathHelper.floor_double((double)(living.rotationYaw * 4.0F / 360.0F) + 2.5D) & 3;
-		TileEntity te = world.func_147438_o(x, y, z);
+		TileEntity te = world.getTileEntity(x, y, z);
 		if(te != null && te instanceof TileEntityFeeder)
 		{
 			((TileEntityFeeder)te).setDirection(direction);
@@ -162,9 +163,9 @@ public class Feeder extends BlockContainer
 		}
 	}
 
-	public void breakBlock(World world, int x, int y, int z, int var5, int var6)
+	public void breakBlock(World world, int x, int y, int z, Block block, int var6)
 	{
-		TileEntityFeeder feeder = (TileEntityFeeder)world.func_147438_o(x, y, z);
+		TileEntityFeeder feeder = (TileEntityFeeder)world.getTileEntity(x, y, z);
 
 		if(feeder != null)
 		{
@@ -198,7 +199,7 @@ public class Feeder extends BlockContainer
 				}
 			}
 		}
-		super.breakBlock(world, x, y, z, var5, var6);
+		super.breakBlock(world, x, y, z, block, var6);
 	}
 
 	public boolean hasComparatorInputOverride()
@@ -208,6 +209,12 @@ public class Feeder extends BlockContainer
 
 	public int getComparatorInputOverride(World world, int x, int y, int z, int par5)
 	{
-		return Container.calcRedstoneFromInventory((IInventory)world.func_147438_o(x, y, z));
+		return Container.calcRedstoneFromInventory((IInventory)world.getTileEntity(x, y, z));
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World world, int var2)
+	{
+		return new TileEntityFeeder();
 	}
 }

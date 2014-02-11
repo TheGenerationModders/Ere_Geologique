@@ -1,4 +1,4 @@
-/*package ere_geologique.common.dimension;
+package ere_geologique.common.dimension;
 
 import net.minecraft.util.ChunkCoordinates;
 
@@ -13,4 +13,4 @@ public class GlaciaPortalPosition extends ChunkCoordinates
 		this.field_85088_e = teleporterGlacia;
 		this.field_85087_d = par5;
 	}
-}*/
+}

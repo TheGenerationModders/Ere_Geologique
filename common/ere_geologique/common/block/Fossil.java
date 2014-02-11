@@ -14,7 +14,7 @@ public class Fossil extends BlockStone
     public Fossil()
     {
         super();
-        this.func_149647_a(EGCreativeTab.EGCreativeTabBlock);
+        this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
     }
 
     public Item idDropped(int var1, Random var2, int var3)
@@ -25,10 +25,10 @@ public class Fossil extends BlockStone
         if(i < 15)	return EGItemList.skull;
         if(i < 17)	return EGItemList.claw;
         if(i < 19)  return EGItemList.foot;
-        if(i < 50)	return Item.func_150898_a(EGBlockList.skull);
+        if(i < 50)	return Item.getItemFromBlock(EGBlockList.skull);
         if(i < 250)	return EGItemList.bioFossil;
         if(i < 450)	return EGItemList.relic;
         if(i < 900)	return Items.bone;
-        return Item.func_150898_a(Blocks.cobblestone);
+        return Item.getItemFromBlock(Blocks.cobblestone);
     }  
 }

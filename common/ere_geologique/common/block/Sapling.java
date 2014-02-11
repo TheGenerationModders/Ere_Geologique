@@ -26,19 +26,19 @@ public class Sapling extends BlockSapling
     {
     	super();
         float f = 0.4F;
-        func_149676_a(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
-        this.func_149647_a(EGCreativeTab.EGCreativeTabBlock);
+        setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
+        this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
     }
 
     public void growTree(World world, int x, int y, int z, Random random)
     {
         int l = world.getBlockMetadata(x, y, z) & 5;
-        world.setBlock(x, y, z, 0);
+        world.setBlock(x, y, z, null, 0, l);
         Object obj = null;
         obj = new WorldGenFougere(false);
         if(!((WorldGenerator) (obj)).generate(world, random, x, y, z))
         {
-        	world.setBlockMetadataWithNotify(x, y, z, blockID, l);
+        	world.setBlockMetadataWithNotify(x, y, z, l, l);
         }
     }
     
@@ -70,7 +70,7 @@ public class Sapling extends BlockSapling
 
         for (int i = 0; i < this.SaplingIcon.length; ++i)
         {
-            this.SaplingIcon[i] = par1IconRegister.registerIcon(this.func_149641_N() + "_" + saplingtype[i]);
+            this.SaplingIcon[i] = par1IconRegister.registerIcon(this.getTextureName() + "_" + saplingtype[i]);
         }
     }
 

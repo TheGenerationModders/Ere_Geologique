@@ -1,4 +1,4 @@
-/*package ere_geologique.common.dimension;
+package ere_geologique.common.dimension;
 
 import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.MathHelper;
@@ -190,4 +190,4 @@ public class WorldProviderGlacia extends WorldProvider
 		f5 *= (f2 * 0.0F + 0.15F);
 		return this.worldObj.getWorldVec3Pool().getVecFromPool(f3, f4, f5);
 	}
-}*/
+}

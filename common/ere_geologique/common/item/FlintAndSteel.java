@@ -18,42 +18,42 @@ public class FlintAndSteel extends Item
 		setCreativeTab(EGCreativeTab.EGCreativeTabItem);
 	}
 
-	public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
+	public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int x, int y, int z, int par7, float par8, float par9, float par10)
 	{
 		if (par7 == 0)
 		{
-			par5--;
+			y--;
 		}
 		if (par7 == 1)
 		{
-			par5++;
+			y++;
 		}
 		if (par7 == 2)
 		{
-			par6--;
+			z--;
 		}
 		if (par7 == 3)
 		{
-			par6++;
+			z++;
 		}
 		if (par7 == 4)
 		{
-			par4--;
+			x--;
 		}
 		if (par7 == 5)
 		{
-			par4++;
+			x++;
 		}
-		if (!par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack))
+		if (!player.canPlayerEdit(x, y, z, par7, itemStack))
 		{
 			return false;
 		}
-		if (par3World.func_147437_c(par4, par5, par6))
+		if (world.isAirBlock(x, y, z))
 		{
-			par3World.playSoundEffect(par4 + 0.5D, par5 + 0.5D, par6 + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
-			par3World.func_147449_b(par4, par5, par6, EGBlockList.blueFire);
+			world.playSoundEffect(x + 0.5D, y + 0.5D, z + 0.5D, "fire.ignite", 1.0F, itemRand.nextFloat() * 0.4F + 0.8F);
+			world.setBlock(x, y, z, EGBlockList.blueFire);
 		}
-		par1ItemStack.damageItem(1, par2EntityPlayer);
+		itemStack.damageItem(1, player);
 		return true;
 	}
 	

@@ -116,12 +116,11 @@ public class ContainerCultivator extends Container
                 {
                     return null;
                 }
-
                 slot.onSlotChange(itemstack1, itemstack);
             }
             else if (par2 != 1 && par2 != 0)
             {
-                if (FurnaceRecipes.smelting().func_151395_a(itemstack1) != null)
+                if (FurnaceRecipes.smelting().getSmeltingResult(itemstack1) != null)
                 {
                     if (!this.mergeItemStack(itemstack1, 0, 1, false))
                     {
@@ -165,10 +164,8 @@ public class ContainerCultivator extends Container
             {
                 return null;
             }
-
             slot.onPickupFromSlot(player, itemstack1);
         }
-
         return itemstack;
     }
 }

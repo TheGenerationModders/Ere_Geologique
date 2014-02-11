@@ -25,9 +25,9 @@ public class GuiPage extends GuiButton
 
     public void drawButton(Minecraft par1Minecraft, int par2, int par3)
     {
-        if (this.field_146125_m)
+        if (this.visible)
         {
-            boolean var4 = par2 >= this.field_146128_h && par3 >= this.field_146129_i && par2 < this.field_146128_h + this.field_146120_f && par3 < this.field_146129_i + this.field_146121_g;
+            boolean var4 = par2 >= this.xPosition && par3 >= this.yPosition && par2 < this.xPosition + this.width && par3 < this.yPosition + this.height;
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
             par1Minecraft.renderEngine.bindTexture(new ResourceLocation("ere_geologique:textures/gui/Arch_Notebook.png"));
             int var5 = 4;
@@ -43,7 +43,7 @@ public class GuiPage extends GuiButton
                 var5 += 30;
             }
 
-            this.drawTexturedModalRect(this.field_146128_h, this.field_146129_i, var5, var6, 23, 13);
+            this.drawTexturedModalRect(this.xPosition, this.yPosition, var5, var6, 23, 13);
         }
     }
 }

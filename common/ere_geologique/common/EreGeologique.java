@@ -238,14 +238,14 @@ public class EreGeologique
 		EGTEntityList.loadTileEntity();
 		NetworkRegistry.INSTANCE.registerGuiHandler(this.Instance, new GuiHandler());
 //		NetworkRegistry.INSTANCE.registerChatListener(messagerHandler);
-		TickEvent.registerTickHandler(this.tickHandlerClient, Side.CLIENT);
+//		TickEvent.registerTickHandler(this.tickHandlerClient, Side.CLIENT);
 	}
 
 	public static void ShowMessage(String string, EntityPlayer player)
 	{
 		if (player != null)
 		{
-			player.func_145747_a(new ChatComponentText(string));
+			player.addChatComponentMessage(new ChatComponentText(string));
 		}
 	}
 

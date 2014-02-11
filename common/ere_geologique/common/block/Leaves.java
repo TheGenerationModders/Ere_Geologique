@@ -52,9 +52,9 @@ public class Leaves extends BlockLeavesBase implements IShearable
     }
     
     @SideOnly(Side.CLIENT)
-    public int colorMultiplier(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
+    public int colorMultiplier(IBlockAccess world, int x, int y, int z)
     {
-        int var5 = par1IBlockAccess.getBlockMetadata(par2, par3, par4);
+        int var5 = world.getBlockMetadata(x, y, z);
  
         if ((var5 & 4) == 1)
         {
@@ -74,7 +74,7 @@ public class Leaves extends BlockLeavesBase implements IShearable
             {
                 for (int var10 = -1; var10 <= 1; ++var10)
                 {
-                    int var11 = par1IBlockAccess.getBiomeGenForCoords(par2 + var10, par4 + var9).getBiomeFoliageColor();
+                    int var11 = world.getBiomeGenForCoords(x + var10, z + var9).getBiomeFoliageColor(x, y, z);
                     var6 += (var11 & 16711680) >> 16;
                     var7 += (var11 & 65280) >> 8;
                     var8 += var11 & 255;
@@ -98,7 +98,7 @@ public class Leaves extends BlockLeavesBase implements IShearable
                 {
                     for (int var11 = -var7; var11 <= var7; ++var11)
                     {
-                        int var12 = par1World.getBlockId(par2 + var9, par3 + var10, par4 + var11);
+                        int var12 = par1World.getBlock(par2 + var9, par3 + var10, par4 + var11);
  
                         if (Block.blocksList[var12] != null)
                         {
@@ -143,7 +143,7 @@ public class Leaves extends BlockLeavesBase implements IShearable
                         {
                             for (var14 = -var7; var14 <= var7; ++var14)
                             {
-                                var15 = par1World.getBlockId(par2 + var12, par3 + var13, par4 + var14);
+                                var15 = par1World.getBlock(par2 + var12, par3 + var13, par4 + var14);
  
                                 Block block = Block.blocksList[var15];
  
@@ -213,7 +213,7 @@ public class Leaves extends BlockLeavesBase implements IShearable
  
                 if (var12 >= 0)
                 {
-                    par1World.setBlock(par2, par3, par4, var6 & -9);
+                    par1World.setBlock(par2, par3, par4, this, var6 & -9, var12);
                 }
                 else
                 {
@@ -226,7 +226,7 @@ public class Leaves extends BlockLeavesBase implements IShearable
     @SideOnly(Side.CLIENT)
     public void randomDisplayTick(World par1World, int par2, int par3, int par4, Random par5Random)
     {
-        if (par1World.canLightningStrikeAt(par2, par3 + 1, par4) && !par1World.doesBlockHaveSolidTopSurface(par2, par3 - 1, par4) && par5Random.nextInt(15) == 1)
+        if (par1World.canLightningStrikeAt(par2, par3 + 1, par4) && !par1World.doesBlockHaveSolidTopSurface(par1World, par2, par3 - 1, par4) && par5Random.nextInt(15) == 1)
         {
             double d0 = (double)((float)par2 + par5Random.nextFloat());
             double d1 = (double)par3 - 0.05D;
@@ -238,7 +238,7 @@ public class Leaves extends BlockLeavesBase implements IShearable
     private void removeLeaves(World par1World, int par2, int par3, int par4)
     {
         this.dropBlockAsItem(par1World, par2, par3, par4, par1World.getBlockMetadata(par2, par3, par4), 0);
-        par1World.setBlock(par2, par3, par4, 0);
+        par1World.setBlock(par2, par3, par4, this, 0, par4);
     }
  
     public int quantityDropped(Random par1Random)
@@ -278,7 +278,7 @@ public class Leaves extends BlockLeavesBase implements IShearable
     }
 
     @SideOnly(Side.CLIENT)
-    public void getSubBlocks(int id, CreativeTabs par2CreativeTabs, List par3List)
+    public void getSubBlocks(Block id, CreativeTabs par2CreativeTabs, List par3List)
     {
     	par3List.add(new ItemStack(id, 1, 0));
     	par3List.add(new ItemStack(id, 1, 1));
@@ -289,7 +289,7 @@ public class Leaves extends BlockLeavesBase implements IShearable
  
     protected ItemStack createStackedBlock(int par1)
     {
-        return new ItemStack(this.blockID, 1, par1 & 4);
+        return new ItemStack(this, 1, par1 & 4);
     }
  
     @Override

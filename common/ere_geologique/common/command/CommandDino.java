@@ -62,7 +62,7 @@ public class CommandDino extends CommandBase
 			commandVersion(sender, arguments);
 		}else if(arguments[0].matches("help"))
 		{
-			sender.func_145747_a(new ChatComponentTranslation("commands.dino.help"));
+			sender.addChatMessage(new ChatComponentTranslation("commands.dino.help"));
 		}
 		throw new WrongUsageException(this.getCommandUsage(sender));
 	}
@@ -72,11 +72,11 @@ public class CommandDino extends CommandBase
 		if(arguments[1].matches("true")){
 			dino_Block_Breaking = true;
 			sender.getEntityWorld().getWorldInfo().getGameRulesInstance().setOrCreateGameRule("blockbreack", "true");
-			sender.func_145747_a(new ChatComponentTranslation("commands.dino.blockbreack.true"));
+			sender.addChatMessage(new ChatComponentTranslation("commands.dino.blockbreack.true"));
 		}else if(arguments[1].matches("false")){
 			dino_Block_Breaking = false;
 			sender.getEntityWorld().getWorldInfo().getGameRulesInstance().setOrCreateGameRule("blockbreack", "false");
-			sender.func_145747_a(new ChatComponentTranslation("commands.dino.blockbreack.false"));
+			sender.addChatMessage(new ChatComponentTranslation("commands.dino.blockbreack.false"));
 		}
 	}
 	
@@ -86,12 +86,12 @@ public class CommandDino extends CommandBase
 		{
 			heal_Dinos = true;
 			sender.getEntityWorld().getWorldInfo().getGameRulesInstance().setOrCreateGameRule("heal", "true");
-			sender.func_145747_a(new ChatComponentTranslation("commands.dino.heal.true"));
+			sender.addChatMessage(new ChatComponentTranslation("commands.dino.heal.true"));
 		}else if(arguments[1].matches("false"))
 		{
 			heal_Dinos = false;
 			sender.getEntityWorld().getWorldInfo().getGameRulesInstance().setOrCreateGameRule("heal", "false");
-			sender.func_145747_a(new ChatComponentTranslation("commands.dino.heal.false"));
+			sender.addChatMessage(new ChatComponentTranslation("commands.dino.heal.false"));
 		}
 	}
 	
@@ -101,12 +101,12 @@ public class CommandDino extends CommandBase
 		{
 			dinos_Starve = true;
 			sender.getEntityWorld().getWorldInfo().getGameRulesInstance().setOrCreateGameRule("starve", "true");
-			sender.func_145747_a(new ChatComponentTranslation("commands.dino.starve.true"));
+			sender.addChatMessage(new ChatComponentTranslation("commands.dino.starve.true"));
 		}else if(arguments[1].matches("false"))
 		{
 			dinos_Starve = false;
 			sender.getEntityWorld().getWorldInfo().getGameRulesInstance().setOrCreateGameRule("starve", "false");
-			sender.func_145747_a(new ChatComponentTranslation("commands.dino.starve.false"));
+			sender.addChatMessage(new ChatComponentTranslation("commands.dino.starve.false"));
 		}
 	}
 	
@@ -116,12 +116,12 @@ public class CommandDino extends CommandBase
 		{
 			debugMode = true;
 			sender.getEntityWorld().getWorldInfo().getGameRulesInstance().setOrCreateGameRule("debug", "true");
-			sender.func_145747_a(new ChatComponentTranslation("commands.dino.debug.true"));
+			sender.addChatMessage(new ChatComponentTranslation("commands.dino.debug.true"));
 		}else if(arguments[1].matches("false"))
 		{
 			debugMode = false;
 			sender.getEntityWorld().getWorldInfo().getGameRulesInstance().setOrCreateGameRule("debug", "false");
-			sender.func_145747_a(new ChatComponentTranslation("commands.dino.debug.false"));
+			sender.addChatMessage(new ChatComponentTranslation("commands.dino.debug.false"));
 		}
 	}
 	
@@ -129,12 +129,12 @@ public class CommandDino extends CommandBase
 	{
 		String colour = Version.isOutdated() ? "\u00A7c" : "\u00A7a";
 
-		sender.func_145747_a(new ChatComponentText(String.format(colour + "EreGeologique %s for Minecraft %s (Latest: %s).", Version.getVersion(), Version.MC_VERSION, Version.getRecommendedVersion())));
+		sender.addChatMessage(new ChatComponentText(String.format(colour + "EreGeologique %s for Minecraft %s (Latest: %s).", Version.getVersion(), Version.MC_VERSION, Version.getRecommendedVersion())));
 		if (Version.isOutdated())
 		{
 			for (String updateLine : Version.getChangelog())
 			{
-				sender.func_145747_a(new ChatComponentText("\u00A79" + updateLine));
+				sender.addChatMessage(new ChatComponentText("\u00A79" + updateLine));
 			}
 		}
 	}

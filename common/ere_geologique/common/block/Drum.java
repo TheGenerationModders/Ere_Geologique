@@ -22,7 +22,7 @@ public class Drum extends BlockContainer
     IIcon Bottom;
     public Drum()
     {
-        super(Material.field_151575_d);
+        super(Material.wood);
     }
 
     /**
@@ -30,7 +30,7 @@ public class Drum extends BlockContainer
      */
     public Item idDropped(int var1, Random var2, int var3)
     {
-        return Item.func_150898_a(EGBlockList.drum);
+        return Item.getItemFromBlock(EGBlockList.drum);
     }
 
     
@@ -42,7 +42,7 @@ public class Drum extends BlockContainer
      */
     public void registerIcons(IIconRegister par1IconRegister)
     {
-        this.field_149761_L = par1IconRegister.registerIcon("ere_geologique:Drum_Side");
+        this.blockIcon = par1IconRegister.registerIcon("ere_geologique:Drum_Side");
         this.Top1 = par1IconRegister.registerIcon("ere_geologique:Drum_Top1");
         this.Top2 = par1IconRegister.registerIcon("ere_geologique:Drum_Top2");
         this.Top3 = par1IconRegister.registerIcon("ere_geologique:Drum_Top3");
@@ -56,7 +56,7 @@ public class Drum extends BlockContainer
     {
         if (par1 != 1 && par1 != 0)
         {
-            return field_149761_L;
+            return blockIcon;
         }
         else
         {
@@ -87,11 +87,10 @@ public class Drum extends BlockContainer
     {
         if (!world.isRemote)
         {
-            TileEntityDrum var10 = (TileEntityDrum)world.func_147438_o(x, y, z);
+            TileEntityDrum var10 = (TileEntityDrum)world.getTileEntity(x, y, z);
             var10.TriggerOrder(player);
             world.setBlockMetadataWithNotify(x, y, z, var10.Order.ordinal(), side);
         }
-
         return true;
     }
 
@@ -102,7 +101,7 @@ public class Drum extends BlockContainer
     {
         if (!world.isRemote)
         {
-            TileEntityDrum var6 = (TileEntityDrum)world.func_147438_o(x, y, z);
+            TileEntityDrum var6 = (TileEntityDrum)world.getTileEntity(x, y, z);
 
             if (player.inventory.getCurrentItem().getItem() != null)
             {
@@ -114,7 +113,8 @@ public class Drum extends BlockContainer
     /**
      * Returns a new instance of a block's tile entity class. Called on placing the block.
      */
-    public TileEntity func_149915_a(World world, int par2)
+    @Override
+    public TileEntity createNewTileEntity(World world, int par2)
     {
         return new TileEntityDrum();
     }

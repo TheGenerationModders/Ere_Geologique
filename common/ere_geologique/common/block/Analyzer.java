@@ -30,13 +30,13 @@ public class Analyzer extends BlockContainer
 
 	public Analyzer()
 	{
-		super(Material.field_151573_f);
+		super(Material.rock);
 	}
 
 	@SideOnly(Side.CLIENT)
 	public void registerIcons(IIconRegister iconRegister)
 	{
-		this.field_149761_L = iconRegister.registerIcon("ere_geologique:Analyser_Sides");
+		this.blockIcon = iconRegister.registerIcon("ere_geologique:Analyser_Sides");
 		this.top = iconRegister.registerIcon("ere_geologique:Analyser_Top");
 		this.front = iconRegister.registerIcon("ere_geologique:Analyser_Front_Idle");
 		this.frontActive = iconRegister.registerIcon("ere_geologique:Analyser_Front_Active");
@@ -45,18 +45,18 @@ public class Analyzer extends BlockContainer
 	@SideOnly(Side.CLIENT)
 	public IIcon getBlockTexture(IBlockAccess blockAccess, int x, int y, int z, int side)
 	{
-		TileEntity te = blockAccess.func_147438_o(x, y, z);
+		TileEntity te = blockAccess.getTileEntity(x, y, z);
 		if(te != null && te instanceof TileEntityAnalyzer)
 		{
 			TileEntityAnalyzer analyzer = (TileEntityAnalyzer)te;
 			int direction = analyzer.getDirection();
 			if(analyzer.isActive())
 			{
-				return side == 1 ? this.top : (side == 0 ? this.field_149761_L : (direction == 2 && side == 2 ? this.frontActive : (direction == 3 && side == 5 ? this.frontActive : (direction == 0 && side == 3 ? this.frontActive : (direction == 1 && side == 4 ? this.frontActive : this.field_149761_L)))));
+				return side == 1 ? this.top : (side == 0 ? this.blockIcon : (direction == 2 && side == 2 ? this.frontActive : (direction == 3 && side == 5 ? this.frontActive : (direction == 0 && side == 3 ? this.frontActive : (direction == 1 && side == 4 ? this.frontActive : this.blockIcon)))));
 			}
 			else
 			{
-				return side == 1 ? this.top : (side == 0 ? this.field_149761_L : (direction == 2 && side == 2 ? this.front : (direction == 3 && side == 5 ? this.front : (direction == 0 && side == 3 ? this.front : (direction == 1 && side == 4 ? this.front : this.field_149761_L)))));
+				return side == 1 ? this.top : (side == 0 ? this.blockIcon : (direction == 2 && side == 2 ? this.front : (direction == 3 && side == 5 ? this.front : (direction == 0 && side == 3 ? this.front : (direction == 1 && side == 4 ? this.front : this.blockIcon)))));
 			}
 		}
 		return this.getIcon(side, blockAccess.getBlockMetadata(x, y, z));
@@ -65,7 +65,7 @@ public class Analyzer extends BlockContainer
 	@SideOnly(Side.CLIENT)
 	public IIcon getIcon(int side, int metadata)
 	{
-		return side == 1 ? this.top : side == 3 ? this.front : this.field_149761_L;
+		return side == 1 ? this.top : side == 3 ? this.front : this.blockIcon;
 	}
 
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ)
@@ -81,22 +81,17 @@ public class Analyzer extends BlockContainer
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase living, ItemStack stack)
 	{
 		int direction = MathHelper.floor_double((double)(living.rotationYaw * 4.0F / 360.0F) + 2.5D) & 3;
-		TileEntity te = world.func_147438_o(x, y, z);
+		TileEntity te = world.getTileEntity(x, y, z);
 		if(te != null && te instanceof TileEntityAnalyzer)
 		{
 			((TileEntityAnalyzer)te).setDirection(direction);
 			world.markBlockForUpdate(x, y, z);
 		}
 	}
-	/*
-	public TileEntity createNewTileEntity(World world)
-	{
-		return new TileEntityAnalyzer();
-	}*/
 
-	public void breakBlock(World world, int x, int y, int z, Block var5, int var6)
+	public void breakBlock(World world, int x, int y, int z, Block block, int var6)
 	{
-		TileEntityAnalyzer analyzer = (TileEntityAnalyzer)world.func_147438_o(x, y, z);
+		TileEntityAnalyzer analyzer = (TileEntityAnalyzer)world.getTileEntity(x, y, z);
 
 		if(analyzer != null)
 		{
@@ -137,7 +132,7 @@ public class Analyzer extends BlockContainer
 			}
 		}
 
-		super.func_149749_a(world, x, y, z, var5, var6);
+		super.breakBlock(world, x, y, z, block, var6);
 	}
 
 	public boolean hasComparatorInputOverride()
@@ -147,11 +142,11 @@ public class Analyzer extends BlockContainer
 
 	public int getComparatorInputOverride(World world, int x, int y, int z, int par5)
 	{
-		return Container.calcRedstoneFromInventory((IInventory)world.func_147438_o(x, y, z));
+		return Container.calcRedstoneFromInventory((IInventory)world.getTileEntity(x, y, z));
 	}
 
 	@Override
-	public TileEntity func_149915_a(World var1, int var2)
+	public TileEntity createNewTileEntity(World world, int var2)
 	{
 		return new TileEntityAnalyzer();
 	}

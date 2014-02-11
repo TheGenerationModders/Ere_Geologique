@@ -84,15 +84,15 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
         return "Cultivate";
     }
 
-    public void func_145839_a(NBTTagCompound var1)
+    public void readFromNBT(NBTTagCompound var1)
     {
-        super.func_145839_a(var1);
-        NBTTagList nbtTagList = var1.func_150295_c("Items", 10);
+        super.readFromNBT(var1);
+        NBTTagList nbtTagList = var1.getTagList("Items", 10);
         this.cultivateItemStacks = new ItemStack[this.getSizeInventory()];
 
         for (int i = 0; i < nbtTagList.tagCount(); ++i)
         {
-            NBTTagCompound var4 = (NBTTagCompound)nbtTagList.func_150305_b(i);
+            NBTTagCompound var4 = (NBTTagCompound)nbtTagList.getCompoundTagAt(i);
             byte var5 = var4.getByte("Slot");
 
             if (var5 >= 0 && var5 < this.cultivateItemStacks.length)
@@ -106,9 +106,9 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
         this.currentItemBurnTime = this.getItemBurnTime(this.cultivateItemStacks[1]);
     }
 
-    public void func_145841_b(NBTTagCompound var1)
+    public void writeToNBT(NBTTagCompound var1)
     {
-        super.func_145841_b(var1);
+        super.writeToNBT(var1);
         var1.setShort("BurnTime", (short)this.furnaceBurnTime);
         var1.setShort("CookTime", (short)this.furnaceCookTime);
         NBTTagList var2 = new NBTTagList();
@@ -171,7 +171,7 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
             --this.furnaceBurnTime;
         }
 
-        if (!this.field_145850_b.isRemote)
+        if (!this.worldObj.isRemote)
         {
             if (this.furnaceBurnTime == 0 && this.canSmelt())
             {
@@ -219,7 +219,7 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
             if (var1 != this.furnaceCookTime > 0)
             {
                 var2 = true;
-                Cultivator.updateFurnaceBlockState(this.furnaceCookTime > 0, this.field_145850_b, this.field_145851_c, this.field_145848_d, this.field_145849_e);
+                Cultivator.updateFurnaceBlockState(this.furnaceCookTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
             }
         }
 
@@ -230,7 +230,7 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
 
         if (this.furnaceCookTime == 3001 && (new Random()).nextInt(100) < 20)
         {
-            ((Cultivator)EGBlockList.cultivatorIdle).onBlockRemovalLost(this.field_145850_b, this.field_145851_c, this.field_145848_d, this.field_145849_e, true);
+            ((Cultivator)EGBlockList.cultivatorIdle).onBlockRemovalLost(this.worldObj, this.xCoord, this.yCoord, this.zCoord, true);
         }
     }
 
@@ -297,7 +297,7 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
 
     public boolean isUseableByPlayer(EntityPlayer var1)
     {
-        return this.field_145850_b.func_147438_o(this.field_145851_c, this.field_145848_d, this.field_145849_e) != this ? false : var1.getDistanceSq((double)this.field_145851_c + 0.5D, (double)this.field_145848_d + 0.5D, (double)this.field_145849_e + 0.5D) <= 64.0D;
+        return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : var1.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
     }
 
     @Deprecated
@@ -314,20 +314,10 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
     	return null;
     }
 
-    public void openChest() {}
-
-    public void closeChest() {}
-
     public ItemStack getStackInSlotOnClosing(int var1)
     {
         return null;
     }
-
-/*	@Override
-	public boolean isInvNameLocalized()
-	{
-		return false;
-	}*/
 
 	public static boolean isItemFuel(ItemStack par0ItemStack)
 	{
@@ -355,14 +345,26 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
 	}
 
 	@Override
-	public String func_145825_b()
+	public String getInventoryName()
 	{
 		return null;
 	}
 
 	@Override
-	public boolean func_145818_k_()
+	public boolean hasCustomInventoryName()
 	{
 		return false;
+	}
+
+	@Override
+	public void openInventory()
+	{
+		
+	}
+
+	@Override
+	public void closeInventory()
+	{
+		
 	}
 }

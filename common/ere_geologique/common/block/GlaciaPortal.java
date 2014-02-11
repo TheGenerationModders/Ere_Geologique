@@ -1,4 +1,4 @@
-/*package ere_geologique.common.block;
+package ere_geologique.common.block;
 
 import java.util.Random;
 
@@ -21,24 +21,24 @@ public class GlaciaPortal extends BlockBreakable
 {
 	public GlaciaPortal()
 	{
-		super("ere_geologique:GlaciaPortal", Material.field_151567_E, false);
-		this.func_149675_a(true);
+		super("ere_geologique:GlaciaPortal", Material.portal, false);
+		this.setTickRandomly(true);
 	}
 
 	/**
 	 * Ticks the block if it's been scheduled
-	 *
-	public void func_149674_a(World world, int x, int y, int z, Random rand)
+	 */
+	public void updateTick(World world, int x, int y, int z, Random rand)
 	{
-		super.func_149674_a(world, x, y, z, rand);
-		if (world.provider.isSurfaceWorld() && world.getGameRules().getGameRuleBooleanValue("DoMobSpawning") && rand.nextInt(2000) < world.difficultySetting.func_151525_a())
+		super.updateTick(world, x, y, z, rand);
+		if (world.provider.isSurfaceWorld() && world.getGameRules().getGameRuleBooleanValue("DoMobSpawning") && rand.nextInt(2000) < world.difficultySetting.getDifficultyId())
 		{
 			int l;
-			for (l = y; !world.func_147466_a(world, x, l, z) && l > 0; --l)
+			for (l = y; !world.doesBlockHaveSolidTopSurface(world, x, l, z) && l > 0; --l)
 			{
 				;
 			}
-			if (l > 0 && !world.func_147439_a(x, l + 1, z).func_149721_r())
+			if (l > 0 && !world.doesBlockHaveSolidTopSurface(world, x, l + 1, z))
 			{
 				Entity entity = ItemMonsterPlacer.spawnCreature(world, 57, (double) x + 0.5D, (double) l + 1.1D, (double) z + 0.5D);
 				if (entity != null)
@@ -52,7 +52,7 @@ public class GlaciaPortal extends BlockBreakable
 	/**
 	 * Returns a bounding box from the pool of bounding boxes (this means this
 	 * box can change after the pool has been cleared to be reused)
-	 *
+	 */
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4)
 	{
 		return null;
@@ -61,21 +61,21 @@ public class GlaciaPortal extends BlockBreakable
 	/**
 	 * Updates the blocks bounds based on its current state. Args: world, x, y,
 	 * z
-	 *
+	 */
 	public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z)
 	{
 		float f;
 		float f1;
-		if (world.func_147439_a(x - 1, y, z) != this && world.func_147439_a(x + 1, y, z) != this)
+		if (world.getBlock(x - 1, y, z) != this && world.getBlock(x + 1, y, z) != this)
 		{
 			f = 0.125F;
 			f1 = 0.5F;
-			this.func_149676_a(0.5F - f, 0.0F, 0.5F - f1, 0.5F + f, 1.0F, 0.5F + f1);
+			this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f1, 0.5F + f, 1.0F, 0.5F + f1);
 		} else
 		{
 			f = 0.5F;
 			f1 = 0.125F;
-			this.func_149676_a(0.5F - f, 0.0F, 0.5F - f1, 0.5F + f, 1.0F, 0.5F + f1);
+			this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f1, 0.5F + f, 1.0F, 0.5F + f1);
 		}
 	}
 
@@ -83,7 +83,7 @@ public class GlaciaPortal extends BlockBreakable
 	 * Is this block (a) opaque and (B) a full 1m cube? This determines whether
 	 * or not to render the shared face of two adjacent blocks and also whether
 	 * the player can attach torches, redstone wire, etc to this block.
-	 *
+	 */
 	public boolean isOpaqueCube()
 	{
 		return false;
@@ -92,16 +92,16 @@ public class GlaciaPortal extends BlockBreakable
 	/**
 	 * Checks to see if this location is valid to create a portal and will
 	 * return True if it does. Args: world, x, y, z
-	 *
+	 */
 	public boolean tryToCreatePortal(World world, int x, int y, int z)
 	{
 		byte b0 = 0;
 		byte b1 = 0;
-		if (world.getBlockId(x - 1, y, z) == Blocks.ice.blockID || world.getBlockId(x + 1, y, z) == Block.ice.blockID)
+		if (world.getBlock(x - 1, y, z) == Blocks.ice || world.getBlock(x + 1, y, z) == Blocks.ice)
 		{
 			b0 = 1;
 		}
-		if (world.getBlockId(x, y, z - 1) == Blocks.ice.blockID || world.getBlockId(x, y, z + 1) == Block.ice.blockID)
+		if (world.getBlock(x, y, z - 1) == Blocks.ice || world.getBlock(x, y, z + 1) == Blocks.ice)
 		{
 			b1 = 1;
 		}
@@ -110,7 +110,7 @@ public class GlaciaPortal extends BlockBreakable
 			return false;
 		} else
 		{
-			if (world.getBlockId(x - b0, y, z - b1) == 0)
+			if (world.getBlock(x - b0, y, z - b1) == 0)
 			{
 				x -= b0;
 				z -= b1;
@@ -124,14 +124,14 @@ public class GlaciaPortal extends BlockBreakable
 					boolean flag = l == -1 || l == 2 || i1 == -1 || i1 == 3;
 					if (l != -1 && l != 2 || i1 != -1 && i1 != 3)
 					{
-						int j1 = world.getBlockId(x + b0 * l, y + i1, z + b1 * l);
+						int j1 = world.getBlock(x + b0 * l, y + i1, z + b1 * l);
 						if (flag)
 						{
-							if (j1 != Blocks.ice.blockID)
+							if (j1 != Blocks.ice)
 							{
 								return false;
 							}
-						} else if (j1 != 0 && j1 != EGBlockList.blueFire.blockID)
+						} else if (j1 != 0 && j1 != EGBlockList.blueFire)
 						{
 							return false;
 						}
@@ -142,7 +142,7 @@ public class GlaciaPortal extends BlockBreakable
 			{
 				for (i1 = 0; i1 < 3; ++i1)
 				{
-					world.setBlock(x + b0 * l, y + i1, z + b1 * l, EGBlockList.glaciaPortal.blockID, 0, 2);
+					world.setBlock(x + b0 * l, y + i1, z + b1 * l, EGBlockList.glaciaPortal, 0, 2);
 				}
 			}
 			return true;
@@ -153,40 +153,40 @@ public class GlaciaPortal extends BlockBreakable
 	 * Lets the block know when one of its neighbor changes. Doesn't know which
 	 * neighbor changed (coordinates passed are their own) Args: x, y, z,
 	 * neighbor blockID
-	 *
+	 */
 	public void onNeighborBlockChange(World world, int x, int y, int z, int par5)
 	{
 		byte b0 = 0;
 		byte b1 = 1;
-		if (world.getBlockId(x - 1, y, z) == this.blockID || world.getBlockId(x + 1, y, z) == this.blockID)
+		if (world.getBlock(x - 1, y, z) == this || world.getBlock(x + 1, y, z) == this)
 		{
 			b0 = 1;
 			b1 = 0;
 		}
 		int i1;
-		for (i1 = y; world.getBlockId(x, i1 - 1, z) == this.blockID; --i1)
+		for (i1 = y; world.getBlock(x, i1 - 1, z) == this; --i1)
 		{
 			;
 		}
-		if (world.getBlockId(x, i1 - 1, z) != Blocks.ice.blockID)
+		if (world.getBlock(x, i1 - 1, z) != Blocks.ice)
 		{
 			world.setBlockToAir(x, y, z);
 		} else {
 			int j1;
-			for (j1 = 1; j1 < 4 && world.getBlockId(x, i1 + j1, z) == this.blockID; ++j1)
+			for (j1 = 1; j1 < 4 && world.getBlock(x, i1 + j1, z) == this; ++j1)
 			{
 				;
 			}
-			if (j1 == 3 && world.getBlockId(x, i1 + j1, z) == Blocks.ice.blockID)
+			if (j1 == 3 && world.getBlock(x, i1 + j1, z) == Blocks.ice)
 			{
-				boolean flag = world.getBlockId(x - 1, y, z) == this.blockID || world.getBlockId(x + 1, y, z) == this.blockID;
-				boolean flag1 = world.getBlockId(x, y, z - 1) == this.blockID || world.getBlockId(x, y, z + 1) == this.blockID;
+				boolean flag = world.getBlock(x - 1, y, z) == this || world.getBlock(x + 1, y, z) == this;
+				boolean flag1 = world.getBlock(x, y, z - 1) == this || world.getBlock(x, y, z + 1) == this;
 				if (flag && flag1)
 				{
 					world.setBlockToAir(x, y, z);
 				} else
 				{
-					if ((world.getBlockId(x + b0, y, z + b1) != Blocks.ice.blockID || world.getBlockId(x - b0, y, z - b1) != this.blockID) && (world.getBlockId(x - b0, y, z - b1) != Blocks.ice.blockID || world.getBlockId(x + b0, y, z + b1) != this.blockID))
+					if ((world.getBlock(x + b0, y, z + b1) != Blocks.ice || world.getBlock(x - b0, y, z - b1) != this) && (world.getBlock(x - b0, y, z - b1) != Blocks.ice || world.getBlock(x + b0, y, z + b1) != this))
 					{
 						world.setBlockToAir(x, y, z);
 					}
@@ -202,18 +202,18 @@ public class GlaciaPortal extends BlockBreakable
 	/**
 	 * Returns true if the given side of this block type should be rendered, if the adjacent block is at the given
 	 * coordinates. Args: blockAccess, x, y, z, side
-	 *
+	 */
 	public boolean shouldSideBeRendered(IBlockAccess blockAccess, int x, int y, int z, int side)
 	{
-		if (blockAccess.getBlockId(x, y, z) == this.blockID)
+		if (blockAccess.getBlock(x, y, z) == this)
 		{
 			return false;
 		} else
 		{
-			boolean flag = blockAccess.getBlockId(x - 1, y, z) == this.blockID && blockAccess.getBlockId(x - 2, y, z) != this.blockID;
-			boolean flag1 = blockAccess.getBlockId(x + 1, y, z) == this.blockID && blockAccess.getBlockId(x + 2, y, z) != this.blockID;
-			boolean flag2 = blockAccess.getBlockId(x, y, z - 1) == this.blockID && blockAccess.getBlockId(x, y, z - 2) != this.blockID;
-			boolean flag3 = blockAccess.getBlockId(x, y, z + 1) == this.blockID && blockAccess.getBlockId(x, y, z + 2) != this.blockID;
+			boolean flag = blockAccess.getBlock(x - 1, y, z) == this && blockAccess.getBlock(x - 2, y, z) != this;
+			boolean flag1 = blockAccess.getBlock(x + 1, y, z) == this && blockAccess.getBlock(x + 2, y, z) != this;
+			boolean flag2 = blockAccess.getBlock(x, y, z - 1) == this && blockAccess.getBlock(x, y, z - 2) != this;
+			boolean flag3 = blockAccess.getBlock(x, y, z + 1) == this && blockAccess.getBlock(x, y, z + 2) != this;
 			boolean flag4 = flag || flag1;
 			boolean flag5 = flag2 || flag3;
 			return flag4 && side == 4 ? true : (flag4 && side == 5 ? true : (flag5 && side == 2 ? true : flag5 && side == 3));
@@ -222,7 +222,7 @@ public class GlaciaPortal extends BlockBreakable
 
 	/**
 	 * Returns the quantity of items to drop on block destruction.
-	 *
+	 */
 	public int quantityDropped(Random par1Random)
 	{
 		return 0;
@@ -231,7 +231,7 @@ public class GlaciaPortal extends BlockBreakable
 	/**
 	 * Triggered whenever an entity collides with this block (enters into the
 	 * block). Args: world, x, y, z, entity
-	 *
+	 */
 	public void onEntityCollidedWithBlock(World world, int x, int y, int z, Entity entity)
 	{
 		if ((entity.ridingEntity == null) && (entity.riddenByEntity == null) && ((entity instanceof EntityPlayerMP)))
@@ -254,7 +254,7 @@ public class GlaciaPortal extends BlockBreakable
 	@SideOnly(Side.CLIENT)
 	/**
 	 * Returns which pass should this block be rendered on. 0 for solids and 1 for alpha
-	 *
+	 */
 	public int getRenderBlockPass()
 	{
 		return 1;
@@ -263,7 +263,7 @@ public class GlaciaPortal extends BlockBreakable
 	@SideOnly(Side.CLIENT)
 	/**
 	 * A randomly called display update to be able to add particles or other items for display
-	 *
+	 */
 	public void randomDisplayTick(World world, int x, int y, int z, Random rand)
 	{
 		if (rand.nextInt(100) == 0)
@@ -282,7 +282,7 @@ public class GlaciaPortal extends BlockBreakable
 			d3 = ((double) rand.nextFloat() - 0.5D) * 0.5D;
 			d4 = ((double) rand.nextFloat() - 0.5D) * 0.5D;
 			d5 = ((double) rand.nextFloat() - 0.5D) * 0.5D;
-			if (world.getBlockId(x - 1, y, z) != this.blockID && world.getBlockId(x + 1, y, z) != this.blockID)
+			if (world.getBlock(x - 1, y, z) != this && world.getBlock(x + 1, y, z) != this)
 			{
 				d0 = (double) x + 0.5D + 0.25D * (double) i1;
 				d3 = (double) (rand.nextFloat() * 2.0F * (float) i1);
@@ -298,9 +298,9 @@ public class GlaciaPortal extends BlockBreakable
 	@SideOnly(Side.CLIENT)
 	/**
 	 * only called by clickMiddleMouseButton , and passed to inventory.setCurrentItem (along with isCreative)
-	 *
+	 */
 	public int idPicked(World world, int x, int y, int z)
 	{
 		return 0;
 	}
-}*/
+}

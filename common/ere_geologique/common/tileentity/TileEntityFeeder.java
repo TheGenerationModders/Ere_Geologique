@@ -131,7 +131,7 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 
 		for(int var3 = 0; var3 < var2.tagCount(); ++var3)
 		{
-			NBTTagCompound var4 = (NBTTagCompound)var2.tagAt(var3);
+			NBTTagCompound var4 = (NBTTagCompound)var2.getCompoundTagAt(var3);
 			byte var5 = var4.getByte("Slot");
 
 			if(var5 >= 0 && var5 < this.feederItemStacks.length)
@@ -253,7 +253,7 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 
 	public boolean isUseableByPlayer(EntityPlayer var1)
 	{
-		return this.worldObj.getBlockTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : var1.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
+		return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : var1.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
 	}
 
 	public void openChest()
@@ -306,11 +306,6 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 		return this.VegCurrent;
 	}
 
-	public boolean isInvNameLocalized()
-	{
-		return false;
-	}
-
 	public int[] getAccessibleSlotsFromSide(int var1)
 	{
 		if(var1 == 4)
@@ -340,14 +335,26 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 	}
 
 	@Override
-	public String func_145825_b()
+	public String getInventoryName()
 	{
 		return null;
 	}
 
 	@Override
-	public boolean func_145818_k_()
+	public boolean hasCustomInventoryName()
 	{
 		return false;
+	}
+
+	@Override
+	public void openInventory()
+	{
+		
+	}
+
+	@Override
+	public void closeInventory()
+	{
+		
 	}
 }

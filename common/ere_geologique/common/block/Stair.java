@@ -9,7 +9,7 @@ public class Stair extends BlockStairs
 	public Stair(Block block, int metadata)
     {
         super(block, metadata);
-        this.func_149647_a(EGCreativeTab.EGCreativeTabBlock);
-        this.func_149713_g(0);
+        this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
+        this.setLightOpacity(0);
     }
 }

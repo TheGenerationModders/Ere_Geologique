@@ -29,32 +29,32 @@ public class TileEntityDrum extends TileEntity
     /**
      * Writes a tile entity to NBT.
      */
-    public void func_145841_b(NBTTagCompound var1)
+    public void writeToNBT(NBTTagCompound var1)
     {
-        super.func_145841_b(var1);
+        super.writeToNBT(var1);
         var1.setByte("Order", (byte)this.Order.ordinal());
     }
 
     /**
      * Reads a tile entity from NBT.
      */
-    public void func_145839_a(NBTTagCompound var1)
+    public void readFromNBT(NBTTagCompound var1)
     {
-        super.func_145839_a(var1);
+        super.readFromNBT(var1);
         this.Order = EnumOrderType.values()[var1.getByte("Order")];
     }
 
     public void TriggerOrder(EntityPlayer var1)
     {
         this.Order = this.Order.Next();
-        this.field_145850_b.playSoundEffect((double)this.field_145851_c, (double)this.field_145848_d, (double)this.field_145849_e, "ere_geologique:drum_single", 8.0F, 1.0F);//(float)Math.pow(2.0D, (double)(this.Order.ordinal()/*.ToInt() - 1*/)));
+        this.worldObj.playSoundEffect((double)this.xCoord, (double)this.yCoord, (double)this.zCoord, "ere_geologique:drum_single", 8.0F, 1.0F);//(float)Math.pow(2.0D, (double)(this.Order.ordinal()/*.ToInt() - 1*/)));
         EreGeologique.ShowMessage(StatCollector.translateToLocal("drum.trigger") + StatCollector.translateToLocal("order." + this.Order.toString()), var1);
         this.onInventoryChanged();
     }
 
     public boolean SendOrder(Item item, EntityPlayer player)
     {
-        this.field_145850_b.playSoundEffect((double)this.field_145851_c, (double)this.field_145848_d, (double)this.field_145849_e, "ere_geologique:drum_triple", 8.0F, 1.0F); // (float)Math.pow(2.0D, (double)(this.Order.ordinal()/*ToInt() - 1*/)));
+        this.worldObj.playSoundEffect((double)this.xCoord, (double)this.yCoord, (double)this.zCoord, "ere_geologique:drum_triple", 8.0F, 1.0F); // (float)Math.pow(2.0D, (double)(this.Order.ordinal()/*ToInt() - 1*/)));
 
         if (item != EGItemList.skullStick)
         {
@@ -66,7 +66,7 @@ public class TileEntityDrum extends TileEntity
                 }
             }
 
-            List list = this.field_145850_b.getEntitiesWithinAABB(Dinosaure.class, AxisAlignedBB.getAABBPool().getAABB((double)this.field_145851_c, (double)this.field_145848_d, (double)this.field_145849_e, (double)this.field_145851_c + 1.0D, (double)this.field_145848_d + 1.0D, (double)this.field_145849_e + 1.0D).expand(30.0D, 4.0D, 30.0D));
+            List list = this.worldObj.getEntitiesWithinAABB(Dinosaure.class, AxisAlignedBB.getAABBPool().getAABB((double)this.xCoord, (double)this.yCoord, (double)this.zCoord, (double)this.xCoord + 1.0D, (double)this.yCoord + 1.0D, (double)this.zCoord + 1.0D).expand(30.0D, 4.0D, 30.0D));
             Iterator it = list.iterator();
 
             while (it.hasNext())
@@ -74,7 +74,7 @@ public class TileEntityDrum extends TileEntity
                 Entity entity = (Entity)it.next();
                 Dinosaure dinosaure = (Dinosaure)entity;
 
-                if (item == dinosaure.SelfType.OrderItem && dinosaure.isTamed() && player.func_146103_bH().getName().equalsIgnoreCase(dinosaure.getOwnerName()))
+                if (item == dinosaure.SelfType.OrderItem && dinosaure.isTamed() && player.getGameProfile().getName().equalsIgnoreCase(dinosaure.getOwnerName()))
                 {
                     dinosaure.SetOrder(this.Order);
                 }
@@ -83,7 +83,7 @@ public class TileEntityDrum extends TileEntity
         else
         {
             EreGeologique.ShowMessage(StatCollector.translateToLocal("drum.tRex" + String.valueOf(this.Order.ordinal() + 1)), player);
-            List list = this.field_145850_b.getEntitiesWithinAABB(TRex.class, AxisAlignedBB.getAABBPool().getAABB((double)this.field_145851_c, (double)this.field_145848_d, (double)this.field_145849_e, (double)this.field_145851_c + 1.0D, (double)this.field_145848_d + 1.0D, (double)this.field_145849_e + 1.0D).expand(50.0D, 4.0D, 50.0D));
+            List list = this.worldObj.getEntitiesWithinAABB(TRex.class, AxisAlignedBB.getAABBPool().getAABB((double)this.xCoord, (double)this.yCoord, (double)this.zCoord, (double)this.xCoord + 1.0D, (double)this.yCoord + 1.0D, (double)this.zCoord + 1.0D).expand(50.0D, 4.0D, 50.0D));
             Iterator it = list.iterator();
 
             while (it.hasNext())

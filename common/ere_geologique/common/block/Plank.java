@@ -21,8 +21,8 @@ public class Plank extends Block
 	
 	public Plank()
     {
-        super(Material.field_151575_d);
-        this.func_149647_a(EGCreativeTab.EGCreativeTabBlock);
+        super(Material.wood);
+        this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
     }
     
     @SideOnly(Side.CLIENT)
@@ -58,7 +58,7 @@ public class Plank extends Block
 
         for (int i = 0; i < this.IconArray.length; ++i)
         {
-            this.IconArray[i] = par1IconRegister.registerIcon(this.func_149641_N() + "_" + woodType[i]);
+            this.IconArray[i] = par1IconRegister.registerIcon(this.getTextureName() + "_" + woodType[i]);
         }
     }
 }

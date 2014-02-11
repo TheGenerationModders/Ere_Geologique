@@ -24,8 +24,8 @@ public class Wood extends BlockRotatedPillar
 	
     public Wood()
     {
-        super(Material.field_151575_d);
-        this.func_149647_a(EGCreativeTab.EGCreativeTabBlock);
+        super(Material.wood);
+        this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
     }
     
     public int quantityDropped(Random rand)
@@ -35,11 +35,11 @@ public class Wood extends BlockRotatedPillar
     
     public Item idDropped(Item item, Random rand, int fortune)
     {
-        return Item.func_150898_a(EGBlockList.wood);
+        return Item.getItemFromBlock(EGBlockList.wood);
     }
     
     @SideOnly(Side.CLIENT)
-    protected IIcon func_150163_b(int par1)
+    protected IIcon getSideIcon(int par1)
     {
         return this.IconArray[par1];
     }
@@ -77,8 +77,8 @@ public class Wood extends BlockRotatedPillar
 
         for (int i = 0; i < this.IconArray.length; ++i)
         {
-            this.IconArray[i] = register.registerIcon(this.func_149641_N() + "_" + woodType[i]);
-            this.wood_top[i] = register.registerIcon(this.func_149641_N() + "_" + woodType[i] + "_top");
+            this.IconArray[i] = register.registerIcon(this.getTextureName() + "_" + woodType[i]);
+            this.wood_top[i] = register.registerIcon(this.getTextureName() + "_" + woodType[i] + "_top");
         }
     }
 }

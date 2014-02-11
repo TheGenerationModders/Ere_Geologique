@@ -1,4 +1,4 @@
-/*package ere_geologique.common.dimension;
+package ere_geologique.common.dimension;
 
 import java.util.List;
 import java.util.Random;
@@ -463,4 +463,4 @@ public class ChunkProviderGlacia implements IChunkProvider
 	{
 
 	}
-}*/
+}

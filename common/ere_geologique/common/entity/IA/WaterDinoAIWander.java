@@ -147,7 +147,6 @@ public class WaterDinoAIWander extends EntityAIBase
         {
             this.entity.renderYawOffset = this.entity.rotationYaw = -((float)Math.atan2(this.entity.motionX, this.entity.motionZ)) * 180.0F / (float)Math.PI;
         }
- 
     }
     
 
@@ -162,7 +161,7 @@ public class WaterDinoAIWander extends EntityAIBase
         AxisAlignedBB axisalignedbb = this.entity.boundingBox.copy();
         axisalignedbb.offset(d4, d5, d6);
 
-    	while (this.entity.worldObj.isAABBInMaterial(axisalignedbb, Material.field_151579_a))
+    	while (this.entity.worldObj.isAABBInMaterial(axisalignedbb, Material.air))
     	{
         axisalignedbb.offset(d4, d5, d6);
         d5 -= 1;      		
@@ -176,7 +175,6 @@ public class WaterDinoAIWander extends EntityAIBase
                 return false;
             }
         }
-    	
         return true;
     }
 }

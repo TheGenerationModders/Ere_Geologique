@@ -13,7 +13,7 @@ public class ReinforcedGlass extends BlockBreakable
 	public ReinforcedGlass(Material material, boolean par3)
 	{
 		super("ere_geologique:reinforced_glass", material, par3);
-		this.func_149647_a(EGCreativeTab.EGCreativeTabBlock);
+		this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
 	}
 	public int quantityDropped(Random par1Random)
     {

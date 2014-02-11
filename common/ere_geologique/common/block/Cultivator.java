@@ -41,18 +41,18 @@ public class Cultivator extends BlockContainer
 
     public Cultivator(boolean var2)
     {
-        super(Material.field_151592_s);
+        super(Material.glass);
         this.isActive = var2;
     }
 
     public Item idDropped(int var1, Random var2, int var3)
     {
-        return Item.func_150898_a(EGBlockList.cultivatorIdle);
+        return Item.getItemFromBlock(EGBlockList.cultivatorIdle);
     }
 
     public void onBlockAdded(World world, int x, int y, int z)
     {
-        super.func_149726_b(world, x, y, z);
+        super.onBlockAdded(world, x, y, z);
         this.setDefaultDirection(world, x, y, z);
     }
 
@@ -60,10 +60,10 @@ public class Cultivator extends BlockContainer
     {
         if (!world.isRemote)
         {
-            Block l = world.func_147439_a(x, y, z - 1);
-            Block i1 = world.func_147439_a(x, y, z + 1);
-            Block j1 = world.func_147439_a(x - 1, y, z);
-            Block k1 = world.func_147439_a(x + 1, y, z);
+            Block l = world.getBlock(x, y, z - 1);
+            Block i1 = world.getBlock(x, y, z + 1);
+            Block j1 = world.getBlock(x - 1, y, z);
+            Block k1 = world.getBlock(x + 1, y, z);
             byte b0 = 3;
 
             if (l.func_149730_j() && !i1.func_149730_j())
@@ -92,14 +92,14 @@ public class Cultivator extends BlockContainer
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister par1IconRegister)
     {
-        this.field_149761_L = par1IconRegister.registerIcon(this.isActive? "ere_geologique:Culture_Sides_Active" : "ere_geologique:Culture_Sides_Idle");
+        this.blockIcon = par1IconRegister.registerIcon(this.isActive? "ere_geologique:Culture_Sides_Active" : "ere_geologique:Culture_Sides_Idle");
         this.Bottom = par1IconRegister.registerIcon("ere_geologique:Culture_Bottom");
         this.Top = par1IconRegister.registerIcon("ere_geologique:Culture_Top");
     }
 
     public IIcon getIcon(int par1, int par2)
     {
-        return par1 == 1 ? this.Top : (par1 != 0 ? this.field_149761_L : this.Bottom);
+        return par1 == 1 ? this.Top : (par1 != 0 ? this.blockIcon : this.Bottom);
     }
 
     @SideOnly(Side.CLIENT)
@@ -121,24 +121,24 @@ public class Cultivator extends BlockContainer
     public static void updateFurnaceBlockState(boolean var0, World world, int x, int y, int z)
     {
         int var5 = world.getBlockMetadata(x, y, z);
-        TileEntity tileEntity = world.func_147438_o(x, y, z);
+        TileEntity tileEntity = world.getTileEntity(x, y, z);
         keepFurnaceInventory = true;
 
         if (var0)
         {
-            world.func_147449_b(x, y, z, EGBlockList.cultivatorActive);
+            world.setBlock(x, y, z, EGBlockList.cultivatorActive);
         }
         else
         {
-            world.func_147449_b(x, y, z, EGBlockList.cultivatorIdle);
+            world.setBlock(x, y, z, EGBlockList.cultivatorIdle);
         }
 
         keepFurnaceInventory = false;
         world.setBlockMetadataWithNotify(x, y, z, var5,2);
         if(tileEntity != null)
         {
-            tileEntity.func_145829_t();
-            world.func_147455_a(x, y, z, tileEntity);
+            tileEntity.validate();
+            world.setTileEntity(x, y, z, tileEntity);
         }
     }
     /*
@@ -186,14 +186,14 @@ public class Cultivator extends BlockContainer
         }
 
         this.ReturnIron(world, x, y, z);
-        world.setBlock(x, y, z, 0);
-        world.removeBlockTileEntity(x, y, z);
+        world.setBlock(x, y, z, this, 0, z);
+        world.removeTileEntity(x, y, z);
 
         if (var5)
         {
             Object var9 = null;
-            world.playAuxSFX(2001, x, y, z, Blocks.glass.blockID);
-            world.func_147449_b(x, y, z, Blocks.water);
+            //world.playAuxSFX(2001, x, y, z, Blocks.glass);
+            world.setBlock(x, y, z, Blocks.water);
 
             if (world.isRemote)
             {
@@ -229,7 +229,7 @@ public class Cultivator extends BlockContainer
     {
         if (!keepFurnaceInventory)
         {
-            TileEntityCultivator tileEntity = (TileEntityCultivator)world.func_147438_o(x, y, z);
+            TileEntityCultivator tileEntity = (TileEntityCultivator)world.getTileEntity(x, y, z);
 
             if(tileEntity instanceof TileEntityCultivator)
             {
@@ -264,7 +264,7 @@ public class Cultivator extends BlockContainer
 		        }
             }
         }
-        super.func_149749_a(world, x, y, z, var5, var6);
+        super.breakBlock(world, x, y, z, var5, var6);
     }
 
     public boolean hasComparatorInputOverride()
@@ -274,17 +274,17 @@ public class Cultivator extends BlockContainer
 
     public int getComparatorInputOverride(World par1World, int par2, int par3, int par4, int par5)
     {
-    	return Container.calcRedstoneFromInventory((IInventory)par1World.func_147438_o(par2, par3, par4));
+    	return Container.calcRedstoneFromInventory((IInventory)par1World.getTileEntity(par2, par3, par4));
     }
 
     @SideOnly(Side.CLIENT)
     public Item idPicked(World world, int x, int y, int z)
     {
-    	return Item.func_150898_a(EGBlockList.cultivatorIdle);
+    	return Item.getItemFromBlock(EGBlockList.cultivatorIdle);
     }
 
 	@Override
-	public TileEntity func_149915_a(World world, int var2)
+	public TileEntity createNewTileEntity(World world, int var2)
 	{
 		return new TileEntityCultivator();
 	}
