@@ -255,7 +255,7 @@ public class Stegosaurus extends Dinosaure
             }
             else if (var3 != this && var3 != null)
             {
-                if (this.isTamed() && var3 instanceof EntityPlayer && ((EntityPlayer)var3).username.equalsIgnoreCase(this.getOwnerName()))
+                if (this.isTamed() && var3 instanceof EntityPlayer && ((EntityPlayer)var3).getCommandSenderName().equalsIgnoreCase(this.getOwnerName()))
                 {
                     return true;
                 }

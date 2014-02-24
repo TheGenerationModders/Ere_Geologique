@@ -498,7 +498,7 @@ public class Dilophosaurus extends Dinosaure
             this.attackEntityFrom(DamageSource.fall, 0);//Like cats, they don't suffer fall damage
             Block var3 = this.worldObj.getBlock(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY - 0.20000000298023224D - (double)this.yOffset), MathHelper.floor_double(this.posZ));
 
-            if (var3 > 0)
+            if ((!this.worldObj.isAirBlock(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY - 0.20000000298023224D - (double)this.yOffset), MathHelper.floor_double(this.posZ))))
             {
                 SoundType var4 = var3.stepSound;
                 this.worldObj.playSoundAtEntity(this, var4.getBreakSound(), var4.getVolume() * 0.5F, var4.getPitch() * 0.75F);

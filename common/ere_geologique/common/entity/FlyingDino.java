@@ -2,6 +2,7 @@ package ere_geologique.common.entity;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
@@ -80,7 +81,7 @@ public class FlyingDino extends Dinosaure
 				f2 = 0.54600006F;
 				Block i = this.worldObj.getBlock(MathHelper.floor_double(this.posX),	MathHelper.floor_double(this.boundingBox.minY) - 1, MathHelper.floor_double(this.posZ));
 
-				if (i > 0)
+				if (Block.getIdFromBlock(i) > 0)
 				{
 					f2 = i.slipperiness * 0.91F;
 				}
@@ -95,7 +96,7 @@ public class FlyingDino extends Dinosaure
 				f2 = 0.54600006F;
 				Block j = this.worldObj.getBlock(MathHelper.floor_double(this.posX),	MathHelper.floor_double(this.boundingBox.minY) - 1,	MathHelper.floor_double(this.posZ));
 
-				if (j > 0)
+				if (Block.getIdFromBlock(j) > 0)
 				{
 					f2 = j.slipperiness * 0.91F;
 				}

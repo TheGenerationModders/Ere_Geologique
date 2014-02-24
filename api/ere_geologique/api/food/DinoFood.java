@@ -13,22 +13,12 @@ public class DinoFood
 
 	public static class DinoFoodEntry
 	{
-		private int id;
+		private Item item;
 		//private Class preyClass;
 		private int metadata;
 		private int foodValue;
 		private int healValue;
 		private EnumFoodType foodType;
-
-		public DinoFoodEntry(Block block, int metadata, int food, int heal, EnumFoodType type)
-		{
-			this(block, metadata, food, heal, type);
-		}
-
-		public DinoFoodEntry(Item item, int metadata, int food, int heal, EnumFoodType type)
-		{
-			this(item, metadata, food, heal, type);
-		}
 		
 		/*public DinoFoodEntry(Class pclass, int food, int heal, EnumFoodType type)
 		{
@@ -37,19 +27,24 @@ public class DinoFood
 			this.healValue = heal;
 			this.foodType = type;
 		}*/
-
-		public DinoFoodEntry(int id, int metadata, int food, int heal, EnumFoodType type)
+		
+		public DinoFoodEntry(Block block, int metadata, int food, int heal, EnumFoodType type)
 		{
-			this.id = id;
+			this(Item.getItemFromBlock(block), metadata, food, heal, type);
+		}
+
+		public DinoFoodEntry(Item item, int metadata, int food, int heal, EnumFoodType type)
+		{
+			this.item = item;
 			this.foodValue = food;
 			this.healValue = heal;
 			this.metadata = metadata;
 			this.foodType = type;
 		}
 		
-		public int getId()
+		public Item getItem()
 		{
-			return this.id;
+			return this.item;
 		}
 
 		public int getMetadata()
@@ -84,15 +79,15 @@ public class DinoFood
 				return false;
 			}
 			DinoFoodEntry dinoFood = (DinoFoodEntry)o;
-			return(dinoFood.id == this.id && dinoFood.metadata == this.metadata);
+			return(dinoFood.item == this.item && dinoFood.metadata == this.metadata);
 		}
 	}
 
-	public static boolean isFood(EnumDinoType enumDino, int id, int metadata)
+	public static boolean isFood(EnumDinoType enumDino, Item item, int metadata)
 	{
 		for(DinoFoodEntry validFood : enumDino.dinoFood)
 		{
-			if(validFood.id == id && validFood.getMetadata() == metadata)
+			if(validFood.item == item && validFood.getMetadata() == metadata)
 			{
 				return true;
 			}
@@ -100,35 +95,28 @@ public class DinoFood
 		return false;
 	}
 	
-	public static boolean isDinoFoodByDino(EnumDinoType enumDino, int id, int metadata)
+	public static boolean isDinoFoodByDino(EnumDinoType enumDino, Item item, int metadata)
 	{
 		for(DinoFoodEntry validFood : enumDino.dinoFood)
 		{
-			if(validFood.id == id && validFood.getMetadata() == metadata)
+			if(validFood.item == item && validFood.getMetadata() == metadata)
 			{
 				return true;
 			}
 		}
 		return false;
 	}
+	
+	public static boolean isDinoFoodByDino(EnumDinoType enumDino, Block block, int metadata)
+	{
+		return isDinoFoodByDino(enumDino, Item.getItemFromBlock(block), metadata);
+	}
 
-	public static DinoFoodEntry getFoodByDino(EnumDinoType enumDino, int id, int metadata)
+	public static DinoFoodEntry getFoodByDino(EnumDinoType enumDino, Item item, int metadata)
 	{
 		for(DinoFoodEntry validFood : enumDino.dinoFood)
 		{
-			if(validFood.id == id && validFood.getMetadata() == metadata)
-			{
-				return validFood;
-			}
-		}
-		return null;
-	}
-
-	public static DinoFoodEntry getGlobalFood(int id, int metadata)
-	{
-		for(DinoFoodEntry validFood : globalDinoFood)
-		{
-			if(validFood.id == id && validFood.getMetadata() == metadata)
+			if(validFood.item == item && validFood.getMetadata() == metadata)
 			{
 				return validFood;
 			}
@@ -136,11 +124,28 @@ public class DinoFood
 		return null;
 	}
 	
-	public static boolean isGlobalDinoFood(int id, int metadata)
+	public static DinoFoodEntry getFoodByDino(EnumDinoType enumDino, Block block, int metadata)
+	{
+		return getFoodByDino(enumDino, Item.getItemFromBlock(block), metadata);
+	}
+
+	public static DinoFoodEntry getGlobalFood(Item item, int metadata)
 	{
 		for(DinoFoodEntry validFood : globalDinoFood)
 		{
-			if(validFood.id == id && validFood.getMetadata() == metadata)
+			if(validFood.item == item && validFood.getMetadata() == metadata)
+			{
+				return validFood;
+			}
+		}
+		return null;
+	}
+	
+	public static boolean isGlobalDinoFood(Item item, int metadata)
+	{
+		for(DinoFoodEntry validFood : globalDinoFood)
+		{
+			if(validFood.item == item && validFood.getMetadata() == metadata)
 			{
 				return true;
 			}

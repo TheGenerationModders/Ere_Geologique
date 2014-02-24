@@ -713,7 +713,7 @@ public class Pterosaure extends Dinosaure
 
             try
             {
-                var4.writeInt(this.entityId);
+                var4.writeInt(this.getEntityId());
                 var4.writeFloat(this.AirAngle);
                 var4.writeFloat(this.AirPitch);
                 var4.writeFloat(this.WingState);

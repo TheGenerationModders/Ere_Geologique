@@ -6,11 +6,10 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.network.INetworkManager;
-import net.minecraft.network.packet.Packet;
-import net.minecraft.network.packet.Packet132TileEntityData;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.util.ForgeDirection;
 import ere_geologique.api.food.DinoFood;
 import ere_geologique.api.food.EnumFoodType;
 import ere_geologique.common.entity.Dinosaure;
@@ -105,12 +104,12 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 	{
 		NBTTagCompound nbttagcompound = new NBTTagCompound();
 		this.writeToNBT(nbttagcompound);
-		return new Packet132TileEntityData(this.xCoord, this.yCoord, this.zCoord, 4, nbttagcompound);
+		return new S35PacketUpdateTileEntity(this.xCoord, this.yCoord, this.zCoord, 3, nbttagcompound);
 	}
 
-	public void onDataPacket(INetworkManager net, Packet132TileEntityData pkt)
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity pkt)
 	{
-		this.readFromNBT(pkt.data);
+		this.readFromNBT(pkt.func_148857_g());
 	}
 
 	public int getDirection()
@@ -191,9 +190,9 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 		{
 			int var3;
 
-			if(this.feederItemStacks[0] != null && this.MeatCurrent < this.MeatMax && DinoFood.getGlobalFood(this.feederItemStacks[0].itemID, this.feederItemStacks[0].getItemDamage()) != null && DinoFood.getGlobalFood(this.feederItemStacks[0].itemID, this.feederItemStacks[0].getItemDamage()).getFoodType() == EnumFoodType.CARNIVOROUS)
+			if(this.feederItemStacks[0] != null && this.MeatCurrent < this.MeatMax && DinoFood.getGlobalFood(this.feederItemStacks[0].getItem(), this.feederItemStacks[0].getItemDamage()) != null && DinoFood.getGlobalFood(this.feederItemStacks[0].getItem(), this.feederItemStacks[0].getItemDamage()).getFoodType() == EnumFoodType.CARNIVOROUS)
 			{
-				int val = DinoFood.getGlobalFood(this.feederItemStacks[0].itemID, this.feederItemStacks[0].getItemDamage()).getFoodValue();
+				int val = DinoFood.getGlobalFood(this.feederItemStacks[0].getItem(), this.feederItemStacks[0].getItemDamage()).getFoodValue();
 				if(EnumDinoType.isDinoDrop(this.feederItemStacks[0].getItem()))
 					this.ContainType[EnumDinoType.getIndex(this.feederItemStacks[0].getItem())] = true;
 				if(val * this.feederItemStacks[0].stackSize + this.MeatCurrent < this.MeatMax)
@@ -218,10 +217,10 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 				}
 			}
 
-			if(this.feederItemStacks[1] != null && this.VegCurrent < this.VegMax && DinoFood.getGlobalFood(this.feederItemStacks[1].itemID, this.feederItemStacks[1].getItemDamage()) != null && (DinoFood.getGlobalFood(this.feederItemStacks[1].itemID, this.feederItemStacks[1].getItemDamage()).getFoodType() == EnumFoodType.HERBIVOROUS || DinoFood.getGlobalFood(this.feederItemStacks[1].itemID, this.feederItemStacks[1].getItemDamage()).getFoodValue() > 0))// herbivore
+			if(this.feederItemStacks[1] != null && this.VegCurrent < this.VegMax && DinoFood.getGlobalFood(this.feederItemStacks[1].getItem(), this.feederItemStacks[1].getItemDamage()) != null && (DinoFood.getGlobalFood(this.feederItemStacks[1].getItem(), this.feederItemStacks[1].getItemDamage()).getFoodType() == EnumFoodType.HERBIVOROUS || DinoFood.getGlobalFood(this.feederItemStacks[1].getItem(), this.feederItemStacks[1].getItemDamage()).getFoodValue() > 0))// herbivore
 			// part
 			{
-				int val = DinoFood.getGlobalFood(this.feederItemStacks[1].itemID, this.feederItemStacks[1].getItemDamage()).getFoodValue();
+				int val = DinoFood.getGlobalFood(this.feederItemStacks[1].getItem(), this.feederItemStacks[1].getItemDamage()).getFoodValue();
 				if(val * this.feederItemStacks[1].stackSize + this.VegCurrent < this.VegMax)
 				{
 					this.VegCurrent += val * this.feederItemStacks[1].stackSize;

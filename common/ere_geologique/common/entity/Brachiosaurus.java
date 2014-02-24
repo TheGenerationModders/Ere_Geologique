@@ -1,7 +1,7 @@
 package ere_geologique.common.entity;
 
 import io.netty.buffer.ByteBuf;
-import net.minecraft.entity.Entity;
+import net.minecraft.block.Block;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIControlledByPlayer;
@@ -292,9 +292,9 @@ public class Brachiosaurus extends Dinosaure
 
         for (int var6 = var2; var6 <= var2 + var4; ++var6)
         {
-            int var7 = this.worldObj.getBlockId(var1, var6, var3);
-            this.worldObj.playAuxSFX(2001, var1, var6, var3, var7);
-            this.worldObj.setBlock(var1, var6, var3, 0);
+            Block block = this.worldObj.getBlock(var1, var6, var3);
+            this.worldObj.playAuxSFX(2001, var1, var6, var3, Block.getIdFromBlock(block));
+            this.worldObj.setBlockToAir(var1, var6, var3);
         }
     }
 

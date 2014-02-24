@@ -627,7 +627,7 @@ public class Spinosaurus extends Dinosaure implements IWaterDino
                                     var4.dropBlockAsItem(this.worldObj, var1, var2, var3, 1, 0);
                                 }
 
-                                this.worldObj.setBlock(var1, var2, var3, 0);
+                                this.worldObj.setBlockToAir(var1, var2, var3);
                                 destroyed++;
                                 //this.RushTick = 10;
                             }

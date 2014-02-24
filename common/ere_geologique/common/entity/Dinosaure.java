@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Random;
 import java.util.logging.Level;
 
-import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentThorns;
 import net.minecraft.entity.Entity;
@@ -590,7 +589,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
 
         for (DinoFoodEntry list : this.SelfType.dinoFood)
         {
-        	pedia.AddMiniItem(Item.itemsList[list.getId()]);
+        	pedia.AddMiniItem(list.getItem());
         }
         //show all blocks the dino can eat
     }
@@ -603,7 +602,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
         int i = itemStack.stackSize;
 
         //it looks like the blocks are missing here...cant be eaten
-        if (this.IsHungry() && DinoFood.isFood(this.SelfType, itemStack, itemStack.getItemDamage()))
+        if (this.IsHungry() && DinoFood.isFood(this.SelfType, itemStack.getItem(), itemStack.getItemDamage()))
         {
             //The Dino is Hungry and it can eat the item
             //this.showHeartsOrSmokeFX(false);
@@ -611,11 +610,11 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
 
             while (i > 0 && this.getHunger() < this.getMaxHunger())
             {
-                this.setHunger(this.getHunger() + DinoFood.getFoodByDino(this.SelfType, itemStack, itemStack.getItemDamage()).getFoodValue());
+                this.setHunger(this.getHunger() + DinoFood.getFoodByDino(this.SelfType, itemStack.getItem(), itemStack.getItemDamage()).getFoodValue());
 
                 if (!this.worldObj.isRemote) //!this.worldObj.isRemote)
                 {
-                    this.heal(DinoFood.getFoodByDino(this.SelfType, itemStack, itemStack.getItemDamage()).getHealValue());
+                    this.heal(DinoFood.getFoodByDino(this.SelfType, itemStack.getItem(), itemStack.getItemDamage()).getHealValue());
                 }
 
                 i--;
@@ -1071,7 +1070,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
     {
         Item item = this.getDropItem();
 
-        if (item > 0)
+        if (Item.getIdFromItem(item) > 0)
         {
             this.entityDropItem(new ItemStack(item, MathHelper.ceiling_float_int(this.getDinoAge() / 2.0F)/*1*/, 0/* var4*/), 0.5F);
             this.DropRareDrop();
@@ -1189,7 +1188,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
 
         if (this.ItemInMouth != null)
         {
-            var1.setShort("Itemid", (short)this.ItemInMouth.itemID);
+            var1.setShort("Itemid", (short)Item.getIdFromItem(this.ItemInMouth.getItem()));
             var1.setByte("ItemCount", (byte)this.ItemInMouth.stackSize);
             var1.setShort("ItemDamage", (short)this.ItemInMouth.getItemDamage());
         }
@@ -1229,7 +1228,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
 
         if (var3 != -1)
         {
-            this.ItemInMouth = new ItemStack(var3, var4, var5);
+            this.ItemInMouth = new ItemStack(Item.getItemById(var3), var4, var5);
         }
         else
         {
@@ -1338,7 +1337,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
                     return false;
                 }
 
-                if (DinoFood.isDinoFoodByDino(this.SelfType, var2, var2.getItemDamage()))
+                if (DinoFood.isDinoFoodByDino(this.SelfType, var2.getItem(), var2.getItemDamage()))
                 {
                     //Item is one of the dinos food items
                     if (!player.worldObj.isRemote)
@@ -1348,12 +1347,12 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
                             //The Dino is Hungry and it can eat the item
                             //this.showHeartsOrSmokeFX(false);
                             this.worldObj.setEntityState(this, SMOKE_MESSAGE);
-                            this.increaseHunger(DinoFood.getFoodByDino(this.SelfType, var2, var2.getItemDamage()).getFoodValue());
+                            this.increaseHunger(DinoFood.getFoodByDino(this.SelfType, var2.getItem(), var2.getItemDamage()).getFoodValue());
 
                             if (CommandDino.heal_Dinos)
                             {
                                 //System.out.println("Hbefore:"+String.valueOf(this.health));
-                                this.heal(DinoFood.getFoodByDino(this.SelfType, var2, var2.getItemDamage()).getHealValue());
+                                this.heal(DinoFood.getFoodByDino(this.SelfType, var2.getItem(), var2.getItemDamage()).getHealValue());
                                 //System.out.println("ItemHealValueInDino:"+String.valueOf(this.FoodItemList.getItemHeal(var2.itemID)+this.FoodBlockList.getBlockHeal(var2.itemID)));
                                 //System.out.println("Hafter:"+String.valueOf(this.health));
                             }
@@ -1400,10 +1399,10 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
                             }
                             else
                             {
-                                if (DinoFood.getFoodByDino(this.SelfType, ItemInMouth, ItemInMouth.getItemDamage()).getFoodValue() < DinoFood.getFoodByDino(this.SelfType, var2, var2.getItemDamage()).getFoodValue())
+                                if (DinoFood.getFoodByDino(this.SelfType, ItemInMouth.getItem(), ItemInMouth.getItemDamage()).getFoodValue() < DinoFood.getFoodByDino(this.SelfType, var2.getItem(), var2.getItemDamage()).getFoodValue())
                                 {
                                     //The item given is better food for the dino
-                                    entityDropItem(new ItemStack(this.ItemInMouth, 1, 0), 0.5F);//Spit out the old item
+                                    entityDropItem(this.ItemInMouth, 0.5F);//Spit out the old item
                                     this.HoldItem(var2);
                                     --var2.stackSize;
                                     /*if (var2.stackSize <= 0)

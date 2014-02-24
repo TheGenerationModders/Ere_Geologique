@@ -399,7 +399,7 @@ public class DinoEgg extends Entity implements IEntityAdditionalSpawnData
 
             if (this.worldObj.getBlock(var24, var25, var20) == Blocks.snow)
             {
-                this.worldObj.setBlock(var24, var25, var20, 0);
+                this.worldObj.setBlockToAir(var24, var25, var20);
             }
         }
 
