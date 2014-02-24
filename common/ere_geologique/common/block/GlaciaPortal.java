@@ -110,7 +110,7 @@ public class GlaciaPortal extends BlockBreakable
 			return false;
 		} else
 		{
-			if (world.getBlock(x - b0, y, z - b1) == 0)
+			if (world.getBlock(x - b0, y, z - b1) == null)
 			{
 				x -= b0;
 				z -= b1;
@@ -124,14 +124,14 @@ public class GlaciaPortal extends BlockBreakable
 					boolean flag = l == -1 || l == 2 || i1 == -1 || i1 == 3;
 					if (l != -1 && l != 2 || i1 != -1 && i1 != 3)
 					{
-						int j1 = world.getBlock(x + b0 * l, y + i1, z + b1 * l);
+						Block j1 = world.getBlock(x + b0 * l, y + i1, z + b1 * l);
 						if (flag)
 						{
 							if (j1 != Blocks.ice)
 							{
 								return false;
 							}
-						} else if (j1 != 0 && j1 != EGBlockList.blueFire)
+						} else if (j1 != null && j1 != EGBlockList.blueFire)
 						{
 							return false;
 						}

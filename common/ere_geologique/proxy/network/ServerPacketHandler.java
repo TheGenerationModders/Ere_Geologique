@@ -1,4 +1,4 @@
-package ere_geologique.proxy.network;
+/*package ere_geologique.proxy.network;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -62,4 +62,4 @@ public class ServerPacketHandler implements IPacketHandler
 		}
 		return instance;
 	}
-}
+}*/

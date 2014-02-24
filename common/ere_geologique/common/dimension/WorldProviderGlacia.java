@@ -16,12 +16,12 @@ public class WorldProviderGlacia extends WorldProvider
 {
 	private float[] colorsSunriseSunset = new float[4];
 
-	public void registerWorldChunkManager()
+	/*public void registerWorldChunkManager()
 	{
 		this.worldChunkMgr = new WorldChunkManagerHell(BiomeGenBase.icePlains, this.dimensionId, this.dimensionId);
 		this.dimensionId = EGProperties.glaciaID;
 		this.hasNoSky = false;
-	}
+	}*/
 
 	public IChunkProvider createChunkGenerator()
 	{

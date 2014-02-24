@@ -128,7 +128,7 @@ public class ItemBioFossil extends Item
         MovingObjectPosition var23 = this.getMovingObjectPositionFromPlayer(var2, var3, true);
         if(var23==null)
         	return var1;
-        else if(var23.typeOfHit == EnumMovingObjectType.TILE && var2.getBlockMaterial(var23.blockX, var23.blockY, var23.blockZ).isSolid())
+        else if(var23.typeOfHit == MovingObjectPosition.MovingObjectType.ENTITY && var2.getBlock(var23.blockX, var23.blockY, var23.blockZ).getMaterial().isSolid())
 	        {
 	            int var34 = var23.blockX;
 	            int var32 = var23.blockY;

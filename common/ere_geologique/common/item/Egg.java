@@ -59,7 +59,7 @@ public class Egg extends Item
         float var19 = var14 * var16;
         double var20 = 5.0D;
         Vec3 var22 = var13.addVector((double)var18 * var20, (double)var17 * var20, (double)var19 * var20);
-        MovingObjectPosition var23 = world.rayTraceBlocks_do_do(var13, var22, true, false);
+        MovingObjectPosition var23 = world.func_147447_a(var13, var22, true, false, false);
 
         if (var23 == null)
         {
@@ -95,7 +95,7 @@ public class Egg extends Item
             }
             else
             {
-                if (var23.typeOfHit == EnumMovingObjectType.TILE)
+                if (var23.typeOfHit == MovingObjectPosition.MovingObjectType.ENTITY)
                 {
                     int var34 = var23.blockX;
                     int var32 = var23.blockY;
@@ -103,7 +103,7 @@ public class Egg extends Item
 
                     if (!world.isRemote)
                     {
-                        if (world.getBlockId(var34, var32, var33) == Blocks.snow.blockID)
+                        if (world.getBlock(var34, var32, var33) == Blocks.snow)
                         {
                             --var32;
                         }

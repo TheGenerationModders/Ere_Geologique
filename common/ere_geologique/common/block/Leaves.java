@@ -98,12 +98,12 @@ public class Leaves extends BlockLeavesBase implements IShearable
                 {
                     for (int var11 = -var7; var11 <= var7; ++var11)
                     {
-                        int var12 = par1World.getBlock(par2 + var9, par3 + var10, par4 + var11);
+                        //int var12 = par1World.getBlock(par2 + var9, par3 + var10, par4 + var11);
  
-                        if (Block.blocksList[var12] != null)
-                        {
-                            Block.blocksList[var12].beginLeavesDecay(par1World, par2 + var9, par3 + var10, par4 + var11);
-                        }
+                        //if (Block.blocksList[var12] != null)
+                        //{
+                        //    Block.blocksList[var12].beginLeavesDecay(par1World, par2 + var9, par3 + var10, par4 + var11);
+                        //}
                     }
                 }
             }
@@ -143,11 +143,11 @@ public class Leaves extends BlockLeavesBase implements IShearable
                         {
                             for (var14 = -var7; var14 <= var7; ++var14)
                             {
-                                var15 = par1World.getBlock(par2 + var12, par3 + var13, par4 + var14);
+                                //var15 = par1World.getBlock(par2 + var12, par3 + var13, par4 + var14);
  
-                                Block block = Block.blocksList[var15];
+                                //Block block = Block.blocksList[var15];
  
-                                if (block != null && block.canSustainLeaves(par1World, par2 + var12, par3 + var13, par4 + var14))
+                                /*if (block != null && block.canSustainLeaves(par1World, par2 + var12, par3 + var13, par4 + var14))
                                 {
                                     this.adjacentTreeBlocks[(var12 + var11) * var10 + (var13 + var11) * var9 + var14 + var11] = 0;
                                 }
@@ -158,7 +158,7 @@ public class Leaves extends BlockLeavesBase implements IShearable
                                 else
                                 {
                                     this.adjacentTreeBlocks[(var12 + var11) * var10 + (var13 + var11) * var9 + var14 + var11] = -1;
-                                }
+                                }*/
                             }
                         }
                     }
@@ -261,21 +261,21 @@ public class Leaves extends BlockLeavesBase implements IShearable
         return par1 & 4;
     }
     
-    public boolean isOpaqueCube()
+    /*public boolean isOpaqueCube()
     {
         return !this.graphicsLevel;
-    }
+    }*/
     
     public IIcon getIcon(int side, int metadata)
     {
         return (metadata & 4) == 1 ? this.IconArray[this.LEAF][1] : ((metadata & 4) == 3 ? this.IconArray[this.LEAF][3] : this.IconArray[this.LEAF][0]);
     }
     
-    public void setGraphicsLevel(boolean par1)
+   /*public void setGraphicsLevel(boolean par1)
     {
         this.graphicsLevel = par1;
         this.LEAF = par1 ? 0 : 1;
-    }
+    }*/
 
     @SideOnly(Side.CLIENT)
     public void getSubBlocks(Block id, CreativeTabs par2CreativeTabs, List par3List)
@@ -293,7 +293,7 @@ public class Leaves extends BlockLeavesBase implements IShearable
     }
  
     @Override
-    public void registerIcons(IIconRegister par1IconRegister)
+    public void registerBlockIcons(IIconRegister par1IconRegister)
     {
     	for (int i = 0; i < leafTextureTypes.length; ++i)
         {

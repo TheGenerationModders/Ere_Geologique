@@ -13,7 +13,7 @@ public class DinoSoundHandler
     	SoundManager manager = event.manager;
         try
         {
-        	manager.addSound("ere_geologique:triceratops_death.wav");
+        	/*manager.addSound("ere_geologique:triceratops_death.wav");
     		manager.addSound("ere_geologique:triceratops_living1.wav");
     		manager.addSound("ere_geologique:triceratops_living2.wav");
     		manager.addSound("ere_geologique:triceratops_living3.wav");
@@ -73,7 +73,7 @@ public class DinoSoundHandler
     		manager.addSound("ere_geologique:velociraptor_living_wild2.wav");
     		manager.addSound("ere_geologique:whip.wav");
     		manager.addSound("ere_geologique:drum_single.wav");
-    		manager.addSound("ere_geologique:drum_triple.wav");
+    		manager.addSound("ere_geologique:drum_triple.wav");*/
         }
         catch(Exception e)
         {

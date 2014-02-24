@@ -126,7 +126,7 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 	public void readFromNBT(NBTTagCompound nbtTag)
 	{
 		super.readFromNBT(nbtTag);
-		NBTTagList var2 = nbtTag.getTagList("Items");
+		NBTTagList var2 = nbtTag.getTagList("Items", 10);
 		this.feederItemStacks = new ItemStack[this.getSizeInventory()];
 
 		for(int var3 = 0; var3 < var2.tagCount(); ++var3)

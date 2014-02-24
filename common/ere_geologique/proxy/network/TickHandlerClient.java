@@ -1,4 +1,4 @@
-package ere_geologique.proxy.network;
+/*package ere_geologique.proxy.network;
 
 import java.util.EnumSet;
 
@@ -54,4 +54,4 @@ public class TickHandlerClient implements ITickHandler
 			}
 		}
 	}
-}
+}*/

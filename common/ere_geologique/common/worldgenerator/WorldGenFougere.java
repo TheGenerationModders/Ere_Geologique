@@ -1,4 +1,4 @@
-package ere_geologique.common.worldgenerator;
+/*package ere_geologique.common.worldgenerator;
 
 import java.util.Random;
 
@@ -59,9 +59,9 @@ public class WorldGenFougere extends WorldGenerator
                  {
                                      if (i1 >= 0 && i1 < 256)
                                      {
-                                             int i3 = world.getBlockId(k1, i1, i2);
+                                             Block i3 = world.getBlock(k1, i1, i2);
                                              //ce code indique sur quel block l'arbre peut se generer
-                                             if (i3 != 0 && i3 != EGProperties.leavesID && i3 != Blocks.dirt.blockID && i3 != EGProperties.woodID)
+                                             if (i3 != 0 && i3 != EGProperties.leavesID && i3 != Blocks.dirt && i3 != EGProperties.woodID)
                                              {
                                                      flag = false;
                                              }
@@ -79,9 +79,9 @@ public class WorldGenFougere extends WorldGenerator
                      return false;
              }
 
-             int j1 = world.getBlockId(i, j - 1, k);
+             Block j1 = world.getBlock(i, j - 1, k);
 
-             if (j1 != Blocks.dirt.blockID && j1 != Blocks.grass.blockID || j >= 256 - l - 1)
+             if (j1 != Blocks.dirt && j1 != Blocks.grass || j >= 256 - l - 1)
              {
                      return false;
              }
@@ -103,7 +103,7 @@ public class WorldGenFougere extends WorldGenerator
                              {
                                      int l5 = k5 - k;
 
-                                     if ((Math.abs(i5) != i4 || Math.abs(l5) != i4 || random.nextInt(2) != 0 && j3 != 0) && !Block.opaqueCubeLookup[world.getBlockId(k4, j2, k5)])
+                                     if ((Math.abs(i5) != i4 || Math.abs(l5) != i4 || random.nextInt(2) != 0 && j3 != 0) && !Block.opaqueCubeLookup[world.getBlock(k4, j2, k5)])
                                      {
                                              setBlockAndMetadata(world, k4, j2, k5, EGProperties.leavesID, field_48199_d);
                                      }
@@ -113,7 +113,7 @@ public class WorldGenFougere extends WorldGenerator
 
              for (int k2 = 0; k2 < l; k2++)
              {
-                     int k3 = world.getBlockId(i, j + k2, k);
+                     Block k3 = world.getBlock(i, j + k2, k);
 
                      if (k3 != 0 && k3 != EGProperties.leavesID)
                      {
@@ -129,22 +129,22 @@ public class WorldGenFougere extends WorldGenerator
 
                      if (random.nextInt(3) > 0 && world.isAirBlock(i - 1, j + k2, k))
                      {
-                             setBlockAndMetadata(world, i - 1, j + k2, k, Block.dirt.blockID, 8);
+                             setBlockAndMetadata(world, i - 1, j + k2, k, Blocks.dirt, 8);
                      }
 
                      if (random.nextInt(3) > 0 && world.isAirBlock(i + 1, j + k2, k))
                      {
-                             setBlockAndMetadata(world, i + 1, j + k2, k, Block.dirt.blockID, 2);
+                             setBlockAndMetadata(world, i + 1, j + k2, k, Blocks.dirt, 2);
                      }
 
                      if (random.nextInt(3) > 0 && world.isAirBlock(i, j + k2, k - 1))
                      {
-                             setBlockAndMetadata(world, i, j + k2, k - 1, Block.dirt.blockID, 1);
+                             setBlockAndMetadata(world, i, j + k2, k - 1, Blocks.dirt, 1);
                      }
 
                      if (random.nextInt(3) > 0 && world.isAirBlock(i, j + k2, k + 1))
                      {
-                             setBlockAndMetadata(world, i, j + k2, k + 1, Block.dirt.blockID, 4);
+                             setBlockAndMetadata(world, i, j + k2, k + 1, Blocks.dirt, 4);
                      }
              }
 
@@ -159,27 +159,27 @@ public class WorldGenFougere extends WorldGenerator
                              {
                                      for (int j5 = k - j4; j5 <= k + j4; j5++)
                                      {
-                                             if (world.getBlockId(l4, l2, j5) != EGProperties.woodID)
+                                             if (world.getBlock(l4, l2, j5) != EGProperties.woodID)
                                              {
                                                      continue;
                                              }
 
-                                             if (random.nextInt(4) == 0 && world.getBlockId(l4 - 1, l2, j5) == 0)
+                                             if (random.nextInt(4) == 0 && world.getBlock(l4 - 1, l2, j5) == 0)
                                              {
                                                      func_48198_a(world, l4 - 1, l2, j5, 8);
                                              }
 
-                                             if (random.nextInt(4) == 0 && world.getBlockId(l4 + 1, l2, j5) == 0)
+                                             if (random.nextInt(4) == 0 && world.getBlock(l4 + 1, l2, j5) == 0)
                                              {
                                                      func_48198_a(world, l4 + 1, l2, j5, 2);
                                              }
 
-                                             if (random.nextInt(4) == 0 && world.getBlockId(l4, l2, j5 - 1) == 0)
+                                             if (random.nextInt(4) == 0 && world.getBlock(l4, l2, j5 - 1) == 0)
                                              {
                                                      func_48198_a(world, l4, l2, j5 - 1, 1);
                                              }
 
-                                             if (random.nextInt(4) == 0 && world.getBlockId(l4, l2, j5 + 1) == 0)
+                                             if (random.nextInt(4) == 0 && world.getBlock(l4, l2, j5 + 1) == 0)
                                              {
                                                      func_48198_a(world, l4, l2, j5 + 1, 4);
                                              }
@@ -198,11 +198,11 @@ public class WorldGenFougere extends WorldGenerator
 
      private void func_48198_a(World world, int i, int j, int k, int l)
      {
-             setBlockAndMetadata(world, i, j, k, Blocks.dirt.blockID, l);
+             setBlockAndMetadata(world, i, j, k, Blocks.dirt, l);
 
-             for (int i1 = 4; world.getBlockId(i, --j, k) == 0 && i1 > 0; i1--)
+             for (int i1 = 4; world.getBlock(i, --j, k) == 0 && i1 > 0; i1--)
              {
-                     setBlockAndMetadata(world, i, j, k, Blocks.dirt.blockID, l);
+                     setBlockAndMetadata(world, i, j, k, Blocks.dirt, l);
              }
      }
 
@@ -210,4 +210,4 @@ public class WorldGenFougere extends WorldGenerator
      {
 
      }
-}
+}*/

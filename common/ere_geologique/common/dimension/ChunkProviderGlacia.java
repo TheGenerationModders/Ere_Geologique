@@ -108,7 +108,7 @@ public class ChunkProviderGlacia implements IChunkProvider
 							double d16 = d10 - d15;
 							for (int k2 = 0; k2 < 4; ++k2)
 							{
-								if ((d16 += d15) > 0.0D)
+								/*if ((d16 += d15) > 0.0D)
 								{
 									par3ArrayOfByte[j2 += short1] = (byte) Blocks.stone.blockID;
 								} else if (k1 * 8 + l1 < b2)
@@ -117,7 +117,7 @@ public class ChunkProviderGlacia implements IChunkProvider
 								} else
 								{
 									par3ArrayOfByte[j2 += short1] = 0;
-								}
+								}*/
 							}
 							d10 += d12;
 							d11 += d13;
@@ -142,15 +142,15 @@ public class ChunkProviderGlacia implements IChunkProvider
 			for (int var9 = 0; var9 < 16; var9++)
 			{
 				BiomeGenBase var10 = par4ArrayOfBiomeGenBase[(var9 + var8 * 16)];
-				float var11 = var10.getFloatTemperature();
+				//float var11 = var10.getFloatTemperature();
 				int var12 = (int) (this.stoneNoise[(var8 + var9 * 16)] / 3.0D + 3.0D + this.rand.nextDouble() * 0.25D);
 				int var13 = -1;
-				byte var14 = var10.topBlock;
-				byte var15 = var10.fillerBlock;
+				//byte var14 = var10.topBlock;
+				//byte var15 = var10.fillerBlock;
 				for (int var16 = 127; var16 >= 0; var16--)
 				{
 					int var17 = (var9 * 16 + var8) * 128 + var16;
-					if (var16 <= 0 + this.rand.nextInt(5))
+					/*if (var16 <= 0 + this.rand.nextInt(5))
 					{
 						par3ArrayOfByte[var17] = ((byte) Blocks.bedrock.blockID);
 					} else
@@ -203,7 +203,7 @@ public class ChunkProviderGlacia implements IChunkProvider
 								}
 							}
 						}
-					}
+					}*/
 				}
 			}
 		}
@@ -214,7 +214,7 @@ public class ChunkProviderGlacia implements IChunkProvider
 		return provideChunk(par1, par2);
 	}
 
-	public Chunk provideChunk(int par1, int par2)
+	/*public Chunk provideChunk(int par1, int par2)
 	{
 		this.rand.setSeed(par1 * 341873128712L + par2 * 132897987541L);
 		byte[] var3 = new byte[32768];
@@ -238,7 +238,7 @@ public class ChunkProviderGlacia implements IChunkProvider
 		}
 		var4.generateSkylightMap();
 		return var4;
-	}
+	}*/
 
 	private double[] initializeNoiseField(double[] par1ArrayOfDouble, int par2, int par3, int par4, int par5, int par6, int par7)
 	{
@@ -280,7 +280,7 @@ public class ChunkProviderGlacia implements IChunkProvider
 				BiomeGenBase var20 = this.biomesForGeneration[(var14 + 2 + (var15 + 2) * (par5 + 5))];
 				for (int var21 = -var19; var21 <= var19; var21++)
 				{
-					for (int var22 = -var19; var22 <= var19; var22++)
+					/*for (int var22 = -var19; var22 <= var19; var22++)
 					{
 						BiomeGenBase var23 = this.biomesForGeneration[(var14 + var21 + 2 + (var15 + var22 + 2) * (par5 + 5))];
 						float var24 = this.parabolicField[(var21 + 2 + (var22 + 2) * 5)] / (var23.minHeight + 2.0F);
@@ -291,7 +291,7 @@ public class ChunkProviderGlacia implements IChunkProvider
 						var16 += var23.maxHeight * var24;
 						var17 += var23.minHeight * var24;
 						var18 += var24;
-					}
+					}*/
 				}
 				var16 /= var18;
 				var17 /= var18;
@@ -388,7 +388,7 @@ public class ChunkProviderGlacia implements IChunkProvider
 			int var12 = var4 + this.rand.nextInt(16) + 8;
 			int var13 = this.rand.nextInt(128);
 			int var14 = var5 + this.rand.nextInt(16) + 8;
-			new WorldGenLakes(Blocks.water.blockID).generate(this.worldObj, this.rand, var12, var13, var14);
+			new WorldGenLakes(Blocks.water).generate(this.worldObj, this.rand, var12, var13, var14);
 		}
 		var6.decorate(this.worldObj, this.rand, var4, var5);
 		SpawnerAnimals.performWorldGenSpawning(this.worldObj, var6, var4 + 8, var5 + 8, 16, 16, this.rand);
@@ -399,14 +399,14 @@ public class ChunkProviderGlacia implements IChunkProvider
 			for (int var13 = 0; var13 < 16; var13++)
 			{
 				int var14 = this.worldObj.getPrecipitationHeight(var4 + var12, var5 + var13);
-				if (this.worldObj.isBlockFreezable(var12 + var4, var14 - 1, var13 + var5))
+				/*if (this.worldObj.isBlockFreezable(var12 + var4, var14 - 1, var13 + var5))
 				{
 					this.worldObj.setBlock(var12 + var4, var14 - 1, var13 + var5, Blocks.ice.blockID);
-				}
-				if (this.worldObj.canSnowAt(var12 + var4, var14, var13 + var5))
+				}*/
+				/*if (this.worldObj.canSnowAt(var12 + var4, var14, var13 + var5))
 				{
 					this.worldObj.setBlock(var12 + var4, var14, var13 + var5, Blocks.snow.blockID);
-				}
+				}*/
 			}
 		}
 		net.minecraft.block.BlockSand.fallInstantly = false;
@@ -438,10 +438,10 @@ public class ChunkProviderGlacia implements IChunkProvider
 		return var5 == null ? null : var5 .getSpawnableList(par1EnumCreatureType);
 	}
 
-	public ChunkPosition findClosestStructure(World par1World, String par2Str,int par3, int par4, int par5)
+	/*public ChunkPosition findClosestStructure(World par1World, String par2Str,int par3, int par4, int par5)
 	{
 		return ("Stronghold".equals(par2Str))&& (this.strongholdGenerator != null) ? this.strongholdGenerator.getNearestInstance(par1World, par3, par4, par5) : null;
-	}
+	}*/
 
 	public int getLoadedChunkCount()
 	{
@@ -462,5 +462,17 @@ public class ChunkProviderGlacia implements IChunkProvider
 	public void saveExtraData()
 	{
 
+	}
+
+	@Override
+	public Chunk provideChunk(int var1, int var2)
+	{
+		return null;
+	}
+
+	@Override
+	public ChunkPosition func_147416_a(World var1, String var2, int var3, int var4, int var5)
+	{
+		return null;
 	}
 }

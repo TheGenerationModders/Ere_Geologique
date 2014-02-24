@@ -61,10 +61,10 @@ public class GuiNotebook extends GuiScreen
 			 String[] dinoArrayLeft = PediaDinosaure.leftPage;
 			 String[] dinoArrayRight = PediaDinosaure.rightPage;
 			 for(int i = 0; i < dinoArrayLeft.length; i++) {
-				 fontRenderer.drawString(dinoArrayLeft[i], var3, var4+(12*i), 0x2b2b2b, false);
+				 fontRendererObj.drawString(dinoArrayLeft[i], var3, var4+(12*i), 0x2b2b2b, false);
 			 }
 			for(int i2 = 0; i2 < dinoArrayLeft.length; i2++) {
-				fontRenderer.drawString(dinoArrayRight[i2], var3 + 120, var4+(12*i2), 0x2b2b2b, false);
+				fontRendererObj.drawString(dinoArrayRight[i2], var3 + 120, var4+(12*i2), 0x2b2b2b, false);
 			}
 			
 			// fontRenderer.drawString("This needs to be dynamically loaded from a text file.", var3, var4+65, 0x2b2b2b, false);
@@ -159,7 +159,7 @@ public class GuiNotebook extends GuiScreen
 		 {
 			 var3 = 4;
 		 }
-		 fontRenderer.drawString(Integer.toString(BookPages+1), var1+89-var3, var2 + 145, 0x2b2b2b, false);
+		 fontRendererObj.drawString(Integer.toString(BookPages+1), var1+89-var3, var2 + 145, 0x2b2b2b, false);
 	     super.drawScreen(par1, par2, par3);
 	}
 	

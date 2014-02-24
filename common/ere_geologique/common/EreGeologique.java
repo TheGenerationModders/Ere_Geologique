@@ -55,8 +55,8 @@ import ere_geologique.common.recipe.Integration;
 import ere_geologique.common.tileentity.EGTEntityList;
 import ere_geologique.common.worldgenerator.FossilGenerator;
 import ere_geologique.proxy.EGCommonProxy;
-import ere_geologique.proxy.network.ServerPacketHandler;
-import ere_geologique.proxy.network.TickHandlerClient;
+//import ere_geologique.proxy.network.ServerPacketHandler;
+//import ere_geologique.proxy.network.TickHandlerClient;
 
 @Mod(modid = "Ere G\351ologique", name = "Ere G\351ologique", version = Version.VERSION, dependencies = "required-after:Forge@[9.10.1.870,)", acceptedMinecraftVersions=Version.MC_VERSION)
 //@NetworkMod(clientSideRequired = true, serverSideRequired = false, serverPacketHandlerSpec = @SidedPacketHandler(channels = {"EreGeologique"}, packetHandler = ServerPacketHandler.class))
@@ -73,7 +73,7 @@ public class EreGeologique
 	public static Object ToPedia;
 	public static GuiHandler guiHandler = new GuiHandler();
 //	public static IChatListener messagerHandler = new EGMessageHandler();
-	public static TickHandlerClient tickHandlerClient = new TickHandlerClient();
+//	public static TickHandlerClient tickHandlerClient = new TickHandlerClient();
 
 	@EventHandler
 	public void preload(FMLPreInitializationEvent event)

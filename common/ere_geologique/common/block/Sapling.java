@@ -14,7 +14,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.common.creativetabs.EGCreativeTab;
-import ere_geologique.common.worldgenerator.WorldGenFougere;
+//import ere_geologique.common.worldgenerator.WorldGenFougere;
 
 public class Sapling extends BlockSapling
 {
@@ -35,7 +35,7 @@ public class Sapling extends BlockSapling
         int l = world.getBlockMetadata(x, y, z) & 5;
         world.setBlock(x, y, z, null, 0, l);
         Object obj = null;
-        obj = new WorldGenFougere(false);
+        //obj = new WorldGenFougere(false);
         if(!((WorldGenerator) (obj)).generate(world, random, x, y, z))
         {
         	world.setBlockMetadataWithNotify(x, y, z, l, l);

@@ -66,7 +66,7 @@ public class TeleporterGlacia extends Teleporter
 						boolean flag = j1 < 0;
 
 						/** change this block **/
-						this.worldServerInstance.setBlock(k1, l1, i2, flag ? Blocks.ice.blockID : 0);
+						//this.worldServerInstance.setBlock(k1, l1, i2, flag ? Blocks.ice.blockID : 0);
 					}
 				}
 			}
@@ -111,10 +111,10 @@ public class TeleporterGlacia extends Teleporter
 					for (int i2 = this.worldServerInstance.getActualHeight() - 1; i2 >= 0; --i2)
 					{
 						/** change this block **/
-						if (this.worldServerInstance.getBlockId(k1, i2, l1) == EGBlockList.glaciaPortal.blockID)
+						if (this.worldServerInstance.getBlock(k1, i2, l1) == EGBlockList.glaciaPortal)
 						{
 							/** change this block **/
-							while (this.worldServerInstance.getBlockId(k1, i2 - 1, l1) == EGBlockList.glaciaPortal.blockID)
+							while (this.worldServerInstance.getBlock(k1, i2 - 1, l1) == EGBlockList.glaciaPortal)
 							{
 								--i2;
 							}
@@ -142,22 +142,22 @@ public class TeleporterGlacia extends Teleporter
 			d4 = (double) k + 0.5D;
 			int j2 = -1;
 			/** change this block **/
-			if (this.worldServerInstance.getBlockId(i - 1, j, k) == EGBlockList.glaciaPortal.blockID)
+			if (this.worldServerInstance.getBlock(i - 1, j, k) == EGBlockList.glaciaPortal)
 			{
 				j2 = 2;
 			}
 			/** change this block **/
-			if (this.worldServerInstance.getBlockId(i + 1, j, k) == EGBlockList.glaciaPortal.blockID)
+			if (this.worldServerInstance.getBlock(i + 1, j, k) == EGBlockList.glaciaPortal)
 			{
 				j2 = 0;
 			}
 			/** change this block **/
-			if (this.worldServerInstance.getBlockId(i, j, k - 1) == EGBlockList.glaciaPortal.blockID)
+			if (this.worldServerInstance.getBlock(i, j, k - 1) == EGBlockList.glaciaPortal)
 			{
 				j2 = 3;
 			}
 			/** change this block **/
-			if (this.worldServerInstance.getBlockId(i, j, k + 1) == EGBlockList.glaciaPortal.blockID)
+			if (this.worldServerInstance.getBlock(i, j, k + 1) == EGBlockList.glaciaPortal)
 			{
 				j2 = 1;
 			}
@@ -293,7 +293,7 @@ public class TeleporterGlacia extends Teleporter
 										k4 = i2 + (i4 - 1) * l2 + j3 * k3;
 										j4 = k2 + l3;
 										int l4 = j2 + (i4 - 1) * k3 - j3 * l2;
-										if (l3 < 0 && !this.worldServerInstance .getBlockMaterial(k4, j4, l4) .isSolid() || l3 >= 0 && !this.worldServerInstance .isAirBlock(k4, j4, l4))
+										if (l3 < 0 && !this.worldServerInstance .getBlock(k4, j4, l4).getMaterial().isSolid() || l3 >= 0 && !this.worldServerInstance.isAirBlock(k4, j4, l4))
 										{
 											continue label274;
 										}
@@ -342,7 +342,7 @@ public class TeleporterGlacia extends Teleporter
 										l3 = i2 + (j3 - 1) * l2;
 										k4 = k2 + i4;
 										j4 = j2 + (j3 - 1) * k3;
-										if (i4 < 0 && !this.worldServerInstance.getBlockMaterial(l3, k4, j4).isSolid() || i4 >= 0 && !this.worldServerInstance.isAirBlock(l3, k4, j4))
+										if (i4 < 0 && !this.worldServerInstance.getBlock(l3, k4, j4).getMaterial().isSolid() || i4 >= 0 && !this.worldServerInstance.isAirBlock(l3, k4, j4))
 										{
 											continue label222;
 										}
@@ -398,7 +398,7 @@ public class TeleporterGlacia extends Teleporter
 						flag = l2 < 0;
 
 						/** change this block **/
-						this.worldServerInstance.setBlock(k3, j3, i4, flag ? Blocks.ice.blockID : 0);
+						//this.worldServerInstance.setBlock(k3, j3, i4, flag ? Blocks.ice.blockID : 0);
 					}
 				}
 			}
@@ -415,7 +415,7 @@ public class TeleporterGlacia extends Teleporter
 					flag = i3 == 0 || i3 == 3 || l2 == -1 || l2 == 3;
 
 					/** change these blocks **/
-					this.worldServerInstance.setBlock(k3, j3, i4, flag ? Blocks.ice.blockID : EGBlockList.glaciaPortal.blockID, 0, 2);
+					//this.worldServerInstance.setBlock(k3, j3, i4, flag ? Blocks.ice.blockID : EGBlockList.glaciaPortal.blockID, 0, 2);
 				}
 			}
 			for (i3 = 0; i3 < 4; ++i3)
@@ -425,7 +425,7 @@ public class TeleporterGlacia extends Teleporter
 					k3 = i5 + (i3 - 1) * k5;
 					j3 = j5 + l2;
 					i4 = j2 + (i3 - 1) * l5;
-					this.worldServerInstance.notifyBlocksOfNeighborChange(k3, j3, i4, this.worldServerInstance.getBlockId(k3, j3, i4));
+					this.worldServerInstance.notifyBlocksOfNeighborChange(k3, j3, i4, this.worldServerInstance.getBlock(k3, j3, i4));
 				}
 			}
 		}
