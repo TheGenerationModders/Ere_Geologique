@@ -1,5 +1,7 @@
 package ere_geologique.common.entity;
 
+import io.netty.buffer.ByteBuf;
+
 import java.util.Random;
 
 import net.minecraft.block.Block;
@@ -60,8 +62,7 @@ public class Spinosaurus extends Dinosaure implements IWaterDino
         //this.experienceValue=20;
 
         this.updateSize();
-        
-        
+
         /*
          * EDIT VARIABLES PER DINOSAUR TYPE
          */
@@ -76,13 +77,7 @@ public class Spinosaurus extends Dinosaure implements IWaterDino
         
         // Size of dinosaur at age Adult.
         this.maxSize = 7.0F;
-        
-        
-        
-        
-        
-        
-        
+
         this.getNavigator().setAvoidsWater(true);
         this.tasks.addTask(1, new EntityAISwimming(this));
         this.tasks.addTask(3, new DinoAIAttackOnCollide(this, 2.0D, true));
@@ -97,8 +92,8 @@ public class Spinosaurus extends Dinosaure implements IWaterDino
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.50000001192092896D);
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(21.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.50000001192092896D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(21.0D);
 
     }
     
@@ -383,7 +378,7 @@ public class Spinosaurus extends Dinosaure implements IWaterDino
 
         if (var2 != null)
         {
-        	if (var2.itemID == EGItemList.gem.itemID)
+        	if (var2.getItem() == EGItemList.gem)
             {
         		if (this.isWeak() && !this.isTamed())
                 {
@@ -391,7 +386,7 @@ public class Spinosaurus extends Dinosaure implements IWaterDino
         				this.heal(200);
                     this.increaseHunger(500);
                     this.setTamed(true);
-                    this.setOwner(var1.username);
+                    this.setOwner(var1.getDisplayName());
                     --var2.stackSize;
                     if (var2.stackSize <= 0)
         	        {
@@ -418,9 +413,9 @@ public class Spinosaurus extends Dinosaure implements IWaterDino
                         return true;
                 }
              }
-        	if (var2.itemID == EGItemList.whip.itemID && this.isTamed() && this.SelfType.isRideable() && this.isAdult() && !this.worldObj.isRemote && this.riddenByEntity == null)
+        	if (var2.getItem() == EGItemList.whip && this.isTamed() && this.SelfType.isRideable() && this.isAdult() && !this.worldObj.isRemote && this.riddenByEntity == null)
             {
-                if (var1.username.equalsIgnoreCase(this.getOwnerName()))
+                if (var1.getDisplayName().equalsIgnoreCase(this.getOwnerName()))
 		        {
 		            var1.rotationYaw = this.rotationYaw;
 		            var1.mountEntity(this);
@@ -429,7 +424,7 @@ public class Spinosaurus extends Dinosaure implements IWaterDino
 		        }
                 return true;
             }
-            if(var2.itemID == EGItemList.chickenEss.itemID)
+            if(var2.getItem() == EGItemList.chickenEss)
             {
                 if (!this.worldObj.isRemote)
                 {
@@ -442,7 +437,7 @@ public class Spinosaurus extends Dinosaure implements IWaterDino
         {
         	if (this.isTamed() && this.SelfType.isRideable() && this.isAdult() && !this.worldObj.isRemote && (this.riddenByEntity == null || this.riddenByEntity == var1))
         	{
-	        	if (var1.username.equalsIgnoreCase(this.getOwnerName()))
+	        	if (var1.getDisplayName().equalsIgnoreCase(this.getOwnerName()))
 		        {
 		            var1.rotationYaw = this.rotationYaw;
 		            var1.mountEntity(this);
@@ -621,15 +616,15 @@ public class Spinosaurus extends Dinosaure implements IWaterDino
                 {
                     if (!this.worldObj.isAirBlock(var1, var2, var3))
                     {
-                        int var4 = this.worldObj.getBlockId(var1, var2, var3);
+                        Block var4 = this.worldObj.getBlock(var1, var2, var3);
 
                         if (!this.inWater)
                         {
-                            if ((double)Block.blocksList[var4].getBlockHardness(this.worldObj, (int)this.posX, (int)this.posY, (int)this.posZ) < 5.0D)
+                            if ((double)var4.getBlockHardness(this.worldObj, (int)this.posX, (int)this.posY, (int)this.posZ) < 5.0D)
                             {
                                 if ((new Random()).nextInt(10) < 2)
                                 {
-                                    Block.blocksList[var4].dropBlockAsItem(this.worldObj, var1, var2, var3, 1, 0);
+                                    var4.dropBlockAsItem(this.worldObj, var1, var2, var3, 1, 0);
                                 }
 
                                 this.worldObj.setBlock(var1, var2, var3, 0);
@@ -666,7 +661,14 @@ public class Spinosaurus extends Dinosaure implements IWaterDino
 	}
 
     @Override
-    public boolean isOnSurface() {
+    public boolean isOnSurface()
+    {
         return this.worldObj.isAirBlock((int)Math.floor(this.posX), (int)Math.floor(this.posY + (double)(this.getEyeHeight() / 2.0F)), (int)Math.floor(this.posZ));
     }
+
+	@Override
+	public void writeSpawnData(ByteBuf buffer) {}
+
+	@Override
+	public void readSpawnData(ByteBuf additionalData) {}
 }

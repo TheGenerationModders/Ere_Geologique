@@ -1,5 +1,6 @@
 package ere_geologique.common.entity;
 
+import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
@@ -67,8 +68,8 @@ public class Brachiosaurus extends Dinosaure
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.25D);
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(25.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(25.0D);
     }
 
     /**
@@ -304,4 +305,10 @@ public class Brachiosaurus extends Dinosaure
             this.riddenByEntity.setPosition(this.posX, this.posY + (double)this.getHalfHeight(), this.posZ);
         }
     }
+
+	@Override
+	public void writeSpawnData(ByteBuf buffer) {}
+
+	@Override
+	public void readSpawnData(ByteBuf additionalData) {}
 }

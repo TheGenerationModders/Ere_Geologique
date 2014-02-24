@@ -1,5 +1,7 @@
 package ere_geologique.common.entity;
 
+import io.netty.buffer.ByteBuf;
+
 import java.util.List;
 import java.util.Random;
 
@@ -14,7 +16,8 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.item.Item;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.pathfinding.PathEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
@@ -78,8 +81,8 @@ public class Plesiosaure extends SwimmingDino implements IMob
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.30000001192092896D);
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(21.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.30000001192092896D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(21.0D);
     }
 
     /**
@@ -454,7 +457,7 @@ public class Plesiosaure extends SwimmingDino implements IMob
                 }
                 else if (var3 != this && var3 != null)
                 {
-                    if (this.isTamed() && var3 instanceof EntityPlayer && ((EntityPlayer)var3).username.equalsIgnoreCase(this.getOwnerName()))
+                    if (this.isTamed() && var3 instanceof EntityPlayer && ((EntityPlayer)var3).getDisplayName().equalsIgnoreCase(this.getOwnerName()))
                     {
                         return true;
                     }
@@ -570,9 +573,9 @@ public class Plesiosaure extends SwimmingDino implements IMob
                 int var5 = MathHelper.floor_double(this.posX + (double)var2);
                 int var6 = MathHelper.floor_double(this.posY + (double)this.getEyeHeight() + (double)var3);
                 int var7 = MathHelper.floor_double(this.posZ + (double)var4);
-                Block var8 = Block.blocksList[this.worldObj.getBlockId(var1, var5, var6)];
+                Block var8 = this.worldObj.getBlock(var1, var5, var6);
 
-                if (var8 != null && var8 != Block.waterStill && var8 != Block.waterMoving)
+                if (var8 != null && var8 != Blocks.water && var8 != Blocks.flowing_water)
                 {
                     return false;
                 }
@@ -628,7 +631,7 @@ public class Plesiosaure extends SwimmingDino implements IMob
                     {
                         EntityItem var4 = (EntityItem)var2.get(var3);
 
-                        if (var4.getEntityItem().itemID == Item.fishRaw.itemID || var4.getEntityItem().itemID == Item.fishCooked.itemID)
+                        if (var4.getEntityItem().getItem() == Items.fish || var4.getEntityItem().getItem() == Items.cooked_fished)
                         {
                             this.increaseHunger(10);
                             this.worldObj.playSoundAtEntity(this, "random.pop", 0.2F, (((new Random()).nextFloat() - (new Random()).nextFloat()) * 0.7F + 1.0F) * 2.0F);
@@ -836,7 +839,7 @@ public class Plesiosaure extends SwimmingDino implements IMob
                 {
                     if (!this.worldObj.isAirBlock(var1, var2, var3))
                     {
-                        int var4 = this.worldObj.getBlockId(var1, var2, var3);
+                        Block var4 = this.worldObj.getBlock(var1, var2, var3);
 
                         if (!this.inWater)
                         {
@@ -848,11 +851,11 @@ public class Plesiosaure extends SwimmingDino implements IMob
                                     this.RushTick = 10;
                                 }
                             }
-                            else*/ if ((double)Block.blocksList[var4].getBlockHardness(this.worldObj, (int)this.posX, (int)this.posY, (int)this.posZ) <= 1.5D || var4 == Block.wood.blockID || var4 == Block.planks.blockID || var4 == Block.woodDoubleSlab.blockID || var4 == Block.woodSingleSlab.blockID)
+                            else*/ if ((double)var4.getBlockHardness(this.worldObj, (int)this.posX, (int)this.posY, (int)this.posZ) <= 1.5D || var4 == Blocks.log || var4 == Blocks.planks || var4 == Blocks.wooden_slab)
                             {
                                 if ((new Random()).nextInt(10) == 5)
                                 {
-                                    Block.blocksList[var4].dropBlockAsItem(this.worldObj, var1, var2, var3, 1, 0);
+                                    var4.dropBlockAsItem(this.worldObj, var1, var2, var3, 1, 0);
                                 }
 
                                 this.worldObj.setBlock(var1, var2, var3, 0);
@@ -968,11 +971,11 @@ public class Plesiosaure extends SwimmingDino implements IMob
             if (this.onGround)
             {
                 var3 = 0.54600006F;
-                int var4 = this.worldObj.getBlockId(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.boundingBox.minY) - 1, MathHelper.floor_double(this.posZ));
+                Block var4 = this.worldObj.getBlock(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.boundingBox.minY) - 1, MathHelper.floor_double(this.posZ));
 
                 if (var4 > 0)
                 {
-                    var3 = Block.blocksList[var4].slipperiness * 0.91F;
+                    var3 = var4.slipperiness * 0.91F;
                 }
             }
 
@@ -1003,11 +1006,11 @@ public class Plesiosaure extends SwimmingDino implements IMob
             if (this.onGround)
             {
                 var3 = 0.54600006F;
-                int var6 = this.worldObj.getBlockId(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.boundingBox.minY) - 1, MathHelper.floor_double(this.posZ));
+                Block var6 = this.worldObj.getBlock(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.boundingBox.minY) - 1, MathHelper.floor_double(this.posZ));
 
                 if (var6 > 0)
                 {
-                    var3 = Block.blocksList[var6].slipperiness * 0.91F;
+                    var3 = var6.slipperiness * 0.91F;
                 }
             }
 
@@ -1051,4 +1054,10 @@ public class Plesiosaure extends SwimmingDino implements IMob
         //this.legYaw += (var11 - this.legYaw) * 0.4F;
         //this.legSwing += this.legYaw;
     }
+
+	@Override
+	public void writeSpawnData(ByteBuf buffer) {}
+
+	@Override
+	public void readSpawnData(ByteBuf additionalData) {}
 }

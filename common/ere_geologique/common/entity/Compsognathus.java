@@ -1,5 +1,7 @@
 package ere_geologique.common.entity;
 
+import io.netty.buffer.ByteBuf;
+
 import java.util.Vector;
 
 import net.minecraft.entity.Entity;
@@ -90,8 +92,8 @@ public class Compsognathus extends Dinosaure
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.31D);
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(3.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.31D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(3.0D);
     }
     
     /**
@@ -218,7 +220,7 @@ public class Compsognathus extends Dinosaure
             {
                 for (int var8 = -10; var8 <= 10; ++var8)
                 {
-                    var5 = this.worldObj.getBlockTileEntity((int)(this.posX + (double)var6), (int)(this.posY + (double)var7), (int)(this.posZ + (double)var8));
+                    var5 = this.worldObj.getTileEntity((int)(this.posX + (double)var6), (int)(this.posY + (double)var7), (int)(this.posZ + (double)var8));
                     if (var5 instanceof TileEntityChest)
                         return true;
                 }
@@ -343,4 +345,10 @@ public class Compsognathus extends Dinosaure
     {
         return new Compsognathus(this.worldObj);
     }
+
+	@Override
+	public void writeSpawnData(ByteBuf buffer) {}
+
+	@Override
+	public void readSpawnData(ByteBuf additionalData) {}
 }

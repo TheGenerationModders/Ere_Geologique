@@ -22,12 +22,12 @@ public class DinoFood
 
 		public DinoFoodEntry(Block block, int metadata, int food, int heal, EnumFoodType type)
 		{
-			this(block.blockID, metadata, food, heal, type);
+			this(block, metadata, food, heal, type);
 		}
 
 		public DinoFoodEntry(Item item, int metadata, int food, int heal, EnumFoodType type)
 		{
-			this(item.itemID, metadata, food, heal, type);
+			this(item, metadata, food, heal, type);
 		}
 		
 		/*public DinoFoodEntry(Class pclass, int food, int heal, EnumFoodType type)

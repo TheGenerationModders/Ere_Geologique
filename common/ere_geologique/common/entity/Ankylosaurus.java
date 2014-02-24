@@ -1,5 +1,7 @@
 package ere_geologique.common.entity;
 
+import io.netty.buffer.ByteBuf;
+
 import java.util.Random;
 
 import net.minecraft.entity.Entity;
@@ -76,9 +78,9 @@ public class Ankylosaurus extends Dinosaure
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.30000001192092896D);
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(21.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(1.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.30000001192092896D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(21.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(1.0D);
     }
 
     /**
@@ -176,4 +178,10 @@ public class Ankylosaurus extends Dinosaure
             this.riddenByEntity.setPosition(this.posX, this.posY + (double)this.getRidingHeight(), this.posZ);
         }
     }
+
+	@Override
+	public void writeSpawnData(ByteBuf buffer){}
+
+	@Override
+	public void readSpawnData(ByteBuf additionalData){}
 }

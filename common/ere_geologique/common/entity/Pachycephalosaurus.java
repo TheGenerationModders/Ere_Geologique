@@ -1,5 +1,7 @@
 package ere_geologique.common.entity;
 
+import io.netty.buffer.ByteBuf;
+
 import java.util.List;
 
 import net.minecraft.entity.Entity;
@@ -82,8 +84,8 @@ public class Pachycephalosaurus extends Dinosaure
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.30000001192092896D);
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(21.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.30000001192092896D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(21.0D);
 
     }
     
@@ -255,8 +257,6 @@ public class Pachycephalosaurus extends Dinosaure
     {
         return this.isSitting();// || this.field_25052_g;
     }
-
-   
     
     /**
      * Called when the entity is attacked.
@@ -298,7 +298,7 @@ public class Pachycephalosaurus extends Dinosaure
             }
             else if (var3 != this && var3 != null)
             {
-                if (this.isTamed() && var3 instanceof EntityPlayer && ((EntityPlayer)var3).username.equalsIgnoreCase(this.getOwnerName()))
+                if (this.isTamed() && var3 instanceof EntityPlayer && ((EntityPlayer)var3).getDisplayName().equalsIgnoreCase(this.getOwnerName()))
                 {
                     return true;
                 }
@@ -439,8 +439,6 @@ public class Pachycephalosaurus extends Dinosaure
 
         }
     }
-    
-    
 
     public Pachycephalosaurus spawnBabyAnimal(EntityAgeable var1)
     {
@@ -467,11 +465,16 @@ public class Pachycephalosaurus extends Dinosaure
     {
         return this.attackTimer;
     }
-    
 
 	@Override
 	public EntityAgeable createChild(EntityAgeable var1) 
 	{
 		return null;
 	}
+
+	@Override
+	public void writeSpawnData(ByteBuf buffer) {}
+
+	@Override
+	public void readSpawnData(ByteBuf additionalData) {}
 }

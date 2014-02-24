@@ -1,5 +1,7 @@
 package ere_geologique.common.entity;
 
+import io.netty.buffer.ByteBuf;
+
 import java.util.Random;
 
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -108,9 +110,9 @@ public class TRex extends Dinosaure
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.40000001192092896D);
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(21.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(8.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.40000001192092896D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(21.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(8.0D);
     }
     
     public String getDinosaurName()
@@ -392,7 +394,7 @@ public class TRex extends Dinosaure
 
         if (var2 != null)
         {
-            if (var2.itemID == EGItemList.gem.itemID)
+            if (var2.getItem() == EGItemList.gem)
             {
                 if (this.isWeak() && !this.isTamed())
                 {
@@ -401,7 +403,7 @@ public class TRex extends Dinosaure
                     this.setTamed(true);
                     setPathToEntity(null);
                     setAttackTarget(null);
-                    this.setOwner(var1.username);
+                    this.setOwner(var1.getDisplayName());
                     --var2.stackSize;
 
                     if (var2.stackSize <= 0)
@@ -435,7 +437,7 @@ public class TRex extends Dinosaure
 
             if (!CommandDino.debugMode)
             {
-                if (var2.itemID == EGItemList.chickenEss.itemID)
+                if (var2.getItem() == EGItemList.chickenEss)
                 {
                     if (!this.worldObj.isRemote)
                     {
@@ -695,4 +697,10 @@ public class TRex extends Dinosaure
     {
         return null;
     }
+
+	@Override
+	public void writeSpawnData(ByteBuf buffer) {}
+
+	@Override
+	public void readSpawnData(ByteBuf additionalData) {}
 }

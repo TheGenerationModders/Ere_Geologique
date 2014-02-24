@@ -1,4 +1,4 @@
-/*package ere_geologique.common.worldgenerator;
+package ere_geologique.common.worldgenerator;
 
 import java.util.Random;
 
@@ -6,7 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import ere_geologique.common.config.EGProperties;
+import ere_geologique.common.block.EGBlockList;
  
 public class WorldGenFougere extends WorldGenerator
 {
@@ -59,9 +59,9 @@ public class WorldGenFougere extends WorldGenerator
                  {
                                      if (i1 >= 0 && i1 < 256)
                                      {
-                                             Block i3 = world.getBlock(k1, i1, i2);
+                                             Block block = world.getBlock(k1, i1, i2);
                                              //ce code indique sur quel block l'arbre peut se generer
-                                             if (i3 != 0 && i3 != EGProperties.leavesID && i3 != Blocks.dirt && i3 != EGProperties.woodID)
+                                             if (block != null && block != EGBlockList.leaves && block != Blocks.dirt && block != EGBlockList.wood)
                                              {
                                                      flag = false;
                                              }
@@ -86,7 +86,7 @@ public class WorldGenFougere extends WorldGenerator
                      return false;
              }
 
-             func_50073_a(world, i, j - 1, k, EGProperties.woodID);
+             func_50073_a(world, i, j - 1, k, EGBlockList.wood);
              byte byte1 = 3;
              int l1 = 0;
 
@@ -103,9 +103,9 @@ public class WorldGenFougere extends WorldGenerator
                              {
                                      int l5 = k5 - k;
 
-                                     if ((Math.abs(i5) != i4 || Math.abs(l5) != i4 || random.nextInt(2) != 0 && j3 != 0) && !Block.opaqueCubeLookup[world.getBlock(k4, j2, k5)])
+                                     if ((Math.abs(i5) != i4 || Math.abs(l5) != i4 || random.nextInt(2) != 0 && j3 != 0) && !(world.getBlock(k4, j2, k5).isOpaqueCube()))
                                      {
-                                             setBlockAndMetadata(world, k4, j2, k5, EGProperties.leavesID, field_48199_d);
+                                    	 setBlockAndNotifyAdequately(world, k4, j2, k5, EGBlockList.leaves, field_48199_d);
                                      }
                              }
                      }
@@ -115,12 +115,12 @@ public class WorldGenFougere extends WorldGenerator
              {
                      Block k3 = world.getBlock(i, j + k2, k);
 
-                     if (k3 != 0 && k3 != EGProperties.leavesID)
+                     if (k3 != null && k3 != EGBlockList.leaves)
                      {
                              continue;
                      }
 
-                     setBlockAndMetadata(world, i, j + k2, k, EGProperties.woodID, field_48201_c);
+                     setBlockAndNotifyAdequately(world, i, j + k2, k, EGBlockList.wood, field_48201_c);
 
                      if (!field_48200_b || k2 <= 0)
                      {
@@ -129,22 +129,22 @@ public class WorldGenFougere extends WorldGenerator
 
                      if (random.nextInt(3) > 0 && world.isAirBlock(i - 1, j + k2, k))
                      {
-                             setBlockAndMetadata(world, i - 1, j + k2, k, Blocks.dirt, 8);
+                    	 setBlockAndNotifyAdequately(world, i - 1, j + k2, k, Blocks.dirt, 8);
                      }
 
                      if (random.nextInt(3) > 0 && world.isAirBlock(i + 1, j + k2, k))
                      {
-                             setBlockAndMetadata(world, i + 1, j + k2, k, Blocks.dirt, 2);
+                    	 setBlockAndNotifyAdequately(world, i + 1, j + k2, k, Blocks.dirt, 2);
                      }
 
                      if (random.nextInt(3) > 0 && world.isAirBlock(i, j + k2, k - 1))
                      {
-                             setBlockAndMetadata(world, i, j + k2, k - 1, Blocks.dirt, 1);
+                    	 setBlockAndNotifyAdequately(world, i, j + k2, k - 1, Blocks.dirt, 1);
                      }
 
                      if (random.nextInt(3) > 0 && world.isAirBlock(i, j + k2, k + 1))
                      {
-                             setBlockAndMetadata(world, i, j + k2, k + 1, Blocks.dirt, 4);
+                    	 setBlockAndNotifyAdequately(world, i, j + k2, k + 1, Blocks.dirt, 4);
                      }
              }
 
@@ -159,27 +159,27 @@ public class WorldGenFougere extends WorldGenerator
                              {
                                      for (int j5 = k - j4; j5 <= k + j4; j5++)
                                      {
-                                             if (world.getBlock(l4, l2, j5) != EGProperties.woodID)
+                                             if (world.getBlock(l4, l2, j5) != EGBlockList.wood)
                                              {
                                                      continue;
                                              }
 
-                                             if (random.nextInt(4) == 0 && world.getBlock(l4 - 1, l2, j5) == 0)
+                                             if (random.nextInt(4) == 0 && world.getBlock(l4 - 1, l2, j5) == null)
                                              {
                                                      func_48198_a(world, l4 - 1, l2, j5, 8);
                                              }
 
-                                             if (random.nextInt(4) == 0 && world.getBlock(l4 + 1, l2, j5) == 0)
+                                             if (random.nextInt(4) == 0 && world.getBlock(l4 + 1, l2, j5) == null)
                                              {
                                                      func_48198_a(world, l4 + 1, l2, j5, 2);
                                              }
 
-                                             if (random.nextInt(4) == 0 && world.getBlock(l4, l2, j5 - 1) == 0)
+                                             if (random.nextInt(4) == 0 && world.getBlock(l4, l2, j5 - 1) == null)
                                              {
                                                      func_48198_a(world, l4, l2, j5 - 1, 1);
                                              }
 
-                                             if (random.nextInt(4) == 0 && world.getBlock(l4, l2, j5 + 1) == 0)
+                                             if (random.nextInt(4) == 0 && world.getBlock(l4, l2, j5 + 1) == null)
                                              {
                                                      func_48198_a(world, l4, l2, j5 + 1, 4);
                                              }
@@ -191,18 +191,18 @@ public class WorldGenFougere extends WorldGenerator
              return true;
      }
 
-     private void func_50073_a(World world, int i, int j, int k, int blockID)
+     private void func_50073_a(World world, int i, int j, int k, Block block)
      {
 
      }
 
      private void func_48198_a(World world, int i, int j, int k, int l)
      {
-             setBlockAndMetadata(world, i, j, k, Blocks.dirt, l);
+    	 setBlockAndNotifyAdequately(world, i, j, k, Blocks.dirt, l);
 
-             for (int i1 = 4; world.getBlock(i, --j, k) == 0 && i1 > 0; i1--)
+             for (int i1 = 4; world.getBlock(i, --j, k) == null && i1 > 0; i1--)
              {
-                     setBlockAndMetadata(world, i, j, k, Blocks.dirt, l);
+            	 setBlockAndNotifyAdequately(world, i, j, k, Blocks.dirt, l);
              }
      }
 
@@ -210,4 +210,4 @@ public class WorldGenFougere extends WorldGenerator
      {
 
      }
-}*/
+}

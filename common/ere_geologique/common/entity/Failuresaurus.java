@@ -1,8 +1,9 @@
 package ere_geologique.common.entity;
 
-import ere_geologique.common.item.EGItemList;
 import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.item.Item;
 import net.minecraft.world.World;
+import ere_geologique.common.item.EGItemList;
 
 public class Failuresaurus extends EntityZombie
 {
@@ -12,9 +13,9 @@ public class Failuresaurus extends EntityZombie
         this.experienceValue=4;
     }
 
-    protected int getDropItemId()
+    protected Item getDropItem()
     {
-        return EGItemList.bioFossil.itemID;
+        return EGItemList.bioFossil;
     }
 
     protected void jump() {}

@@ -1,5 +1,6 @@
 package ere_geologique.common.entity;
 
+import io.netty.buffer.ByteBuf;
 import net.minecraft.block.Block;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
@@ -77,11 +78,11 @@ public class FlyingDino extends Dinosaure
 			if (this.onGround)
 			{
 				f2 = 0.54600006F;
-				int i = this.worldObj.getBlockId(MathHelper.floor_double(this.posX),	MathHelper.floor_double(this.boundingBox.minY) - 1, MathHelper.floor_double(this.posZ));
+				Block i = this.worldObj.getBlock(MathHelper.floor_double(this.posX),	MathHelper.floor_double(this.boundingBox.minY) - 1, MathHelper.floor_double(this.posZ));
 
 				if (i > 0)
 				{
-					f2 = Block.blocksList[i].slipperiness * 0.91F;
+					f2 = i.slipperiness * 0.91F;
 				}
 			}
 
@@ -92,11 +93,11 @@ public class FlyingDino extends Dinosaure
 			if (this.onGround)
 			{
 				f2 = 0.54600006F;
-				int j = this.worldObj.getBlockId(MathHelper.floor_double(this.posX),	MathHelper.floor_double(this.boundingBox.minY) - 1,	MathHelper.floor_double(this.posZ));
+				Block j = this.worldObj.getBlock(MathHelper.floor_double(this.posX),	MathHelper.floor_double(this.boundingBox.minY) - 1,	MathHelper.floor_double(this.posZ));
 
 				if (j > 0)
 				{
-					f2 = Block.blocksList[j].slipperiness * 0.91F;
+					f2 = j.slipperiness * 0.91F;
 				}
 			}
 
@@ -228,5 +229,11 @@ public class FlyingDino extends Dinosaure
 	{
 		this.isAirBorne = _bAirborne;
 	}
+
+	@Override
+	public void writeSpawnData(ByteBuf buffer) {}
+
+	@Override
+	public void readSpawnData(ByteBuf additionalData) {}
 
 }

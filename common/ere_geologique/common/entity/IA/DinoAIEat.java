@@ -167,7 +167,7 @@ public class DinoAIEat extends EntityAIBase
     public boolean continueExecuting()
     {
         //System.out.println("Continue:"+String.valueOf(!this.dinosaur.getNavigator().noPath() && ((this.typeofTarget==ITEM && this.targetItem.isEntityAlive()) || (this.typeofTarget==MOB && this.targetMob.isEntityAlive()) || (this.typeofTarget==FEEDER && !this.targetFeeder.isInvalid()) || (this.typeofTarget==BLOCK && this.dinosaur.FoodBlockList.CheckBlockById(this.dinosaur.worldObj.getBlockId((int)destX, (int)destY, (int)destZ))))));
-        return !this.dinosaur.getNavigator().noPath() && ((this.typeofTarget==ITEM && this.targetItem.isEntityAlive()) || (this.typeofTarget==MOB && this.targetMob.isEntityAlive()) || (this.typeofTarget==FEEDER && !this.targetFeeder.isInvalid()) || (this.typeofTarget==BLOCK && DinoFood.isDinoFoodByDino(this.dinosaur.SelfType, this.dinosaur.worldObj.getBlockMetadata((int)destX, (int)destY, (int)destZ), this.dinosaur.worldObj.getBlockId((int)destX, (int)destY, (int)destZ))));
+        return !this.dinosaur.getNavigator().noPath() && ((this.typeofTarget==ITEM && this.targetItem.isEntityAlive()) || (this.typeofTarget==MOB && this.targetMob.isEntityAlive()) || (this.typeofTarget==FEEDER && !this.targetFeeder.isInvalid()) || (this.typeofTarget==BLOCK && DinoFood.isDinoFoodByDino(this.dinosaur.SelfType, this.dinosaur.worldObj.getBlockMetadata((int)destX, (int)destY, (int)destZ), this.dinosaur.worldObj.getBlock((int)destX, (int)destY, (int)destZ))));
     }
 
     /**
@@ -226,9 +226,9 @@ public class DinoAIEat extends EntityAIBase
                 break;
                 case BLOCK:
                     if(CommandDino.heal_Dinos)
-                        this.dinosaur.heal(DinoFood.getFoodByDino(this.dinosaur.SelfType, this.dinosaur.worldObj.getBlockId((int)destX, (int)destY, (int)destZ), this.dinosaur.worldObj.getBlockMetadata((int)destX, (int)destY, (int)destZ)).getHealValue());
-                    this.dinosaur.increaseHunger(DinoFood.getFoodByDino(this.dinosaur.SelfType, this.dinosaur.worldObj.getBlockId((int)destX, (int)destY, (int)destZ), this.dinosaur.worldObj.getBlockMetadata((int)destX, (int)destY, (int)destZ)).getFoodValue());
-                    this.dinosaur.worldObj.setBlock((int)destX, (int)destY, (int)destZ,0);
+                        this.dinosaur.heal(DinoFood.getFoodByDino(this.dinosaur.SelfType, this.dinosaur.worldObj.getBlock((int)destX, (int)destY, (int)destZ), this.dinosaur.worldObj.getBlockMetadata((int)destX, (int)destY, (int)destZ)).getHealValue());
+                    this.dinosaur.increaseHunger(DinoFood.getFoodByDino(this.dinosaur.SelfType, this.dinosaur.worldObj.getBlock((int)destX, (int)destY, (int)destZ), this.dinosaur.worldObj.getBlockMetadata((int)destX, (int)destY, (int)destZ)).getFoodValue());
+                    this.dinosaur.worldObj.setBlock((int)destX, (int)destY, (int)destZ, 0);
                 break;
             }
             
@@ -251,7 +251,7 @@ public class DinoAIEat extends EntityAIBase
         {
             EntityItem var4 = (EntityItem)var2.next();
 
-            if (DinoFood.isDinoFoodByDino(this.dinosaur.SelfType, var4.getEntityItem().itemID, var4.getEntityItem().getItemDamage()) || (this.dinosaur.SelfType.canCarryItems() && !this.dinosaur.IsHungry()))
+            if (DinoFood.isDinoFoodByDino(this.dinosaur.SelfType, var4.getEntityItem(), var4.getEntityItem().getItemDamage()) || (this.dinosaur.SelfType.canCarryItems() && !this.dinosaur.IsHungry()))
             {//It's food or the dinosaur can carry things and is not hungry
                 this.targetItem = var4;
                 var3 = Vec3.createVectorHelper(var4.posX, var4.posY, var4.posZ);

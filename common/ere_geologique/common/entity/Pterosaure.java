@@ -1,5 +1,7 @@
 package ere_geologique.common.entity;
 
+import io.netty.buffer.ByteBuf;
+
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 import java.util.Random;
@@ -14,7 +16,6 @@ import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
 import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.packet.Packet250CustomPayload;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.DamageSource;
@@ -150,8 +151,8 @@ public class Pterosaure extends Dinosaure
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.20000001192092896D);
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(21.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.20000001192092896D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(21.0D);
     }
 
     /**
@@ -289,7 +290,7 @@ public class Pterosaure extends Dinosaure
             {
                 for (int var8 = -10; var8 <= 10; ++var8)
                 {
-                    var5 = this.worldObj.getBlockTileEntity((int)(this.posX + (double)var6), (int)(this.posY + (double)var7), (int)(this.posZ + (double)var8));
+                    var5 = this.worldObj.getTileEntity((int)(this.posX + (double)var6), (int)(this.posY + (double)var7), (int)(this.posZ + (double)var8));
 
                     if (var5 instanceof TileEntityChest)
                     {
@@ -375,7 +376,7 @@ public class Pterosaure extends Dinosaure
 
             for (int i = 1; i < 10; i++)
             {
-                if (this.worldObj.isBlockNormalCube(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY) - i, MathHelper.floor_double(this.posZ)))
+                if (this.worldObj.getBlock(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY) - i, MathHelper.floor_double(this.posZ)).isBlockNormalCube())
                 {
                     heightt = i;
                     break;
@@ -470,18 +471,18 @@ public class Pterosaure extends Dinosaure
         //if (this.riddenByEntity != null && this.riddenByEntity instanceof EntityClientPlayerMP)
         //{
         //    EntityClientPlayerMP var1 = (EntityClientPlayerMP)this.riddenByEntity;
-        int heightt = 10;
+        int height = 10;
 
         for (int i = 1; i < 10; i++)
         {
-            if (this.worldObj.isBlockNormalCube(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY) - i, MathHelper.floor_double(this.posZ)))
+            if (this.worldObj.getBlock(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY) - i, MathHelper.floor_double(this.posZ)).isBlockNormalCube())
             {
-                heightt = i;
+                height = i;
                 break;
             }
         }
 
-        boolean onlyAjump = heightt < 3;
+        boolean onlyAjump = height < 3;
         //System.out.println("H: "+String.valueOf(heightt));
         //System.out.println("L: "+String.valueOf(this.Landing));
 
@@ -829,4 +830,10 @@ public class Pterosaure extends Dinosaure
     {
         return this.spawnBabyAnimal(var1);
     }
+
+	@Override
+	public void writeSpawnData(ByteBuf buffer) {}
+
+	@Override
+	public void readSpawnData(ByteBuf additionalData) {}
 }

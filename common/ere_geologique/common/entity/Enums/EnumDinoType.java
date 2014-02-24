@@ -470,7 +470,7 @@ public enum EnumDinoType
     {
 		for(int i=0;i<values().length;i++)
 		{
-		    if(values()[i].dnaItem.itemID == i0.itemID)
+		    if(values()[i].dnaItem == i0)
 		    	return true;
 		}
 		return false;
@@ -483,7 +483,7 @@ public enum EnumDinoType
     {
 		for(int i=0;i<values().length;i++)
 		{
-		    if(values()[i].dropItem.itemID == i0.itemID)
+		    if(values()[i].dropItem == i0)
 		    	return true;
 		}
 		return false;
@@ -496,7 +496,7 @@ public enum EnumDinoType
     {
 		for(int i=0;i<values().length;i++)
 		{
-		    if(values()[i].dropItem.itemID == i0.itemID || values()[i].eggItem.itemID == i0.itemID)
+		    if(values()[i].dropItem == i0 || values()[i].eggItem == i0)
 		    	return values()[i].dnaItem;
 		}
 		return null;
@@ -509,7 +509,7 @@ public enum EnumDinoType
     {
 		for(int i=0;i<values().length;i++)
 		{
-		    if(values()[i].dnaItem.itemID == i0.itemID || values()[i].eggItem.itemID == i0.itemID)
+		    if(values()[i].dnaItem == i0 || values()[i].eggItem == i0)
 		    	return values()[i].dropItem;
 		}
 		return null;
@@ -522,7 +522,7 @@ public enum EnumDinoType
     {
 		for(int i=0;i<values().length;i++)
 		{
-		    if(values()[i].dnaItem.itemID == i0.itemID || values()[i].dropItem.itemID == i0.itemID)
+		    if(values()[i].dnaItem == i0 || values()[i].dropItem == i0)
 		    	return values()[i].eggItem;
 		}
 		return null;
@@ -534,7 +534,7 @@ public enum EnumDinoType
     {
 		for(int i=0;i<values().length;i++)
 		{
-		    if(values()[i].dnaItem.itemID == i0.itemID || values()[i].dropItem.itemID == i0.itemID || values()[i].eggItem.itemID == i0.itemID)
+		    if(values()[i].dnaItem == i0 || values()[i].dropItem == i0 || values()[i].eggItem == i0)
 		    	return i;
 		}
 		return -1;

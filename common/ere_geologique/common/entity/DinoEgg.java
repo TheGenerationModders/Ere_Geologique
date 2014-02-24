@@ -1,5 +1,7 @@
 package ere_geologique.common.entity;
 
+import io.netty.buffer.ByteBuf;
+
 import java.util.List;
 
 import net.minecraft.block.Block;
@@ -395,7 +397,7 @@ public class DinoEgg extends Entity implements IEntityAdditionalSpawnData
             int var25 = MathHelper.floor_double(this.posY);
             int var20 = MathHelper.floor_double(this.posZ + ((double)(var23 / 2) - 0.5D) * 0.8D);
 
-            if (this.worldObj.getBlockId(var24, var25, var20) == Blocks.snow.blockID)
+            if (this.worldObj.getBlock(var24, var25, var20) == Blocks.snow)
             {
                 this.worldObj.setBlock(var24, var25, var20, 0);
             }
@@ -439,7 +441,7 @@ public class DinoEgg extends Entity implements IEntityAdditionalSpawnData
         else 
         {
         	BiomeGenBase var5 = this.worldObj.getBiomeGenForCoords((int)this.posX, (int)this.posZ);
-            float var6 = var5.getFloatTemperature();
+            float var6 = var5.getFloatTemperature(0, 0, 0);
         	//if (!this.worldObj.canBlockSeeTheSky(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ)))
             if((var6<=0.15F && var2 < 0.5) || this.inWater)
             	this.setBirthTick(this.getBirthTick()-1);
@@ -513,7 +515,7 @@ public class DinoEgg extends Entity implements IEntityAdditionalSpawnData
                 }
                 if(((Dinosaure)var5).SelfType.isTameable() && player != null)
                 {// Tameable and player next to it
-                	((Dinosaure)var5).setOwner(player.username);
+                	((Dinosaure)var5).setOwner(player.getDisplayName());
                     ((Dinosaure)var5).setTamed(true);
                 }
 
@@ -637,4 +639,10 @@ public class DinoEgg extends Entity implements IEntityAdditionalSpawnData
         this.setBirthTick(var1.readInt());
         this.DinoInside = EnumDinoType.values()[var1.readInt()];
     }
+
+	@Override
+	public void writeSpawnData(ByteBuf buffer) {}
+
+	@Override
+	public void readSpawnData(ByteBuf additionalData) {}
 }

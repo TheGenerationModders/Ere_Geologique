@@ -1,5 +1,7 @@
 package ere_geologique.common.entity;
 
+import io.netty.buffer.ByteBuf;
+
 import java.util.Vector;
 
 import net.minecraft.entity.Entity;
@@ -24,7 +26,6 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.client.LocalizationStrings;
-import ere_geologique.common.block.Fossil;
 import ere_geologique.common.entity.Enums.EnumDinoType;
 import ere_geologique.common.entity.IA.DinoAIEat;
 import ere_geologique.common.entity.IA.DinoAIFollowOwner;
@@ -80,9 +81,9 @@ public class Velociraptor extends Dinosaure
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.3D);
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(3.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(1.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.3D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(3.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(1.0D);
     }
 
     /*protected void entityInit()
@@ -773,4 +774,10 @@ public class Velociraptor extends Dinosaure
     {
         super.jump();
     }
+
+	@Override
+	public void writeSpawnData(ByteBuf buffer) {}
+
+	@Override
+	public void readSpawnData(ByteBuf additionalData) {}
 }

@@ -54,11 +54,11 @@ public class DinoAIStarvation extends EntityAIBase
         	}
 	        if(this.mover.ItemInMouth != null)//The Dino has something in its mouth and gets hungry
 	        {
-	        	if(DinoFood.getFoodByDino(this.mover.SelfType, this.mover.ItemInMouth.itemID, this.mover.ItemInMouth.itemID) != null)
+	        	/*if(DinoFood.getFoodByDino(this.mover.SelfType, this.mover.ItemInMouth, this.mover.ItemInMouth) != null)
 	        	{//its food
-	        		if(this.mover.IsHungry() || this.mover.SelfType.MaxHunger-this.mover.getHunger() > DinoFood.getFoodByDino(this.mover.SelfType, this.mover.ItemInMouth.itemID, this.mover.ItemInMouth.getItemDamage()).getFoodValue())
+	        		if(this.mover.IsHungry() || this.mover.SelfType.MaxHunger-this.mover.getHunger() > DinoFood.getFoodByDino(this.mover.SelfType, this.mover.ItemInMouth, this.mover.ItemInMouth.getItemDamage()).getFoodValue())
 	            	{//it's hungry or there is enough place in the stomach free
-	            		this.mover.setHunger(DinoFood.getFoodByDino(this.mover.SelfType, this.mover.ItemInMouth.itemID, this.mover.ItemInMouth.getItemDamage()).getFoodValue());
+	            		this.mover.setHunger(DinoFood.getFoodByDino(this.mover.SelfType, this.mover.ItemInMouth, this.mover.ItemInMouth.getItemDamage()).getFoodValue());
 	            		this.mover.ItemInMouth = null;
 	            	}
 	        	}
@@ -66,10 +66,10 @@ public class DinoAIStarvation extends EntityAIBase
 	        	{//no food
 	        		if(this.mover.IsHungry())
 	        		{//The Dino gets hungry and because of that spits the object out of the mouth
-	        			this.mover.entityDropItem(new ItemStack(this.mover.ItemInMouth.itemID, 1, 0), 0.5F);
+	        			this.mover.entityDropItem(new ItemStack(this.mover.ItemInMouth, 1, 0), 0.5F);
 	        			this.mover.ItemInMouth=null;
 	        		}
-	        	}
+	        	}*/
 	        }
 	
 	        if (this.mover.getHunger() <= 0)

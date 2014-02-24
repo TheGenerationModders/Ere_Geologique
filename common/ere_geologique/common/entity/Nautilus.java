@@ -3,17 +3,17 @@ package ere_geologique.common.entity;
 import java.util.List;
 import java.util.Random;
 
-import ere_geologique.common.entity.Enums.EnumDinoType;
-import ere_geologique.common.item.EGItemList;
-
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityWaterMob;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import ere_geologique.common.entity.Enums.EnumDinoType;
+import ere_geologique.common.item.EGItemList;
 
 public class Nautilus extends EntityWaterMob
 {
@@ -46,8 +46,8 @@ public class Nautilus extends EntityWaterMob
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(15.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.25D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(15.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.25D);
     }
 
 
@@ -94,9 +94,9 @@ public class Nautilus extends EntityWaterMob
     /**
      * Returns the item ID for the item the mob drops on death.
      */
-    protected int getDropItemId()
+    protected Item getDropItem()
     {
-        return EGItemList.emptyShell.itemID;
+        return EGItemList.emptyShell;
     }
 
     /**
@@ -108,12 +108,12 @@ public class Nautilus extends EntityWaterMob
 
         if (var3 <= 3)
         {
-            this.dropItem(EGItemList.emptyShell.itemID, 1);
+            this.dropItem(EGItemList.emptyShell, 1);
 //            this.dropItem(EnumDinoType.Nautilus.DropItem.itemID, 1);
         }
         else
         {
-            this.dropItem(EGItemList.magicConch.itemID, 1);
+            this.dropItem(EGItemList.magicConch, 1);
         }
     }
 

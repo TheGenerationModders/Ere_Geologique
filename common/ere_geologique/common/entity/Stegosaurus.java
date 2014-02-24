@@ -1,5 +1,7 @@
 package ere_geologique.common.entity;
 
+import io.netty.buffer.ByteBuf;
+
 import java.util.Random;
 
 import net.minecraft.entity.Entity;
@@ -413,5 +415,17 @@ public class Stegosaurus extends Dinosaure
 	public EntityAgeable createChild(EntityAgeable var1) 
 	{
 		return null;
+	}
+
+	@Override
+	public void writeSpawnData(ByteBuf buffer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void readSpawnData(ByteBuf additionalData) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -1,9 +1,11 @@
 package ere_geologique.common.entity;
 
+import io.netty.buffer.ByteBuf;
+
 import java.util.Vector;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.StepSound;
+import net.minecraft.block.Block.SoundType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
@@ -121,8 +123,8 @@ public class Dilophosaurus extends Dinosaure
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.34000001192092896D);
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(21.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.34000001192092896D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(21.0D);
 
     }
     
@@ -247,12 +249,12 @@ public class Dilophosaurus extends Dinosaure
                         if (var2 < 5.0F)
                         {
                             //this.moveSpeed = 2.0F;
-                	        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(2.0D);
+                	        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(2.0D);
                         }
                         else
                         {
 //                	        // Movement Speed - default 0.699D - min 0.0D - max Double.MAX_VALUE
-                	        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(1.0D);
+                	        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(1.0D);
                         }
                     }
                 }
@@ -282,7 +284,7 @@ public class Dilophosaurus extends Dinosaure
             {
                 for (int var8 = -10; var8 <= 10; ++var8)
                 {
-                    var5 = this.worldObj.getBlockTileEntity((int)(this.posX + (double)var6), (int)(this.posY + (double)var7), (int)(this.posZ + (double)var8));
+                    var5 = this.worldObj.getTileEntity((int)(this.posX + (double)var6), (int)(this.posY + (double)var7), (int)(this.posZ + (double)var8));
                     if (var5 instanceof TileEntityChest)
                         return true;
                 }
@@ -393,7 +395,7 @@ public class Dilophosaurus extends Dinosaure
                 {
                     this.setTarget((EntityLiving)var3);
                 }
-                if (var3 instanceof EntityPlayer && this.isTamed() && ((EntityPlayer)var3).username.equalsIgnoreCase(this.getOwnerName()))
+                if (var3 instanceof EntityPlayer && this.isTamed() && ((EntityPlayer)var3).getDisplayName().equalsIgnoreCase(this.getOwnerName()))
                 {//Hit by the owner->untame
                     this.setTamed(false);
                     this.setOwner("");
@@ -494,11 +496,11 @@ public class Dilophosaurus extends Dinosaure
         if (var2 > 0)
         {
             this.attackEntityFrom(DamageSource.fall, 0);//Like cats, they don't suffer fall damage
-            int var3 = this.worldObj.getBlockId(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY - 0.20000000298023224D - (double)this.yOffset), MathHelper.floor_double(this.posZ));
+            Block var3 = this.worldObj.getBlock(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY - 0.20000000298023224D - (double)this.yOffset), MathHelper.floor_double(this.posZ));
 
             if (var3 > 0)
             {
-                StepSound var4 = Block.blocksList[var3].stepSound;
+                SoundType var4 = var3.stepSound;
                 this.worldObj.playSoundAtEntity(this, var4.getBreakSound(), var4.getVolume() * 0.5F, var4.getPitch() * 0.75F);
             }
         }
@@ -647,4 +649,10 @@ public class Dilophosaurus extends Dinosaure
 	{
 		return null;
 	}
+
+	@Override
+	public void writeSpawnData(ByteBuf buffer) {}
+
+	@Override
+	public void readSpawnData(ByteBuf additionalData) {}
 }

@@ -1,5 +1,6 @@
 package ere_geologique.common.entity;
 
+import io.netty.buffer.ByteBuf;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.EnchantmentThorns;
 import net.minecraft.entity.Entity;
@@ -17,7 +18,6 @@ public class Mosasaurus extends SwimmingDino implements IMob
 {
     private Entity targetedEntity;
 
-    
     public int courseChangeCooldown;
     public double waypointX;
     public double waypointY;
@@ -138,9 +138,9 @@ public class Mosasaurus extends SwimmingDino implements IMob
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setAttribute(10.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setAttribute(0.5D);
-        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setAttribute(8.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(10.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.5D);
+        this.getEntityAttribute(SharedMonsterAttributes.attackDamage).setBaseValue(8.0D);
     }
 
     protected void updateEntityActionState()
@@ -198,7 +198,7 @@ public class Mosasaurus extends SwimmingDino implements IMob
      */
     public boolean getCanSpawnHere()
     {
-        return this.rand.nextInt(20) == 0 && super.getCanSpawnHere() && this.worldObj.difficultySetting > 0;
+        return this.rand.nextInt(20) == 0 && super.getCanSpawnHere() && this.worldObj.difficultySetting.getDifficultyId() > 0;
     }
 
     /**
@@ -208,4 +208,10 @@ public class Mosasaurus extends SwimmingDino implements IMob
     {
         return 1;
     }
+
+	@Override
+	public void writeSpawnData(ByteBuf buffer) {}
+
+	@Override
+	public void readSpawnData(ByteBuf additionalData) {}
 }
