@@ -9,6 +9,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import cpw.mods.fml.relauncher.Side;
@@ -20,7 +21,7 @@ public class Sapling extends BlockSapling
 {
 	public static final String[] saplingtype = new String[] {"fougere", "cycas", "araucarias", "metasequoias", "ginkgos"};
 	@SideOnly(Side.CLIENT)
-	private IIcon[] SaplingIcon;
+	private IIcon[] SaplingIcon = new IIcon[saplingtype.length];
 	
     public Sapling()
     {
@@ -45,7 +46,7 @@ public class Sapling extends BlockSapling
     public IIcon getIcon(int side, int metadata)
     {
     	metadata &= 5;
-    	return this.SaplingIcon[metadata];
+    	return SaplingIcon[MathHelper.clamp_int(metadata, 0, 5)];
     }
     
     public int damageDropped(int id)
@@ -64,10 +65,8 @@ public class Sapling extends BlockSapling
     }
     
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister par1IconRegister)
+    public void registerBlockIcons(IIconRegister par1IconRegister)
     {
-        this.SaplingIcon = new IIcon[saplingtype.length];
-
         for (int i = 0; i < this.SaplingIcon.length; ++i)
         {
             this.SaplingIcon[i] = par1IconRegister.registerIcon(this.getTextureName() + "_" + saplingtype[i]);

@@ -33,6 +33,7 @@ public class Egg extends Item
         this.maxStackSize = 1;
         this.DinoType=DinoType0;
     }
+    
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister par1IconRegister)
     {

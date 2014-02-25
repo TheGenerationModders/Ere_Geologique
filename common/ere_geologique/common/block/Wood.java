@@ -9,7 +9,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.IBlockAccess;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.common.creativetabs.EGCreativeTab;
@@ -33,21 +32,21 @@ public class Wood extends BlockLog
     	return 1;
     }
     
-    public Item idDropped(Item item, Random rand, int fortune)
-    {
-        return Item.getItemFromBlock(EGBlockList.wood);
-    }
-    
     @SideOnly(Side.CLIENT)
-    protected IIcon getSideIcon(int par1)
+    protected IIcon getSideIcon(int i)
     {
-        return this.IconArray[par1];
+        return this.IconArray[i % this.IconArray.length];
     }
 
     @SideOnly(Side.CLIENT)
-    protected IIcon getEndIcon(int par1)
+    protected IIcon getTopIcon(int i)
     {
-        return this.wood_top[par1];
+        return this.wood_top[i % this.wood_top.length];
+    }
+    
+    public Item idDropped(Item item, Random rand, int fortune)
+    {
+        return Item.getItemFromBlock(EGBlockList.wood);
     }
     
     public int damageDropped(int par1)
@@ -81,17 +80,5 @@ public class Wood extends BlockLog
             this.IconArray[i] = register.registerIcon(this.getTextureName() + "_" + woodType[i]);
             this.wood_top[i] = register.registerIcon(this.getTextureName() + "_" + woodType[i] + "_top");
         }
-    }
-    
-    @Override
-    public boolean canSustainLeaves(IBlockAccess world, int x, int y, int z)
-    {
-        return true;
-    }
-
-    @Override
-    public boolean isWood(IBlockAccess world, int x, int y, int z)
-    {
-        return true;
     }
 }

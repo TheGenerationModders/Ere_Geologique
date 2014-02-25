@@ -40,7 +40,7 @@ public class Drum extends BlockContainer
      * When this method is called, your block should register all the icons it needs with the given IconRegister. This
      * is the only chance you get to register icons.
      */
-    public void registerIcons(IIconRegister par1IconRegister)
+    public void registerBlockIcons(IIconRegister par1IconRegister)
     {
         this.blockIcon = par1IconRegister.registerIcon("ere_geologique:Drum_Side");
         this.Top1 = par1IconRegister.registerIcon("ere_geologique:Drum_Top1");

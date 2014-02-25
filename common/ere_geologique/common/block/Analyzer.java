@@ -34,7 +34,7 @@ public class Analyzer extends BlockContainer
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister iconRegister)
+	public void registerBlockIcons(IIconRegister iconRegister)
 	{
 		this.blockIcon = iconRegister.registerIcon("ere_geologique:Analyser_Sides");
 		this.top = iconRegister.registerIcon("ere_geologique:Analyser_Top");

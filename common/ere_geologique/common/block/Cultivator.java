@@ -90,7 +90,7 @@ public class Cultivator extends BlockContainer
         }
     }
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister par1IconRegister)
+    public void registerBlockIcons(IIconRegister par1IconRegister)
     {
         this.blockIcon = par1IconRegister.registerIcon(this.isActive? "ere_geologique:Culture_Sides_Active" : "ere_geologique:Culture_Sides_Idle");
         this.Bottom = par1IconRegister.registerIcon("ere_geologique:Culture_Bottom");

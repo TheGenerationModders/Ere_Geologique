@@ -70,7 +70,7 @@ public class Feeder extends BlockContainer
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister iconRegister)
+	public void registerBlockIcons(IIconRegister iconRegister)
 	{
 		this.blockIcon = iconRegister.registerIcon("ere_geologique:Feeder_Sides");
 		this.bottom = iconRegister.registerIcon("ere_geologique:Feeder_Bottom");
@@ -142,14 +142,13 @@ public class Feeder extends BlockContainer
 		}
 		else
 		{
-			player.openGui(EreGeologique.Instance, 0, world, x, y, z);
+			TileEntityFeeder tileEntityFeeder = (TileEntityFeeder)world.getTileEntity(x, y, z);
+			if(tileEntityFeeder != null)
+			{
+				player.openGui(EreGeologique.Instance, 0, world, x, y, z);
+			}
 			return true;
 		}
-	}
-
-	public TileEntity func_149915_a(World world, int par2)
-	{
-		return new TileEntityFeeder();
 	}
 
     public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase living, ItemStack stack)

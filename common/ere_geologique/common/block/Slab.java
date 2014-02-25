@@ -60,5 +60,5 @@ public class Slab extends BlockSlab
 	}
 
 	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister par1IconRegister) {}
+	public void registerBlockIcons(IIconRegister par1IconRegister) {}
 }

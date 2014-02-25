@@ -47,7 +47,7 @@ public class EGBlockList
 	       stairCycas = new Stair(plank, 1).setStepSound(Block.soundTypeWood).setHardness(3F).setResistance(1.0F).setBlockName("StairCycas");
 	       stairAraucarias = new Stair(plank, 2).setStepSound(Block.soundTypeWood).setHardness(3F).setResistance(1.0F).setBlockName("StairAraucarias");
 	       stairMetasequoias = new Stair(plank, 3).setStepSound(Block.soundTypeWood).setHardness(3F).setResistance(1.0F).setBlockName("StairMetasequoias");
-	       stairGinkgos = new Stair(plank, 5).setStepSound(Block.soundTypeWood).setHardness(3F).setResistance(1.0F).setBlockName("StairGinkgos");
+	       stairGinkgos = new Stair(plank, 4).setStepSound(Block.soundTypeWood).setHardness(3F).setResistance(1.0F).setBlockName("StairGinkgos");
 	       glaciaPortal = (GlaciaPortal) new GlaciaPortal().setHardness(-1.0F).setStepSound(Block.soundTypeGlass).setLightLevel(0.75F).setBlockName("GlaciaPortal").setBlockTextureName("ere_geologique:GlaciaPortal");
 	       feeder = new Feeder().setHardness(3.5F).setStepSound(Block.soundTypeStone).setBlockName(LocalizationStrings.FEEDER_NAME).setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
 	       analyzer = new Analyzer().setHardness(3.0F).setStepSound(Block.soundTypeStone).setBlockName(LocalizationStrings.ANALYZER_NAME).setCreativeTab(EGCreativeTab.EGCreativeTabBlock);

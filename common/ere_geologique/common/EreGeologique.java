@@ -54,7 +54,7 @@ import ere_geologique.proxy.EGCommonProxy;
 //import ere_geologique.proxy.network.ServerPacketHandler;
 //import ere_geologique.proxy.network.TickHandlerClient;
 
-@Mod(modid = "Ere G\351ologique", name = "Ere G\351ologique", version = Version.VERSION, dependencies = "required-after:Forge@[9.10.1.870,)", acceptedMinecraftVersions=Version.MC_VERSION)
+@Mod(modid = "Ere_G\351ologique", name = "Ere G\351ologique", version = Version.VERSION, dependencies = "required-after:Forge@[9.10.1.870,)", acceptedMinecraftVersions=Version.MC_VERSION)
 //@NetworkMod(clientSideRequired = true, serverSideRequired = false, serverPacketHandlerSpec = @SidedPacketHandler(channels = {"EreGeologique"}, packetHandler = ServerPacketHandler.class))
 
 public class EreGeologique
@@ -62,7 +62,7 @@ public class EreGeologique
 	@SidedProxy(clientSide = "ere_geologique.proxy.EGClientProxy", serverSide = "ere_geologique.proxy.EGCommonProxy")
 	public static EGCommonProxy proxy;
 
-	@Instance("Ere G\351ologique")
+	@Instance("Ere_G\351ologique")
 	public static EreGeologique Instance;
 	public static Logger EGLog = Logger.getLogger("EreGeologique");
 	public static ConfigFile configFile;

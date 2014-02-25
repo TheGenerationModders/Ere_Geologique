@@ -17,7 +17,7 @@ public class Plank extends Block
 {
 	public static final String[] woodType = new String[] {"fougere", "cycas", "araucarias", "metasequoias", "ginkgos"};
 	@SideOnly(Side.CLIENT)
-	private IIcon[] IconArray;
+	private IIcon[] IconArray = new IIcon[woodType.length];
 	
 	public Plank()
     {
@@ -52,10 +52,8 @@ public class Plank extends Block
     }
 
     @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister par1IconRegister)
+    public void registerBlockIcons(IIconRegister par1IconRegister)
     {
-        this.IconArray = new IIcon[woodType.length];
-
         for (int i = 0; i < this.IconArray.length; ++i)
         {
             this.IconArray[i] = par1IconRegister.registerIcon(this.getTextureName() + "_" + woodType[i]);

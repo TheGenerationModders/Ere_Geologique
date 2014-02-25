@@ -79,42 +79,42 @@ public class EGItemList
 	       for(int i=0;i<EnumDinoType.values().length;i++)
 		   EnumDinoType.values()[i].dnaItem = new EGItem(EnumDinoType.values()[i].name() + "_DNA").setUnlocalizedName("dna" + EnumDinoType.values()[i].name());
 	       
-	       GameRegistry.registerItem(ivoryIngot, "IvoryIngot", "Ere G\351ologique");
-	       GameRegistry.registerItem(ivoryNugget, "IvoryNugget", "Ere G\351ologique");
-	       GameRegistry.registerItem(ivoryGear, "IvoryGear", "Ere G\351ologique");
-	       GameRegistry.registerItem(dinoPedia, "DinoPedia", "Ere G\351ologique");
-	       GameRegistry.registerItem(chickenEss, "ChickenEss", "Ere G\351ologique");
-	       GameRegistry.registerItem(whip, "Whip", "Ere G\351ologique");
-	       GameRegistry.registerItem(legBone, "LegBone", "Ere G\351ologique");
-	       GameRegistry.registerItem(claw, "Claw", "Ere G\351ologique");
-	       GameRegistry.registerItem(foot, "Foot", "Ere G\351ologique");
-	       GameRegistry.registerItem(skull, "DinoSkull", "Ere G\351ologique");
-	       GameRegistry.registerItem(bioFossil, "BioFossil", "Ere G\351ologique");
-	       GameRegistry.registerItem(skullStick, "SkullStick", "Ere G\351ologique");
-	       GameRegistry.registerItem(gem, "gem", "Ere G\351ologique");
-	       GameRegistry.registerItem(emptyShell, "EmptyShell", "Ere G\351ologique");
-	       GameRegistry.registerItem(magicConch, "MagicConch", "Ere G\351ologique");
-	       GameRegistry.registerItem(sjl, "sjl", "Ere G\351ologique");
-	       GameRegistry.registerItem(cookedDinoMeat, "cookedDinoMeat", "Ere G\351ologique");
-	       GameRegistry.registerItem(brokenSapling, "BrokenSapling", "Ere G\351ologique");
-	       GameRegistry.registerItem(steelIngot, "SteelIngot", "Ere G\351ologique");
-	       GameRegistry.registerItem(steelPlate, "SteelPlate", "Ere G\351ologique");
-	       GameRegistry.registerItem(relic, "Relic", "Ere G\351ologique");
-	       GameRegistry.registerItem(rawChickenSoup, "rawChickenSoup", "Ere G\351ologique");
-	       GameRegistry.registerItem(cookedChickenSoup, "cookedChickenSoup", "Ere G\351ologique");
-	       GameRegistry.registerItem(flintAndSteel, "FlindAndSteel", "Ere G\351ologique");
-	       GameRegistry.registerItem(archNotebook, "archNotebook", "Ere G\351ologique");
-	       GameRegistry.registerItem(tranquilizerDart, "tranquilizertDart", "Ere G\351ologique");
-	       GameRegistry.registerItem(gun, "gun", "Ere G\351ologique");
+	       GameRegistry.registerItem(ivoryIngot, "IvoryIngot", "Ere_G\351ologique");
+	       GameRegistry.registerItem(ivoryNugget, "IvoryNugget", "Ere_G\351ologique");
+	       GameRegistry.registerItem(ivoryGear, "IvoryGear", "Ere_G\351ologique");
+	       GameRegistry.registerItem(dinoPedia, "DinoPedia", "Ere_G\351ologique");
+	       GameRegistry.registerItem(chickenEss, "ChickenEss", "Ere_G\351ologique");
+	       GameRegistry.registerItem(whip, "Whip", "Ere_G\351ologique");
+	       GameRegistry.registerItem(legBone, "LegBone", "Ere_G\351ologique");
+	       GameRegistry.registerItem(claw, "Claw", "Ere_G\351ologique");
+	       GameRegistry.registerItem(foot, "Foot", "Ere_G\351ologique");
+	       GameRegistry.registerItem(skull, "DinoSkull", "Ere_G\351ologique");
+	       GameRegistry.registerItem(bioFossil, "BioFossil", "Ere_G\351ologique");
+	       GameRegistry.registerItem(skullStick, "SkullStick", "Ere_G\351ologique");
+	       GameRegistry.registerItem(gem, "gem", "Ere_G\351ologique");
+	       GameRegistry.registerItem(emptyShell, "EmptyShell", "Ere_G\351ologique");
+	       GameRegistry.registerItem(magicConch, "MagicConch", "Ere_G\351ologique");
+	       GameRegistry.registerItem(sjl, "sjl", "Ere_G\351ologique");
+	       GameRegistry.registerItem(cookedDinoMeat, "cookedDinoMeat", "Ere_G\351ologique");
+	       GameRegistry.registerItem(brokenSapling, "BrokenSapling", "Ere_G\351ologique");
+	       GameRegistry.registerItem(steelIngot, "SteelIngot", "Ere_G\351ologique");
+	       GameRegistry.registerItem(steelPlate, "SteelPlate", "Ere_G\351ologique");
+	       GameRegistry.registerItem(relic, "Relic", "Ere_G\351ologique");
+	       GameRegistry.registerItem(rawChickenSoup, "rawChickenSoup", "Ere_G\351ologique");
+	       GameRegistry.registerItem(cookedChickenSoup, "cookedChickenSoup", "Ere_G\351ologique");
+	       GameRegistry.registerItem(flintAndSteel, "FlindAndSteel", "Ere_G\351ologique");
+	       GameRegistry.registerItem(archNotebook, "archNotebook", "Ere_G\351ologique");
+	       GameRegistry.registerItem(tranquilizerDart, "tranquilizertDart", "Ere_G\351ologique");
+	       GameRegistry.registerItem(gun, "gun", "Ere_G\351ologique");
 
 	       for(int i=0;i<EnumDinoType.values().length;i++)
-	       GameRegistry.registerItem(EnumDinoType.values()[i].eggItem, "egg" + EnumDinoType.values()[i].name(), "Ere G\351ologique");
+	       GameRegistry.registerItem(EnumDinoType.values()[i].eggItem, "egg" + EnumDinoType.values()[i].name(), "Ere_G\351ologique");
 	       
 	       for(int i=0;i<EnumDinoType.values().length;i++)
-		   GameRegistry.registerItem(EnumDinoType.values()[i].dropItem, "raw" + EnumDinoType.values()[i].name(), "Ere G\351ologique");
+		   GameRegistry.registerItem(EnumDinoType.values()[i].dropItem, "raw" + EnumDinoType.values()[i].name(), "Ere_G\351ologique");
 	       
 	       for(int i=0;i<EnumDinoType.values().length;i++)
-		   GameRegistry.registerItem(EnumDinoType.values()[i].dnaItem, "dna" + EnumDinoType.values()[i].name(), "Ere G\351ologique");
+		   GameRegistry.registerItem(EnumDinoType.values()[i].dnaItem, "dna" + EnumDinoType.values()[i].name(), "Ere_G\351ologique");
 		}
 		catch(Exception ex)
 		{
