@@ -7,7 +7,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
-import ere_geologique.common.entity.Enums.EnumDinoType;
+import ere_geologique.common.entity.enums.EnumDinoType;
 
 public class FlyingDino extends Dinosaure
 {

@@ -1,10 +1,10 @@
-package ere_geologique.common.entity.IA;
+package ere_geologique.common.entity.ia;
 
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.RandomPositionGenerator;
 import net.minecraft.util.Vec3;
 import ere_geologique.common.entity.Dinosaure;
-import ere_geologique.common.entity.Enums.EnumOrderType;
+import ere_geologique.common.entity.enums.EnumOrderType;
 
 public class DinoAIWander extends EntityAIBase
 {

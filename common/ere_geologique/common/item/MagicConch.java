@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 import ere_geologique.common.EreGeologique;
 import ere_geologique.common.entity.Dinosaure;
 import ere_geologique.common.entity.Plesiosaure;
-import ere_geologique.common.entity.Enums.EnumOrderType;
+import ere_geologique.common.entity.enums.EnumOrderType;
 
 public class MagicConch extends Item
 {

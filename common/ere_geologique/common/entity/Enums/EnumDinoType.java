@@ -1,4 +1,4 @@
-package ere_geologique.common.entity.Enums;
+package ere_geologique.common.entity.enums;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package ere_geologique.common.entity.IA;
+package ere_geologique.common.entity.ia;
 
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.item.ItemStack;
@@ -6,8 +6,8 @@ import net.minecraft.util.DamageSource;
 import ere_geologique.api.food.DinoFood;
 import ere_geologique.common.command.CommandDino;
 import ere_geologique.common.entity.Dinosaure;
-import ere_geologique.common.entity.Enums.EnumOrderType;
-import ere_geologique.common.entity.Enums.EnumSituation;
+import ere_geologique.common.entity.enums.EnumOrderType;
+import ere_geologique.common.entity.enums.EnumSituation;
 
 public class DinoAIStarvation extends EntityAIBase
 {

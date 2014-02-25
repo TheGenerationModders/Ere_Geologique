@@ -1,4 +1,4 @@
-package ere_geologique.common.entity.IA;
+package ere_geologique.common.entity.ia;
 
 import java.util.Collections;
 import java.util.Iterator;

@@ -11,8 +11,8 @@ import net.minecraft.entity.monster.IMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
-import ere_geologique.common.entity.Enums.EnumDinoType;
-import ere_geologique.common.entity.IA.WaterDinoAIAttack;
+import ere_geologique.common.entity.enums.EnumDinoType;
+import ere_geologique.common.entity.ia.WaterDinoAIAttack;
 
 public class Mosasaurus extends SwimmingDino implements IMob
 {
@@ -176,7 +176,7 @@ public class Mosasaurus extends SwimmingDino implements IMob
 
             if (victim instanceof EntityLivingBase)
             {
-                EnchantmentThorns.func_92096_a(this, (EntityLivingBase) victim, rand);
+                //TODO EnchantmentThorns.func_92096_a(this, (EntityLivingBase) victim, rand);
             }
 
             setLastAttacker(victim);

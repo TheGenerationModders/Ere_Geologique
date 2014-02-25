@@ -34,7 +34,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.client.LocalizationStrings;
 import ere_geologique.common.EreGeologique;
 import ere_geologique.common.command.CommandDino;
-import ere_geologique.common.entity.Enums.EnumDinoType;
+import ere_geologique.common.entity.enums.EnumDinoType;
 import ere_geologique.common.gui.GuiPedia;
 import ere_geologique.common.item.EGItemList;
 

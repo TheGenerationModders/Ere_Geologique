@@ -18,7 +18,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.common.entity.DinoEgg;
 import ere_geologique.common.entity.Nautilus;
-import ere_geologique.common.entity.Enums.EnumDinoType;
+import ere_geologique.common.entity.enums.EnumDinoType;
 
 public class Egg extends Item
 {

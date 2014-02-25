@@ -5,7 +5,6 @@ import java.util.Random;
 import java.util.logging.Level;
 
 import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.enchantment.EnchantmentThorns;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLivingBase;
@@ -38,11 +37,11 @@ import ere_geologique.api.food.DinoFood.DinoFoodEntry;
 import ere_geologique.client.LocalizationStrings;
 import ere_geologique.common.EreGeologique;
 import ere_geologique.common.command.CommandDino;
-import ere_geologique.common.entity.Enums.EnumDinoType;
-import ere_geologique.common.entity.Enums.EnumOrderType;
-import ere_geologique.common.entity.Enums.EnumSituation;
-import ere_geologique.common.entity.IA.DinoAIGrowup;
-import ere_geologique.common.entity.IA.DinoAIStarvation;
+import ere_geologique.common.entity.enums.EnumDinoType;
+import ere_geologique.common.entity.enums.EnumOrderType;
+import ere_geologique.common.entity.enums.EnumSituation;
+import ere_geologique.common.entity.ia.DinoAIGrowup;
+import ere_geologique.common.entity.ia.DinoAIStarvation;
 import ere_geologique.common.gui.GuiPedia;
 import ere_geologique.common.item.EGItemList;
 import ere_geologique.common.tileentity.TileEntityFeeder;
@@ -585,7 +584,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
             pedia.AddStringLR(StatCollector.translateToLocal(LocalizationStrings.PEDIA_TEXT_RIDEABLE), true);
 
         if (this.SelfType.OrderItem != null)
-        pedia.AddStringLR(StatCollector.translateToLocal("Order: " + this.SelfType.OrderItem.getStatName()), true);
+        pedia.AddStringLR(StatCollector.translateToLocal("Order: " + this.SelfType.OrderItem.getUnlocalizedName()), true);
 
         for (DinoFoodEntry list : this.SelfType.dinoFood)
         {
@@ -849,7 +848,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
 
             if (victim instanceof EntityLivingBase)
             {
-                EnchantmentThorns.func_92096_a(this, (EntityLivingBase) victim, rand);
+                //TODO EnchantmentThorns.func_92096_a(this, (EntityLivingBase) victim, rand);
             }
 
             setLastAttacker(victim);
@@ -1561,7 +1560,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
         return false;
     }
 
-    @Override
+    /* TODO @Override
     public EntityLivingData onSpawnWithEgg(EntityLivingData par1EntityLivingData)
     {
         par1EntityLivingData = super.onSpawnWithEgg(par1EntityLivingData);
@@ -1569,7 +1568,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
         this.setSubSpecies(random.nextInt(3) + 1);
         this.setDinoAge(this.SelfType.AdultAge);
         return par1EntityLivingData;
-    }
+    }*/
 
     /**
      * Return the AI task for player control.

@@ -5,7 +5,7 @@ import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
-import ere_geologique.common.entity.Enums.EnumDinoType;
+import ere_geologique.common.entity.enums.EnumDinoType;
 
 public class DinoFood
 {

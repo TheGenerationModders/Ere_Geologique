@@ -16,6 +16,7 @@ import net.minecraft.entity.ai.EntityAIOwnerHurtByTarget;
 import net.minecraft.entity.ai.EntityAIOwnerHurtTarget;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.play.client.C17PacketCustomPayload;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.DamageSource;
@@ -26,13 +27,13 @@ import net.minecraft.world.WorldServer;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.client.LocalizationStrings;
-import ere_geologique.common.entity.Enums.EnumDinoType;
-import ere_geologique.common.entity.Enums.EnumSituation;
-import ere_geologique.common.entity.IA.DinoAIAttackOnCollide;
-import ere_geologique.common.entity.IA.DinoAIEat;
-import ere_geologique.common.entity.IA.DinoAIFollowOwner;
-import ere_geologique.common.entity.IA.DinoAIRideGround;
-import ere_geologique.common.entity.IA.DinoAIWander;
+import ere_geologique.common.entity.enums.EnumDinoType;
+import ere_geologique.common.entity.enums.EnumSituation;
+import ere_geologique.common.entity.ia.DinoAIAttackOnCollide;
+import ere_geologique.common.entity.ia.DinoAIEat;
+import ere_geologique.common.entity.ia.DinoAIFollowOwner;
+import ere_geologique.common.entity.ia.DinoAIRideGround;
+import ere_geologique.common.entity.ia.DinoAIWander;
 import ere_geologique.common.gui.GuiPedia;
 
 public class Pterosaure extends Dinosaure
@@ -726,7 +727,7 @@ public class Pterosaure extends Dinosaure
 
             //((EntityPlayerMP)this.riddenByEntity).playerNetServerHandler.sendPacketToPlayer(new Packet250CustomPayload("PteroFlight",var3.toByteArray()));
             //System.out.println("SERVER:"+String.valueOf(this.WingState));
-            ((WorldServer)this.riddenByEntity.worldObj).getEntityTracker().sendPacketToAllAssociatedPlayers(this.riddenByEntity, new Packet250CustomPayload("PteroFlight", var3.toByteArray()));
+            ((WorldServer)this.riddenByEntity.worldObj).getEntityTracker().func_151247_a(this.riddenByEntity, new C17PacketCustomPayload("PteroFlight", var3.toByteArray()));
         }
         else
         {

@@ -15,7 +15,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import ere_geologique.common.block.Cultivator;
 import ere_geologique.common.block.EGBlockList;
 import ere_geologique.common.command.CommandDino;
-import ere_geologique.common.entity.Enums.EnumDinoType;
+import ere_geologique.common.entity.enums.EnumDinoType;
 import ere_geologique.common.item.EGItemList;
 
 public class TileEntityCultivator extends TileEntity implements IInventory, ISidedInventory
@@ -225,7 +225,7 @@ public class TileEntityCultivator extends TileEntity implements IInventory, ISid
 
         if (var2)
         {
-            this.onInventoryChanged();
+            this.markDirty();
         }
 
         if (this.furnaceCookTime == 3001 && (new Random()).nextInt(100) < 20)

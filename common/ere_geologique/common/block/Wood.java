@@ -3,18 +3,18 @@ package ere_geologique.common.block;
 import java.util.List;
 import java.util.Random;
 
-import net.minecraft.block.BlockRotatedPillar;
-import net.minecraft.block.material.Material;
+import net.minecraft.block.BlockLog;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.common.creativetabs.EGCreativeTab;
 
-public class Wood extends BlockRotatedPillar
+public class Wood extends BlockLog
 {
 	public static final String[] woodType = new String[] {"fougere", "cycas", "araucarias", "metasequoias", "ginkgos"};
 	@SideOnly(Side.CLIENT)
@@ -24,7 +24,7 @@ public class Wood extends BlockRotatedPillar
 	
     public Wood()
     {
-        super(Material.wood);
+        super();
         this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
     }
     
@@ -69,8 +69,9 @@ public class Wood extends BlockRotatedPillar
         list.add(new ItemStack(item, 1, 4));
  
     }
- 
-    public void registerIcons(IIconRegister register)
+    
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister register)
     {
     	this.wood_top = new IIcon[woodType.length];
         this.IconArray = new IIcon[woodType.length];
@@ -80,5 +81,17 @@ public class Wood extends BlockRotatedPillar
             this.IconArray[i] = register.registerIcon(this.getTextureName() + "_" + woodType[i]);
             this.wood_top[i] = register.registerIcon(this.getTextureName() + "_" + woodType[i] + "_top");
         }
+    }
+    
+    @Override
+    public boolean canSustainLeaves(IBlockAccess world, int x, int y, int z)
+    {
+        return true;
+    }
+
+    @Override
+    public boolean isWood(IBlockAccess world, int x, int y, int z)
+    {
+        return true;
     }
 }

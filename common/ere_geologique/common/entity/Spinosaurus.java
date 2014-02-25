@@ -26,12 +26,12 @@ import ere_geologique.client.LocalizationStrings;
 import ere_geologique.common.EreGeologique;
 import ere_geologique.common.block.Fossil;
 import ere_geologique.common.command.CommandDino;
-import ere_geologique.common.entity.Enums.EnumDinoType;
-import ere_geologique.common.entity.IA.DinoAIAttackOnCollide;
-import ere_geologique.common.entity.IA.DinoAIEat;
-import ere_geologique.common.entity.IA.DinoAITargetNonTamedExceptSelfClass;
-import ere_geologique.common.entity.IA.DinoAIWander;
-import ere_geologique.common.entity.Interface.IWaterDino;
+import ere_geologique.common.entity.enums.EnumDinoType;
+import ere_geologique.common.entity.ia.DinoAIAttackOnCollide;
+import ere_geologique.common.entity.ia.DinoAIEat;
+import ere_geologique.common.entity.ia.DinoAITargetNonTamedExceptSelfClass;
+import ere_geologique.common.entity.ia.DinoAIWander;
+import ere_geologique.common.entity.interfaces.IWaterDino;
 import ere_geologique.common.gui.GuiPedia;
 import ere_geologique.common.item.EGItemList;
 

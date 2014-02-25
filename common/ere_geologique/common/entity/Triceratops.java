@@ -19,11 +19,11 @@ import net.minecraft.init.Blocks;
 import net.minecraft.pathfinding.PathEntity;
 import net.minecraft.world.World;
 import ere_geologique.common.block.EGBlockList;
-import ere_geologique.common.entity.Enums.EnumDinoType;
-import ere_geologique.common.entity.IA.DinoAIEat;
-import ere_geologique.common.entity.IA.DinoAIFollowOwner;
-import ere_geologique.common.entity.IA.DinoAIRideGround;
-import ere_geologique.common.entity.IA.DinoAIWander;
+import ere_geologique.common.entity.enums.EnumDinoType;
+import ere_geologique.common.entity.ia.DinoAIEat;
+import ere_geologique.common.entity.ia.DinoAIFollowOwner;
+import ere_geologique.common.entity.ia.DinoAIRideGround;
+import ere_geologique.common.entity.ia.DinoAIWander;
 
 public class Triceratops extends Dinosaure
 {

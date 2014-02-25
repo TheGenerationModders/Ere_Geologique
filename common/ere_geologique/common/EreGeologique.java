@@ -9,10 +9,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.client.event.RenderPlayerEvent;
-import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.MinecraftForge;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.FMLLog;
+import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -24,13 +22,9 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-//import cpw.mods.fml.common.network.IChatListener;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.gameevent.TickEvent;
-import cpw.mods.fml.relauncher.Side;
 import ere_geologique.api.food.EnumDinoFoodMob;
-//import ere_geologique.client.EGMessageHandler;
 import ere_geologique.client.Localizations;
 import ere_geologique.common.achievement.EGAchievement;
 import ere_geologique.common.block.EGBlockList;
@@ -39,9 +33,8 @@ import ere_geologique.common.config.ConfigFile;
 import ere_geologique.common.config.EGProperties;
 import ere_geologique.common.config.Version;
 import ere_geologique.common.creativetabs.EGCreativeTab;
-//import ere_geologique.common.dimension.EGDimensionList;
 import ere_geologique.common.entity.EGEntityList;
-import ere_geologique.common.entity.Enums.EnumDinoType;
+import ere_geologique.common.entity.enums.EnumDinoType;
 import ere_geologique.common.event.CraftingHandler;
 import ere_geologique.common.event.FougereBoneMeal;
 import ere_geologique.common.event.PickupHandler;
@@ -55,6 +48,9 @@ import ere_geologique.common.recipe.Integration;
 import ere_geologique.common.tileentity.EGTEntityList;
 import ere_geologique.common.worldgenerator.FossilGenerator;
 import ere_geologique.proxy.EGCommonProxy;
+//import cpw.mods.fml.common.network.IChatListener;
+//import ere_geologique.client.EGMessageHandler;
+//import ere_geologique.common.dimension.EGDimensionList;
 //import ere_geologique.proxy.network.ServerPacketHandler;
 //import ere_geologique.proxy.network.TickHandlerClient;
 
@@ -78,7 +74,7 @@ public class EreGeologique
 	@EventHandler
 	public void preload(FMLPreInitializationEvent event)
 	{
-		EGLog.setParent((Logger) FMLLog.getLogger());
+		//EGLog.setParent((Logger) FMLLog.getLogger());
 		configFile = new ConfigFile(new File(event.getModConfigurationDirectory(), "EreGeologique.cfg"));
 		try
 		{
@@ -226,11 +222,11 @@ public class EreGeologique
 		//Other
 		proxy.registerRenderEntity();
 		proxy.registerRender();
-		FMLCommonHandler.instance().bus().register(new FougereBoneMeal());
-		FMLCommonHandler.instance().bus().register(this);
-		FMLCommonHandler.instance().bus().register(new PlayerTracker());
-		FMLCommonHandler.instance().bus().register(new CraftingHandler());
-		FMLCommonHandler.instance().bus().register(new PickupHandler());
+		MinecraftForge.EVENT_BUS.register(new FougereBoneMeal());
+		MinecraftForge.EVENT_BUS.register(this);
+		MinecraftForge.EVENT_BUS.register(new PlayerTracker());
+		MinecraftForge.EVENT_BUS.register(new CraftingHandler());
+		MinecraftForge.EVENT_BUS.register(new PickupHandler());
 
 		EnumDinoType.init();
 		EnumDinoFoodMob.init();

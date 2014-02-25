@@ -3,13 +3,12 @@ package ere_geologique.common.event;
 import java.util.Arrays;
 import java.util.HashSet;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent.ItemSmeltedEvent;
 import ere_geologique.common.achievement.EGAchievement;
 import ere_geologique.common.block.EGBlockList;
-import ere_geologique.common.entity.Enums.EnumDinoType;
+import ere_geologique.common.entity.enums.EnumDinoType;
 
 public class CraftingHandler
 {
@@ -18,29 +17,29 @@ public class CraftingHandler
     HashSet<Integer> eggsTotal = new HashSet<Integer>(Arrays.asList(subeggsTotal));
 	
     @SubscribeEvent
-	public void ItemCraftedEvent(EntityPlayer player, ItemStack item, IInventory craftMatrix)
+	public void ItemCraftedEvent(ItemCraftedEvent event)
 	{
-		if(item.getItem().equals(EGBlockList.feeder))
+		if(event.crafting.getItem().equals(EGBlockList.feeder))
 		{
-			player.addStat(EGAchievement.feeder, 1);
-		}else if(item.getItem().equals(EGBlockList.analyzer))
+			event.player.addStat(EGAchievement.feeder, 1);
+		}else if(event.crafting.getItem().equals(EGBlockList.analyzer))
 		{
-			player.addStat(EGAchievement.analyzer, 1);
-		}else if(item.getItem().equals(EGBlockList.cultivatorIdle))
+			event.player.addStat(EGAchievement.analyzer, 1);
+		}else if(event.crafting.getItem().equals(EGBlockList.cultivatorIdle))
 		{
-			player.addStat(EGAchievement.cultivator, 1);
+			event.player.addStat(EGAchievement.cultivator, 1);
 		}
 		
 	}
 
     @SubscribeEvent
-	public void ItemSmeltedEvent(EntityPlayer player, ItemStack item)
+	public void ItemSmeltedEvent(ItemSmeltedEvent event)
 	{
 		for (int i = 0; i < EnumDinoType.values().length; i++)
 		{
-			if (item.getItem().equals(EnumDinoType.values()[i].eggItem))
+			if (event.smelting.getItem().equals(EnumDinoType.values()[i].eggItem))
 			{
-				player.addStat(EGAchievement.firstEgg, 1);
+				event.player.addStat(EGAchievement.firstEgg, 1);
 				if (!eggsFound.contains(i))
 					this.eggsFound.add(i);
 			}
@@ -52,7 +51,7 @@ public class CraftingHandler
 
 		if (eggsFound.containsAll(eggsTotal))
 		{
-			player.addStat(EGAchievement.allEggs, 1);
+			event.player.addStat(EGAchievement.allEggs, 1);
 		}
 	}
 }

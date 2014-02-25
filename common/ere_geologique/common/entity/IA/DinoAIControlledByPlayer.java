@@ -1,4 +1,4 @@
-package ere_geologique.common.entity.IA;
+package ere_geologique.common.entity.ia;
 
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.player.EntityPlayer;

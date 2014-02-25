@@ -6,7 +6,7 @@ import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
 import ere_geologique.common.block.EGBlockList;
-import ere_geologique.common.entity.Enums.EnumDinoType;
+import ere_geologique.common.entity.enums.EnumDinoType;
 import ere_geologique.common.item.EGItemList;
 
 public class EGRecipe

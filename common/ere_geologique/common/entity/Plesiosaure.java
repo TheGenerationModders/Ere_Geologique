@@ -23,9 +23,9 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import ere_geologique.common.command.CommandDino;
-import ere_geologique.common.entity.Enums.EnumDinoType;
-import ere_geologique.common.entity.Enums.EnumOrderType;
-import ere_geologique.common.entity.IA.WaterDinoAIWander;
+import ere_geologique.common.entity.enums.EnumDinoType;
+import ere_geologique.common.entity.enums.EnumOrderType;
+import ere_geologique.common.entity.ia.WaterDinoAIWander;
 
 public class Plesiosaure extends SwimmingDino implements IMob
 {
@@ -858,7 +858,7 @@ public class Plesiosaure extends SwimmingDino implements IMob
                                     var4.dropBlockAsItem(this.worldObj, var1, var2, var3, 1, 0);
                                 }
 
-                                this.worldObj.setBlock(var1, var2, var3, 0);
+                                this.worldObj.setBlock(var1, var2, var3, var4, 0, var3);
                                 destroyed++;
                                 //this.RushTick = 10;
                             }
@@ -973,10 +973,10 @@ public class Plesiosaure extends SwimmingDino implements IMob
                 var3 = 0.54600006F;
                 Block var4 = this.worldObj.getBlock(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.boundingBox.minY) - 1, MathHelper.floor_double(this.posZ));
 
-                if (var4 > 0)
+                /*if (var4 > 0)
                 {
                     var3 = var4.slipperiness * 0.91F;
-                }
+                }*/
             }
 
             float var8 = 0.16277136F / (var3 * var3 * var3);
@@ -1008,10 +1008,10 @@ public class Plesiosaure extends SwimmingDino implements IMob
                 var3 = 0.54600006F;
                 Block var6 = this.worldObj.getBlock(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.boundingBox.minY) - 1, MathHelper.floor_double(this.posZ));
 
-                if (var6 > 0)
+                /*if (var6 > 0)
                 {
                     var3 = var6.slipperiness * 0.91F;
-                }
+                }*/
             }
 
 //            System.out.println(String.valueOf(this.motionY));

@@ -15,11 +15,11 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
-import ere_geologique.common.entity.Enums.EnumDinoType;
-import ere_geologique.common.entity.IA.DinoAIAttackOnCollide;
-import ere_geologique.common.entity.IA.DinoAIEat;
-import ere_geologique.common.entity.IA.DinoAIFollowOwner;
-import ere_geologique.common.entity.IA.DinoAIWander;
+import ere_geologique.common.entity.enums.EnumDinoType;
+import ere_geologique.common.entity.ia.DinoAIAttackOnCollide;
+import ere_geologique.common.entity.ia.DinoAIEat;
+import ere_geologique.common.entity.ia.DinoAIFollowOwner;
+import ere_geologique.common.entity.ia.DinoAIWander;
 
 public class Stegosaurus extends Dinosaure
 {

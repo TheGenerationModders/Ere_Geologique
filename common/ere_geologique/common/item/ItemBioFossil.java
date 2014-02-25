@@ -15,7 +15,7 @@ import ere_geologique.common.creativetabs.EGCreativeTab;
 import ere_geologique.common.entity.DinoEgg;
 import ere_geologique.common.entity.Dinosaure;
 import ere_geologique.common.entity.Nautilus;
-import ere_geologique.common.entity.Enums.EnumDinoType;
+import ere_geologique.common.entity.enums.EnumDinoType;
 
 public class ItemBioFossil extends Item
 {

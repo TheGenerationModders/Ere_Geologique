@@ -1,7 +1,7 @@
 package ere_geologique.common.config;
 
 import net.minecraftforge.common.config.Property;
-import ere_geologique.common.entity.Enums.EnumDinoType;
+import ere_geologique.common.entity.enums.EnumDinoType;
 
 public class EGProperties
 {

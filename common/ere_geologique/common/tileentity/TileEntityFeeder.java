@@ -13,7 +13,7 @@ import net.minecraft.tileentity.TileEntity;
 import ere_geologique.api.food.DinoFood;
 import ere_geologique.api.food.EnumFoodType;
 import ere_geologique.common.entity.Dinosaure;
-import ere_geologique.common.entity.Enums.EnumDinoType;
+import ere_geologique.common.entity.enums.EnumDinoType;
 
 public class TileEntityFeeder extends TileEntity implements IInventory, ISidedInventory
 {
@@ -60,7 +60,7 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 			{
 				var3 = this.feederItemStacks[var1];
 				this.feederItemStacks[var1] = null;
-				this.onInventoryChanged();
+				this.markDirty();
 				this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
 				return var3;
 			}
@@ -72,7 +72,7 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 				{
 					this.feederItemStacks[var1] = null;
 				}
-				this.onInventoryChanged();
+				this.markDirty();
 				this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
 				return var3;
 			}
@@ -91,7 +91,7 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 		{
 			var2.stackSize = this.getInventoryStackLimit();
 		}
-		this.onInventoryChanged();
+		this.markDirty();
 		this.worldObj.markBlockForUpdate(this.xCoord, this.yCoord, this.zCoord);
 	}
 
@@ -245,7 +245,7 @@ public class TileEntityFeeder extends TileEntity implements IInventory, ISidedIn
 
 			if(var1)
 			{
-				this.onInventoryChanged();
+				this.markDirty();
 			}
 		}
 	}

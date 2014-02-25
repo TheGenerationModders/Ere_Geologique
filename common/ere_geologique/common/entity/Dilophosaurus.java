@@ -33,14 +33,14 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.client.LocalizationStrings;
-import ere_geologique.common.entity.Enums.EnumDinoType;
-import ere_geologique.common.entity.Enums.EnumOrderType;
-import ere_geologique.common.entity.Enums.EnumSituation;
-import ere_geologique.common.entity.IA.DinoAIAttackOnCollide;
-import ere_geologique.common.entity.IA.DinoAIEat;
-import ere_geologique.common.entity.IA.DinoAIFollowOwner;
-import ere_geologique.common.entity.IA.DinoAITargetNonTamedExceptSelfClass;
-import ere_geologique.common.entity.IA.DinoAIWander;
+import ere_geologique.common.entity.enums.EnumDinoType;
+import ere_geologique.common.entity.enums.EnumOrderType;
+import ere_geologique.common.entity.enums.EnumSituation;
+import ere_geologique.common.entity.ia.DinoAIAttackOnCollide;
+import ere_geologique.common.entity.ia.DinoAIEat;
+import ere_geologique.common.entity.ia.DinoAIFollowOwner;
+import ere_geologique.common.entity.ia.DinoAITargetNonTamedExceptSelfClass;
+import ere_geologique.common.entity.ia.DinoAIWander;
 import ere_geologique.common.gui.GuiPedia;
 
 public class Dilophosaurus extends Dinosaure

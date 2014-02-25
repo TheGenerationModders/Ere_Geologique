@@ -9,7 +9,7 @@ import ere_geologique.api.food.DinoFood.DinoFoodEntry;
 import ere_geologique.api.food.EnumFoodType;
 import ere_geologique.common.EreGeologique;
 import ere_geologique.common.block.EGBlockList;
-import ere_geologique.common.entity.Enums.EnumDinoType;
+import ere_geologique.common.entity.enums.EnumDinoType;
 import ere_geologique.common.item.EGItemList;
 
 public class FoodList

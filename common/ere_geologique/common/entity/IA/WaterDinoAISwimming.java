@@ -1,12 +1,12 @@
-package ere_geologique.common.entity.IA;
+package ere_geologique.common.entity.ia;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.AxisAlignedBB;
 import ere_geologique.common.entity.Dinosaure;
-import ere_geologique.common.entity.Enums.EnumOrderType;
-import ere_geologique.common.entity.Interface.IWaterDino;
+import ere_geologique.common.entity.enums.EnumOrderType;
+import ere_geologique.common.entity.interfaces.IWaterDino;
 
 public class WaterDinoAISwimming extends EntityAIBase
 {

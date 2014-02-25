@@ -15,7 +15,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
-import ere_geologique.common.entity.Enums.EnumDinoType;
+import ere_geologique.common.entity.enums.EnumDinoType;
 import ere_geologique.common.item.EGItemList;
 
 public class TileEntityAnalyzer extends TileEntity implements IInventory, ISidedInventory
@@ -246,7 +246,7 @@ public class TileEntityAnalyzer extends TileEntity implements IInventory, ISided
 
 		if(var2)
 		{
-			this.onInventoryChanged();
+			this.markDirty();
 		}
 	}
 

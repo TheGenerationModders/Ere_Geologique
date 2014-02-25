@@ -13,8 +13,8 @@ import net.minecraft.util.StatCollector;
 import ere_geologique.common.EreGeologique;
 import ere_geologique.common.entity.Dinosaure;
 import ere_geologique.common.entity.TRex;
-import ere_geologique.common.entity.Enums.EnumDinoType;
-import ere_geologique.common.entity.Enums.EnumOrderType;
+import ere_geologique.common.entity.enums.EnumDinoType;
+import ere_geologique.common.entity.enums.EnumOrderType;
 import ere_geologique.common.item.EGItemList;
 
 public class TileEntityDrum extends TileEntity
@@ -49,7 +49,7 @@ public class TileEntityDrum extends TileEntity
         this.Order = this.Order.Next();
         this.worldObj.playSoundEffect((double)this.xCoord, (double)this.yCoord, (double)this.zCoord, "ere_geologique:drum_single", 8.0F, 1.0F);//(float)Math.pow(2.0D, (double)(this.Order.ordinal()/*.ToInt() - 1*/)));
         EreGeologique.ShowMessage(StatCollector.translateToLocal("drum.trigger") + StatCollector.translateToLocal("order." + this.Order.toString()), var1);
-        this.onInventoryChanged();
+        this.markDirty();
     }
 
     public boolean SendOrder(Item item, EntityPlayer player)

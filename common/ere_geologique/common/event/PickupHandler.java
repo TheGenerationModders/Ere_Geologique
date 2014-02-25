@@ -1,9 +1,8 @@
 package ere_geologique.common.event;
 
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.stats.AchievementList;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent.ItemPickupEvent;
 import ere_geologique.common.achievement.EGAchievement;
 import ere_geologique.common.block.EGBlockList;
 import ere_geologique.common.item.EGItemList;
@@ -11,16 +10,16 @@ import ere_geologique.common.item.EGItemList;
 public class PickupHandler
 {
 	@SubscribeEvent
-	public void ItemPickupEvent(EntityItem item, EntityPlayer player)
+	public void ItemPickupEvent(ItemPickupEvent event)
 	{
-		if(item.getEntityItem().getItem().equals(EGBlockList.wood))
+		if(event.pickedUp.getEntityItem().getItem().equals(EGBlockList.wood))
 		{
-			player.triggerAchievement(AchievementList.mineWood);
+			event.player.triggerAchievement(AchievementList.mineWood);
 		}
 
-		if(item.getEntityItem().getItem().equals(EGItemList.bioFossil))
+		if(event.pickedUp.getEntityItem().getItem().equals(EGItemList.bioFossil))
 		{
-			player.addStat(EGAchievement.fossil, 1);
+			event.player.addStat(EGAchievement.fossil, 1);
 		}	
 	}
 }
