@@ -1,5 +1,5 @@
-/libs/
-/releases/
 Thumbs.db
 *.DS_Store
-/external_api/
+/.gradle/
+/build/
+/eclipse/
