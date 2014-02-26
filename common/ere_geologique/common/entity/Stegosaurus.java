@@ -418,14 +418,8 @@ public class Stegosaurus extends Dinosaure
 	}
 
 	@Override
-	public void writeSpawnData(ByteBuf buffer) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void writeSpawnData(ByteBuf buffer) {}
 
 	@Override
-	public void readSpawnData(ByteBuf additionalData) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void readSpawnData(ByteBuf additionalData) {}
 }
