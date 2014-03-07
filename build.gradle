@@ -19,7 +19,7 @@ apply plugin: 'forge'
 
 version = "1.0"
 group= "ere_geologique" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "Ere_G\351ologique"
+archivesBaseName = "Ere_Geologique"
 
 minecraft {
     version = "1.7.2-10.12.0.1034"

@@ -65,8 +65,9 @@ public class EGBlockList
 	       GameRegistry.registerBlock(wood, ItemBlockWood.class, "Wood");
 	       GameRegistry.registerBlock(sapling, ItemBlockSapling.class, "Sapling");
 	       GameRegistry.registerBlock(plank, ItemBlockPlank.class, "Plank");
-	       GameRegistry.registerBlock(slab, ItemBlockSlab.class, "Slab");
-	       GameRegistry.registerBlock(doubleSlab, ItemBlockSlab.class, "DoubleSlab");
+	       //TODO Fix Slab
+	       /*GameRegistry.registerBlock(slab, ItemBlockSlab.class, "Slab");
+	       GameRegistry.registerBlock(doubleSlab, ItemBlockSlab.class, "DoubleSlab");*/
 	       GameRegistry.registerBlock(stairFougere, "StairFougere");
 	       GameRegistry.registerBlock(stairCycas, "StairCycas");
 	       GameRegistry.registerBlock(stairAraucarias, "StairAraucarias");
