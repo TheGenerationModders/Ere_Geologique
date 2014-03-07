@@ -15,7 +15,7 @@ public class FougereBoneMeal
 		{
 			if (!event.world.isRemote)
 			{
-				((Sapling) EGBlockList.sapling).growTree(event.world, event.x, event.y, event.z, event.world.rand);
+				((Sapling) EGBlockList.sapling).func_149878_d(event.world, event.x, event.y, event.z, event.world.rand);
 				event.setResult(Event.Result.ALLOW);
 			}
 		}

@@ -3,9 +3,11 @@ package ere_geologique.common.block;
 import java.util.List;
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockSapling;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
@@ -31,15 +33,55 @@ public class Sapling extends BlockSapling
         this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
     }
 
-    public void growTree(World world, int x, int y, int z, Random random)
+    public void func_149878_d(World world, int x, int y, int z, Random random)
     {
-        int l = world.getBlockMetadata(x, y, z) & 5;
-        world.setBlock(x, y, z, null, 0, l);
-        Object obj = null;
-        obj = new WorldGenFougere(false);
-        if(!((WorldGenerator) (obj)).generate(world, random, x, y, z))
+        if (!net.minecraftforge.event.terraingen.TerrainGen.saplingGrowTree(world, random, x, y, z)) return;
+        int l = world.getBlockMetadata(x, y, z) & 7;
+        Object object = new WorldGenFougere(true);
+        int i1 = 0;
+        int j1 = 0;
+        boolean flag = false;
+
+        switch (l)
         {
-        	world.setBlockMetadataWithNotify(x, y, z, l, l);
+        case 0:
+        default:
+         break;
+        case 1:
+         
+          if (!flag)
+          {
+                    return;
+                }
+        }
+
+        Block block = Blocks.air;
+
+        if (flag)
+        {
+            world.setBlock(x + i1, y, z + j1, block, 0, 4);
+            world.setBlock(x + i1 + 1, y, z + j1, block, 0, 4);
+            world.setBlock(x + i1, y, z + j1 + 1, block, 0, 4);
+            world.setBlock(x + i1 + 1, y, z + j1 + 1, block, 0, 4);
+        }
+        else
+        {
+            world.setBlock(x, y, z, block, 0, 4);
+        }
+
+        if (!((WorldGenerator)object).generate(world, random, x + i1, y, z + j1))
+        {
+            if (flag)
+            {
+                world.setBlock(x + i1, y, z + j1, this, l, 4);
+                world.setBlock(x + i1 + 1, y, z + j1, this, l, 4);
+                world.setBlock(x + i1, y, z + j1 + 1, this, l, 4);
+                world.setBlock(x + i1 + 1, y, z + j1 + 1, this, l, 4);
+            }
+            else
+            {
+                world.setBlock(x, y, z, this, l, 4);
+            }
         }
     }
     
