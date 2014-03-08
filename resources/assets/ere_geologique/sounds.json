@@ -19,5 +19,49 @@
 	  "mob/ankylosaurus/hurt1",
 	  "mob/ankylosaurus/hurt2"
 	]
-  }
+  },
+  "mob.brachiosaurus.death": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/brachiosaurus/death"
+	]
+  },
+  "mob.brachiosaurus.living": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/brachiosaurus/living1",
+	  "mob/brachiosaurus/living2",
+	]
+  },
+  "mob.brachiosaurus.hurt": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/brachiosaurus/hurt",
+	]
+  },
+  "mob.dilophosaurus.death": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/dilophosaurus/death"
+	]
+  },
+  "mob.dilophosaurus.living": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/dilophosaurus/living",
+	]
+  },
+  "mob.dilophosaurus.hurt": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/dilophosaurus/hurt",
+	]
+  },
+  "mob.dilophosaurus.call": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/dilophosaurus/call1",
+	  "mob/dilophosaurus/call2",
+	]
+  },
 }
