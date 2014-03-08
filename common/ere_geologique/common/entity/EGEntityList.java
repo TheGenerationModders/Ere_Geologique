@@ -1,5 +1,7 @@
 package ere_geologique.common.entity;
 
+import java.awt.Color;
+
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.world.biome.BiomeGenBase;
 import cpw.mods.fml.common.registry.EntityRegistry;
@@ -17,10 +19,13 @@ public class EGEntityList
 			EntityRegistry.addSpawn(CroMagnon.class, 5, 2, 4, EnumCreatureType.monster, BiomeGenBase.plains);
 	   
 			for(int i=0;i<EnumDinoType.values().length;i++)
-			EntityRegistry.registerModEntity(EnumDinoType.values()[i].getDinoClass(), EnumDinoType.values()[i].name(),233+i, EreGeologique.Instance, 250, 3, true);
+			{
+				EntityRegistry.registerGlobalEntityID(EnumDinoType.values()[i].getDinoClass(), EnumDinoType.values()[i].name(), EntityRegistry.findGlobalUniqueEntityId() + i, new Color(255, 255, 255).getRGB(), new Color(0, 0, 0).getRGB());
+				EntityRegistry.registerModEntity(EnumDinoType.values()[i].getDinoClass(), EnumDinoType.values()[i].name(), 233 + i, EreGeologique.Instance, 250, 1, true);
+			}
 	   
-			EntityRegistry.registerModEntity(DinoEgg.class, "DinoEgg", 231, EreGeologique.Instance, 250, 5, true);
-			EntityRegistry.registerModEntity(Failuresaurus.class, "Failuresaurus", 232, EreGeologique.Instance, 250, 5, true);
+			EntityRegistry.registerModEntity(DinoEgg.class, "DinoEgg", 231, EreGeologique.Instance, 250, 1, true);
+			EntityRegistry.registerModEntity(Failuresaurus.class, "Failuresaurus", 232, EreGeologique.Instance, 250, 1, true);
 			
 		}
 		catch(Exception ex)

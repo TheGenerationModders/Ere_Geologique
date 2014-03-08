@@ -43,7 +43,7 @@ public class Analyzer extends BlockContainer
 	}
 
 	@SideOnly(Side.CLIENT)
-	public IIcon getBlockTexture(IBlockAccess blockAccess, int x, int y, int z, int side)
+	public IIcon getIcon(IBlockAccess blockAccess, int x, int y, int z, int side)
 	{
 		TileEntity te = blockAccess.getTileEntity(x, y, z);
 		if(te != null && te instanceof TileEntityAnalyzer)

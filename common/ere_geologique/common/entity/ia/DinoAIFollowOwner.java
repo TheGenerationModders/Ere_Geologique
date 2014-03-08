@@ -6,7 +6,7 @@ import net.minecraft.pathfinding.PathNavigate;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import ere_geologique.common.entity.Dinosaure;
-//import ere_geologique.common.entity.enums.EnumOrderType;
+import ere_geologique.common.entity.enums.EnumOrderType;
 
 public class DinoAIFollowOwner extends EntityAIBase
 {
@@ -40,10 +40,9 @@ public class DinoAIFollowOwner extends EntityAIBase
         {
             return false;
         }
-        return true;
-        /*else
+        else
         {
-            EntityLivingBase entitylivingbase = this.DinoEntity.func_130012_q();
+            EntityLivingBase entitylivingbase = this.DinoEntity.getOwner();
 
             if (entitylivingbase == null)
             {
@@ -66,7 +65,7 @@ public class DinoAIFollowOwner extends EntityAIBase
                 this.theOwner = entitylivingbase;
                 return true;
             }
-        }*/
+        }
     }
 
     /**

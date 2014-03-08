@@ -50,19 +50,19 @@ public class Feeder extends BlockContainer
 			float f3 = 0.52F;
 			float f4 = random.nextFloat() * 0.6F - 0.3F;
 
-			if(l == 3 - 2)
+			if(l == 1)
 			{
 				world.spawnParticle("smoke", (double)(f - f3), (double)f1, (double)(f2 + f4), 0.0D, 0.0D, 0.0D);
 			}
-			else if(l == 5 - 2)
+			else if(l == 3)
 			{
 				world.spawnParticle("smoke", (double)(f + f3), (double)f1, (double)(f2 + f4), 0.0D, 0.0D, 0.0D);
 			}
-			else if(l == 4 - 2)
+			else if(l == 2)
 			{
 				world.spawnParticle("smoke", (double)(f + f4), (double)f1, (double)(f2 - f3), 0.0D, 0.0D, 0.0D);
 			}
-			else if(l == 2 - 2)
+			else if(l == 0)
 			{
 				world.spawnParticle("smoke", (double)(f + f4), (double)f1, (double)(f2 + f3), 0.0D, 0.0D, 0.0D);
 			}
@@ -97,7 +97,8 @@ public class Feeder extends BlockContainer
 	}
 
 	@SideOnly(Side.CLIENT)
-	public IIcon getBlockTexture(IBlockAccess blockAccess, int x, int y, int z, int side)
+	@Override
+	public IIcon getIcon(IBlockAccess blockAccess, int x, int y, int z, int side)
 	{
 		TileEntity te = blockAccess.getTileEntity(x, y, z);
 		if(te != null && te instanceof TileEntityFeeder)

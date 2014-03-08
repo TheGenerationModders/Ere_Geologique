@@ -109,19 +109,19 @@ public class Ankylosaurus extends Dinosaure
     @Override
     protected String getLivingSound()
     {
-        return "ere_geologique:ankylosaurus_living";
+        return "ere_geologique:mob.ankylosaurus.living";
     }
     
     @Override
     protected String getHurtSound()
     {
-        return "ere_geologique:ankylosaurus_hurt";
+        return "ere_geologique:mob.ankylosaurus.hurt";
     }
     
     @Override
     protected String getDeathSound()
     {
-        return "ere_geologique:ankylosaurus_death";
+        return "ere_geologique:mob.ankylosaurus.death";
     }
 
     /**

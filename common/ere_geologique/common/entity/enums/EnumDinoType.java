@@ -235,6 +235,7 @@ public enum EnumDinoType
     	Triceratops.dinoFood.add(FoodList.Potato);
     	
     	Triceratops.dinoFood.add(FoodList.Leaves);
+    	Triceratops.dinoFood.add(FoodList.LeavesFougere);
         Triceratops.dinoFood.add(FoodList.RedFlower);
         Triceratops.dinoFood.add(FoodList.YellowFlower);
     	
@@ -251,6 +252,7 @@ public enum EnumDinoType
         Pachycephalosaurus.dinoFood.add(FoodList.Carrot);
         
         Pachycephalosaurus.dinoFood.add(FoodList.Leaves);
+    	Pachycephalosaurus.dinoFood.add(FoodList.LeavesFougere);
         Pachycephalosaurus.dinoFood.add(FoodList.RedFlower);
         Pachycephalosaurus.dinoFood.add(FoodList.YellowFlower);
     	
@@ -268,6 +270,7 @@ public enum EnumDinoType
         Ankylosaurus.dinoFood.add(FoodList.Potato);
         
         Ankylosaurus.dinoFood.add(FoodList.Leaves);
+    	Ankylosaurus.dinoFood.add(FoodList.LeavesFougere);
         Ankylosaurus.dinoFood.add(FoodList.RedFlower);
         Ankylosaurus.dinoFood.add(FoodList.YellowFlower);
     	
@@ -344,6 +347,7 @@ public enum EnumDinoType
         TRex.FoodMobList.addMob(EnumDinoFoodMob.Pterosaure);
         TRex.FoodMobList.addMob(EnumDinoFoodMob.Brachiosaurus);
         TRex.FoodMobList.addMob(EnumDinoFoodMob.Velociraptor);
+        TRex.FoodMobList.addMob(EnumDinoFoodMob.Player);
         
         Pterosaure.setItems(			Items.arrow);//,			Fossil.rawPterosaur, 	Fossil.dnaPterosaur, 	Fossil.eggPterosaur);
         Pterosaure.setDimensions(1.2F, 0.3F, 1.0F, 0.4F, 0.8F, 0.2F);
@@ -382,6 +386,7 @@ public enum EnumDinoType
         
         Mosasaurus.FoodMobList.addMob(EnumDinoFoodMob.Squid);
         Mosasaurus.FoodMobList.addMob(EnumDinoFoodMob.Nautilus);
+        Mosasaurus.FoodMobList.addMob(EnumDinoFoodMob.Player);
         
         Stegosaurus.setItems(		Items.stick);//,			Fossil.rawStegosaurus, 	Fossil.dnaStegosaurus, 	Fossil.eggStegosaurus);
         Stegosaurus.setDimensions(1.2F, 0.5F, 1.0F, 0.7F, 1.2F, 0.36F);
@@ -397,6 +402,7 @@ public enum EnumDinoType
         Stegosaurus.dinoFood.add(FoodList.Bread);
         
         Stegosaurus.dinoFood.add(FoodList.Leaves);
+    	Stegosaurus.dinoFood.add(FoodList.LeavesFougere);
         Stegosaurus.dinoFood.add(FoodList.RedFlower);
         Stegosaurus.dinoFood.add(FoodList.YellowFlower);
         
@@ -430,6 +436,7 @@ public enum EnumDinoType
         Brachiosaurus.dinoFood.add(FoodList.Cookie);
         Brachiosaurus.dinoFood.add(FoodList.Apple);
         
+    	Brachiosaurus.dinoFood.add(FoodList.LeavesFougere);
         Brachiosaurus.dinoFood.add(FoodList.Leaves);
 		
 		Spinosaurus.setItems(		EGItemList.skullStick);//,	Fossil.rawSpinosaurus,	Fossil.dnaSpinosaurus,	Fossil.eggSpinosaurus);

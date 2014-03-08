@@ -1,0 +1,23 @@
+{
+  "mob.ankylosaurus.death": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/ankylosaurus/death"
+	]
+  },
+  "mob.ankylosaurus.living": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/ankylosaurus/living1",
+	  "mob/ankilosaurus/living2",
+	  "mob/ankilosaurus/living3"
+	]
+  },
+  "mob.ankylosaurus.hurt": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/ankylosaurus/hurt1",
+	  "mob/ankylosaurus/hurt2"
+	]
+  }
+}
