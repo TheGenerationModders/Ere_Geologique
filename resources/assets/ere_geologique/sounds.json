@@ -30,13 +30,13 @@
 	"category": "hostile",
 	"sounds": [
 	  "mob/brachiosaurus/living1",
-	  "mob/brachiosaurus/living2",
+	  "mob/brachiosaurus/living2"
 	]
   },
   "mob.brachiosaurus.hurt": {
 	"category": "hostile",
 	"sounds": [
-	  "mob/brachiosaurus/hurt",
+	  "mob/brachiosaurus/hurt"
 	]
   },
   "mob.dilophosaurus.death": {
@@ -48,20 +48,174 @@
   "mob.dilophosaurus.living": {
 	"category": "hostile",
 	"sounds": [
-	  "mob/dilophosaurus/living",
+	  "mob/dilophosaurus/living"
 	]
   },
   "mob.dilophosaurus.hurt": {
 	"category": "hostile",
 	"sounds": [
-	  "mob/dilophosaurus/hurt",
+	  "mob/dilophosaurus/hurt"
 	]
   },
   "mob.dilophosaurus.call": {
 	"category": "hostile",
 	"sounds": [
 	  "mob/dilophosaurus/call1",
-	  "mob/dilophosaurus/call2",
+	  "mob/dilophosaurus/call2"
 	]
   },
+  "mob.mosasaurus.death": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/mosasaurus/death1",
+	  "mob/mosasaurus/death2"
+	]
+  },
+  "mob.mosasaurus.living": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/mosasaurus/living1",
+	  "mob/mosasaurus/living2"
+	]
+  },
+  "mob.mosasaurus.hurt": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/mosasaurus/hurt"
+	]
+  },
+  "mob.mosasaurus.outside": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/mosasaurus/outside1",
+	  "mob/mosasaurus/outside2",
+	  "mob/mosasaurus/outside3",
+	  "mob/mosasaurus/outside4"
+	]
+  },
+  "mob.mosasaurus.attack": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/mosasaurus/attack"
+	]
+  },
+  "mob.plesiosaurus.living": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/plesiosaurus/living"
+	]
+  },
+  "mob.plesiosaurus.hurt": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/plesiosaurus/hurt"
+	]
+  },
+  "mob.pterosaurus.living": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/pterosaurus/living1",
+	  "mob/pterosaurus/living2"
+	]
+  },
+  "mob.pterosaurus.hurt": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/pterosaurus/hurt"
+	]
+  },
+  "mob.stegosaurus.death": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/stegosaurus/death"
+	]
+  },
+  "mob.stegosaurus.living": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/stegosaurus/living1",
+	  "mob/stegosaurus/living2",
+	  "mob/stegosaurus/living3"
+	]
+  },
+  "mob.stegosaurus.hurt": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/stegosaurus/hurt"
+	]
+  },
+  "mob.triceratops.death": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/triceratops/death"
+	]
+  },
+  "mob.triceratops.living": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/triceratops/living1",
+	  "mob/triceratops/living2",
+	  "mob/triceratops/living3"
+	]
+  },
+  "mob.tyranosaurus.death": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/tyranosaurus/death1",
+	  "mob/tyranosaurus/death2"
+	]
+  },
+  "mob.tyranosaurus.living": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/tyranosaurus/living1",
+	  "mob/tyranosaurus/living2",
+	  "mob/tyranosaurus/living3"
+	]
+  },
+  "mob.tyranosaurus.hurt": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/tyranosaurus/hurt"
+	]
+  },
+  "mob.tyranosaurus.scream": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/tyranosaurus/scream1",
+	  "mob/tyranosaurus/scream2",
+	  "mob/tyranosaurus/scream3"
+	]
+  },
+  "mob.velociraptor.tame": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/velociraptor/living_tame1",
+	  "mob/velociraptor/living_tame2"
+	]
+  },
+  "mob.velociraptor.wild": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/velociraptor/living_wild1",
+	  "mob/velociraptor/living_wild2"
+	]
+  },
+  "mob.velociraptor.hurt": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/velociraptor/hurt1",
+  	  "mob/velociraptor/hurt2",
+	  "mob/velociraptor/hurt3",
+	  "mob/velociraptor/hurt4"
+
+	]
+  },
+  "mob.velociraptor.attack": {
+	"category": "hostile",
+	"sounds": [
+	  "mob/velociraptor/attack1",
+	  "mob/velociraptor/attack2"
+	]
+  }
 }
