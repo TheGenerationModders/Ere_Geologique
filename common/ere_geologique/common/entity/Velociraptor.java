@@ -116,35 +116,35 @@ public class Velociraptor extends Dinosaure
             switch (this.getSubSpecies())
             {
                 case 1:
-                    return "ere_geologique:textures/entity/Velociraptor_Blue_Adult.png";
+                    return "ere_geologique:textures/entity/velociraptor/Velociraptor_Blue_Adult.png";
 
                 case 2:
-                    return "ere_geologique:textures/entity/Velociraptor_Green_Adult.png";
+                    return "ere_geologique:textures/entity/velociraptor/Velociraptor_Green_Adult.png";
 
                 case 3:
-                    return "ere_geologique:textures/entity/Velociraptor_Brown_Adult.png";
+                    return "ere_geologique:textures/entity/velociraptor/Velociraptor_Brown_Adult.png";
                     
                 case 4:
-                	return "ere_geologique:textures/entity/Velociraptor_Tamed.png";
+                	return "ere_geologique:textures/entity/velociraptor/Velociraptor_Tamed.png";
 
                 default:
-                    return "ere_geologique:textures/entity/Velociraptor_Brown_Adult.png";
+                    return "ere_geologique:textures/entity/velociraptor/Velociraptor_Brown_Adult.png";
             }
         }
 
         switch (this.getSubSpecies())
         {
             case 1:
-                return "ere_geologique:textures/entity/Velociraptor_Blue_Baby.png";
+                return "ere_geologique:textures/entity/velociraptor/Velociraptor_Blue_Baby.png";
 
             case 2:
-                return "ere_geologique:textures/entity/Velociraptor_Green_Baby.png";
+                return "ere_geologique:textures/entity/velociraptor/Velociraptor_Green_Baby.png";
 
             case 3:
-                return "ere_geologique:textures/entity/Velociraptor_Brown_Baby.png";
+                return "ere_geologique:textures/entity/velociraptor/Velociraptor_Brown_Baby.png";
 
             default:
-                return "ere_geologique:textures/entity/Velociraptor_Brown_Baby.png";
+                return "ere_geologique:textures/entity/velociraptor/Velociraptor_Brown_Baby.png";
         }
     }
     
@@ -753,11 +753,6 @@ public class Velociraptor extends Dinosaure
     public float getGLY()
     {
         return (float)(0.3199999928474426D + 0.1D * (double)this.getDinoAge());
-    }*/
-
-    /*public EntityAgeable func_90011_a(EntityAgeable var1)
-    {
-        return null;
     }*/
 
     @Override

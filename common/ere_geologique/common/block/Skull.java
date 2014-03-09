@@ -29,31 +29,31 @@ public class Skull extends BlockDirectional
     {
         this.blockIcon = par1IconRegister.registerIcon("ere_geologique:Skull_Side");
         this.Front = par1IconRegister.registerIcon("ere_geologique:Skull_Front");
-        this.Back = par1IconRegister.registerIcon("ere_geologique:Skull_Back");//Bottom!
+        this.Back = par1IconRegister.registerIcon("ere_geologique:Skull_Back");
     }
     
     @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int par1, int par2)
+    public IIcon getIcon(int side, int metadata)
     {
-        return par1 == 1 || par1 == 0 || (par1>3 && par2<4) || (par1<4 && par2>3)? this.blockIcon : par1!=par2 ? this.Front : this.Back;
+        return side == 1 || side == 0 || (side > 3 && metadata < 4) || (side < 4 && metadata > 3)? this.blockIcon : side != metadata ? this.Front : this.Back;
     }
 
     public void onBlockAdded(World world, int x, int y, int z)
     {
         super.onBlockAdded(world, x, y, z);
     }
-
-    public void onBlockPlacedBy(World var1, int var2, int var3, int var4, EntityLiving var5, ItemStack par6ItemStack)
+    
+    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLiving entityLiving, ItemStack itemStack)
     {
-        int var6 = MathHelper.floor_double((double)(var5.rotationYaw * 4.0F / 360.0F) + 2.5D) & 3;
-        switch(var6)
+        int direction = MathHelper.floor_double((double)(entityLiving.rotationYaw * 4.0F / 360.0F) + 2.5D) & 3;
+        switch(direction)
         {
-        case 0:var6=2;break;
-        case 1:var6=5;break;
-        case 2:var6=3;break;
-        case 3:var6=4;break;
+        case 0:direction=2;break;
+        case 1:direction=5;break;
+        case 2:direction=3;break;
+        case 3:direction=4;break;
         }
-        var1.setBlockMetadataWithNotify(var2, var3, var4, var6, 2);
-        System.out.println(String.valueOf(var6));
+        world.setBlockMetadataWithNotify(x, y, z, direction, 2);
+        System.out.println(String.valueOf(direction));
     }
 }

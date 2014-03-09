@@ -454,7 +454,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
 
     protected String getModelTexture()
     {
-        return "ere_geologique:textures/entity/DinoModel" + this.SelfType.toString() + ".png";
+        return "ere_geologique:textures/entity/dino_model/DinoModel" + this.SelfType.toString() + ".png";
     }
 
     /**
@@ -462,7 +462,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
      */
     public String getTexture()
     {
-        return this.isModelized() ? this.getModelTexture() : "ere_geologique:textures/entity/DinoModel" + this.SelfType.toString() + ".png";
+        return this.isModelized() ? this.getModelTexture() : "ere_geologique:textures/entity/dino_model/DinoModel" + this.SelfType.toString() + ".png";
     }
 
     public void moveEntityWithHeading(float par1, float par2)
