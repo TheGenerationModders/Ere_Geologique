@@ -161,13 +161,13 @@ public class FoodList
 		DinoFood.globalDinoFood.add(pachycephalosaurus);
 		DinoFood.globalDinoFood.add(dinoMeatCooked);
 
-		if(Loader.isModLoaded("Nanotech_mod"))
+		if(Loader.isModLoaded("NanotechMod"))
 		{
 		    Block nanoLeavesBlock, nanoSaplingsBlock;
     		try
     		{
-    			nanoLeavesBlock = GameRegistry.findBlock("Nanotech_mod", "nanoLeaves");;
-    			nanoSaplingsBlock = GameRegistry.findBlock("Nanotech_mod", "nanoSaplings");
+    			nanoLeavesBlock = (Block)Class.forName("fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock").getField("nanoLeaves").get(null);
+    			nanoSaplingsBlock = (Block)Class.forName("fr.mcnanotech.kevin_68.nanotech_mod.main.blocks.NanotechBlock").getField("nanoSaplings").get(null);
     			nanoLeaves = new DinoFoodEntry(nanoLeavesBlock, 0, 50, 3, EnumFoodType.HERBIVOROUS);
     			nanoSaplings = new DinoFoodEntry(nanoSaplingsBlock, 0, 15, 2, EnumFoodType.HERBIVOROUS);
     			DinoFood.globalDinoFood.add(nanoLeaves);
@@ -180,29 +180,15 @@ public class FoodList
     		EreGeologique.EGLog.info("Initialisation de Nanotech_mod terminé");
 		}
 		
-		/*if(Loader.isModLoaded("sevenno's addon"))
-		{
-			Block saplings, leaves;
-			try
-			{
-				
-			}
-			catch(Exception ex)
-			{
-				EreGeologique.EGLog.severe("Erreur lors de l'initialisation de Sevenno's addon");
-			}
-			EreGeologique.EGLog.info("Initialisation de Sevenno's addon terminé");
-		}*/
-		
 		if(Loader.isModLoaded("nether_plus"))
 		{
 			Block grimwoodSaplingsBlock, grimwoodLeavesBlock;
 			try
 			{
-				grimwoodSaplingsBlock = GameRegistry.findBlock("nether_plus", "grimwoodSapling");
-				grimwoodLeavesBlock = GameRegistry.findBlock("nether_plus", "grimwoodLeaves");
+				grimwoodSaplingsBlock = (Block)Class.forName("nether_plus.common.block.NPBlockList").getField("grimwoodSapling").get(null);
+				grimwoodLeavesBlock = (Block)Class.forName("nether_plus.common.block.NPBlockList").getField("grimwoodLeaves").get(null);
 				grimwoodSapling = new DinoFoodEntry(grimwoodSaplingsBlock, 0, 15, 2, EnumFoodType.HERBIVOROUS);
-				grimwoodLeaves = new DinoFoodEntry(grimwoodSaplingsBlock, 0, 50, 3, EnumFoodType.HERBIVOROUS);
+				grimwoodLeaves = new DinoFoodEntry(grimwoodLeavesBlock, 0, 50, 3, EnumFoodType.HERBIVOROUS);
     			DinoFood.globalDinoFood.add(grimwoodSapling);
     			DinoFood.globalDinoFood.add(grimwoodLeaves);
 			}
