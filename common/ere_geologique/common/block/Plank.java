@@ -15,48 +15,48 @@ import ere_geologique.common.creativetabs.EGCreativeTab;
 
 public class Plank extends Block
 {
-	public static final String[] woodType = new String[] {"fougere", "cycas", "araucarias", "metasequoias", "ginkgos"};
+	public static final String[] woodType = new String[] { "fougere", "cycas", "araucarias", "metasequoias", "ginkgos" };
 	@SideOnly(Side.CLIENT)
 	private IIcon[] IconArray = new IIcon[woodType.length];
-	
+
 	public Plank()
-    {
-        super(Material.wood);
-        this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
-    }
-    
-    @SideOnly(Side.CLIENT)
-    public IIcon getIcon(int side, int metadata)
-    {
-        if (metadata < 0 || metadata >= this.IconArray.length)
-        {
-            metadata = 0;
-        }
+	{
+		super(Material.wood);
+		this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
+	}
 
-        return this.IconArray[metadata];
-    }
-    
-    public int damageDropped(int par1)
-    {
-        return par1;
-    }
+	@SideOnly(Side.CLIENT)
+	public IIcon getIcon(int side, int metadata)
+	{
+		if (metadata < 0 || metadata >= this.IconArray.length)
+		{
+			metadata = 0;
+		}
 
-    @SideOnly(Side.CLIENT)
-    public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
-    {
-        list.add(new ItemStack(item, 1, 0));
-        list.add(new ItemStack(item, 1, 1));
-        list.add(new ItemStack(item, 1, 2));
-        list.add(new ItemStack(item, 1, 3));
-        list.add(new ItemStack(item, 1, 4));
-    }
+		return this.IconArray[metadata];
+	}
 
-    @SideOnly(Side.CLIENT)
-    public void registerBlockIcons(IIconRegister par1IconRegister)
-    {
-        for (int i = 0; i < this.IconArray.length; ++i)
-        {
-            this.IconArray[i] = par1IconRegister.registerIcon(this.getTextureName() + "_" + woodType[i]);
-        }
-    }
+	public int damageDropped(int par1)
+	{
+		return par1;
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void getSubBlocks(Item item, CreativeTabs creativeTabs, List list)
+	{
+		list.add(new ItemStack(item, 1, 0));
+		list.add(new ItemStack(item, 1, 1));
+		list.add(new ItemStack(item, 1, 2));
+		list.add(new ItemStack(item, 1, 3));
+		list.add(new ItemStack(item, 1, 4));
+	}
+
+	@SideOnly(Side.CLIENT)
+	public void registerBlockIcons(IIconRegister par1IconRegister)
+	{
+		for (int i = 0; i < this.IconArray.length; ++i)
+		{
+			this.IconArray[i] = par1IconRegister.registerIcon(this.getTextureName() + "_" + woodType[i]);
+		}
+	}
 }

@@ -17,6 +17,7 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ere_geologique.common.creativetabs.EGCreativeTab;
+import ere_geologique.common.worldgenerator.WorldGenAraucarias;
 import ere_geologique.common.worldgenerator.WorldGenFougere;
 
 public class Sapling extends BlockSapling
@@ -36,8 +37,8 @@ public class Sapling extends BlockSapling
     public void func_149878_d(World world, int x, int y, int z, Random random)
     {
         if (!net.minecraftforge.event.terraingen.TerrainGen.saplingGrowTree(world, random, x, y, z)) return;
-        int l = world.getBlockMetadata(x, y, z) & 7;
-        Object object = new WorldGenFougere(true);
+        int l = world.getBlockMetadata(x, y, z) & 5;
+        Object object = new WorldGenFougere(true, 5, l, l, false);
         int i1 = 0;
         int j1 = 0;
         boolean flag = false;
@@ -48,11 +49,13 @@ public class Sapling extends BlockSapling
         default:
          break;
         case 1:
-         
+        /* object = new WorldGenAraucarias(true);
+         break;
+        case 2:*/
           if (!flag)
           {
-                    return;
-                }
+        	  return;
+          }
         }
 
         Block block = Blocks.air;
@@ -83,6 +86,11 @@ public class Sapling extends BlockSapling
                 world.setBlock(x, y, z, this, l, 4);
             }
         }
+    }
+    
+    public boolean func_149880_a(World world, int x, int y, int z, int metadata)
+    {
+        return world.getBlock(x, y, z) == this && (world.getBlockMetadata(x, y, z) & 5) == metadata;
     }
     
     public IIcon getIcon(int side, int metadata)
