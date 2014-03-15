@@ -88,11 +88,6 @@ public class Sapling extends BlockSapling
         }
     }
     
-    public boolean func_149880_a(World world, int x, int y, int z, int metadata)
-    {
-        return world.getBlock(x, y, z) == this && (world.getBlockMetadata(x, y, z) & 5) == metadata;
-    }
-    
     public IIcon getIcon(int side, int metadata)
     {
     	metadata &= 5;
