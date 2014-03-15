@@ -146,8 +146,8 @@ public class GuiPedia extends GuiContainer
      */
     protected void drawGuiContainerForegroundLayer(int var1, int var2)
     {
-    	if(EreGeologique.ToPedia instanceof Dinosaure)((Dinosaure)EreGeologique.ToPedia).ShowPedia(this);	
-    	if(EreGeologique.ToPedia instanceof DinoEgg)((DinoEgg)EreGeologique.ToPedia).ShowPedia(this);
+    	if(EreGeologique.toPedia instanceof Dinosaure)((Dinosaure)EreGeologique.toPedia).ShowPedia(this);	
+    	if(EreGeologique.toPedia instanceof DinoEgg)((DinoEgg)EreGeologique.toPedia).ShowPedia(this);
     }
 
     /**

@@ -146,7 +146,7 @@ public class Feeder extends BlockContainer
 			TileEntityFeeder tileEntityFeeder = (TileEntityFeeder)world.getTileEntity(x, y, z);
 			if(tileEntityFeeder != null)
 			{
-				player.openGui(EreGeologique.Instance, 0, world, x, y, z);
+				player.openGui(EreGeologique.instance, 0, world, x, y, z);
 			}
 			return true;
 		}

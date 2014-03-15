@@ -175,9 +175,9 @@ public class FoodList
     		}
     		catch(Exception ex)
     		{
-    			EreGeologique.EGLog.severe("Erreur lors de l'initialisation de Nanotech_mod");
+    			EreGeologique.egLog.severe("Erreur lors de l'initialisation de Nanotech_mod");
     		}
-    		EreGeologique.EGLog.info("Initialisation de Nanotech_mod terminé");
+    		EreGeologique.egLog.info("Initialisation de Nanotech_mod terminé");
 		}
 		
 		if(Loader.isModLoaded("nether_plus"))
@@ -194,9 +194,9 @@ public class FoodList
 			}
 			catch(Exception ex)
 			{
-				EreGeologique.EGLog.severe("Erreur lors de l'initialisation de Nether_Plus");
+				EreGeologique.egLog.severe("Erreur lors de l'initialisation de Nether_Plus");
 			}
-			EreGeologique.EGLog.info("Initialisation de Nether_Plus terminé");
+			EreGeologique.egLog.info("Initialisation de Nether_Plus terminé");
 		}
 	}
 }

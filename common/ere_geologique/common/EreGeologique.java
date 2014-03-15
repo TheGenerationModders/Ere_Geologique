@@ -63,10 +63,10 @@ public class EreGeologique
 	public static EGCommonProxy proxy;
 
 	@Instance("Ere_G\351ologique")
-	public static EreGeologique Instance;
-	public static Logger EGLog = Logger.getLogger("EreGeologique");
+	public static EreGeologique instance;
+	public static Logger egLog = Logger.getLogger("EreGeologique");
 	public static ConfigFile configFile;
-	public static Object ToPedia;
+	public static Object toPedia;
 	public static GuiHandler guiHandler = new GuiHandler();
 //	public static IChatListener messagerHandler = new EGMessageHandler();
 //	public static TickHandlerClient tickHandlerClient = new TickHandlerClient();
@@ -155,7 +155,7 @@ public class EreGeologique
 		}
 		catch(Exception ex)
 		{
-			EreGeologique.EGLog.severe("Erreur lors de l'initialisation des ID's!");
+			EreGeologique.egLog.severe("Erreur lors de l'initialisation des ID's!");
 		}
 		finally
 		{
@@ -163,7 +163,7 @@ public class EreGeologique
 			{
 				configFile.save();
 			}
-			EreGeologique.EGLog.info("Initialisation des ID's terminés!");
+			EreGeologique.egLog.info("Initialisation des ID's terminés!");
 		}
 
 		if(event.getSide().isClient())
@@ -187,25 +187,25 @@ public class EreGeologique
 		if (Loader.isModLoaded("IC2"))
 		{
 			Integration.loadIndustrialCraft();
-			EGLog.info("IC2 integration loaded !");
+			egLog.info("IC2 integration loaded !");
 		}
 		//buildcraft integration
 		if (Loader.isModLoaded("BuildCraft|Core"))
 		{
 			Integration.loadBuildCraft();
-			EGLog.info("BuilCraft integration loaded !");
+			egLog.info("BuilCraft integration loaded !");
 		}
 		//railcraft integration
 		if (Loader.isModLoaded("Railcraft"))
 		{
 			Integration.loadRailCraft();
-			EGLog.info("RailCraft integration loaded !");
+			egLog.info("RailCraft integration loaded !");
 		}
 		//forestry integration
 		if (Loader.isModLoaded("Forestry"))
 		{
 			Integration.loadForestry();
-			EGLog.info("Forestry integration loaded !");
+			egLog.info("Forestry integration loaded !");
 		}
 
 		//buildcraft and industrialcraft
@@ -232,7 +232,7 @@ public class EreGeologique
 		EnumDinoFoodMob.init();
 
 		EGTEntityList.loadTileEntity();
-		NetworkRegistry.INSTANCE.registerGuiHandler(this.Instance, new GuiHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler(this.instance, new GuiHandler());
 //		NetworkRegistry.INSTANCE.registerChatListener(messagerHandler);
 //		TickEvent.registerTickHandler(this.tickHandlerClient, Side.CLIENT);
 	}
@@ -249,7 +249,7 @@ public class EreGeologique
 	{
 		if (CommandDino.debugMode)
 		{
-			EGLog.severe(string);
+			egLog.severe(string);
 		}
 	}
 

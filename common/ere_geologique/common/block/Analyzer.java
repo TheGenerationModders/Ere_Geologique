@@ -72,7 +72,7 @@ public class Analyzer extends BlockContainer
 	{
 		if(!world.isRemote)
 		{
-			player.openGui(EreGeologique.Instance, 2, world, x, y, z);
+			player.openGui(EreGeologique.instance, 2, world, x, y, z);
 			return true;
 		}
 		return false;

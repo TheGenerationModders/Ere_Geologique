@@ -77,7 +77,7 @@ public class DinoSoundHandler
         }
         catch(Exception e)
         {
-            EreGeologique.EGLog.severe("Failed loading sound file: ");
+            EreGeologique.egLog.severe("Failed loading sound file: ");
         }
     }
 }

@@ -19,7 +19,7 @@ public class Localizations
         // For every file specified in the Localization library class, load them into the Language Registry
         for (String localizationFile : Localizations.localeFiles) {
             LanguageRegistry.instance().loadLocalization(localizationFile, getLocaleFromFileName(localizationFile), isXMLLanguageFile(localizationFile));
-            EreGeologique.EGLog.info("Fichiers des langs chargés");
+            //EreGeologique.egLog.info("Fichiers des langs chargés");
         }
     }
 

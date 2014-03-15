@@ -118,8 +118,8 @@ public class EGItemList
 		}
 		catch(Exception ex)
 		{
-			EreGeologique.EGLog.severe("Erreur lors de l'initialisation des items!");
+			EreGeologique.egLog.severe("Erreur lors de l'initialisation des items!");
 		}
-		EreGeologique.EGLog.info("Initialisation des items terminés!");
+		EreGeologique.egLog.info("Initialisation des items terminés!");
 	}
 }

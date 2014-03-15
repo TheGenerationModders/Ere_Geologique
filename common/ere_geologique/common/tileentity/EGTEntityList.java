@@ -16,8 +16,8 @@ public class EGTEntityList
 		}
 		catch(Exception ex)
 		{
-			EreGeologique.EGLog.severe("Erreur lors de l'initialisation des TileEntity's!");
+			EreGeologique.egLog.severe("Erreur lors de l'initialisation des TileEntity's!");
 		}
-		EreGeologique.EGLog.info("Initialisation des TileEntity's terminés!");
+		EreGeologique.egLog.info("Initialisation des TileEntity's terminés!");
 	}
 }

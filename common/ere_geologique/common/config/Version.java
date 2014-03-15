@@ -99,7 +99,7 @@ public class Version implements Runnable
 						if (VERSION.matches(tokens[2]))
 						{
 							recommendedVersion = tokens[2];
-							EreGeologique.EGLog.finer("Using the latest version [" + getVersion() + "] for Minecraft " + MC_VERSION);
+							EreGeologique.egLog.finer("Using the latest version [" + getVersion() + "] for Minecraft " + MC_VERSION);
 							currentVersion = EnumUpdateState.CURRENT;
 							return;
 						}
@@ -107,15 +107,15 @@ public class Version implements Runnable
 				}
 			}
 
-			EreGeologique.EGLog.warning("Using outdated version [" + VERSION + " (build:" + BUILD_NUMBER + ")] for Minecraft " + MC_VERSION + ". Consider updating.");
+			EreGeologique.egLog.warning("Using outdated version [" + VERSION + " (build:" + BUILD_NUMBER + ")] for Minecraft " + MC_VERSION + ". Consider updating.");
 			currentVersion = EnumUpdateState.OUTDATED;
 
 			conn.disconnect();
 			reader.close();
 		} catch (Exception e)
 		{
-			EreGeologique.EGLog.warning("Unable to read from remote version authority.");
-			EreGeologique.EGLog.warning(e.toString());
+			EreGeologique.egLog.warning("Unable to read from remote version authority.");
+			EreGeologique.egLog.warning(e.toString());
 			currentVersion = EnumUpdateState.CONNECTION_ERROR;
 		}
 	}
@@ -173,7 +173,7 @@ public class Version implements Runnable
 		} catch (Exception ex)
 		{
 			ex.printStackTrace();
-			EreGeologique.EGLog.warning("Unable to read changelog from remote site.");
+			EreGeologique.egLog.warning("Unable to read changelog from remote site.");
 		}
 		return new String[]{String.format("Unable to retrieve changelog for %s %s", EGProperties.mod, version)};
 	}
@@ -184,7 +184,7 @@ public class Version implements Runnable
 		int count = 0;
 		currentVersion = null;
 
-		EreGeologique.EGLog.info("Beginning version check");
+		EreGeologique.egLog.info("Beginning version check");
 
 		try {
 			while ((count < 3) && ((currentVersion == null) || (currentVersion == EnumUpdateState.CONNECTION_ERROR)))
@@ -194,7 +194,7 @@ public class Version implements Runnable
 
 				if (currentVersion == EnumUpdateState.CONNECTION_ERROR)
 				{
-					EreGeologique.EGLog.info("Version check attempt " + count + " failed, trying again in 10 seconds");
+					EreGeologique.egLog.info("Version check attempt " + count + " failed, trying again in 10 seconds");
 					Thread.sleep(10000);
 				}
 			}
@@ -205,7 +205,7 @@ public class Version implements Runnable
 
 		if (currentVersion == EnumUpdateState.CONNECTION_ERROR)
 		{
-			EreGeologique.EGLog.info("Version check failed");
+			EreGeologique.egLog.info("Version check failed");
 		}
 	}
 	

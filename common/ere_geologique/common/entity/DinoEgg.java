@@ -84,7 +84,7 @@ public class DinoEgg extends Entity implements IEntityAdditionalSpawnData
     }
     private void setPedia()
     {
-    	EreGeologique.ToPedia = (Object)this;
+    	EreGeologique.toPedia = (Object)this;
     }
 
     public DinoEgg(World world, EnumDinoType dinoType, Dinosaure dinosaure)
@@ -584,7 +584,7 @@ public class DinoEgg extends Entity implements IEntityAdditionalSpawnData
         else if (FMLCommonHandler.instance().getSide().isClient() && itemStack.getItem().equals(EGItemList.dinoPedia))
         {
         	this.setPedia();
-        	player.openGui(EreGeologique.Instance, 1, worldObj, (int)posX, (int)posY, (int)posZ);
+        	player.openGui(EreGeologique.instance, 1, worldObj, (int)posX, (int)posY, (int)posZ);
             return true;
         }
         return false;

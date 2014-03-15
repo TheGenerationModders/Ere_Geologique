@@ -113,7 +113,7 @@ public class Cultivator extends BlockContainer
         }
         else
         {
-        	player.openGui(EreGeologique.Instance, 3, world, x, y, z);
+        	player.openGui(EreGeologique.instance, 3, world, x, y, z);
             return true;
         }
     }

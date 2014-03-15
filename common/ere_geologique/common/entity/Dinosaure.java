@@ -239,7 +239,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
 
     private void setPedia()
     {
-        EreGeologique.ToPedia = (Object)this;
+        EreGeologique.toPedia = (Object)this;
     }
 
     /**
@@ -1422,7 +1422,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
                         //DINOPEDIA
                         //EntityDinosaur.pediaingDino = this;
                         this.setPedia();
-                        player.openGui(EreGeologique.Instance/*player*/, 1, this.worldObj, (int)this.posX, (int)this.posY, (int)this.posZ);
+                        player.openGui(EreGeologique.instance/*player*/, 1, this.worldObj, (int)this.posX, (int)this.posY, (int)this.posZ);
                         return true;
                     }
 
@@ -1599,7 +1599,7 @@ public abstract class Dinosaure extends EntityTameable implements IEntityAdditio
 
     public void riderJump()
     {
-    	EreGeologique.EGLog.log(Level.INFO, "isRiderJumping");
+    	EreGeologique.egLog.log(Level.INFO, "isRiderJumping");
         motionY += 0.5;
     }
     

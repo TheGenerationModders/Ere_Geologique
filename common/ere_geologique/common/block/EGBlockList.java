@@ -90,8 +90,8 @@ public class EGBlockList
 		}
 		catch(Exception ex)
 		{
-			EreGeologique.EGLog.severe("Erreur lors de l'initialisation des blocs!");
+			EreGeologique.egLog.severe("Erreur lors de l'initialisation des blocs!");
 		}
-		EreGeologique.EGLog.info("Initialisation des blocs terminés!");
+		EreGeologique.egLog.info("Initialisation des blocs terminés!");
 	}
 }
