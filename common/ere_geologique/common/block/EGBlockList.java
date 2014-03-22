@@ -86,7 +86,6 @@ public class EGBlockList
 	       GameRegistry.registerBlock(blueFire, "BlueFire");
 	       GameRegistry.registerBlock(drum, "Drum");
 
-	       //MinecraftForge.setBlockHarvestLevel(fossil, 0, "pickaxe", 2);
 		}
 		catch(Exception ex)
 		{

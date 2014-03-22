@@ -14,6 +14,7 @@ public class Fossil extends BlockStone
     public Fossil()
     {
         super();
+        this.setHarvestLevel("pickaxe", 2);
         this.setCreativeTab(EGCreativeTab.EGCreativeTabBlock);
     }
 
