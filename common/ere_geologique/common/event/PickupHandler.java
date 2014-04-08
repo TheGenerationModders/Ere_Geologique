@@ -1,5 +1,6 @@
 package ere_geologique.common.event;
 
+import net.minecraft.item.Item;
 import net.minecraft.stats.AchievementList;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemPickupEvent;
@@ -12,7 +13,7 @@ public class PickupHandler
 	@SubscribeEvent
 	public void ItemPickupEvent(ItemPickupEvent event)
 	{
-		if(event.pickedUp.getEntityItem().getItem().equals(EGBlockList.wood))
+		if(event.pickedUp.getEntityItem().getItem().equals(Item.getItemFromBlock(EGBlockList.wood)))
 		{
 			event.player.triggerAchievement(AchievementList.mineWood);
 		}

@@ -66,7 +66,6 @@ public class Wood extends BlockLog
         list.add(new ItemStack(item, 1, 2));
         list.add(new ItemStack(item, 1, 3));
         list.add(new ItemStack(item, 1, 4));
- 
     }
     
     @SideOnly(Side.CLIENT)

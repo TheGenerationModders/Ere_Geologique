@@ -3,6 +3,7 @@ package ere_geologique.common.event;
 import java.util.Arrays;
 import java.util.HashSet;
 
+import net.minecraft.item.Item;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemSmeltedEvent;
@@ -19,13 +20,13 @@ public class CraftingHandler
     @SubscribeEvent
 	public void ItemCraftedEvent(ItemCraftedEvent event)
 	{
-		if(event.crafting.getItem().equals(EGBlockList.feeder))
+		if(event.crafting.getItem().equals(Item.getItemFromBlock(EGBlockList.feeder)))
 		{
 			event.player.addStat(EGAchievement.feeder, 1);
-		}else if(event.crafting.getItem().equals(EGBlockList.analyzer))
+		}else if(event.crafting.getItem().equals(Item.getItemFromBlock(EGBlockList.analyzer)))
 		{
 			event.player.addStat(EGAchievement.analyzer, 1);
-		}else if(event.crafting.getItem().equals(EGBlockList.cultivatorIdle))
+		}else if(event.crafting.getItem().equals(Item.getItemFromBlock(EGBlockList.cultivatorIdle)))
 		{
 			event.player.addStat(EGAchievement.cultivator, 1);
 		}
